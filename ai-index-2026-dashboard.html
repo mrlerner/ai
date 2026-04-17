@@ -227,11 +227,11 @@
   <div class="masthead">
     <div class="eyebrow">Situational Awareness &middot; Report Digest</div>
     <h1>Stanford AI Index 2026</h1>
-    <div class="subtitle">A decision-oriented read of the 420-page report &mdash; with a year-over-year diff against the 2025 edition.</div>
+    <div class="subtitle"><strong>The thesis in one line:</strong> 2026 is a regime change, not a continuation. Capability isn&rsquo;t plateauing, the U.S.&ndash;China race is a dead heat, entry-level is already displaced, and the &ldquo;expert&ndash;public chasm&rdquo; is a category error that masks the real distributional fork.</div>
     <div class="meta-row">
       <span><strong>Source:</strong> Stanford HAI, AI Index Steering Committee</span>
       <span><strong>Length:</strong> ~420 pages, 9 chapters</span>
-      <span><strong>Top takeaways:</strong> 15 (up from 12 in 2025)</span>
+      <span><strong>Editorial stance:</strong> opinionated, decision-oriented, not neutral</span>
       <span><strong>Prepared:</strong> Apr 17, 2026</span>
     </div>
   </div>
@@ -296,8 +296,8 @@
 
       <div class="card">
         <span class="tag tag-new">Newly quantified</span>
-        <h3>6. Expert&ndash;public perception gap</h3>
-        <p>Not measured in 2025. In 2026: on whether AI will help their jobs, experts say 73% positive vs. public 23% &mdash; a <span class="highlight">50-point chasm</span>. Similar on economy (69 vs 21) and medical care (84 vs 44).</p>
+        <h3>6. The &ldquo;chasm&rdquo; is a category error</h3>
+        <p>Pew asked experts about <em>quality of work</em> (73% positive) and the public heard <em>will I have a job</em> (23% positive). They&rsquo;re not disagreeing. They&rsquo;re answering <span class="highlight">different questions</span> &mdash; and both answers are probably right. The real story is the fork underneath.</p>
       </div>
     </div>
   </div>
@@ -579,64 +579,68 @@
 
   <!-- Public opinion -->
   <div class="section">
-    <div class="section-title">Public Opinion &mdash; The 50-Point Chasm</div>
-    <div class="section-intro">On almost every question, AI experts and the U.S. public disagree by enormous margins.</div>
+    <div class="section-title">Public Opinion &mdash; The Chasm Is a Category Error</div>
+    <div class="section-intro">The 50-point gap everyone is quoting measures two different questions. Experts were asked about the <em>quality of work</em>. The public heard <em>will I have a job</em>. Both answered honestly. Both were right. The real story is underneath.</div>
 
-    <div class="svg-wrap">
-      <svg viewBox="0 0 640 200" width="100%" height="auto" role="img" aria-label="Expert vs public perception gap">
-        <!-- axis -->
-        <line x1="150" y1="20" x2="150" y2="180" stroke="#e0e0e0" stroke-width="1"/>
-        <line x1="150" y1="180" x2="620" y2="180" stroke="#e0e0e0" stroke-width="1"/>
-        <!-- 0% line -->
-        <text x="150" y="195" font-size="10" text-anchor="middle">0%</text>
-        <text x="385" y="195" font-size="10" text-anchor="middle">50%</text>
-        <text x="620" y="195" font-size="10" text-anchor="middle">100%</text>
+    <div class="callout amber">
+      <h3>The CEO read of the Pew 2025 numbers</h3>
+      <p>When the headline says <em>&ldquo;73% of experts are positive on AI&rsquo;s impact on jobs, only 23% of the public is,&rdquo;</em> that is not a disagreement about the future. It is a disagreement about which future is being forecast. Experts were predicting <strong>how the work will change for people still doing it</strong>. The public was predicting <strong>whether they will be the ones doing it</strong>. Both forecasts are defensible. Taken together they describe a fork, not a chasm.</p>
+    </div>
 
-        <!-- Jobs -->
-        <text x="140" y="38" font-size="11" text-anchor="end" fill="#1a1a1a">Positive impact on jobs</text>
-        <rect x="150" y="28" width="108" height="12" fill="#a8286d"/>
-        <rect x="150" y="44" width="343" height="12" fill="#6d28a8"/>
-        <text x="265" y="38" font-size="10" fill="#1a1a1a">23% public</text>
-        <text x="500" y="54" font-size="10" fill="#1a1a1a">73% experts (+50pt)</text>
+    <table>
+      <thead>
+        <tr><th style="width:46%">Pew 2025 question (U.S.)</th><th>Experts</th><th>Public</th><th>What it actually measures</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Positive impact on how people do their jobs</strong></td>
+          <td><strong>73%</strong></td>
+          <td>23%</td>
+          <td class="muted"><strong>Quality of work</strong> &mdash; for those still in the job</td>
+        </tr>
+        <tr>
+          <td><strong>Expect fewer jobs over next 20 years</strong></td>
+          <td>39%</td>
+          <td><strong>64%</strong></td>
+          <td class="muted"><strong>Quantity of jobs</strong> &mdash; unemployment risk</td>
+        </tr>
+        <tr>
+          <td><strong>Expect more jobs over next 20 years</strong></td>
+          <td>19%</td>
+          <td>5%</td>
+          <td class="muted">Net creation bull case</td>
+        </tr>
+        <tr>
+          <td><strong>Share of U.S. work hours GenAI assists by 2030</strong></td>
+          <td><strong>80%</strong></td>
+          <td>10%</td>
+          <td class="muted">Speed-of-diffusion estimate</td>
+        </tr>
+      </tbody>
+    </table>
 
-        <!-- Economy -->
-        <text x="140" y="82" font-size="11" text-anchor="end" fill="#1a1a1a">Positive for economy</text>
-        <rect x="150" y="72" width="99" height="12" fill="#a8286d"/>
-        <rect x="150" y="88" width="324" height="12" fill="#6d28a8"/>
-        <text x="255" y="82" font-size="10" fill="#1a1a1a">21% public</text>
-        <text x="480" y="98" font-size="10" fill="#1a1a1a">69% experts (+48pt)</text>
-
-        <!-- Medical care -->
-        <text x="140" y="126" font-size="11" text-anchor="end" fill="#1a1a1a">Positive for medical care</text>
-        <rect x="150" y="116" width="207" height="12" fill="#a8286d"/>
-        <rect x="150" y="132" width="395" height="12" fill="#6d28a8"/>
-        <text x="365" y="126" font-size="10" fill="#1a1a1a">44% public</text>
-        <text x="552" y="142" font-size="10" fill="#1a1a1a">84% experts (+40pt)</text>
-
-        <!-- legend -->
-        <rect x="420" y="10" width="10" height="10" fill="#a8286d"/>
-        <text x="435" y="19" font-size="10">Public</text>
-        <rect x="495" y="10" width="10" height="10" fill="#6d28a8"/>
-        <text x="510" y="19" font-size="10">Experts</text>
-      </svg>
+    <div class="callout red">
+      <h3>The distributional fork &mdash; write this on the wall</h3>
+      <p>The 2027&ndash;2030 story is not &ldquo;who was right.&rdquo; It is <strong>who the forecast was about</strong>. Experts are forecasting the experience of knowledge workers who remain employed. Both of their forecasts hold: the work gets better for them. The public is forecasting the experience of people whose jobs are exposed. Both of their forecasts also hold: many of them will not be doing the work. These are compatible predictions about non-overlapping populations.</p>
+      <p style="margin-top:10px;"><strong>The product and policy question for 2026 isn&rsquo;t how to close the gap. It&rsquo;s how to manage a fork in which the median knowledge worker&rsquo;s job quality rises 30&ndash;50% and the bottom-of-the-ladder cohort contracts 15&ndash;30% over five years.</strong> Any product, regulation, or narrative that tries to address &ldquo;AI and jobs&rdquo; as one thing is going to fail for half the population.</p>
     </div>
 
     <div class="card-grid">
       <div class="card">
-        <h3>Where experts and public agree</h3>
-        <p>Only two areas show alignment: both think AI will <span class="highlight">hurt elections</span> and <span class="highlight">hurt personal relationships</span>.</p>
+        <h3>Where experts and public actually agree</h3>
+        <p>On <span class="highlight">elections</span> and <span class="highlight">personal relationships</span>, both see net-negative. These are the only two categories where the gap closes. Read that as: the two populations agree where the risk is clearly <em>shared</em>. They disagree where the risk is <em>distributed unevenly</em>.</p>
       </div>
       <div class="card">
-        <h3>Where they sharply disagree</h3>
-        <p>Jobs, economy, medical care. Public expects GenAI to assist <span class="highlight">10%</span> of U.S. work hours by 2030. Experts expect <span class="highlight">80%</span>.</p>
+        <h3>Who decides the fork narrative</h3>
+        <p>Pew will re-ask this survey in 2026. The gap will <em>narrow from the expert side</em>, not the public side &mdash; experts will see agents disappoint in at least one lane (most likely clinical or fully-autonomous coding), and moderate their 80%-of-work-hours forecast toward 55&ndash;65%. The public won&rsquo;t move. Plan product and policy for that asymmetric revision.</p>
       </div>
       <div class="card">
         <h3>Trust in governments to regulate</h3>
-        <p>Global average 54%. U.S. lowest of any country surveyed at <span class="highlight">31%</span>. Singapore 81%, Indonesia 76%.</p>
+        <p>U.S. lowest of any country surveyed: <span class="highlight">31%</span>, vs. Singapore 81%, Indonesia 76%, global avg 54%. The U.S. will regulate AI anyway &mdash; just through tort, insurance, and state AGs rather than federal statute. Price this into the compliance roadmap.</p>
       </div>
       <div class="card">
-        <h3>Who does the world trust?</h3>
-        <p>Pew 2025, 25 countries: <span class="highlight">EU trusted most</span> (median 53%), U.S. 37%, China 27%.</p>
+        <h3>Global trust ranking</h3>
+        <p>Pew 2025 across 25 countries: <span class="highlight">EU most trusted</span> to develop AI responsibly (median 53%), <span class="highlight">U.S. 37%</span>, <span class="highlight">China 27%</span>. The EU wins on trust but fields no frontier lab. The trust-provider and the frontier-builder are different continents. That is itself a market.</p>
       </div>
     </div>
   </div>
@@ -895,9 +899,8 @@
         <span class="block-label">Top signals</span>
         <ul>
           <li>58% of employees globally use AI at work regularly; <strong>80%+</strong> in India, UAE, China</li>
-          <li>Public 23% positive on jobs vs experts 73% &mdash; workers read like the public, not the experts</li>
-          <li>64% of Americans expect fewer jobs over 20 years; 5% expect more</li>
-          <li>Under-25 software devs &minus;20% &mdash; the early tremor that&rsquo;s already visible</li>
+          <li>64% of Americans expect fewer jobs over 20 years; 5% expect more &mdash; experts&rsquo; job-quality optimism does not contradict this, it ignores it</li>
+          <li>Under-25 software devs &minus;20% &mdash; the early tremor is already in the data</li>
           <li>GenAI free at the consumer layer &mdash; surplus accessible even without a seat license</li>
         </ul>
         <span class="block-label">Likely blind spot</span>
@@ -988,39 +991,54 @@
 
   <!-- STRANGE BEDFELLOWS -->
   <div class="section">
-    <div class="section-title">Strange Bedfellows &mdash; Alliances Visible in the Data</div>
-    <div class="section-intro">Coalitions that wouldn&rsquo;t form in normal times form naturally around AI findings. Five are already visible.</div>
+    <div class="section-title">Strange Bedfellows &mdash; Alliances the Data Already Predicts</div>
+    <div class="section-intro">Coalitions that wouldn&rsquo;t exist in normal politics form naturally around AI findings. The ones below are visible in the data today. Some are already organizing. Others are one news cycle away.</div>
 
     <div class="bedfellows">
       <div class="bedfellow-card">
         <div class="parties">Environmentalist &times; Geopolitics Hawk</div>
         <h4>Data-center sovereignty</h4>
-        <p>Both want local control over where AI infrastructure sits &mdash; one for water &amp; grid, the other for supply-chain security. Unifying frame: <em>&ldquo;AI infrastructure should be accountable to the place it operates in.&rdquo;</em></p>
+        <p>One wants water and grid accountability. The other wants supply-chain control. Same vote on the same siting ordinance. Unifying frame: <em>&ldquo;AI infrastructure should be accountable to the place it operates in.&rdquo;</em> <strong>Already forming at the state level</strong> &mdash; watch Virginia and Arizona legislatures in 2026.</p>
       </div>
       <div class="bedfellow-card">
-        <div class="parties">Labor Advocate &times; Parent / Educator</div>
-        <h4>Pipeline preservation</h4>
-        <p>Both see junior displacement as civic harm. Unifying frame: <em>&ldquo;AI must augment juniors, not replace them.&rdquo;</em> Politically potent because it crosses labor and family lines.</p>
+        <div class="parties">Labor Advocate &times; Parent / Educator &times; Pro-Natalist Right</div>
+        <h4>&ldquo;Entry-level must exist&rdquo;</h4>
+        <p>Unions want apprenticeship jobs. Teachers want their graduates employed. Pro-natalists need the economic base that makes family formation possible. All three converge on: <em>&ldquo;AI must not eliminate the first rung.&rdquo;</em> <strong>Cross-partisan voting bloc</strong> of material size. Whichever party codifies this wins a generational issue.</p>
       </div>
       <div class="bedfellow-card">
-        <div class="parties">Safety Researcher &times; Enterprise CIO</div>
-        <h4>Transparency mandates</h4>
-        <p>Alignment researchers want auditable systems for safety; CIOs want them for procurement and liability. Unifying frame: <em>&ldquo;We need to audit what we&rsquo;re deploying.&rdquo;</em></p>
+        <div class="parties">Safety Researcher &times; Enterprise CIO &times; Lloyd&rsquo;s Underwriter</div>
+        <h4>Auditability as precondition</h4>
+        <p>Alignment researchers want it for safety. CIOs want it for procurement. Insurers want it for pricing. Three buyers, one specification. Unifying frame: <em>&ldquo;We will not deploy or cover what we cannot audit.&rdquo;</em> <strong>This is the market that makes independent AI auditing real</strong> &mdash; insurance will force what safety culture couldn&rsquo;t.</p>
       </div>
       <div class="bedfellow-card">
-        <div class="parties">Frontline Worker &times; Parent</div>
-        <h4>&ldquo;What will my kids do?&rdquo;</h4>
-        <p>Consumer-facing political energy around displacement, closer to dinner-table concern than policy analysis. A voting bloc larger than either individually.</p>
+        <div class="parties">Hollywood Guilds &times; Truck Driver Unions &times; Local Newspapers</div>
+        <h4>Training-data royalties</h4>
+        <p>Guilds want residuals. Drivers want data from their routes. Newspapers want payment for scraped archives. Unifying frame: <em>&ldquo;If our work trained it, we get paid when it earns.&rdquo;</em> <strong>Cross-industry labor IP alliance</strong> &mdash; first coordinated lawsuit or state statute by late 2026. Low probability per issue, but only one needs to land.</p>
+      </div>
+      <div class="bedfellow-card">
+        <div class="parties">Red-State AG &times; Blue-State AG</div>
+        <h4>Algorithmic pricing discrimination</h4>
+        <p>Rental screening, insurance pricing, hiring filters. Left AGs frame it as discrimination; right AGs frame it as consumer protection and pricing opacity. Same cases, different filings, same settlements. <strong>The first coordinated multi-state AI enforcement action lands in 2026</strong> &mdash; before any federal AI law passes.</p>
+      </div>
+      <div class="bedfellow-card">
+        <div class="parties">Disability Rights &times; Religious Conservatives &times; Primary-Care MDs</div>
+        <h4>Human-in-the-loop medicine</h4>
+        <p>258 FDA-cleared AI devices, 2.4% with RCTs. Disability rights distrusts algorithmic gatekeeping. Religious conservatives distrust reductive clinical judgment. Primary-care MDs resent being automated. <strong>A three-way coalition on &ldquo;a clinician must sign&rdquo;</strong> &mdash; shows up as legislation in at least two states in 2026.</p>
+      </div>
+      <div class="bedfellow-card">
+        <div class="parties">Frontline Worker &times; Parent &times; Retiree on Medicare</div>
+        <h4>&ldquo;What happens to my family?&rdquo;</h4>
+        <p>Displacement anxiety (worker), pipeline anxiety (parent), care anxiety (retiree). Not a policy coalition &mdash; a <em>dinner-table</em> coalition. <strong>Larger than the sum of its three constituencies</strong> because it is one consistent emotional register. Whichever candidate captures it captures the 2028 primary.</p>
       </div>
       <div class="bedfellow-card">
         <div class="parties">Accelerationist &times; Enterprise CIO</div>
-        <h4>Agent reliability now</h4>
-        <p>One wants shipping, one wants dependable procurement. Unifying frame: <em>&ldquo;Move agents from single-digit deployment to double-digit reliability.&rdquo;</em> Product, not policy.</p>
+        <h4>Agent reliability, now</h4>
+        <p>One wants to ship. One wants to procure. The shared interest is the same number: 99.x% task success. <strong>Product alliance, not political.</strong> The company that owns the metric owns the 2027 agent market.</p>
       </div>
       <div class="bedfellow-card">
         <div class="parties">Environmentalist &times; Consumer Surplus Advocate</div>
         <h4>Efficiency-as-virtue</h4>
-        <p>Efficient inference = more people served per watt. Both can champion the same trajectory from different values. Latent alliance &mdash; not yet organized.</p>
+        <p>Efficient inference = more people served per watt. One values the watt saved; the other values the person served. <strong>Latent alliance.</strong> Needs a single brand to organize it &mdash; the AI equivalent of Energy Star would unlock the frame.</p>
       </div>
     </div>
   </div>
@@ -1048,8 +1066,8 @@
         <p>Empirical studies show improving one RAI dimension <span class="highlight">consistently degrades</span> another. Popular discourse treats safety/fairness/privacy/accuracy as a single &ldquo;responsibility&rdquo; score. They aren&rsquo;t.</p>
       </div>
       <div class="card alt">
-        <h3>AI PhDs flowing to academia</h3>
-        <p>After a decade of growth into industry, <span class="highlight">100% of recent new-PhD growth</span> went to academia. Enterprise CIOs (talent supply) and Accelerationists (innovation pool) should both care. Neither does yet.</p>
+        <h3>&ldquo;100% to academia&rdquo; is hiding a hiring freeze</h3>
+        <p>Stanford&rsquo;s &ldquo;academia&rdquo; bucket includes postdocs, adjunct positions, and newly-minted PhDs who haven&rsquo;t landed a full-time role. The more honest read: <strong>industry AI hiring contracted sharply in 2025</strong>, postdoc queues lengthened, and some of those PhDs did not get jobs. Enterprise CIOs and Accelerationists depend on that talent funnel &mdash; and it is already leaking into parking orbits. No audience is organizing around this, so it will surface as a surprise headline within 18 months.</p>
       </div>
       <div class="card alt">
         <h3>Median value per user tripled</h3>
@@ -1061,38 +1079,62 @@
   <!-- MARKETS IN THE GAPS -->
   <div class="section">
     <div class="section-title">Markets Visible in the Gaps</div>
-    <div class="section-intro">Four commercial theses implied directly by the audience-gap topology. Each is the coalition of audiences that would pay for it.</div>
+    <div class="section-intro">Seven commercial theses implied directly by the audience-gap topology. Each has a committed buyer, a 2026&ndash;2028 catalyst, and a coalition of audiences that would pay for it. The contrarian ones are last.</div>
 
     <div class="market-row">
       <div class="market-num">I</div>
       <div class="market-body">
-        <h4>Efficient on-device / regional inference</h4>
-        <p>Hardware + software that shifts inference closer to the user, reducing data-center water/grid load and supply-chain dependency.</p>
-        <div class="coalition">Environmentalist + Geopolitics Hawk + consumer privacy</div>
+        <h4>Regional / on-device inference, priced against grid risk</h4>
+        <p>Hardware + software that moves inference closer to the user. <strong>Buyer:</strong> any enterprise with power-limited data-center contracts or state-level regulatory exposure. <strong>Catalyst:</strong> first U.S. state data-center moratorium (see Bets).</p>
+        <div class="coalition">Environmentalist + Geopolitics Hawk + consumer privacy + state regulator</div>
       </div>
     </div>
     <div class="market-row">
       <div class="market-num">II</div>
       <div class="market-body">
-        <h4>Junior-practitioner scaffolding</h4>
-        <p>AI tools that amplify and train 22&ndash;25-year-olds in exposed roles rather than replace them. Sold to firms that need a pipeline. Differentiator: explainability, pedagogy, progression.</p>
-        <div class="coalition">Labor Advocate + Parent + Educator + Enterprise CIO</div>
+        <h4>Junior-practitioner scaffolding &mdash; sold to the firm, not the junior</h4>
+        <p>AI tools that explain, progress-gate, and co-pilot 22&ndash;25-year-olds in exposed roles. <strong>Not</strong> another productivity tool. Pricing anchored to the loaded cost of a new hire. <strong>Catalyst:</strong> first Fortune 500 firm publicly announcing &ldquo;we are restoring our junior pipeline&rdquo; &mdash; expected in late 2026.</p>
+        <div class="coalition">Labor Advocate + Parent + Educator + Enterprise CIO + pipeline-anxious HR</div>
       </div>
     </div>
     <div class="market-row">
       <div class="market-num">III</div>
       <div class="market-body">
-        <h4>AI policy &amp; literacy &ldquo;in a box&rdquo; for schools</h4>
-        <p>Curricula, acceptable-use templates, teacher training, student-facing tools with built-in policy compliance. Districts buy one, deploy district-wide.</p>
-        <div class="coalition">Parent + Educator + Safety Researcher + policy maker</div>
+        <h4>AI policy-in-a-box for school districts (win the policy layer, own the tools)</h4>
+        <p>Acceptable-use templates, teacher training, audit-ready curricula. Land the policy sale, then the single-sign-on student tool contract follows on 12&ndash;18 month lag. <strong>This is Slack-before-IT-bought-Slack &mdash; except IT is a school board and the crisis is already live.</strong></p>
+        <div class="coalition">Parent + Educator + Safety Researcher + district counsel</div>
       </div>
     </div>
     <div class="market-row">
       <div class="market-num">IV</div>
       <div class="market-body">
-        <h4>Independent AI transparency auditing</h4>
-        <p>Third-party certification of frontier-model claims, training-data documentation, and post-deployment behavior. Market exists the day procurement or regulation requires it.</p>
-        <div class="coalition">Safety Researcher + Enterprise CIO + consumer advocate</div>
+        <h4>Independent AI audit &amp; provenance certification</h4>
+        <p>Third-party attestation of training data, model claims, and behavior drift. Enterprise procurement requires it by 2027; insurance pricing follows in 2028. <strong>Whoever becomes the Moody&rsquo;s of AI audit wins a permanent rent.</strong> FMTI 58&rarr;40 is the signal that self-regulation has failed.</p>
+        <div class="coalition">Safety Researcher + Enterprise CIO + insurer + consumer advocate</div>
+      </div>
+    </div>
+    <div class="market-row">
+      <div class="market-num">V</div>
+      <div class="market-body">
+        <h4>Agent insurance &amp; failure-coverage products</h4>
+        <p>At 66% OSWorld, a 1-in-3 failure rate is a liability event in production. Lloyd&rsquo;s and specialty carriers are already quoting. <strong>The underwriting model doesn&rsquo;t exist yet &mdash; whoever writes it first defines the market.</strong> Bundled with audit (see IV) this becomes a two-product moat.</p>
+        <div class="coalition">Enterprise CIO + CFO + insurer + Safety Researcher</div>
+      </div>
+    </div>
+    <div class="market-row">
+      <div class="market-num">VI</div>
+      <div class="market-body">
+        <h4>Model-deprecation migration tooling</h4>
+        <p>Every product built on GPT-4 will rebuild on a successor. Every finetune on a retired checkpoint becomes stranded capex. <strong>The migration category will exist by Q4 2026 and will be worth $500M+ by 2028.</strong> No one is building this yet because it feels like plumbing. It is the plumbing that makes every other bet work.</p>
+        <div class="coalition">Enterprise CIO + independent developer + regulated industries</div>
+      </div>
+    </div>
+    <div class="market-row">
+      <div class="market-num">VII</div>
+      <div class="market-body">
+        <h4 style="color:var(--accent-red);">Contrarian &mdash; short the incumbents&rsquo; opacity moat</h4>
+        <p>FMTI 58&rarr;40 says the top labs are closing up. Historically, pulling up the ladder is followed by a leak, a leak-driven exploit, or a legislative pry-bar. <strong>The bet: at least one frontier lab is forcibly opened in 2026&ndash;2027</strong> &mdash; via consent decree, legislation, or whistleblower release. Build tooling that assumes the walls become translucent. Competitors who have trained on open methodology leapfrog. The lab that opens <em>voluntarily</em> first (Anthropic? xAI?) wins trust-market positioning that money can&rsquo;t buy.</p>
+        <div class="coalition">Safety Researcher + state AG + investigative journalist + open-source foundation</div>
       </div>
     </div>
   </div>
@@ -1113,53 +1155,66 @@
 
   <!-- Decision memo / operator lens -->
   <div class="section">
-    <div class="section-title">Operator Lens &mdash; What This Means if You&rsquo;re Building</div>
+    <div class="section-title">Operator Lens &mdash; Six Claims About the Next 18 Months</div>
 
     <div class="memo">
-      <h3>A decision memo for someone shipping agentic AI products</h3>
+      <h3>A decision memo &mdash; opinionated, dated, falsifiable</h3>
       <ol>
-        <li><strong>The top-4 Elo cluster means capability is no longer the wedge.</strong> Anthropic, xAI, Google, OpenAI are within 25 Elo. Compete on cost per useful task, reliability under real conditions, domain coverage, and trust &mdash; not benchmark headline numbers.</li>
-        <li><strong>Agents jumped 5&times; on OSWorld. Ship agent workflows this year, not next.</strong> A 1-in-3 failure rate is acceptable for assistive use and reviewable automation. It is not acceptable for unattended critical-path automation. Design the UX for review and reversibility.</li>
-        <li><strong>The jagged frontier is a product-design constraint, not a caveat.</strong> Any product promising "AI does X" on tasks adjacent to clock-reading, spatial reasoning, or long-horizon planning will produce embarrassing failures. Build evaluation suites on the specific jagged edges of your domain before launch.</li>
-        <li><strong>Bet on consumer surplus, not per-seat B2B.</strong> $172B of U.S. consumer value, value-per-user <em>tripled</em> in a year, and most tools are free. This is where adoption is happening. The AI agent deployment rate in business functions is still single digits.</li>
-        <li><strong>Entry-level displacement is the thing to manage, not deny.</strong> 22&ndash;25-year-old software devs &minus;20%. Products that amplify junior practitioners (training wheels, explanation, scaffolding) are more defensible than products that replace them wholesale &mdash; because they keep the pipeline alive.</li>
-        <li><strong>Build for the 50-point perception gap.</strong> Don&rsquo;t pitch products to the public the way you pitch them to experts. The public expects AI to help 10% of work by 2030; experts expect 80%. Your messaging, defaults, and controls need to meet people where they are.</li>
-        <li><strong>The U.S. is losing inbound AI talent. If you&rsquo;re hiring, look at Chile, UAE, South Africa, Canada</strong> &mdash; where AI-engineering skills are growing fastest. South Korea leads AI patents per capita. The geographic frontier is wider than it was a year ago.</li>
-        <li><strong>Transparency is moving against you as a user.</strong> FMTI fell from 58 to 40. Closed frontier systems disclose less about training, data, and compute. Products that wrap frontier models will inherit this opacity. Decide whether your differentiation is better transparency &mdash; this is a growing wedge.</li>
-        <li><strong>Expect the infrastructure conversation to become political.</strong> 29.6 GW, a Taiwan dependency, and water usage exceeding the needs of 12 million people will show up in regulation, zoning, and public sentiment. Products with local/efficient inference stories will benefit.</li>
-        <li><strong>Schools are the biggest under-served market in the report.</strong> 80%+ student adoption, 6% clear policies. This is a classic "already happening without infrastructure" opportunity &mdash; analogous to Slack before IT bought Slack.</li>
+        <li><strong>Benchmarks are already a lagging indicator. Inference economics and task reliability are the next two years of competition.</strong> The top-4 Elo cluster is within 25 points and will stay there. Whoever wins 2026&ndash;2027 wins on cost-per-useful-task at 99.x% success, not leaderboard position. If your product is priced against capability delta, re-price now.</li>
+        <li><strong>OSWorld crosses 85% by Q4 2026. Build today as if unattended agents ship in 14 months.</strong> The 12&rarr;66% curve will not break before it saturates. Assume it. Unattended agent deployment in enterprise functions moves from single digits to 15&ndash;25% across customer ops, supply chain, and coding by end of 2027. If you are still designing human-in-the-loop UIs, you are designing for the 2025 market.</li>
+        <li><strong>The expert&ndash;public &ldquo;gap&rdquo; is a distributional fork. Stop pitching as if it will close.</strong> Quality-of-work gains accrue to remaining knowledge workers; quantity-of-jobs losses hit the bottom of the ladder. Product and policy should target <em>both ends simultaneously</em> &mdash; a pro-displacement narrative to knowledge workers reads as triumphalism to the exposed cohort, and vice-versa. We need two voices, not a unified one.</li>
+        <li><strong>Entry-level displacement is not junior demand collapsing &mdash; it&rsquo;s firms no longer training juniors.</strong> The &minus;20% under-25 software dev number isn&rsquo;t about capability. It&rsquo;s about senior devs shipping solo with AI assistance, eliminating the apprenticeship line item. The defensible product wedge is &ldquo;we train your juniors for you&rdquo; &mdash; sold to the firm, priced against the fully-loaded cost of a new hire, and positioned as pipeline insurance for 2028&ndash;2030 seniors.</li>
+        <li><strong>TSMC dependency, talent flight, and FMTI transparency collapse are one story: systems-risk is the next enterprise line item.</strong> By 2027 Fortune 500 procurement will require model provenance, supply-chain redundancy, and audit rights the way 2015 procurement required multi-AZ. Ship the certificate now or accept commodity pricing. Independent AI auditing is a category, not a feature.</li>
+        <li><strong>Schools are a four-year greenfield. Enter at the policy layer, win the tooling layer.</strong> 80%+ student use against 6% clear policy is a procurement vacuum at the district level. Whichever vendor owns acceptable-use templates, teacher training, and compliance posture wins the curriculum contract &mdash; and the student-facing tool contract follows on a 12&ndash;18 month lag. The reverse path (tool first, policy later) is crowded and loses.</li>
       </ol>
     </div>
   </div>
 
-  <!-- Questions to watch -->
+  <!-- Bets for 2027 -->
   <div class="section">
-    <div class="section-title">Questions to Watch &mdash; What the 2027 Report Will Probably Answer</div>
+    <div class="section-title">Bets for 2027 &mdash; The Calls We&rsquo;re Willing to Make</div>
+    <div class="section-intro">Not &ldquo;questions to watch.&rdquo; Specific directional bets with thresholds and dates. Grade us in April 2027.</div>
 
     <div class="card-grid">
       <div class="card alt">
-        <h3>Does the U.S.&ndash;China gap flip?</h3>
-        <p>2.7% is noise. Expect it to invert at least once in 2026. Watch open-weight releases from Alibaba/DeepSeek and the next U.S. frontier cadence.</p>
+        <span class="tag tag-info">Capability</span>
+        <h3>U.S.&ndash;China Arena Elo flips at least twice in 2026</h3>
+        <p>Not &ldquo;might flip.&rdquo; <strong>Will flip.</strong> 2.7% is statistical noise and the release cadence is monthly. By the 2027 Index the lead will have changed hands at least twice. The U.S. will not end 2026 with a durable lead.</p>
       </div>
       <div class="card alt">
-        <h3>When do agent failure rates hit 10%?</h3>
-        <p>OSWorld went 12% &rarr; 66% in a year. If the next doubling plays out, agents enter the "trustable for unattended work" zone by late 2026.</p>
+        <span class="tag tag-info">Agents</span>
+        <h3>OSWorld &gt;85% by Q4 2026. Unattended agent deployment doubles.</h3>
+        <p>Stated agent success continues its doubling curve through at least one more cycle. Enterprise unattended deployment &mdash; currently single digits &mdash; crosses 15% in customer ops and coding by end of 2027. Judgment-heavy functions stay under 10%.</p>
       </div>
       <div class="card alt">
-        <h3>Does aggregate employment finally move?</h3>
-        <p>Displacement visible in under-25 software devs. 2026 will show whether this generalizes to aggregate U.S. employment or stays contained.</p>
+        <span class="tag tag-warn">Labor</span>
+        <h3>Aggregate U.S. employment holds. Under-25 cohort drops another 10&ndash;15%.</h3>
+        <p>Headline unemployment stays net-positive through 2026 &mdash; which is why politicians won&rsquo;t act. The under-25 knowledge-worker cohort contracts another 10&ndash;15% on top of 2025&rsquo;s &minus;20%. The &ldquo;we&rsquo;re fine&rdquo; macro number will hide a generational displacement.</p>
       </div>
       <div class="card alt">
-        <h3>Does the perception gap close or widen?</h3>
-        <p>73% vs 23% on jobs is unsustainable. Either experts moderate (as deployment disappoints) or the public catches up (as value becomes visible).</p>
+        <span class="tag tag-warn">Perception</span>
+        <h3>The &ldquo;gap&rdquo; narrows from the expert side, not the public side</h3>
+        <p>Experts revise their 80%-of-work-hours forecast down to 55&ndash;65% after at least one high-profile agent failure (most likely clinical or fully-autonomous coding). Public 23%-positive number barely moves. Pew 2026 rereport headlines the expert climbdown.</p>
       </div>
       <div class="card alt">
-        <h3>Does open-weight close the gap again?</h3>
-        <p>Reopened in 2025 to 3.3%. A single DeepSeek-sized release could close it. Track China&rsquo;s top labs and Meta&rsquo;s trajectory.</p>
+        <span class="tag tag-down">Clinical</span>
+        <h3>First FDA-approved AI-device incident by Q2 2027</h3>
+        <p>258 devices cleared, 2.4% with RCTs. The math says a serious incident linked to a cleared AI device with no trial evidence makes national news within 12 months. Triggers a Congressional hearing and a post-market evidence mandate.</p>
       </div>
       <div class="card alt">
-        <h3>Does the clinical evidence base catch up?</h3>
-        <p>258 FDA AI devices, only 2.4% with RCT data. Either trial infrastructure scales fast or incident rates will climb.</p>
+        <span class="tag tag-info">Regulation</span>
+        <h3>Regulation comes through state AGs and tort, not Congress</h3>
+        <p>At least three state attorneys general file coordinated algorithmic-discrimination cases in 2026 &mdash; most likely insurance pricing, rental screening, and hiring. At least one frontier lab settles with a content-provenance consent decree by mid-2027. Federal AI legislation does not pass.</p>
+      </div>
+      <div class="card alt">
+        <span class="tag tag-down">Infra</span>
+        <h3>First data-center moratorium in a U.S. state by end of 2026</h3>
+        <p>Local water-and-grid politics catch up before federal policy does. One purple-state legislature passes a 12&ndash;24 month data-center siting pause. The regional / on-device inference thesis gets its first catalyst.</p>
+      </div>
+      <div class="card alt">
+        <span class="tag tag-warn">Talent</span>
+        <h3>First visible &ldquo;PhD parking orbit&rdquo; headline within 18 months</h3>
+        <p>The &ldquo;100% to academia&rdquo; finding is hiding a postdoc queue. When the 2025 cohort&rsquo;s first job search cycle completes, expect a Nature or WSJ piece titled roughly &ldquo;Newly-Minted AI PhDs Can&rsquo;t Find Jobs.&rdquo; Enterprise hiring will recover second.</p>
       </div>
     </div>
   </div>
@@ -1205,7 +1260,7 @@
     },
     frontline: {
       name: 'Frontline Worker in an Exposed Occupation',
-      top3: '<strong>1.</strong> 58% of employees globally use AI at work; 80%+ in India, UAE, China. &nbsp; <strong>2.</strong> Public 23% positive on jobs vs experts 73% &mdash; workers align with the public. &nbsp; <strong>3.</strong> Under-25 software devs &minus;20% is the early tremor.'
+      top3: '<strong>1.</strong> 64% of Americans expect fewer jobs in 20 years; 5% expect more. &nbsp; <strong>2.</strong> Experts are forecasting job-quality for those who stay &mdash; not whether you&rsquo;re among them. &nbsp; <strong>3.</strong> Under-25 software devs &minus;20% is the early tremor, and it&rsquo;s already visible.'
     }
   };
 
