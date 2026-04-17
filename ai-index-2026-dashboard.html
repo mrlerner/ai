@@ -119,10 +119,98 @@
   /* Footer */
   footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--border); font-size:12px; color:var(--light); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; line-height:1.6; }
 
+  /* POV switcher */
+  .pov-bar { position:sticky; top:0; z-index:10; background:#fff; border:1px solid var(--border); border-radius:6px; padding:10px 14px; margin:20px 0 8px; box-shadow:0 1px 4px rgba(0,0,0,0.04); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+  .pov-bar-label { font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-right:8px; font-weight:600; }
+  .pov-chip { display:inline-block; padding:4px 11px; margin:3px 3px 3px 0; font-size:12px; border:1px solid var(--border); border-radius:20px; background:#fff; cursor:pointer; color:var(--text); transition:all 0.15s; font-family:inherit; }
+  .pov-chip:hover { background:var(--card-alt); border-color:var(--border-strong); }
+  .pov-chip.active { background:var(--text); color:#fff; border-color:var(--text); }
+  .pov-hint { font-size:11px; color:var(--light); margin-top:4px; font-style:italic; }
+
+  /* Audience cards */
+  .audience-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:12px; }
+  .audience-card { background:var(--card-alt); border:1px solid var(--border); border-left:4px solid var(--accent-blue); border-radius:6px; padding:14px; transition:opacity 0.2s; }
+  .audience-card h4 { font-size:13px; font-weight:700; margin-bottom:4px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--text); }
+  .audience-card .persona { font-size:11px; color:var(--muted); margin-bottom:10px; font-style:italic; font-family:Georgia,serif; }
+  .audience-card ul { padding-left:14px; margin:2px 0 0; }
+  .audience-card li { font-size:12.5px; color:var(--text); margin-bottom:3px; line-height:1.45; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+  .audience-card .block-label { font-size:10px; text-transform:uppercase; letter-spacing:0.7px; color:var(--muted); font-weight:600; display:block; margin-top:10px; margin-bottom:3px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+  .audience-card .ally-line { font-size:11.5px; color:var(--muted); margin-top:8px; padding-top:8px; border-top:1px dashed var(--border); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; line-height:1.4; }
+  .audience-card .ally-line strong { color:var(--text); }
+
+  /* Audience color accents */
+  .ac-acc { border-left-color:var(--accent-red); }
+  .ac-safety { border-left-color:var(--accent-blue); }
+  .ac-env { border-left-color:var(--accent-green); }
+  .ac-geo { border-left-color:var(--accent-purple); }
+  .ac-labor { border-left-color:var(--accent-pink); }
+  .ac-edu { border-left-color:var(--accent-teal); }
+  .ac-enterprise { border-left-color:var(--accent-amber); }
+  .ac-frontline { border-left-color:#555; }
+
+  /* POV highlighting behavior */
+  body.pov-active .audience-card { opacity:0.35; }
+  body.pov-acc .audience-card[data-pov="acc"],
+  body.pov-safety .audience-card[data-pov="safety"],
+  body.pov-env .audience-card[data-pov="env"],
+  body.pov-geo .audience-card[data-pov="geo"],
+  body.pov-labor .audience-card[data-pov="labor"],
+  body.pov-edu .audience-card[data-pov="edu"],
+  body.pov-enterprise .audience-card[data-pov="enterprise"],
+  body.pov-frontline .audience-card[data-pov="frontline"] { opacity:1; box-shadow:0 2px 12px rgba(0,0,0,0.08); }
+
+  .pov-banner { display:none; background:#1a1a1a; color:#fff; border-radius:6px; padding:14px 18px; margin:10px 0 20px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+  body.pov-active .pov-banner { display:block; }
+  .pov-banner .eb { font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#999; margin-bottom:4px; }
+  .pov-banner .name { font-size:16px; font-weight:700; color:#fff; margin-bottom:6px; font-family:Georgia,serif; }
+  .pov-banner .top3 { font-size:12.5px; color:#ddd; line-height:1.55; }
+  .pov-banner .top3 strong { color:#fff; }
+
+  /* Gap analysis */
+  .gap-row { display:grid; grid-template-columns:80px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); align-items:start; }
+  .gap-row:last-child { border-bottom:none; }
+  .gap-rank { font-family:Georgia,serif; font-size:28px; font-weight:700; color:var(--accent-purple); line-height:1; }
+  .gap-rank .sm { font-size:10px; color:var(--muted); display:block; text-transform:uppercase; letter-spacing:1px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-weight:600; margin-top:4px; }
+  .gap-body h4 { font-size:15px; font-weight:700; margin-bottom:8px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+  .gap-pov { font-size:12.5px; color:var(--text); margin-bottom:3px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; line-height:1.55; }
+  .gap-pov strong { font-weight:600; }
+  .gap-outcome { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+  .gap-outcome > div { background:#fff; border:1px solid var(--border); border-radius:4px; padding:8px 10px; font-size:12px; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; line-height:1.5; }
+  .gap-outcome strong { color:var(--text); display:block; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3px; }
+
+  /* Bedfellows */
+  .bedfellows { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:12px; }
+  .bedfellow-card { background:var(--card-alt); border:1px solid var(--border); border-radius:6px; padding:14px; }
+  .bedfellow-card h4 { font-size:13.5px; font-weight:700; margin-bottom:4px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+  .bedfellow-card .parties { font-size:10.5px; color:var(--accent-purple); text-transform:uppercase; letter-spacing:0.7px; font-weight:600; margin-bottom:8px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+  .bedfellow-card p { font-size:13px; color:var(--muted); line-height:1.55; }
+  .bedfellow-card em { color:var(--text); font-style:italic; }
+
+  /* Markets */
+  .market-row { display:grid; grid-template-columns:44px 1fr; gap:14px; padding:12px 0; border-bottom:1px dotted var(--border); }
+  .market-row:last-child { border-bottom:none; }
+  .market-num { font-family:Georgia,serif; font-size:22px; font-weight:700; color:var(--accent-green); }
+  .market-body h4 { font-size:14px; font-weight:700; margin-bottom:4px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+  .market-body p { font-size:13px; color:var(--muted); line-height:1.55; margin-bottom:3px; }
+  .market-body .coalition { font-size:11px; color:var(--accent-purple); text-transform:uppercase; letter-spacing:0.6px; font-weight:600; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+
+  /* Meta note */
+  .meta-note { background:#1a1a1a; color:#f0f0f0; border-radius:6px; padding:24px 28px; margin:32px 0; }
+  .meta-note .eb { font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#999; margin-bottom:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-weight:600; }
+  .meta-note h3 { color:#fff; font-size:19px; margin-bottom:12px; font-family:Georgia,serif; font-weight:700; }
+  .meta-note p { color:#cfcfcf; font-size:14px; line-height:1.7; margin-bottom:12px; font-family:Georgia,serif; }
+  .meta-note p:last-child { margin-bottom:0; }
+  .meta-note em { color:#fff; }
+  .meta-note strong { color:#fff; font-weight:600; }
+  .meta-note ol { padding-left:22px; margin-top:6px; color:#cfcfcf; font-family:Georgia,serif; }
+  .meta-note li { margin-bottom:9px; font-size:14px; line-height:1.65; }
+
   /* Print */
   @media print {
-    .card, .callout, .stat, .memo { break-inside:avoid; }
+    .card, .callout, .stat, .memo, .audience-card, .bedfellow-card, .gap-row, .meta-note { break-inside:avoid; }
     body { background:#fff; }
+    .pov-bar { position:static; }
+    body.pov-active .audience-card { opacity:1; }
   }
   @media (max-width:700px) {
     .card-grid { grid-template-columns:1fr; }
@@ -146,6 +234,28 @@
       <span><strong>Top takeaways:</strong> 15 (up from 12 in 2025)</span>
       <span><strong>Prepared:</strong> Apr 17, 2026</span>
     </div>
+  </div>
+
+  <!-- POV switcher -->
+  <div class="pov-bar" role="toolbar" aria-label="Audience point of view">
+    <span class="pov-bar-label">View as:</span>
+    <button class="pov-chip active" data-pov="all">All (Composite)</button>
+    <button class="pov-chip" data-pov="acc">Accelerationist Builder</button>
+    <button class="pov-chip" data-pov="safety">Safety-Forward Researcher</button>
+    <button class="pov-chip" data-pov="env">Environmental Advocate</button>
+    <button class="pov-chip" data-pov="geo">Geopolitics Hawk</button>
+    <button class="pov-chip" data-pov="labor">Labor Advocate</button>
+    <button class="pov-chip" data-pov="edu">Parent / Educator</button>
+    <button class="pov-chip" data-pov="enterprise">Enterprise CIO</button>
+    <button class="pov-chip" data-pov="frontline">Frontline Worker</button>
+    <div class="pov-hint">Audiences are synthesized from the report, not retrieved. Gap analysis below shows where they most disagree &mdash; that is where alliances and markets live.</div>
+  </div>
+
+  <!-- POV context banner (appears when a POV is selected) -->
+  <div class="pov-banner" id="povBanner">
+    <div class="eb">Viewing as</div>
+    <div class="name" id="povName">&mdash;</div>
+    <div class="top3" id="povTop3">&mdash;</div>
   </div>
 
   <!-- Headline shifts -->
@@ -664,6 +774,343 @@
     </div>
   </div>
 
+  <!-- AUDIENCE LENS -->
+  <div class="section">
+    <div class="section-title">Audience Lens &mdash; Eight Ways to Read the Same 420 Pages</div>
+    <div class="section-intro">Which findings matter most depends on who is reading. These eight audiences were synthesized from the report&rsquo;s own content &mdash; not a preset list. Click a chip at the top to isolate one.</div>
+
+    <div class="audience-grid">
+
+      <div class="audience-card ac-acc" data-pov="acc">
+        <h4>Accelerationist Builder</h4>
+        <div class="persona">Founder, VC, e/acc engineer. Believes speed compounds; adoption is the moat.</div>
+        <span class="block-label">Top signals</span>
+        <ul>
+          <li>Agents 12% &rarr; 66% on OSWorld in one year &mdash; curve not plateauing</li>
+          <li>$172B U.S. consumer surplus; median value <strong>tripled</strong> YoY</li>
+          <li>Top-4 Elo cluster within 25 points &mdash; competition now on UX &amp; cost</li>
+          <li>53% adoption in 3 years &mdash; fastest tech adoption ever measured</li>
+        </ul>
+        <span class="block-label">Likely blind spot</span>
+        <ul><li>Environmental externalities reframed as &ldquo;growing pains&rdquo;</li></ul>
+        <div class="ally-line"><strong>Unexpected ally:</strong> Enterprise CIO &mdash; both want reliable agents shipped now.</div>
+      </div>
+
+      <div class="audience-card ac-safety" data-pov="safety">
+        <h4>Safety-Forward Researcher</h4>
+        <div class="persona">Alignment researcher, EA-adjacent, frontier safety focus.</div>
+        <span class="block-label">Top signals</span>
+        <ul>
+          <li>FMTI average <strong>58 &rarr; 40</strong> &mdash; transparency collapsing as capability rises</li>
+          <li>362 incidents (+55% YoY) with sparse RAI benchmark reporting</li>
+          <li>Hallucination 22&ndash;94% across 26 top models; GPT-4o drops 98.2% &rarr; 64.4% under user-belief framing</li>
+          <li>Safety ratings degrade under adversarial prompting; RAI dimensions trade off against one another</li>
+        </ul>
+        <span class="block-label">Likely blind spot</span>
+        <ul><li>Under-weights the $172B of consumer surplus already in hands</li></ul>
+        <div class="ally-line"><strong>Unexpected ally:</strong> Enterprise CIO &mdash; both want auditable, transparent frontier systems for different reasons.</div>
+      </div>
+
+      <div class="audience-card ac-env" data-pov="env">
+        <h4>Environmental Advocate</h4>
+        <div class="persona">Climate scientist, grid planner, local zoning activist.</div>
+        <span class="block-label">Top signals</span>
+        <ul>
+          <li>29.6 GW data center capacity = NY state peak demand</li>
+          <li>Grok 4 training: 72,816 tons CO&#8322;e (~15k households/yr)</li>
+          <li>GPT-4o inference water use alone may exceed 12M people&rsquo;s drinking water</li>
+          <li>One Taiwanese foundry; $150B+ single-hyperscaler capex</li>
+        </ul>
+        <span class="block-label">Likely blind spot</span>
+        <ul><li>Productivity gains (14&ndash;50%) could be reframed as emissions per useful task</li></ul>
+        <div class="ally-line"><strong>Unexpected ally:</strong> Geopolitics Hawk &mdash; both want local accountability over data-center siting.</div>
+      </div>
+
+      <div class="audience-card ac-geo" data-pov="geo">
+        <h4>Geopolitics Hawk</h4>
+        <div class="persona">National security analyst, commerce/DOD-adjacent, export controls focus.</div>
+        <span class="block-label">Top signals</span>
+        <ul>
+          <li>U.S.&ndash;China model gap closed to <strong>2.7%</strong>, multiple flips in 2025</li>
+          <li>AI inbound talent to U.S. <strong>&minus;89%</strong> since 2017 (&minus;80% in 2025 alone)</li>
+          <li>TSMC single-foundry dependency; Stargate $100&ndash;500B through 2029</li>
+          <li>China 54% of industrial robots installed; $138B state VC fund</li>
+          <li>&ldquo;AI sovereignty&rdquo; now a defining national policy theme</li>
+        </ul>
+        <span class="block-label">Likely blind spot</span>
+        <ul><li>Consumer adoption dynamics &mdash; where &ldquo;the user&rdquo; actually sits</li></ul>
+        <div class="ally-line"><strong>Unexpected ally:</strong> Environmental Advocate on local data-center control; Labor Advocate on reshoring.</div>
+      </div>
+
+      <div class="audience-card ac-labor" data-pov="labor">
+        <h4>Labor Advocate</h4>
+        <div class="persona">Union researcher, workforce econ, retraining program designer.</div>
+        <span class="block-label">Top signals</span>
+        <ul>
+          <li>Software developers 22&ndash;25: <strong>&minus;20%</strong> employment from 2024; older devs still growing</li>
+          <li>One-third of organizations expect workforce cuts within a year</li>
+          <li>Productivity gains cluster in the roles where entry-level is shrinking</li>
+          <li>$172B consumer surplus &mdash; distributionally unexamined</li>
+          <li>All growth in new AI PhDs flowed to academia, not industry</li>
+        </ul>
+        <span class="block-label">Likely blind spot</span>
+        <ul><li>Narrow on software &mdash; misses customer-support, marketing, paralegal exposure</li></ul>
+        <div class="ally-line"><strong>Unexpected ally:</strong> Parent / Educator on pipeline preservation; Safety Researcher on accountability.</div>
+      </div>
+
+      <div class="audience-card ac-edu" data-pov="edu">
+        <h4>Parent / Educator</h4>
+        <div class="persona">K&ndash;12 admin, high school teacher, district policy lead, parent of teens.</div>
+        <span class="block-label">Top signals</span>
+        <ul>
+          <li><strong>80%+</strong> of U.S. high school &amp; college students use AI for schoolwork</li>
+          <li>Only half of middle &amp; high schools have AI policies; <strong>6%</strong> of teachers say policies are clear</li>
+          <li>CS undergrad enrollment &minus;11% while new AI PhDs +22%</li>
+          <li>China &amp; UAE mandated AI education starting 2025&ndash;26 school year</li>
+        </ul>
+        <span class="block-label">Likely blind spot</span>
+        <ul><li>Classroom focus; under-weights adult / mid-career retraining</li></ul>
+        <div class="ally-line"><strong>Unexpected ally:</strong> Labor Advocate &mdash; shared interest in keeping the talent pipeline intact.</div>
+      </div>
+
+      <div class="audience-card ac-enterprise" data-pov="enterprise">
+        <h4>Enterprise CIO</h4>
+        <div class="persona">Fortune 500 CIO, consulting-led, procurement-heavy.</div>
+        <span class="block-label">Top signals</span>
+        <ul>
+          <li>88% organizational AI adoption; 70% using GenAI in at least one business function</li>
+          <li>Agent deployment <strong>single digits</strong> across nearly every function &mdash; permission to wait</li>
+          <li>Productivity 14&ndash;50% in structured work; flat-to-negative in judgment-heavy work</li>
+          <li>ISO/IEC 42001 &amp; NIST AI RMF now top-cited frameworks (36%, 33%)</li>
+          <li>Google&rsquo;s $150B+ annual capex signals inference capacity and pricing direction</li>
+        </ul>
+        <span class="block-label">Likely blind spot</span>
+        <ul><li>TSMC/talent/sovereignty risks upstream of procurement decisions</li></ul>
+        <div class="ally-line"><strong>Unexpected ally:</strong> Accelerationist Builder on agent reliability; Safety Researcher on transparency mandates.</div>
+      </div>
+
+      <div class="audience-card ac-frontline" data-pov="frontline">
+        <h4>Frontline Worker in Exposed Occupation</h4>
+        <div class="persona">Customer support rep, truck driver, junior paralegal, retail worker &mdash; the 22&ndash;25 cohort writ large.</div>
+        <span class="block-label">Top signals</span>
+        <ul>
+          <li>58% of employees globally use AI at work regularly; <strong>80%+</strong> in India, UAE, China</li>
+          <li>Public 23% positive on jobs vs experts 73% &mdash; workers read like the public, not the experts</li>
+          <li>64% of Americans expect fewer jobs over 20 years; 5% expect more</li>
+          <li>Under-25 software devs &minus;20% &mdash; the early tremor that&rsquo;s already visible</li>
+          <li>GenAI free at the consumer layer &mdash; surplus accessible even without a seat license</li>
+        </ul>
+        <span class="block-label">Likely blind spot</span>
+        <ul><li>Governance detail &mdash; FMTI, agent benchmarks, frontier-lab drama feels remote</li></ul>
+        <div class="ally-line"><strong>Unexpected ally:</strong> Labor Advocate (obviously); Parent on the next-generation pipeline question.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GAP ANALYSIS -->
+  <div class="section">
+    <div class="section-title">Gap Analysis &mdash; Where the Audiences Most Disagree</div>
+    <div class="section-intro">The highest-leverage findings are not the ones every audience agrees on. They are the ones where audiences <em>violently disagree</em> &mdash; because those are the places where a political alliance or a commercial product can change the equation.</div>
+
+    <div class="gap-row">
+      <div class="gap-rank">01<span class="sm">&plusmn;50pt gap</span></div>
+      <div class="gap-body">
+        <h4>Environmental cost vs. capability acceleration</h4>
+        <p class="gap-pov"><strong>Environmental Advocate:</strong> 29.6 GW, 12M-people water footprint, 72,816 tons CO&#8322;e for one model &mdash; top-of-dashboard.</p>
+        <p class="gap-pov"><strong>Accelerationist:</strong> footnote; cost of progress. Would reframe as emissions per useful task.</p>
+        <p class="gap-pov"><strong>Geopolitics Hawk:</strong> secondary, but intersects on siting and local grid control.</p>
+        <div class="gap-outcome">
+          <div><strong>Political alliance</strong>Environmentalists + Geo Hawks + local regulators converging on data-center siting, water rights, and local-grid accountability.</div>
+          <div><strong>Market opportunity</strong>Regional / on-device / efficient inference providers. &ldquo;AI built close to where it&rsquo;s used.&rdquo;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gap-rank">02<span class="sm">+20pt gap</span></div>
+      <div class="gap-body">
+        <h4>Entry-level displacement</h4>
+        <p class="gap-pov"><strong>Labor Advocate:</strong> &minus;20% on under-25 software devs is the clearest displacement signal in a decade.</p>
+        <p class="gap-pov"><strong>Enterprise CIO:</strong> a neutral-to-positive efficiency story; aligns with planned workforce reductions.</p>
+        <p class="gap-pov"><strong>Accelerationist:</strong> frames as creative destruction; always happens with new tech.</p>
+        <p class="gap-pov"><strong>Parent / Educator:</strong> existential &mdash; this is what their students are walking into.</p>
+        <div class="gap-outcome">
+          <div><strong>Political alliance</strong>Labor + Parents + Educators on &ldquo;AI must augment juniors, not replace them.&rdquo; Potent voting coalition.</div>
+          <div><strong>Market opportunity</strong>Junior-practitioner scaffolding: AI tools that train, explain, and co-drive rather than replace &mdash; sold to firms that still want a pipeline.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gap-rank">03<span class="sm">Divergent</span></div>
+      <div class="gap-body">
+        <h4>Student AI use vs school preparedness</h4>
+        <p class="gap-pov"><strong>Parent / Educator:</strong> 80%+ adoption, 6% clear policies &mdash; alarming governance gap.</p>
+        <p class="gap-pov"><strong>Accelerationist:</strong> celebratory &mdash; organic adoption of powerful tools.</p>
+        <p class="gap-pov"><strong>Policy-maker:</strong> regulation is trailing practice by two grade levels.</p>
+        <div class="gap-outcome">
+          <div><strong>Political alliance</strong>Parents + Educators + Safety Researchers + district policy leads on baseline curricula &amp; acceptable-use frameworks.</div>
+          <div><strong>Market opportunity</strong>&ldquo;AI policy and literacy in a box&rdquo; for K&ndash;12 districts. Curriculum, acceptable-use templates, teacher training.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gap-rank">04<span class="sm">Opposed</span></div>
+      <div class="gap-body">
+        <h4>U.S.&ndash;China gap closure</h4>
+        <p class="gap-pov"><strong>Geopolitics Hawk:</strong> alarming &mdash; sovereignty, supply chain, talent flight.</p>
+        <p class="gap-pov"><strong>Accelerationist:</strong> positive &mdash; more competition yields better, cheaper products globally.</p>
+        <p class="gap-pov"><strong>Labor Advocate:</strong> negative &mdash; threatens reshored manufacturing and domestic talent premium.</p>
+        <div class="gap-outcome">
+          <div><strong>Political alliance</strong>Geo Hawks + Labor Advocates on reshoring, export controls, and domestic talent retention.</div>
+          <div><strong>Market opportunity</strong>Trusted-provenance AI, on-shore inference, compliance-first enterprise offerings.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gap-rank">05<span class="sm">Widening</span></div>
+      <div class="gap-body">
+        <h4>Transparency decline (FMTI 58 &rarr; 40)</h4>
+        <p class="gap-pov"><strong>Safety Researcher:</strong> alarming &mdash; frontier systems are now the least transparent.</p>
+        <p class="gap-pov"><strong>Enterprise CIO:</strong> inconvenient but navigable via procurement contracts.</p>
+        <p class="gap-pov"><strong>Accelerationist:</strong> acceptable trade-off for capability.</p>
+        <p class="gap-pov"><strong>Frontline worker / consumer:</strong> invisible &mdash; until the next incident makes it visible.</p>
+        <div class="gap-outcome">
+          <div><strong>Political alliance</strong>Safety Researchers + CIOs + Consumer advocates on independent audit standards and model reporting disclosures.</div>
+          <div><strong>Market opportunity</strong>Third-party AI transparency auditing / certification. Market exists the day enterprise procurement requires it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRANGE BEDFELLOWS -->
+  <div class="section">
+    <div class="section-title">Strange Bedfellows &mdash; Alliances Visible in the Data</div>
+    <div class="section-intro">Coalitions that wouldn&rsquo;t form in normal times form naturally around AI findings. Five are already visible.</div>
+
+    <div class="bedfellows">
+      <div class="bedfellow-card">
+        <div class="parties">Environmentalist &times; Geopolitics Hawk</div>
+        <h4>Data-center sovereignty</h4>
+        <p>Both want local control over where AI infrastructure sits &mdash; one for water &amp; grid, the other for supply-chain security. Unifying frame: <em>&ldquo;AI infrastructure should be accountable to the place it operates in.&rdquo;</em></p>
+      </div>
+      <div class="bedfellow-card">
+        <div class="parties">Labor Advocate &times; Parent / Educator</div>
+        <h4>Pipeline preservation</h4>
+        <p>Both see junior displacement as civic harm. Unifying frame: <em>&ldquo;AI must augment juniors, not replace them.&rdquo;</em> Politically potent because it crosses labor and family lines.</p>
+      </div>
+      <div class="bedfellow-card">
+        <div class="parties">Safety Researcher &times; Enterprise CIO</div>
+        <h4>Transparency mandates</h4>
+        <p>Alignment researchers want auditable systems for safety; CIOs want them for procurement and liability. Unifying frame: <em>&ldquo;We need to audit what we&rsquo;re deploying.&rdquo;</em></p>
+      </div>
+      <div class="bedfellow-card">
+        <div class="parties">Frontline Worker &times; Parent</div>
+        <h4>&ldquo;What will my kids do?&rdquo;</h4>
+        <p>Consumer-facing political energy around displacement, closer to dinner-table concern than policy analysis. A voting bloc larger than either individually.</p>
+      </div>
+      <div class="bedfellow-card">
+        <div class="parties">Accelerationist &times; Enterprise CIO</div>
+        <h4>Agent reliability now</h4>
+        <p>One wants shipping, one wants dependable procurement. Unifying frame: <em>&ldquo;Move agents from single-digit deployment to double-digit reliability.&rdquo;</em> Product, not policy.</p>
+      </div>
+      <div class="bedfellow-card">
+        <div class="parties">Environmentalist &times; Consumer Surplus Advocate</div>
+        <h4>Efficiency-as-virtue</h4>
+        <p>Efficient inference = more people served per watt. Both can champion the same trajectory from different values. Latent alliance &mdash; not yet organized.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARED BLIND SPOTS -->
+  <div class="section">
+    <div class="section-title">Shared Blind Spots &mdash; What No Audience Prioritizes</div>
+    <div class="section-intro">The findings that appear in no audience&rsquo;s Top 3 are often the most important &mdash; because there is no political constituency forming around them yet. These are the openings.</div>
+
+    <div class="card-grid">
+      <div class="card alt">
+        <h3>The 50.1% clock-reading</h3>
+        <p>The <span class="highlight">jagged frontier</span> is the single largest practical deployment risk in the report &mdash; cross-cutting across every audience. But no audience in this dashboard made it their #1. It is everyone&rsquo;s third-priority issue and therefore nobody&rsquo;s.</p>
+      </div>
+      <div class="card alt">
+        <h3>Public-private AI capacity gap</h3>
+        <p>Total U.S. public AI investment 2013&ndash;2024 was <span class="highlight">$20.4B</span>. Private investment in <em>2025 alone</em> was <span class="highlight">$285.9B</span>. Public institutions are structurally a decade behind in AI capacity. No audience is organized around this.</p>
+      </div>
+      <div class="card alt">
+        <h3>FDA AI devices without RCTs</h3>
+        <p>258 AI medical devices authorized in 2025. Only <span class="highlight">2.4%</span> had randomized-trial evidence. Clinicians know; broader audiences don&rsquo;t. A future incident makes this a political crisis overnight.</p>
+      </div>
+      <div class="card alt">
+        <h3>RAI dimensions are a vector, not a scalar</h3>
+        <p>Empirical studies show improving one RAI dimension <span class="highlight">consistently degrades</span> another. Popular discourse treats safety/fairness/privacy/accuracy as a single &ldquo;responsibility&rdquo; score. They aren&rsquo;t.</p>
+      </div>
+      <div class="card alt">
+        <h3>AI PhDs flowing to academia</h3>
+        <p>After a decade of growth into industry, <span class="highlight">100% of recent new-PhD growth</span> went to academia. Enterprise CIOs (talent supply) and Accelerationists (innovation pool) should both care. Neither does yet.</p>
+      </div>
+      <div class="card alt">
+        <h3>Median value per user tripled</h3>
+        <p>In one year. Across a tool people often don&rsquo;t pay for. The distribution question &mdash; <em>who captures that surplus</em> &mdash; is not raised by any audience. Labor advocates should press it; they haven&rsquo;t.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKETS IN THE GAPS -->
+  <div class="section">
+    <div class="section-title">Markets Visible in the Gaps</div>
+    <div class="section-intro">Four commercial theses implied directly by the audience-gap topology. Each is the coalition of audiences that would pay for it.</div>
+
+    <div class="market-row">
+      <div class="market-num">I</div>
+      <div class="market-body">
+        <h4>Efficient on-device / regional inference</h4>
+        <p>Hardware + software that shifts inference closer to the user, reducing data-center water/grid load and supply-chain dependency.</p>
+        <div class="coalition">Environmentalist + Geopolitics Hawk + consumer privacy</div>
+      </div>
+    </div>
+    <div class="market-row">
+      <div class="market-num">II</div>
+      <div class="market-body">
+        <h4>Junior-practitioner scaffolding</h4>
+        <p>AI tools that amplify and train 22&ndash;25-year-olds in exposed roles rather than replace them. Sold to firms that need a pipeline. Differentiator: explainability, pedagogy, progression.</p>
+        <div class="coalition">Labor Advocate + Parent + Educator + Enterprise CIO</div>
+      </div>
+    </div>
+    <div class="market-row">
+      <div class="market-num">III</div>
+      <div class="market-body">
+        <h4>AI policy &amp; literacy &ldquo;in a box&rdquo; for schools</h4>
+        <p>Curricula, acceptable-use templates, teacher training, student-facing tools with built-in policy compliance. Districts buy one, deploy district-wide.</p>
+        <div class="coalition">Parent + Educator + Safety Researcher + policy maker</div>
+      </div>
+    </div>
+    <div class="market-row">
+      <div class="market-num">IV</div>
+      <div class="market-body">
+        <h4>Independent AI transparency auditing</h4>
+        <p>Third-party certification of frontier-model claims, training-data documentation, and post-deployment behavior. Market exists the day procurement or regulation requires it.</p>
+        <div class="coalition">Safety Researcher + Enterprise CIO + consumer advocate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- META NOTE -->
+  <div class="meta-note">
+    <div class="eb">Methodology &middot; A note on how this section was built</div>
+    <h3>Audiences are not a dropdown. They are generated structure.</h3>
+    <p>The eight audiences above weren&rsquo;t retrieved from a canonical list. They were <em>synthesized</em> by asking the report a question it didn&rsquo;t ask itself: <strong>&ldquo;Who does this affect differently, and where do those differences most disagree?&rdquo;</strong></p>
+    <p>That small shift marks a larger one. The first mode of using a language model was &ldquo;pull the right data out with a clever prompt.&rdquo; The emerging mode is: <em>the prompt generates structured data, and we reason over that generated structure.</em> The audiences, the gap rankings, the alliance map, the markets-in-the-gaps &mdash; these are second-order outputs. None of them exists in the 420 pages of the AI Index. The report is the seed; this audience topology is the growth.</p>
+    <p>Two practical implications for how to read this dashboard (and any like it):</p>
+    <ol>
+      <li>The findings that feel &ldquo;obvious&rdquo; in the composite view are usually the findings that align across multiple audiences. The <strong>truly high-leverage insights</strong> are the ones that appear only when you pivot to a specific POV &mdash; or, conversely, the ones that no single POV surfaces because the report&rsquo;s authors had their own lens.</li>
+      <li>Gaps between POVs are where <strong>alliances form and markets open</strong>. Situational awareness isn&rsquo;t a single score. It is a <em>topology</em> &mdash; a map of who thinks what, and where those maps don&rsquo;t overlap.</li>
+    </ol>
+    <p>Next iteration of this pattern: let the audience set itself be regenerated per report, so each new document produces its own native audience topology. The generalized report-digest skill would ship with this generator built in.</p>
+  </div>
+
   <!-- Decision memo / operator lens -->
   <div class="section">
     <div class="section-title">Operator Lens &mdash; What This Means if You&rsquo;re Building</div>
@@ -724,5 +1171,77 @@
   </footer>
 
 </div>
+
+<script>
+(function(){
+  const POV_DATA = {
+    acc: {
+      name: 'Accelerationist Builder',
+      top3: '<strong>1.</strong> Agents jumped 12% &rarr; 66% on OSWorld in one year. &nbsp; <strong>2.</strong> Median consumer value per user <em>tripled</em>; $172B annual surplus. &nbsp; <strong>3.</strong> Top-4 Elo within 25 points &mdash; compete on cost &amp; UX.'
+    },
+    safety: {
+      name: 'Safety-Forward Researcher',
+      top3: '<strong>1.</strong> Transparency went backward: FMTI 58 &rarr; 40. &nbsp; <strong>2.</strong> 362 documented incidents (+55%) with sparse RAI reporting. &nbsp; <strong>3.</strong> Hallucination 22&ndash;94%; GPT-4o drops to 64.4% under user-belief framing.'
+    },
+    env: {
+      name: 'Environmental Advocate',
+      top3: '<strong>1.</strong> 29.6 GW data-center capacity = NY state peak. &nbsp; <strong>2.</strong> Grok 4 training = 72,816 tons CO&#8322;e. &nbsp; <strong>3.</strong> GPT-4o inference water use may exceed 12M people&rsquo;s drinking supply.'
+    },
+    geo: {
+      name: 'Geopolitics Hawk',
+      top3: '<strong>1.</strong> U.S.&ndash;China gap closed to 2.7%, with flips in 2025. &nbsp; <strong>2.</strong> U.S. AI talent inflow &minus;89% since 2017. &nbsp; <strong>3.</strong> TSMC single-foundry dependency; Stargate $100&ndash;500B.'
+    },
+    labor: {
+      name: 'Labor Advocate',
+      top3: '<strong>1.</strong> Software devs aged 22&ndash;25: &minus;20% employment from 2024. &nbsp; <strong>2.</strong> One-third of organizations expect workforce cuts in the next year. &nbsp; <strong>3.</strong> $172B consumer surplus &mdash; distribution unexamined.'
+    },
+    edu: {
+      name: 'Parent / Educator',
+      top3: '<strong>1.</strong> 80%+ of students use AI for schoolwork; only 6% of teachers say policies are clear. &nbsp; <strong>2.</strong> CS undergrad enrollment &minus;11% while new AI PhDs +22%. &nbsp; <strong>3.</strong> China &amp; UAE mandated AI education 2025&ndash;26.'
+    },
+    enterprise: {
+      name: 'Enterprise CIO',
+      top3: '<strong>1.</strong> 88% org adoption; 70% GenAI in a business function. &nbsp; <strong>2.</strong> Agent deployment still single digits &mdash; permission to wait. &nbsp; <strong>3.</strong> Productivity 14&ndash;50% in structured work; flat in judgment work.'
+    },
+    frontline: {
+      name: 'Frontline Worker in an Exposed Occupation',
+      top3: '<strong>1.</strong> 58% of employees globally use AI at work; 80%+ in India, UAE, China. &nbsp; <strong>2.</strong> Public 23% positive on jobs vs experts 73% &mdash; workers align with the public. &nbsp; <strong>3.</strong> Under-25 software devs &minus;20% is the early tremor.'
+    }
+  };
+
+  const bar = document.querySelector('.pov-bar');
+  if (!bar) return;
+  const chips = bar.querySelectorAll('.pov-chip');
+  const body = document.body;
+  const banner = document.getElementById('povBanner');
+  const nameEl = document.getElementById('povName');
+  const top3El = document.getElementById('povTop3');
+  const povClasses = ['pov-active','pov-acc','pov-safety','pov-env','pov-geo','pov-labor','pov-edu','pov-enterprise','pov-frontline'];
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      povClasses.forEach(c => body.classList.remove(c));
+      const pov = chip.getAttribute('data-pov');
+      if (pov && pov !== 'all') {
+        body.classList.add('pov-active');
+        body.classList.add('pov-' + pov);
+        const d = POV_DATA[pov];
+        if (d) {
+          nameEl.innerHTML = d.name;
+          top3El.innerHTML = d.top3;
+        }
+        // scroll to audience lens section
+        const audienceSection = document.querySelector('.audience-grid');
+        if (audienceSection) {
+          audienceSection.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
