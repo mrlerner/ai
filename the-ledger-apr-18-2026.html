@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ledger — April 18, 2026 Edition</title>
+<style>
+  :root {
+    --serif: Georgia, 'Times New Roman', Times, serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --ink: #1a1a1a;
+    --paper: #ffffff;
+    --cream: #fafafa;
+    --rule: #e0e0e0;
+    --rule-dark: #b8b8b8;
+    --muted: #6b6b6b;
+    --accent-red: #8b2e2a;
+    --accent-blue: #2c4870;
+    --accent-green: #3d5c3a;
+    --accent-purple: #5a3d6b;
+    --accent-amber: #8a6a1f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0;
+    padding: 28px 16px 80px;
+  }
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  a { color: inherit; }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    text-align: center;
+    border-bottom: 3px double var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+  }
+  .masthead h1 {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 0 0 4px;
+    line-height: 1;
+  }
+  .masthead .latin {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .dateline {
+    font-family: var(--sans);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 8px 0;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .dateline span { white-space: nowrap; }
+
+  /* ---------- Thesis ---------- */
+  .thesis {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    border-left: 3px solid var(--ink);
+    padding: 14px 18px;
+    margin: 22px 0 36px;
+    background: var(--cream);
+  }
+  .thesis strong { font-style: normal; font-weight: 700; }
+
+  /* ---------- Section header ---------- */
+  .section { margin-top: 40px; }
+  .section-head {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 6px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .section-head .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ---------- Story ---------- */
+  .story {
+    margin-bottom: 30px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .story:last-child { border-bottom: none; }
+  .story.lead .headline {
+    font-size: 32px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .headline {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-red);
+    margin-bottom: 6px;
+  }
+  .kicker.blue { color: var(--accent-blue); }
+  .kicker.green { color: var(--accent-green); }
+  .kicker.purple { color: var(--accent-purple); }
+  .kicker.amber { color: var(--accent-amber); }
+  .subhead {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    margin: 4px 0 14px;
+    line-height: 1.4;
+  }
+  .story p { margin: 0 0 12px; }
+  .story p:last-child { margin-bottom: 0; }
+
+  /* ---------- Price card (grid of cells) ---------- */
+  .price-card {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--ink);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin: 14px 0 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px 18px;
+  }
+  .price-card .header {
+    grid-column: 1 / -1;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+  }
+  .pc-cell {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 2px 0;
+    transition: color 0.15s;
+  }
+  .pc-cell.clickable:hover { color: var(--accent-blue); }
+  .pc-cell.clickable:hover .value { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .pc-cell .label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .pc-cell .value {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .pc-cell .value.small { font-size: 16px; }
+  .pc-cell .value.red { color: var(--accent-red); }
+  .pc-cell .value.blue { color: var(--accent-blue); }
+  .pc-cell .value.green { color: var(--accent-green); }
+  .pc-cell.clickable .label::after {
+    content: " ↗";
+    font-family: var(--sans);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+
+  /* ---------- Term-structure table ---------- */
+  .term-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 16px;
+    font-family: var(--sans);
+    font-size: 13px;
+  }
+  .term-table th, .term-table td {
+    border: 1px solid var(--rule);
+    padding: 8px 10px;
+    text-align: left;
+  }
+  .term-table th {
+    background: var(--cream);
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+  }
+  .term-table .price {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .term-table tr.linked:hover td { background: #f4f7fb; }
+  .term-table a.row-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .term-table a.row-link:hover { text-decoration: underline; }
+
+  /* ---------- Pull-quote ---------- */
+  .pull {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--ink);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 12px 0;
+    margin: 16px 0;
+    text-align: center;
+  }
+
+  /* ---------- Grid responsive ---------- */
+  @media (max-width: 700px) {
+    .masthead h1 { font-size: 44px; }
+    .story.lead .headline { font-size: 26px; }
+  }
+
+  /* ---------- Tags ---------- */
+  .tag {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #f0f0f0;
+    color: var(--ink);
+    margin-right: 4px;
+  }
+  .tag.divergence { background: #fbeaea; color: var(--accent-red); }
+  .tag.timeframe { background: #e8efef; color: var(--accent-blue); }
+  .tag.whale { background: #efe9ef; color: var(--accent-purple); }
+  .tag.vol { background: #f3eddc; color: var(--accent-amber); }
+
+  /* ---------- Source citation ---------- */
+  .src {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dotted var(--rule);
+  }
+  .src strong {
+    font-family: var(--sans);
+    font-weight: 600;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .src ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .src li {
+    margin: 3px 0;
+    line-height: 1.5;
+  }
+  .src a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .src a:hover {
+    border-bottom: 1px solid var(--accent-blue);
+  }
+  .src a::after {
+    content: " ↗";
+    font-size: 9px;
+    color: var(--muted);
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    margin-top: 60px;
+    padding-top: 18px;
+    border-top: 3px double var(--ink);
+    font-family: var(--sans);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .footer h4 {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .footer p { margin: 0 0 10px; }
+
+  /* ---------- TOC strip ---------- */
+  .toc {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 0 14px;
+    margin-bottom: 6px;
+    line-height: 1.7;
+  }
+  .toc strong {
+    font-family: var(--sans);
+    font-weight: 600;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 11px;
+    margin-right: 6px;
+  }
+  .toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .toc a:hover { border-bottom: 1px solid var(--ink); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead">
+    <div class="latin">Pretium Veritas — The Price Is the News</div>
+    <h1>The Ledger</h1>
+    <div class="dateline">
+      <span>Vol. I &middot; No. 1</span>
+      <span>An Opinionated Newspaper From the Prediction Markets</span>
+      <span>Saturday, April 18, 2026</span>
+    </div>
+  </header>
+
+  <!-- ============ TOC ============ -->
+  <nav class="toc">
+    <strong>In this edition:</strong>
+    <a href="#lead-iran">Iran ceasefire is being priced as permanent</a> &middot;
+    <a href="#lead-fed">The Fed is untouchable</a> &middot;
+    <a href="#lead-starmer">Starmer survives April, priced out by Christmas</a> &middot;
+    <a href="#consensus">Against the Consensus</a> &middot;
+    <a href="#clock">The Clock Ticks</a> &middot;
+    <a href="#quiet">Quiet Money</a> &middot;
+    <a href="#crosstalk">Crosstalk</a>
+  </nav>
+
+  <!-- ============ THESIS ============ -->
+  <div class="thesis">
+    <strong>Editor's note —</strong> Three things are being priced today that are not yet conventional wisdom. <strong>One:</strong> the Iran crisis is functionally over — the term structure says the war ends with a paper deal, no regime change, no uranium seizure. <strong>Two:</strong> the Fed sits at <strong>99.4%</strong> no-change <em>during an active oil chokepoint blockade</em> — the market believes Powell would rather risk inflation than be seen flinching. <strong>Three:</strong> Starmer's removal curve runs from <strong>5%</strong> this month to <strong>60%</strong> by year-end — the press has the destination right and the timing badly wrong. That gap between what a consensus column says and what a price says is the paper you are reading.
+  </div>
+
+  <!-- ============ FRONT PAGE — 3 LEADS ============ -->
+  <section class="section">
+    <div class="section-head">
+      <span>Front Page</span>
+      <span class="lede">Three leads, ranked by what's being mispriced</span>
+    </div>
+
+    <!-- LEAD 1: IRAN -->
+    <article class="story lead" id="lead-iran">
+      <div class="kicker red">Lead &middot; Geopolitics &middot; Term-structure call</div>
+      <h2 class="headline">Markets call the Iran crisis over before June</h2>
+      <p class="subhead">A blockade is in force, oil hasn't moved, regime change is priced at single digits, and the peace-deal curve climbs from 17.5% by Tuesday to 68% by June. The narrative says crisis. The book says off-ramp.</p>
+
+      <table class="term-table">
+        <thead>
+          <tr><th>Resolves by</th><th>Implied probability</th><th>What it tells you</th><th>Market</th></tr>
+        </thead>
+        <tbody>
+          <tr class="linked"><td>Apr 22, 2026</td><td class="price">17.5%</td><td>Not this week</td><td><a class="row-link" href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-april-22-2026" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr class="linked"><td>Apr 30, 2026</td><td class="price">37.5%</td><td>Coin-flip-ish by month-end</td><td><a class="row-link" href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-april-30-2026" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr class="linked"><td>May 31, 2026</td><td class="price">59.5%</td><td>More likely than not by Memorial Day</td><td><a class="row-link" href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-may-31-2026" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr class="linked"><td>Jun 30, 2026</td><td class="price">68.0%</td><td>Base case: it's done by summer</td><td><a class="row-link" href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-june-30-2026" target="_blank" rel="noopener">View ↗</a></td></tr>
+        </tbody>
+      </table>
+
+      <p>The slope is the story. A market that prices a 50-point jump from "this week" to "two months from now" is not pricing chaos — it is pricing a negotiated, choreographed exit. The implied path: ceasefire holds (already at 65.5% to be extended past Apr 21), military operations wind down (38.5% Trump declares end by Apr 30), enriched uranium gets <em>surrendered</em> on paper (33.5% by Apr 30) but the U.S. <em>does not physically take it</em> (only 3.3%). The market is telling you what the deal looks like before the State Department does.</p>
+
+      <p>What is conspicuously <em>not</em> being priced: regime change (1.2% by Apr 30, 7.5% by Jun 30, 18.5% by year-end), a U.S. invasion (32.5% by 2027 — high but trending down), Israeli unilateral action (7.7% by Apr 21). The book's view: the Islamic Republic survives this, Trump gets a signing ceremony, the centrifuges stay where they are. That is a very specific, very contrarian forecast — and the volume backing it is real ($1.3M traded in 24 hours on the Apr 22 line alone).</p>
+
+      <div class="pull">If you're still trading the Iran story as escalation, you're a week late and on the wrong side of meaningful weighted opinion.</div>
+
+      <p><span class="tag divergence">Divergence: high</span><span class="tag timeframe">Term-structure</span><span class="tag vol">$4M+ / 24h</span></p>
+
+      <div class="src">
+        <strong>Sources — click to view on Polymarket</strong>
+        <ul>
+          <li>Peace deal: <a href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-april-22-2026" target="_blank" rel="noopener">by Apr 22</a>, <a href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-april-30-2026" target="_blank" rel="noopener">by Apr 30</a>, <a href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-may-31-2026" target="_blank" rel="noopener">by May 31</a>, <a href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-june-30-2026" target="_blank" rel="noopener">by Jun 30</a></li>
+          <li>Regime fall: <a href="https://polymarket.com/market/will-the-iranian-regime-fall-by-april-30" target="_blank" rel="noopener">by Apr 30</a>, <a href="https://polymarket.com/market/will-the-iranian-regime-fall-by-may-31" target="_blank" rel="noopener">by May 31</a>, <a href="https://polymarket.com/market/will-the-iranian-regime-fall-by-june-30" target="_blank" rel="noopener">by Jun 30</a>, <a href="https://polymarket.com/market/will-the-iranian-regime-fall-by-the-end-of-2026" target="_blank" rel="noopener">by 2027</a></li>
+          <li>Uranium: <a href="https://polymarket.com/market/iran-agrees-to-surrender-enriched-uranium-stockpile-by-april-30-2026" target="_blank" rel="noopener">agrees to surrender by Apr 30</a>, <a href="https://polymarket.com/market/us-obtains-iranian-enriched-uranium-by-april-30" target="_blank" rel="noopener">U.S. obtains by Apr 30</a></li>
+          <li>Operations: <a href="https://polymarket.com/market/will-the-us-x-iran-ceasefire-be-extended-by-april-21-2026-365" target="_blank" rel="noopener">ceasefire extended by Apr 21</a>, <a href="https://polymarket.com/market/trump-announces-end-of-military-operations-against-iran-by-april-30th-753-882-164-769-641-926" target="_blank" rel="noopener">Trump ends military ops by Apr 30</a>, <a href="https://polymarket.com/market/will-israel-conduct-military-action-against-iran-by-april-21-2026" target="_blank" rel="noopener">Israel military action by Apr 21</a>, <a href="https://polymarket.com/market/will-the-us-invade-iran-before-2027" target="_blank" rel="noopener">U.S. invade before 2027</a></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- LEAD 2: FED -->
+    <article class="story lead" id="lead-fed">
+      <div class="kicker blue">Lead &middot; Macro &middot; Consensus locked</div>
+      <h2 class="headline">The Fed is untouchable</h2>
+      <p class="subhead">99.4% no-change at the April meeting — during an active blockade of the world's most important oil chokepoint. The market is not predicting policy. It is predicting Powell's psychology.</p>
+
+      <div class="price-card">
+        <div class="header">Fed: April meeting &amp; succession</div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-there-be-no-change-in-fed-interest-rates-after-the-april-2026-meeting" target="_blank" rel="noopener">
+          <span class="label">No change in Fed rates after April meeting</span>
+          <span class="value blue">99.4%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-kevin-warsh-be-confirmed-as-fed-chair" target="_blank" rel="noopener">
+          <span class="label">Kevin Warsh confirmed as Fed Chair</span>
+          <span class="value">94.5%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-judy-shelton-be-confirmed-as-fed-chair" target="_blank" rel="noopener">
+          <span class="label">Judy Shelton confirmed as Fed Chair</span>
+          <span class="value small">1.3%</span>
+        </a>
+        <div class="pc-cell">
+          <span class="label">24h volume (Fed no-change)</span>
+          <span class="value small">$1.13M</span>
+        </div>
+      </div>
+
+      <p>This is the single most-priced certainty on the board. There is an active blockade of the Strait of Hormuz, oil has six different binary lines running, a U.S.–Iran ceasefire is mid-negotiation, and the market has priced the next FOMC meeting at <strong>99.4%</strong> hold. That is not a forecast about inflation or growth. It is a forecast about <em>institutional posture</em>: in a regime where the executive branch is openly pressuring the Fed, doing nothing is the only move that can't be read as capitulation.</p>
+
+      <p>The succession line tells the same story. Warsh — orthodox, hawkish, predictable — is at 94.5%. Shelton — heterodox, gold-standard-curious, the actual political pick — is at 1.3%. The market is saying: even the people who want a different Fed are not betting on getting one. The institutional immune system is the trade.</p>
+
+      <p><span class="tag">Consensus locked</span><span class="tag vol">$1.13M / 24h</span></p>
+    </article>
+
+    <!-- LEAD 3: STARMER -->
+    <article class="story lead" id="lead-starmer">
+      <div class="kicker green">Lead &middot; International &middot; Term-structure reveal</div>
+      <h2 class="headline">Starmer survives April. Markets price him out by Christmas.</h2>
+      <p class="subhead">A 5% removal probability this month. 38% by June. 60% by December. The press has been writing Starmer as dead for two quarters — the market says the press has the <em>timing</em> wrong, not the <em>direction</em>.</p>
+
+      <table class="term-table">
+        <thead>
+          <tr><th>Starmer out by</th><th>Implied probability</th><th>24h volume</th><th>Market</th></tr>
+        </thead>
+        <tbody>
+          <tr class="linked"><td>Apr 30, 2026</td><td class="price">5.1%</td><td>$565K</td><td><a class="row-link" href="https://polymarket.com/market/starmer-out-by-april-30-2026" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr class="linked"><td>May 15, 2026</td><td class="price">22.5%</td><td>$15K</td><td><a class="row-link" href="https://polymarket.com/market/starmer-out-by-may-15-2026" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr class="linked"><td>Jun 30, 2026</td><td class="price">38.0%</td><td>$19K</td><td><a class="row-link" href="https://polymarket.com/market/starmer-out-by-june-30-2026-862-594-548" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr class="linked"><td>Dec 31, 2026</td><td class="price">59.5%</td><td>$16K</td><td><a class="row-link" href="https://polymarket.com/market/starmer-out-by-december-31-2026-936-416-977-234" target="_blank" rel="noopener">View ↗</a></td></tr>
+        </tbody>
+      </table>
+
+      <p>This is the most underreported term structure on the board. A flat read of the April line (5%) would say "press is wrong, Starmer is fine." A flat read of the December line (60%) would say "press is right, Starmer is done." The actual story is both, sequenced: the market is pricing a <em>very specific</em> political trajectory — no leadership challenge this month (5%), rising pressure through Q2 (38% by Jun 30), majority likelihood of departure by year-end (60%). Most G7 leaders trade with a flat "probably stays" curve. Starmer trades with a ramp.</p>
+
+      <p>The CEO read: the press obituary isn't wrong about the destination; it's wrong about when the hearse arrives. If you are writing the "Starmer is finished" column <em>this week</em>, you are on the wrong side of $565K of concentrated opinion saying not yet. If you are discounting UK political risk through 2026, you are ignoring a 60% year-end removal price. The right story, and nobody is writing it: <em>when</em>, not <em>if</em>.</p>
+
+      <p>Caveat: the May/June/December lines each trade under $20K in daily volume. The April line — where the "not this month" signal lives — is $565K and robust. Treat the year-end 60% number as directional, not precise.</p>
+
+      <p><span class="tag timeframe">Term-structure</span><span class="tag divergence">When-not-if</span></p>
+
+      <div class="src">
+        <strong>Sources — click to view on Polymarket</strong>
+        <ul>
+          <li>Starmer out: <a href="https://polymarket.com/market/starmer-out-by-april-30-2026" target="_blank" rel="noopener">by Apr 30</a>, <a href="https://polymarket.com/market/starmer-out-by-may-15-2026" target="_blank" rel="noopener">by May 15</a>, <a href="https://polymarket.com/market/starmer-out-by-june-30-2026-862-594-548" target="_blank" rel="noopener">by Jun 30</a>, <a href="https://polymarket.com/market/starmer-out-by-december-31-2026-936-416-977-234" target="_blank" rel="noopener">by Dec 31</a></li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ AGAINST THE CONSENSUS ============ -->
+  <section class="section" id="consensus">
+    <div class="section-head">
+      <span>Against the Consensus</span>
+      <span class="lede">Where the price disagrees with what you read this morning</span>
+    </div>
+
+    <!-- STORY 4: OIL -->
+    <article class="story">
+      <div class="kicker amber">Commodities &middot; Five-line cross-check</div>
+      <h2 class="headline">Oil refuses to spike</h2>
+      <p class="subhead">A blockade of the Strait of Hormuz is in active force. The market gives a $120 print less than a 1-in-10 shot, a $200 print less than 1-in-100, and a <em>drop</em> to $70 better odds than either.</p>
+
+      <div class="price-card">
+        <div class="header">WTI crude — April resolution (end of month)</div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-wti-crude-oil-wti-hit-high-120-in-april" target="_blank" rel="noopener">
+          <span class="label">WTI hits $120 (HIGH)</span>
+          <span class="value">9.7%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-wti-crude-oil-wti-hit-high-140-in-april" target="_blank" rel="noopener">
+          <span class="label">WTI hits $140 (HIGH)</span>
+          <span class="value">3.2%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-wti-crude-oil-wti-hit-high-200-in-april" target="_blank" rel="noopener">
+          <span class="label">WTI hits $200 (HIGH)</span>
+          <span class="value">0.7%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-wti-crude-oil-wti-hit-low-70-in-april-315-213-178-948" target="_blank" rel="noopener">
+          <span class="label">WTI hits $70 (LOW)</span>
+          <span class="value green">10.5%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-donald-trump-announce-that-the-united-states-blockade-of-the-strait-of-hormuz-has-been-lifted-by-april-18-2026-229" target="_blank" rel="noopener">
+          <span class="label">U.S. blockade lifted by Apr 18 (today)</span>
+          <span class="value">3.9%</span>
+        </a>
+      </div>
+
+      <p>Read those five numbers together. A blockade is happening. The blockade will probably <em>not</em> be lifted in the next few hours (3.9%, resolves today). And yet the market thinks oil is more likely to fall to $70 than to spike to $120. That is a coherent worldview — but only one. Translation: the market believes the blockade is <strong>cosmetic</strong>. Tankers are being inspected, not sunk. The Iranian crude is being re-routed, not destroyed. The "crisis premium" the news cycle keeps pricing into headlines is not making it into the futures pit.</p>
+
+      <p>If you're a CFO with hedging exposure: the prediction market is calling the news media a coward. It is also calling OPEC's surplus capacity real. The asymmetric trade is not against $200 oil — it's against the <em>idea</em> that geopolitical chokepoints still move the spot.</p>
+
+      <p><span class="tag divergence">Divergence: extreme</span><span class="tag">Narrative vs. price</span></p>
+    </article>
+
+    <!-- STORY 5: 2028 OPEN FIELD -->
+    <article class="story">
+      <div class="kicker purple">Politics &middot; The shortlist that isn't</div>
+      <h2 class="headline">2028 is wide open: the field beats the favorite</h2>
+      <p class="subhead">Newsom is the highest-priced Democratic candidate at 27.4% — and the four named heavyweights combined still leave roughly 69 points of implied probability on candidates not yet in the national conversation.</p>
+
+      <div class="price-card">
+        <div class="header">2028 Democratic nomination (named candidates tracked here)</div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568" target="_blank" rel="noopener">
+          <span class="label">Newsom — Dem nom 2028</span>
+          <span class="value">27.4%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-jon-stewart-win-the-2028-democratic-presidential-nomination-518" target="_blank" rel="noopener">
+          <span class="label">Stewart — Dem nom 2028</span>
+          <span class="value small">2.2%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-oprah-winfrey-win-the-2028-democratic-presidential-nomination" target="_blank" rel="noopener">
+          <span class="label">Oprah — Dem nom 2028</span>
+          <span class="value small">0.9%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-bernie-sanders-win-the-2028-democratic-presidential-nomination-879" target="_blank" rel="noopener">
+          <span class="label">Sanders — Dem nom 2028</span>
+          <span class="value small">0.6%</span>
+        </a>
+        <div class="pc-cell">
+          <span class="label">Sum of these four</span>
+          <span class="value">31.1%</span>
+        </div>
+        <div class="pc-cell">
+          <span class="label">Residual "someone else"</span>
+          <span class="value red">~69%</span>
+        </div>
+      </div>
+
+      <p>The way to read this market is not "Newsom at 27%." It's that the four named heavyweights — the governor, the celebrity, the comic, the elder statesman — only add to 31 points. Polymarket lists additional Democratic candidates beyond this four, but <em>none</em> of them clears the single-digit threshold. The practical implication: roughly seven-in-ten probability mass sits on candidates who are not currently in the political conversation. <em>That</em> is the story. The conventional wisdom — "Newsom is the frontrunner" — is technically true and substantively misleading. He is the favorite at the same odds Joe Biden was a favorite in early 2019. We know how that went.</p>
+
+      <p>On the Republican side, Rubio trades at 11.3% for the <em>general</em> election, which is not the same as a primary favorite — it's a downstream product of primary odds and general-election odds. The Ledger does not yet have clean primary pricing for the GOP side, but the Dem "wide-open" structure is more certain and more underreported.</p>
+
+      <p>If you are a donor, a political consultant, or a journalist covering 2028, your model should currently weight an unnamed governor or two-term mayor meaningfully higher than the named-four consensus. The market already does.</p>
+
+      <p><span class="tag">Field-vs-favorite</span><span class="tag whale">Hidden residual</span></p>
+
+      <div class="src">
+        <strong>Sources — click to view on Polymarket</strong>
+        <ul>
+          <li>Democratic nomination 2028: <a href="https://polymarket.com/market/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568" target="_blank" rel="noopener">Newsom</a>, <a href="https://polymarket.com/market/will-jon-stewart-win-the-2028-democratic-presidential-nomination-518" target="_blank" rel="noopener">Stewart</a>, <a href="https://polymarket.com/market/will-oprah-winfrey-win-the-2028-democratic-presidential-nomination" target="_blank" rel="noopener">Oprah</a>, <a href="https://polymarket.com/market/will-bernie-sanders-win-the-2028-democratic-presidential-nomination-879" target="_blank" rel="noopener">Sanders</a></li>
+          <li>Republican: <a href="https://polymarket.com/market/will-steve-bannon-win-the-2028-republican-presidential-nomination" target="_blank" rel="noopener">Bannon (nom)</a>, <a href="https://polymarket.com/market/will-marco-rubio-win-the-2028-us-presidential-election" target="_blank" rel="noopener">Rubio (general)</a></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- STORY 6: CHINA TAIWAN -->
+    <article class="story">
+      <div class="kicker blue">Geopolitics &middot; Fear vs. price</div>
+      <h2 class="headline">China isn't moving on Taiwan in 2026</h2>
+      <p class="subhead">8.7% by year-end. 2.4% by June. Every Pentagon hearing, every think-tank panel, every cable segment treats invasion as imminent. The price says it's a 1-in-12 year, not a tail of any normal distribution.</p>
+
+      <div class="price-card">
+        <div class="header">China invasion of Taiwan</div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-china-invade-taiwan-by-june-30-2026" target="_blank" rel="noopener">
+          <span class="label">Invades by Jun 30, 2026</span>
+          <span class="value">2.4%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-china-invade-taiwan-before-2027" target="_blank" rel="noopener">
+          <span class="label">Invades by Dec 31, 2026</span>
+          <span class="value">8.7%</span>
+        </a>
+      </div>
+
+      <p>An 8.7% annual probability translates to a roughly 11-year average wait if it stays constant. That is not "imminent." That is the same order of magnitude as a major U.S. recession in any given year. Yet defense-contractor valuations, semiconductor supply-chain memos, and Pacific deployment chatter all price it as a coin flip. One of these markets is wrong.</p>
+
+      <p>The CEO read: the prediction market is calling the China–Taiwan story <em>structurally</em> overpriced as a near-term tail event — and on this particular question, the prediction market has more skin in the game than the analysts. If your scenario planning has invasion-this-year as anything above ~10%, you are paying a premium for a fear the participants closest to it have already discounted. (None of which means the long-term risk is small. It means the <em>this-year</em> risk is.)</p>
+
+      <p><span class="tag divergence">Divergence: structural</span><span class="tag timeframe">Year-out call</span></p>
+    </article>
+  </section>
+
+  <!-- ============ THE CLOCK TICKS ============ -->
+  <section class="section" id="clock">
+    <div class="section-head">
+      <span>The Clock Ticks</span>
+      <span class="lede">When markets put a specific date on something the world treats as indefinite</span>
+    </div>
+
+    <!-- STORY 7: URANIUM -->
+    <article class="story">
+      <div class="kicker red">Geopolitics &middot; Specific timeframe on the unknowable</div>
+      <h2 class="headline">Iran agrees to surrender enriched uranium. The U.S. doesn't take it.</h2>
+      <p class="subhead">A 30-point spread between "Iran agrees" (33.5%) and "U.S. obtains" (3.3%). The deal is paper, not metal.</p>
+
+      <div class="price-card">
+        <div class="header">Uranium — paper vs. metal</div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/iran-agrees-to-surrender-enriched-uranium-stockpile-by-april-30-2026" target="_blank" rel="noopener">
+          <span class="label">Iran agrees to surrender by Apr 30</span>
+          <span class="value">33.5%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/us-obtains-iranian-enriched-uranium-by-april-30" target="_blank" rel="noopener">
+          <span class="label">U.S. obtains uranium by Apr 30</span>
+          <span class="value red">3.3%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/us-obtains-iranian-enriched-uranium-by-may-31-396" target="_blank" rel="noopener">
+          <span class="label">U.S. obtains by May 31</span>
+          <span class="value">22.5%</span>
+        </a>
+        <div class="pc-cell">
+          <span class="label">Spread (paper minus metal)</span>
+          <span class="value blue">30.2 pts</span>
+        </div>
+      </div>
+
+      <p>This is the most surgically interesting price on the entire board today. The <em>announcement</em> of an Iranian uranium surrender is given a 1-in-3 chance by month-end. The actual <em>physical transfer</em> of that uranium to the United States gets 3.3%. Even a month later, the transfer line only climbs to 22.5%. The market is forecasting, with extraordinary specificity, the texture of the deal: a signed agreement, a press conference, a third-party verifier (IAEA? Russian? Chinese?), and centrifuge cascades that stay exactly where they are.</p>
+
+      <p>If you wanted to write the story before it happens, the price already wrote it for you. "Iran agrees to suspend enrichment, U.S. lifts sanctions, IAEA inspectors return to Natanz" — that is a <strong>33%</strong> outcome by Apr 30. "U.S. flies the HEU to Oak Ridge" — that is a <strong>3%</strong> outcome by Apr 30. The first is a deal. The second is a regime change in disguise. The market knows the difference and is pricing it to the basis point.</p>
+
+      <p><span class="tag timeframe">Date-pinned</span><span class="tag divergence">Spread: 30 pts</span></p>
+    </article>
+
+    <!-- STORY 8: ALIENS -->
+    <article class="story">
+      <div class="kicker amber">Strange &middot; Ungovernable timeframe</div>
+      <h2 class="headline">Aliens by April 2027: 19.5%</h2>
+      <p class="subhead">A specific year-out timeframe on an event the entire history of human civilization has treated as indefinite. The price is funny. The structural fact is not.</p>
+
+      <div class="price-card">
+        <div class="header">U.S. officially confirms alien existence</div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-the-us-confirm-that-aliens-exist-by-april-30" target="_blank" rel="noopener">
+          <span class="label">Confirmed by Apr 30, 2026</span>
+          <span class="value">2.6%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-the-us-confirm-that-aliens-exist-before-2027-789" target="_blank" rel="noopener">
+          <span class="label">Confirmed before 2027</span>
+          <span class="value">19.5%</span>
+        </a>
+        <div class="pc-cell">
+          <span class="label">Implied probability per remaining month</span>
+          <span class="value small">~2.3%/mo</span>
+        </div>
+      </div>
+
+      <p>You can dismiss this as a degen meme market — but $720K of 24-hour volume across the two lines says someone is taking it seriously enough to write checks. The interesting thing is not whether the price is right. It's that a market exists at all that has put a <em>year-out date</em> on alien disclosure. Compare that to "Will there be a major terrorist attack" or "Will there be a financial crisis" — the kind of indefinite-future event journalism is built around. Markets are slowly turning the indefinite into the dated. The Ledger will be tracking the boundary.</p>
+
+      <p><span class="tag timeframe">Indefinite → dated</span><span class="tag">Meta-story</span></p>
+    </article>
+  </section>
+
+  <!-- ============ QUIET MONEY ============ -->
+  <section class="section" id="quiet">
+    <div class="section-head">
+      <span>Quiet Money</span>
+      <span class="lede">Where the volume is, when the price is small</span>
+    </div>
+
+    <!-- STORY 9: STEWART -->
+    <article class="story">
+      <div class="kicker purple">Politics &middot; Volume anomaly</div>
+      <h2 class="headline">$2.65M in 24 hours on Jon Stewart at 2.1%</h2>
+      <p class="subhead">The highest-volume Democratic 2028 line on the board sits on a candidate who has not declared, is not running, and is priced at a 1-in-50 shot. Someone is hedging — or someone knows something.</p>
+
+      <div class="price-card">
+        <div class="header">Stewart anomaly — price vs. volume</div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-jon-stewart-win-the-2028-democratic-presidential-nomination-518" target="_blank" rel="noopener">
+          <span class="label">Stewart — Dem nom 2028</span>
+          <span class="value">2.15%</span>
+        </a>
+        <div class="pc-cell">
+          <span class="label">Stewart 24h volume</span>
+          <span class="value blue">$2.65M</span>
+        </div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568" target="_blank" rel="noopener">
+          <span class="label">Newsom 24h volume (for comparison)</span>
+          <span class="value small">$296K</span>
+        </a>
+        <div class="pc-cell">
+          <span class="label">Raw volume vs. named leader</span>
+          <span class="value red">~9× Newsom</span>
+        </div>
+      </div>
+
+      <p>This is what an interesting price <em>doesn't</em> look like — Stewart at 2% is not a contrarian call. The interesting thing is the <em>volume</em>. $2.65M traded in 24 hours on a 2% line is roughly nine times the dollar-flow on the <em>named</em> frontrunner, and it has stayed at this level long enough to be a pattern, not a spike. Three readings, in order of plausibility: (1) this is meme-market noise pegged to a viral monologue, (2) this is whales hedging Newsom-skeptical bets cheaply, (3) this is a small group of people with a non-public read on Stewart actually entering. The Ledger files this under <em>watch</em>, not <em>buy</em> — but ignoring 24-hour volume that exceeds the named-favorite's by 9× is an analytical mistake.</p>
+
+      <p><span class="tag whale">Whale signal</span><span class="tag vol">$2.65M / 24h</span></p>
+    </article>
+  </section>
+
+  <!-- ============ CROSSTALK ============ -->
+  <section class="section" id="crosstalk">
+    <div class="section-head">
+      <span>Crosstalk</span>
+      <span class="lede">Where two markets disagree with each other</span>
+    </div>
+
+    <!-- STORY 10: PEACE BY JUNE / INVASION BY 2027 -->
+    <article class="story">
+      <div class="kicker red">Cross-market &middot; Internal contradiction</div>
+      <h2 class="headline">68% peace by June. 32% U.S. invasion by 2027.</h2>
+      <p class="subhead">Both prices are real. Both have meaningful volume. They nearly partition the probability space — which is itself the story.</p>
+
+      <div class="price-card">
+        <div class="header">Peace deal vs. invasion — sum to 100</div>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/us-x-iran-permanent-peace-deal-by-june-30-2026" target="_blank" rel="noopener">
+          <span class="label">Permanent peace deal by Jun 30</span>
+          <span class="value green">68.0%</span>
+        </a>
+        <a class="pc-cell clickable" href="https://polymarket.com/market/will-the-us-invade-iran-before-2027" target="_blank" rel="noopener">
+          <span class="label">U.S. invades Iran before 2027</span>
+          <span class="value red">32.5%</span>
+        </a>
+        <div class="pc-cell">
+          <span class="label">Naive sum</span>
+          <span class="value">100.5%</span>
+        </div>
+      </div>
+
+      <p>The two numbers add to within a point of 100%. That is either the cleanest "peace or war" partition the prediction markets have ever produced — or it's a sign the same traders are sloshing dollars between adjacent contracts and producing a coincidence. The path-dependent reading: the market believes the next eight months end in <em>either</em> a signed deal <em>or</em> a unilateral escalation, and almost nothing in between. Status-quo grinding-on is being given roughly zero weight.</p>
+
+      <p>That is unusual. Most international standoffs trade with a fat "muddle through" middle. Iran does not. Read it as: the participants closest to this story believe Trump's posture forces a binary — either he gets the win, or he uses the failure as the rationale. There is no third year of sanctions and proxy attacks in the price.</p>
+
+      <p><span class="tag divergence">Cross-market binary</span><span class="tag">No middle</span></p>
+    </article>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <h4>Methodology &amp; Caveats</h4>
+    <p><strong>Data source.</strong> All prices, volumes, and liquidity figures are pulled from the Polymarket Gamma API as of the morning of April 18, 2026. The set was filtered from approximately 1,500 active markets to roughly 180 newsworthy markets (excluding sports parlays, crypto-price binaries, and markets resolved &gt; 99.5% to one side or already past their end date), then narrowed to the 36 markets cited in this edition.</p>
+    <p><strong>What these prices represent.</strong> Polymarket prices are the marginal trading price of a $1-payoff binary contract, expressed as an implied probability. They reflect the views of the participants who bothered to trade — a self-selected, capital-weighted, and globally distributed group. They are not surveys, not expert panels, and not the wisdom of crowds in any pure sense. Treat them as the price at which a real counterparty was willing to take the other side.</p>
+    <p><strong>Thin-market caveats.</strong> Markets with 24h volume under ~$50K can be noise. We have flagged 24h volume on every callout. The Stewart-2028 line is included precisely <em>because</em> its volume is anomalous, not because its price is.</p>
+    <p><strong>"Consensus" baselines are editorial.</strong> When this paper says a price is "against the consensus," the consensus is our reading of mainstream U.S. and UK press coverage and elite institutional posture. We are not running a sentiment classifier. The disagreement is the interesting object; you may evaluate the consensus claim yourself.</p>
+    <p><strong>Link policy.</strong> Every market cited in this edition links directly to its Polymarket page. Prices are a snapshot at publication — click through to see current state, order book, and full history.</p>
+    <p><strong>What's missing.</strong> This MVP edition uses Polymarket only. Future editions will cross-reference Kalshi, Manifold, and (where data is available) Predictit and PolyBet for cross-platform divergence — a category of story this edition does not yet contain. Volume-of-conversation overlays from news and social are also planned.</p>
+    <p style="margin-top:18px;font-style:italic;">The Ledger does not give investment advice. Prediction-market prices are forecasts, not recommendations. Markets are sometimes wrong; that is what makes them interesting to read like a newspaper.</p>
+    <p style="margin-top:18px;color:var(--ink);">— <strong>The Ledger</strong>, Vol. I, No. 1. Built in Cowork. Published April 18, 2026.</p>
+  </footer>
+
+</div>
+</body>
+</html>
