@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Matt's Fitness Analysis — April 2026</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1a1a1a;
+    background: #fff;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+    line-height: 1.55;
+  }
+  .masthead {
+    border-bottom: 3px double #1a1a1a;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    margin: 0 0 6px 0;
+  }
+  .subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #444;
+    font-weight: 600;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+    margin: 44px 0 20px 0;
+  }
+  h3 {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    margin: 28px 0 10px 0;
+    font-weight: 600;
+  }
+  p { margin: 0 0 14px 0; }
+  .lead { font-size: 17px; font-style: italic; color: #333; max-width: 760px; }
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1px;
+    background: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    margin: 22px 0 8px 0;
+  }
+  .stat {
+    background: #fff;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  .stat-val { font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #1a1a1a; }
+  .stat-lab { font-family: -apple-system, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: #666; margin-top: 4px; }
+  .stat-sub { font-family: -apple-system, sans-serif; font-size: 10px; color: #999; margin-top: 2px; }
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0 8px 0;
+  }
+  .score-card {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px 16px 14px 16px;
+  }
+  .score-grade { font-family: Georgia, serif; font-size: 30px; font-weight: 700; line-height: 1; }
+  .score-title { font-family: -apple-system, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: #555; margin-top: 6px; font-weight: 600; }
+  .score-desc { font-family: Georgia, serif; font-size: 13px; color: #333; margin-top: 8px; line-height: 1.5; }
+  .priorities {
+    background: #fafafa;
+    border-left: 3px solid #c76b5f;
+    padding: 18px 22px;
+    margin: 20px 0 8px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .priority-item { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid #e8e8e8; }
+  .priority-item:last-child { border-bottom: none; }
+  .priority-num { font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #c76b5f; line-height: 1; width: 32px; }
+  .priority-body strong { display: block; font-size: 15px; margin-bottom: 4px; }
+  .priority-body span { font-size: 13px; color: #555; }
+  .chart-wrap { margin: 14px 0 22px 0; }
+  .chart-caption { font-family: -apple-system, sans-serif; font-size: 11px; color: #888; margin-top: 4px; font-style: italic; }
+  table.data {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 14px 0;
+  }
+  table.data th {
+    font-family: -apple-system, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #666;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 8px 12px 6px 0;
+    text-align: left;
+    font-weight: 600;
+  }
+  table.data td { padding: 8px 12px 8px 0; border-bottom: 1px solid #eee; vertical-align: top; }
+  .tag {
+    display: inline-block;
+    font-family: -apple-system, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #f0f0f0;
+    color: #555;
+    font-weight: 600;
+  }
+  .tag.red { background: #f8e0dc; color: #8b3a2f; }
+  .tag.amber { background: #f5ead0; color: #805e1e; }
+  .tag.green { background: #dfeada; color: #3d6e3a; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .callout { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px 18px; font-size: 14px; }
+  .callout h4 { font-family: -apple-system, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin: 0 0 8px 0; font-weight: 600; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 14px 0; }
+  .kpi { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 5px; padding: 12px 14px; }
+  .kpi-val { font-family: Georgia, serif; font-size: 22px; font-weight: 700; }
+  .kpi-lab { font-family: -apple-system, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: #666; margin-top: 4px; font-weight: 600; }
+  .kpi-sub { font-family: -apple-system, sans-serif; font-size: 11px; color: #888; margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-family: -apple-system, sans-serif; font-size: 11px; color: #888; }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <h1>Matt's Fitness Analysis</h1>
+  <div class="subtitle">Longevity · Surf · Muscle &nbsp;·&nbsp; April 20, 2026 &nbsp;·&nbsp; Data-driven review</div>
+</div>
+
+<h2 style="margin-top:8px;">Executive summary — the three changes</h2>
+<div class="priorities" style="border-left-color:#2d5a4f;background:#f6f2ea;margin-top:8px;">
+  <div class="priority-item">
+    <div class="priority-num" style="color:#2d5a4f;">1</div>
+    <div class="priority-body">
+      <strong>Order a Stelo CGM this week and wear the first sensor over the next 15 days.</strong>
+      <span>The only way to replace "I think I eat clean" with "I know what my blood does." Highest-signal, lowest-effort intervention in the plan, and the one that unlocks everything else on the metabolic side. Save the second sensor for a fall-bulk rewear when your carb intake is peaking.</span>
+    </div>
+  </div>
+  <div class="priority-item">
+    <div class="priority-num" style="color:#2d5a4f;">2</div>
+    <div class="priority-body">
+      <strong>Add one Peloton 4×4 session per week, starting this week.</strong>
+      <span>Year-round — not just during cut. Biggest all-cause-mortality lever available to you, addresses both VO2max and metabolic health in a single 38-minute session, and the only cardio commitment your program is currently missing. Target peaks at 90–95% of max HR (~155–165 bpm).</span>
+    </div>
+  </div>
+  <div class="priority-item">
+    <div class="priority-num" style="color:#2d5a4f;">3</div>
+    <div class="priority-body">
+      <strong>Sleep cooler, eat earlier, stop caffeine by 10am.</strong>
+      <span>Room 63–66°F, last meal ≥3h before bed, coffee cutoff at 10am. These three together should move your deep sleep from 48 min → 75+ min within a few weeks — which is where growth hormone, testosterone, and glymphatic clearance actually happen.</span>
+    </div>
+  </div>
+  <p style="margin:14px 0 0 0;font-family:-apple-system,sans-serif;font-size:12px;color:#777;font-style:italic;">Everything below is context, evidence, and optimization. These three are the needle-movers.</p>
+</div>
+
+<p class="lead">At 50, you're doing the right things more consistently than 95% of people your age. The program is well-engineered. This analysis asks a sharper question: which 1–2 levers, pulled now, would push you from "excellent for age" to "top-decile longevity trajectory"?</p>
+
+<div class="stats-strip"><div class="stat"><div class="stat-val">50</div><div class="stat-lab">Age</div><div class="stat-sub"></div></div><div class="stat"><div class="stat-val">5'9"</div><div class="stat-lab">Height</div><div class="stat-sub"></div></div><div class="stat"><div class="stat-val">164.6 lb</div><div class="stat-lab">Weight</div><div class="stat-sub">end of bulk</div></div><div class="stat"><div class="stat-val">~18%</div><div class="stat-lab">Body fat</div><div class="stat-sub">peak ~12% after cut</div></div><div class="stat"><div class="stat-val">38</div><div class="stat-lab">VO2max</div><div class="stat-sub">ml/kg/min</div></div><div class="stat"><div class="stat-val">63</div><div class="stat-lab">RHR</div><div class="stat-sub">bpm</div></div><div class="stat"><div class="stat-val">29</div><div class="stat-lab">HRV</div><div class="stat-sub">ms (30-day avg)</div></div><div class="stat"><div class="stat-val">7.4h</div><div class="stat-lab">Sleep</div><div class="stat-sub">30-day avg</div></div></div>
+
+<h2>Scorecard</h2>
+<div class="scorecard">
+    <div class="score-card">
+      <div class="score-grade" style="color:#3d7a5e;">A−</div>
+      <div class="score-title">Strength program</div>
+      <div class="score-desc">16 months of documented, progressive work with a skilled trainer. Mobility-integrated. Solid protocol for age 50.</div>
+    </div>
+    <div class="score-card">
+      <div class="score-grade" style="color:#3d7a5e;">A−</div>
+      <div class="score-title">Body composition</div>
+      <div class="score-desc">Net +5.8 lb lean mass over 2.75 yrs (~2 lb/yr). Healthy bulk/cut cycling. BF 12–22% range.</div>
+    </div>
+    <div class="score-card">
+      <div class="score-grade" style="color:#6ba378;">B+</div>
+      <div class="score-title">Biomarker profile</div>
+      <div class="score-desc">Excellent lipids, inflammation, insulin, omega-3. Two watch items: glucose/HbA1c and testosterone.</div>
+    </div>
+    <div class="score-card">
+      <div class="score-grade" style="color:#d4a05a;">B</div>
+      <div class="score-title">Recovery & sleep</div>
+      <div class="score-desc">7.4h avg sleep, 87% efficiency. Deep sleep (48min avg) runs below target. HRV sits mid-range for a 50yo athlete.</div>
+    </div>
+    <div class="score-card">
+      <div class="score-grade" style="color:#d4a05a;">C</div>
+      <div class="score-title">Cardio / VO2max</div>
+      <div class="score-desc">Apple Watch VO2max 38 is 'good' for age but below the longevity target. Only 1 cardio session/wk. No Zone 5 work.</div>
+    </div>
+    <div class="score-card">
+      <div class="score-grade" style="color:#c76b5f;">C+</div>
+      <div class="score-title">Metabolic health</div>
+      <div class="score-desc">HbA1c 5.6%, fasting glucose 96 mg/dL, plus family history of diabetes. The single biggest longevity lever.</div>
+    </div></div>
+
+<h2>Body composition trajectory</h2>
+<p>You've done something genuinely rare for a 50-year-old: added 5.8 lb of lean mass over 2.75 years while dropping body fat from 22% → 12% at your cut floor. That's ~2 lb/year of muscle, which is the top end of what Lyle McDonald's "trained intermediate" model predicts for your age. The bulk/cut cycling has worked — the main risk going forward is <em>losing muscle on aggressive cuts</em>.</p>
+<div class="chart-wrap"><svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <line x1="60" x2="840" y1="184.3" y2="184.3" stroke="#eee" /><text x="52" y="188.3" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">150</text><line x1="60" x2="840" y1="158.6" y2="158.6" stroke="#eee" /><text x="52" y="162.6" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">155</text><line x1="60" x2="840" y1="132.9" y2="132.9" stroke="#eee" /><text x="52" y="136.9" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">160</text><line x1="60" x2="840" y1="107.1" y2="107.1" stroke="#eee" /><text x="52" y="111.1" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">165</text><line x1="60" x2="840" y1="81.4" y2="81.4" stroke="#eee" /><text x="52" y="85.4" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">170</text><line x1="60" x2="840" y1="55.7" y2="55.7" stroke="#eee" /><text x="52" y="59.7" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">175</text>
+  <path d="M 60.0,127.7 L 171.4,107.1 L 282.9,55.7 L 394.3,184.3 L 505.7,81.4 L 617.1,96.9 L 728.6,158.6 L 840.0,109.2" fill="none" stroke="#2d5a4f" stroke-width="1.5" />
+  <circle cx="60.0" cy="127.7" r="3.5" fill="#2d5a4f" stroke="#fff" stroke-width="1.5" /><text x="60.0" y="117.7" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system, sans-serif">161</text><text x="60.0" y="238.0" text-anchor="middle" font-size="9" fill="#777" font-family="-apple-system, sans-serif">2022-09</text><text x="60.0" y="252.0" text-anchor="middle" font-size="9" fill="#999" font-style="italic" font-family="-apple-system, sans-serif">baseline</text><circle cx="171.4" cy="107.1" r="3.5" fill="#2d5a4f" stroke="#fff" stroke-width="1.5" /><text x="171.4" y="97.1" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system, sans-serif">165</text><text x="171.4" y="238.0" text-anchor="middle" font-size="9" fill="#777" font-family="-apple-system, sans-serif">2023-07</text><text x="171.4" y="252.0" text-anchor="middle" font-size="9" fill="#999" font-style="italic" font-family="-apple-system, sans-serif">pre-cut</text><circle cx="282.9" cy="55.7" r="3.5" fill="#2d5a4f" stroke="#fff" stroke-width="1.5" /><text x="282.9" y="45.7" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system, sans-serif">175</text><text x="282.9" y="238.0" text-anchor="middle" font-size="9" fill="#777" font-family="-apple-system, sans-serif">2024-01</text><text x="282.9" y="252.0" text-anchor="middle" font-size="9" fill="#999" font-style="italic" font-family="-apple-system, sans-serif">peak bulk</text><circle cx="394.3" cy="184.3" r="3.5" fill="#2d5a4f" stroke="#fff" stroke-width="1.5" /><text x="394.3" y="174.3" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system, sans-serif">150</text><text x="394.3" y="238.0" text-anchor="middle" font-size="9" fill="#777" font-family="-apple-system, sans-serif">2024-04</text><text x="394.3" y="252.0" text-anchor="middle" font-size="9" fill="#999" font-style="italic" font-family="-apple-system, sans-serif">deep cut</text><circle cx="505.7" cy="81.4" r="3.5" fill="#2d5a4f" stroke="#fff" stroke-width="1.5" /><text x="505.7" y="71.4" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system, sans-serif">170</text><text x="505.7" y="238.0" text-anchor="middle" font-size="9" fill="#777" font-family="-apple-system, sans-serif">2024-08</text><text x="505.7" y="252.0" text-anchor="middle" font-size="9" fill="#999" font-style="italic" font-family="-apple-system, sans-serif">bulk peak</text><circle cx="617.1" cy="96.9" r="3.5" fill="#2d5a4f" stroke="#fff" stroke-width="1.5" /><text x="617.1" y="86.9" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system, sans-serif">167</text><text x="617.1" y="238.0" text-anchor="middle" font-size="9" fill="#777" font-family="-apple-system, sans-serif">2025-03</text><text x="617.1" y="252.0" text-anchor="middle" font-size="9" fill="#999" font-style="italic" font-family="-apple-system, sans-serif">InBody</text><circle cx="728.6" cy="158.6" r="3.5" fill="#2d5a4f" stroke="#fff" stroke-width="1.5" /><text x="728.6" y="148.6" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system, sans-serif">155</text><text x="728.6" y="238.0" text-anchor="middle" font-size="9" fill="#777" font-family="-apple-system, sans-serif">2025-06</text><text x="728.6" y="252.0" text-anchor="middle" font-size="9" fill="#999" font-style="italic" font-family="-apple-system, sans-serif">cut floor</text><circle cx="840.0" cy="109.2" r="3.5" fill="#2d5a4f" stroke="#fff" stroke-width="1.5" /><text x="840.0" y="99.2" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system, sans-serif">164.6</text><text x="840.0" y="238.0" text-anchor="middle" font-size="9" fill="#777" font-family="-apple-system, sans-serif">2026-04</text><text x="840.0" y="252.0" text-anchor="middle" font-size="9" fill="#999" font-style="italic" font-family="-apple-system, sans-serif">current</text>
+  <text x="12" y="36" font-size="10" fill="#777" font-family="-apple-system, sans-serif">lbs</text>
+</svg><div class="chart-caption">Weight history (bulks and cuts, 2022 → present). Current 164.6 lb, end-of-bulk.</div></div>
+
+<div class="two-col">
+  <div>
+    <h3>Lean mass progression</h3>
+    <div class="chart-wrap"><svg viewBox="0 0 440 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <rect x="70.0" y="159.0" width="83.3" height="21.0" fill="#4a7a9a" /><text x="111.7" y="153.0" text-anchor="middle" font-size="12" fill="#1a1a1a" font-family="-apple-system, sans-serif" font-weight="600">71.4 lb</text><text x="111.7" y="198.0" text-anchor="middle" font-size="10" fill="#555" font-family="-apple-system, sans-serif">2022-09</text><text x="111.7" y="212.0" text-anchor="middle" font-size="9" fill="#999" font-family="-apple-system, sans-serif">21.6% BF</text><rect x="193.3" y="49.5" width="83.3" height="130.5" fill="#4a7a9a" /><text x="235.0" y="43.5" text-anchor="middle" font-size="12" fill="#1a1a1a" font-family="-apple-system, sans-serif" font-weight="600">78.7 lb</text><text x="235.0" y="198.0" text-anchor="middle" font-size="10" fill="#555" font-family="-apple-system, sans-serif">2025-03</text><text x="235.0" y="212.0" text-anchor="middle" font-size="9" fill="#999" font-family="-apple-system, sans-serif">17.1% BF</text><rect x="316.7" y="72.0" width="83.3" height="108.0" fill="#4a7a9a" /><text x="358.3" y="66.0" text-anchor="middle" font-size="12" fill="#1a1a1a" font-family="-apple-system, sans-serif" font-weight="600">77.2 lb</text><text x="358.3" y="198.0" text-anchor="middle" font-size="10" fill="#555" font-family="-apple-system, sans-serif">2025-06</text><text x="358.3" y="212.0" text-anchor="middle" font-size="9" fill="#999" font-family="-apple-system, sans-serif">12.0% BF</text>
+  <text x="50" y="20.0" font-size="10" fill="#777" font-family="-apple-system, sans-serif">skeletal muscle mass (lb)</text>
+</svg></div>
+  </div>
+  <div>
+    <h3>What to watch</h3>
+    <div class="callout">
+      <h4>Muscle preservation on the cut</h4>
+      <p style="margin:0 0 10px 0;">Your notes show SMM dipped from 78.7 → 77.2 between InBody readings — 1.5 lb muscle lost during a cut cycle. For the upcoming cut:</p>
+      <ul style="margin:0;padding-left:20px;font-size:13px;">
+        <li>Cap deficit at 500 kcal/day (~1 lb/wk), not more</li>
+        <li>Protein 1.0 g/lb bodyweight = <strong>164 g/day</strong> (up from your ~100–125 g target)</li>
+        <li>Keep resistance volume steady; drop reps/set before dropping weight</li>
+        <li>Weekly refeed day at maintenance (carbs to 2–3 g/lb)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>Biomarker panel (Function Health, Aug 2025)</h2>
+<p>Overall an elite panel for a 50-year-old male. Legend: <span class="tag green">Excellent / Optimal</span> <span class="tag amber">Watch</span> <span class="tag red">Flag</span></p>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:28px 36px;"><div><h4 style="font-family:-apple-system,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#888;margin:0 0 10px 0;font-weight:600;border-bottom:1px solid #e0e0e0;padding-bottom:4px;">Metabolic</h4><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><td style="padding:5px 0;color:#1a1a1a;">HbA1c</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">5.6 <span style="color:#999;font-weight:400;font-size:11px;">%</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#d4a05a;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">watch</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">Fasting glucose</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">96 <span style="color:#999;font-weight:400;font-size:11px;">mg/dL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#d4a05a;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">watch</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">Fasting insulin</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">2.3 <span style="color:#999;font-weight:400;font-size:11px;">μIU/mL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#3d7a5e;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">excellent</td></tr></table></div><div><h4 style="font-family:-apple-system,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#888;margin:0 0 10px 0;font-weight:600;border-bottom:1px solid #e0e0e0;padding-bottom:4px;">Inflammation</h4><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><td style="padding:5px 0;color:#1a1a1a;">hs-CRP</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">0.2 <span style="color:#999;font-weight:400;font-size:11px;">mg/L</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#3d7a5e;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">excellent</td></tr></table></div><div><h4 style="font-family:-apple-system,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#888;margin:0 0 10px 0;font-weight:600;border-bottom:1px solid #e0e0e0;padding-bottom:4px;">Lipids</h4><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><td style="padding:5px 0;color:#1a1a1a;">LDL-C</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">78 <span style="color:#999;font-weight:400;font-size:11px;">mg/dL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#d4a05a;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">watch</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">HDL-C</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">58 <span style="color:#999;font-weight:400;font-size:11px;">mg/dL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#6ba378;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">optimal</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">Triglycerides</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">47 <span style="color:#999;font-weight:400;font-size:11px;">mg/dL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#3d7a5e;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">excellent</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">Total Chol</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">149 <span style="color:#999;font-weight:400;font-size:11px;">mg/dL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#3d7a5e;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">excellent</td></tr></table></div><div><h4 style="font-family:-apple-system,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#888;margin:0 0 10px 0;font-weight:600;border-bottom:1px solid #e0e0e0;padding-bottom:4px;">Hormones</h4><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><td style="padding:5px 0;color:#1a1a1a;">Total testosterone</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">446 <span style="color:#999;font-weight:400;font-size:11px;">ng/dL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#d4a05a;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">watch</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">Free testosterone</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">42 <span style="color:#999;font-weight:400;font-size:11px;">pg/mL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#6ba378;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">optimal</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">SHBG</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">50 <span style="color:#999;font-weight:400;font-size:11px;">nmol/L</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#d4a05a;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">watch</td></tr></table></div><div><h4 style="font-family:-apple-system,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#888;margin:0 0 10px 0;font-weight:600;border-bottom:1px solid #e0e0e0;padding-bottom:4px;">Nutrients</h4><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><td style="padding:5px 0;color:#1a1a1a;">Omega-3 index</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">9.5 <span style="color:#999;font-weight:400;font-size:11px;">%</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#3d7a5e;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">excellent</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">Omega 6:3 ratio</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">4.2 <span style="color:#999;font-weight:400;font-size:11px;"></span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#d4a05a;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">watch</td></tr></table></div><div><h4 style="font-family:-apple-system,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#888;margin:0 0 10px 0;font-weight:600;border-bottom:1px solid #e0e0e0;padding-bottom:4px;">Liver</h4><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><td style="padding:5px 0;color:#1a1a1a;">AST</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">31 <span style="color:#999;font-weight:400;font-size:11px;">U/L</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#d4a05a;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">watch</td></tr><tr><td style="padding:5px 0;color:#1a1a1a;">ALT</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">32 <span style="color:#999;font-weight:400;font-size:11px;">U/L</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#6ba378;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">optimal</td></tr></table></div><div><h4 style="font-family:-apple-system,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#888;margin:0 0 10px 0;font-weight:600;border-bottom:1px solid #e0e0e0;padding-bottom:4px;">Other</h4><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><td style="padding:5px 0;color:#1a1a1a;">PSA</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">1.3 <span style="color:#999;font-weight:400;font-size:11px;">ng/mL</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#6ba378;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">optimal</td></tr></table></div><div><h4 style="font-family:-apple-system,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#888;margin:0 0 10px 0;font-weight:600;border-bottom:1px solid #e0e0e0;padding-bottom:4px;">Kidney</h4><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><td style="padding:5px 0;color:#1a1a1a;">eGFR</td><td style="padding:5px 0;text-align:right;font-family:Georgia,serif;font-weight:600;color:#1a1a1a;">95 <span style="color:#999;font-weight:400;font-size:11px;">mL/min</span></td><td style="padding:5px 0 5px 12px;"><span style="display:inline-block;width:10px;height:10px;background:#6ba378;border-radius:50%;"></span></td><td style="padding:5px 0 5px 8px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,sans-serif;">optimal</td></tr></table></div></div>
+
+<div class="callout" style="margin-top:20px;">
+  <h4>Biomarker read-out</h4>
+  <p style="margin:0 0 8px 0;"><strong>Standouts (top decile):</strong> hs-CRP &lt;0.2, fasting insulin 2.3, triglycerides 47, Chol/HDL 2.6, Omega-3 index 9.5%. These don't improve easily — you've earned them through diet, fish oil, no alcohol, and training.</p>
+  <p style="margin:0 0 8px 0;"><strong>LDL 78 mg/dL:</strong> Flagged as "watch" because Function's optimal ceiling is 70. Standard clinical cutoffs would call this excellent. No action needed — but request an <strong>ApoB</strong> next panel (not included here); it's a better atherogenic marker than LDL-C.</p>
+  <p style="margin:0 0 8px 0;"><strong>Testosterone 446 total:</strong> Below Function's optimal 500+, but you're asymptomatic and free-T sits in the optimal band. Your SHBG is pegged at 50 (top of range), which is binding up total T. SHBG can be lowered by: higher insulin (no — you want low insulin), boron (you're taking 3 mg), caloric surplus, and resistance training — so the lever here is patient. <strong>Don't chase this unless symptoms appear</strong>; recheck at next panel.</p>
+  <p style="margin:0;"><strong>AST 31 (vs optimal ≤25):</strong> Mild elevation, essentially always exercise-induced in lifters. Not clinically worrying when ALT is normal (yours is 32, top of Function's optimal). Worth retesting the morning of a rest day.</p>
+</div>
+
+<h2>Metabolic health — the flag to act on</h2>
+<div class="kpi-grid">
+  <div class="kpi"><div class="kpi-val" style="color:#d4a05a;">5.6%</div><div class="kpi-lab">HbA1c</div><div class="kpi-sub">optimal &lt;5.5 · prediabetic ≥5.7</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#d4a05a;">96 mg/dL</div><div class="kpi-lab">Fasting glucose</div><div class="kpi-sub">optimal &lt;85 · upper normal 99</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#3d7a5e;">2.3 μIU/mL</div><div class="kpi-lab">Fasting insulin</div><div class="kpi-sub">elite — sensitive pancreas</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#c76b5f;">Family Hx</div><div class="kpi-lab">Diabetes risk</div><div class="kpi-sub">genetic predisposition confirmed</div></div>
+</div>
+<p>The picture: your fasting insulin says your cells still respond well to insulin, but HbA1c (a 90-day glucose average) and fasting glucose are both creeping toward the prediabetic threshold. Combined with family history, this is the single most valuable biomarker story to invert <em>now</em>, while it's cheap to do so. Every 0.1% drop in HbA1c from 5.6 → 5.2 buys meaningful years of healthspan.</p>
+<h3>What moves the needle</h3>
+<table class="data">
+  <thead><tr><th>Lever</th><th>Expected impact</th><th>Effort</th></tr></thead>
+  <tbody>
+    <tr><td><strong>2-week CGM trial</strong> (Levels, Lingo, Stelo $99). Find <em>your</em> spiker foods.</td><td>High. Most people are shocked by oats, granola, bananas, "healthy" bulking snacks.</td><td>Low</td></tr>
+    <tr><td><strong>Walk 10–15 min after each meal</strong>, especially dinner.</td><td>High. 20–40% reduction in post-prandial glucose spike. Cheap. Stacks with Zone 2.</td><td>Low</td></tr>
+    <tr><td><strong>Reorder your plate</strong>: fiber/veg → protein → carbs. Eat carbs last.</td><td>Moderate. 15–30% reduction in post-meal glucose AUC. No calorie change.</td><td>Low</td></tr>
+    <tr><td><strong>Cut bulking snacks Leo flagged</strong> (nut butter, trail mix, pretzels, granola). Your notes already recognize these as problem foods.</td><td>Moderate. Removes the stealth carb load that pushes fasting glucose up.</td><td>Moderate</td></tr>
+    <tr><td><strong>Zone 2 cardio 3× 45min/wk</strong> instead of 1×. Mitochondrial density → insulin sensitivity.</td><td>High over 6 months. Also helps surf endurance.</td><td>Moderate</td></tr>
+    <tr><td><strong>Ask PCP about berberine or GLP-1 mimetic</strong> if HbA1c stays ≥5.5 after 6 months of the above.</td><td>Reserve. Not yet indicated but know the path.</td><td>Consult</td></tr>
+  </tbody>
+</table>
+
+<h2>Cardiovascular fitness</h2>
+<div class="chart-wrap"><svg viewBox="0 0 880 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <text x="40" y="15" font-size="10" fill="#777" font-family="-apple-system, sans-serif">VO2max (ml/kg/min) — 50–59yo male norms</text>
+  <rect x="40.0" y="60" width="207.4" height="28" fill="#c76b5f" opacity="0.75" /><text x="143.7" y="78.0" text-anchor="middle" font-size="11" fill="#fff" font-family="-apple-system, sans-serif" font-weight="600">Poor</text><text x="40.0" y="104.0" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">28</text><rect x="247.4" y="60" width="88.9" height="28" fill="#d4a05a" opacity="0.75" /><text x="291.9" y="78.0" text-anchor="middle" font-size="11" fill="#fff" font-family="-apple-system, sans-serif" font-weight="600">Fair</text><text x="247.4" y="104.0" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">35</text><rect x="336.3" y="60" width="118.5" height="28" fill="#a3c47a" opacity="0.75" /><text x="395.6" y="78.0" text-anchor="middle" font-size="11" fill="#fff" font-family="-apple-system, sans-serif" font-weight="600">Good</text><text x="336.3" y="104.0" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">38</text><rect x="454.8" y="60" width="118.5" height="28" fill="#6ba378" opacity="0.75" /><text x="514.1" y="78.0" text-anchor="middle" font-size="11" fill="#fff" font-family="-apple-system, sans-serif" font-weight="600">Excellent</text><text x="454.8" y="104.0" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">42</text><rect x="573.3" y="60" width="266.7" height="28" fill="#4a7a5e" opacity="0.75" /><text x="706.7" y="78.0" text-anchor="middle" font-size="11" fill="#fff" font-family="-apple-system, sans-serif" font-weight="600">Superior</text><text x="573.3" y="104.0" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">46</text><text x="840.0" y="104.0" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">55</text><line x1="336.3" x2="336.3" y1="52" y2="96" stroke="#1a1a1a" stroke-width="2" /><text x="336.3" y="48.0" text-anchor="middle" font-size="12" fill="#1a1a1a" font-family="Georgia, serif" font-weight="700">Matt: 38</text><line x1="573.3" x2="573.3" y1="52" y2="96" stroke="#6b4a7b" stroke-width="1.5" stroke-dasharray="4,2" /><text x="573.3" y="48.0" text-anchor="middle" font-size="11" fill="#6b4a7b" font-family="Georgia, serif" font-weight="600">Target 46+</text>
+</svg></div>
+<p>Apple Watch VO2max is noisy (±3–5 points) but directionally useful. Your 38 puts you in "Good" for your age band — not bad, but meaningfully short of what the longevity literature targets. Peter Attia's framework: <strong>top quartile for age</strong>, which for a 50-year-old male is ~46+ ml/kg/min. The mortality math is striking: Mandsager et al. (2018, JAMA) found going from 50th → 97.5th percentile VO2max was associated with a ~5× reduction in all-cause mortality over 10 years.</p>
+<div class="two-col">
+  <div>
+    <h3>Why Zone 2 alone won't get you there</h3>
+    <p>Zone 2 builds mitochondrial density, stroke volume, fat oxidation — all real. But VO2max itself (max cardiac output × max a-v O<sub>2</sub> difference) is trained most efficiently at <strong>90–95% of max HR for 3–4 minutes</strong>, repeated. Your current cardio (1× Peloton or run at Z2) isn't hitting that band.</p>
+  </div>
+  <div>
+    <h3>The protocol (add once per week)</h3>
+    <div class="callout">
+      <h4>Norwegian 4×4 — gold standard</h4>
+      <p style="margin:0;font-size:13px;">Warm up 10 min. Then <strong>4 × 4-minute efforts at 90–95% max HR</strong> (RPE 9/10 — hard, sustained), with <strong>3-minute active-recovery</strong> jogs between. Cool down 5 min. Total: 38 min. Best on Peloton or rower to avoid impact. <strong>Once per week is enough</strong> — twice if you feel recovered.</p>
+    </div>
+  </div>
+</div>
+<p style="font-size:13px;color:#666;margin-top:10px;">Baseline note: ask Tyson to run a sub-maximal test or get a Cooper 12-min run benchmark. Apple Watch is a starting point, not a source of truth.</p>
+
+<h2>Recovery: sleep and HRV</h2>
+<div class="kpi-grid">
+  <div class="kpi"><div class="kpi-val">7.4h</div><div class="kpi-lab">Avg sleep</div><div class="kpi-sub">66% of nights hit 7h+</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#d4a05a;">48 min</div><div class="kpi-lab">Avg deep sleep</div><div class="kpi-sub">only 24% of nights hit 1h+</div></div>
+  <div class="kpi"><div class="kpi-val">87%</div><div class="kpi-lab">Sleep efficiency</div><div class="kpi-sub">solid</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#d4a05a;">29 ms</div><div class="kpi-lab">HRV avg</div><div class="kpi-sub">top-quartile 50yo ~40+</div></div>
+</div>
+<h3>Sleep hours, 50-day window</h3>
+<div class="chart-wrap"><svg viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <line x1="50" x2="860" y1="185.0" y2="185.0" stroke="#eee" /><text x="42" y="189.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">3.0</text><line x1="50" x2="860" y1="152.0" y2="152.0" stroke="#eee" /><text x="42" y="156.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">4.4</text><line x1="50" x2="860" y1="119.0" y2="119.0" stroke="#eee" /><text x="42" y="123.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">5.8</text><line x1="50" x2="860" y1="86.0" y2="86.0" stroke="#eee" /><text x="42" y="90.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">7.2</text><line x1="50" x2="860" y1="53.0" y2="53.0" stroke="#eee" /><text x="42" y="57.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">8.6</text><line x1="50" x2="860" y1="20.0" y2="20.0" stroke="#eee" /><text x="42" y="24.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">10.0</text>
+  <path d="M 50.0,93.1 L 66.5,128.4 L 83.1,67.1 L 99.6,78.9 L 116.1,55.4 L 132.7,78.9 L 149.2,147.3 L 165.7,78.9 L 182.2,102.5 L 198.8,43.6 L 215.3,81.3 L 231.8,121.4 L 248.4,116.6 L 264.9,88.4 L 281.4,114.3 L 298.0,76.6 L 314.5,69.5 L 331.0,53.0 L 347.6,57.7 L 364.1,90.7 L 380.6,71.9 L 397.1,53.0 L 413.7,93.1 L 430.2,41.2 L 446.7,53.0 L 463.3,69.5 L 479.8,107.2 L 496.3,60.1 L 512.9,114.3 L 529.4,71.9 L 545.9,104.9 L 562.4,93.1 L 579.0,78.9 L 595.5,126.1 L 612.0,100.1 L 628.6,93.1 L 645.1,97.8 L 661.6,168.5 L 678.2,55.4 L 694.7,76.6 L 711.2,50.6 L 727.8,57.7 L 744.3,86.0 L 760.8,71.9 L 777.3,62.4 L 793.9,83.6 L 810.4,36.5 L 826.9,71.9 L 843.5,71.9 L 860.0,53.0 L 860.0,185 L 50,185 Z" fill="#2d5a4f14" stroke="none" />
+  <path d="M 50.0,93.1 L 66.5,128.4 L 83.1,67.1 L 99.6,78.9 L 116.1,55.4 L 132.7,78.9 L 149.2,147.3 L 165.7,78.9 L 182.2,102.5 L 198.8,43.6 L 215.3,81.3 L 231.8,121.4 L 248.4,116.6 L 264.9,88.4 L 281.4,114.3 L 298.0,76.6 L 314.5,69.5 L 331.0,53.0 L 347.6,57.7 L 364.1,90.7 L 380.6,71.9 L 397.1,53.0 L 413.7,93.1 L 430.2,41.2 L 446.7,53.0 L 463.3,69.5 L 479.8,107.2 L 496.3,60.1 L 512.9,114.3 L 529.4,71.9 L 545.9,104.9 L 562.4,93.1 L 579.0,78.9 L 595.5,126.1 L 612.0,100.1 L 628.6,93.1 L 645.1,97.8 L 661.6,168.5 L 678.2,55.4 L 694.7,76.6 L 711.2,50.6 L 727.8,57.7 L 744.3,86.0 L 760.8,71.9 L 777.3,62.4 L 793.9,83.6 L 810.4,36.5 L 826.9,71.9 L 843.5,71.9 L 860.0,53.0" fill="none" stroke="#2d5a4f" stroke-width="1.5" />
+  <line x1="50" x2="860" y1="90.7" y2="90.7" stroke="#c0504d" stroke-width="1" stroke-dasharray="3,3" /><text x="856" y="86.7" text-anchor="end" font-size="10" fill="#c0504d" font-family="-apple-system, sans-serif">7h target</text>
+  <text x="50.0" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Jan 16</text><text x="248.4" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Feb 4</text><text x="463.3" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Mar 14</text><text x="661.6" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Mar 29</text><text x="860.0" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Apr 10</text>
+  <text x="10" y="26" font-size="10" fill="#777" font-family="-apple-system, sans-serif">hours</text>
+</svg><div class="chart-caption">Daily sleep from Apple Health. Jan 16–30 and Mar 7 – Apr 10, 2026. Dotted red line is 7h target.</div></div>
+<h3>Deep sleep (hours)</h3>
+<div class="chart-wrap"><svg viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <line x1="50" x2="860" y1="185.0" y2="185.0" stroke="#eee" /><text x="42" y="189.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">0.0</text><line x1="50" x2="860" y1="152.0" y2="152.0" stroke="#eee" /><text x="42" y="156.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">0.3</text><line x1="50" x2="860" y1="119.0" y2="119.0" stroke="#eee" /><text x="42" y="123.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">0.6</text><line x1="50" x2="860" y1="86.0" y2="86.0" stroke="#eee" /><text x="42" y="90.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">0.9</text><line x1="50" x2="860" y1="53.0" y2="53.0" stroke="#eee" /><text x="42" y="57.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">1.2</text><line x1="50" x2="860" y1="20.0" y2="20.0" stroke="#eee" /><text x="42" y="24.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">1.5</text>
+  <path d="M 50.0,42.0 L 66.5,86.0 L 83.1,108.0 L 99.6,119.0 L 116.1,119.0 L 132.7,108.0 L 149.2,119.0 L 165.7,53.0 L 182.2,97.0 L 198.8,119.0 L 215.3,108.0 L 231.8,75.0 L 248.4,86.0 L 264.9,119.0 L 281.4,75.0 L 298.0,75.0 L 314.5,53.0 L 331.0,86.0 L 347.6,42.0 L 364.1,119.0 L 380.6,86.0 L 397.1,130.0 L 413.7,119.0 L 430.2,108.0 L 446.7,97.0 L 463.3,119.0 L 479.8,108.0 L 496.3,108.0 L 512.9,130.0 L 529.4,75.0 L 545.9,119.0 L 562.4,75.0 L 579.0,86.0 L 595.5,97.0 L 612.0,53.0 L 628.6,97.0 L 645.1,86.0 L 661.6,108.0 L 678.2,53.0 L 694.7,141.0 L 711.2,130.0 L 727.8,108.0 L 744.3,86.0 L 760.8,119.0 L 777.3,152.0 L 793.9,97.0 L 810.4,86.0 L 826.9,75.0 L 843.5,97.0 L 860.0,119.0 L 860.0,185 L 50,185 Z" fill="#7a5a3a14" stroke="none" />
+  <path d="M 50.0,42.0 L 66.5,86.0 L 83.1,108.0 L 99.6,119.0 L 116.1,119.0 L 132.7,108.0 L 149.2,119.0 L 165.7,53.0 L 182.2,97.0 L 198.8,119.0 L 215.3,108.0 L 231.8,75.0 L 248.4,86.0 L 264.9,119.0 L 281.4,75.0 L 298.0,75.0 L 314.5,53.0 L 331.0,86.0 L 347.6,42.0 L 364.1,119.0 L 380.6,86.0 L 397.1,130.0 L 413.7,119.0 L 430.2,108.0 L 446.7,97.0 L 463.3,119.0 L 479.8,108.0 L 496.3,108.0 L 512.9,130.0 L 529.4,75.0 L 545.9,119.0 L 562.4,75.0 L 579.0,86.0 L 595.5,97.0 L 612.0,53.0 L 628.6,97.0 L 645.1,86.0 L 661.6,108.0 L 678.2,53.0 L 694.7,141.0 L 711.2,130.0 L 727.8,108.0 L 744.3,86.0 L 760.8,119.0 L 777.3,152.0 L 793.9,97.0 L 810.4,86.0 L 826.9,75.0 L 843.5,97.0 L 860.0,119.0" fill="none" stroke="#7a5a3a" stroke-width="1.5" />
+  <line x1="50" x2="860" y1="75.0" y2="75.0" stroke="#c0504d" stroke-width="1" stroke-dasharray="3,3" /><text x="856" y="71.0" text-anchor="end" font-size="10" fill="#c0504d" font-family="-apple-system, sans-serif">1h target</text>
+  <text x="50.0" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Jan 16</text><text x="248.4" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Feb 4</text><text x="463.3" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Mar 14</text><text x="661.6" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Mar 29</text><text x="860.0" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Apr 10</text>
+  <text x="10" y="26" font-size="10" fill="#777" font-family="-apple-system, sans-serif">hours</text>
+</svg><div class="chart-caption">Deep sleep is where growth hormone and testosterone pulses happen — and where you have the most room to grow. Mean 0.80h, target ≥1h.</div></div>
+<h3>HRV (morning rMSSD, ms)</h3>
+<div class="chart-wrap"><svg viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <line x1="50" x2="860" y1="185.0" y2="185.0" stroke="#eee" /><text x="42" y="189.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">15.0</text><line x1="50" x2="860" y1="152.0" y2="152.0" stroke="#eee" /><text x="42" y="156.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">22.0</text><line x1="50" x2="860" y1="119.0" y2="119.0" stroke="#eee" /><text x="42" y="123.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">29.0</text><line x1="50" x2="860" y1="86.0" y2="86.0" stroke="#eee" /><text x="42" y="90.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">36.0</text><line x1="50" x2="860" y1="53.0" y2="53.0" stroke="#eee" /><text x="42" y="57.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">43.0</text><line x1="50" x2="860" y1="20.0" y2="20.0" stroke="#eee" /><text x="42" y="24.0" text-anchor="end" font-size="10" fill="#777" font-family="-apple-system, sans-serif">50.0</text>
+  <path d="M 50.0,109.6 L 66.5,90.7 L 83.1,137.9 L 99.6,67.1 L 116.1,119.0 L 132.7,109.6 L 149.2,133.1 L 165.7,142.6 L 182.2,161.4 L 198.8,142.6 L 215.3,123.7 L 231.8,133.1 L 248.4,57.7 L 264.9,137.9 L 281.4,142.6 L 298.0,123.7 L 314.5,142.6 L 331.0,119.0 L 347.6,123.7 L 364.1,123.7 L 380.6,119.0 L 397.1,147.3 L 413.7,147.3 L 430.2,95.4 L 446.7,53.0 L 463.3,119.0 L 479.8,137.9 L 496.3,104.9 L 512.9,119.0 L 529.4,128.4 L 545.9,123.7 L 562.4,128.4 L 579.0,152.0 L 595.5,114.3 L 612.0,123.7 L 628.6,114.3 L 645.1,76.6 L 661.6,95.4 L 678.2,86.0 L 694.7,53.0 L 711.2,104.9 L 727.8,104.9 L 744.3,137.9 L 760.8,137.9 L 777.3,166.1 L 793.9,119.0 L 810.4,119.0 L 826.9,114.3 L 843.5,123.7 L 860.0,137.9 L 860.0,185 L 50,185 Z" fill="#6b4a7b14" stroke="none" />
+  <path d="M 50.0,109.6 L 66.5,90.7 L 83.1,137.9 L 99.6,67.1 L 116.1,119.0 L 132.7,109.6 L 149.2,133.1 L 165.7,142.6 L 182.2,161.4 L 198.8,142.6 L 215.3,123.7 L 231.8,133.1 L 248.4,57.7 L 264.9,137.9 L 281.4,142.6 L 298.0,123.7 L 314.5,142.6 L 331.0,119.0 L 347.6,123.7 L 364.1,123.7 L 380.6,119.0 L 397.1,147.3 L 413.7,147.3 L 430.2,95.4 L 446.7,53.0 L 463.3,119.0 L 479.8,137.9 L 496.3,104.9 L 512.9,119.0 L 529.4,128.4 L 545.9,123.7 L 562.4,128.4 L 579.0,152.0 L 595.5,114.3 L 612.0,123.7 L 628.6,114.3 L 645.1,76.6 L 661.6,95.4 L 678.2,86.0 L 694.7,53.0 L 711.2,104.9 L 727.8,104.9 L 744.3,137.9 L 760.8,137.9 L 777.3,166.1 L 793.9,119.0 L 810.4,119.0 L 826.9,114.3 L 843.5,123.7 L 860.0,137.9" fill="none" stroke="#6b4a7b" stroke-width="1.5" />
+  <line x1="50" x2="860" y1="67.1" y2="67.1" stroke="#c0504d" stroke-width="1" stroke-dasharray="3,3" /><text x="856" y="63.1" text-anchor="end" font-size="10" fill="#c0504d" font-family="-apple-system, sans-serif">40ms (top quartile)</text>
+  <text x="50.0" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Jan 16</text><text x="248.4" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Feb 4</text><text x="463.3" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Mar 14</text><text x="661.6" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Mar 29</text><text x="860.0" y="210" text-anchor="middle" font-size="10" fill="#777" font-family="-apple-system, sans-serif">Apr 10</text>
+  <text x="10" y="26" font-size="10" fill="#777" font-family="-apple-system, sans-serif">ms</text>
+</svg><div class="chart-caption">HRV average 29 ms — in the normal band for age, but below the ~40 ms you'd see in a top-quartile 50yo athlete. Tracks sleep and training load.</div></div>
+
+<h3>Why deep sleep is probably low (and how to lift it)</h3>
+<table class="data">
+  <thead><tr><th>Hypothesis</th><th>Likely magnitude</th><th>Action</th></tr></thead>
+  <tbody>
+    <tr><td>Core body temp too warm overnight (biggest single deep-sleep lever)</td><td>High</td><td>Room 63–66°F. ChiliPad / Eight Sleep if you don't have one already.</td></tr>
+    <tr><td>Late eating — digestion blunts SWS in first cycle</td><td>Moderate</td><td>Last meal ≥3h before bed. Especially on bulking days.</td></tr>
+    <tr><td>Caffeine half-life (~6h) still active at bedtime</td><td>Moderate</td><td>Last coffee by 10am, not noon.</td></tr>
+    <tr><td>Fluid load from supplements / beta-alanine / protein shake late</td><td>Low-moderate</td><td>Move creatine + beta-alanine to morning + lunch only (you already do this — good). Cap fluids after 7pm.</td></tr>
+    <tr><td>Magnesium glycinate timing</td><td>Low</td><td>Take 30–60 min before bed, not at dinner.</td></tr>
+    <tr><td>Morning daylight is erratic (some days &lt;10 min)</td><td>Moderate</td><td>10 min outdoor daylight within 1h of waking, even overcast. Anchors circadian rhythm → deeper SWS that night.</td></tr>
+  </tbody>
+</table>
+
+<h2>Training volume and pattern</h2>
+<div class="kpi-grid">
+  <div class="kpi"><div class="kpi-val">260 min</div><div class="kpi-lab">Exercise / wk</div><div class="kpi-sub">WHO target: 150–300</div></div>
+  <div class="kpi"><div class="kpi-val">8.8k</div><div class="kpi-lab">Steps / day</div><div class="kpi-sub">median 7.8k</div></div>
+  <div class="kpi"><div class="kpi-val">3–4×</div><div class="kpi-lab">Strength / wk</div><div class="kpi-sub">Tyson program, 16 mo logged</div></div>
+  <div class="kpi"><div class="kpi-val">~1×</div><div class="kpi-lab">Cardio / wk</div><div class="kpi-sub">your plan calls for 2–3×</div></div>
+</div>
+<p>Your strength work is the strongest part of your program — consistent, progressive, mobility-integrated, and evolving thoughtfully with Tyson. Big-picture load is correct: 3–4 strength + 2 yoga + 1 cardio + 1 surf-heavy week/month ≈ 6 training exposures most weeks.</p>
+<p>The asymmetry: <strong>cardio is underweighted relative to what you wrote down as your own plan</strong> ("2× cardio + 1× swim"). You're doing one. Bumping this to two sessions (one Zone 2, one Zone 5) addresses both the VO2max gap and the metabolic one.</p>
+
+<h2>Supplement stack review</h2>
+<p>Your stack is thoughtful — better than 90% of what I see for men your age. Quick read:</p>
+<table class="data">
+  <thead><tr><th>Supplement</th><th>Assessment</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Creatine 5 g/day</td><td><span class="tag green">Keep</span></td><td>Highest-evidence supplement for muscle + cognition at 50. Non-negotiable.</td></tr>
+    <tr><td>Vitamin D3 + K2 (1,000–3,000 IU)</td><td><span class="tag green">Keep</span></td><td>Right dose range. Test 25-OH-D in next Function panel to calibrate.</td></tr>
+    <tr><td>Fish oil (TJ's, 600mg EPA+DHA)</td><td><span class="tag green">Keep</span></td><td>Omega-3 index 9.5% confirms it's working. No need to upgrade.</td></tr>
+    <tr><td>Magnesium glycinate 240–300mg</td><td><span class="tag green">Keep</span></td><td>Take 30–60 min pre-bed for deep-sleep benefit.</td></tr>
+    <tr><td>Beta-alanine 3.4 g × 2</td><td><span class="tag amber">Maybe reduce</span></td><td>Useful for 60–240s efforts (pop-ups, intervals) but 6.8g is high end. 3.2–4g/day is the evidence-based dose. Consider dropping to once daily.</td></tr>
+    <tr><td>Boron 3 mg</td><td><span class="tag amber">Skip</span></td><td>Evidence for free-T impact is thin. You're asymptomatic. Cut unless next panel shows a decline.</td></tr>
+    <tr><td>HMB (when cutting)</td><td><span class="tag green">Keep</span></td><td>Modestly anti-catabolic in deficit. Fine to use on cut.</td></tr>
+    <tr><td>Colostrum</td><td><span class="tag amber">Optional</span></td><td>Weak evidence. Not harmful. Cut if budgeting supplements.</td></tr>
+    <tr><td>TJ's multivitamin</td><td><span class="tag amber">Optional</span></td><td>Your notes already question it. Food-first is fine. Cut if not noticing a benefit.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:13px;color:#666;"><strong>Consider adding:</strong> 500–1,000 mg <em>taurine</em> (blood pressure + mitochondrial), and reassess <em>ashwaganda</em> if stress rises — both have stronger evidence than boron.</p>
+
+<h2>Surfing as training load</h2>
+<p>Surfing one week/month at 2–3 hours/day is ~14–21 hours of paddling + intermittent sprints + core stabilization. That's real work — it's functionally your "mesocycle deload" with different loading. Smart that you're not also lifting that week. The only fitness gap this introduces: you lose the other 6 days of gym work. If longevity is primary, consider <strong>one short 20-min bodyweight session</strong> (pushups, rows, hollow holds) 2× during surf weeks to keep the neural drive up.</p>
+
+<h2>Longevity framework — where you sit</h2>
+<p>Mapped to Peter Attia's "four horsemen" (the diseases that kill most people):</p>
+<table class="data">
+  <thead><tr><th>Disease category</th><th>Your risk profile</th><th>Top lever</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Cardiovascular (ASCVD)</strong></td><td><span class="tag green">Low</span> — excellent lipids, low hs-CRP, low TG, high HDL, high omega-3</td><td>Get ApoB on next panel to confirm.</td></tr>
+    <tr><td><strong>Cancer</strong></td><td>Standard screening applies. No modifiable flags in this data beyond lifestyle (no alcohol helps).</td><td>Age-appropriate screening (colonoscopy if not done). Ask PCP about low-dose CT if smoking history.</td></tr>
+    <tr><td><strong>Neurodegenerative</strong></td><td><span class="tag amber">Watch</span> — metabolic health is the biggest modifiable Alzheimer's risk factor</td><td>Fix the metabolic story above.</td></tr>
+    <tr><td><strong>Metabolic (T2D + MAFLD)</strong></td><td><span class="tag red">Priority</span> — HbA1c drift + family history</td><td>CGM trial + Zone 2 + meal sequencing.</td></tr>
+  </tbody>
+</table>
+
+<h2>Final recommendations — sequenced for the next 90 days</h2>
+<table class="data">
+  <thead><tr><th>Window</th><th>Do this</th></tr></thead>
+  <tbody>
+    <tr><td>Next 2 wks</td><td>Order a 2-week CGM (Stelo or Lingo). Log food + post-meal glucose. Find your 3 worst spikers.</td></tr>
+    <tr><td>Next 2 wks</td><td>Add 10–15 min walk after dinner, daily. Zero-effort glucose intervention.</td></tr>
+    <tr><td>Next 4 wks</td><td>Swap 1 Peloton Zone-2 ride for a 4×4 Norwegian session weekly. Measure avg HR and effort.</td></tr>
+    <tr><td>Next 4 wks</td><td>On cut start: protein to 164 g/day, refeed day weekly, cap deficit at 500 kcal.</td></tr>
+    <tr><td>Next 8 wks</td><td>Bed-temp and light hygiene to lift deep sleep from 48 → 75+ min. Measure weekly.</td></tr>
+    <tr><td>Next 12 wks</td><td>Re-test Function Health panel. Target: HbA1c ≤5.4, ApoB added, total T tracking ≥500.</td></tr>
+    <tr><td>Next 12 wks</td><td>Request a proper VO2max benchmark (treadmill or Cooper test) to confirm where you actually are.</td></tr>
+  </tbody>
+</table>
+
+<h2>What you're already doing right — don't change</h2>
+<ul>
+  <li>Working with a skilled trainer on a progressive, mobility-integrated program</li>
+  <li>Bulk/cut cycling with disciplined weigh-ins</li>
+  <li>Zero alcohol — this alone may be worth 3–5 years of healthspan</li>
+  <li>Creatine, D3+K2, fish oil, magnesium — the core of an evidence-based stack</li>
+  <li>Surfing as a different-stimulus mesocycle</li>
+  <li>Low stress, 7+ hours in bed most nights</li>
+  <li>Tracking body comp with InBody and actually adjusting your plan from data</li>
+</ul>
+
+<footer>
+Sources: Function Health panel (2025-08-07), Apple Health (50 days, Jan–Apr 2026), Matt Fitness Notes (self-authored, 2022–2026), Tyson workout logs (Nov 2024 – Feb 2026), weight tracking chart (Apr 2022 – Apr 2026). Analysis: Claude, April 20, 2026. Framework references: Peter Attia <em>Outlive</em>, Mandsager et al. JAMA 2018, Lyle McDonald intermediate-lifter model, WHO physical activity guidelines. Not medical advice — share with your physician.
+</footer>
+
+</body>
+</html>
