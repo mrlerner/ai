@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Surf Trip Planner — 10-day outlook</title>
+<style>
+:root{--bg:#fff;--card:#fff;--card-alt:#fafafa;--border:#e0e0e0;--text:#1a1a1a;--muted:#666;
+--light:#999;--red:#9e2a2a;--amber:#8a6d00;--green:#2d7a4f;--blue:#1e5a9e;--purple:#6d28a8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.7}
+.wrap{max-width:1060px;margin:0 auto;padding:32px 24px 80px}
+h1{font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px;
+border-bottom:3px double var(--border);padding-bottom:12px}
+h2{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin:44px 0 16px;
+padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--muted);
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.sub{color:var(--muted);font-size:14px;margin:8px 0 24px;
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.best{background:var(--card-alt);border:1px solid var(--border);border-left:4px solid var(--purple);
+border-radius:6px;padding:18px 22px;margin:18px 0;font-size:15px}
+table.grid{border-collapse:separate;border-spacing:4px;width:100%;table-layout:fixed;
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+table.grid th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;
+letter-spacing:0.5px;padding:4px}
+table.grid td.spot{width:140px;font-weight:700;font-size:13px;text-align:right;padding-right:10px}
+table.grid td.cell{border-radius:6px;border:1px solid var(--border);padding:8px 6px;text-align:center}
+.cell .sc{font-size:15px;font-weight:700;line-height:1.3}
+.cell .sc.num{font-size:18px}
+.cell .det{font-size:11px;opacity:.8}
+.cell .tagline{font-size:10px;margin-top:3px;border-radius:10px;padding:1px 7px;display:inline-block;
+background:rgba(0,0,0,.06);font-weight:600;text-transform:uppercase;letter-spacing:0.3px}
+.dim{color:var(--muted)}.small{font-size:13px}
+.small.dim{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px}
+.card h3{margin:0 0 4px;font-size:14px;font-weight:700;
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.card table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.card td{padding:5px 6px;border-bottom:1px solid var(--border);text-align:left;color:var(--muted)}
+.card th{padding:5px 6px;text-align:left;color:var(--muted);font-weight:600;font-size:11px;
+text-transform:uppercase;letter-spacing:0.5px;border-bottom:2px solid var(--text)}
+.card td b{color:var(--text)}
+.flag{color:var(--amber);font-size:12px}
+.note{background:var(--card-alt);border:1px solid var(--border);border-left:4px solid var(--green);
+border-radius:6px;padding:14px 18px;margin:10px 0;font-size:14px}
+ul{margin:6px 0;padding-left:20px}
+li{margin-bottom:5px;color:var(--muted);font-size:14px}
+li b{color:var(--text)}
+code{font-size:12.5px;background:var(--card-alt);border:1px solid var(--border);
+border-radius:3px;padding:0 4px}
+</style></head><body><div class="wrap">
+
+<h1>🏄 Surf Trip Planner</h1>
+<div class="sub" id="meta"></div>
+
+<h2 style="margin-top:24px">The call</h2>
+<div class="best" id="call"></div>
+<div id="noteBox"></div>
+
+<h2>10-day outlook</h2>
+<table class="grid" id="grid"></table>
+<div class="small dim" style="margin-top:6px" id="legend"></div>
+
+<h2>Day-by-day detail</h2>
+<div class="cards" id="cards"></div>
+
+<h2>Surf diary</h2>
+<p class="small dim" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+Every session you log makes the model smarter — these days ARE the calibration data.
+After any trip (great or skunked), just tell Claude: <i>"log it: &lt;date&gt;, &lt;spot&gt;,
+&lt;how it was&gt;"</i> and the conditions get looked up and added here.</p>
+<div id="diary"></div>
+
+<h2>How this works &amp; gets more accurate</h2>
+<div class="note" id="acc"></div>
+<ul class="small">
+<li><b>Lyre</b> uses our custom entrance model (calibrated on 3 confirmed sessions + 2.5 yrs of
+buoy data). Surfline has no cam or forecaster at the strait, so their rating there is a basic
+height+wind fallback that can't see the swell-angle keyhole — shown only as a footnote.</li>
+<li><b>Westport &amp; Short Sands</b> lean on Surfline's rating as the primary signal — those are
+cam-covered, forecaster-corrected spots where LOTUS embeds decades of observations. Our
+value-add is the <b>clean-mix score</b> (0–10): swell period + groundswell-vs-windwave energy
+fraction + local wind. The working hypothesis (Matt's): <i>unusually good days are the ones
+Surfline calls Fair-or-better while the mix is clean</i> — those get the green "standout" tier.</li>
+<li>Every morning run logs model score, clean score, and groundswell fraction per spot-day.
+As dates pass we compare against buoys (46267, 46211) and your session reports to test the
+standout hypothesis and tune thresholds — changes go through Matt, never silently.</li>
+<li>Surfline "Good"/"Epic" ratings are human-forecaster-assigned and rare — if one appears at
+any spot, that alone is alert-worthy.</li>
+</ul>
+
+<script>
+const D = {"generated": "2026-06-11T19:12+00:00", "surfline_pulled": "2026-06-11T19:10Z", "log_runs": 5, "spots": [{"key": "westport", "name": "Westport (Westhaven / The Jetty)", "kind": "surfline_overlay", "calibration": "Surfline-primary (cam + forecaster-corrected spot); clean-mix overlay finds standout days", "drive": "2:20 drive", "sl_note": "Westport / Westhaven", "days": [{"date": "2026-06-11", "score": null, "clean": 6.0, "wf": 0.8, "am_wind_kt": 4, "am_wind_dir": 182, "night_wind_kt": 4, "best_window": "6am\u20138am", "wind_onset": null, "hs_m": 1.2, "tot_m": 1.1, "period_s": 6.6, "dir_deg": 271, "wind_kt": 10, "wind_dir": 333, "gs_frac": 0.85, "flags": [], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 2.2, "lpT": 18, "lpD": 204, "lpFrac": 0.51, "sf": [3, 4, false], "chopH": 2.6, "chopT": 4, "orgH": 2.2, "orgT": 18, "orgP": 78, "midP": 71, "chopP": 0, "bestH": 2.1, "bestT": 18}, "sf": [3, 4, false], "tier": "GO", "say": "Worth the drive: Surfline says Fair and there's a real 2.1ft @ 18s groundswell underneath (power 78, the day's main engine) \u2014 3-4ft (chest-high) with sets that have push. And it's glassy (4kt morning) \u2014 the diary pattern. Best 6am\u20138am.", "go_kind": "lp", "early": false}, {"date": "2026-06-12", "score": null, "clean": 5.4, "wf": 0.8, "am_wind_kt": 7, "am_wind_dir": 330, "night_wind_kt": 11, "best_window": "9am\u201311am", "wind_onset": null, "hs_m": 0.7, "tot_m": 0.8, "period_s": 6.8, "dir_deg": 269, "wind_kt": 10, "wind_dir": 331, "gs_frac": 0.69, "flags": [], "sl": 2, "sl_name": "Poor\u2013fair", "lp": {"lpH": 2.3, "lpT": 16, "lpD": 205, "lpFrac": 0.48, "sf": [2, 3, true], "chopH": 2.6, "chopT": 7, "orgH": 2.3, "orgT": 16, "orgP": 84, "midP": 31, "chopP": 4, "bestH": 2.3, "bestT": 16}, "sf": [2, 3, true], "tier": "SKIP", "say": "Poor\u2013fair \u2014 2-3+ft (waist-high) mixed windswell.", "go_kind": null, "early": false}, {"date": "2026-06-13", "score": null, "clean": 6.0, "wf": 1.0, "am_wind_kt": 5, "am_wind_dir": 76, "night_wind_kt": 2, "best_window": "7am\u20139am", "wind_onset": "2pm", "hs_m": 0.7, "tot_m": 0.8, "period_s": 5.5, "dir_deg": 300, "wind_kt": 6, "wind_dir": 309, "gs_frac": 0.8, "flags": ["wind ruins it ~2pm"], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 1.7, "lpT": 15, "lpD": 204, "lpFrac": 0.31, "sf": [2, 3, false], "chopH": 3.3, "chopT": 7, "orgH": 1.7, "orgT": 15, "orgP": 25, "midP": 38, "chopP": 23, "bestH": 1.7, "bestT": 15}, "sf": [2, 3, false], "tier": "MAYBE", "say": "Looks tempting (Fair, 5kt morning) but the sea is chop-dominated: 3.3ft @ 7s of wind sea over only 1.7ft of organized swell. Sidewinder risk \u2014 cam-check first.", "go_kind": null, "early": false}, {"date": "2026-06-14", "score": null, "clean": 9.7, "wf": 1.0, "am_wind_kt": 6, "am_wind_dir": 69, "night_wind_kt": 4, "best_window": "9am\u201311am", "wind_onset": "3pm", "hs_m": 0.6, "tot_m": 0.7, "period_s": 10.1, "dir_deg": 261, "wind_kt": 7, "wind_dir": 307, "gs_frac": 0.79, "flags": ["wind ruins it ~3pm"], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 1.5, "lpT": 13, "lpD": 202, "lpFrac": 0.44, "sf": [2, 3, false], "chopH": 3.2, "chopT": 5, "orgH": 2.5, "orgT": 10, "orgP": 67, "midP": 0, "chopP": 13, "bestH": 2.4, "bestT": 10}, "sf": [2, 3, false], "tier": "MAYBE", "say": "Looks tempting (Fair, 6kt morning) but the sea is chop-dominated: 3.2ft @ 5s of wind sea over only 2.5ft of organized swell. Sidewinder risk \u2014 cam-check first.", "go_kind": null, "early": false}, {"date": "2026-06-15", "score": null, "clean": 7.0, "wf": 0.6, "am_wind_kt": 3, "am_wind_dir": 300, "night_wind_kt": 2, "best_window": "12pm\u20132pm", "wind_onset": "3pm", "hs_m": 0.7, "tot_m": 0.9, "period_s": 12.4, "dir_deg": 211, "wind_kt": 8, "wind_dir": 297, "gs_frac": 0.49, "flags": ["mostly short-period wind-wave", "wind ruins it ~3pm"], "sl": 1, "sl_name": "Poor", "lp": {"lpH": 1.8, "lpT": 16, "lpD": 203, "lpFrac": 0.3, "sf": [2, 3, true], "chopH": 4.2, "chopT": 6, "orgH": 1.8, "orgT": 16, "orgP": 34, "midP": 48, "chopP": 23, "bestH": 1.7, "bestT": 16}, "sf": [2, 3, true], "tier": "SKIP", "say": "Poor \u2014 2-3+ft (waist-high) short-period windswell.", "go_kind": null, "early": false}, {"date": "2026-06-16", "score": null, "clean": 5.7, "wf": 0.2, "am_wind_kt": 12, "am_wind_dir": 303, "night_wind_kt": 10, "best_window": "6am\u20138am", "wind_onset": null, "hs_m": 0.7, "tot_m": 1.3, "period_s": 11.2, "dir_deg": 229, "wind_kt": 13, "wind_dir": 298, "gs_frac": 0.31, "flags": ["mostly short-period wind-wave"], "sl": 1, "sl_name": "Poor", "lp": {"lpH": 2.0, "lpT": 15, "lpD": 202, "lpFrac": 0.54, "sf": [3, 4, true], "chopH": 4.8, "chopT": 6, "orgH": 2.0, "orgT": 15, "orgP": 58, "midP": 41, "chopP": 17, "bestH": 1.4, "bestT": 22}, "sf": [3, 4, true], "tier": "SKIP", "say": "Poor \u2014 3-4+ft (chest-high) short-period windswell.", "go_kind": null, "early": false}, {"date": "2026-06-17", "score": null, "clean": 3.8, "wf": 0.2, "am_wind_kt": 8, "am_wind_dir": 295, "night_wind_kt": 9, "best_window": "9am\u201311am", "wind_onset": null, "hs_m": 1.8, "tot_m": 2.2, "period_s": 6.8, "dir_deg": 294, "wind_kt": 11, "wind_dir": 293, "gs_frac": 0.66, "flags": [], "sl": 1, "sl_name": "Poor", "lp": {"lpH": 2.4, "lpT": 19, "lpD": 225, "lpFrac": 0.28, "sf": [4, 5, false], "chopH": 0, "chopT": 0, "orgH": 2.4, "orgT": 19, "orgP": 72, "midP": 319, "chopP": 0, "bestH": 1.9, "bestT": 18}, "sf": [4, 5, false], "tier": "SKIP", "say": "Poor \u2014 4-5ft (head-high) mixed windswell.", "go_kind": null, "early": false}, {"date": "2026-06-18", "score": null, "clean": 2.6, "wf": 0.2, "am_wind_kt": 12, "am_wind_dir": 302, "night_wind_kt": 13, "best_window": "6am\u20138am", "wind_onset": null, "hs_m": 2.0, "tot_m": 2.5, "period_s": 7.4, "dir_deg": 294, "wind_kt": 14, "wind_dir": 300, "gs_frac": 0.61, "flags": [], "sl": 2, "sl_name": "Poor\u2013fair", "lp": {"lpH": 2.5, "lpT": 18, "lpD": 225, "lpFrac": 0.11, "sf": [4, 6, false], "chopH": 0, "chopT": 0, "orgH": 2.5, "orgT": 18, "orgP": 77, "midP": 715, "chopP": 0, "bestH": 2.2, "bestT": 17}, "sf": [4, 6, false], "tier": "SKIP", "say": "Poor\u2013fair \u2014 4-6ft (overhead) mixed windswell.", "go_kind": null, "early": false}, {"date": "2026-06-19", "score": null, "clean": null, "wf": 0.2, "am_wind_kt": 12, "am_wind_dir": 291, "night_wind_kt": 12, "best_window": null, "wind_onset": null, "hs_m": null, "tot_m": null, "period_s": null, "dir_deg": null, "wind_kt": 14, "wind_dir": 291, "gs_frac": null, "flags": ["swell mix from Surfline only (beyond wind-model range)"], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 2.2, "lpT": 16, "lpD": 222, "lpFrac": 0.14, "sf": [4, 5, false], "chopH": 0, "chopT": 0, "orgH": 2.2, "orgT": 16, "orgP": 64, "midP": 451, "chopP": 0, "bestH": 2.1, "bestT": 16}, "sf": [4, 5, false], "tier": "MAYBE", "say": "A maybe: Fair with some 2.1ft @ 16s groundswell underneath but modest power (64 units across fragmented trains) \u2014 4-5ft (head-high), fun if you're already out there; thin for 5 hrs of driving. Heads up: solid size.", "go_kind": null, "early": false}, {"date": "2026-06-20", "score": null, "clean": null, "wf": 1.0, "am_wind_kt": 7, "am_wind_dir": 282, "night_wind_kt": 9, "best_window": null, "wind_onset": null, "hs_m": null, "tot_m": null, "period_s": null, "dir_deg": null, "wind_kt": 7, "wind_dir": 288, "gs_frac": null, "flags": ["swell mix from Surfline only (beyond wind-model range)"], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 2.2, "lpT": 14, "lpD": 219, "lpFrac": 0.15, "sf": [3, 4, true], "chopH": 0, "chopT": 0, "orgH": 2.2, "orgT": 14, "orgP": 50, "midP": 301, "chopP": 0, "bestH": 2.2, "bestT": 14}, "sf": [3, 4, true], "tier": "GO", "say": "Glass GO: Surfline says Fair and the morning is glassy (7kt) over organized swell \u2014 3-4+ft (chest-high) windswell. Both of your best-ever days looked like this. Dawn patrol it. Early call (day 9) \u2014 the swell is credible this far out but surface quality isn't; re-judged every morning.", "go_kind": "glass", "early": true}]}, {"key": "shortsands", "name": "Short Sands (Oswald West, OR)", "kind": "surfline_overlay", "calibration": "Surfline-primary (cam-covered spot); clean-mix overlay finds standout days", "drive": "4 hour drive", "sl_note": "Short Sands", "days": [{"date": "2026-06-11", "score": null, "clean": 6.0, "wf": 1.0, "am_wind_kt": 4, "am_wind_dir": 347, "night_wind_kt": 4, "best_window": "6am\u20138am", "wind_onset": null, "hs_m": 1.2, "tot_m": 1.1, "period_s": 6.7, "dir_deg": 275, "wind_kt": 9, "wind_dir": 347, "gs_frac": 0.88, "flags": [], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 1.7, "lpT": 16, "lpD": 204, "lpFrac": 0.5, "sf": [2, 3, false], "chopH": 2.8, "chopT": 4, "orgH": 1.7, "orgT": 16, "orgP": 72, "midP": 59, "chopP": 0, "bestH": 1.6, "bestT": 17}, "sf": [2, 3, false], "tier": "GO", "say": "Worth the drive: Surfline says Fair and there's a real 1.6ft @ 17s groundswell underneath (power 72, the day's main engine) \u2014 2-3ft (waist-high) with sets that have push. And it's glassy (4kt morning) \u2014 the diary pattern. Best 6am\u20138am.", "go_kind": "lp", "early": false}, {"date": "2026-06-12", "score": null, "clean": 5.1, "wf": 0.93, "am_wind_kt": 8, "am_wind_dir": 32, "night_wind_kt": 8, "best_window": "6am\u20138am", "wind_onset": null, "hs_m": 0.7, "tot_m": 1.0, "period_s": 6.7, "dir_deg": 272, "wind_kt": 10, "wind_dir": 23, "gs_frac": 0.58, "flags": [], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 1.7, "lpT": 16, "lpD": 205, "lpFrac": 0.58, "sf": [2, 3, false], "chopH": 4.5, "chopT": 7, "orgH": 1.7, "orgT": 16, "orgP": 72, "midP": 28, "chopP": 0, "bestH": 1.7, "bestT": 16}, "sf": [2, 3, false], "tier": "MAYBE", "say": "Looks tempting (Fair, 8kt morning) but the sea is chop-dominated: 4.5ft @ 7s of wind sea over only 1.7ft of organized swell. Sidewinder risk \u2014 cam-check first.", "go_kind": null, "early": false}, {"date": "2026-06-13", "score": null, "clean": 5.3, "wf": 1.0, "am_wind_kt": 7, "am_wind_dir": 23, "night_wind_kt": 6, "best_window": "6am\u20138am", "wind_onset": null, "hs_m": 0.8, "tot_m": 1.0, "period_s": 5.0, "dir_deg": 304, "wind_kt": 9, "wind_dir": 22, "gs_frac": 0.49, "flags": ["mostly short-period wind-wave"], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 1.4, "lpT": 14, "lpD": 204, "lpFrac": 0.58, "sf": [3, 4, false], "chopH": 4.8, "chopT": 6, "orgH": 1.4, "orgT": 14, "orgP": 37, "midP": 28, "chopP": 0, "bestH": 1.4, "bestT": 14}, "sf": [3, 4, false], "tier": "MAYBE", "say": "Looks tempting (Fair, 7kt morning) but the sea is chop-dominated: 4.8ft @ 6s of wind sea over only 1.4ft of organized swell. Sidewinder risk \u2014 cam-check first.", "go_kind": null, "early": false}, {"date": "2026-06-14", "score": null, "clean": 8.9, "wf": 1.0, "am_wind_kt": 5, "am_wind_dir": 47, "night_wind_kt": 7, "best_window": "10am\u201312pm", "wind_onset": null, "hs_m": 0.8, "tot_m": 0.8, "period_s": 8.2, "dir_deg": 278, "wind_kt": 8, "wind_dir": 36, "gs_frac": 0.56, "flags": [], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 1.4, "lpT": 13, "lpD": 200, "lpFrac": 0.72, "sf": [2, 3, true], "chopH": 3.8, "chopT": 5, "orgH": 2.0, "orgT": 10, "orgP": 44, "midP": 0, "chopP": 2, "bestH": 1.4, "bestT": 13}, "sf": [2, 3, true], "tier": "MAYBE", "say": "Looks tempting (Fair, 5kt morning) but the sea is chop-dominated: 3.8ft @ 5s of wind sea over only 2.0ft of organized swell. Sidewinder risk \u2014 cam-check first.", "go_kind": null, "early": false}, {"date": "2026-06-15", "score": null, "clean": 7.6, "wf": 0.87, "am_wind_kt": 9, "am_wind_dir": 15, "night_wind_kt": 7, "best_window": "2pm\u20134pm", "wind_onset": null, "hs_m": 0.6, "tot_m": 0.8, "period_s": 9.4, "dir_deg": 258, "wind_kt": 11, "wind_dir": 185, "gs_frac": 0.54, "flags": [], "sl": 2, "sl_name": "Poor\u2013fair", "lp": {"lpH": 1.4, "lpT": 16, "lpD": 201, "lpFrac": 0.59, "sf": [2, 3, true], "chopH": 4.1, "chopT": 6, "orgH": 1.4, "orgT": 16, "orgP": 36, "midP": 28, "chopP": 2, "bestH": 1.3, "bestT": 16}, "sf": [2, 3, true], "tier": "SKIP", "say": "Poor\u2013fair \u2014 2-3+ft (waist-high) mixed windswell.", "go_kind": null, "early": false}, {"date": "2026-06-16", "score": null, "clean": 5.7, "wf": 1.0, "am_wind_kt": 8, "am_wind_dir": 185, "night_wind_kt": 8, "best_window": "6am\u20138am", "wind_onset": null, "hs_m": 0.7, "tot_m": 1.1, "period_s": 7.5, "dir_deg": 277, "wind_kt": 9, "wind_dir": 351, "gs_frac": 0.51, "flags": [], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 1.7, "lpT": 15, "lpD": 200, "lpFrac": 0.78, "sf": [3, 4, true], "chopH": 3.7, "chopT": 6, "orgH": 2.6, "orgT": 10, "orgP": 89, "midP": 24, "chopP": 0, "bestH": 1.6, "bestT": 21}, "sf": [3, 4, true], "tier": "MAYBE", "say": "Looks tempting (Fair, 8kt morning) but the sea is chop-dominated: 3.7ft @ 6s of wind sea over only 2.6ft of organized swell. Sidewinder risk \u2014 cam-check first.", "go_kind": null, "early": false}, {"date": "2026-06-17", "score": null, "clean": 4.9, "wf": 0.93, "am_wind_kt": 8, "am_wind_dir": 351, "night_wind_kt": 7, "best_window": "7am\u20139am", "wind_onset": null, "hs_m": 1.8, "tot_m": 2.2, "period_s": 6.6, "dir_deg": 301, "wind_kt": 10, "wind_dir": 342, "gs_frac": 0.63, "flags": [], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 2.3, "lpT": 19, "lpD": 222, "lpFrac": 0.93, "sf": [4, 6, false], "chopH": 5.2, "chopT": 7, "orgH": 2.3, "orgT": 19, "orgP": 159, "midP": 17, "chopP": 0, "bestH": 2.1, "bestT": 18}, "sf": [4, 6, false], "tier": "MAYBE", "say": "Looks tempting (Fair, 8kt morning) but the sea is chop-dominated: 5.2ft @ 7s of wind sea over only 2.3ft of organized swell. Sidewinder risk \u2014 cam-check first.", "go_kind": null, "early": false}, {"date": "2026-06-18", "score": null, "clean": 5.3, "wf": 0.93, "am_wind_kt": 10, "am_wind_dir": 345, "night_wind_kt": 9, "best_window": "6am\u20138am", "wind_onset": null, "hs_m": 2.3, "tot_m": 2.5, "period_s": 7.2, "dir_deg": 305, "wind_kt": 10, "wind_dir": 339, "gs_frac": 0.75, "flags": [], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 2.5, "lpT": 18, "lpD": 221, "lpFrac": 0.5, "sf": [6, 8, false], "chopH": 0, "chopT": 0, "orgH": 2.5, "orgT": 18, "orgP": 173, "midP": 177, "chopP": 0, "bestH": 2.2, "bestT": 17}, "sf": [6, 8, false], "tier": "MAYBE", "say": "Real swell but over the cove's ~6ft closeout ceiling \u2014 6-8ft (overhead). Likely walled; Westport handles this size better.", "go_kind": null, "early": false}, {"date": "2026-06-19", "score": null, "clean": null, "wf": 1.0, "am_wind_kt": 7, "am_wind_dir": 324, "night_wind_kt": 9, "best_window": null, "wind_onset": null, "hs_m": null, "tot_m": null, "period_s": null, "dir_deg": null, "wind_kt": 8, "wind_dir": 319, "gs_frac": null, "flags": ["swell mix from Surfline only (beyond wind-model range)"], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 2.3, "lpT": 16, "lpD": 219, "lpFrac": 0.4, "sf": [5, 7, false], "chopH": 0, "chopT": 0, "orgH": 2.3, "orgT": 16, "orgP": 131, "midP": 184, "chopP": 0, "bestH": 2.2, "bestT": 16}, "sf": [5, 7, false], "tier": "MAYBE", "say": "Real swell but over the cove's ~6ft closeout ceiling \u2014 5-7ft (overhead). Likely walled; Westport handles this size better.", "go_kind": null, "early": false}, {"date": "2026-06-20", "score": null, "clean": null, "wf": 1.0, "am_wind_kt": 5, "am_wind_dir": 320, "night_wind_kt": 5, "best_window": null, "wind_onset": null, "hs_m": null, "tot_m": null, "period_s": null, "dir_deg": null, "wind_kt": 7, "wind_dir": 323, "gs_frac": null, "flags": ["swell mix from Surfline only (beyond wind-model range)"], "sl": 3, "sl_name": "Fair", "lp": {"lpH": 2.3, "lpT": 14, "lpD": 216, "lpFrac": 0.43, "sf": [4, 6, false], "chopH": 0, "chopT": 0, "orgH": 2.3, "orgT": 14, "orgP": 99, "midP": 117, "chopP": 0, "bestH": 2.2, "bestT": 14}, "sf": [4, 6, false], "tier": "GO", "say": "Worth the drive: Surfline says Fair and there's a real 2.2ft @ 14s groundswell underneath (power 99, the day's main engine) \u2014 4-6ft (overhead) with sets that have push. And it's glassy (5kt morning) \u2014 the diary pattern. Heads up: solid size. Early call (day 9) \u2014 the swell is credible this far out but surface quality isn't; re-judged every morning.", "go_kind": "lp", "early": true}]}, {"key": "lyre", "name": "Lyre (Strait of Juan de Fuca)", "kind": "entrance", "calibration": "Calibrated on 3 confirmed sessions + 2.5yr buoy hindcast", "drive": "2:40 drive", "sl_note": "Crescent Beach (nearest Surfline spot to Lyre)", "days": [{"date": "2026-06-11", "score": 0.0, "clean": null, "best_window": "8am", "hs_m": 1.2, "tot_m": 1.1, "period_s": 6.5, "dir_deg": 260, "wind_kt": 6, "wind_dir": 314, "gs_frac": 0.9, "flags": ["short-period: likely windswell, low confidence"], "sl": 1, "sl_name": "Poor", "lp": null, "sf": [0, 1, false], "tier": "SKIP", "say": "Strait stays flat \u2014 swell angle or size doesn't get through the entrance.", "go_kind": null, "early": false}, {"date": "2026-06-12", "score": 0.0, "clean": null, "best_window": "8am", "hs_m": 0.9, "tot_m": 0.9, "period_s": 5.7, "dir_deg": 270, "wind_kt": 4, "wind_dir": 316, "gs_frac": 0.95, "flags": ["short-period: likely windswell, low confidence"], "sl": 1, "sl_name": "Poor", "lp": null, "sf": [0, 1, false], "tier": "SKIP", "say": "Strait stays flat \u2014 swell angle or size doesn't get through the entrance.", "go_kind": null, "early": false}, {"date": "2026-06-13", "score": 0.0, "clean": null, "best_window": "8am", "hs_m": 1.0, "tot_m": 0.9, "period_s": 5.0, "dir_deg": 283, "wind_kt": 5, "wind_dir": 55, "gs_frac": 0.86, "flags": ["short-period: likely windswell, low confidence"], "sl": 2, "sl_name": "Poor\u2013fair", "lp": null, "sf": [0, 1, false], "tier": "SKIP", "say": "Strait stays flat \u2014 swell angle or size doesn't get through the entrance.", "go_kind": null, "early": false}, {"date": "2026-06-14", "score": 0.3, "clean": null, "best_window": "10am", "hs_m": 0.8, "tot_m": 0.7, "period_s": 8.2, "dir_deg": 267, "wind_kt": 4, "wind_dir": 58, "gs_frac": 0.92, "flags": ["short-period: likely windswell, low confidence"], "sl": 2, "sl_name": "Poor\u2013fair", "lp": null, "sf": [0, 1, false], "tier": "SKIP", "say": "Strait stays flat \u2014 swell angle or size doesn't get through the entrance.", "go_kind": null, "early": false}, {"date": "2026-06-15", "score": 0.0, "clean": null, "best_window": "8am", "hs_m": 0.8, "tot_m": 1.1, "period_s": 7.5, "dir_deg": 264, "wind_kt": 2, "wind_dir": 273, "gs_frac": 0.58, "flags": ["short-period: likely windswell, low confidence"], "sl": 2, "sl_name": "Poor\u2013fair", "lp": null, "sf": [0, 1, false], "tier": "SKIP", "say": "Strait stays flat \u2014 swell angle or size doesn't get through the entrance.", "go_kind": null, "early": false}, {"date": "2026-06-16", "score": 0.0, "clean": null, "best_window": "8am", "hs_m": 1.5, "tot_m": 1.6, "period_s": 10.8, "dir_deg": 218, "wind_kt": 9, "wind_dir": 288, "gs_frac": 0.33, "flags": ["short-period: likely windswell, low confidence"], "sl": 2, "sl_name": "Poor\u2013fair", "lp": null, "sf": [0, 1, false], "tier": "SKIP", "say": "Strait stays flat \u2014 swell angle or size doesn't get through the entrance.", "go_kind": null, "early": false}, {"date": "2026-06-17", "score": 0.6, "clean": null, "best_window": "9am", "hs_m": 2.3, "tot_m": 2.3, "period_s": 6.5, "dir_deg": 280, "wind_kt": 4, "wind_dir": 287, "gs_frac": 0.82, "flags": ["short-period: likely windswell, low confidence"], "sl": 3, "sl_name": "Fair", "lp": null, "sf": [1, 2, false], "tier": "SKIP", "say": "Strait stays flat \u2014 swell angle or size doesn't get through the entrance.", "go_kind": null, "early": false}, {"date": "2026-06-18", "score": 0.9, "clean": null, "best_window": "9pm", "hs_m": 2.5, "tot_m": 2.5, "period_s": 7.2, "dir_deg": 277, "wind_kt": 5, "wind_dir": 250, "gs_frac": 0.71, "flags": ["short-period: likely windswell, low confidence"], "sl": null, "sl_name": null, "lp": null, "sf": null, "tier": "SKIP", "say": "Strait stays flat \u2014 swell angle or size doesn't get through the entrance.", "go_kind": null, "early": false}]}], "week_call": "Plan a trip: Westport TODAY (6am\u20138am); Short Sands TODAY (6am\u20138am); Short Sands Saturday.", "gos": [{"spot": "Westport", "date": "2026-06-11", "say": "Worth the drive: Surfline says Fair and there's a real 2.1ft @ 18s groundswell underneath (power 78, the day's main engine) \u2014 3-4ft (chest-high) with sets that have push. And it's glassy (4kt morning) \u2014 the diary pattern. Best 6am\u20138am.", "window": "6am\u20138am", "tier": "GO", "kind": "lp"}, {"spot": "Short Sands", "date": "2026-06-11", "say": "Worth the drive: Surfline says Fair and there's a real 1.6ft @ 17s groundswell underneath (power 72, the day's main engine) \u2014 2-3ft (waist-high) with sets that have push. And it's glassy (4kt morning) \u2014 the diary pattern. Best 6am\u20138am.", "window": "6am\u20138am", "tier": "GO", "kind": "lp"}, {"spot": "Short Sands", "date": "2026-06-20", "say": "Worth the drive: Surfline says Fair and there's a real 2.2ft @ 14s groundswell underneath (power 99, the day's main engine) \u2014 4-6ft (overhead) with sets that have push. And it's glassy (5kt morning) \u2014 the diary pattern. Heads up: solid size. Early call (day 9) \u2014 the swell is credible this far out but surface quality isn't; re-judged every morning.", "window": null, "tier": "GO", "kind": "lp"}], "glass_summary": "Westport Saturday 6/20", "maybes": [{"spot": "Westport", "date": "2026-06-13", "say": "Looks tempting (Fair, 5kt morning) but the sea is chop-dominated: 3.3ft @ 7s of wind sea over only 1.7ft of organized swell. Sidewinder risk \u2014 cam-check first.", "window": "7am\u20139am", "tier": "MAYBE", "kind": null}, {"spot": "Westport", "date": "2026-06-14", "say": "Looks tempting (Fair, 6kt morning) but the sea is chop-dominated: 3.2ft @ 5s of wind sea over only 2.5ft of organized swell. Sidewinder risk \u2014 cam-check first.", "window": "9am\u201311am", "tier": "MAYBE", "kind": null}, {"spot": "Westport", "date": "2026-06-19", "say": "A maybe: Fair with some 2.1ft @ 16s groundswell underneath but modest power (64 units across fragmented trains) \u2014 4-5ft (head-high), fun if you're already out there; thin for 5 hrs of driving. Heads up: solid size.", "window": null, "tier": "MAYBE", "kind": null}], "note": "Best bets this stretch: today at Westport (the 18s southern groundswell is in the water \u2014 that's what the cam is showing), Sunday at Westport (a clean 10s W pulse, the classic mid-period band that beachbreaks love), and Saturday the 20th at both spots as the SW event mellows to friendly size. The weekend chop story matters: Friday through Sunday a 3-5ft short-period sea runs over modest groundswell, so several glassy-looking mornings are flagged \"chop-dominated\" \u2014 light wind won't save a jumbled sea (this is the sidewinder pattern that ruins paper-perfect days). The big Wed-Fri SW swell pushes Short Sands past its ~6ft closeout ceiling \u2014 Westport handles that size better. Lyre stays flat; strait season returns in fall.", "diary": [{"date": "2025-10-21", "spot": "lyre", "verdict": "good", "notes": "Confirmed good session", "cond": {"surfline": "Fair-good at Crescent \u2014 Surfline's highest rating of that entire year", "swell": "Angeles Pt: 1.17m @ 10.5s from 302\u00b0; entrance 13-16s westerly", "wind": "6.2kt", "lesson": "Both systems agreed \u2014 high-confidence pattern."}}, {"date": "2025-09-11", "spot": "westport", "verdict": "standout", "notes": "Standout day (Matt)", "cond": {"surfline": "Fair from 8am on; surf 2-3ft", "swell": "2.5ft @ 11s W + 1.6ft @ 15s SSW morning; new 1.8ft @ 17s W filled in by afternoon (46211 buoy: dominant period 16.7s, Hs 1.2m)", "wind": "4kt NW morning, 7kt max (marina station: 4.3kt median)", "lesson": "Modest LP by forecast (power ~38, below the GO gate) but glassy + real groundswell arriving \u2014 the buoy saw what the forecast underplayed."}}, {"date": "2025-07-24", "spot": "shortsands", "verdict": "epic", "notes": "One of the best days ever (Matt)", "cond": {"surfline": "Fair all morning; surf 2-3ft", "swell": "3.5ft @ 8s NW (305\u00b0) windswell + small 0.8ft @ 15s SW \u2014 almost NO long-period energy", "wind": "GLASSY: 2kt morning, 7kt day max", "lesson": "Best-ever day fails the LP gate \u2014 at this protected cove, clean organized NW windswell + glass = magic. Wind is the gate here, not period."}}, {"date": "2024-10-02", "spot": "lyre", "verdict": "epic", "notes": "Confirmed good session \u2014 biggest of the Lyre anchors", "cond": {"surfline": "(predates rating pull)", "swell": "Angeles Pt: 1.57m @ 12.5s from 298\u00b0; entrance buoy 4.5m @ 14s westerly \u2014 textbook Gulf-of-Alaska groundswell threading the strait", "wind": "2.9kt \u2014 glassy", "lesson": "The model's epic benchmark (score 9.9)."}}, {"date": "2024-09-18", "spot": "westport", "verdict": "good", "notes": "Glassy clean session \u2014 calibration anchor for the Westport model", "cond": {"surfline": "(not pulled)", "swell": "46211 buoy: 1.33m @ 9.5s, ~2m faces, 7 good hours", "wind": "~8kt median \u2014 clean", "lesson": "Mid-period day, no big LP train; calibration anchor for the original Westport model."}}, {"date": "2024-02-07", "spot": "lyre", "verdict": "good", "notes": "Confirmed good session (smallest of the three Lyre anchors)", "cond": {"surfline": "(46087 wave sensor down that day)", "swell": "Angeles Pt: 0.81m @ 11.8s from 300\u00b0 \u2014 small but long-period and clean", "wind": "2.9kt \u2014 glassy", "lesson": "Smallest confirmed-good Lyre day; sets the floor: 0.65m @ 9.5s+ in the 282-308\u00b0 window."}}]};
+const fmtDay = d => new Date(d+'T12:00').toLocaleDateString('en-US',{weekday:'short'});
+const fmtDate = d => new Date(d+'T12:00').toLocaleDateString('en-US',{month:'short',day:'numeric'});
+const compass = x => ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][Math.round(x/22.5)%16];
+
+const lyreStyle = s => s>=8?['#ead6f8','var(--purple)']:s>=6?['#d4edda','var(--green)']:
+  s>=4.5?['#d6eaf8','var(--blue)']:s>=3?['#fff3cd','var(--amber)']:['#f5f5f5','var(--light)'];
+
+// Westport / Short Sands cells are colored by the python-computed verdict tier
+function overlayTier(d) {
+  if (d.tier==='GO' && d.sl>=5) return {bg:'#ead6f8', fg:'var(--purple)', tag:'forecaster call!'};
+  if (d.tier==='GO' && d.early) return {bg:'#d4edda', fg:'var(--green)', tag:'early call'};
+  if (d.tier==='GO' && d.say.startsWith('Glass'))
+    return {bg:'#d4edda', fg:'var(--green)', tag:'glass go'};
+  if (d.tier==='GO') return {bg:'#d4edda', fg:'var(--green)', tag:'worth the drive'};
+  if (d.tier==='MAYBE') return {bg:'#d6eaf8', fg:'var(--blue)', tag:null};
+  if (d.sl!=null && d.sl>=3) return {bg:'#fff3cd', fg:'var(--amber)', tag:'junk fair'};
+  return {bg:'#f5f5f5', fg:'var(--light)', tag:null};
+}
+
+document.getElementById('meta').textContent =
+  `Models run ${new Date(D.generated).toLocaleString()} · Surfline pulled ${D.surfline_pulled ? new Date(D.surfline_pulled).toLocaleString() : 'n/a'} · morning run #${D.log_runs}`;
+
+const dates = [...new Set(D.spots.flatMap(s=>s.days.map(d=>d.date)))].sort().slice(0,10);
+
+// The call: plain-English verdict block
+let callHtml = `<div style="font-size:17px;margin-bottom:${(D.gos.length+D.maybes.length)?'12px':'0'}"><b>${D.week_call}</b></div>`;
+if (D.gos.length) callHtml += D.gos.map(g=>
+  `<div style="margin:6px 0"><span style="color:var(--green);font-weight:700">GO</span> —
+   <b>${g.spot} ${fmtDay(g.date)} ${fmtDate(g.date)}</b>: ${g.say}</div>`).join('');
+if (D.glass_summary) callHtml +=
+  `<div style="margin:6px 0"><span style="color:var(--green);font-weight:700">GLASS</span> —
+   glassy mornings (Fair + ≤7kt, the best-ever-day pattern): <b>${D.glass_summary}</b>.
+   Small but clean — dawn patrol material, see the grid for sizes.</div>`;
+if (D.maybes.length) callHtml += D.maybes.map(m=>
+  `<div style="margin:6px 0"><span style="color:var(--blue);font-weight:700">MAYBE</span> —
+   <b>${m.spot} ${fmtDay(m.date)} ${fmtDate(m.date)}</b>: ${m.say}</div>`).join('');
+document.getElementById('call').innerHTML = callHtml;
+if (D.note) document.getElementById('noteBox').innerHTML =
+  `<div class="note" style="border-left-color:var(--blue)"><b>Forecaster's note:</b> ${D.note}</div>`;
+
+// grid
+let g = '<tr><th></th>' + dates.map(d=>`<th>${fmtDay(d)}<br>${fmtDate(d)}</th>`).join('') + '</tr>';
+for (const s of D.spots) {
+  g += `<tr><td class="spot">${s.name.split(' (')[0]}
+    ${s.drive?`<div style="font-weight:400;font-size:11px;color:var(--light)">${s.drive}</div>`:''}</td>`;
+  for (const dt of dates) {
+    const d = s.days.find(x=>x.date===dt);
+    if (!d) { g += '<td class="cell" style="background:#f5f5f5;color:var(--light)">—</td>'; continue; }
+    if (s.key==='lyre') {
+      const [bg,fg] = lyreStyle(d.score);
+      g += `<td class="cell" style="background:${bg};color:${fg}" title="${d.flags.join('; ')}">
+        <div class="sc num">${d.score}</div>
+        <div class="det">${(d.hs_m*3.28).toFixed(0)}ft·${d.period_s}s·${d.wind_kt}kt</div>
+        ${d.sl_name?`<div class="tagline">SL: ${d.sl_name}${d.sf?` · ${d.sf[0]}-${d.sf[1]}ft`:''}</div>`:''}</td>`;
+    } else {
+      const t = overlayTier(d);
+      const lpline = d.lp ? (d.lp.orgP>=30 ? `${d.lp.bestH}ft@${d.lp.bestT}s · pwr ${d.lp.orgP}`
+                          : 'weak LP swell') : 'beyond SL pull';
+      const sf = d.sf ? `${d.sf[0]}-${d.sf[1]}${d.sf[2]?'+':''}ft` : null;
+      g += `<td class="cell" style="background:${t.bg};color:${t.fg}" title="${d.flags.join('; ')}">
+        <div class="sc">${d.sl_name??'—'}</div>
+        ${sf?`<div class="det" style="font-weight:700;opacity:.95">${sf}</div>`:''}
+        <div class="det">${lpline} · ${d.wind_kt}kt</div>
+        ${t.tag?`<div class="tagline">${t.tag}</div>`:''}</td>`;
+    }
+  }
+  g += '</tr>';
+}
+document.getElementById('grid').innerHTML = g;
+
+document.getElementById('legend').innerHTML =
+  `<b>Lyre row:</b> our model score 0–10 (best 3-hr window). <b>Westport/Short Sands rows:</b>
+  Surfline's rating with the long-period (LP) swell train beneath — the worth-the-drive
+  discriminator. Green = GO, two ways: <b>worth the drive</b> (Surfline Fair+ AND a real 12s+
+  groundswell train) or <b>glass go</b> (Surfline Fair+ AND morning wind ≤7kt — the pattern of
+  both best-ever diary days) · blue = maybe (modest LP energy) · amber = "junk fair" (Fair
+  rating but windswell-only and windy) · gray = poor · purple = human forecaster called
+  Good/Epic.`;
+
+// detail cards
+document.getElementById('cards').innerHTML = D.spots.map(s=>`
+ <div class="card"><h3>${s.name}</h3>
+ <div class="small dim">${s.calibration} · Surfline ref: ${s.sl_note}</div>
+ <table><tr><th>Day</th><th>Call</th><th>${s.key==='lyre'?'Score':'Surfline'}</th><th>Surf</th><th>${s.key==='lyre'?'Surfline':'LP train'}</th><th>Wind</th></tr>
+ ${s.days.map(d=>`<tr><td>${fmtDay(d.date)} ${fmtDate(d.date)}</td>
+   <td><b style="color:${d.tier==='GO'?'var(--green)':d.tier==='MAYBE'?'var(--blue)':'var(--light)'}">${d.tier}</b></td>
+   <td><b>${s.key==='lyre'?d.score:(d.sl_name??'—')}</b>${d.best_window?' <span class="dim">'+d.best_window+'</span>':''}</td>
+   <td>${d.sf?`<b>${d.sf[0]}-${d.sf[1]}${d.sf[2]?'+':''}ft</b>`:'—'}</td>
+   <td>${s.key==='lyre'?(d.sl_name??'—'):(d.lp&&d.lp.bestH?'<b>'+d.lp.bestH+'ft @ '+d.lp.bestT+'s</b> <span class="dim">pwr '+(d.lp.orgP??'—')+'</span>':'—')}</td>
+   <td>${d.wind_kt}kt ${compass(d.wind_dir)}</td></tr>
+   <tr><td></td><td colspan="5" class="dim" style="font-size:12px;border-bottom:1px solid var(--border)">${d.say}</td></tr>`).join('')}
+ </table></div>`).join('');
+
+// surf diary
+const SPOTN = {lyre:'Lyre', westport:'Westport', shortsands:'Short Sands'};
+const vColor = v => v==='epic'?'var(--purple)':v==='standout'?'var(--purple)':v==='good'?'var(--green)':v==='skunk'?'var(--red)':'var(--muted)';
+document.getElementById('diary').innerHTML = (D.diary||[]).map(e=>`
+ <div class="card" style="margin-bottom:12px">
+  <h3><span style="color:${vColor(e.verdict)};text-transform:uppercase;font-size:12px;letter-spacing:0.5px">${e.verdict}</span>
+   &nbsp;${SPOTN[e.spot]||e.spot} — ${new Date(e.date+'T12:00').toLocaleDateString('en-US',{weekday:'short',month:'long',day:'numeric',year:'numeric'})}</h3>
+  <div class="small dim" style="font-family:Georgia,serif;font-style:italic">${e.notes||''}</div>
+  ${e.cond?`<table style="margin-top:8px">
+    <tr><td style="width:90px;color:var(--light)">Surfline</td><td>${e.cond.surfline}</td></tr>
+    <tr><td style="color:var(--light)">Swell</td><td>${e.cond.swell}</td></tr>
+    <tr><td style="color:var(--light)">Wind</td><td>${e.cond.wind}</td></tr>
+    <tr><td style="color:var(--light)">Lesson</td><td><b>${e.cond.lesson}</b></td></tr></table>`
+   :'<div class="small dim">conditions not yet looked up</div>'}
+ </div>`).join('');
+
+document.getElementById('acc').innerHTML =
+  `<b>${D.log_runs} morning run${D.log_runs===1?'':'s'} logged.</b> Each run records model score,
+  clean-mix score, and groundswell fraction for every spot-day to
+  <code>data/forecast_log_master.csv</code>. The standout hypothesis (Surfline Fair+ AND clean
+  mix = unusually good) is tested against buoy actuals and Matt's session reports as history
+  accumulates.`;
+</script>
+</div></body></html>
