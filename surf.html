@@ -98,37 +98,6 @@ After any trip (great or skunked), just tell Claude: <i>"log it: &lt;date&gt;, &
 &lt;how it was&gt;"</i> and the conditions get looked up and added here.</p>
 <div id="diary"></div>
 
-<h2>How this works &amp; gets more accurate</h2>
-<div class="note" id="acc"></div>
-<ul class="small">
-<li><b>The Strait</b> uses our custom entrance model (calibrated on 3 confirmed sessions + 2.5 yrs of
-buoy data). Surfline has no cam or forecaster at the strait, so their rating there is a basic
-height+wind fallback that can't see the swell-angle keyhole — shown only as a footnote.</li>
-<li><b>Westport &amp; Short Sands</b> lean on Surfline's rating as the primary signal — those are
-cam-covered, forecaster-corrected spots where LOTUS embeds decades of observations. Our
-value-add is the <b>clean-mix score</b> (0–10): swell period + groundswell-vs-windwave energy
-fraction + local wind. The working hypothesis (Matt's): <i>unusually good days are the ones
-Surfline calls Fair-or-better while the mix is clean</i> — those get the green "standout" tier.</li>
-<li>Every morning run logs model score, clean score, and groundswell fraction per spot-day.
-As dates pass we compare against buoys (46267, 46211) and your session reports to test the
-standout hypothesis and tune thresholds — changes go through Matt, never silently.</li>
-<li><b>Reading the swell mix</b> (the bar under each day — data Surfline computes but hides):
-dark blue = organized groundswell (10s+, the "engine"), light blue = windswell (8–9s, the
-wave-count workhorse), gray = short-period chop <b>aligned</b> with the engine, yellow =
-chop <b>crossing</b> it. One segment per train (gaps separate them — two groundswells show as
-two dark-blue segments). The bar is <b>power</b>-weighted, so tall chop shows as a sliver on
-purpose: a 3ft @ 5s sea carries almost no wave-making energy — its threat is texture and a
-tough paddle, which is what the ⚠ labels track. Why alignment matters: all the trains share
-the same water. Chop
-moving the <i>same direction</i> as the main swell rides along with it — bumps on otherwise
-organized waves, annoying but surfable. Chop crossing at 30°+ runs <i>diagonally across
-the faces</i> — every wave corkscrews, sections shift sideways, and the paddle-out is
-relentless because there's no rhythm between trains. Same chop height, completely different
-day. A 2.5ft+ short-period sea also means a tough paddle-out regardless of alignment.</li>
-<li>Surfline "Good"/"Epic" ratings are human-forecaster-assigned and rare — if one appears at
-any spot, that alone is alert-worthy.</li>
-</ul>
-
 <h2 id="methodology">Forecasting methodology</h2>
 <p class="small dim" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
 The full spec of every model on this page — written to be reviewed and argued with. All
@@ -210,7 +179,29 @@ aligned chop just rides the same waves as bumps. Plus: Short Sands is exempt (pr
 <li><b>Calibration:</b> all thresholds were backtested against Surfline's day-by-day
 summer-2025 archive, set so GOs land around 5–9 days/month per spot and both diary anchor
 days survive every gate.</li>
-<li><b>Override:</b> a human-forecaster Good/Epic rating is an automatic GO, no gates.</li>
+<li><b>Override:</b> a human-forecaster Good/Epic rating is an automatic GO, no gates —
+Surfline "Good"/"Epic" is human-assigned and rare, so its appearance is alert-worthy by
+itself.</li>
+</ul>
+</details>
+
+<details class="meth">
+<summary><b>Reading the swell-mix bar</b> — the per-train display under each day</summary>
+<ul class="small">
+<li>The bar shows Surfline's per-train decomposition (data they compute but don't display):
+<b>dark blue</b> = organized groundswell (10s+, the "engine"), <b>light blue</b> = windswell
+(8–9s, the wave-count workhorse), <b>gray</b> = short-period chop <b>aligned</b> with the
+engine, <b>yellow</b> = chop <b>crossing</b> it. One segment per train — gaps separate them,
+so two groundswells show as two dark-blue segments.</li>
+<li>The bar is <b>power</b>-weighted, so tall chop shows as a sliver on purpose: a 3ft @ 5s
+sea carries almost no wave-making energy — its threat is texture and a tough paddle, which is
+what the ⚠ labels track.</li>
+<li><b>Why alignment matters:</b> all the trains share the same water. Chop moving the
+<i>same direction</i> as the main swell rides along with it — bumps on otherwise organized
+waves, annoying but surfable. Chop crossing at 30°+ runs <i>diagonally across the faces</i> —
+every wave corkscrews, sections shift sideways, and the paddle-out is relentless because
+there's no rhythm between trains. Same chop height, completely different day. A 2.5ft+
+short-period sea also means a tough paddle-out regardless of alignment.</li>
 </ul>
 </details>
 
@@ -235,8 +226,10 @@ clear → &gt;15 heavy bloom), blended back toward climatology over 6 days.</li>
 <summary><b>Verification loop &amp; known limitations</b></summary>
 <ul class="small">
 <li>Every morning run logs each spot-day's scores append-only; verdicts are graded against
-buoy actuals weekly and against observed surfers (cam census + sightings) — that's the
-accuracy table above. Threshold changes only happen through review, never automatically.</li>
+buoy actuals (46211 Grays Harbor, 46267 Angeles Point) weekly and against observed surfers
+(cam census + session reports) — that's the accuracy table above. Threshold changes only
+happen through review, never automatically.</li>
+<li id="acc"></li>
 <li><b>Honest limitations:</b> the power thresholds rest on one summer's backtest; the cam
 surfer-counter is still an uncalibrated index; the strait model is calibrated on only three
 confirmed sessions; wave-model skill degrades past ~day 5 (mitigated by re-running daily —
@@ -424,10 +417,8 @@ document.getElementById('diary').innerHTML = (D.diary||[]).map(e=>`
  </div>`).join('');
 
 document.getElementById('acc').innerHTML =
-  `<b>${D.log_runs} morning run${D.log_runs===1?'':'s'} logged.</b> Each run records model score,
-  clean-mix score, and groundswell fraction for every spot-day to
-  <code>data/forecast_log_master.csv</code>. The standout hypothesis (Surfline Fair+ AND clean
-  mix = unusually good) is tested against buoy actuals and Matt's session reports as history
-  accumulates.`;
+  `<b>${D.log_runs} morning run${D.log_runs===1?'':'s'} logged so far</b> — each one records
+  model score, clean-mix score, and groundswell fraction for every spot-day to
+  <code>data/forecast_log_master.csv</code>.`;
 </script>
 </div></body></html>
