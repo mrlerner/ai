@@ -104,7 +104,11 @@ standout hypothesis and tune thresholds — changes go through Matt, never silen
 <li><b>Reading the swell mix</b> (the bar under each day — data Surfline computes but hides):
 dark blue = organized groundswell (10s+, the "engine"), light blue = windswell (8–9s, the
 wave-count workhorse), gray = short-period chop <b>aligned</b> with the engine, yellow =
-chop <b>crossing</b> it. Why alignment matters: all the trains share the same water. Chop
+chop <b>crossing</b> it. One segment per train (gaps separate them — two groundswells show as
+two dark-blue segments). The bar is <b>power</b>-weighted, so tall chop shows as a sliver on
+purpose: a 3ft @ 5s sea carries almost no wave-making energy — its threat is texture and a
+tough paddle, which is what the ⚠ labels track. Why alignment matters: all the trains share
+the same water. Chop
 moving the <i>same direction</i> as the main swell rides along with it — bumps on otherwise
 organized waves, annoying but surfable. Chop crossing at 30°+ runs <i>diagonally across
 the faces</i> — every wave corkscrews, sections shift sideways, and the paddle-out is
@@ -229,7 +233,7 @@ function mixHtml(d) {
   };
   const paddle = (d.lp.chopH||0) >= 2.5 ? ' · <b>tough paddle-out</b> (' + d.lp.chopH + 'ft sea)' : '';
   return `<tr><td></td><td colspan="5" style="border-bottom:1px solid var(--border);padding:6px">
-    <div style="display:flex;height:9px;border-radius:4px;overflow:hidden;margin-bottom:3px">${tr.map(seg).join('')}</div>
+    <div style="display:flex;gap:2px;height:9px;border-radius:4px;overflow:hidden;margin-bottom:3px">${tr.map(seg).join('')}</div>
     <div class="dim" style="font-size:11.5px">${tr.map(chip).join(' &nbsp;·&nbsp; ')}${paddle}</div></td></tr>`;
 }
 
