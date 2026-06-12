@@ -52,6 +52,13 @@ li{margin-bottom:5px;color:var(--muted);font-size:14px}
 li b{color:var(--text)}
 code{font-size:12.5px;background:var(--card-alt);border:1px solid var(--border);
 border-radius:3px;padding:0 4px}
+table.hday{border-collapse:collapse;font-size:12.5px;width:100%}
+.hday th,.hday td{padding:5px 7px;text-align:center;min-width:84px;
+border-bottom:1px solid var(--border);font-weight:400}
+.hday tr:last-child th,.hday tr:last-child td{border-bottom:none}
+.hday th{color:var(--muted);font-weight:600;font-size:11px}
+.hday th.rl{text-align:left;position:sticky;left:0;background:var(--card);min-width:88px;
+text-transform:uppercase;letter-spacing:0.5px;z-index:1}
 .meth{margin:10px 0;border:1px solid var(--border);border-radius:8px;
 padding:12px 16px;background:var(--card-alt)}
 .meth h3{margin:0;font-size:14.5px;font-weight:600;
@@ -78,8 +85,7 @@ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 <div class="gridwrap"><table class="grid" id="grid"></table></div>
 <div class="small dim" style="margin-top:6px" id="legend"></div>
 
-<h2>Day-by-day detail</h2>
-<div class="cards" id="cards"></div>
+<div id="detail"></div>
 <div id="noteBox"></div>
 
 <h2>Forecast accuracy</h2>
@@ -320,54 +326,77 @@ document.getElementById('legend').innerHTML =
   Good/Epic. <b>Yellow = maybe</b> · <b>gray = skip</b> (a "junk fair" tag means Surfline says
   Fair but it's windswell junk). Every colored cell also carries its tag in words.`;
 
-// swell-mix breakdown: power-share bar + labeled trains (data Surfline's UX hides).
-// Answers: (1) is there a real engine? (2) does short-period chop cross it?
-function mixHtml(d) {
-  const tr = d.lp && d.lp.trains; if (!tr || !tr.length) return '';
-  const tot = tr.reduce((a,t)=>a+t[3],0); if (tot < 5) return '';
+// swell-mix breakdown: power-share bar (data Surfline's UX hides); per-train detail
+// lives in the cell tooltip. Answers: (1) real engine? (2) does chop cross it?
+function trainInfo(d) {
+  const tr = d && d.lp && d.lp.trains; if (!tr || !tr.length) return null;
+  const tot = tr.reduce((a,t)=>a+t[3],0); if (tot < 5) return null;
   const eng = d.lp.bestD;
-  const seg = t => {
+  const spread = t => eng!=null ? Math.abs((t[2]-eng+180)%360-180) : 0;
+  const role = t => t[1]>=10 ? (t[3]===Math.max(...tr.map(x=>x[3])) ? 'the engine' : 'groundswell')
+              : t[1]>=8 ? 'windswell' : (spread(t)>30 ? `chop, crossed ${Math.round(spread(t))}° ⚠` : 'chop, aligned');
+  const bar = tr.map(t => {
     const pct = Math.max(2, Math.round(t[3]/tot*100));
-    const spread = eng!=null ? Math.abs((t[2]-eng+180)%360-180) : 0;
-    const col = t[1]>=10 ? '#1e5a9e' : t[1]>=8 ? '#7fb3e0' : (spread>30 ? '#e0b400' : '#bbb');
+    const col = t[1]>=10 ? '#1e5a9e' : t[1]>=8 ? '#7fb3e0' : (spread(t)>30 ? '#e0b400' : '#bbb');
     return `<div style="width:${pct}%;background:${col}"></div>`;
-  };
-  const chip = t => {
-    const pct = Math.round(t[3]/tot*100);
-    const spread = eng!=null ? Math.abs((t[2]-eng+180)%360-180) : 0;
-    const role = t[1]>=10 ? (t[3]===Math.max(...tr.map(x=>x[3])) ? 'the engine' : 'groundswell')
-               : t[1]>=8 ? 'windswell' : (spread>30 ? `chop, crossed ${Math.round(spread)}° ⚠` : 'chop, aligned');
-    return `${t[0]}ft @ ${t[1]}s ${compass(t[2])} · pwr ${Math.round(t[3])} (${pct}%) — ${role}`;
-  };
-  const paddle = (d.lp.chopH||0) >= 2.5 ? ' · <b>tough paddle-out</b> (' + d.lp.chopH + 'ft sea)' : '';
-  return `<tr><td></td><td colspan="5" style="border-bottom:1px solid var(--border);padding:6px">
-    <div style="display:flex;gap:2px;height:9px;border-radius:4px;overflow:hidden;margin-bottom:3px">${tr.map(seg).join('')}</div>
-    <div class="dim" style="font-size:11.5px">${tr.map(chip).join(' &nbsp;·&nbsp; ')}${paddle}</div></td></tr>`;
+  }).join('');
+  const tip = tr.map(t => `${t[0]}ft @ ${t[1]}s ${compass(t[2])} · pwr ${Math.round(t[3])} (${Math.round(t[3]/tot*100)}%) — ${role(t)}`).join('\n')
+    + ((d.lp.chopH||0) >= 2.5 ? `\ntough paddle-out (${d.lp.chopH}ft sea)` : '');
+  return {bar, tip};
 }
 
-// detail cards
-document.getElementById('cards').innerHTML = D.spots.map(s=> s.kind==='visibility' ? `
- <div class="card"><h3>${s.name}</h3>
- <div class="small dim">${s.calibration}</div>
- <table><tr><th>Day</th><th>Call</th><th>Score</th><th>Flood window</th><th>Wind 48h</th><th>Rain 72h</th></tr>
- ${s.days.map(d=>`<tr><td>${fmtDay(d.date)} ${fmtDate(d.date)}</td>
-   <td><b style="color:${d.tier==='GO'?'var(--blue)':d.tier==='MAYBE'?'var(--amber)':'var(--light)'}">${d.tier}</b></td>
-   <td><b>${d.score}</b></td><td>${d.flood_window??'—'}</td>
-   <td>${d.wind48}kt</td><td>${d.rain72}mm</td></tr>
-   <tr><td></td><td colspan="5" class="dim" style="font-size:12px;border-bottom:1px solid var(--border)">${d.say}</td></tr>`).join('')}
- </table></div>` : `
- <div class="card"><h3>${s.name}</h3>
- <div class="small dim">${s.calibration} · Surfline ref: ${s.sl_note}</div>
- <table><tr><th>Day</th><th>Call</th><th>${s.key==='strait'?'Score':'Surfline'}</th><th>Surf</th><th>${s.key==='strait'?'Surfline':'LP train'}</th><th>Wind</th></tr>
- ${s.days.map(d=>`<tr><td>${fmtDay(d.date)} ${fmtDate(d.date)}</td>
-   <td><b style="color:${d.tier==='GO'?'var(--green)':d.tier==='MAYBE'?'var(--blue)':'var(--light)'}">${d.tier}</b></td>
-   <td><b>${s.key==='strait'?(d.score??'—'):(d.sl_name??'—')}</b>${d.best_window?' <span class="dim">'+d.best_window+'</span>':''}</td>
-   <td>${d.sf?`<b>${d.sf[0]}-${d.sf[1]}${d.sf[2]?'+':''}ft</b>`:'—'}</td>
-   <td>${s.key==='strait'?(d.sl_name??'—'):(d.lp&&d.lp.bestH?'<b>'+d.lp.bestH+'ft @ '+d.lp.bestT+'s</b> <span class="dim">pwr '+(d.lp.orgP??'—')+'</span>':'—')}</td>
-   <td>${d.wind_kt!=null?d.wind_kt+'kt '+compass(d.wind_dir):'—'}</td></tr>
-   <tr><td></td><td colspan="5" class="dim" style="font-size:12px">${d.say}</td></tr>
-   ${s.key!=='strait'?mixHtml(d):''}`).join('')}
- </table></div>`).join('');
+// day-by-day detail: one section per spot, days laid out HORIZONTALLY to mirror the
+// 10-day outlook (Matt's layout). Long verdict sentences go below as bullets
+// (GO/MAYBE days); every Call cell carries its full sentence as a tooltip.
+const tierCell = d => {
+  const [bg, fg] = d.tier==='GO' ? ['#cfe5fa','var(--blue)'] :
+                   d.tier==='MAYBE' ? ['#fff3cd','var(--amber)'] : ['#f5f5f5','var(--light)'];
+  const tag = d.tier==='GO' && d.go_kind==='glass' ? '<div class="dim" style="font-size:10px">glass</div>' : '';
+  return `<td style="background:${bg};color:${fg};font-weight:700" title="${(d.say||'').replace(/"/g,'&quot;')}">${d.tier}${tag}</td>`;
+};
+const hrow = (label, cells) => `<tr><th class="rl">${label}</th>${cells}</tr>`;
+const cellmap = (dd, f) => dd.map(d => d ? f(d) : '<td>—</td>').join('');
+
+document.getElementById('detail').innerHTML = D.spots.map(s => {
+  const dd = dates.map(dt => s.days.find(x => x.date === dt));
+  const head = '<tr><th class="rl"></th>' + dates.map(d=>`<th>${fmtDay(d)}<br>${fmtDate(d)}</th>`).join('') + '</tr>';
+  let rows;
+  if (s.kind === 'visibility') {
+    rows = head
+      + hrow('Call', dd.map(d => d ? tierCell(d) : '<td>—</td>').join(''))
+      + hrow('Score', cellmap(dd, d => `<td><b>${d.score ?? '—'}</b></td>`))
+      + hrow('Flood window', cellmap(dd, d => `<td style="font-size:11px">${d.flood_window ?? '—'}</td>`))
+      + hrow('Wind 48h', cellmap(dd, d => `<td>${d.wind48 ?? '—'}kt</td>`))
+      + hrow('Rain 72h', cellmap(dd, d => `<td>${d.rain72 ?? '—'}mm</td>`));
+  } else if (s.key === 'strait') {
+    rows = head
+      + hrow('Call', dd.map(d => d ? tierCell(d) : '<td>—</td>').join(''))
+      + hrow('Model score', cellmap(dd, d => `<td><b>${d.score ?? '—'}</b></td>`))
+      + hrow('Surf', cellmap(dd, d => `<td>${d.sf ? `<b>${d.sf[0]}-${d.sf[1]}${d.sf[2]?'+':''}ft</b>` : '—'}</td>`))
+      + hrow('Surfline', cellmap(dd, d => `<td>${d.sl_name ?? '—'}</td>`))
+      + hrow('Wind', cellmap(dd, d => `<td>${d.wind_kt!=null ? d.wind_kt+'kt '+compass(d.wind_dir) : '—'}</td>`));
+  } else {
+    rows = head
+      + hrow('Call', dd.map(d => d ? tierCell(d) : '<td>—</td>').join(''))
+      + hrow('Surfline', cellmap(dd, d => `<td><b>${d.sl_name ?? '—'}</b>${d.fair_h!=null?`<div class="dim" style="font-size:10.5px">${d.fair_h}h fair+</div>`:''}</td>`))
+      + hrow('Surf', cellmap(dd, d => `<td>${d.sf ? `<b>${d.sf[0]}-${d.sf[1]}${d.sf[2]?'+':''}ft</b>` : '—'}</td>`))
+      + hrow('LP engine', cellmap(dd, d => d.lp && d.lp.bestH
+          ? `<td><b>${d.lp.bestH}ft @ ${d.lp.bestT}s</b><div class="dim" style="font-size:10.5px">pwr ${d.lp.orgP ?? '—'}</div></td>` : '<td>—</td>'))
+      + hrow('Mix', cellmap(dd, d => {
+          const m = trainInfo(d);
+          return m ? `<td title="${m.tip.replace(/"/g,'&quot;')}"><div style="display:flex;gap:2px;height:9px;border-radius:4px;overflow:hidden;min-width:70px">${m.bar}</div></td>` : '<td>—</td>';
+        }))
+      + hrow('Wind', cellmap(dd, d => `<td>${d.am_wind_kt!=null?`<b>${d.am_wind_kt}kt</b> dawn<div class="dim" style="font-size:10.5px">`:''}${d.wind_kt!=null ? d.wind_kt+'kt '+compass(d.wind_dir) : '—'}${d.am_wind_kt!=null?' day</div>':''}</td>`))
+      + hrow('Window', cellmap(dd, d => `<td style="font-size:11px">${d.best_window ?? '—'}</td>`));
+  }
+  const reads = dd.filter(d => d && (d.tier==='GO' || d.tier==='MAYBE'))
+    .map(d => `<li><b>${fmtDay(d.date)} ${fmtDate(d.date)} — ${d.tier}:</b> ${d.say}</li>`).join('');
+  return `<h2>${s.key==='pugetvis' ? 'Puget Sound visibility' : s.name.split(' (')[0]} day-by-day</h2>
+   <div class="small dim" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${s.calibration}${s.sl_note?` · Surfline ref: ${s.sl_note}`:''}</div>
+   <div class="card" style="overflow-x:auto;padding:10px 12px"><table class="hday">${rows}</table></div>
+   ${reads ? `<ul class="small" style="margin-top:8px">${reads}</ul>`
+           : '<p class="small dim">No GO or MAYBE days in range — hover any Call cell for the day\'s reasoning.</p>'}`;
+}).join('');
 
 // forecast accuracy scoreboard
 const SPOTN = {strait:'The Strait', westport:'Westport', shortsands:'Short Sands', pugetvis:'Puget Sound vis'};
