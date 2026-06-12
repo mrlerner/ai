@@ -79,8 +79,8 @@ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 <div class="small dim" style="margin-top:6px" id="legend"></div>
 
 <h2>Day-by-day detail</h2>
-<div id="noteBox"></div>
 <div class="cards" id="cards"></div>
+<div id="noteBox"></div>
 
 <h2>Forecast accuracy</h2>
 <p class="small dim" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
@@ -354,10 +354,10 @@ document.getElementById('cards').innerHTML = D.spots.map(s=> s.kind==='visibilit
  <table><tr><th>Day</th><th>Call</th><th>${s.key==='strait'?'Score':'Surfline'}</th><th>Surf</th><th>${s.key==='strait'?'Surfline':'LP train'}</th><th>Wind</th></tr>
  ${s.days.map(d=>`<tr><td>${fmtDay(d.date)} ${fmtDate(d.date)}</td>
    <td><b style="color:${d.tier==='GO'?'var(--green)':d.tier==='MAYBE'?'var(--blue)':'var(--light)'}">${d.tier}</b></td>
-   <td><b>${s.key==='strait'?d.score:(d.sl_name??'—')}</b>${d.best_window?' <span class="dim">'+d.best_window+'</span>':''}</td>
+   <td><b>${s.key==='strait'?(d.score??'—'):(d.sl_name??'—')}</b>${d.best_window?' <span class="dim">'+d.best_window+'</span>':''}</td>
    <td>${d.sf?`<b>${d.sf[0]}-${d.sf[1]}${d.sf[2]?'+':''}ft</b>`:'—'}</td>
    <td>${s.key==='strait'?(d.sl_name??'—'):(d.lp&&d.lp.bestH?'<b>'+d.lp.bestH+'ft @ '+d.lp.bestT+'s</b> <span class="dim">pwr '+(d.lp.orgP??'—')+'</span>':'—')}</td>
-   <td>${d.wind_kt}kt ${compass(d.wind_dir)}</td></tr>
+   <td>${d.wind_kt!=null?d.wind_kt+'kt '+compass(d.wind_dir):'—'}</td></tr>
    <tr><td></td><td colspan="5" class="dim" style="font-size:12px">${d.say}</td></tr>
    ${s.key!=='strait'?mixHtml(d):''}`).join('')}
  </table></div>`).join('');
