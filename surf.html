@@ -131,14 +131,23 @@ buoy at Point Wells (measured chlorophyll &amp; turbidity).</li>
 
 <div class="meth">
 <h3><b>The Strait</b> — custom entrance rideable-bar model (score 0–10)</h3>
-<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;margin:0 0 12px">
-<a href="cam.html#strait"><img src="cam/strait_latest.jpg" alt="Latest Strait (Sekiu/Hoko) cam frame"
- style="width:320px;max-width:100%;border:1px solid #ddd;display:block"
- onerror="this.parentNode.style.display='none'"></a>
-<div class="small" style="flex:1;min-width:180px;color:#666">
-Latest Sekiu/Hoko cam (W entrance of the Strait, ~40 mi W of the spot) — a read on the swell &amp;
-wind arriving into the strait, not the break itself. Captured each morning at 9am.<br><br>
-🔗 <a href="cam.html#strait">All Strait cam shots</a> &nbsp;·&nbsp;
+<div style="margin:0 0 12px">
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px">
+<a href="strait_cam.html" style="flex:1;min-width:150px"><figure style="margin:0">
+<img src="cam/strait_0900.jpg" alt="Strait cam 9am" style="width:100%;border:1px solid #ddd;display:block" onerror="this.parentNode.parentNode.style.display='none'">
+<figcaption class="small" style="text-align:center;color:#888">9am</figcaption></figure></a>
+<a href="strait_cam.html" style="flex:1;min-width:150px"><figure style="margin:0">
+<img src="cam/strait_1000.jpg" alt="Strait cam 10am" style="width:100%;border:1px solid #ddd;display:block" onerror="this.parentNode.parentNode.style.display='none'">
+<figcaption class="small" style="text-align:center;color:#888">10am</figcaption></figure></a>
+<a href="strait_cam.html" style="flex:1;min-width:150px"><figure style="margin:0">
+<img src="cam/strait_1100.jpg" alt="Strait cam 11am" style="width:100%;border:1px solid #ddd;display:block" onerror="this.parentNode.parentNode.style.display='none'">
+<figcaption class="small" style="text-align:center;color:#888">11am</figcaption></figure></a>
+</div>
+<div class="small" style="color:#666">
+Each morning's <b>most-active</b> frame (9/10/11am) from the Sekiu/Hoko cam — burst-sampled over
+~5 min so it shows a set, not a lull. W entrance ~40 mi W of the spot: a read on swell &amp; wind
+arriving, not the break itself.<br>
+🔗 <a href="strait_cam.html">All Strait cam shots</a> &nbsp;·&nbsp;
 📊 <a href="https://www.ndbc.noaa.gov/station_page.php?station=46267" target="_blank" rel="noopener">Angeles Pt buoy 46267</a> — the in-strait source of truth.
 </div>
 </div>
@@ -296,7 +305,7 @@ let g = '<tr><th></th>' + dates.map(d=>`<th>${fmtDay(d)}<br>${fmtDate(d)}</th>`)
 for (const s of D.spots) {
   g += `<tr><td class="spot">${s.name.split(' (')[0]}
     ${s.drive?`<div style="font-weight:400;font-size:11px;color:var(--light)">${s.drive}</div>`:''}
-    ${s.key==='strait'?`<div style="font-weight:400;font-size:11px"><a href="cam.html#strait" style="color:var(--blue)">📷 Strait cam</a></div>
+    ${s.key==='strait'?`<div style="font-weight:400;font-size:11px"><a href="strait_cam.html" style="color:var(--blue)">📷 Strait cam</a></div>
     <div style="font-weight:400;font-size:11px"><a href="https://www.ndbc.noaa.gov/station_page.php?station=46267" target="_blank" rel="noopener" style="color:var(--blue)">📊 Angeles Pt buoy</a></div>`:''}</td>`;
   for (const dt of dates) {
     const d = s.days.find(x=>x.date===dt);
@@ -310,9 +319,10 @@ for (const s of D.spots) {
         ${d.flood_window?`<div class="tagline">flood ${d.flood_window}</div>`:''}</td>`;
     } else if (s.key==='strait') {
       const [bg,fg,stag] = straitStyle(d);
+      const sizeFt = d.hs_m!=null ? `${(d.hs_m*3.28).toFixed(0)}ft` : null;
       g += `<td class="cell" style="background:${bg};color:${fg}" title="${d.flags.join('; ')}">
-        <div class="sc num">${d.score ?? '–'}</div>
-        <div class="det">${d.hs_m!=null?`${(d.hs_m*3.28).toFixed(0)}ft·${d.period_s}s·${d.wind_kt}kt`:`${d.wind_kt}kt wind`}</div>
+        <div class="sc num">${sizeFt ?? (d.score ?? '–')}</div>
+        <div class="det">${sizeFt?`score ${d.score ?? '–'} · ${d.period_s}s · ${d.wind_kt}kt`:`${d.wind_kt}kt wind`}</div>
         ${stag?`<div class="tagline">${stag}</div>`:''}
         ${d.sl_name?`<div class="tagline">SL: ${d.sl_name}${d.sf?` · ${d.sf[0]}-${d.sf[1]}ft`:''}</div>`:''}</td>`;
     } else {
@@ -332,10 +342,10 @@ for (const s of D.spots) {
 document.getElementById('grid').innerHTML = g;
 
 document.getElementById('legend').innerHTML =
-  `<b>Strait row:</b> rideability 0–10 (best 3-hr window); blue = rideable, go — the tag rates
-  quality so you can pick your day: <b>go · prime</b> (long-period + glassy + size) &gt;
-  <b>go · good</b> &gt; <b>go · fair</b> (small/short-period/brief, but still rideable). Cell shows
-  est. size · period · wind. <b>Westport/Short Sands rows:</b>
+  `<b>Strait row:</b> big number is est. size; rideability 0–10 (best 3-hr window) sits beneath as
+  <b>score</b>. Blue = rideable, go — the tag rates quality so you can pick your day:
+  <b>go · prime</b> (long-period + glassy + size) &gt; <b>go · good</b> &gt; <b>go · fair</b>
+  (small/short-period/brief, but still rideable). Cell shows size big, then score · period · wind. <b>Westport/Short Sands rows:</b>
   Surfline's rating with the long-period (LP) swell train beneath — the worth-the-drive
   discriminator. <b>Blue = GO</b>, two ways (tag says which): <b>worth the drive</b> (Surfline
   Fair+ AND a real groundswell train) or <b>glass go</b> (Surfline Fair+ AND glassy morning —
