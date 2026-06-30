@@ -438,8 +438,14 @@ document.getElementById('detail').innerHTML = D.spots.map(s => {
       <div class="card" style="overflow-x:auto"><table style="font-size:12.5px">
       <tr><th>Site</th><th>Viz</th><th>Report</th><th>When</th></tr>${rows}</table></div>`;
   }
+  const camLinks = s.key==='westport'
+    ? `<div class="small" style="margin:4px 0 0"><a href="cam.html">📷 Westport cam</a></div>`
+    : s.key==='strait'
+    ? `<div class="small" style="margin:4px 0 0"><a href="strait_cam.html">📷 Strait cam</a> &nbsp;·&nbsp; <a href="https://www.ndbc.noaa.gov/station_page.php?station=46267" target="_blank" rel="noopener">📊 Angeles Pt buoy 46267</a></div>`
+    : '';
   return `<h2>${s.key==='pugetvis' ? 'Puget Sound visibility' : s.name.split(' (')[0]} day-by-day</h2>
    <div class="small dim" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${s.calibration}${s.sl_note ? ` · Surfline ref: ${s.sl_note}` : ''}</div>
+   ${camLinks}
    <div class="daycards">${cards}</div>${extra}`;
 }).join('');
 
