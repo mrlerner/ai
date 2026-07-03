@@ -309,12 +309,18 @@ if (D.note) document.getElementById('noteBox').innerHTML =
 
 // grid
 let g = '<tr><th></th>' + dates.map(d=>`<th>${fmtDay(d)}<br>${fmtDate(d)}</th>`).join('') + '</tr>';
+const SL_URL = {
+  westport: 'https://www.surfline.com/surf-report/westport-the-jetty/5842041f4e65fad6a77089ad',
+  strait: 'https://www.surfline.com/surf-report/crescent-beach/640a3fd3606c458650b0af12',
+  shortsands: 'https://www.surfline.com/surf-report/oswald-west-state-park-short-sand-beach/584204204e65fad6a77099ff',
+};
 for (const s of D.spots) {
   g += `<tr><td class="spot">${s.name.split(' (')[0]}
     ${s.drive?`<div style="font-weight:400;font-size:11px;color:var(--light)">${s.drive}</div>`:''}
     ${s.key==='strait'?`<div style="font-weight:400;font-size:11px"><a href="strait_cam.html" style="color:var(--blue)">📷 Strait cam</a></div>
     <div style="font-weight:400;font-size:11px"><a href="https://www.ndbc.noaa.gov/station_page.php?station=46267" target="_blank" rel="noopener" style="color:var(--blue)">📊 Angeles Pt buoy</a></div>`:''}
-    ${s.key==='westport'?`<div style="font-weight:400;font-size:11px"><a href="cam.html" style="color:var(--blue)">📷 Westport cam</a></div>`:''}</td>`;
+    ${s.key==='westport'?`<div style="font-weight:400;font-size:11px"><a href="cam.html" style="color:var(--blue)">📷 Westport cam</a></div>`:''}
+    ${SL_URL[s.key]?`<div style="font-weight:400;font-size:11px"><a href="${SL_URL[s.key]}" target="_blank" rel="noopener" style="color:var(--blue)">🌊 Surfline${s.key==='strait'?' (Crescent)':''}</a></div>`:''}</td>`;
   for (const dt of dates) {
     const d = s.days.find(x=>x.date===dt);
     if (!d) { g += '<td class="cell" style="background:#f5f5f5;color:var(--light)">—</td>'; continue; }
