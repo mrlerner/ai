@@ -15,6 +15,14 @@ padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--muted);
 font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 .sub{color:var(--muted);font-size:14px;margin:8px 0 24px;
 font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+html{scroll-behavior:smooth}
+h2{scroll-margin-top:16px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:-8px 0 10px;
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.toc a{font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;
+border:1px solid var(--border);background:var(--card-alt);border-radius:14px;
+padding:3px 11px;white-space:nowrap}
+.toc a:hover{border-color:var(--blue)}
 .best{background:var(--card-alt);border:1px solid var(--border);border-left:4px solid var(--purple);
 border-radius:6px;padding:18px 22px;margin:18px 0;font-size:15px}
 .gridwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px}
@@ -78,15 +86,16 @@ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 
 <h1>🏄 Surf Trip Planner</h1>
 <div class="sub" id="meta"></div>
+<nav class="toc" id="toc"></nav>
 
-<h2 style="margin-top:24px">10-day outlook</h2>
+<h2 id="outlook" style="margin-top:24px">10-day outlook</h2>
 <div class="gridwrap"><table class="grid" id="grid"></table></div>
 <div class="small dim" style="margin-top:6px" id="legend"></div>
 
 <div id="detail"></div>
 <div id="noteBox"></div>
 
-<h2>Surf diary</h2>
+<h2 id="surf-diary">Surf diary</h2>
 <p class="small dim" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
 Every session you log makes the model smarter — these days ARE the calibration data.
 After any trip (great or skunked), just tell Claude: <i>"log it: &lt;date&gt;, &lt;spot&gt;,
@@ -608,14 +617,23 @@ document.getElementById('detail').innerHTML = D.spots.map(s => {
     : s.key==='crescent'
     ? `<div class="small" style="margin:4px 0 0"><a href="https://www.ndbc.noaa.gov/station_page.php?station=46267" target="_blank" rel="noopener">📊 Angeles Pt buoy 46267</a> &nbsp;·&nbsp; <a href="https://www.crescentbeachrv.com/surfing" target="_blank" rel="noopener">🏖 Crescent Beach RV ($8 day use)</a></div>`
     : '';
-  return `<h2>${s.key==='pugetvis' ? 'Puget Sound visibility' : s.name.split(' (')[0]} day-by-day</h2>
+  return `<h2 id="spot-${s.key}">${s.key==='pugetvis' ? 'Puget Sound visibility' : s.name.split(' (')[0]} day-by-day</h2>
    <div class="small dim" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${s.calibration}${s.sl_note ? ` · Surfline ref: ${s.sl_note}` : ''}</div>
    ${camLinks}
    <div class="daycards">${cards}</div>${extra}`;
 }).join('');
 
+// table of contents — spot list is dynamic, so build it from the same data
+document.getElementById('toc').innerHTML = [
+  ['outlook', '10-day outlook'],
+  ...D.spots.map(s => ['spot-'+s.key,
+    s.key==='pugetvis' ? 'Puget Sound vis' : s.name.split(' (')[0]]),
+  ['surf-diary', 'Surf diary'],
+  ['methodology', 'Methodology'],
+].map(([id, t]) => `<a href="#${id}">${t}</a>`).join('');
+
 // surf diary
-const SPOTN = {strait:'The Strait', westport:'Westport', shortsands:'Short Sands', hobuck:'Hobuck', fortebey:'Fort Ebey', crescent:'Crescent Beach', pugetvis:'Puget Sound vis'};
+const SPOTN ={strait:'The Strait', westport:'Westport', shortsands:'Short Sands', hobuck:'Hobuck', fortebey:'Fort Ebey', crescent:'Crescent Beach', pugetvis:'Puget Sound vis'};
 const vColor = v => (v==='epic'||v==='standout'||v==='good')?'var(--blue)':'var(--muted)';
 document.getElementById('diary').innerHTML = (D.diary||[]).map(e=>`
  <div class="card" style="margin-bottom:12px">
@@ -634,5 +652,9 @@ document.getElementById('acc').innerHTML =
   `<b>${D.log_runs} morning run${D.log_runs===1?'':'s'} logged so far</b> — each one records
   model score, clean-mix score, and groundswell fraction for every spot-day to
   <code>data/forecast_log_master.csv</code>.`;
+
+// deep links: the browser jumps to #hash before the JS above injects the
+// day-by-day sections, so re-anchor once everything is rendered
+if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
 </script>
 </div></body></html>
