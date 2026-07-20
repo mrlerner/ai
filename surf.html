@@ -624,13 +624,9 @@ document.getElementById('detail').innerHTML = D.spots.map(s => {
 }).join('');
 
 // table of contents — spot list is dynamic, so build it from the same data
-document.getElementById('toc').innerHTML = [
-  ['outlook', '10-day outlook'],
-  ...D.spots.map(s => ['spot-'+s.key,
-    s.key==='pugetvis' ? 'Puget Sound vis' : s.name.split(' (')[0]]),
-  ['surf-diary', 'Surf diary'],
-  ['methodology', 'Methodology'],
-].map(([id, t]) => `<a href="#${id}">${t}</a>`).join('');
+document.getElementById('toc').innerHTML = D.spots.map(s =>
+  `<a href="#spot-${s.key}">${s.key==='pugetvis' ? 'Puget Sound vis' : s.name.split(' (')[0]}</a>`
+).join('');
 
 // surf diary
 const SPOTN ={strait:'The Strait', westport:'Westport', shortsands:'Short Sands', hobuck:'Hobuck', fortebey:'Fort Ebey', crescent:'Crescent Beach', pugetvis:'Puget Sound vis'};
