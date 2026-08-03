@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theo's College List — Deadlines &amp; Admit Rates</title>
+<style>
+  :root {
+    --reach: #c0392b;
+    --target: #b9770e;
+    --safety: #1e8449;
+    --muted: #999;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    background: #f7f6f3;
+    color: #222;
+    line-height: 1.45;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
+  .subtitle { color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; }
+  h2 {
+    font-size: 1.15rem;
+    margin: 2rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .pill.reach { background: var(--reach); }
+  .pill.target { background: var(--target); }
+  .pill.safety { background: var(--safety); }
+  .band { color: #777; font-weight: 400; font-size: 0.85rem; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    font-size: 0.92rem;
+  }
+  th, td { padding: 0.6rem 0.8rem; text-align: left; }
+  th {
+    background: #34495e;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  tr:nth-child(even) td { background: #fafaf8; }
+  tr:hover td { background: #f0f4f8; }
+  td.rate { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .none { color: #bbb; }
+  .remove td { color: var(--muted); }
+  .remove .school-name::after {
+    content: " (probably remove)";
+    font-size: 0.78rem;
+    font-style: italic;
+    color: #c0392b;
+  }
+  .school-name { font-weight: 600; color: inherit; }
+  .added .school-name::after {
+    content: " NEW";
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #fff;
+    background: #1e8449;
+    border-radius: 3px;
+    padding: 0.1rem 0.35rem;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+  .note {
+    background: #fff8e6;
+    border-left: 4px solid #b9770e;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    margin: 1.5rem 0;
+  }
+  .footnotes { font-size: 0.8rem; color: #777; margin-top: 2rem; }
+  .footnotes li { margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Theo's College List</h1>
+  <div class="subtitle">Deadlines for the 2026–27 application cycle (fall 2027 entry) · sorted by selectivity within each group · admit rates are most recent published overall rates</div>
+
+  <div class="note">
+    <strong>How the groups were drawn:</strong> without test scores/GPA in the mix, schools are grouped by overall admit rate — under 20% = reach (a reach for everyone), 20–50% = target, over 50% = likely/safety. UCSB and UW could shift depending on major (both admit by major/college for some programs). ED admit rates run roughly 2–3× the overall rate at most of the reach schools.
+  </div>
+
+  <h2><span class="pill reach">Reach</span> <span class="band">admit rate under 20%</span></h2>
+  <table>
+    <thead><tr><th>School</th><th>ED 1</th><th>ED 2</th><th>EA</th><th>Regular Decision</th><th>Admit Rate</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="school-name">Brown</td><td>Nov 1</td><td class="none">—</td><td class="none">—</td><td>Jan 3</td><td class="rate">~5%</td><td>No ED2. Two core-subject teacher recs; superscore SAT; optional video</td></tr>
+      <tr><td class="school-name">Pomona</td><td>Nov 15</td><td>Jan 8</td><td class="none">—</td><td>Jan 8</td><td class="rate">~7%</td><td>Later ED1 than most (Nov 15)</td></tr>
+      <tr><td class="school-name">Tufts</td><td>Nov 1</td><td>Jan 4</td><td class="none">—</td><td>Jan 4</td><td class="rate">~10%</td><td>Ask Cy</td></tr>
+      <tr><td class="school-name">Emory</td><td>Nov 1</td><td>Jan 1</td><td class="none">—</td><td>Jan 1</td><td class="rate">~11%</td><td>Strong creative writing</td></tr>
+      <tr><td class="school-name">WashU (St. Louis)</td><td>Nov 2</td><td>Jan 4</td><td class="none">—</td><td>Jan 4</td><td class="rate">~12%</td><td>No EA (despite visit note) — ED1/ED2/RD only. ED admits ~25% and fills over half the class. Nemerov Writing Scholars program</td></tr>
+      <tr><td class="school-name">Wesleyan</td><td>Nov 1</td><td>Jan 1</td><td class="none">—</td><td>Jan 1</td><td class="rate">~16%</td><td>English is a top program; non-evaluative "WesChat"</td></tr>
+      <tr class="added"><td class="school-name">Vassar</td><td>Nov 15</td><td>Jan 1</td><td class="none">—</td><td>Jan 4</td><td class="rate">~18%</td><td>Standout English program, Wesleyan-adjacent vibe. ED admits ~38%</td></tr>
+      <tr class="added"><td class="school-name">Pitzer</td><td>Nov 15</td><td>Jan 8</td><td class="none">—</td><td>Jan 8</td><td class="rate">~18%</td><td>Claremont consortium — can take Pomona classes. Test-free (scores not accepted)</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="pill target">Target</span> <span class="band">admit rate 20–50%</span></h2>
+  <table>
+    <thead><tr><th>School</th><th>ED 1</th><th>ED 2</th><th>EA</th><th>Regular Decision</th><th>Admit Rate</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="school-name">Macalester</td><td>Nov 1</td><td>Jan 1</td><td>Nov 1</td><td>Jan 15</td><td class="rate">~26%</td><td></td></tr>
+      <tr class="added"><td class="school-name">Skidmore</td><td>Nov 15</td><td>Jan 15</td><td class="none">—</td><td>Jan 15</td><td class="rate">~28%</td><td>Strong creative writing; Saratoga Springs is a great college town. Mostly need-based aid — little merit money</td></tr>
+      <tr><td class="school-name">UC Santa Barbara</td><td class="none">—</td><td class="none">—</td><td class="none">—</td><td>Nov 30</td><td class="rate">~33%</td><td>UC app only — no ED/EA anywhere in the UC system. One app covers all UC campuses. College of Creative Studies has a supplemental app</td></tr>
+      <tr><td class="school-name">U. of Washington</td><td class="none">—</td><td class="none">—</td><td class="none">—</td><td>Nov 15</td><td class="rate">~43%</td><td>Single deadline — no ED/EA. Applies by major; local</td></tr>
+      <tr><td class="school-name">UW–Madison</td><td class="none">—</td><td class="none">—</td><td>Nov 1</td><td>Feb 1</td><td class="rate">~45%</td><td>EA strongly recommended — notifies end of January</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="pill safety">Likely / Safety</span> <span class="band">admit rate over 50%</span></h2>
+  <table>
+    <thead><tr><th>School</th><th>ED 1</th><th>ED 2</th><th>EA</th><th>Regular Decision</th><th>Admit Rate</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr class="added"><td class="school-name">Chapman</td><td>Nov 1</td><td class="none">—</td><td>Nov 1</td><td>Jan 15</td><td class="rate">~60%</td><td>Strong creative writing / screenwriting (Dodge College); good fit for the sci-fi interest. Use the non-binding EA</td></tr>
+      <tr><td class="school-name">U. of Vermont</td><td class="none">—</td><td class="none">—</td><td>Nov 1</td><td>Jan 15</td><td class="rate">~60%</td><td></td></tr>
+      <tr class="added"><td class="school-name">UC Santa Cruz</td><td class="none">—</td><td class="none">—</td><td class="none">—</td><td>Nov 30</td><td class="rate">~62%</td><td>Same UC app as UCSB — just check another campus box. Mellow, redwoods, solid literature program</td></tr>
+      <tr><td class="school-name">CU Boulder</td><td class="none">—</td><td class="none">—</td><td>Nov 15</td><td>Jan 15</td><td class="rate">~80%</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <ul class="footnotes">
+    <li>Deadlines are 11:59pm local time on the date shown (per the doc's note, Jan deadlines are end-of-day).</li>
+    <li>ED (Early Decision) is binding; EA (Early Action) is not. Only one ED1 application allowed; ED2 can follow an ED1 deferral/denial elsewhere.</li>
+    <li>Dates reflect each school's most recently published cycle; a few schools shift by a day or two year-to-year — confirm on each portal before submitting.</li>
+    <li>Removed from the list (Aug 2026): Amherst, Davidson, Colorado College, Kenyon, Bard, Occidental. Schools marked <em>NEW</em> were added Aug 2026: Vassar, Pitzer, Skidmore, Chapman, UC Santa Cruz.</li>
+    <li>Doc questions answered: ED1-only schools = Brown, Chapman. ED1+ED2 = Pomona, Tufts, WashU, Emory, Wesleyan, Vassar, Pitzer, Skidmore. No ED at all = the publics (UCSB, UCSC, UW, UW–Madison, UVM, CU Boulder).</li>
+  </ul>
+</div>
+</body>
+</html>
