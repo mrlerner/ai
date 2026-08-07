@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Board Shopper — Mid-Length Comparison</title>
+<style>
+  :root {
+    --ground: #eef1ef;
+    --card: #f7f9f8;
+    --panel: #ffffff;
+    --ink: #17313f;
+    --ink-soft: #4a6373;
+    --line: #ccd7d4;
+    --swell: #2e7da6;
+    --swell-deep: #1c5a7c;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.22);
+    --flag-ink: #f5f8f7;
+    --meter-track: #dde4e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0c1b26;
+      --card: #122938;
+      --panel: #eef1ef;
+      --ink: #dce7ec;
+      --ink-soft: #8fa8b5;
+      --line: #24404f;
+      --swell: #5aa7cc;
+      --swell-deep: #7fc0de;
+      --wax: #e3b23c;
+      --wax-soft: rgba(227, 178, 60, 0.16);
+      --flag-ink: #0c1b26;
+      --meter-track: #24404f;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #eef1ef; --card: #f7f9f8; --panel: #ffffff;
+    --ink: #17313f; --ink-soft: #4a6373; --line: #ccd7d4;
+    --swell: #2e7da6; --swell-deep: #1c5a7c;
+    --wax: #e3b23c; --wax-soft: rgba(227, 178, 60, 0.22);
+    --flag-ink: #f5f8f7; --meter-track: #dde4e2;
+  }
+  :root[data-theme="dark"] {
+    --ground: #0c1b26; --card: #122938; --panel: #eef1ef;
+    --ink: #dce7ec; --ink-soft: #8fa8b5; --line: #24404f;
+    --swell: #5aa7cc; --swell-deep: #7fc0de;
+    --wax: #e3b23c; --wax-soft: rgba(227, 178, 60, 0.16);
+    --flag-ink: #0c1b26; --meter-track: #24404f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 24px 16px 64px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { margin-bottom: 8px; }
+  h1 { font-size: 1.7rem; letter-spacing: -0.01em; }
+  .sub { color: var(--ink-soft); margin: 6px 0 4px; max-width: 62ch; }
+  .stamp { color: var(--ink-soft); font-size: 0.8rem; }
+
+  .context {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; margin: 18px 0 26px; font-size: 0.92rem; color: var(--ink-soft);
+  }
+  .context strong { color: var(--ink); }
+
+  h2 { font-size: 1.15rem; margin: 30px 0 14px; }
+
+  .cards { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 720px) { .cards { grid-template-columns: 1fr 1fr; } }
+
+  .board {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .board.top { border: 2px solid var(--wax); }
+
+  .rankrow { display: flex; align-items: center; gap: 10px; padding: 12px 16px 0; }
+  .rank {
+    flex: none; width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.05rem;
+    background: var(--swell); color: var(--flag-ink);
+  }
+  .board.top .rank { background: var(--wax); color: #17313f; }
+  .titleblock h3 { font-size: 1.08rem; line-height: 1.25; }
+  .titleblock .verdict { color: var(--ink-soft); font-size: 0.86rem; }
+
+  .photo {
+    margin: 12px 16px 0; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    height: 300px; overflow: hidden;
+  }
+  .photo img { max-height: 92%; max-width: 92%; object-fit: contain; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 16px 0; }
+  .chip {
+    font-size: 0.78rem; padding: 3px 9px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--ink-soft); background: transparent;
+  }
+  .chip.key { background: var(--wax-soft); border-color: var(--wax); color: var(--ink); font-weight: 600; }
+
+  .why { padding: 12px 16px 16px; }
+  .why ul { margin-left: 18px; font-size: 0.9rem; }
+  .why li { margin-bottom: 5px; }
+  .why li::marker { color: var(--swell); }
+
+  .meters { padding: 0 16px 16px; margin-top: auto; }
+  .meter { display: grid; grid-template-columns: 120px 1fr 34px; gap: 8px; align-items: center; font-size: 0.78rem; margin-bottom: 5px; color: var(--ink-soft); }
+  .meter .bar { height: 8px; border-radius: 4px; background: var(--meter-track); overflow: hidden; }
+  .meter .fill { height: 100%; border-radius: 4px; background: var(--swell); }
+  .meter .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+  table { border-collapse: collapse; width: 100%; min-width: 780px; font-size: 0.88rem; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--swell-deep); color: var(--flag-ink); font-size: 0.82rem; position: sticky; top: 0; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.label { font-weight: 600; white-space: nowrap; }
+  td.ref { color: var(--ink-soft); font-style: italic; }
+
+  .method { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; font-size: 0.92rem; }
+  .method ol { margin: 8px 0 0 20px; }
+  .method li { margin-bottom: 7px; }
+
+  footer { margin-top: 30px; color: var(--ink-soft); font-size: 0.8rem; }
+  footer a { color: var(--swell); }
+  a { color: var(--swell); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Board Shopper — Mid-Length Step-Down</h1>
+    <p class="sub">Four candidates to slot in under the Lib Tech Pickup Stick 8'0 — built for softer, less-steep San Diego waves rather than steep North Pacific faces.</p>
+    <p class="stamp">Specs &amp; prices checked Aug 6, 2026 · ranks tailored to Matt's surfing</p>
+  </header>
+
+  <div class="context">
+    <strong>The brief:</strong> step down from 8'0 to ~7'4–7'6 without paying a paddle tax. Priorities that drove the ranking:
+    glide and glass over swell power · paddling effort is a first-class cost · 2–4 ft is the happy zone ·
+    turtle-roll friendly (no duck-diving) · should feel <em>different</em> from the Pickup Stick, not a smaller clone of it ·
+    likely flies to San Diego, so dings matter.
+  </div>
+
+  <h2>The Stack Rank</h2>
+  <div class="cards">
+
+    <article class="board top">
+      <div class="rankrow">
+        <div class="rank">1</div>
+        <div class="titleblock">
+          <h3>Firewire Seaside &amp; Beyond 7'6</h3>
+          <p class="verdict">The pick — Machado's glide machine for exactly these waves</p>
+        </div>
+      </div>
+      <div class="photo"><img src="https://www.realwatersports.com/cdn/shop/files/FIR250245639_1024x1024.jpg?v=1750104772" alt="Firewire Seaside and Beyond surfboard deck" loading="lazy"></div>
+      <div class="chips">
+        <span class="chip key">49.5 L</span>
+        <span class="chip">7'6 × 21¾ × 2¾</span>
+        <span class="chip">Quad</span>
+        <span class="chip">~$1,025</span>
+      </div>
+      <div class="why"><ul>
+        <li>Flattest entry rocker of the four — the direct fix for what the steep-rockered Pickup Stick lacks in soft San Diego walls.</li>
+        <li>Designed by Rob Machado for 1–5 ft lined-up Cardiff-style surf: your 2–4 ft happy zone is its sweet spot.</li>
+        <li>Quad fish DNA means down-the-line speed without pumping — glide and glass, not swell power.</li>
+        <li>49.5 L keeps the wave count high, and a 7'6 is easier to turtle roll than your 8'0.</li>
+        <li>A genuinely different sensation from the Pickup Stick — this purchase buys you a new feeling, not a smaller copy.</li>
+      </ul></div>
+      <div class="meters">
+        <div class="meter"><span>Paddle &amp; catch</span><div class="bar"><div class="fill" style="width:88%"></div></div><span class="num">8.8</span></div>
+        <div class="meter"><span>SD small-wave glide</span><div class="bar"><div class="fill" style="width:95%"></div></div><span class="num">9.5</span></div>
+        <div class="meter"><span>Easy transition</span><div class="bar"><div class="fill" style="width:85%"></div></div><span class="num">8.5</span></div>
+        <div class="meter"><span>Travel durability</span><div class="bar"><div class="fill" style="width:65%"></div></div><span class="num">6.5</span></div>
+      </div>
+    </article>
+
+    <article class="board">
+      <div class="rankrow">
+        <div class="rank">2</div>
+        <div class="titleblock">
+          <h3>Harley Ingleby Moe 7'4</h3>
+          <p class="verdict">The safety pick — easiest paddle, toughest build</p>
+        </div>
+      </div>
+      <div class="photo"><img src="https://www.cleanlinesurf.com/cdn/shop/files/Harley-Ingleby-Series-HIMOEZR704CANWH-7-4-Moe-Thunderbolt-Red-Surfboard-Candy-White-Deck.jpg?v=1777573913" alt="Harley Ingleby Moe Thunderbolt surfboard deck" loading="lazy"></div>
+      <div class="chips">
+        <span class="chip key">52.9 L</span>
+        <span class="chip">7'4 × 22½ × 2⅞</span>
+        <span class="chip">2+1 / thruster</span>
+        <span class="chip">~$1,210</span>
+      </div>
+      <div class="why"><ul>
+        <li>Most volume of the four (52.9 L) — the smallest paddle penalty coming off the Pickup Stick, and reviewers call it <em>the</em> small-wave mid-length.</li>
+        <li>Thunderbolt construction is markedly more ding-resistant than Firewire's EPS builds — the best board here to fly with.</li>
+        <li>Flat bottom with double concave carves easily off a wide outline — very forgiving.</li>
+        <li>Why not #1: at 22½" wide with a 2+1 setup, it's the closest in spirit to the funboard you already own — less of a new experience.</li>
+      </ul></div>
+      <div class="meters">
+        <div class="meter"><span>Paddle &amp; catch</span><div class="bar"><div class="fill" style="width:95%"></div></div><span class="num">9.5</span></div>
+        <div class="meter"><span>SD small-wave glide</span><div class="bar"><div class="fill" style="width:90%"></div></div><span class="num">9.0</span></div>
+        <div class="meter"><span>Easy transition</span><div class="bar"><div class="fill" style="width:92%"></div></div><span class="num">9.2</span></div>
+        <div class="meter"><span>Travel durability</span><div class="bar"><div class="fill" style="width:90%"></div></div><span class="num">9.0</span></div>
+      </div>
+    </article>
+
+    <article class="board">
+      <div class="rankrow">
+        <div class="rank">3</div>
+        <div class="titleblock">
+          <h3>Firewire Taylor Jensen Pro Mid 7'4</h3>
+          <p class="verdict">The all-rounder — best if one board must also do the PNW</p>
+        </div>
+      </div>
+      <div class="photo"><img src="https://www.cleanlinesurf.com/cdn/shop/files/Firewire-ITJM7043VOL3WHT-7-4-TJ-Mid-I-Bolic-Volcanic-Surfboard-Deck.jpg?v=1747772625" alt="Firewire Taylor Jensen Pro Mid surfboard deck" loading="lazy"></div>
+      <div class="chips">
+        <span class="chip key">48.0 L</span>
+        <span class="chip">7'4 × 21⅞ × 2⅝</span>
+        <span class="chip">5 boxes — single / 2+1 / quad</span>
+        <span class="chip">~$1,255</span>
+      </div>
+      <div class="why"><ul>
+        <li>A longboarder's mid-length — trim-and-flow style that matches how you actually surf.</li>
+        <li>Five fin boxes: single fin for glassy point days, 2+1 or quad when it has push — the most versatile quiver-of-one here.</li>
+        <li>Handles steeper, better waves than the two Machados, so it overlaps your home spots too.</li>
+        <li>Why #3: it wants a bit more wave energy than San Diego's average day, and it's the priciest of the four. Your Lib Tech already covers the steep stuff.</li>
+      </ul></div>
+      <div class="meters">
+        <div class="meter"><span>Paddle &amp; catch</span><div class="bar"><div class="fill" style="width:80%"></div></div><span class="num">8.0</span></div>
+        <div class="meter"><span>SD small-wave glide</span><div class="bar"><div class="fill" style="width:78%"></div></div><span class="num">7.8</span></div>
+        <div class="meter"><span>Easy transition</span><div class="bar"><div class="fill" style="width:82%"></div></div><span class="num">8.2</span></div>
+        <div class="meter"><span>Travel durability</span><div class="bar"><div class="fill" style="width:70%"></div></div><span class="num">7.0</span></div>
+      </div>
+    </article>
+
+    <article class="board">
+      <div class="rankrow">
+        <div class="rank">4</div>
+        <div class="titleblock">
+          <h3>Firewire Xtra Cado 7'6</h3>
+          <p class="verdict">Great board, but it overlaps the winner with sharper edges</p>
+        </div>
+      </div>
+      <div class="photo"><img src="https://www.cleanlinesurf.com/cdn/shop/files/Firewire-Rob-Machado-Xtra-Cado-Helium-Surfboard-Deck.jpg?v=1774477742" alt="Firewire Xtra Cado surfboard deck" loading="lazy"></div>
+      <div class="chips">
+        <span class="chip key">50.6 L</span>
+        <span class="chip">7'6 × 21⅞ × 2¾</span>
+        <span class="chip">5 boxes</span>
+        <span class="chip">~$1,125</span>
+      </div>
+      <div class="why"><ul>
+        <li>Machado's stretched Machadocado: real glide for small, gutless waves, with more foam (50.6 L) than the Seaside &amp; Beyond.</li>
+        <li>Pulled-down, thinner rails and double-concave-to-vee add turnability — the most "performance" of the mellow options.</li>
+        <li>Why #4: it competes for the same job as the Seaside &amp; Beyond, but those performance rails are less forgiving — a sharper tool than your priorities call for. If you demo one and love it, it's a fine swap for the #1 slot.</li>
+      </ul></div>
+      <div class="meters">
+        <div class="meter"><span>Paddle &amp; catch</span><div class="bar"><div class="fill" style="width:86%"></div></div><span class="num">8.6</span></div>
+        <div class="meter"><span>SD small-wave glide</span><div class="bar"><div class="fill" style="width:88%"></div></div><span class="num">8.8</span></div>
+        <div class="meter"><span>Easy transition</span><div class="bar"><div class="fill" style="width:75%"></div></div><span class="num">7.5</span></div>
+        <div class="meter"><span>Travel durability</span><div class="bar"><div class="fill" style="width:65%"></div></div><span class="num">6.5</span></div>
+      </div>
+    </article>
+
+  </div>
+
+  <h2>Spec Sheet</h2>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Spec</th>
+          <th>#1 Seaside &amp; Beyond</th>
+          <th>#2 HI Moe</th>
+          <th>#3 TJ Pro Mid</th>
+          <th>#4 Xtra Cado</th>
+          <th>Current: Pickup Stick</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="label">Best size for Matt</td><td>7'6</td><td>7'4</td><td>7'4</td><td>7'6</td><td class="ref">8'0 (owned)</td></tr>
+        <tr><td class="label">Dimensions</td><td>7'6 × 21¾ × 2¾</td><td>7'4 × 22½ × 2⅞</td><td>7'4 × 21⅞ × 2⅝</td><td>7'6 × 21⅞ × 2¾</td><td class="ref">8'0 × 22⅓ × 2⅘</td></tr>
+        <tr><td class="label">Volume</td><td>49.5 L</td><td>52.9 L</td><td>48.0 L</td><td>50.6 L</td><td class="ref">≈57 L (est.)</td></tr>
+        <tr><td class="label">Sizes offered</td><td>up to 7'6</td><td>7'2 / 7'4 / 8'0</td><td>7'2 → 8'0</td><td>6'6 → 7'6</td><td class="ref">7'0 / 7'6 / 8'0</td></tr>
+        <tr><td class="label">Fin setup</td><td>Quad</td><td>2+1 / thruster</td><td>5 boxes: single, 2+1, quad</td><td>5 boxes</td><td class="ref">2+1</td></tr>
+        <tr><td class="label">Construction</td><td>Firewire Helium / Volcanic (EPS)</td><td>Thunderbolt Red (tough)</td><td>I-Bolic Volcanic (EPS)</td><td>Helium (EPS, wood-rail flex)</td><td class="ref">Lib Tech eco (very tough)</td></tr>
+        <tr><td class="label">Shaper lineage</td><td>Rob Machado fish → mid</td><td>Harley Ingleby (longboard world champ)</td><td>Taylor Jensen (longboard world champ)</td><td>Rob Machado Machadocado → mid</td><td class="ref">Lib Tech funboard</td></tr>
+        <tr><td class="label">Rocker character</td><td>Very flat entry — glide</td><td>Flat bottom, double concave</td><td>Moderate — all-round</td><td>Low, with vee out the tail</td><td class="ref">Steep — PNW faces</td></tr>
+        <tr><td class="label">Happiest in</td><td>1–5 ft soft, lined-up walls</td><td>Tiny to chest-high mush</td><td>Waist to overhead, all types</td><td>Small gutless → surprising range up</td><td class="ref">Steep, punchy peaks</td></tr>
+        <tr><td class="label">Street price (Aug 2026)</td><td>~$1,025</td><td>~$1,210</td><td>~$1,255</td><td>~$1,125</td><td class="ref">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>How the ranking was made</h2>
+  <div class="method">
+    <p>Weighted to how you actually surf, not spec-sheet maximalism:</p>
+    <ol>
+      <li><strong>Wave match first.</strong> The target is soft, less-steep San Diego surf in your 2–4 ft comfort band. The two Machado shapes and the Moe are built for exactly that; the TJ Pro Mid prefers a touch more energy.</li>
+      <li><strong>Paddle effort is a first-class cost.</strong> Nothing under 48 L made the list. The Moe (52.9 L) is the paddle king; the Seaside &amp; Beyond gives up little while shedding half a foot of length.</li>
+      <li><strong>Buy a new feeling, not a smaller clone.</strong> The Pickup Stick is already a wide 2+1 funboard. The quad-fish Seaside &amp; Beyond changes how a wave feels; the Moe mostly shrinks what you have. This is the tiebreak that put Machado ahead of Harley.</li>
+      <li><strong>Forgiveness over performance.</strong> Glass and glide beat rail-to-rail shredding — which is why the sharper-railed Xtra Cado sits fourth despite being a superb board.</li>
+      <li><strong>It has to survive the trip.</strong> Boards that fly get dinged. Thunderbolt &gt; Firewire EPS here — the Moe's strongest card, and worth a board bag and travel insurance line-item either way.</li>
+    </ol>
+    <p style="margin-top:10px"><strong>Bottom line:</strong> order of preference is Seaside &amp; Beyond 7'6 → Moe 7'4 → TJ Pro Mid 7'4 → Xtra Cado 7'6. If you can demo before buying, try the Seaside &amp; Beyond and the Moe back-to-back on a small day — that head-to-head settles it.</p>
+  </div>
+
+  <footer>
+    <p>Sources: <a href="https://firewiresurfboards.com/products/seaside-beyond">Firewire — Seaside &amp; Beyond</a> ·
+    <a href="https://firewiresurfboards.com/products/xtra-cado">Firewire — Xtra Cado</a> ·
+    <a href="https://firewiresurfboards.com/products/taylor-jensen-pro-mid">Firewire — TJ Pro Mid</a> ·
+    <a href="https://www.cleanlinesurf.com/products/harley-ingleby-series-moe-thunderbolt-red-74-22-2-surfboard-candy-white-himoezr704canwh">Cleanline — HI Moe 7'4</a> ·
+    <a href="https://www.realwatersports.com/products/machado-seaside-beyond-firewire-volcanic-77">REAL — Seaside &amp; Beyond 7'6</a></p>
+    <p>Product photos link from retailer/brand CDNs. Prices are street prices observed Aug 6, 2026 and vary by construction and color.</p>
+  </footer>
+</div>
+</body>
+</html>
