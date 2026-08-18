@@ -104,6 +104,15 @@
   }
   .chip strong { font-variant-numeric: tabular-nums; }
 
+  .wx { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+  @media (max-width: 560px) { .wx { grid-template-columns: 1fr; } }
+  .wx-day { border: 1px solid var(--line); border-radius: 8px; padding: 0.8rem 0.95rem; display: flex; flex-direction: column; gap: 0.2rem; }
+  .wx-day .dow { font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; font-size: 0.8rem; color: var(--pine); }
+  .wx-day .temps { font-size: 1.35rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .wx-day .temps span { font-size: 0.95rem; color: var(--muted); font-weight: 400; }
+  .wx-day .desc { font-size: 0.88rem; }
+  .wx-day .sun { color: var(--muted); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+
   section.card {
     background: var(--card);
     border: 1px solid var(--line);
@@ -141,6 +150,8 @@
   }
   .btn-maps { background: var(--pine); color: var(--pine-ink); }
   .btn-onx { border: 1.5px solid var(--pine); color: var(--pine); }
+  .btn-copy { border: 1.5px solid var(--line); color: var(--muted); background: none; font-family: inherit; cursor: pointer; }
+  .btn-copy.copied { border-color: var(--pine); color: var(--pine); }
 
   .warn {
     background: var(--warn-bg); border-left: 4px solid var(--warn-edge);
@@ -191,6 +202,31 @@
       <span class="chip">permit: <strong>free, at trailhead</strong></span>
     </div>
   </header>
+
+  <section class="card">
+    <h2>Forecast up high</h2>
+    <div class="wx">
+      <div class="wx-day">
+        <span class="dow">Sun 8/23 &middot; hike in</span>
+        <span class="temps">56&deg; <span>/ 46&deg; night</span></span>
+        <span class="desc">Sunny, then mostly clear &middot; wind WNW 3&ndash;8 mph</span>
+        <span class="sun">&#9728; 6:14 am &rarr; 8:03 pm</span>
+      </div>
+      <div class="wx-day">
+        <span class="dow">Mon 8/24 &middot; Old Snowy + Goat Lake</span>
+        <span class="temps">61&deg; <span>/ 49&deg; night</span></span>
+        <span class="desc">Sunny, partly cloudy overnight &middot; wind NNW then W ~7 mph</span>
+        <span class="sun">&#9728; 6:15 am &rarr; 8:02 pm</span>
+      </div>
+      <div class="wx-day">
+        <span class="dow">Tue 8/25 &middot; hike out</span>
+        <span class="temps">&mdash;</span>
+        <span class="desc">Beyond the forecast window &mdash; re-check Saturday</span>
+        <span class="sun">&#9728; 6:16 am &rarr; 8:00 pm</span>
+      </div>
+    </div>
+    <p class="profile-note">NWS point forecast for the Goat Lake grid cell at ~7,080 ft, fetched Aug 18 &mdash; camp will run a few degrees warmer, the summits cooler. Chance of light rain Friday night before the trip, clearing Saturday. This is a snapshot: <a href="https://forecast.weather.gov/MapClick.php?lat=46.5222&amp;lon=-121.4859">refresh it here before you drive</a>.</p>
+  </section>
 
   <section class="card">
     <h2>Route profile</h2>
@@ -437,14 +473,14 @@
 
   <section class="card">
     <h2>Map pins</h2>
-    <p class="sub" style="margin-bottom:0.9rem">onX links open the onX web map at the pin — on your phone, they should hand off to the Hunt app if it's installed. If a link stays in the browser, paste the coordinates (shown on each card, tap to select) into onX search, or import the GPX file saved alongside this page.</p>
+    <p class="sub" style="margin-bottom:0.9rem">On a phone, the onX app can't be deep-linked to a location (it opens but ignores the pin — an onX limitation, not a broken link). Two ways that work: import the GPX waypoint file once (see below) so all six pins live in the app offline, or tap <em>Copy coords</em> on a card and paste into the onX search box. The <em>onX web</em> links do land on the pin when opened in a desktop browser.</p>
     <div class="pins">
       <div class="pin">
         <div><h3><span class="pinnum">1</span>Snowgrass Trailhead</h3><span class="role">Park here Sunday · 4,650 ft · vault toilets</span></div>
         <span class="coords">46.4642, -121.5190</span>
         <div class="btns">
           <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.4642%2C-121.5190">Google Maps</a>
-          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#15/46.4642/-121.5190">onX</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#15/46.4642/-121.5190">onX web</a><button class="btn btn-copy" type="button" data-coords="46.4642, -121.5190">Copy coords</button>
         </div>
       </div>
       <div class="pin">
@@ -452,7 +488,7 @@
         <span class="coords">46.4669, -121.5274</span>
         <div class="btns">
           <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.4669%2C-121.5274">Google Maps</a>
-          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#15/46.4669/-121.5274">onX</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#15/46.4669/-121.5274">onX web</a><button class="btn btn-copy" type="button" data-coords="46.4669, -121.5274">Copy coords</button>
         </div>
       </div>
       <div class="pin">
@@ -460,7 +496,7 @@
         <span class="coords">46.4934, -121.4701</span>
         <div class="btns">
           <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.4934%2C-121.4701">Google Maps</a>
-          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.4934/-121.4701">onX</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.4934/-121.4701">onX web</a><button class="btn btn-copy" type="button" data-coords="46.4934, -121.4701">Copy coords</button>
         </div>
       </div>
       <div class="pin">
@@ -468,7 +504,7 @@
         <span class="coords">46.5119, -121.4539</span>
         <div class="btns">
           <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.5119%2C-121.4539">Google Maps</a>
-          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5119/-121.4539">onX</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5119/-121.4539">onX web</a><button class="btn btn-copy" type="button" data-coords="46.5119, -121.4539">Copy coords</button>
         </div>
       </div>
       <div class="pin">
@@ -476,7 +512,7 @@
         <span class="coords">46.5222, -121.4859</span>
         <div class="btns">
           <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.5222%2C-121.4859">Google Maps</a>
-          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5222/-121.4859">onX</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5222/-121.4859">onX web</a><button class="btn btn-copy" type="button" data-coords="46.5222, -121.4859">Copy coords</button>
         </div>
       </div>
       <div class="pin">
@@ -484,9 +520,13 @@
         <span class="coords">46.5222, -121.4933</span>
         <div class="btns">
           <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.5222%2C-121.4933">Google Maps</a>
-          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5222/-121.4933">onX</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5222/-121.4933">onX web</a><button class="btn btn-copy" type="button" data-coords="46.5222, -121.4933">Copy coords</button>
         </div>
       </div>
+    </div>
+    <div class="verdict" style="margin-top:1rem">
+      <span class="eyebrow">One-time onX setup (do it on wifi)</span>
+      <p style="margin-bottom:0">Save <strong>goat-rocks-pins.gpx</strong> to your phone (Files app), then in onX Hunt: <strong>Profile tab &rarr; My Content &rarr; Import &rarr; choose the file</strong>. All six waypoints appear named and stay available offline. While you're in there, download an offline map of the Goat Rocks area &mdash; there's no cell service past Packwood.</p>
     </div>
     <p style="margin-top:1rem">
       <a class="btn btn-maps" href="https://www.google.com/maps/dir/?api=1&amp;origin=Packwood%2C%20WA&amp;destination=46.4642%2C-121.5190">Driving directions: Packwood → trailhead</a>
@@ -546,3 +586,17 @@
     <p>Compiled Aug 18, 2026 from USFS, WTA, InciWeb, NWS and GNIS sources — full citations in <em>goat-rocks-research-notes.md</em>. Route advice originally from Lauren, verified correct on all points.</p>
   </footer>
 </main>
+
+<script>
+document.querySelectorAll('.btn-copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    navigator.clipboard.writeText(btn.dataset.coords).then(function () {
+      var old = btn.textContent;
+      btn.textContent = 'Copied \u2713';
+      btn.classList.add('copied');
+      setTimeout(function () { btn.textContent = old; btn.classList.remove('copied'); }, 1600);
+    });
+  });
+});
+</script>
+
