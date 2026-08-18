@@ -1,0 +1,377 @@
+<title>Goat Rocks Loop</title>
+<style>
+  :root {
+    --bg: #f3f5ef;
+    --card: #ffffff;
+    --ink: #212821;
+    --muted: #5d6a5e;
+    --line: #d9dfd2;
+    --pine: #35604a;
+    --pine-ink: #ffffff;
+    --lake: #256b77;
+    --sun: #a3741e;
+    --warn-bg: #f7ede2;
+    --warn-edge: #a14d1b;
+    --warn-ink: #7c3a12;
+    --chip-bg: #e7ece2;
+    --profile-grid: #e2e7db;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151a16;
+      --card: #1d241e;
+      --ink: #e6ebe0;
+      --muted: #9cab9d;
+      --line: #2f3830;
+      --pine: #7fb694;
+      --pine-ink: #10241a;
+      --lake: #6cbac6;
+      --sun: #d9a94e;
+      --warn-bg: #2b211a;
+      --warn-edge: #e08a4a;
+      --warn-ink: #eab68a;
+      --chip-bg: #26302a;
+      --profile-grid: #242c25;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151a16;
+    --card: #1d241e;
+    --ink: #e6ebe0;
+    --muted: #9cab9d;
+    --line: #2f3830;
+    --pine: #7fb694;
+    --pine-ink: #10241a;
+    --lake: #6cbac6;
+    --sun: #d9a94e;
+    --warn-bg: #2b211a;
+    --warn-edge: #e08a4a;
+    --warn-ink: #eab68a;
+    --chip-bg: #26302a;
+    --profile-grid: #242c25;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Seravek, "Gill Sans", "Trebuchet MS", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  main { max-width: 46rem; margin: 0 auto; display: flex; flex-direction: column; gap: 2.25rem; }
+
+  .eyebrow {
+    font-family: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    color: var(--pine);
+    font-weight: 600;
+  }
+  h1 {
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0.3rem 0 0.2rem;
+    text-wrap: balance;
+  }
+  h2 {
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+  }
+  h3 { font-size: 1.02rem; margin: 0 0 0.3rem; font-weight: 600; }
+  p { margin: 0.5rem 0; }
+  a { color: var(--lake); }
+  a:focus-visible, .btn:focus-visible { outline: 2px solid var(--lake); outline-offset: 2px; }
+
+  .sub { color: var(--muted); margin: 0; }
+
+  .statrow { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
+  .chip {
+    background: var(--chip-bg);
+    border-radius: 999px;
+    padding: 0.28rem 0.85rem;
+    font-size: 0.85rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .chip strong { font-variant-numeric: tabular-nums; }
+
+  section.card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.4rem 1.5rem;
+  }
+
+  .profile-wrap { overflow-x: auto; }
+  .profile-wrap svg { min-width: 620px; width: 100%; height: auto; display: block; }
+  .profile-note { color: var(--muted); font-size: 0.82rem; margin-top: 0.4rem; }
+
+  .day { display: grid; grid-template-columns: 3.6rem 1fr; gap: 1rem; padding: 1.05rem 0; border-top: 1px solid var(--line); }
+  .day:first-of-type { border-top: none; padding-top: 0.2rem; }
+  .daytag {
+    font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+    text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+    color: var(--pine); font-size: 0.8rem; line-height: 1.3; padding-top: 0.15rem;
+  }
+  .daystats { color: var(--muted); font-size: 0.88rem; font-variant-numeric: tabular-nums; margin: 0 0 0.35rem; }
+  .day ul { margin: 0.4rem 0 0; padding-left: 1.15rem; }
+  .day li { margin: 0.25rem 0; }
+
+  .pins { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  @media (max-width: 620px) { .pins { grid-template-columns: 1fr; } }
+  .pin {
+    border: 1px solid var(--line); border-radius: 8px; padding: 0.85rem 0.95rem;
+    display: flex; flex-direction: column; gap: 0.45rem;
+  }
+  .pin .role { color: var(--muted); font-size: 0.82rem; }
+  .coords { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.8rem; color: var(--muted); user-select: all; }
+  .btns { display: flex; gap: 0.5rem; margin-top: 0.15rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; text-decoration: none; font-size: 0.82rem; font-weight: 600;
+    padding: 0.32rem 0.8rem; border-radius: 6px;
+  }
+  .btn-maps { background: var(--pine); color: var(--pine-ink); }
+  .btn-onx { border: 1.5px solid var(--pine); color: var(--pine); }
+
+  .warn {
+    background: var(--warn-bg); border-left: 4px solid var(--warn-edge);
+    border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; color: var(--warn-ink);
+  }
+  .warn strong { color: inherit; }
+
+  .verdict { border: 1.5px solid var(--pine); border-radius: 8px; padding: 1rem 1.15rem; }
+  .verdict .eyebrow { margin-bottom: 0.2rem; display: block; }
+
+  .checklist { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+  .checklist li { margin: 0.4rem 0; }
+  .gear { columns: 2; column-gap: 2rem; margin: 0.3rem 0 0; padding-left: 1.15rem; }
+  @media (max-width: 560px) { .gear { columns: 1; } }
+  .gear li { margin: 0.3rem 0; break-inside: avoid; }
+
+  footer { color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+  footer p { margin: 0.3rem 0; }
+</style>
+
+<main>
+  <header>
+    <span class="eyebrow">Goat Rocks Wilderness · Aug 23–25, 2026</span>
+    <h1>Snowgrass–Goat Lake Loop</h1>
+    <p class="sub">Matt, wife &amp; son · in from the Packwood side · counterclockwise</p>
+    <div class="statrow">
+      <span class="chip"><strong>13–14 mi</strong> loop</span>
+      <span class="chip"><strong>~2,900 ft</strong> gain</span>
+      <span class="chip">high camp <strong>6,421 ft</strong></span>
+      <span class="chip">day-hike summit <strong>7,880 ft</strong></span>
+      <span class="chip">permit: <strong>free, at trailhead</strong></span>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>Route profile</h2>
+    <div class="profile-wrap">
+      <svg viewBox="0 0 700 240" role="img" aria-label="Elevation profile: trailhead 4,650 feet up to camp near Snowgrass Flat at 5,830 feet, optional Old Snowy day hike to 7,880 feet, traverse to Goat Lake camp at 6,421 feet, descent to Berry Patch trailhead.">
+        <g stroke="var(--profile-grid)" stroke-width="1">
+          <line x1="40" y1="210" x2="660" y2="210"/>
+          <line x1="40" y1="163" x2="660" y2="163"/>
+          <line x1="40" y1="116" x2="660" y2="116"/>
+          <line x1="40" y1="69" x2="660" y2="69"/>
+        </g>
+        <g fill="var(--muted)" font-size="10" font-family="SF Mono, Menlo, monospace">
+          <text x="4" y="213">4,400</text>
+          <text x="4" y="166">5,400</text>
+          <text x="4" y="119">6,400</text>
+          <text x="4" y="72">7,400</text>
+        </g>
+        <polyline points="40,198 132,186 201,163 247,142 292,130 338,106 361,118 384,115 426,106 499,134 568,168 660,200"
+          fill="none" stroke="var(--pine)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <g stroke="var(--sun)" stroke-width="2" stroke-dasharray="4 4" fill="none">
+          <polyline points="292,130 350,46"/>
+          <polyline points="426,106 452,67"/>
+        </g>
+        <g fill="var(--pine)">
+          <circle cx="40" cy="198" r="4"/>
+          <circle cx="247" cy="142" r="4"/>
+          <circle cx="384" cy="115" r="4"/>
+          <circle cx="660" cy="200" r="4"/>
+        </g>
+        <g fill="var(--sun)">
+          <circle cx="350" cy="46" r="3.5"/>
+          <circle cx="452" cy="67" r="3.5"/>
+        </g>
+        <g fill="var(--ink)" font-size="11" font-family="Seravek, Gill Sans, sans-serif">
+          <text x="34" y="228">Snowgrass TH</text>
+          <text x="200" y="132">Camp 1 · night of Sun 8/23</text>
+          <text x="356" y="36">Old Snowy 7,880 ft (day hike)</text>
+          <text x="392" y="128">Goat Lake · night of Mon 8/24</text>
+          <text x="458" y="62">Hawkeye Pt 7,431 ft</text>
+          <text x="586" y="228">Berry Patch TH</text>
+        </g>
+      </svg>
+    </div>
+    <p class="profile-note">Solid line: the loop with packs. Dashed: optional day-hike spurs with light packs. The two trailheads are a quarter-mile connector trail apart.</p>
+  </section>
+
+  <section class="card">
+    <h2>Day by day</h2>
+
+    <div class="day">
+      <div class="daytag">Sun<br>8/23</div>
+      <div>
+        <h3>Hike in to Snowgrass Flat</h3>
+        <p class="daystats">~4.5 mi · +1,600 ft · trailhead 4,650 ft → camp ~5,830 ft</p>
+        <ul>
+          <li>Self-issue the free wilderness permit at the trailhead kiosk; NW Forest Pass on the dash.</li>
+          <li>Cross Goat Creek on the bridge at mile 2 — <strong>reliable water, tank up</strong>.</li>
+          <li>Camp in the established sites in the trees just <em>below</em> the flat, near the Lily Basin junction. Camping in the flat itself is prohibited; stay 100 ft off the PCT. Spring near the flat was flowing as of Aug 15.</li>
+          <li>Sunday afternoon arrival works for you — weekend crowds drain out by evening.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="daytag">Mon<br>8/24</div>
+      <div>
+        <h3>Old Snowy, then move camp to Goat Lake</h3>
+        <p class="daystats">Morning: ~6 mi RT · +2,200 ft · Afternoon: ~3 mi · +600 ft with packs</p>
+        <ul>
+          <li><strong>Morning, light packs:</strong> up to the PCT, north to the saddle, then the old-PCT spine to Old Snowy's summit — steep but straightforward, brief easy scramble at top. Rainier, Adams, St. Helens, the Knife's Edge. Go early; the ridge is exposed if weather builds. No ice axe needed in late August.</li>
+          <li><strong>Afternoon:</strong> break camp, traverse Lily Basin Trail to Goat Lake. <strong>Carry water</strong> — sources on this stretch are dry by late August. Some exposure on the ridge approach.</li>
+          <li>Camp on the knoll above the lake outlet, ≥100 ft from shore. <strong>It's windy — pick the most sheltered spot and guy the tent out properly.</strong></li>
+          <li><strong>Sunset option:</strong> Hawkeye Point, ~3 mi RT / +900 ft from the lake — turquoise lake below, three volcanoes on the skyline. Or save it for Tuesday morning; the junction is only 0.9 mi from camp.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="daytag">Tue<br>8/25</div>
+      <div>
+        <h3>Out via Goat Ridge</h3>
+        <p class="daystats">~6 mi · −2,000 ft to Berry Patch, then ¼-mi connector to the car</p>
+        <ul>
+          <li>Lily Basin Trail 0.9 mi to the Goat Ridge junction, then descend through Jordan Basin and along Goat Ridge.</li>
+          <li>Optional 1.1-mi spur to the old lookout site near the bottom.</li>
+          <li>Pop out at Berry Patch; connector trail back to the Snowgrass lot.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Map pins</h2>
+    <p class="sub" style="margin-bottom:0.9rem">onX links open the onX web map at the pin — on your phone, they should hand off to the Hunt app if it's installed. If a link stays in the browser, paste the coordinates (shown on each card, tap to select) into onX search, or import the GPX file saved alongside this page.</p>
+    <div class="pins">
+      <div class="pin">
+        <div><h3>Snowgrass Trailhead</h3><span class="role">Park here Sunday · 4,650 ft · vault toilets</span></div>
+        <span class="coords">46.4642, -121.5190</span>
+        <div class="btns">
+          <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.4642%2C-121.5190">Google Maps</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#15/46.4642/-121.5190">onX</a>
+        </div>
+      </div>
+      <div class="pin">
+        <div><h3>Berry Patch Trailhead</h3><span class="role">Where you come out Tuesday · ¼ mi from your car</span></div>
+        <span class="coords">46.4669, -121.5274</span>
+        <div class="btns">
+          <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.4669%2C-121.5274">Google Maps</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#15/46.4669/-121.5274">onX</a>
+        </div>
+      </div>
+      <div class="pin">
+        <div><h3>Snowgrass Flat</h3><span class="role">Camp night 1 just below · 5,827 ft</span></div>
+        <span class="coords">46.4934, -121.4701</span>
+        <div class="btns">
+          <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.4934%2C-121.4701">Google Maps</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.4934/-121.4701">onX</a>
+        </div>
+      </div>
+      <div class="pin">
+        <div><h3>Old Snowy Mountain</h3><span class="role">Monday day-hike summit · 7,880 ft</span></div>
+        <span class="coords">46.5119, -121.4539</span>
+        <div class="btns">
+          <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.5119%2C-121.4539">Google Maps</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5119/-121.4539">onX</a>
+        </div>
+      </div>
+      <div class="pin">
+        <div><h3>Goat Lake</h3><span class="role">Camp night 2 · 6,421 ft · windy, exposed</span></div>
+        <span class="coords">46.5222, -121.4859</span>
+        <div class="btns">
+          <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.5222%2C-121.4859">Google Maps</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5222/-121.4859">onX</a>
+        </div>
+      </div>
+      <div class="pin">
+        <div><h3>Hawkeye Point</h3><span class="role">Sunset viewpoint above the lake · 7,431 ft</span></div>
+        <span class="coords">46.5222, -121.4933</span>
+        <div class="btns">
+          <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=46.5222%2C-121.4933">Google Maps</a>
+          <a class="btn btn-onx" href="https://webmap.onxmaps.com/hunt/map#14/46.5222/-121.4933">onX</a>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1rem">
+      <a class="btn btn-maps" href="https://www.google.com/maps/dir/?api=1&amp;origin=Packwood%2C%20WA&amp;destination=46.4642%2C-121.5190">Driving directions: Packwood → trailhead</a>
+    </p>
+    <p class="sub" style="font-size:0.85rem">US-12 west 2.7 mi → left on FR 21 for ~13 mi (washboard gravel, sedan-OK) → slight left on FR 2150 ~3 mi. Allow 45–60 min. Packwood is your last gas and cell signal.</p>
+  </section>
+
+  <section class="card">
+    <h2>Fire, food &amp; rules</h2>
+    <div class="warn">
+      <strong>No campfires — anywhere, at all.</strong> Forest-wide Stage 2 fire ban through Oct 31, 2026, wilderness included. Canister/propane stoves with a shutoff valve are fine (clear 3 ft around). Solid-fuel/Esbit stoves are banned too.
+    </div>
+
+    <div class="verdict" style="margin-top:1rem">
+      <span class="eyebrow">Bear canister — your call, evaluated</span>
+      <p><strong>Skipping the hard canister is reasonable here.</strong> It's not required (no food-storage order exists for Goat Rocks), black-bear pressure is low, and bear encounters at these camps are rare. Your usual rule holds.</p>
+      <p>But don't skip protection entirely: the actual food thieves at Snowgrass and Goat Lake are <strong>mice and marmots</strong>, and these are two of the busiest camps in the south Cascades — rodents there are habituated pack-raiders. There are no good hang trees at either camp. The right middle ground is an <strong>Ursack (or any rodent-resistant bag) with an odor-barrier liner</strong>, tied to a stunted tree or boulder. Worst case, sleep with food in an OPSAK inside the tent — common practice here, just never leave food in packs outside.</p>
+      <p style="margin-bottom:0">Separate issue: <strong>goats want your salt, not your food.</strong> Don't leave sweaty hipbelts, poles, or boots out overnight — they'll chew them. Pee on bare rock 50+ ft from camp and trail.</p>
+    </div>
+
+    <ul class="checklist" style="margin-top:1rem">
+      <li>Free self-issue wilderness permit at the trailhead. Group limit 12. No camping within 100 ft of lakes or the PCT; none in Snowgrass Flat proper.</li>
+      <li>Filter all water — heavy goat and human traffic. Carry extra capacity for the traverse and the descent (both dry late season).</li>
+      <li>Keep 50 yards from goats. If one gets pushy: yell, wave a jacket.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Gear beyond the usual</h2>
+    <ul class="gear">
+      <li>Canister stove + fuel (fires banned)</li>
+      <li>Ursack / rodent bag + OPSAK liner</li>
+      <li>20°F bags — lows 35–45°F, can touch freezing</li>
+      <li>Storm stakes &amp; guylines for Goat Lake wind</li>
+      <li>Trekking poles (scree, long descent)</li>
+      <li>Sun kit: sunscreen, sunglasses, hats — it's all above treeline</li>
+      <li>Extra water capacity (3L+ each for day 2)</li>
+      <li>Rain shell + warm layer, even in a sunny forecast</li>
+      <li>Bug spray (mostly done by late Aug, but cheap insurance)</li>
+      <li>NW Forest Pass for the dash</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Check Saturday before you drive</h2>
+    <ul class="checklist">
+      <li><a href="https://www.fs.usda.gov/r06/giffordpinchot/alerts">Gifford Pinchot alerts</a> — the Backbone Fire (7 mi NE of Packwood, was 15 ac / 0% contained on Aug 18) is the one to watch; its closure is currently all north of US-12 and doesn't touch your route.</li>
+      <li><a href="https://fire.airnow.gov">fire.airnow.gov</a> + <a href="https://wasmoke.blogspot.com">WA Smoke Blog</a> — AQI was fair-to-moderate; Central WA fires could drift smoke south.</li>
+      <li><a href="https://forecast.weather.gov/MapClick.php?lat=46.4766&amp;lon=-121.5146">NWS point forecast</a> — Sun/Mon looked sunny, highs low-60s at 5,000 ft; Tuesday not yet in the window.</li>
+      <li><a href="https://www.wta.org/go-hiking/hikes/snowgrass">WTA: Snowgrass</a> and <a href="https://www.wta.org/go-hiking/hikes/goat-lake-1">WTA: Goat Lake</a> trip reports — fresh water/crowd beta.</li>
+      <li>Questions: Cowlitz Valley Ranger District, (360) 497-1100.</li>
+    </ul>
+    <p class="sub" style="font-size:0.85rem">The Mt. Rainier fire you heard about is Grand Park 2 — Sunrise side of the park, 57% contained as of Aug 17, no effect on Goat Rocks or US-12.</p>
+  </section>
+
+  <footer>
+    <p>Compiled Aug 18, 2026 from USFS, WTA, InciWeb, NWS and GNIS sources — full citations in <em>goat-rocks-research-notes.md</em>. Route advice originally from Lauren, verified correct on all points.</p>
+  </footer>
+</main>
