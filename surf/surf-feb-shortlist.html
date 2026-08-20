@@ -152,33 +152,18 @@
   .trip .codename { color: var(--swell-deep); }
   .route { color: var(--ink-soft); margin: 0.35rem 0 1rem; font-size: 0.95rem; }
 
-  .media-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: start; margin: 0.4rem 0 1.3rem; }
-  .polaroid {
-    background: #fdfdfa;
-    padding: 10px 10px 12px;
-    margin: 0;
-    box-shadow: 0 8px 22px rgba(8, 22, 32, 0.28);
-    transform: rotate(-1.4deg);
-    position: relative;
+  .media-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: start; margin: 0.4rem 0 1.3rem; }
+  .shot { margin: 0; min-width: 0; }
+  .shot iframe, .shot img {
+    width: 100%; height: 210px; display: block; border: 0;
+    border: 1px solid var(--line);
+    background: var(--ground);
   }
-  .polaroid.flip { transform: rotate(1.2deg); }
-  .polaroid::before {
-    content: "";
-    position: absolute;
-    top: -11px; left: 50%;
-    width: 92px; height: 22px;
-    transform: translateX(-50%) rotate(-2deg);
-    background: var(--wax-soft);
-    border: 1px solid var(--wax);
-    z-index: 1;
-  }
-  .polaroid svg, .polaroid iframe, .polaroid img { width: 100%; display: block; border: 0; }
-  .polaroid iframe { height: 200px; background: #e8ece9; }
-  .polaroid img { height: 200px; object-fit: cover; background: #e8ece9; }
-  .polaroid figcaption { font-size: 0.8rem; color: #2c3e49; padding-top: 0.5rem; line-height: 1.35; }
-  .polaroid figcaption a { color: #1c5a7c; }
-  .polaroid .credit { display: block; font-size: 0.66rem; color: #7a8b94; margin-top: 0.2rem; }
-  .polaroid .credit a { color: #7a8b94; }
+  .shot img { object-fit: cover; }
+  .shot figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .shot figcaption a { color: var(--swell-deep); }
+  .shot .credit { display: block; font-size: 0.66rem; color: var(--ink-soft); opacity: 0.7; margin-top: 0.2rem; }
+  .shot .credit a { color: inherit; }
 
   dl.facts {
     display: grid;
@@ -269,7 +254,7 @@
     .trip { grid-template-columns: 2.4rem 1fr; }
     .trip-body { padding: 1.1rem 1rem 1.2rem; }
     .media-row { grid-template-columns: 1fr; gap: 1.9rem; }
-    .polaroid, .polaroid.flip { max-width: 380px; margin: 0 auto; }
+    .shot { max-width: 420px; margin: 0 auto; }
     .proscons { grid-template-columns: 1fr; }
     .spectrum .lbl { width: 6.5em; font-size: 0.62rem; }
   }
@@ -337,14 +322,14 @@
         Everything below keeps what Lo de Marcos gets right (mellow waves, mellow streets, warm water)
         and fixes the one thing it doesn&rsquo;t: there&rsquo;s nothing to walk out <em>to</em> after dinner.</p>
       <div class="media-row">
-        <figure class="polaroid">
+        <figure class="shot">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bahia_lo_de_Marcos.jpg/960px-Bahia_lo_de_Marcos.jpg"
             alt="The bay at Lo de Marcos: gentle waves rolling toward a palm-backed beach with the small town behind" loading="lazy">
           <figcaption>The baseline: beautiful, gentle, and asleep before the kids are.
             <a href="https://www.google.com/search?q=lo+de+marcos+nayarit+beach&udm=2" rel="noopener">More photos &rarr;</a>
             <span class="credit">Photo: Elbeta, <a href="https://commons.wikimedia.org/wiki/File:Bahia_lo_de_Marcos.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
         </figure>
-        <figure class="polaroid flip">
+        <figure class="shot">
           <iframe title="Map of Lo de Marcos and Sayulita, Nayarit" loading="lazy"
             src="https://www.openstreetmap.org/export/embed.html?bbox=-105.62%2C20.77%2C-105.18%2C21.08&amp;layer=mapnik&amp;marker=20.954%2C-105.354"></iframe>
           <figcaption>Both vetoes on one map: Lo de Marcos (pin), Sayulita 25 min south.
@@ -368,7 +353,7 @@
       <p class="route">A reef-sheltered bay on the Nicoya Peninsula &mdash; the surf-town equivalent of a
         heated pool with a view. Carrillo, five minutes south, is the quiet escape valve.</p>
       <div class="media-row">
-        <figure class="polaroid">
+        <figure class="shot">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/S%C3%A1mara.jpg/960px-S%C3%A1mara.jpg"
             alt="Playa Samara on a sunny day: calm bay water, a panga boat at the shoreline, green headland across the bay" loading="lazy">
           <figcaption>Reef across the bay mouth = the ocean arrives pre-tamed. Restaurants open
@@ -376,7 +361,7 @@
             <a href="https://www.google.com/search?q=playa+samara+costa+rica+beach+town&udm=2" rel="noopener">More photos &rarr;</a>
             <span class="credit">Photo: Haakon S. Krohn, <a href="https://commons.wikimedia.org/wiki/File:S%C3%A1mara.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
         </figure>
-        <figure class="polaroid flip">
+        <figure class="shot">
           <iframe title="Map of Samara and Playa Carrillo, Costa Rica" loading="lazy"
             src="https://www.openstreetmap.org/export/embed.html?bbox=-85.60%2C9.82%2C-85.42%2C9.94&amp;layer=mapnik&amp;marker=9.881%2C-85.528"></iframe>
           <figcaption>S&aacute;mara (pin) with Carrillo around the point.
@@ -434,7 +419,7 @@
       <p class="route">Stay in Troncones (the livelier base, 40 min north of Zihuatanejo&rsquo;s airport);
         drive 15 min to Saladita, a left point that peels for 200+ yards at walking speed.</p>
       <div class="media-row">
-        <figure class="polaroid">
+        <figure class="shot">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Playa_Troncones%2C_Costa_Grande%2C_Guerrero%2C_Troncones_Beach%2C_Costa_Grande%2C_Guerrero_%2824980714395%29.jpg/960px-Playa_Troncones%2C_Costa_Grande%2C_Guerrero%2C_Troncones_Beach%2C_Costa_Grande%2C_Guerrero_%2824980714395%29.jpg"
             alt="A clean waist-high wave peeling at Playa Troncones, tide pools in the foreground" loading="lazy">
           <figcaption>Troncones, the home beach: clean little walls and nobody on them.
@@ -442,7 +427,7 @@
             <a href="https://www.google.com/search?q=la+saladita+guerrero+surf+left+point&udm=2" rel="noopener">More photos &rarr;</a>
             <span class="credit">Photo: Comisi&oacute;n Mexicana de Filmaciones, <a href="https://commons.wikimedia.org/wiki/File:Playa_Troncones,_Costa_Grande,_Guerrero,_Troncones_Beach,_Costa_Grande,_Guerrero_(24980714395).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
         </figure>
-        <figure class="polaroid flip">
+        <figure class="shot">
           <iframe title="Map of Troncones and La Saladita, Guerrero" loading="lazy"
             src="https://www.openstreetmap.org/export/embed.html?bbox=-101.92%2C17.68%2C-101.52%2C17.94&amp;layer=mapnik&amp;marker=17.780%2C-101.723"></iframe>
           <figcaption>Troncones (pin); Saladita 15 min up the coast, Zihuatanejo airport 40 min south.
@@ -499,7 +484,7 @@
         with a forgiving beach break dead center. Not a town with a beach &mdash; a beach that grew
         exactly enough town.</p>
       <div class="media-row">
-        <figure class="polaroid">
+        <figure class="shot">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Panam%C3%A1-Playa.JPG/960px-Panam%C3%A1-Playa.JPG"
             alt="Playa Venao: a wide sandy bay curving toward a green headland under blue sky, framed by a palm" loading="lazy">
           <figcaption>One horseshoe of sand between two green headlands; everything you walk to
@@ -507,7 +492,7 @@
             <a href="https://www.google.com/search?q=playa+venao+panama+bay+surf&udm=2" rel="noopener">More photos &rarr;</a>
             <span class="credit">Photo: Inzay20, <a href="https://commons.wikimedia.org/wiki/File:Panam%C3%A1-Playa.JPG" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
         </figure>
-        <figure class="polaroid flip">
+        <figure class="shot">
           <iframe title="Map of Playa Venao, Panama" loading="lazy"
             src="https://www.openstreetmap.org/export/embed.html?bbox=-80.30%2C7.36%2C-80.06%2C7.52&amp;layer=mapnik&amp;marker=7.432%2C-80.193"></iframe>
           <figcaption>Playa Venao (pin); Pedas&iacute; town 30 min east.
