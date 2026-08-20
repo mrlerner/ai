@@ -93,6 +93,20 @@
     font-size: 0.88rem;
     margin: 1.5rem 0;
   }
+  td.ed-plan {
+    background: #fdf3d0 !important;
+    box-shadow: inset 0 0 0 2px #b9770e;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  td.ed-plan::after {
+    content: " ★ our plan";
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #b9770e;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
   .footnotes { font-size: 0.8rem; color: #777; margin-top: 2rem; }
   .footnotes li { margin-bottom: 0.3rem; }
 </style>
@@ -110,11 +124,11 @@
   <table>
     <thead><tr><th>School</th><th>Undergrads</th><th>ED 1</th><th>ED 2</th><th>EA</th><th>Regular Decision</th><th>Admit Rate</th><th>ED Admit</th><th>Notes</th></tr></thead>
     <tbody>
-      <tr><td class="school-name">Brown</td><td>~7,200</td><td>Nov 1</td><td class="none">—</td><td class="none">—</td><td>Jan 3</td><td class="rate">~5%</td><td class="rate">~17%</td><td>No ED2. Two core-subject teacher recs; superscore SAT; optional video</td></tr>
+      <tr><td class="school-name">Brown</td><td>~7,200</td><td class="ed-plan">Nov 1</td><td class="none">—</td><td class="none">—</td><td>Jan 3</td><td class="rate">~5%</td><td class="rate">~17%</td><td>No ED2. Two core-subject teacher recs; superscore SAT; optional video</td></tr>
       <tr><td class="school-name">Pomona</td><td>~1,750</td><td>Nov 15</td><td>Jan 8</td><td class="none">—</td><td>Jan 8</td><td class="rate">~7%</td><td class="rate">~13%</td><td>Later ED1 than most (Nov 15)</td></tr>
       <tr><td class="school-name">UCLA</td><td>~33,000</td><td class="none">—</td><td class="none">—</td><td class="none">—</td><td>Nov 30</td><td class="rate">~9%</td><td class="none">—</td><td>Same UC app — checkbox add. The fun UC flagship; strong English. OOS admits ~8–9%; no early round or legacy lever</td></tr>
       <tr><td class="school-name">Tufts</td><td>~6,800</td><td>Nov 1</td><td>Jan 4</td><td class="none">—</td><td>Jan 4</td><td class="rate">~10%</td><td class="rate">~32%</td><td>Ask Cy</td></tr>
-      <tr><td class="school-name">WashU (St. Louis)</td><td>~8,100</td><td>Nov 2</td><td>Jan 4</td><td class="none">—</td><td>Jan 4</td><td class="rate">~12%</td><td class="rate">~25%</td><td>No EA (despite visit note) — ED1/ED2/RD only. ED admits ~25% and fills over half the class. Nemerov Writing Scholars program</td></tr>
+      <tr><td class="school-name">WashU (St. Louis)</td><td>~8,100</td><td>Nov 2</td><td class="ed-plan">Jan 4</td><td class="none">—</td><td>Jan 4</td><td class="rate">~12%</td><td class="rate">~25%</td><td>No EA (despite visit note) — ED1/ED2/RD only. ED admits ~25% and fills over half the class. Nemerov Writing Scholars program</td></tr>
       <tr><td class="school-name">Wesleyan</td><td>~3,200</td><td>Nov 1</td><td>Jan 1</td><td class="none">—</td><td>Jan 1</td><td class="rate">~16%</td><td class="rate">~38%</td><td>English is a top program; non-evaluative "WesChat"</td></tr>
       <tr><td class="school-name">Vassar</td><td>~2,450</td><td>Nov 15</td><td>Jan 1</td><td class="none">—</td><td>Jan 4</td><td class="rate">~18%</td><td class="rate">~39%</td><td>Standout English program, Wesleyan-adjacent vibe. ED admits ~38%</td></tr>
     </tbody>
