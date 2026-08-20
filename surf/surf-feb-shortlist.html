@@ -208,6 +208,25 @@
   .proscons .pros li::before { content: "+"; position: absolute; left: 0; color: var(--pro); font-weight: 700; }
   .proscons .cons li::before { content: "\2212"; position: absolute; left: 0; color: var(--con); font-weight: 700; }
 
+  /* ---- live photo strip (filled client-side from Wikimedia Commons) ---- */
+  .photostrip { display: none; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0 0 1.3rem; }
+  .photostrip.loaded { display: grid; }
+  .photostrip figure {
+    background: #fdfdfa;
+    padding: 6px 6px 7px;
+    margin: 0;
+    box-shadow: 0 5px 14px rgba(8, 22, 32, 0.24);
+    transform: rotate(-0.8deg);
+  }
+  .photostrip figure:nth-child(2) { transform: rotate(0.7deg); }
+  .photostrip figure:nth-child(3) { transform: rotate(-0.5deg); }
+  .photostrip img { width: 100%; height: 118px; object-fit: cover; display: block; }
+  .photostrip figcaption { font-size: 0.62rem; color: #2c3e49; padding-top: 0.35rem; line-height: 1.3;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.02em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .photostrip figcaption a { color: #1c5a7c; text-decoration: none; }
+  @media (max-width: 640px) { .photostrip { grid-template-columns: repeat(2, 1fr); } .photostrip figure:nth-child(3) { display: none; } }
+
   .moment {
     border-left: 3px solid var(--wax);
     padding: 0.15rem 0 0.15rem 0.9rem;
@@ -366,6 +385,7 @@
             <a href="https://maps.google.com/?q=Lo+de+Marcos,+Nayarit" rel="noopener">Google Maps &rarr;</a></figcaption>
         </figure>
       </div>
+      <div class="photostrip" id="photos-ldm" aria-label="Photos of Lo de Marcos from Wikimedia Commons"></div>
       <p class="moment"><span class="mono">THE VERDICT ON FILE &middot;</span> right waves, right streets, not enough town.</p>
     </div>
   </article>
@@ -433,6 +453,7 @@
             <a href="https://maps.google.com/?q=Playa+Samara,+Costa+Rica" rel="noopener">Google Maps &rarr;</a></figcaption>
         </figure>
       </div>
+      <div class="photostrip" id="photos-samara" aria-label="Photos of Samara from Wikimedia Commons"></div>
       <dl class="facts">
         <div><dt class="mono">Getting there</dt><dd>SEA&rarr;LIR <strong>nonstop</strong> on Alaska (winter Saturdays, ~7 h), then a 2 h paved drive. Easiest door-to-door of the three.</dd></div>
         <div><dt class="mono">February surf</dt><dd>Peak dry season: offshore mornings, glassy waist-high rollers over sand. The most forgiving wave on this page.</dd></div>
@@ -527,6 +548,7 @@
             <a href="https://maps.google.com/?q=Troncones,+Guerrero" rel="noopener">Google Maps &rarr;</a></figcaption>
         </figure>
       </div>
+      <div class="photostrip" id="photos-saladita" aria-label="Photos of Troncones and La Saladita from Wikimedia Commons"></div>
       <dl class="facts">
         <div><dt class="mono">Getting there</dt><dd>SEA&rarr;ZIH, 1 stop (LAX or Mexico City), ~9&ndash;11 h door-to-door, then a 40 min taxi.</dd></div>
         <div><dt class="mono">February surf</dt><dd>NW swell wraps in soft and lined-up: knee-to-chest walls, all longboard, almost never closes out.</dd></div>
@@ -622,6 +644,7 @@
             <a href="https://maps.google.com/?q=Playa+Venao,+Panama" rel="noopener">Google Maps &rarr;</a></figcaption>
         </figure>
       </div>
+      <div class="photostrip" id="photos-venao" aria-label="Photos of Playa Venao from Wikimedia Commons"></div>
       <dl class="facts">
         <div><dt class="mono">Getting there</dt><dd>SEA&rarr;PTY (1 stop, or via LAX on Copa), then a 4.5&ndash;5 h drive or a 35 min charter hop. The long haul of the three.</dd></div>
         <div><dt class="mono">February surf</dt><dd>Dry-season north winds blow offshore all day; shifty, forgiving peaks that work every tide. Rarely flat, rarely scary.</dd></div>
@@ -761,8 +784,10 @@
       reaffirmed May 2026). The Zihuatanejo&ndash;Ixtapa&ndash;Troncones corridor is a long-standing
       exception in practice &mdash; fly in, stay local &mdash; but that judgment belongs to us, not to
       this page. Costa Rica and Panama carry no equivalent baggage.</p>
-    <p>Maps are live OpenStreetMap embeds; each &ldquo;Real photos&rdquo; link opens an image search,
-      since this page keeps no photos of its own.</p>
+    <p>Maps are live OpenStreetMap embeds. The photo strips load real photographs at view time,
+      straight from Wikimedia Commons (searched by each spot&rsquo;s coordinates), with the
+      photographer and license credited under each frame. If a strip is missing, Commons simply
+      has no photos near that beach &mdash; the &ldquo;Real photos&rdquo; links fill the gap.</p>
   </div>
 
   <footer class="cadence">
@@ -773,5 +798,90 @@
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var API = "https://commons.wikimedia.org/w/api.php";
+  var SPOTS = [
+    { id: "photos-ldm",      lat: 20.954, lon: -105.354, fallback: "Lo de Marcos Nayarit beach" },
+    { id: "photos-samara",   lat: 9.881,  lon: -85.528,  fallback: "Playa Samara Guanacaste beach" },
+    { id: "photos-saladita", lat: 17.780, lon: -101.723, fallback: "Troncones Guerrero beach" },
+    { id: "photos-venao",    lat: 7.432,  lon: -80.193,  fallback: "Playa Venao Panama" }
+  ];
+
+  function commonsQuery(params) {
+    var base = {
+      action: "query", format: "json", origin: "*",
+      prop: "imageinfo", iiprop: "url|extmetadata", iiurlwidth: 640
+    };
+    var qs = [];
+    for (var k in base) qs.push(k + "=" + encodeURIComponent(base[k]));
+    for (var j in params) qs.push(j + "=" + encodeURIComponent(params[j]));
+    return fetch(API + "?" + qs.join("&")).then(function (r) { return r.json(); });
+  }
+
+  function usablePages(data) {
+    if (!data || !data.query || !data.query.pages) return [];
+    var pages = Object.keys(data.query.pages).map(function (k) { return data.query.pages[k]; });
+    pages.sort(function (a, b) { return (a.index || 0) - (b.index || 0); });
+    return pages.filter(function (p) {
+      var t = (p.title || "").toLowerCase();
+      return /\.(jpe?g|png)$/.test(t) &&
+        !/map|plan|logo|escudo|coat|diagram|chart|sign|banner/.test(t) &&
+        p.imageinfo && p.imageinfo[0] && p.imageinfo[0].thumburl;
+    });
+  }
+
+  function plainText(html) {
+    var d = document.createElement("div");
+    d.innerHTML = html || "";
+    return (d.textContent || "").replace(/\s+/g, " ").trim();
+  }
+
+  function render(el, pages) {
+    pages.slice(0, 3).forEach(function (p) {
+      var info = p.imageinfo[0];
+      var meta = info.extmetadata || {};
+      var artist = plainText((meta.Artist || {}).value).slice(0, 30) || "Unknown";
+      var license = plainText((meta.LicenseShortName || {}).value) || "See source";
+      var fig = document.createElement("figure");
+      var img = document.createElement("img");
+      img.src = info.thumburl;
+      img.alt = (p.title || "").replace(/^File:/, "").replace(/\.[a-z]+$/i, "");
+      img.loading = "lazy";
+      var cap = document.createElement("figcaption");
+      var a = document.createElement("a");
+      a.href = info.descriptionurl;
+      a.rel = "noopener";
+      a.textContent = artist + " · " + license + " · Commons";
+      cap.appendChild(a);
+      fig.appendChild(img);
+      fig.appendChild(cap);
+      el.appendChild(fig);
+    });
+    if (el.children.length) el.classList.add("loaded");
+  }
+
+  SPOTS.forEach(function (spot) {
+    var el = document.getElementById(spot.id);
+    if (!el) return;
+    commonsQuery({
+      generator: "geosearch",
+      ggscoord: spot.lat + "|" + spot.lon,
+      ggsradius: 8000, ggsnamespace: 6, ggslimit: 16
+    }).then(function (data) {
+      var pages = usablePages(data);
+      if (pages.length) return pages;
+      return commonsQuery({
+        generator: "search",
+        gsrsearch: spot.fallback,
+        gsrnamespace: 6, gsrlimit: 16
+      }).then(usablePages);
+    }).then(function (pages) {
+      render(el, pages);
+    }).catch(function () { /* strip stays hidden; postcards and links carry the card */ });
+  });
+})();
+</script>
 </body>
 </html>
