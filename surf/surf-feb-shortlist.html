@@ -152,18 +152,57 @@
   .trip .codename { color: var(--swell-deep); }
   .route { color: var(--ink-soft); margin: 0.35rem 0 1rem; font-size: 0.95rem; }
 
-  .media-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: start; margin: 0.4rem 0 1.3rem; }
-  .shot { margin: 0; min-width: 0; }
-  .shot iframe, .shot img {
-    width: 100%; height: 210px; display: block; border: 0;
+  /* ---- photo carousel (full width of card) ---- */
+  .carousel { --ph: 400px; position: relative; margin: 0.4rem 0 1.4rem; }
+  .carousel .slides {
+    display: flex; overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .carousel .slides::-webkit-scrollbar { display: none; }
+  .carousel .slide { flex: 0 0 100%; min-width: 100%; margin: 0; scroll-snap-align: center; }
+  .carousel .slide img {
+    width: 100%; height: var(--ph); display: block; object-fit: cover;
+    border: 1px solid var(--line); box-sizing: border-box;
+    background: var(--ground);
+  }
+  .carousel figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .carousel figcaption a { color: var(--swell-deep); }
+  .carousel .credit { display: block; font-size: 0.66rem; color: var(--ink-soft); opacity: 0.7; margin-top: 0.2rem; }
+  .carousel .credit a { color: inherit; }
+  .carousel .nav {
+    position: absolute; top: calc(var(--ph) / 2); transform: translateY(-50%);
+    width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--card) 82%, transparent);
+    color: var(--ink); font-size: 1rem; line-height: 1;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .carousel .nav:hover { background: var(--card); border-color: var(--swell); color: var(--swell-deep); }
+  .carousel .nav.prev { left: 0.7rem; }
+  .carousel .nav.next { right: 0.7rem; }
+  .carousel .dots {
+    position: absolute; top: calc(var(--ph) - 1.6rem); left: 0; right: 0;
+    display: flex; justify-content: center; gap: 0.45rem;
+  }
+  .carousel .dots button {
+    width: 9px; height: 9px; border-radius: 50%; padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    background: rgba(20, 40, 55, 0.35);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+    opacity: 0.8; cursor: pointer;
+  }
+  .carousel .dots button.on { background: #fff; opacity: 1; }
+
+  /* ---- full-width map below the photos ---- */
+  .mapwide { margin: 0 0 1.3rem; }
+  .mapwide iframe {
+    width: 100%; height: 320px; display: block; border: 0;
     border: 1px solid var(--line);
     background: var(--ground);
   }
-  .shot img { object-fit: cover; }
-  .shot figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
-  .shot figcaption a { color: var(--swell-deep); }
-  .shot .credit { display: block; font-size: 0.66rem; color: var(--ink-soft); opacity: 0.7; margin-top: 0.2rem; }
-  .shot .credit a { color: inherit; }
+  .mapwide figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .mapwide figcaption a { color: var(--swell-deep); }
 
   dl.facts {
     display: grid;
@@ -253,8 +292,8 @@
   @media (max-width: 640px) {
     .trip { grid-template-columns: 2.4rem 1fr; }
     .trip-body { padding: 1.1rem 1rem 1.2rem; }
-    .media-row { grid-template-columns: 1fr; gap: 1.9rem; }
-    .shot { max-width: 420px; margin: 0 auto; }
+    .carousel { --ph: 240px; }
+    .mapwide iframe { height: 240px; }
     .proscons { grid-template-columns: 1fr; }
     .spectrum .lbl { width: 6.5em; font-size: 0.62rem; }
   }
@@ -271,14 +310,14 @@
       livelier than Lo de Marcos, nowhere near Sayulita&rsquo;s bachelorette circuit. An uncrowded
       lineup. And no Santa Teresa problem: the town must not be a dusty road you walk down
       while ATVs buzz your elbows.</p>
-    <p class="dek">Three places pass. Each one is scored against Lo de Marcos &mdash; the almost-right
+    <p class="dek">Four places pass. Each one is scored against Lo de Marcos &mdash; the almost-right
       baseline &mdash; below.</p>
   </header>
 
   <h3 class="section">The sleepy&ndash;party spectrum</h3>
   <p class="spectrum-note">Both vetoes sit at the ends. The amber band is the target zone;
-    all three candidates land inside it &mdash; they differ in <em>how</em> they get there.</p>
-  <div class="spectrum" role="img" aria-label="A spectrum from sleepy to party. Lo de Marcos sits far left (too sleepy, vetoed). Saladita and Troncones sit at the quiet edge of the target band, Playa Venao mid-band, Samara at the livelier edge. Sayulita sits far right (too much, vetoed).">
+    all four candidates land inside it &mdash; they differ in <em>how</em> they get there.</p>
+  <div class="spectrum" role="img" aria-label="A spectrum from sleepy to party. Lo de Marcos sits far left (too sleepy, vetoed). Saladita and Troncones sit at the quiet edge of the target band, El Zonte and Playa Venao mid-band, Samara at the livelier edge. Sayulita sits far right (too much, vetoed).">
     <div class="scale">
       <div class="band"></div>
       <div class="bar"></div>
@@ -286,15 +325,19 @@
         <span class="lbl mono">LO DE MARCOS<span class="why">too sleepy &mdash; her call</span></span>
         <span class="dot"></span>
       </div>
-      <div class="stop down" style="left:33%">
+      <div class="stop down" style="left:32%">
         <span class="lbl mono">SALADITA / TRONCONES<span class="why">quiet, but surf-alive</span></span>
         <span class="dot"></span>
       </div>
-      <div class="stop up" style="left:46%">
+      <div class="stop up" style="left:40%">
+        <span class="lbl mono">EL ZONTE<span class="why">village, Tunco next door</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down" style="left:48%">
         <span class="lbl mono">PLAYA VENAO<span class="why">one lively bay</span></span>
         <span class="dot"></span>
       </div>
-      <div class="stop down" style="left:59%">
+      <div class="stop up" style="left:60%">
         <span class="lbl mono">S&Aacute;MARA<span class="why">real town, family energy</span></span>
         <span class="dot"></span>
       </div>
@@ -321,26 +364,49 @@
         perfection &mdash; and by 8:30&thinsp;pm, one open taco stand and the sound of your own flip-flops.
         Everything below keeps what Lo de Marcos gets right (mellow waves, mellow streets, warm water)
         and fixes the one thing it doesn&rsquo;t: there&rsquo;s nothing to walk out <em>to</em> after dinner.</p>
-      <div class="media-row">
-        <figure class="shot">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bahia_lo_de_Marcos.jpg/960px-Bahia_lo_de_Marcos.jpg"
-            alt="The bay at Lo de Marcos: gentle waves rolling toward a palm-backed beach with the small town behind" loading="lazy">
-          <figcaption>The baseline: beautiful, gentle, and asleep before the kids are.
-            <a href="https://www.google.com/search?q=lo+de+marcos+nayarit+beach&udm=2" rel="noopener">More photos &rarr;</a>
-            <span class="credit">Photo: Elbeta, <a href="https://commons.wikimedia.org/wiki/File:Bahia_lo_de_Marcos.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
-        </figure>
-        <figure class="shot">
-          <iframe title="Map of Lo de Marcos and Sayulita, Nayarit" loading="lazy"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-105.62%2C20.77%2C-105.18%2C21.08&amp;layer=mapnik&amp;marker=20.954%2C-105.354"></iframe>
-          <figcaption>Both vetoes on one map: Lo de Marcos (pin), Sayulita 25 min south.
-            <a href="https://maps.google.com/?q=Lo+de+Marcos,+Nayarit" rel="noopener">Google Maps &rarr;</a></figcaption>
-        </figure>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Lo de Marcos">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bahia_lo_de_Marcos.jpg/1280px-Bahia_lo_de_Marcos.jpg"
+              alt="The bay at Lo de Marcos: gentle waves rolling toward a palm-backed beach with the small town behind" loading="lazy">
+            <figcaption>The baseline: beautiful, gentle, and asleep before the kids are.
+              <a href="https://www.google.com/search?q=lo+de+marcos+nayarit+beach&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Elbeta, <a href="https://commons.wikimedia.org/wiki/File:Bahia_lo_de_Marcos.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Letras_en_Lo_de_Marcos.jpg/1280px-Letras_en_Lo_de_Marcos.jpg"
+              alt="The town plaza at Lo de Marcos: colorful LO DE MARCOS letters under strings of red and white papel picado" loading="lazy">
+            <figcaption>The plaza, dressed up for a fiesta &mdash; charming by day, quiet by nine.
+              <span class="credit">Photo: Navlilia, <a href="https://commons.wikimedia.org/wiki/File:Letras_en_Lo_de_Marcos.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Lo_de_Marcos.jpg/1280px-Lo_de_Marcos.jpg"
+              alt="The main street of Lo de Marcos under strings of papel picado flags, with little traffic" loading="lazy">
+            <figcaption>The main street to the beach: flags up, traffic mellow &mdash; the street life we want, minus the night life.
+              <span class="credit">Photo: Camila Glez, <a href="https://commons.wikimedia.org/wiki/File:Lo_de_Marcos.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Playa_%22Lo_de_Marcos%22.jpg/1280px-Playa_%22Lo_de_Marcos%22.jpg"
+              alt="The south end of the beach at Lo de Marcos, empty sand toward rocks and a headland" loading="lazy">
+            <figcaption>The south end of the beach, toward the rocks &mdash; this empty, most afternoons.
+              <span class="credit">Photo: Camila Glez, <a href="https://commons.wikimedia.org/wiki/File:Playa_%22Lo_de_Marcos%22.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
       </div>
+      <figure class="mapwide">
+        <iframe title="Map of Lo de Marcos and Sayulita, Nayarit" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-105.62%2C20.77%2C-105.18%2C21.08&amp;layer=mapnik&amp;marker=20.954%2C-105.354"></iframe>
+        <figcaption>Both vetoes on one map: Lo de Marcos (pin), Sayulita 25 min south.
+          <a href="https://maps.google.com/?q=Lo+de+Marcos,+Nayarit" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
       <p class="moment"><span class="mono">THE VERDICT ON FILE &middot;</span> right waves, right streets, not enough town.</p>
     </div>
   </article>
 
-  <h3 class="section">The three candidates</h3>
+  <h3 class="section">The four candidates</h3>
 
   <!-- ============ 1. SAMARA ============ -->
   <article class="trip">
@@ -352,24 +418,48 @@
       </div>
       <p class="route">A reef-sheltered bay on the Nicoya Peninsula &mdash; the surf-town equivalent of a
         heated pool with a view. Carrillo, five minutes south, is the quiet escape valve.</p>
-      <div class="media-row">
-        <figure class="shot">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/S%C3%A1mara.jpg/960px-S%C3%A1mara.jpg"
-            alt="Playa Samara on a sunny day: calm bay water, a panga boat at the shoreline, green headland across the bay" loading="lazy">
-          <figcaption>Reef across the bay mouth = the ocean arrives pre-tamed. Restaurants open
-            onto the sand, not a road.
-            <a href="https://www.google.com/search?q=playa+samara+costa+rica+beach+town&udm=2" rel="noopener">More photos &rarr;</a>
-            <span class="credit">Photo: Haakon S. Krohn, <a href="https://commons.wikimedia.org/wiki/File:S%C3%A1mara.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
-        </figure>
-        <figure class="shot">
-          <iframe title="Map of Samara and Playa Carrillo, Costa Rica" loading="lazy"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-85.60%2C9.82%2C-85.42%2C9.94&amp;layer=mapnik&amp;marker=9.881%2C-85.528"></iframe>
-          <figcaption>S&aacute;mara (pin) with Carrillo around the point.
-            <a href="https://maps.google.com/?q=Playa+Samara,+Costa+Rica" rel="noopener">Google Maps &rarr;</a></figcaption>
-        </figure>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Samara and Playa Carrillo">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/S%C3%A1mara.jpg/1280px-S%C3%A1mara.jpg"
+              alt="Playa Samara on a sunny day: calm bay water, a panga boat at the shoreline, green headland across the bay" loading="lazy">
+            <figcaption>Reef across the bay mouth = the ocean arrives pre-tamed. Restaurants open
+              onto the sand, not a road.
+              <a href="https://www.google.com/search?q=playa+samara+costa+rica+beach+town&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Haakon S. Krohn, <a href="https://commons.wikimedia.org/wiki/File:S%C3%A1mara.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/2021_Playa_Samara_Costa_Rica_enero_2021_16.jpg/1280px-2021_Playa_Samara_Costa_Rica_enero_2021_16.jpg"
+              alt="Families strolling Playa Samara at sunset under an orange and purple sky" loading="lazy">
+            <figcaption>A January evening: families on the sand until the light goes &mdash; this is the
+              town energy Lo de Marcos is missing.
+              <span class="credit">Photo: Juli&aacute;n Monge-N&aacute;jera, <a href="https://commons.wikimedia.org/wiki/File:2021_Playa_Samara_Costa_Rica_enero_2021_16.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Playa_Carrillo.jpg/1280px-Playa_Carrillo.jpg"
+              alt="Playa Carrillo: a long palm-lined crescent of pale sand with green hills behind" loading="lazy">
+            <figcaption>Carrillo, five minutes around the point: the palm-lined escape valve with no town at all.
+              <span class="credit">Photo: Frederick-Casa, <a href="https://commons.wikimedia.org/wiki/File:Playa_Carrillo.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Sunset_at_Playa_Carrillo_-_panoramio.jpg/1280px-Sunset_at_Playa_Carrillo_-_panoramio.jpg"
+              alt="The sun setting behind islets off Playa Carrillo, reflected across the water" loading="lazy">
+            <figcaption>Sunset behind the islets at Carrillo. February is dry season: this, most nights.
+              <span class="credit">Photo: Federico Mata, <a href="https://commons.wikimedia.org/wiki/File:Sunset_at_Playa_Carrillo_-_panoramio.jpg" rel="noopener">Wikimedia Commons</a>, CC BY 3.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
       </div>
+      <figure class="mapwide">
+        <iframe title="Map of Samara and Playa Carrillo, Costa Rica" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-85.60%2C9.82%2C-85.42%2C9.94&amp;layer=mapnik&amp;marker=9.881%2C-85.528"></iframe>
+        <figcaption>S&aacute;mara (pin) with Carrillo around the point.
+          <a href="https://maps.google.com/?q=Playa+Samara,+Costa+Rica" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
       <dl class="facts">
-        <div><dt class="mono">Getting there</dt><dd>SEA&rarr;LIR <strong>nonstop</strong> on Alaska (winter Saturdays, ~7 h), then a 2 h paved drive. Easiest door-to-door of the three.</dd></div>
+        <div><dt class="mono">Getting there</dt><dd>SEA&rarr;LIR <strong>nonstop</strong> on Alaska (winter Saturdays, ~7 h), then a 2 h paved drive. Easiest door-to-door on the page.</dd></div>
         <div><dt class="mono">February surf</dt><dd>Peak dry season: offshore mornings, glassy waist-high rollers over sand. The most forgiving wave on this page.</dd></div>
         <div><dt class="mono">Water</dt><dd>~83&deg;F. Boardshorts, all day.</dd></div>
         <div><dt class="mono">Town energy</dt><dd>Beachfront dinner scene, live music some nights, families everywhere. Lively-wholesome, zero party-bus.</dd></div>
@@ -418,22 +508,45 @@
       </div>
       <p class="route">Stay in Troncones (the livelier base, 40 min north of Zihuatanejo&rsquo;s airport);
         drive 15 min to Saladita, a left point that peels for 200+ yards at walking speed.</p>
-      <div class="media-row">
-        <figure class="shot">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Playa_Troncones%2C_Costa_Grande%2C_Guerrero%2C_Troncones_Beach%2C_Costa_Grande%2C_Guerrero_%2824980714395%29.jpg/960px-Playa_Troncones%2C_Costa_Grande%2C_Guerrero%2C_Troncones_Beach%2C_Costa_Grande%2C_Guerrero_%2824980714395%29.jpg"
-            alt="A clean waist-high wave peeling at Playa Troncones, tide pools in the foreground" loading="lazy">
-          <figcaption>Troncones, the home beach: clean little walls and nobody on them.
-            Saladita&rsquo;s 200-yard point is 15 min up the coast.
-            <a href="https://www.google.com/search?q=la+saladita+guerrero+surf+left+point&udm=2" rel="noopener">More photos &rarr;</a>
-            <span class="credit">Photo: Comisi&oacute;n Mexicana de Filmaciones, <a href="https://commons.wikimedia.org/wiki/File:Playa_Troncones,_Costa_Grande,_Guerrero,_Troncones_Beach,_Costa_Grande,_Guerrero_(24980714395).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
-        </figure>
-        <figure class="shot">
-          <iframe title="Map of Troncones and La Saladita, Guerrero" loading="lazy"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-101.92%2C17.68%2C-101.52%2C17.94&amp;layer=mapnik&amp;marker=17.780%2C-101.723"></iframe>
-          <figcaption>Troncones (pin); Saladita 15 min up the coast, Zihuatanejo airport 40 min south.
-            <a href="https://maps.google.com/?q=Troncones,+Guerrero" rel="noopener">Google Maps &rarr;</a></figcaption>
-        </figure>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Troncones and La Saladita">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Playa_Troncones%2C_Costa_Grande%2C_Guerrero%2C_Troncones_Beach%2C_Costa_Grande%2C_Guerrero_%2824980714395%29.jpg/1280px-Playa_Troncones%2C_Costa_Grande%2C_Guerrero%2C_Troncones_Beach%2C_Costa_Grande%2C_Guerrero_%2824980714395%29.jpg"
+              alt="A clean waist-high wave peeling at Playa Troncones, tide pools in the foreground" loading="lazy">
+            <figcaption>Troncones, the home beach: clean little walls and nobody on them.
+              Saladita&rsquo;s 200-yard point is 15 min up the coast.
+              <a href="https://www.google.com/search?q=la+saladita+guerrero+surf+left+point&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Comisi&oacute;n Mexicana de Filmaciones, <a href="https://commons.wikimedia.org/wiki/File:Playa_Troncones,_Costa_Grande,_Guerrero,_Troncones_Beach,_Costa_Grande,_Guerrero_(24980714395).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Playa_Saladita%2C_Zihuatanejo%2C_Guerrero-_Saladita_Beach%2C_Zihuatanejo_%2824349362424%29.jpg/1280px-Playa_Saladita%2C_Zihuatanejo%2C_Guerrero-_Saladita_Beach%2C_Zihuatanejo_%2824349362424%29.jpg"
+              alt="Saladita beach: palapa-roofed surf lodges behind the sand, a boat pulled up on shore" loading="lazy">
+            <figcaption>Saladita: palapas, pangas, and a wave you can see from your hammock.
+              <span class="credit">Photo: Comisi&oacute;n Mexicana de Filmaciones, <a href="https://commons.wikimedia.org/wiki/File:Playa_Saladita,_Zihuatanejo,_Guerrero-_Saladita_Beach,_Zihuatanejo_(24349362424).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Playa_Saladita%2C_Zihuatanejo%2C_Guerrero-_Saladita_Beach%2C_Zihuatanejo_%2824612328889%29.jpg/1280px-Playa_Saladita%2C_Zihuatanejo%2C_Guerrero-_Saladita_Beach%2C_Zihuatanejo_%2824612328889%29.jpg"
+              alt="Saladita beach with driftwood in the foreground and the green Sierra Madre del Sur rising behind" loading="lazy">
+            <figcaption>The Sierra Madre del Sur stands right behind the beach &mdash; the whole coast feels like this.
+              <span class="credit">Photo: Comisi&oacute;n Mexicana de Filmaciones, <a href="https://commons.wikimedia.org/wiki/File:Playa_Saladita,_Zihuatanejo,_Guerrero-_Saladita_Beach,_Zihuatanejo_(24612328889).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Playa_Saladita%2C_Zihuatanejo%2C_Guerrero-_Saladita_Beach%2C_Zihuatanejo_%2824979963405%29.jpg/1280px-Playa_Saladita%2C_Zihuatanejo%2C_Guerrero-_Saladita_Beach%2C_Zihuatanejo_%2824979963405%29.jpg"
+              alt="Two people walking the shoreline at Saladita past a beached panga, nobody else in sight" loading="lazy">
+            <figcaption>An afternoon walk at Saladita &mdash; the crowd, in full.
+              <span class="credit">Photo: Comisi&oacute;n Mexicana de Filmaciones, <a href="https://commons.wikimedia.org/wiki/File:Playa_Saladita,_Zihuatanejo,_Guerrero-_Saladita_Beach,_Zihuatanejo_(24979963405).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
       </div>
+      <figure class="mapwide">
+        <iframe title="Map of Troncones and La Saladita, Guerrero" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-101.92%2C17.68%2C-101.52%2C17.94&amp;layer=mapnik&amp;marker=17.780%2C-101.723"></iframe>
+        <figcaption>Troncones (pin); Saladita 15 min up the coast, Zihuatanejo airport 40 min south.
+          <a href="https://maps.google.com/?q=Troncones,+Guerrero" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
       <dl class="facts">
         <div><dt class="mono">Getting there</dt><dd>SEA&rarr;ZIH, 1 stop (LAX or Mexico City), ~9&ndash;11 h door-to-door, then a 40 min taxi.</dd></div>
         <div><dt class="mono">February surf</dt><dd>NW swell wraps in soft and lined-up: knee-to-chest walls, all longboard, almost never closes out.</dd></div>
@@ -483,24 +596,48 @@
       <p class="route">A single horseshoe bay near Pedas&iacute;, ringed by lodges and restaurants,
         with a forgiving beach break dead center. Not a town with a beach &mdash; a beach that grew
         exactly enough town.</p>
-      <div class="media-row">
-        <figure class="shot">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Panam%C3%A1-Playa.JPG/960px-Panam%C3%A1-Playa.JPG"
-            alt="Playa Venao: a wide sandy bay curving toward a green headland under blue sky, framed by a palm" loading="lazy">
-          <figcaption>One horseshoe of sand between two green headlands; everything you walk to
-            rings it. The road stays behind the palms.
-            <a href="https://www.google.com/search?q=playa+venao+panama+bay+surf&udm=2" rel="noopener">More photos &rarr;</a>
-            <span class="credit">Photo: Inzay20, <a href="https://commons.wikimedia.org/wiki/File:Panam%C3%A1-Playa.JPG" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
-        </figure>
-        <figure class="shot">
-          <iframe title="Map of Playa Venao, Panama" loading="lazy"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-80.30%2C7.36%2C-80.06%2C7.52&amp;layer=mapnik&amp;marker=7.432%2C-80.193"></iframe>
-          <figcaption>Playa Venao (pin); Pedas&iacute; town 30 min east.
-            <a href="https://maps.google.com/?q=Playa+Venao,+Panama" rel="noopener">Google Maps &rarr;</a></figcaption>
-        </figure>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Playa Venao and Isla Iguana">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Panam%C3%A1-Playa.JPG/1280px-Panam%C3%A1-Playa.JPG"
+              alt="Playa Venao: a wide sandy bay curving toward a green headland under blue sky, framed by a palm" loading="lazy">
+            <figcaption>One horseshoe of sand between two green headlands; everything you walk to
+              rings it. The road stays behind the palms.
+              <a href="https://www.google.com/search?q=playa+venao+panama+bay+surf&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Inzay20, <a href="https://commons.wikimedia.org/wiki/File:Panam%C3%A1-Playa.JPG" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Playa_Venao_from_the_hills_of_the_Pedas%C3%AD_district%2C_Panama%2C_September_2008.jpg"
+              alt="Playa Venao seen from green cattle hills above, the bay a distant curve with nothing else built around it" loading="lazy">
+            <figcaption>The bay from the Pedas&iacute; hills: one horseshoe, and green cattle country
+              in every direction &mdash; the remoteness is the feature and the cost.
+              <span class="credit">Photo: Pedas&iacute; consultant, <a href="https://commons.wikimedia.org/wiki/File:Playa_Venao_from_the_hills_of_the_Pedas%C3%AD_district,_Panama,_September_2008.jpg" rel="noopener">Wikimedia Commons</a>, public domain</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Isla_iguana_beach.jpg"
+              alt="Isla Iguana: white coral sand and turquoise shallows under scattered clouds" loading="lazy">
+            <figcaption>The flat-day plan: Isla Iguana&rsquo;s white-coral sand, a short panga ride from Pedas&iacute;.
+              <span class="credit">Photo: Pedas&iacute; consultant, <a href="https://commons.wikimedia.org/wiki/File:Isla_iguana_beach.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Isla-Iguana-Wildlife-Refuge-Beach.jpg/1280px-Isla-Iguana-Wildlife-Refuge-Beach.jpg"
+              alt="The snorkeling cove at Isla Iguana Wildlife Refuge: clear green water inside a rocky reef" loading="lazy">
+            <figcaption>Isla Iguana&rsquo;s snorkel cove &mdash; reef-protected, kid-depth, iguanas included.
+              <span class="credit">Photo: Niceley, <a href="https://commons.wikimedia.org/wiki/File:Isla-Iguana-Wildlife-Refuge-Beach.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
       </div>
+      <figure class="mapwide">
+        <iframe title="Map of Playa Venao, Panama" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-80.30%2C7.36%2C-80.06%2C7.52&amp;layer=mapnik&amp;marker=7.432%2C-80.193"></iframe>
+        <figcaption>Playa Venao (pin); Pedas&iacute; town 30 min east.
+          <a href="https://maps.google.com/?q=Playa+Venao,+Panama" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
       <dl class="facts">
-        <div><dt class="mono">Getting there</dt><dd>SEA&rarr;PTY (1 stop, or via LAX on Copa), then a 4.5&ndash;5 h drive or a 35 min charter hop. The long haul of the three.</dd></div>
+        <div><dt class="mono">Getting there</dt><dd>SEA&rarr;PTY (1 stop, or via LAX on Copa), then a 4.5&ndash;5 h drive or a 35 min charter hop. The long haul of the page.</dd></div>
         <div><dt class="mono">February surf</dt><dd>Dry-season north winds blow offshore all day; shifty, forgiving peaks that work every tide. Rarely flat, rarely scary.</dd></div>
         <div><dt class="mono">Water</dt><dd>~77&ndash;82&deg;F &mdash; February upwelling can add a refreshing edge. Still boardshorts.</dd></div>
         <div><dt class="mono">Town energy</dt><dd>One curved strip of restaurants, a bar with live music, surf camps. Social every evening, over by midnight.</dd></div>
@@ -516,7 +653,7 @@
         <div class="pros">
           <h4>Pros</h4>
           <ul>
-            <li>Lightest crowds of the three, in and out of the water</li>
+            <li>Lightest crowds on the page, in and out of the water</li>
             <li>No travel advisory; Panama is an easy yes</li>
             <li>Self-contained bay: kids roam free between beach, pool, and dinner</li>
             <li>All-day offshores in February &mdash; clean even at 4 pm</li>
@@ -536,6 +673,100 @@
     </div>
   </article>
 
+  <!-- ============ 4. EL ZONTE ============ -->
+  <article class="trip">
+    <div class="flag" aria-hidden="true">4</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>El Zonte</h2>
+        <span class="codename mono">LA LIBERTAD, EL SALVADOR &middot; THE LATE ENTRY</span>
+      </div>
+      <p class="route">A cobble-bottom right point with a hamlet of surf lodges and beach caf&eacute;s
+        grown around it, on the &ldquo;Surf City&rdquo; coast 45 minutes from the airport. El Tunco,
+        ten minutes east, supplies the livelier night; El Sunzal&rsquo;s beginner rollers sit in between.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of El Zonte, El Sunzal, and El Tunco">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/El_Zonte_%2811-2011%29_-_Playa_-_panoramio.jpg"
+              alt="El Zonte beach: dark sand and cobblestones in the foreground, palms on the bluff, whitewater lines rolling in" loading="lazy">
+            <figcaption>The point wraps around those cobbles &mdash; dark sand, palm bluff, village behind
+              the trees.
+              <a href="https://www.google.com/search?q=el+zonte+el+salvador+surf+point&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Martin Haeusler, <a href="https://commons.wikimedia.org/wiki/File:El_Zonte_(11-2011)_-_Playa_-_panoramio.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/El_Zonte_%2811-2011%29_-_panoramio_%281%29.jpg"
+              alt="The bluff at El Zonte with a small lodge on top, dark wet sand and a low wave below" loading="lazy">
+            <figcaption>El Zonte&rsquo;s bluff end &mdash; the whole hamlet is a few lodges and kitchens on this cove.
+              <span class="credit">Photo: Martin Haeusler, <a href="https://commons.wikimedia.org/wiki/File:El_Zonte_(11-2011)_-_panoramio_(1).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Surfistas_en_El_Tunco.jpg/1280px-Surfistas_en_El_Tunco.jpg"
+              alt="Surfers standing on the cobblestone shore at El Tunco, boards under arms, checking the lineup" loading="lazy">
+            <figcaption>Checking the lineup from the cobbles at El Tunco, ten minutes east.
+              <span class="credit">Photo: Casa Presidencial El Salvador, <a href="https://commons.wikimedia.org/wiki/File:Surfistas_en_El_Tunco.jpg" rel="noopener">Wikimedia Commons</a>, CC0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2010.05.05.085439_Palmeras_ola_El_Sunzal_El_Salvador.jpg/1280px-2010.05.05.085439_Palmeras_ola_El_Sunzal_El_Salvador.jpg"
+              alt="A clean wave at El Sunzal seen through palm fronds" loading="lazy">
+            <figcaption>El Sunzal through the palms &mdash; the beginner rollers between Zonte and Tunco.
+              <span class="credit">Photo: Hermann Luyken, <a href="https://commons.wikimedia.org/wiki/File:2010.05.05.085439_Palmeras_ola_El_Sunzal_El_Salvador.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Tunco.jpg"
+              alt="Sunset at El Tunco with the famous rock stack silhouetted against an orange sky" loading="lazy">
+            <figcaption>El Tunco&rsquo;s rock at sunset &mdash; the livelier night, when we want one, is right here.
+              <span class="credit">Photo: Rafael Colindres, <a href="https://commons.wikimedia.org/wiki/File:Tunco.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of El Zonte and El Tunco, El Salvador" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-89.52%2C13.44%2C-89.28%2C13.56&amp;layer=mapnik&amp;marker=13.498%2C-89.441"></iframe>
+        <figcaption>El Zonte (pin); El Sunzal and El Tunco 10 min east, SAL airport 45 min.
+          <a href="https://maps.google.com/?q=El+Zonte,+El+Salvador" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA&rarr;SAL, 1 stop (LAX or Houston), then a <strong>45 min</strong> paved drive &mdash; the shortest transfer on the page.</dd></div>
+        <div><dt class="mono">February surf</dt><dd>Dry season, offshore mornings. The small season on these south-facing points: waist-high, clean, empty &mdash; kid-right, Dad-modest. The famous size arrives March&ndash;October.</dd></div>
+        <div><dt class="mono">Water</dt><dd>~82&deg;F. Boardshorts.</dd></div>
+        <div><dt class="mono">Town energy</dt><dd>A lane of caf&eacute;s, lodges, and the Bitcoin Beach scene; village-quiet most nights, with El Tunco ten minutes away when someone wants the strip.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The road test &middot; vs Santa Teresa</span>
+        <p>Passes. El Zonte hangs <em>below</em> the coastal highway &mdash; a couple of lanes drop
+          down and dead-end at the sand, and through-traffic never enters the village. El Tunco is
+          the busier strip, but its core is closed to cars at night. You visit the scene; you
+          don&rsquo;t sleep on it.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>US Level 1 advisory as of early 2026 &mdash; the cleanest paperwork on the page</li>
+            <li>Cheapest week on the page once you land</li>
+            <li>Kids and Dad share the same forgiving point; El Sunzal&rsquo;s beginner wave 10 min away</li>
+            <li>45-minute airport transfer &mdash; no long drive with tired kids</li>
+            <li>The lively night is a choice (El Tunco), not the address</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>February is the off-season for the wave itself &mdash; Dad&rsquo;s surf is at its most modest</li>
+            <li>One-stop flights from Seattle with boards</li>
+            <li>Cobblestone entry &mdash; reef booties for the kids</li>
+            <li>Scene leans backpacker-crypto more than family; village-small most nights</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS LO DE MARCOS &middot;</span> the same village quiet &mdash; but with a point wave out front and a real night out ten minutes away, quiet becomes a choice instead of a verdict.</p>
+    </div>
+  </article>
+
   <h3 class="section">Side by side</h3>
   <div class="tablewrap">
     <table class="compare">
@@ -546,6 +777,7 @@
           <th>S&aacute;mara</th>
           <th>Saladita</th>
           <th>Venao</th>
+          <th>El Zonte</th>
         </tr>
       </thead>
       <tbody>
@@ -555,6 +787,7 @@
           <td class="win">Nonstop to LIR (winter Sat) + 2 h drive</td>
           <td>1 stop to ZIH + 40 min taxi</td>
           <td>1&ndash;2 stops to PTY + 5 h drive</td>
+          <td>1 stop to SAL + <span class="mono">45 min</span> drive</td>
         </tr>
         <tr>
           <th>Feb wave, for the kids</th>
@@ -562,6 +795,7 @@
           <td class="win">Protected bay &mdash; ideal</td>
           <td class="win">Soft point, endless rides &mdash; ideal</td>
           <td>Forgiving peaks &mdash; very good</td>
+          <td class="win">Mellow point + El Sunzal &mdash; ideal</td>
         </tr>
         <tr>
           <th>Feb wave, for Dad</th>
@@ -569,6 +803,7 @@
           <td>Soft; fun on a log</td>
           <td class="win">The reason to come</td>
           <td>Consistent, playful</td>
+          <td>Small season; shapely but modest</td>
         </tr>
         <tr>
           <th>Water</th>
@@ -576,6 +811,7 @@
           <td>~83&deg;F</td>
           <td>~80&deg;F</td>
           <td>~77&ndash;82&deg;F</td>
+          <td>~82&deg;F</td>
         </tr>
         <tr>
           <th>Evenings vs Lo de Marcos</th>
@@ -583,6 +819,7 @@
           <td class="win">Clearly livelier</td>
           <td>About the same</td>
           <td>Livelier, one strip</td>
+          <td>Village + El Tunco 10 min</td>
         </tr>
         <tr>
           <th>Road test (Santa Teresa)</th>
@@ -590,6 +827,7 @@
           <td class="win">Passes &mdash; town faces the sand</td>
           <td class="win">Passes &mdash; barely any roads</td>
           <td class="win">Passes &mdash; road runs behind the bay</td>
+          <td class="win">Passes &mdash; lanes dead-end at the sand</td>
         </tr>
         <tr>
           <th>Crowds in the water</th>
@@ -597,6 +835,7 @@
           <td>Moderate (high season)</td>
           <td>Light&ndash;moderate at the point</td>
           <td class="win">Lightest</td>
+          <td class="win">Light &mdash; it&rsquo;s the off-season</td>
         </tr>
         <tr>
           <th>US travel advisory</th>
@@ -604,6 +843,7 @@
           <td class="win">L2 base for Costa Rica, no state flag</td>
           <td>L4 state; tourist corridor caveat</td>
           <td class="win">L1&ndash;2, easy yes</td>
+          <td class="win">L1 &mdash; cleanest on the page</td>
         </tr>
         <tr>
           <th>Budget feel</th>
@@ -611,6 +851,7 @@
           <td>The priciest (high season CR)</td>
           <td class="win">Cheapest once there</td>
           <td>Mid-high for what you get</td>
+          <td class="win">Cheapest, full stop</td>
         </tr>
       </tbody>
     </table>
@@ -627,6 +868,9 @@
       deserves a real conversation, and evenings that run as quiet as the place we already vetoed.</p>
     <p><span class="mono">IF UNCROWDED WINS &middot;</span> <strong>Venao.</strong> Emptiest lineup,
       cleverest layout, zero traffic by design &mdash; paid for in travel hours on each end.</p>
+    <p><span class="mono">IF PAPERWORK AND PRICE WIN &middot;</span> <strong>El Zonte.</strong> The only
+      Level 1 advisory on the page, the cheapest week, a 45-minute transfer, and the kids on the same
+      point as Dad &mdash; bought with February being the small season for the wave itself.</p>
   </div>
 
   <div class="field-note">
@@ -638,8 +882,13 @@
       reaffirmed May 2026). The Zihuatanejo&ndash;Ixtapa&ndash;Troncones corridor is a long-standing
       exception in practice &mdash; fly in, stay local &mdash; but that judgment belongs to us, not to
       this page. Costa Rica and Panama carry no equivalent baggage.</p>
-    <p>Maps are live OpenStreetMap embeds. Photos are Creative Commons&ndash;licensed from Wikimedia
-      Commons, credited under each; the &ldquo;More photos&rdquo; links open a fuller image search.</p>
+    <p>On El Salvador: the US State Department downgraded the country to Level 1 (&ldquo;exercise
+      normal precautions&rdquo;) in early 2026 &mdash; the best advisory rating on this page. The
+      seasonal trade is real, though: the point breaks that made Surf City famous peak
+      March&ndash;October, so a February week buys small, clean, and empty rather than the wave
+      the posters are made of.</p>
+    <p>Maps are live OpenStreetMap embeds. Photo carousels are Creative Commons&ndash;licensed images
+      from Wikimedia Commons, credited under each; the &ldquo;More photos&rdquo; links open a fuller image search.</p>
   </div>
 
   <footer class="cadence">
@@ -650,6 +899,44 @@
   </footer>
 
 </div>
+
+<script>
+document.querySelectorAll('.carousel').forEach(function (c) {
+  var slides = c.querySelector('.slides');
+  var items = Array.prototype.slice.call(slides.children);
+  var dots = c.querySelector('.dots');
+  var n = items.length;
+
+  items.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Photo ' + (i + 1) + ' of ' + n);
+    b.addEventListener('click', function () { go(i); });
+    dots.appendChild(b);
+  });
+
+  function cur() { return Math.round(slides.scrollLeft / (slides.clientWidth || 1)); }
+  function go(i) {
+    var k = (i + n) % n;
+    var target = k * slides.clientWidth;
+    slides.scrollTo({ left: target, behavior: 'smooth' });
+    setTimeout(function () {
+      if (Math.abs(slides.scrollLeft - target) > 4) slides.scrollLeft = target;
+    }, 450);
+  }
+  function update() {
+    var k = cur();
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.classList.toggle('on', i === k);
+    });
+  }
+
+  slides.addEventListener('scroll', update, { passive: true });
+  c.querySelector('.nav.prev').addEventListener('click', function () { go(cur() - 1); });
+  c.querySelector('.nav.next').addEventListener('click', function () { go(cur() + 1); });
+  update();
+});
+</script>
 
 </body>
 </html>
