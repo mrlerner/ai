@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The February Shortlist</title>
+<style>
+  :root {
+    --ground: #eef1ef;
+    --card: #f7f9f8;
+    --ink: #17313f;
+    --ink-soft: #4a6373;
+    --line: #ccd7d4;
+    --swell: #2e7da6;
+    --swell-deep: #1c5a7c;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.22);
+    --flag-ink: #f5f8f7;
+    --pro: #2e7d52;
+    --con: #a05c2e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0c1b26;
+      --card: #122938;
+      --ink: #dce7ec;
+      --ink-soft: #8fa8b5;
+      --line: #24404f;
+      --swell: #5aa7cc;
+      --swell-deep: #7fc0de;
+      --wax: #e3b23c;
+      --wax-soft: rgba(227, 178, 60, 0.16);
+      --flag-ink: #0c1b26;
+      --pro: #6fc79a;
+      --con: #d99a6b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0c1b26;
+    --card: #122938;
+    --ink: #dce7ec;
+    --ink-soft: #8fa8b5;
+    --line: #24404f;
+    --swell: #5aa7cc;
+    --swell-deep: #7fc0de;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.16);
+    --flag-ink: #0c1b26;
+    --pro: #6fc79a;
+    --con: #d99a6b;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+
+  .mono {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  header.hero { margin-bottom: 2.6rem; }
+  .hero .eyebrow { color: var(--ink-soft); text-transform: uppercase; margin-bottom: 1rem; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.08;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  .hero p.dek { max-width: 36em; font-size: 1.05rem; color: var(--ink-soft); margin: 0 0 0.6rem; }
+
+  h3.section {
+    text-transform: uppercase;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin: 3rem 0 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  h3.section::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+
+  /* ---- vibe spectrum ---- */
+  .spectrum {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.3rem 1.4rem 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .spectrum .scale { position: relative; height: 148px; }
+  .spectrum .bar {
+    position: absolute; left: 0; right: 0; top: 72px; height: 6px;
+    background: linear-gradient(90deg, var(--line), var(--swell) 55%, var(--wax));
+    border-radius: 3px;
+  }
+  .spectrum .band {
+    position: absolute; top: 58px; height: 34px;
+    left: 30%; width: 34%;
+    background: var(--wax-soft);
+    border-left: 2px solid var(--wax);
+    border-right: 2px solid var(--wax);
+  }
+  .spectrum .stop { position: absolute; width: 0; }
+  .spectrum .dot {
+    position: absolute; top: 68px; left: -7px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--swell-deep);
+    border: 2px solid var(--card);
+  }
+  .spectrum .stop.veto .dot { background: var(--ink-soft); opacity: 0.55; }
+  .spectrum .lbl {
+    position: absolute; left: 0; transform: translateX(-50%);
+    text-align: center; width: 8.5em; color: var(--ink);
+  }
+  .spectrum .stop.veto .lbl { color: var(--ink-soft); }
+  .spectrum .lbl .why { display: block; font-style: italic; font-size: 0.78rem; color: var(--ink-soft); letter-spacing: 0; }
+  .spectrum .up .lbl { top: 8px; }
+  .spectrum .up .dot::before { content: ""; position: absolute; left: 5px; top: -26px; width: 2px; height: 24px; background: var(--line); }
+  .spectrum .down .lbl { top: 102px; }
+  .spectrum .down .dot::before { content: ""; position: absolute; left: 5px; top: 14px; width: 2px; height: 20px; background: var(--line); }
+  .spectrum .ends { display: flex; justify-content: space-between; color: var(--ink-soft); margin-top: 0.5rem; }
+  .spectrum-note { color: var(--ink-soft); font-size: 0.9rem; max-width: 40em; margin: 0 0 0.4rem; }
+
+  /* ---- trip cards ---- */
+  .trip {
+    background: var(--card);
+    border: 1px solid var(--line);
+    margin-bottom: 1.75rem;
+    display: grid;
+    grid-template-columns: 3.4rem 1fr;
+  }
+  .flag {
+    background: var(--swell);
+    color: var(--flag-ink);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 1.4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .trip.baseline .flag { background: var(--ink-soft); font-size: 0.95rem; padding-top: 1.6rem; writing-mode: vertical-rl; letter-spacing: 0.2em; }
+  .trip-body { padding: 1.4rem 1.6rem 1.5rem; min-width: 0; }
+  .trip-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; }
+  .trip h2 { font-size: 1.55rem; font-weight: 600; margin: 0; }
+  .trip .codename { color: var(--swell-deep); }
+  .route { color: var(--ink-soft); margin: 0.35rem 0 1rem; font-size: 0.95rem; }
+
+  .media-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: start; margin: 0.4rem 0 1.3rem; }
+  .polaroid {
+    background: #fdfdfa;
+    padding: 10px 10px 12px;
+    margin: 0;
+    box-shadow: 0 8px 22px rgba(8, 22, 32, 0.28);
+    transform: rotate(-1.4deg);
+    position: relative;
+  }
+  .polaroid.flip { transform: rotate(1.2deg); }
+  .polaroid::before {
+    content: "";
+    position: absolute;
+    top: -11px; left: 50%;
+    width: 92px; height: 22px;
+    transform: translateX(-50%) rotate(-2deg);
+    background: var(--wax-soft);
+    border: 1px solid var(--wax);
+    z-index: 1;
+  }
+  .polaroid svg, .polaroid iframe { width: 100%; display: block; border: 0; }
+  .polaroid iframe { height: 200px; background: #e8ece9; }
+  .polaroid figcaption { font-size: 0.8rem; color: #2c3e49; padding-top: 0.5rem; line-height: 1.35; }
+  .polaroid figcaption a { color: #1c5a7c; }
+
+  dl.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.9rem 1.4rem;
+    margin: 0 0 1.1rem;
+  }
+  dl.facts div { min-width: 0; }
+  dl.facts dt { color: var(--ink-soft); text-transform: uppercase; margin-bottom: 0.15rem; }
+  dl.facts dd { margin: 0; font-size: 0.92rem; }
+
+  .roadtest {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--wax);
+    padding: 0.8rem 1rem 0.9rem;
+    margin: 0 0 1.2rem;
+    font-size: 0.93rem;
+  }
+  .roadtest .mono { color: var(--swell-deep); text-transform: uppercase; }
+  .roadtest p { margin: 0.35rem 0 0; }
+
+  .proscons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.6rem; margin: 0 0 1.2rem; }
+  .proscons h4 { margin: 0 0 0.4rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; }
+  .proscons .pros h4 { color: var(--pro); }
+  .proscons .cons h4 { color: var(--con); }
+  .proscons ul { margin: 0; padding: 0; list-style: none; font-size: 0.92rem; }
+  .proscons li { padding: 0.28rem 0 0.28rem 1.1rem; position: relative; border-top: 1px dotted var(--line); }
+  .proscons li:first-child { border-top: 0; }
+  .proscons .pros li::before { content: "+"; position: absolute; left: 0; color: var(--pro); font-weight: 700; }
+  .proscons .cons li::before { content: "\2212"; position: absolute; left: 0; color: var(--con); font-weight: 700; }
+
+  .moment {
+    border-left: 3px solid var(--wax);
+    padding: 0.15rem 0 0.15rem 0.9rem;
+    margin: 0;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .moment .mono { color: var(--swell-deep); font-style: normal; }
+
+  /* ---- comparison table ---- */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--card); }
+  table.compare { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.88rem; }
+  table.compare th, table.compare td { padding: 0.55rem 0.8rem; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+  table.compare thead th { border-top: 0; background: var(--wax-soft); font-weight: 600; }
+  table.compare tbody th {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 500; white-space: nowrap;
+  }
+  table.compare td.ref { color: var(--ink-soft); font-style: italic; }
+  table.compare td.win { color: var(--swell-deep); font-weight: 600; }
+
+  .verdict {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--swell);
+    padding: 1.2rem 1.4rem 1.3rem;
+  }
+  .verdict p { margin: 0.5rem 0 0; max-width: 42em; }
+  .verdict p:first-child { margin-top: 0; }
+  .verdict .mono { color: var(--swell-deep); }
+
+  .field-note {
+    margin-top: 3rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--wax);
+    padding: 1rem 1.1rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .field-note .mono { color: var(--swell-deep); }
+  .field-note p { margin: 0.4rem 0 0; }
+  .field-note a { color: var(--swell-deep); }
+
+  footer.cadence {
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  footer.cadence .mono { color: var(--swell-deep); }
+  footer.cadence a { color: var(--swell-deep); }
+
+  @media (max-width: 640px) {
+    .trip { grid-template-columns: 2.4rem 1fr; }
+    .trip-body { padding: 1.1rem 1rem 1.2rem; }
+    .media-row { grid-template-columns: 1fr; gap: 1.9rem; }
+    .polaroid, .polaroid.flip { max-width: 380px; margin: 0 auto; }
+    .proscons { grid-template-columns: 1fr; }
+    .spectrum .lbl { width: 6.5em; font-size: 0.62rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow mono">WINTER BREAK &middot; MID-FEBRUARY 2027 &middot; FAMILY OF THREE-PLUS-BOARDS</div>
+    <h1>The February Shortlist</h1>
+    <p class="dek">The brief: warm water and small, clean waves the kids can actually ride
+      (which, in February, is the same wave Dad wants). A town with a pulse after dinner &mdash;
+      livelier than Lo de Marcos, nowhere near Sayulita&rsquo;s bachelorette circuit. An uncrowded
+      lineup. And no Santa Teresa problem: the town must not be a dusty road you walk down
+      while ATVs buzz your elbows.</p>
+    <p class="dek">Three places pass. Each one is scored against Lo de Marcos &mdash; the almost-right
+      baseline &mdash; below.</p>
+  </header>
+
+  <h3 class="section">The sleepy&ndash;party spectrum</h3>
+  <p class="spectrum-note">Both vetoes sit at the ends. The amber band is the target zone;
+    all three candidates land inside it &mdash; they differ in <em>how</em> they get there.</p>
+  <div class="spectrum" role="img" aria-label="A spectrum from sleepy to party. Lo de Marcos sits far left (too sleepy, vetoed). Saladita and Troncones sit at the quiet edge of the target band, Playa Venao mid-band, Samara at the livelier edge. Sayulita sits far right (too much, vetoed).">
+    <div class="scale">
+      <div class="band"></div>
+      <div class="bar"></div>
+      <div class="stop veto up" style="left:9%">
+        <span class="lbl mono">LO DE MARCOS<span class="why">too sleepy &mdash; her call</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down" style="left:33%">
+        <span class="lbl mono">SALADITA / TRONCONES<span class="why">quiet, but surf-alive</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop up" style="left:46%">
+        <span class="lbl mono">PLAYA VENAO<span class="why">one lively bay</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down" style="left:59%">
+        <span class="lbl mono">S&Aacute;MARA<span class="why">real town, family energy</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop veto up" style="left:91%">
+        <span class="lbl mono">SAYULITA<span class="why">too much &mdash; agreed</span></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+    <div class="ends">
+      <span class="mono">SLEEPY &larr;</span>
+      <span class="mono">&rarr; PARTY</span>
+    </div>
+  </div>
+
+  <h3 class="section">The baseline &middot; what we&rsquo;re comparing against</h3>
+  <article class="trip baseline">
+    <div class="flag mono" aria-hidden="true">REF</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Lo de Marcos</h2>
+        <span class="codename mono">NAYARIT, MEXICO &middot; THE ALMOST</span>
+      </div>
+      <p class="route">A long, uncrowded crescent of sand, gentle beach-break peaks, golden-hour
+        perfection &mdash; and by 8:30&thinsp;pm, one open taco stand and the sound of your own flip-flops.
+        Everything below keeps what Lo de Marcos gets right (mellow waves, mellow streets, warm water)
+        and fixes the one thing it doesn&rsquo;t: there&rsquo;s nothing to walk out <em>to</em> after dinner.</p>
+      <div class="media-row">
+        <figure class="polaroid">
+          <svg viewBox="0 0 340 200" role="img" aria-label="Illustration of Lo de Marcos: a quiet beach crescent with a single palm and empty sand">
+            <rect width="340" height="200" fill="#f8ead2"/>
+            <rect y="0" width="340" height="92" fill="#fceedd"/>
+            <circle cx="282" cy="34" r="16" fill="#e3b23c" opacity="0.85"/>
+            <path d="M0 92 Q 90 78 190 86 T 340 82 L 340 132 L 0 132 Z" fill="#7fb4cf"/>
+            <path d="M0 112 Q 110 102 220 110 T 340 106 L 340 148 L 0 148 Z" fill="#5a9cc0"/>
+            <path d="M0 140 Q 170 124 340 138 L 340 200 L 0 200 Z" fill="#efd9a8"/>
+            <path d="M0 152 Q 170 138 340 150" fill="none" stroke="#fdfdfa" stroke-width="3" opacity="0.8"/>
+            <g stroke="#2c5a44" stroke-width="4" fill="none">
+              <path d="M62 168 C 60 150 58 140 54 128"/>
+            </g>
+            <g fill="#3e7d5c">
+              <path d="M54 128 C 40 118 28 118 18 124 C 32 124 44 128 54 132 Z"/>
+              <path d="M54 128 C 66 116 80 114 92 120 C 80 122 66 128 56 132 Z"/>
+              <path d="M54 128 C 50 114 52 104 60 96 C 56 108 58 118 60 128 Z"/>
+            </g>
+            <rect x="252" y="158" width="26" height="12" fill="#c8a06a"/>
+            <path d="M248 158 L 282 158 L 265 146 Z" fill="#a05c2e"/>
+            <circle cx="150" cy="176" r="2.5" fill="#a05c2e"/>
+            <circle cx="162" cy="180" r="2.5" fill="#a05c2e"/>
+          </svg>
+          <figcaption>The baseline: beautiful, gentle, and asleep before the kids are.
+            <a href="https://www.google.com/search?q=lo+de+marcos+nayarit+beach&udm=2" rel="noopener">Real photos &rarr;</a></figcaption>
+        </figure>
+        <figure class="polaroid flip">
+          <iframe title="Map of Lo de Marcos and Sayulita, Nayarit" loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-105.62%2C20.77%2C-105.18%2C21.08&amp;layer=mapnik&amp;marker=20.954%2C-105.354"></iframe>
+          <figcaption>Both vetoes on one map: Lo de Marcos (pin), Sayulita 25 min south.
+            <a href="https://maps.google.com/?q=Lo+de+Marcos,+Nayarit" rel="noopener">Google Maps &rarr;</a></figcaption>
+        </figure>
+      </div>
+      <p class="moment"><span class="mono">THE VERDICT ON FILE &middot;</span> right waves, right streets, not enough town.</p>
+    </div>
+  </article>
+
+  <h3 class="section">The three candidates</h3>
+
+  <!-- ============ 1. SAMARA ============ -->
+  <article class="trip">
+    <div class="flag" aria-hidden="true">1</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>S&aacute;mara + Playa Carrillo</h2>
+        <span class="codename mono">GUANACASTE, COSTA RICA &middot; THE SAFE GREAT</span>
+      </div>
+      <p class="route">A reef-sheltered bay on the Nicoya Peninsula &mdash; the surf-town equivalent of a
+        heated pool with a view. Carrillo, five minutes south, is the quiet escape valve.</p>
+      <div class="media-row">
+        <figure class="polaroid">
+          <svg viewBox="0 0 340 200" role="img" aria-label="Illustration of Samara: a protected bay with a reef line, anchored boats, palms, and a beachfront row of restaurants">
+            <rect width="340" height="200" fill="#fceedd"/>
+            <circle cx="52" cy="36" r="15" fill="#e3b23c" opacity="0.9"/>
+            <path d="M0 74 L 70 60 L 120 72 L 0 84 Z" fill="#8aa895" opacity="0.7"/>
+            <path d="M220 70 L 300 54 L 340 68 L 340 84 L 220 82 Z" fill="#8aa895" opacity="0.7"/>
+            <path d="M0 82 Q 170 70 340 80 L 340 138 L 0 138 Z" fill="#5a9cc0"/>
+            <path d="M0 100 Q 170 88 340 98 L 340 138 L 0 138 Z" fill="#7fb4cf"/>
+            <g stroke="#fdfdfa" stroke-width="3" stroke-dasharray="10 7" opacity="0.9">
+              <path d="M20 92 Q 170 80 320 90" fill="none"/>
+            </g>
+            <path d="M40 118 L 56 118 L 48 108 Z" fill="#fdfdfa"/>
+            <path d="M36 120 L 60 120 L 58 124 L 38 124 Z" fill="#a05c2e"/>
+            <path d="M250 112 L 266 112 L 258 102 Z" fill="#fdfdfa"/>
+            <path d="M246 114 L 270 114 L 268 118 L 248 118 Z" fill="#a05c2e"/>
+            <path d="M0 132 Q 170 118 340 130 L 340 200 L 0 200 Z" fill="#efd9a8"/>
+            <g fill="#c8654a">
+              <path d="M60 158 L 96 158 L 78 146 Z"/>
+              <path d="M104 160 L 140 160 L 122 148 Z"/>
+              <path d="M148 158 L 184 158 L 166 146 Z"/>
+              <path d="M192 160 L 228 160 L 210 148 Z"/>
+            </g>
+            <g fill="#e8d9bd">
+              <rect x="64" y="158" width="28" height="12"/>
+              <rect x="108" y="160" width="28" height="12"/>
+              <rect x="152" y="158" width="28" height="12"/>
+              <rect x="196" y="160" width="28" height="12"/>
+            </g>
+            <g stroke="#2c5a44" stroke-width="3.5" fill="none">
+              <path d="M268 174 C 270 156 272 146 278 136"/>
+              <path d="M304 178 C 302 160 300 150 294 140"/>
+            </g>
+            <g fill="#3e7d5c">
+              <path d="M278 136 C 266 126 254 126 244 132 C 258 132 268 136 278 140 Z"/>
+              <path d="M278 136 C 290 124 304 122 314 128 C 302 130 288 136 280 140 Z"/>
+              <path d="M294 140 C 282 130 270 130 260 136 C 274 136 284 140 294 144 Z"/>
+              <path d="M294 140 C 306 128 320 126 330 132 C 318 134 304 140 296 144 Z"/>
+            </g>
+          </svg>
+          <figcaption>Reef across the bay mouth = the ocean arrives pre-tamed. Restaurants open
+            onto the sand, not a road.
+            <a href="https://www.google.com/search?q=playa+samara+costa+rica+beach+town&udm=2" rel="noopener">Real photos &rarr;</a></figcaption>
+        </figure>
+        <figure class="polaroid flip">
+          <iframe title="Map of Samara and Playa Carrillo, Costa Rica" loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-85.60%2C9.82%2C-85.42%2C9.94&amp;layer=mapnik&amp;marker=9.881%2C-85.528"></iframe>
+          <figcaption>S&aacute;mara (pin) with Carrillo around the point.
+            <a href="https://maps.google.com/?q=Playa+Samara,+Costa+Rica" rel="noopener">Google Maps &rarr;</a></figcaption>
+        </figure>
+      </div>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA&rarr;LIR <strong>nonstop</strong> on Alaska (winter Saturdays, ~7 h), then a 2 h paved drive. Easiest door-to-door of the three.</dd></div>
+        <div><dt class="mono">February surf</dt><dd>Peak dry season: offshore mornings, glassy waist-high rollers over sand. The most forgiving wave on this page.</dd></div>
+        <div><dt class="mono">Water</dt><dd>~83&deg;F. Boardshorts, all day.</dd></div>
+        <div><dt class="mono">Town energy</dt><dd>Beachfront dinner scene, live music some nights, families everywhere. Lively-wholesome, zero party-bus.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The road test &middot; vs Santa Teresa</span>
+        <p>This is the anti&ndash;Santa Teresa layout. In Santa Teresa the town <em>is</em> the road &mdash;
+          one dusty artery parallel to the beach, ATVs and dirt bikes threading pedestrians.
+          In S&aacute;mara the paved highway comes in perpendicular and <em>dead-ends at the sand</em>;
+          the social spine of town is the beachfront itself, where restaurants open straight onto
+          the beach. You can walk end to end on sand and never negotiate traffic. Back streets are
+          paved, slow, and dust-free. Carrillo is calmer still &mdash; a palm-lined crescent.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Nonstop flight from Seattle &mdash; huge with kids and boards</li>
+            <li>No travel advisory; easiest place on this list to say yes to</li>
+            <li>Kid-perfect protected wave; surf schools and easy rentals</li>
+            <li>Walkable, beach-facing town that passes the road test outright</li>
+            <li>Howler monkeys, warm nights, Carrillo when you want quiet</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Softest wave for Dad &mdash; longboard fun, not memorable</li>
+            <li>February is high season: busiest and priciest of the three</li>
+            <li>Least &ldquo;discovery&rdquo; feeling &mdash; it&rsquo;s on the gringo trail</li>
+            <li>Book lodging early for mid-February</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS LO DE MARCOS &middot;</span> same warm, small-town DNA &mdash; but the town faces its beach and stays awake through dinner, and the wave is friendlier for the kids.</p>
+    </div>
+  </article>
+
+  <!-- ============ 2. SALADITA ============ -->
+  <article class="trip">
+    <div class="flag" aria-hidden="true">2</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>La Saladita + Troncones</h2>
+        <span class="codename mono">GUERRERO, MEXICO &middot; THE WAVE</span>
+      </div>
+      <p class="route">Stay in Troncones (the livelier base, 40 min north of Zihuatanejo&rsquo;s airport);
+        drive 15 min to Saladita, a left point that peels for 200+ yards at walking speed.</p>
+      <div class="media-row">
+        <figure class="polaroid">
+          <svg viewBox="0 0 340 200" role="img" aria-label="Illustration of La Saladita: long left-point wave lines peeling from a rocky point, a palapa on the beach, hills behind">
+            <rect width="340" height="200" fill="#fceedd"/>
+            <circle cx="288" cy="32" r="14" fill="#e3b23c" opacity="0.9"/>
+            <path d="M0 78 L 90 52 L 180 74 L 260 58 L 340 76 L 340 92 L 0 92 Z" fill="#8aa895" opacity="0.75"/>
+            <path d="M0 88 Q 170 78 340 86 L 340 148 L 0 148 Z" fill="#5a9cc0"/>
+            <path d="M300 86 L 340 86 L 340 112 L 316 104 Z" fill="#6b7d72"/>
+            <g stroke="#fdfdfa" fill="none" opacity="0.95">
+              <path d="M312 100 Q 220 104 96 116" stroke-width="4"/>
+              <path d="M318 108 Q 230 114 120 126" stroke-width="3.4"/>
+              <path d="M324 116 Q 244 124 148 136" stroke-width="2.8"/>
+              <path d="M330 124 Q 258 134 176 144" stroke-width="2.2"/>
+            </g>
+            <circle cx="150" cy="112" r="3" fill="#17313f"/>
+            <path d="M150 115 L 150 122 L 156 120" stroke="#17313f" stroke-width="2" fill="none"/>
+            <path d="M0 142 Q 170 128 340 144 L 340 200 L 0 200 Z" fill="#efd9a8"/>
+            <path d="M44 168 L 100 168 L 72 148 Z" fill="#c8a06a"/>
+            <rect x="52" y="168" width="40" height="4" fill="#a05c2e"/>
+            <g stroke="#a05c2e" stroke-width="3">
+              <path d="M56 172 L 56 184"/>
+              <path d="M88 172 L 88 184"/>
+            </g>
+            <g stroke="#2c5a44" stroke-width="3.5" fill="none">
+              <path d="M126 176 C 128 158 130 148 136 138"/>
+            </g>
+            <g fill="#3e7d5c">
+              <path d="M136 138 C 124 128 112 128 102 134 C 116 134 126 138 136 142 Z"/>
+              <path d="M136 138 C 148 126 162 124 172 130 C 160 132 146 138 138 142 Z"/>
+            </g>
+            <path d="M210 178 L 246 178 L 244 172 L 212 172 Z" fill="#c8654a"/>
+            <path d="M212 172 L 244 172 L 240 168 L 216 168 Z" fill="#e8d9bd"/>
+          </svg>
+          <figcaption>One takeoff, four hundred unhurried yards. Kids ride the inside reform;
+            Dad sits out the back.
+            <a href="https://www.google.com/search?q=la+saladita+guerrero+surf+left+point&udm=2" rel="noopener">Real photos &rarr;</a></figcaption>
+        </figure>
+        <figure class="polaroid flip">
+          <iframe title="Map of Troncones and La Saladita, Guerrero" loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-101.92%2C17.68%2C-101.52%2C17.94&amp;layer=mapnik&amp;marker=17.780%2C-101.723"></iframe>
+          <figcaption>Troncones (pin); Saladita 15 min up the coast, Zihuatanejo airport 40 min south.
+            <a href="https://maps.google.com/?q=Troncones,+Guerrero" rel="noopener">Google Maps &rarr;</a></figcaption>
+        </figure>
+      </div>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA&rarr;ZIH, 1 stop (LAX or Mexico City), ~9&ndash;11 h door-to-door, then a 40 min taxi.</dd></div>
+        <div><dt class="mono">February surf</dt><dd>NW swell wraps in soft and lined-up: knee-to-chest walls, all longboard, almost never closes out.</dd></div>
+        <div><dt class="mono">Water</dt><dd>~79&ndash;81&deg;F. Boardshorts.</dd></div>
+        <div><dt class="mono">Town energy</dt><dd>A dozen beachfront kitchens and surf lodges in Troncones; honest margaritas, asleep by 10. The quiet edge of the target band.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The road test &middot; vs Santa Teresa</span>
+        <p>Passes effortlessly &mdash; there is no through-town road because there is barely a town.
+          Troncones is a sandy beach lane with more surfboards than cars; Saladita is a dirt-road
+          hamlet where the traffic is dogs. If anything, it fails in the <em>other</em> direction:
+          evenings here run closer to Lo de Marcos than to S&aacute;mara. The bet is that a
+          world-class wave all day makes a quiet night feel earned instead of empty.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>The best wave on this page, and it&rsquo;s a <em>family</em> wave &mdash; rare combination</li>
+            <li>Uncrowded by any Sayulita or Nosara standard, especially midweek</li>
+            <li>Warm, small surf-community feel; cheap once you&rsquo;re there</li>
+            <li>Short airport transfer; no long drives once settled</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Guerrero carries a US Level 4 state advisory &mdash; the Zihua tourist corridor is heavily visited and fly-in/stay-local is the norm, but it&rsquo;s a real conversation to have</li>
+            <li>One-stop flights with boards and a kid</li>
+            <li>Evening scene is thin &mdash; the &ldquo;too sleepy&rdquo; risk lives here</li>
+            <li>Saladita&rsquo;s point draws a longboard crowd at peak weeks</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS LO DE MARCOS &middot;</span> the nights feel similar &mdash; but Lo de Marcos never once handed you a 45-second wave with your kid paddling back out grinning.</p>
+    </div>
+  </article>
+
+  <!-- ============ 3. VENAO ============ -->
+  <article class="trip">
+    <div class="flag" aria-hidden="true">3</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Playa Venao</h2>
+        <span class="codename mono">AZUERO PENINSULA, PANAMA &middot; THE WILDCARD</span>
+      </div>
+      <p class="route">A single horseshoe bay near Pedas&iacute;, ringed by lodges and restaurants,
+        with a forgiving beach break dead center. Not a town with a beach &mdash; a beach that grew
+        exactly enough town.</p>
+      <div class="media-row">
+        <figure class="polaroid">
+          <svg viewBox="0 0 340 200" role="img" aria-label="Illustration of Playa Venao: a horseshoe bay wrapped by green headlands, small lodge roofs ringing the crescent, peaks in the middle of the bay">
+            <rect width="340" height="200" fill="#fceedd"/>
+            <circle cx="170" cy="30" r="14" fill="#e3b23c" opacity="0.9"/>
+            <path d="M0 96 C 20 66 54 56 78 76 L 60 108 L 0 118 Z" fill="#3e7d5c"/>
+            <path d="M340 96 C 320 66 286 56 262 76 L 280 108 L 340 118 Z" fill="#3e7d5c"/>
+            <path d="M60 90 Q 170 66 280 90 L 288 112 Q 170 92 52 112 Z" fill="#5a9cc0"/>
+            <path d="M52 112 Q 170 92 288 112 L 292 132 Q 170 114 48 132 Z" fill="#7fb4cf"/>
+            <g stroke="#fdfdfa" stroke-width="3" fill="none" opacity="0.95">
+              <path d="M130 106 Q 150 100 170 106"/>
+              <path d="M182 112 Q 202 106 222 112"/>
+            </g>
+            <path d="M48 132 Q 170 112 292 132 L 340 200 L 0 200 Z" fill="#efd9a8"/>
+            <g fill="#c8654a">
+              <path d="M60 148 L 88 148 L 74 138 Z"/>
+              <path d="M100 154 L 128 154 L 114 144 Z"/>
+              <path d="M212 154 L 240 154 L 226 144 Z"/>
+              <path d="M252 148 L 280 148 L 266 138 Z"/>
+            </g>
+            <g fill="#e8d9bd">
+              <rect x="63" y="148" width="22" height="9"/>
+              <rect x="103" y="154" width="22" height="9"/>
+              <rect x="215" y="154" width="22" height="9"/>
+              <rect x="255" y="148" width="22" height="9"/>
+            </g>
+            <g stroke="#2c5a44" stroke-width="3" fill="none">
+              <path d="M160 170 C 162 154 164 146 170 138"/>
+            </g>
+            <g fill="#3e7d5c">
+              <path d="M170 138 C 158 128 146 128 136 134 C 150 134 160 138 170 142 Z"/>
+              <path d="M170 138 C 182 126 196 124 206 130 C 194 132 180 138 172 142 Z"/>
+            </g>
+            <path d="M0 196 Q 170 182 340 196" fill="none" stroke="#c8a06a" stroke-width="3" stroke-dasharray="8 10" opacity="0.7"/>
+          </svg>
+          <figcaption>The road (dashed) passes <em>behind</em> the bay. Everything you walk to
+            rings the sand.
+            <a href="https://www.google.com/search?q=playa+venao+panama+bay+surf&udm=2" rel="noopener">Real photos &rarr;</a></figcaption>
+        </figure>
+        <figure class="polaroid flip">
+          <iframe title="Map of Playa Venao, Panama" loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-80.30%2C7.36%2C-80.06%2C7.52&amp;layer=mapnik&amp;marker=7.432%2C-80.193"></iframe>
+          <figcaption>Playa Venao (pin); Pedas&iacute; town 30 min east.
+            <a href="https://maps.google.com/?q=Playa+Venao,+Panama" rel="noopener">Google Maps &rarr;</a></figcaption>
+        </figure>
+      </div>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA&rarr;PTY (1 stop, or via LAX on Copa), then a 4.5&ndash;5 h drive or a 35 min charter hop. The long haul of the three.</dd></div>
+        <div><dt class="mono">February surf</dt><dd>Dry-season north winds blow offshore all day; shifty, forgiving peaks that work every tide. Rarely flat, rarely scary.</dd></div>
+        <div><dt class="mono">Water</dt><dd>~77&ndash;82&deg;F &mdash; February upwelling can add a refreshing edge. Still boardshorts.</dd></div>
+        <div><dt class="mono">Town energy</dt><dd>One curved strip of restaurants, a bar with live music, surf camps. Social every evening, over by midnight.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The road test &middot; vs Santa Teresa</span>
+        <p>The cleanest pass of all &mdash; by architecture. There is no town to walk through:
+          lodges and kitchens ring the bay itself, connected by sand paths, and the coastal road
+          runs behind the properties carrying a handful of cars an hour. Santa Teresa&rsquo;s problem
+          is structurally impossible here.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Lightest crowds of the three, in and out of the water</li>
+            <li>No travel advisory; Panama is an easy yes</li>
+            <li>Self-contained bay: kids roam free between beach, pool, and dinner</li>
+            <li>All-day offshores in February &mdash; clean even at 4 pm</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Longest travel day: flight + 5 h drive (or pay for the charter)</li>
+            <li>The scene is one bay deep &mdash; by day 8 you&rsquo;ve met everyone</li>
+            <li>Pricier food and lodging than the value suggests</li>
+            <li>Remote: nearest clinic is in Pedas&iacute;, 30 min away</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS LO DE MARCOS &middot;</span> the inverse bet: Lo de Marcos is a town whose wave is an afterthought; Venao is a wave that grew just enough town around it.</p>
+    </div>
+  </article>
+
+  <h3 class="section">Side by side</h3>
+  <div class="tablewrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Lo de Marcos <span class="mono">(REF)</span></th>
+          <th>S&aacute;mara</th>
+          <th>Saladita</th>
+          <th>Venao</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Flights from SEA</th>
+          <td class="ref">1 stop to PVR + 1 h drive</td>
+          <td class="win">Nonstop to LIR (winter Sat) + 2 h drive</td>
+          <td>1 stop to ZIH + 40 min taxi</td>
+          <td>1&ndash;2 stops to PTY + 5 h drive</td>
+        </tr>
+        <tr>
+          <th>Feb wave, for the kids</th>
+          <td class="ref">Gentle peaks, decent</td>
+          <td class="win">Protected bay &mdash; ideal</td>
+          <td class="win">Soft point, endless rides &mdash; ideal</td>
+          <td>Forgiving peaks &mdash; very good</td>
+        </tr>
+        <tr>
+          <th>Feb wave, for Dad</th>
+          <td class="ref">Fine, forgettable</td>
+          <td>Soft; fun on a log</td>
+          <td class="win">The reason to come</td>
+          <td>Consistent, playful</td>
+        </tr>
+        <tr>
+          <th>Water</th>
+          <td class="ref">~78&deg;F</td>
+          <td>~83&deg;F</td>
+          <td>~80&deg;F</td>
+          <td>~77&ndash;82&deg;F</td>
+        </tr>
+        <tr>
+          <th>Evenings vs Lo de Marcos</th>
+          <td class="ref">The baseline</td>
+          <td class="win">Clearly livelier</td>
+          <td>About the same</td>
+          <td>Livelier, one strip</td>
+        </tr>
+        <tr>
+          <th>Road test (Santa Teresa)</th>
+          <td class="ref">Passes</td>
+          <td class="win">Passes &mdash; town faces the sand</td>
+          <td class="win">Passes &mdash; barely any roads</td>
+          <td class="win">Passes &mdash; road runs behind the bay</td>
+        </tr>
+        <tr>
+          <th>Crowds in the water</th>
+          <td class="ref">Light</td>
+          <td>Moderate (high season)</td>
+          <td>Light&ndash;moderate at the point</td>
+          <td class="win">Lightest</td>
+        </tr>
+        <tr>
+          <th>US travel advisory</th>
+          <td class="ref">L2 (Nayarit: increased caution)</td>
+          <td class="win">L2 base for Costa Rica, no state flag</td>
+          <td>L4 state; tourist corridor caveat</td>
+          <td class="win">L1&ndash;2, easy yes</td>
+        </tr>
+        <tr>
+          <th>Budget feel</th>
+          <td class="ref">Cheap</td>
+          <td>The priciest (high season CR)</td>
+          <td class="win">Cheapest once there</td>
+          <td>Mid-high for what you get</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section">The call</h3>
+  <div class="verdict">
+    <p><span class="mono">BOOK-IT-TODAY &middot;</span> <strong>S&aacute;mara.</strong> The only option with a
+      nonstop flight, no advisory conversation, a wave the kids will love from hour one, and a town
+      that answers the Lo de Marcos complaint without a whiff of Sayulita. The compromise is Dad&rsquo;s
+      wave &mdash; pleasant, not memorable.</p>
+    <p><span class="mono">IF THE SURF IS THE POINT &middot;</span> <strong>Saladita.</strong> The best
+      family wave in the Mexican Pacific, honestly bought with two costs: a state-level advisory that
+      deserves a real conversation, and evenings that run as quiet as the place we already vetoed.</p>
+    <p><span class="mono">IF UNCROWDED WINS &middot;</span> <strong>Venao.</strong> Emptiest lineup,
+      cleverest layout, zero traffic by design &mdash; paid for in travel hours on each end.</p>
+  </div>
+
+  <div class="field-note">
+    <span class="mono">FIELD NOTES &middot; AUG 2026</span>
+    <p>Flight fact worth anchoring the decision on: Alaska launched a <em>nonstop</em> Seattle&ndash;Liberia
+      (LIR) route for winter 2026&ndash;27 &mdash; Saturdays out, Sundays back, ~7 h &mdash; which lines up
+      with a mid-February Saturday-to-Saturday week. Assume it repeats for 2027 but confirm before booking.</p>
+    <p>On Guerrero: the US State Department lists the state at Level 4 (&ldquo;do not travel,&rdquo;
+      reaffirmed May 2026). The Zihuatanejo&ndash;Ixtapa&ndash;Troncones corridor is a long-standing
+      exception in practice &mdash; fly in, stay local &mdash; but that judgment belongs to us, not to
+      this page. Costa Rica and Panama carry no equivalent baggage.</p>
+    <p>Maps are live OpenStreetMap embeds; each &ldquo;Real photos&rdquo; link opens an image search,
+      since this page keeps no photos of its own.</p>
+  </div>
+
+  <footer class="cadence">
+    <span class="mono">NEXT &middot;</span> pick one, then this page grows a sibling: lodging shortlist,
+    exact swell history for the chosen week, and a booking checklist.
+    Companion pages: <a href="surf-dream-trips.html">Surf Dream Trips</a> &middot;
+    <a href="board-shopper.html">Board Shopper</a>.
+  </footer>
+
+</div>
+</body>
+</html>
