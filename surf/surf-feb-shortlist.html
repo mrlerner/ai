@@ -172,10 +172,13 @@
     border: 1px solid var(--wax);
     z-index: 1;
   }
-  .polaroid svg, .polaroid iframe { width: 100%; display: block; border: 0; }
+  .polaroid svg, .polaroid iframe, .polaroid img { width: 100%; display: block; border: 0; }
   .polaroid iframe { height: 200px; background: #e8ece9; }
+  .polaroid img { height: 200px; object-fit: cover; background: #e8ece9; }
   .polaroid figcaption { font-size: 0.8rem; color: #2c3e49; padding-top: 0.5rem; line-height: 1.35; }
   .polaroid figcaption a { color: #1c5a7c; }
+  .polaroid .credit { display: block; font-size: 0.66rem; color: #7a8b94; margin-top: 0.2rem; }
+  .polaroid .credit a { color: #7a8b94; }
 
   dl.facts {
     display: grid;
@@ -207,25 +210,6 @@
   .proscons li:first-child { border-top: 0; }
   .proscons .pros li::before { content: "+"; position: absolute; left: 0; color: var(--pro); font-weight: 700; }
   .proscons .cons li::before { content: "\2212"; position: absolute; left: 0; color: var(--con); font-weight: 700; }
-
-  /* ---- live photo strip (filled client-side from Wikimedia Commons) ---- */
-  .photostrip { display: none; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0 0 1.3rem; }
-  .photostrip.loaded { display: grid; }
-  .photostrip figure {
-    background: #fdfdfa;
-    padding: 6px 6px 7px;
-    margin: 0;
-    box-shadow: 0 5px 14px rgba(8, 22, 32, 0.24);
-    transform: rotate(-0.8deg);
-  }
-  .photostrip figure:nth-child(2) { transform: rotate(0.7deg); }
-  .photostrip figure:nth-child(3) { transform: rotate(-0.5deg); }
-  .photostrip img { width: 100%; height: 118px; object-fit: cover; display: block; }
-  .photostrip figcaption { font-size: 0.62rem; color: #2c3e49; padding-top: 0.35rem; line-height: 1.3;
-    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.02em;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .photostrip figcaption a { color: #1c5a7c; text-decoration: none; }
-  @media (max-width: 640px) { .photostrip { grid-template-columns: repeat(2, 1fr); } .photostrip figure:nth-child(3) { display: none; } }
 
   .moment {
     border-left: 3px solid var(--wax);
@@ -354,29 +338,11 @@
         and fixes the one thing it doesn&rsquo;t: there&rsquo;s nothing to walk out <em>to</em> after dinner.</p>
       <div class="media-row">
         <figure class="polaroid">
-          <svg viewBox="0 0 340 200" role="img" aria-label="Illustration of Lo de Marcos: a quiet beach crescent with a single palm and empty sand">
-            <rect width="340" height="200" fill="#f8ead2"/>
-            <rect y="0" width="340" height="92" fill="#fceedd"/>
-            <circle cx="282" cy="34" r="16" fill="#e3b23c" opacity="0.85"/>
-            <path d="M0 92 Q 90 78 190 86 T 340 82 L 340 132 L 0 132 Z" fill="#7fb4cf"/>
-            <path d="M0 112 Q 110 102 220 110 T 340 106 L 340 148 L 0 148 Z" fill="#5a9cc0"/>
-            <path d="M0 140 Q 170 124 340 138 L 340 200 L 0 200 Z" fill="#efd9a8"/>
-            <path d="M0 152 Q 170 138 340 150" fill="none" stroke="#fdfdfa" stroke-width="3" opacity="0.8"/>
-            <g stroke="#2c5a44" stroke-width="4" fill="none">
-              <path d="M62 168 C 60 150 58 140 54 128"/>
-            </g>
-            <g fill="#3e7d5c">
-              <path d="M54 128 C 40 118 28 118 18 124 C 32 124 44 128 54 132 Z"/>
-              <path d="M54 128 C 66 116 80 114 92 120 C 80 122 66 128 56 132 Z"/>
-              <path d="M54 128 C 50 114 52 104 60 96 C 56 108 58 118 60 128 Z"/>
-            </g>
-            <rect x="252" y="158" width="26" height="12" fill="#c8a06a"/>
-            <path d="M248 158 L 282 158 L 265 146 Z" fill="#a05c2e"/>
-            <circle cx="150" cy="176" r="2.5" fill="#a05c2e"/>
-            <circle cx="162" cy="180" r="2.5" fill="#a05c2e"/>
-          </svg>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bahia_lo_de_Marcos.jpg/960px-Bahia_lo_de_Marcos.jpg"
+            alt="The bay at Lo de Marcos: gentle waves rolling toward a palm-backed beach with the small town behind" loading="lazy">
           <figcaption>The baseline: beautiful, gentle, and asleep before the kids are.
-            <a href="https://www.google.com/search?q=lo+de+marcos+nayarit+beach&udm=2" rel="noopener">Real photos &rarr;</a></figcaption>
+            <a href="https://www.google.com/search?q=lo+de+marcos+nayarit+beach&udm=2" rel="noopener">More photos &rarr;</a>
+            <span class="credit">Photo: Elbeta, <a href="https://commons.wikimedia.org/wiki/File:Bahia_lo_de_Marcos.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
         </figure>
         <figure class="polaroid flip">
           <iframe title="Map of Lo de Marcos and Sayulita, Nayarit" loading="lazy"
@@ -385,7 +351,6 @@
             <a href="https://maps.google.com/?q=Lo+de+Marcos,+Nayarit" rel="noopener">Google Maps &rarr;</a></figcaption>
         </figure>
       </div>
-      <div class="photostrip" id="photos-ldm" aria-label="Photos of Lo de Marcos from Wikimedia Commons"></div>
       <p class="moment"><span class="mono">THE VERDICT ON FILE &middot;</span> right waves, right streets, not enough town.</p>
     </div>
   </article>
@@ -404,47 +369,12 @@
         heated pool with a view. Carrillo, five minutes south, is the quiet escape valve.</p>
       <div class="media-row">
         <figure class="polaroid">
-          <svg viewBox="0 0 340 200" role="img" aria-label="Illustration of Samara: a protected bay with a reef line, anchored boats, palms, and a beachfront row of restaurants">
-            <rect width="340" height="200" fill="#fceedd"/>
-            <circle cx="52" cy="36" r="15" fill="#e3b23c" opacity="0.9"/>
-            <path d="M0 74 L 70 60 L 120 72 L 0 84 Z" fill="#8aa895" opacity="0.7"/>
-            <path d="M220 70 L 300 54 L 340 68 L 340 84 L 220 82 Z" fill="#8aa895" opacity="0.7"/>
-            <path d="M0 82 Q 170 70 340 80 L 340 138 L 0 138 Z" fill="#5a9cc0"/>
-            <path d="M0 100 Q 170 88 340 98 L 340 138 L 0 138 Z" fill="#7fb4cf"/>
-            <g stroke="#fdfdfa" stroke-width="3" stroke-dasharray="10 7" opacity="0.9">
-              <path d="M20 92 Q 170 80 320 90" fill="none"/>
-            </g>
-            <path d="M40 118 L 56 118 L 48 108 Z" fill="#fdfdfa"/>
-            <path d="M36 120 L 60 120 L 58 124 L 38 124 Z" fill="#a05c2e"/>
-            <path d="M250 112 L 266 112 L 258 102 Z" fill="#fdfdfa"/>
-            <path d="M246 114 L 270 114 L 268 118 L 248 118 Z" fill="#a05c2e"/>
-            <path d="M0 132 Q 170 118 340 130 L 340 200 L 0 200 Z" fill="#efd9a8"/>
-            <g fill="#c8654a">
-              <path d="M60 158 L 96 158 L 78 146 Z"/>
-              <path d="M104 160 L 140 160 L 122 148 Z"/>
-              <path d="M148 158 L 184 158 L 166 146 Z"/>
-              <path d="M192 160 L 228 160 L 210 148 Z"/>
-            </g>
-            <g fill="#e8d9bd">
-              <rect x="64" y="158" width="28" height="12"/>
-              <rect x="108" y="160" width="28" height="12"/>
-              <rect x="152" y="158" width="28" height="12"/>
-              <rect x="196" y="160" width="28" height="12"/>
-            </g>
-            <g stroke="#2c5a44" stroke-width="3.5" fill="none">
-              <path d="M268 174 C 270 156 272 146 278 136"/>
-              <path d="M304 178 C 302 160 300 150 294 140"/>
-            </g>
-            <g fill="#3e7d5c">
-              <path d="M278 136 C 266 126 254 126 244 132 C 258 132 268 136 278 140 Z"/>
-              <path d="M278 136 C 290 124 304 122 314 128 C 302 130 288 136 280 140 Z"/>
-              <path d="M294 140 C 282 130 270 130 260 136 C 274 136 284 140 294 144 Z"/>
-              <path d="M294 140 C 306 128 320 126 330 132 C 318 134 304 140 296 144 Z"/>
-            </g>
-          </svg>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/S%C3%A1mara.jpg/960px-S%C3%A1mara.jpg"
+            alt="Playa Samara on a sunny day: calm bay water, a panga boat at the shoreline, green headland across the bay" loading="lazy">
           <figcaption>Reef across the bay mouth = the ocean arrives pre-tamed. Restaurants open
             onto the sand, not a road.
-            <a href="https://www.google.com/search?q=playa+samara+costa+rica+beach+town&udm=2" rel="noopener">Real photos &rarr;</a></figcaption>
+            <a href="https://www.google.com/search?q=playa+samara+costa+rica+beach+town&udm=2" rel="noopener">More photos &rarr;</a>
+            <span class="credit">Photo: Haakon S. Krohn, <a href="https://commons.wikimedia.org/wiki/File:S%C3%A1mara.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
         </figure>
         <figure class="polaroid flip">
           <iframe title="Map of Samara and Playa Carrillo, Costa Rica" loading="lazy"
@@ -453,7 +383,6 @@
             <a href="https://maps.google.com/?q=Playa+Samara,+Costa+Rica" rel="noopener">Google Maps &rarr;</a></figcaption>
         </figure>
       </div>
-      <div class="photostrip" id="photos-samara" aria-label="Photos of Samara from Wikimedia Commons"></div>
       <dl class="facts">
         <div><dt class="mono">Getting there</dt><dd>SEA&rarr;LIR <strong>nonstop</strong> on Alaska (winter Saturdays, ~7 h), then a 2 h paved drive. Easiest door-to-door of the three.</dd></div>
         <div><dt class="mono">February surf</dt><dd>Peak dry season: offshore mornings, glassy waist-high rollers over sand. The most forgiving wave on this page.</dd></div>
@@ -506,40 +435,12 @@
         drive 15 min to Saladita, a left point that peels for 200+ yards at walking speed.</p>
       <div class="media-row">
         <figure class="polaroid">
-          <svg viewBox="0 0 340 200" role="img" aria-label="Illustration of La Saladita: long left-point wave lines peeling from a rocky point, a palapa on the beach, hills behind">
-            <rect width="340" height="200" fill="#fceedd"/>
-            <circle cx="288" cy="32" r="14" fill="#e3b23c" opacity="0.9"/>
-            <path d="M0 78 L 90 52 L 180 74 L 260 58 L 340 76 L 340 92 L 0 92 Z" fill="#8aa895" opacity="0.75"/>
-            <path d="M0 88 Q 170 78 340 86 L 340 148 L 0 148 Z" fill="#5a9cc0"/>
-            <path d="M300 86 L 340 86 L 340 112 L 316 104 Z" fill="#6b7d72"/>
-            <g stroke="#fdfdfa" fill="none" opacity="0.95">
-              <path d="M312 100 Q 220 104 96 116" stroke-width="4"/>
-              <path d="M318 108 Q 230 114 120 126" stroke-width="3.4"/>
-              <path d="M324 116 Q 244 124 148 136" stroke-width="2.8"/>
-              <path d="M330 124 Q 258 134 176 144" stroke-width="2.2"/>
-            </g>
-            <circle cx="150" cy="112" r="3" fill="#17313f"/>
-            <path d="M150 115 L 150 122 L 156 120" stroke="#17313f" stroke-width="2" fill="none"/>
-            <path d="M0 142 Q 170 128 340 144 L 340 200 L 0 200 Z" fill="#efd9a8"/>
-            <path d="M44 168 L 100 168 L 72 148 Z" fill="#c8a06a"/>
-            <rect x="52" y="168" width="40" height="4" fill="#a05c2e"/>
-            <g stroke="#a05c2e" stroke-width="3">
-              <path d="M56 172 L 56 184"/>
-              <path d="M88 172 L 88 184"/>
-            </g>
-            <g stroke="#2c5a44" stroke-width="3.5" fill="none">
-              <path d="M126 176 C 128 158 130 148 136 138"/>
-            </g>
-            <g fill="#3e7d5c">
-              <path d="M136 138 C 124 128 112 128 102 134 C 116 134 126 138 136 142 Z"/>
-              <path d="M136 138 C 148 126 162 124 172 130 C 160 132 146 138 138 142 Z"/>
-            </g>
-            <path d="M210 178 L 246 178 L 244 172 L 212 172 Z" fill="#c8654a"/>
-            <path d="M212 172 L 244 172 L 240 168 L 216 168 Z" fill="#e8d9bd"/>
-          </svg>
-          <figcaption>One takeoff, four hundred unhurried yards. Kids ride the inside reform;
-            Dad sits out the back.
-            <a href="https://www.google.com/search?q=la+saladita+guerrero+surf+left+point&udm=2" rel="noopener">Real photos &rarr;</a></figcaption>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Playa_Troncones%2C_Costa_Grande%2C_Guerrero%2C_Troncones_Beach%2C_Costa_Grande%2C_Guerrero_%2824980714395%29.jpg/960px-Playa_Troncones%2C_Costa_Grande%2C_Guerrero%2C_Troncones_Beach%2C_Costa_Grande%2C_Guerrero_%2824980714395%29.jpg"
+            alt="A clean waist-high wave peeling at Playa Troncones, tide pools in the foreground" loading="lazy">
+          <figcaption>Troncones, the home beach: clean little walls and nobody on them.
+            Saladita&rsquo;s 200-yard point is 15 min up the coast.
+            <a href="https://www.google.com/search?q=la+saladita+guerrero+surf+left+point&udm=2" rel="noopener">More photos &rarr;</a>
+            <span class="credit">Photo: Comisi&oacute;n Mexicana de Filmaciones, <a href="https://commons.wikimedia.org/wiki/File:Playa_Troncones,_Costa_Grande,_Guerrero,_Troncones_Beach,_Costa_Grande,_Guerrero_(24980714395).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
         </figure>
         <figure class="polaroid flip">
           <iframe title="Map of Troncones and La Saladita, Guerrero" loading="lazy"
@@ -548,7 +449,6 @@
             <a href="https://maps.google.com/?q=Troncones,+Guerrero" rel="noopener">Google Maps &rarr;</a></figcaption>
         </figure>
       </div>
-      <div class="photostrip" id="photos-saladita" aria-label="Photos of Troncones and La Saladita from Wikimedia Commons"></div>
       <dl class="facts">
         <div><dt class="mono">Getting there</dt><dd>SEA&rarr;ZIH, 1 stop (LAX or Mexico City), ~9&ndash;11 h door-to-door, then a 40 min taxi.</dd></div>
         <div><dt class="mono">February surf</dt><dd>NW swell wraps in soft and lined-up: knee-to-chest walls, all longboard, almost never closes out.</dd></div>
@@ -600,42 +500,12 @@
         exactly enough town.</p>
       <div class="media-row">
         <figure class="polaroid">
-          <svg viewBox="0 0 340 200" role="img" aria-label="Illustration of Playa Venao: a horseshoe bay wrapped by green headlands, small lodge roofs ringing the crescent, peaks in the middle of the bay">
-            <rect width="340" height="200" fill="#fceedd"/>
-            <circle cx="170" cy="30" r="14" fill="#e3b23c" opacity="0.9"/>
-            <path d="M0 96 C 20 66 54 56 78 76 L 60 108 L 0 118 Z" fill="#3e7d5c"/>
-            <path d="M340 96 C 320 66 286 56 262 76 L 280 108 L 340 118 Z" fill="#3e7d5c"/>
-            <path d="M60 90 Q 170 66 280 90 L 288 112 Q 170 92 52 112 Z" fill="#5a9cc0"/>
-            <path d="M52 112 Q 170 92 288 112 L 292 132 Q 170 114 48 132 Z" fill="#7fb4cf"/>
-            <g stroke="#fdfdfa" stroke-width="3" fill="none" opacity="0.95">
-              <path d="M130 106 Q 150 100 170 106"/>
-              <path d="M182 112 Q 202 106 222 112"/>
-            </g>
-            <path d="M48 132 Q 170 112 292 132 L 340 200 L 0 200 Z" fill="#efd9a8"/>
-            <g fill="#c8654a">
-              <path d="M60 148 L 88 148 L 74 138 Z"/>
-              <path d="M100 154 L 128 154 L 114 144 Z"/>
-              <path d="M212 154 L 240 154 L 226 144 Z"/>
-              <path d="M252 148 L 280 148 L 266 138 Z"/>
-            </g>
-            <g fill="#e8d9bd">
-              <rect x="63" y="148" width="22" height="9"/>
-              <rect x="103" y="154" width="22" height="9"/>
-              <rect x="215" y="154" width="22" height="9"/>
-              <rect x="255" y="148" width="22" height="9"/>
-            </g>
-            <g stroke="#2c5a44" stroke-width="3" fill="none">
-              <path d="M160 170 C 162 154 164 146 170 138"/>
-            </g>
-            <g fill="#3e7d5c">
-              <path d="M170 138 C 158 128 146 128 136 134 C 150 134 160 138 170 142 Z"/>
-              <path d="M170 138 C 182 126 196 124 206 130 C 194 132 180 138 172 142 Z"/>
-            </g>
-            <path d="M0 196 Q 170 182 340 196" fill="none" stroke="#c8a06a" stroke-width="3" stroke-dasharray="8 10" opacity="0.7"/>
-          </svg>
-          <figcaption>The road (dashed) passes <em>behind</em> the bay. Everything you walk to
-            rings the sand.
-            <a href="https://www.google.com/search?q=playa+venao+panama+bay+surf&udm=2" rel="noopener">Real photos &rarr;</a></figcaption>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Panam%C3%A1-Playa.JPG/960px-Panam%C3%A1-Playa.JPG"
+            alt="Playa Venao: a wide sandy bay curving toward a green headland under blue sky, framed by a palm" loading="lazy">
+          <figcaption>One horseshoe of sand between two green headlands; everything you walk to
+            rings it. The road stays behind the palms.
+            <a href="https://www.google.com/search?q=playa+venao+panama+bay+surf&udm=2" rel="noopener">More photos &rarr;</a>
+            <span class="credit">Photo: Inzay20, <a href="https://commons.wikimedia.org/wiki/File:Panam%C3%A1-Playa.JPG" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
         </figure>
         <figure class="polaroid flip">
           <iframe title="Map of Playa Venao, Panama" loading="lazy"
@@ -644,7 +514,6 @@
             <a href="https://maps.google.com/?q=Playa+Venao,+Panama" rel="noopener">Google Maps &rarr;</a></figcaption>
         </figure>
       </div>
-      <div class="photostrip" id="photos-venao" aria-label="Photos of Playa Venao from Wikimedia Commons"></div>
       <dl class="facts">
         <div><dt class="mono">Getting there</dt><dd>SEA&rarr;PTY (1 stop, or via LAX on Copa), then a 4.5&ndash;5 h drive or a 35 min charter hop. The long haul of the three.</dd></div>
         <div><dt class="mono">February surf</dt><dd>Dry-season north winds blow offshore all day; shifty, forgiving peaks that work every tide. Rarely flat, rarely scary.</dd></div>
@@ -784,10 +653,8 @@
       reaffirmed May 2026). The Zihuatanejo&ndash;Ixtapa&ndash;Troncones corridor is a long-standing
       exception in practice &mdash; fly in, stay local &mdash; but that judgment belongs to us, not to
       this page. Costa Rica and Panama carry no equivalent baggage.</p>
-    <p>Maps are live OpenStreetMap embeds. The photo strips load real photographs at view time,
-      straight from Wikimedia Commons (searched by each spot&rsquo;s coordinates), with the
-      photographer and license credited under each frame. If a strip is missing, Commons simply
-      has no photos near that beach &mdash; the &ldquo;Real photos&rdquo; links fill the gap.</p>
+    <p>Maps are live OpenStreetMap embeds. Photos are Creative Commons&ndash;licensed from Wikimedia
+      Commons, credited under each; the &ldquo;More photos&rdquo; links open a fuller image search.</p>
   </div>
 
   <footer class="cadence">
@@ -799,89 +666,5 @@
 
 </div>
 
-<script>
-(function () {
-  var API = "https://commons.wikimedia.org/w/api.php";
-  var SPOTS = [
-    { id: "photos-ldm",      lat: 20.954, lon: -105.354, fallback: "Lo de Marcos Nayarit beach" },
-    { id: "photos-samara",   lat: 9.881,  lon: -85.528,  fallback: "Playa Samara Guanacaste beach" },
-    { id: "photos-saladita", lat: 17.780, lon: -101.723, fallback: "Troncones Guerrero beach" },
-    { id: "photos-venao",    lat: 7.432,  lon: -80.193,  fallback: "Playa Venao Panama" }
-  ];
-
-  function commonsQuery(params) {
-    var base = {
-      action: "query", format: "json", origin: "*",
-      prop: "imageinfo", iiprop: "url|extmetadata", iiurlwidth: 640
-    };
-    var qs = [];
-    for (var k in base) qs.push(k + "=" + encodeURIComponent(base[k]));
-    for (var j in params) qs.push(j + "=" + encodeURIComponent(params[j]));
-    return fetch(API + "?" + qs.join("&")).then(function (r) { return r.json(); });
-  }
-
-  function usablePages(data) {
-    if (!data || !data.query || !data.query.pages) return [];
-    var pages = Object.keys(data.query.pages).map(function (k) { return data.query.pages[k]; });
-    pages.sort(function (a, b) { return (a.index || 0) - (b.index || 0); });
-    return pages.filter(function (p) {
-      var t = (p.title || "").toLowerCase();
-      return /\.(jpe?g|png)$/.test(t) &&
-        !/map|plan|logo|escudo|coat|diagram|chart|sign|banner/.test(t) &&
-        p.imageinfo && p.imageinfo[0] && p.imageinfo[0].thumburl;
-    });
-  }
-
-  function plainText(html) {
-    var d = document.createElement("div");
-    d.innerHTML = html || "";
-    return (d.textContent || "").replace(/\s+/g, " ").trim();
-  }
-
-  function render(el, pages) {
-    pages.slice(0, 3).forEach(function (p) {
-      var info = p.imageinfo[0];
-      var meta = info.extmetadata || {};
-      var artist = plainText((meta.Artist || {}).value).slice(0, 30) || "Unknown";
-      var license = plainText((meta.LicenseShortName || {}).value) || "See source";
-      var fig = document.createElement("figure");
-      var img = document.createElement("img");
-      img.src = info.thumburl;
-      img.alt = (p.title || "").replace(/^File:/, "").replace(/\.[a-z]+$/i, "");
-      img.loading = "lazy";
-      var cap = document.createElement("figcaption");
-      var a = document.createElement("a");
-      a.href = info.descriptionurl;
-      a.rel = "noopener";
-      a.textContent = artist + " · " + license + " · Commons";
-      cap.appendChild(a);
-      fig.appendChild(img);
-      fig.appendChild(cap);
-      el.appendChild(fig);
-    });
-    if (el.children.length) el.classList.add("loaded");
-  }
-
-  SPOTS.forEach(function (spot) {
-    var el = document.getElementById(spot.id);
-    if (!el) return;
-    commonsQuery({
-      generator: "geosearch",
-      ggscoord: spot.lat + "|" + spot.lon,
-      ggsradius: 8000, ggsnamespace: 6, ggslimit: 16
-    }).then(function (data) {
-      var pages = usablePages(data);
-      if (pages.length) return pages;
-      return commonsQuery({
-        generator: "search",
-        gsrsearch: spot.fallback,
-        gsrnamespace: 6, gsrlimit: 16
-      }).then(usablePages);
-    }).then(function (pages) {
-      render(el, pages);
-    }).catch(function () { /* strip stays hidden; postcards and links carry the card */ });
-  });
-})();
-</script>
 </body>
 </html>
