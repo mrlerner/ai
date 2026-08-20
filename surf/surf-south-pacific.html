@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The South Pacific File</title>
+<style>
+  :root {
+    --ground: #eef1ef;
+    --card: #f7f9f8;
+    --ink: #17313f;
+    --ink-soft: #4a6373;
+    --line: #ccd7d4;
+    --swell: #2e7da6;
+    --swell-deep: #1c5a7c;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.22);
+    --flag-ink: #f5f8f7;
+    --pro: #2e7d52;
+    --con: #a05c2e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0c1b26;
+      --card: #122938;
+      --ink: #dce7ec;
+      --ink-soft: #8fa8b5;
+      --line: #24404f;
+      --swell: #5aa7cc;
+      --swell-deep: #7fc0de;
+      --wax: #e3b23c;
+      --wax-soft: rgba(227, 178, 60, 0.16);
+      --flag-ink: #0c1b26;
+      --pro: #6fc79a;
+      --con: #d99a6b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0c1b26;
+    --card: #122938;
+    --ink: #dce7ec;
+    --ink-soft: #8fa8b5;
+    --line: #24404f;
+    --swell: #5aa7cc;
+    --swell-deep: #7fc0de;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.16);
+    --flag-ink: #0c1b26;
+    --pro: #6fc79a;
+    --con: #d99a6b;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+
+  .mono {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  header.hero { margin-bottom: 2.6rem; }
+  .hero .eyebrow { color: var(--ink-soft); text-transform: uppercase; margin-bottom: 1rem; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.08;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  .hero p.dek { max-width: 36em; font-size: 1.05rem; color: var(--ink-soft); margin: 0 0 0.6rem; }
+
+  h3.section {
+    text-transform: uppercase;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin: 3rem 0 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  h3.section::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+
+  /* ---- vibe spectrum ---- */
+  .spectrum {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.3rem 1.4rem 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .spectrum .scale { position: relative; height: 148px; }
+  .spectrum .bar {
+    position: absolute; left: 0; right: 0; top: 72px; height: 6px;
+    background: linear-gradient(90deg, var(--line), var(--swell) 55%, var(--wax));
+    border-radius: 3px;
+  }
+  .spectrum .band {
+    position: absolute; top: 58px; height: 34px;
+    left: 30%; width: 34%;
+    background: var(--wax-soft);
+    border-left: 2px solid var(--wax);
+    border-right: 2px solid var(--wax);
+  }
+  .spectrum .stop { position: absolute; width: 0; }
+  .spectrum .dot {
+    position: absolute; top: 68px; left: -7px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--swell-deep);
+    border: 2px solid var(--card);
+  }
+  .spectrum .stop.veto .dot { background: var(--ink-soft); opacity: 0.55; }
+  .spectrum .lbl {
+    position: absolute; left: 0; transform: translateX(-50%);
+    text-align: center; width: 8.5em; color: var(--ink);
+  }
+  .spectrum .stop.veto .lbl { color: var(--ink-soft); }
+  .spectrum .lbl .why { display: block; font-style: italic; font-size: 0.78rem; color: var(--ink-soft); letter-spacing: 0; }
+  .spectrum .up .lbl { top: 8px; }
+  .spectrum .up .dot::before { content: ""; position: absolute; left: 5px; top: -26px; width: 2px; height: 24px; background: var(--line); }
+  .spectrum .down .lbl { top: 102px; }
+  .spectrum .down .dot::before { content: ""; position: absolute; left: 5px; top: 14px; width: 2px; height: 20px; background: var(--line); }
+  .spectrum .ends { display: flex; justify-content: space-between; color: var(--ink-soft); margin-top: 0.5rem; }
+  .spectrum-note { color: var(--ink-soft); font-size: 0.9rem; max-width: 40em; margin: 0 0 0.4rem; }
+
+  /* ---- trip cards ---- */
+  .trip {
+    background: var(--card);
+    border: 1px solid var(--line);
+    margin-bottom: 1.75rem;
+    display: grid;
+    grid-template-columns: 3.4rem 1fr;
+  }
+  .flag {
+    background: var(--swell);
+    color: var(--flag-ink);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 1.4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .trip.baseline .flag { background: var(--ink-soft); font-size: 0.95rem; padding-top: 1.6rem; writing-mode: vertical-rl; letter-spacing: 0.2em; }
+  .trip-body { padding: 1.4rem 1.6rem 1.5rem; min-width: 0; }
+  .trip-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; }
+  .trip h2 { font-size: 1.55rem; font-weight: 600; margin: 0; }
+  .trip .codename { color: var(--swell-deep); }
+  .route { color: var(--ink-soft); margin: 0.35rem 0 1rem; font-size: 0.95rem; }
+
+  /* ---- photo carousel (full width of card) ---- */
+  .carousel { --ph: 400px; position: relative; margin: 0.4rem 0 1.4rem; }
+  .carousel .slides {
+    display: flex; overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .carousel .slides::-webkit-scrollbar { display: none; }
+  .carousel .slide { flex: 0 0 100%; min-width: 100%; margin: 0; scroll-snap-align: center; }
+  .carousel .slide img {
+    width: 100%; height: var(--ph); display: block; object-fit: cover;
+    border: 1px solid var(--line); box-sizing: border-box;
+    background: var(--ground);
+  }
+  .carousel figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .carousel figcaption a { color: var(--swell-deep); }
+  .carousel .credit { display: block; font-size: 0.66rem; color: var(--ink-soft); opacity: 0.7; margin-top: 0.2rem; }
+  .carousel .credit a { color: inherit; }
+  .carousel .nav {
+    position: absolute; top: calc(var(--ph) / 2); transform: translateY(-50%);
+    width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--card) 82%, transparent);
+    color: var(--ink); font-size: 1rem; line-height: 1;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .carousel .nav:hover { background: var(--card); border-color: var(--swell); color: var(--swell-deep); }
+  .carousel .nav.prev { left: 0.7rem; }
+  .carousel .nav.next { right: 0.7rem; }
+  .carousel .dots {
+    position: absolute; top: calc(var(--ph) - 1.6rem); left: 0; right: 0;
+    display: flex; justify-content: center; gap: 0.45rem;
+  }
+  .carousel .dots button {
+    width: 9px; height: 9px; border-radius: 50%; padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    background: rgba(20, 40, 55, 0.35);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+    opacity: 0.8; cursor: pointer;
+  }
+  .carousel .dots button.on { background: #fff; opacity: 1; }
+
+  /* ---- full-width map below the photos ---- */
+  .mapwide { margin: 0 0 1.3rem; }
+  .mapwide iframe {
+    width: 100%; height: 320px; display: block; border: 0;
+    border: 1px solid var(--line);
+    background: var(--ground);
+  }
+  .mapwide figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .mapwide figcaption a { color: var(--swell-deep); }
+
+  dl.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.9rem 1.4rem;
+    margin: 0 0 1.1rem;
+  }
+  dl.facts div { min-width: 0; }
+  dl.facts dt { color: var(--ink-soft); text-transform: uppercase; margin-bottom: 0.15rem; }
+  dl.facts dd { margin: 0; font-size: 0.92rem; }
+
+  .roadtest {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--wax);
+    padding: 0.8rem 1rem 0.9rem;
+    margin: 0 0 1.2rem;
+    font-size: 0.93rem;
+  }
+  .roadtest .mono { color: var(--swell-deep); text-transform: uppercase; }
+  .roadtest p { margin: 0.35rem 0 0; }
+
+  .proscons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.6rem; margin: 0 0 1.2rem; }
+  .proscons h4 { margin: 0 0 0.4rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; }
+  .proscons .pros h4 { color: var(--pro); }
+  .proscons .cons h4 { color: var(--con); }
+  .proscons ul { margin: 0; padding: 0; list-style: none; font-size: 0.92rem; }
+  .proscons li { padding: 0.28rem 0 0.28rem 1.1rem; position: relative; border-top: 1px dotted var(--line); }
+  .proscons li:first-child { border-top: 0; }
+  .proscons .pros li::before { content: "+"; position: absolute; left: 0; color: var(--pro); font-weight: 700; }
+  .proscons .cons li::before { content: "\2212"; position: absolute; left: 0; color: var(--con); font-weight: 700; }
+
+  .moment {
+    border-left: 3px solid var(--wax);
+    padding: 0.15rem 0 0.15rem 0.9rem;
+    margin: 0;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .moment .mono { color: var(--swell-deep); font-style: normal; }
+
+  /* ---- comparison table ---- */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--card); }
+  table.compare { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.88rem; }
+  table.compare th, table.compare td { padding: 0.55rem 0.8rem; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+  table.compare thead th { border-top: 0; background: var(--wax-soft); font-weight: 600; }
+  table.compare tbody th {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 500; white-space: nowrap;
+  }
+  table.compare td.ref { color: var(--ink-soft); font-style: italic; }
+  table.compare td.win { color: var(--swell-deep); font-weight: 600; }
+
+  .verdict {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--swell);
+    padding: 1.2rem 1.4rem 1.3rem;
+  }
+  .verdict p { margin: 0.5rem 0 0; max-width: 42em; }
+  .verdict p:first-child { margin-top: 0; }
+  .verdict .mono { color: var(--swell-deep); }
+
+  .field-note {
+    margin-top: 3rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--wax);
+    padding: 1rem 1.1rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .field-note .mono { color: var(--swell-deep); }
+  .field-note p { margin: 0.4rem 0 0; }
+  .field-note a { color: var(--swell-deep); }
+
+  footer.cadence {
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  footer.cadence .mono { color: var(--swell-deep); }
+  footer.cadence a { color: var(--swell-deep); }
+
+  @media (max-width: 640px) {
+    .trip { grid-template-columns: 2.4rem 1fr; }
+    .trip-body { padding: 1.1rem 1rem 1.2rem; }
+    .carousel { --ph: 240px; }
+    .mapwide iframe { height: 240px; }
+    .proscons { grid-template-columns: 1fr; }
+    .spectrum .lbl { width: 6.5em; font-size: 0.62rem; }
+  }
+
+  table.compare { min-width: 780px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow mono">FANTASY TIER &middot; SURF + SNORKEL + SCUBA &middot; THE SOUTH PACIFIC</div>
+    <h1>The South Pacific File</h1>
+    <p class="dek">The brief: one trip that stacks real surf on top of world-class snorkeling and diving,
+      somewhere in the South Pacific &mdash; with remoteness treated as a feature, not a tax. Vanuatu lit
+      the fuse; Tahiti and Fiji are the obvious counterbids. Below, the six worth dreaming about,
+      including two nobody puts on the first list.</p>
+    <p class="dek">No baseline this time &mdash; every one of these clears the bar. They differ in what
+      leads: the wave, the reef, the wreck, or the whale.</p>
+  </header>
+
+  <h3 class="section">The trail&ndash;map spectrum</h3>
+  <p class="spectrum-note">How far off the circuit each option sits. The amber band is the allure zone
+    &mdash; discovered enough to function, empty enough to feel found.</p>
+  <div class="spectrum" role="img" aria-label="A spectrum from on-the-trail to off-the-map. Tahiti sits leftmost (most traveled), then Fiji, then Samoa, Tonga, and Vanuatu in the middle band, with Kavieng PNG far right (most remote).">
+    <div class="scale">
+      <div class="band" style="left:38%; width:44%"></div>
+      <div class="bar"></div>
+      <div class="stop up" style="left:12%">
+        <span class="lbl mono">TAHITI<span class="why">famous for a reason</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down" style="left:27%">
+        <span class="lbl mono">FIJI<span class="why">the circuit&rsquo;s crown</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop up" style="left:44%">
+        <span class="lbl mono">SAMOA<span class="why">quietly complete</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down" style="left:58%">
+        <span class="lbl mono">TONGA<span class="why">a kingdom apart</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop up" style="left:72%">
+        <span class="lbl mono">VANUATU<span class="why">the original itch</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down" style="left:90%">
+        <span class="lbl mono">KAVIENG, PNG<span class="why">off the map, on purpose</span></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+    <div class="ends">
+      <span class="mono">ON THE TRAIL &larr;</span>
+      <span class="mono">&rarr; OFF THE MAP</span>
+    </div>
+  </div>
+
+  <h3 class="section">The six</h3>
+
+  <article class="trip">
+    <div class="flag" aria-hidden="true">1</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Fiji</h2>
+        <span class="codename mono">MAMANUCAS + TAVEUNI &middot; THE COMBO KING</span>
+      </div>
+      <p class="route">Namotu or Tavarua for the wave row &mdash; Cloudbreak, Restaurants, Swimming Pools &mdash; then a hop to the soft-coral shrines: Taveuni&rsquo;s Rainbow Reef or Beqa&rsquo;s shark lagoon.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Fiji surf and reefs">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Cloudbreak_-_panoramio.jpg/1280px-Cloudbreak_-_panoramio.jpg" alt="A surfer dropping into a large turquoise barrel at Cloudbreak, Fiji, another surfer paddling over the shoulder" loading="lazy">
+            <figcaption>Cloudbreak on a proper day. Namotu Left and Swimming Pools, in sight of it, are the mortal-friendly versions.
+              <a href="https://www.google.com/search?q=cloudbreak+namotu+fiji+surf&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: dave.fin, <a href="https://commons.wikimedia.org/wiki/File:Cloudbreak_-_panoramio.jpg" rel="noopener">Wikimedia Commons</a>, CC BY 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tavarua_Island%2C_Fiji.JPG/1280px-Tavarua_Island%2C_Fiji.JPG" alt="Aerial view of heart-shaped Tavarua Island ringed by white sand, with reef lines breaking beyond" loading="lazy">
+            <figcaption>Tavarua from the air &mdash; the reefs breaking top-of-frame are the wave row. Since the 2010 decree, every break is open to anyone with a boat.
+              <span class="credit">Photo: Tavyland, <a href="https://commons.wikimedia.org/wiki/File:Tavarua_Island,_Fiji.JPG" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Fiji_soft_coral_%283302349906%29.jpg/1280px-Fiji_soft_coral_%283302349906%29.jpg" alt="A soft coral tree in reds and whites surrounded by purple anthias fish in blue Fijian water" loading="lazy">
+            <figcaption>Why divers call Fiji the soft-coral capital of the world. Rainbow Reef and Beqa Lagoon are the shrines.
+              <span class="credit">Photo: Barry Peters from Greer, SC, <a href="https://commons.wikimedia.org/wiki/File:Fiji_soft_coral_(3302349906).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of the Mamanuca Islands, Fiji" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=176.90%2C-18.40%2C178.90%2C-17.00&amp;layer=mapnik&amp;marker=-17.844%2C177.183"></iframe>
+        <figcaption>Namotu / Tavarua (pin) off Viti Levu&rsquo;s west side; Beqa south, Rainbow Reef a short flight northeast, off this map&rsquo;s edge. <a href="https://maps.google.com/?q=Namotu+Island,+Fiji" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA via LAX/SFO, ~11 h on Fiji Airways to Nadi; the surf islands are a 45-min boat from the marina. Easiest big-trip logistics of the six.</dd></div>
+        <div><dt class="mono">The surf</dt><dd>Cloudbreak is one of the best lefts on Earth (and grades from playful to terrifying with size); Namotu Left and Swimming Pools are the everyman versions. Prime May&ndash;Oct.</dd></div>
+        <div><dt class="mono">Underwater</dt><dd>The soft-coral capital of the world: Rainbow Reef&rsquo;s Great White Wall, Beqa&rsquo;s shark dive, Namena&rsquo;s pinnacles. Snorkeling off the surf islands is already excellent.</dd></div>
+        <div><dt class="mono">When</dt><dd>May&ndash;October: peak swell, dry season, ~80&deg;F water year-round.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The combo test &middot; surf + underwater in one trip</span>
+        <p>The one catch: the marquee waves and the marquee reefs sit on opposite sides of the country. The full version is a split week &mdash; Mamanucas surf, then a domestic hop to Taveuni &mdash; while the one-base compromise (surf islands only) still delivers very good diving, just not the shrines.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>The highest combined surf-plus-dive ceiling of any country on this page</li>
+            <li>All breaks open to all comers since Fiji&rsquo;s 2010 surfing decree</li>
+            <li>English-speaking, reliable boats, painless customs with boards and dive bags</li>
+            <li>A mortal-friendly wave for every day Cloudbreak says no</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>The full combo needs two bases and an internal flight</li>
+            <li>Surf-island lodging is resort-priced</li>
+            <li>The least &ldquo;discovery&rdquo; feel of the six &mdash; the anchorage at Cloudbreak can host a crowd</li>
+            <li>Peak season books out far ahead</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> if the goal is the maximum of both sports per travel-hour, everything else on this page is chasing Fiji.</p>
+    </div>
+  </article>
+  <article class="trip">
+    <div class="flag" aria-hidden="true">2</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Tahiti + the Tuamotus</h2>
+        <span class="codename mono">MOOREA + FAKARAVA &middot; THE PILGRIMAGE</span>
+      </div>
+      <p class="route">Moorea for waves you&rsquo;d actually ride (Haapiti&rsquo;s long lagoon left), Teahupo&rsquo;o for the cathedral visit &mdash; then a one-hour flight to Fakarava, where the south pass runs a wall of grey reef sharks.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Tahiti, Moorea, and Fakarava">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Teahupoo_Wave.jpg" alt="Surfers paddling over the huge glassy shoulder of a wave at Teahupoo, Tahiti" loading="lazy">
+            <figcaption>Teahupo&rsquo;o. You visit the cathedral; you ride Moorea&rsquo;s Haapiti instead.
+              <a href="https://www.google.com/search?q=haapiti+moorea+surf+teahupoo&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Lookitt, <a href="https://commons.wikimedia.org/wiki/File:Teahupoo_Wave.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Blacktip_reef_sharks_at_Moorea_2025.jpg/1280px-Blacktip_reef_sharks_at_Moorea_2025.jpg" alt="Split-level photo: blacktip reef sharks and rays cruising over sand beneath the peaks of Moorea at golden hour" loading="lazy">
+            <figcaption>Moorea&rsquo;s lagoon, split-screen: blacktips and rays below, volcanic spires above.
+              <span class="credit">Photo: Borut Furlan, <a href="https://commons.wikimedia.org/wiki/File:Blacktip_reef_sharks_at_Moorea_2025.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Fakarava_Tetamanu_pass.jpg/1280px-Fakarava_Tetamanu_pass.jpg" alt="Aerial panorama of the south pass of Fakarava atoll with Tetamanu village and coral gardens flanking deep blue water" loading="lazy">
+            <figcaption>Fakarava&rsquo;s south pass &mdash; a UNESCO lagoon gate where grey reef sharks stack by the hundreds.
+              <span class="credit">Photo: Tahitipix, <a href="https://commons.wikimedia.org/wiki/File:Fakarava_Tetamanu_pass.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Moorea and the western Tuamotus" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-150.60%2C-18.10%2C-144.60%2C-15.30&amp;layer=mapnik&amp;marker=-17.541%2C-149.876"></iframe>
+        <figcaption>Haapiti, Moorea (pin); Fakarava&rsquo;s passes 1 h 15 northeast by ATR. <a href="https://maps.google.com/?q=Haapiti,+Moorea" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA to Pape&rsquo;ete via SFO/LAX (~8 h over the water); Moorea is a 30-min ferry, Fakarava a short domestic flight. The gentlest long-haul of the six.</dd></div>
+        <div><dt class="mono">The surf</dt><dd>Haapiti: a long, forgiving-until-it-isn&rsquo;t reef left with a real season Apr&ndash;Oct. Teahupo&rsquo;o is for watching from the channel boat &mdash; and that is worth a day of anyone&rsquo;s life.</dd></div>
+        <div><dt class="mono">Underwater</dt><dd>Arguably the best pass diving on the planet: Fakarava South (UNESCO biosphere, the shark wall) and Rangiroa&rsquo;s Tiputa Pass, where dolphins ride the incoming current. Lagoon snorkeling is world-class without a tank.</dd></div>
+        <div><dt class="mono">When</dt><dd>April&ndash;October: SW swell season and the dry, breezy months.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The combo test &middot; surf + underwater in one trip</span>
+        <p>Passes, with a flight in the middle: surf half on Moorea, underwater half on Fakarava, both a short hop from Pape&rsquo;ete. The pass dives are drift dives on current &mdash; certification should be current, but the snorkel-only version of the atolls is still extraordinary.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>The single most spectacular underwater act on this page</li>
+            <li>Moorea is the most beautiful island most people will ever see</li>
+            <li>Short, simple flights once you&rsquo;re in-country; fresh baguettes on an atoll</li>
+            <li>Teahupo&rsquo;o in season: the best surfers alive, from a boat length away</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>The most expensive option here by a wide margin</li>
+            <li>Teahupo&rsquo;o is a spectator sport for most of us</li>
+            <li>Haapiti&rsquo;s lineup is small and local &mdash; bring patience and respect</li>
+            <li>Two bases are mandatory for the full combo</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> less off the beaten path than the rest &mdash; but the path exists because this is the most beautiful thing on it.</p>
+    </div>
+  </article>
+  <article class="trip">
+    <div class="flag" aria-hidden="true">3</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Vanuatu</h2>
+        <span class="codename mono">EFATE + ESPIRITU SANTO &middot; THE ORIGINAL ITCH</span>
+      </div>
+      <p class="route">The one that started this page. Split it: Efate for Port Vila and the reef waves at Pango when swell runs, then Espiritu Santo &mdash; where the SS President Coolidge, a 654-foot liner-turned-troopship, lies a shore walk from Luganville.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Vanuatu: the Coolidge, Champagne Beach, blue holes">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/The_Beached_Transport_SS_President_Coolidge%E2%80%94October_1942.jpg" alt="Historic 1942 photograph of soldiers climbing down ropes off the listing SS President Coolidge at Espiritu Santo" loading="lazy">
+            <figcaption>October 1942: 5,000 troops walk off the sinking Coolidge. Today the 654-foot wreck is a shore dive from Luganville.
+              <a href="https://www.google.com/search?q=ss+president+coolidge+dive+vanuatu&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: US Army (public domain), <a href="https://commons.wikimedia.org/wiki/File:The_Beached_Transport_SS_President_Coolidge%E2%80%94October_1942.jpg" rel="noopener">Wikimedia Commons</a>, Public domain</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Champagne_Beach.jpg/1280px-Champagne_Beach.jpg" alt="Champagne Beach, Espiritu Santo: a white-sand crescent with turquoise water framed by dark green foliage" loading="lazy">
+            <figcaption>Champagne Beach, North Santo &mdash; the surface interval.
+              <span class="credit">Photo: Jae Lee, <a href="https://commons.wikimedia.org/wiki/File:Champagne_Beach.jpg" rel="noopener">Wikimedia Commons</a>, Public domain</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Nanda_Blue_Hole_Santo_%2828661104893%29.jpg/1280px-Nanda_Blue_Hole_Santo_%2828661104893%29.jpg" alt="The Nanda blue hole on Espiritu Santo: deep blue spring water ringed by jungle" loading="lazy">
+            <figcaption>Santo&rsquo;s freshwater blue holes &mdash; 30-meter visibility in the jungle between dives.
+              <span class="credit">Photo: Simon_sees from Australia, <a href="https://commons.wikimedia.org/wiki/File:Nanda_Blue_Hole_Santo_(28661104893).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Vanuatu: Espiritu Santo and Efate" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=165.80%2C-18.40%2C169.40%2C-14.60&amp;layer=mapnik&amp;marker=-15.512%2C167.178"></iframe>
+        <figcaption>Luganville, Santo (pin) &mdash; the Coolidge lies just offshore; Port Vila and Pango&rsquo;s waves on Efate, bottom of map. <a href="https://maps.google.com/?q=Luganville,+Vanuatu" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>The long way: SEA to Fiji or Brisbane/Auckland, connect to Port Vila, hop to Santo. Budget two travel days each way.</dd></div>
+        <div><dt class="mono">The surf</dt><dd>Honest, empty reef waves around Efate &mdash; Pango Point, Breakas &mdash; fun rather than famous, best Apr&ndash;Oct on the trades. Nobody flies here just to surf, which is why nobody is on it.</dd></div>
+        <div><dt class="mono">Underwater</dt><dd>The ace: the Coolidge runs from 20 m to technical depths and takes a week to know; Million Dollar Point is a dumped WWII fleet; the jungle hides gin-clear blue holes; Champagne Beach handles the surface intervals.</dd></div>
+        <div><dt class="mono">When</dt><dd>April&ndash;October dry season. November&ndash;April is cyclone roulette.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The combo test &middot; surf + underwater in one trip</span>
+        <p>Passes as a two-act play &mdash; surf act on Efate, dive act on Santo &mdash; but the honest framing is the inverse of Fiji: this is a world-class diving trip with surf on the side. If the wreck is the reason, nothing else on this page competes.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>A top-five wreck dive on Earth, entered from the beach</li>
+            <li>Genuinely unvisited: nobody you know has been</li>
+            <li>Blue holes, kava culture, empty white beaches between dives</li>
+            <li>Cheap on the ground once you&rsquo;ve paid to arrive</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>The weakest surf of the six &mdash; a bonus, not a pillar</li>
+            <li>Longest, most connection-prone flights after PNG</li>
+            <li>Basic infrastructure; inter-island hops get reshuffled</li>
+            <li>Cyclone-season exposure shapes the calendar</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> the intrigue was correct &mdash; it was just pointed at the wrong sport. Come for the Coolidge; let the surf surprise you.</p>
+    </div>
+  </article>
+  <article class="trip">
+    <div class="flag" aria-hidden="true">4</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Samoa</h2>
+        <span class="codename mono">UPOLU + SAVAI&rsquo;I &middot; THE SLEEPER</span>
+      </div>
+      <p class="route">Upolu&rsquo;s south coast: reef passes named Coconuts and Salani, a beach fale on the sand at Lalomanu, To Sua trench for the snorkel days &mdash; and Savai&rsquo;i one ferry further if you want to fall off the clock entirely.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Samoa: To Sua trench, Lalomanu, Savaii">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/To_Sua_Ocean_Trench%2C_Upolu%2C_Samoa_-_August_2016.jpg/1280px-To_Sua_Ocean_Trench%2C_Upolu%2C_Samoa_-_August_2016.jpg" alt="Looking down into To Sua ocean trench, Samoa: a jungle-ringed swimming hole with a ladder descending to clear water" loading="lazy">
+            <figcaption>To Sua trench, Upolu south coast &mdash; the snorkeling is this, lava arches, and giant-clam sanctuaries.
+              <a href="https://www.google.com/search?q=samoa+surf+coconuts+salani+upolu&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Rickard Törnblad, <a href="https://commons.wikimedia.org/wiki/File:To_Sua_Ocean_Trench,_Upolu,_Samoa_-_August_2016.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nu%27utele_island_seen_from_Lalomanu_beach%2C_Upolu%2C_Samoa_-_August_2016.jpg/1280px-Nu%27utele_island_seen_from_Lalomanu_beach%2C_Upolu%2C_Samoa_-_August_2016.jpg" alt="A small boat at anchor off Lalomanu beach, Samoa, with the steep green island of Nuutele offshore" loading="lazy">
+            <figcaption>Lalomanu, with Nu&rsquo;utele offshore. You sleep in a fale on this sand; the reef passes are minutes away.
+              <span class="credit">Photo: Rickard Törnblad, <a href="https://commons.wikimedia.org/wiki/File:Nu%27utele_island_seen_from_Lalomanu_beach,_Upolu,_Samoa_-_August_2016.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Savaii_Beach_%286932950996%29.jpg/1280px-Savaii_Beach_%286932950996%29.jpg" alt="A row of leaning coconut palms over an empty white beach on Savaii, Samoa" loading="lazy">
+            <figcaption>Savai&rsquo;i, one ferry further &mdash; the fall-off-the-clock option.
+              <span class="credit">Photo: Simon_sees from Australia, <a href="https://commons.wikimedia.org/wiki/File:Savaii_Beach_(6932950996).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Upolu, Samoa" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-172.85%2C-14.35%2C-171.20%2C-13.20&amp;layer=mapnik&amp;marker=-14.030%2C-171.613"></iframe>
+        <figcaption>Salani and the south-coast passes (pin); Lalomanu at the east tip, Savai&rsquo;i across the strait northwest. <a href="https://maps.google.com/?q=Salani,+Samoa" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>Sneaky-short: SEA&ndash;HNL, then Hawaiian&rsquo;s nonstop to Apia. Under 24 h door-to-door with one clean connection.</dd></div>
+        <div><dt class="mono">The surf</dt><dd>Real reef passes, shortboard waves, close to empty. South shore fires Apr&ndash;Oct, north shore Nov&ndash;Mar &mdash; the rare place where something works year-round.</dd></div>
+        <div><dt class="mono">Underwater</dt><dd>Snorkel-first: To Sua&rsquo;s trench, lava arches, giant-clam sanctuaries in knee-deep lagoons. Tank diving exists but is modest &mdash; this is the mask-and-fins pick.</dd></div>
+        <div><dt class="mono">When</dt><dd>May&ndash;October is driest; the surf never fully leaves.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The combo test &middot; surf + underwater in one trip</span>
+        <p>The only one-base pass on the page: wave at dawn, To Sua by afternoon, fale floor by dark. The trade is ceiling &mdash; the underwater is snorkel-grade rather than Fakarava-grade, and the passes want a competent surfer.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Fa&rsquo;a Samoa village life &mdash; the realest cultural texture of the six</li>
+            <li>Beach fales are the anti-resort, at anti-resort prices</li>
+            <li>Empty lineups without needing a management plan</li>
+            <li>Shortest, cheapest flights on this page</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Passes are shallow and sharp &mdash; intermediate-plus surfing</li>
+            <li>Weakest tank diving of the six</li>
+            <li>Sunday is genuinely closed; plan the ferry around church</li>
+            <li>Fale comfort is thin-mattress honest</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> the least famous option is the one that most resembles the daydream: wave, trench, fale, repeat.</p>
+    </div>
+  </article>
+  <article class="trip">
+    <div class="flag" aria-hidden="true">5</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Tonga</h2>
+        <span class="codename mono">HA&rsquo;ATAFU + VAVA&rsquo;U &middot; THE WHALE CARD</span>
+      </div>
+      <p class="route">Ha&rsquo;atafu, the surf-lodge corner of Tongatapu&rsquo;s west tip, for hollow reef passes &mdash; then the hop to Vava&rsquo;u in season, where licensed boats put you in the water with humpback mothers and calves.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Tonga: humpback whales and Vavau">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Humpback_Whale_And_Calf_%2842854767822%29.jpg/1280px-Humpback_Whale_And_Calf_%2842854767822%29.jpg" alt="A humpback whale mother and calf just below the surface in clear blue water" loading="lazy">
+            <figcaption>The main event: mother and calf in blue water. (This frame is from Hawai&rsquo;i&rsquo;s sanctuary &mdash; Tonga is one of the only places you can legally be in the water for it, July&ndash;October.)
+              <a href="https://www.google.com/search?q=swim+humpback+whales+vavau+tonga&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: NOAA National Marine Sanctuaries (public domain), <a href="https://commons.wikimedia.org/wiki/File:Humpback_Whale_And_Calf_(42854767822).jpg" rel="noopener">Wikimedia Commons</a>, Public domain</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Whale_watching%2C_Vava%27u.jpg" alt="A humpback whale tail slapping the water beside a small whale-watching boat under the cliffs of Vavau, Tonga" loading="lazy">
+            <figcaption>Vava&rsquo;u, whale season: the commute to work.
+              <span class="credit">Photo: clr_flickr, <a href="https://commons.wikimedia.org/wiki/File:Whale_watching,_Vava%27u.jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Leaving_Vava%27u_airport%2C_flying_down_east_side_of_Vava%27u%2C_Tonga_-_panoramio_%2812%29.jpg/1280px-Leaving_Vava%27u_airport%2C_flying_down_east_side_of_Vava%27u%2C_Tonga_-_panoramio_%2812%29.jpg" alt="Aerial view of the reefs and islands on the east side of Vavau, Tonga" loading="lazy">
+            <figcaption>The Vava&rsquo;u group from the inter-island hop &mdash; anchorages, reefs, and caves for the non-whale days.
+              <span class="credit">Photo: David Broad, <a href="https://commons.wikimedia.org/wiki/File:Leaving_Vava%27u_airport,_flying_down_east_side_of_Vava%27u,_Tonga_-_panoramio_(12).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 3.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Tonga: Tongatapu to Vavau" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-176.80%2C-21.80%2C-173.20%2C-18.20&amp;layer=mapnik&amp;marker=-21.070%2C-175.328"></iframe>
+        <figcaption>Ha&rsquo;atafu, Tongatapu (pin); the Vava&rsquo;u whale grounds at the top of the map, one short flight north. <a href="https://maps.google.com/?q=Ha%27atafu,+Tonga" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>Via Fiji or Auckland to Tongatapu; Vava&rsquo;u by domestic hop. Two legs, both short.</dd></div>
+        <div><dt class="mono">The surf</dt><dd>Reef passes off Ha&rsquo;atafu: hollow, shallow, fast, and empty. March&ndash;October, with the trades offshore in the mornings.</dd></div>
+        <div><dt class="mono">Underwater</dt><dd>July&ndash;October: one of the only places on Earth you can legally swim with humpbacks &mdash; mothers, calves, and singing males &mdash; plus Mariner&rsquo;s and Swallows caves and clean hard-coral reef the rest of the year.</dd></div>
+        <div><dt class="mono">When</dt><dd>July&ndash;September is the magic overlap: surf season and whale season at once.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The combo test &middot; surf + underwater in one trip</span>
+        <p>Passes spectacularly &mdash; inside a window. July to September you surf the passes at dawn and float beside whales at midday; outside those months it&rsquo;s a quiet, expert-leaning reef trip. This is the one destination where the calendar is the whole strategy.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Eye contact with a 40-ton mother and her calf &mdash; the single biggest memory available on this page</li>
+            <li>A kingdom, not a resort economy: Tonga never quite joined the circuit</li>
+            <li>Zero crowds, in the water or out</li>
+            <li>Caves and reef fill the non-whale days</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>The surf skews expert: shallow reef, fast walls</li>
+            <li>The whale window rules everything</li>
+            <li>Thin infrastructure; weather owns the schedule</li>
+            <li>Multi-hop flights with dive and board bags</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> the surprise entry: you asked for snorkeling, and Tonga answers with whales.</p>
+    </div>
+  </article>
+  <article class="trip">
+    <div class="flag" aria-hidden="true">6</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Kavieng, PNG</h2>
+        <span class="codename mono">NEW IRELAND &middot; THE DEEP CUT</span>
+      </div>
+      <p class="route">The far end of the map: reef passes threading the islands off New Ireland&rsquo;s tip, WWII ships and aircraft on the harbor floor, and lodges that cap surfer numbers under PNG&rsquo;s surf-management plan.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Kavieng and Kimbe Bay, Papua New Guinea">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/4967_aquaimages.jpg" alt="Two scuba divers inspecting the cockpit of a WWII Japanese floatplane wreck in green water, Kavieng harbor" loading="lazy">
+            <figcaption>Kavieng harbor: divers on an Aichi &ldquo;Jake&rdquo; floatplane. The same boat runs the morning surf and the afternoon wreck.
+              <a href="https://www.google.com/search?q=kavieng+surf+new+ireland+png&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: User Aquaimages on en.wikipedia, <a href="https://commons.wikimedia.org/wiki/File:4967_aquaimages.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.5</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Kavieng_1996.jpg/1280px-Kavieng_1996.jpg" alt="Black and white photo of children leaping off a concrete pier into Kavieng harbour, 1997" loading="lazy">
+            <figcaption>Kavieng harbour, 1997 &mdash; the pace has not meaningfully changed, which is the point.
+              <span class="credit">Photo: Apolanthar, <a href="https://commons.wikimedia.org/wiki/File:Kavieng_1996.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Kimbe_Bay_islands.jpg/1280px-Kimbe_Bay_islands.jpg" alt="Restorf Island in Kimbe Bay, Papua New Guinea: a tiny jungle island with white sand and turquoise reef" loading="lazy">
+            <figcaption>Kimbe Bay, a side-trip south: more reef fish species than the entire Caribbean.
+              <span class="credit">Photo: Kimbe at en.wikipedia, <a href="https://commons.wikimedia.org/wiki/File:Kimbe_Bay_islands.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Kavieng, New Ireland" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=149.60%2C-3.40%2C151.80%2C-1.90&amp;layer=mapnik&amp;marker=-2.573%2C150.795"></iframe>
+        <figcaption>Kavieng (pin) and its pass islands; Kimbe Bay a side-trip south across the strait. <a href="https://maps.google.com/?q=Kavieng,+Papua+New+Guinea" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>The full pilgrimage: SEA to Brisbane (or Manila), to Port Moresby, to Kavieng. Two days each way &mdash; the price of the emptiest lineups in the Pacific.</dd></div>
+        <div><dt class="mono">The surf</dt><dd>November&ndash;April monsoon swells &mdash; the inverse season of everything above. Playful-to-serious reef passes, with lineups capped (~20 surfers per break) by the local surf-management plan.</dd></div>
+        <div><dt class="mono">Underwater</dt><dd>World-class and barely visited: harbor wrecks including a Japanese floatplane, current-swept passes thick with fish, and Kimbe Bay &mdash; more reef species than the whole Caribbean &mdash; within reach.</dd></div>
+        <div><dt class="mono">When</dt><dd>November&ndash;April. When the rest of this page sleeps, Kavieng turns on.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The combo test &middot; surf + underwater in one trip</span>
+        <p>Passes by design: the same lodge boat runs the dawn surf and the afternoon wreck, and the management plan makes this the only guaranteed-uncrowded lineup on the page. The trade-offs are travel time, malaria tablets, and evenings that end at the lodge table.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>&ldquo;Off the beaten path&rdquo; here is not a vibe &mdash; it&rsquo;s a signed management plan with a surfer cap</li>
+            <li>Wrecks and reef both extraordinary, often with nobody else moored</li>
+            <li>The inverse season: this is the November answer</li>
+            <li>Village reef royalties mean your presence pays the right people</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Hardest, longest travel of the six</li>
+            <li>Malaria prophylaxis and real remoteness &mdash; help is far away</li>
+            <li>Lodge-based evenings; no town to wander at night</li>
+            <li>Not cheap despite the distance &mdash; logistics cost money</li>
+          </ul>
+        </div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> &ldquo;remote&rdquo; stops being romantic and becomes procedural: a cap, a royalty, a boat, and a pass with your name on it.</p>
+    </div>
+  </article>
+
+  <h3 class="section">Side by side</h3>
+  <div class="tablewrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Fiji</th>
+          <th>Tahiti + Tuamotus</th>
+          <th>Vanuatu</th>
+          <th>Samoa</th>
+          <th>Tonga</th>
+          <th>Kavieng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Getting there</th>
+          <td class="win">~11 h + boat &mdash; easiest big trip</td>
+          <td class="win">~8 h from SFO + ferry/hop</td>
+          <td>2 travel days, multi-hop</td>
+          <td class="win">HNL + one nonstop to Apia</td>
+          <td>2 short legs via NAN/AKL</td>
+          <td>2 days, 3 legs &mdash; the pilgrimage</td>
+        </tr>
+        <tr>
+          <th>The surf</th>
+          <td class="win">World-class, every level</td>
+          <td>One great left + the cathedral</td>
+          <td>Fun, empty, unfamous</td>
+          <td>Real passes, nearly empty</td>
+          <td>Hollow, shallow, expert-leaning</td>
+          <td class="win">Capped lineups by law</td>
+        </tr>
+        <tr>
+          <th>Underwater</th>
+          <td class="win">Soft-coral capital</td>
+          <td class="win">Best pass diving on Earth</td>
+          <td class="win">The Coolidge &mdash; top-5 wreck</td>
+          <td>Snorkel-first, modest tanks</td>
+          <td class="win">Swim with humpbacks (Jul&ndash;Oct)</td>
+          <td class="win">Wrecks + Kimbe Bay, empty</td>
+        </tr>
+        <tr>
+          <th>Combo logistics</th>
+          <td>Two bases + internal flight</td>
+          <td>Two bases, short hops</td>
+          <td>Two acts, two islands</td>
+          <td class="win">One base does it all</td>
+          <td>One window: Jul&ndash;Sep</td>
+          <td class="win">Same boat, same day</td>
+        </tr>
+        <tr>
+          <th>Crowds</th>
+          <td>Anchorage scene at the famous waves</td>
+          <td>Small, local, respectful</td>
+          <td class="win">Nobody</td>
+          <td class="win">Nearly nobody</td>
+          <td class="win">Nobody</td>
+          <td class="win">Capped at ~20 by plan</td>
+        </tr>
+        <tr>
+          <th>Season</th>
+          <td>May&ndash;Oct</td>
+          <td>Apr&ndash;Oct</td>
+          <td>Apr&ndash;Oct</td>
+          <td>Year-round somewhere</td>
+          <td>Jul&ndash;Sep overlap</td>
+          <td class="win">Nov&ndash;Apr &mdash; the inverse</td>
+        </tr>
+        <tr>
+          <th>Budget feel</th>
+          <td>Resort-priced at the islands</td>
+          <td>The splurge</td>
+          <td>Cheap once landed</td>
+          <td class="win">Cheapest, honestly</td>
+          <td>Mid; whale licenses add up</td>
+          <td>Remote-logistics pricing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section">The call</h3>
+  <div class="verdict">
+    <p><span class="mono">IF ONE TRIP MUST DO EVERYTHING &middot;</span> <strong>Fiji.</strong> The deepest
+      wave inventory and the soft-coral capital in one country, with the friendliest logistics on the page.
+      The dream version splits Mamanucas surf and a Taveuni dive week.</p>
+    <p><span class="mono">IF THE UNDERWATER LEADS &middot;</span> <strong>Tahiti + the Tuamotus</strong> for
+      the shark walls of Fakarava &mdash; or <strong>Vanuatu</strong> if it must be the Coolidge. Between them:
+      current or steel.</p>
+    <p><span class="mono">IF THE STORY LEADS &middot;</span> <strong>Tonga, July&ndash;September.</strong>
+      Surf at dawn, a humpback mother and calf at noon. No other line on this page is retold for decades.</p>
+    <p><span class="mono">IF NOBODY CAN HAVE HEARD OF IT &middot;</span> <strong>Kavieng.</strong> The only
+      lineup on Earth with a legal surfer cap, and wrecks nobody else is moored over. November&ndash;April,
+      when everything else here sleeps.</p>
+    <p><span class="mono">IF THE FAMILY COMES TOO &middot;</span> <strong>Samoa.</strong> One base, a fale on
+      the sand, To Sua for the kids, real passes for you, and the shortest flights of the six.</p>
+  </div>
+
+  <div class="field-note">
+    <span class="mono">FIELD NOTES &middot; AUG 2026</span>
+    <p>Seasons run opposite to the February shortlist: South Pacific surf peaks April&ndash;October on
+      Southern Ocean swell, and November&ndash;April is cyclone season everywhere west of French Polynesia
+      &mdash; except Kavieng, whose monsoon-season waves make it the one November&ndash;April play. Tonga&rsquo;s
+      swim-with-whales window is July&ndash;October, licensed operators only.</p>
+    <p>Fiji&rsquo;s 2010 Surfing Areas Decree ended private control of breaks &mdash; Cloudbreak and
+      Restaurants are open to anyone who can get there. PNG runs the opposite experiment: village-owned
+      waves under a surf-management plan that caps daily surfer numbers and routes fees to the reef&rsquo;s
+      owners. Both work; pick your philosophy.</p>
+    <p>Maps are live OpenStreetMap embeds. Photo carousels are Creative Commons&ndash;licensed images from
+      Wikimedia Commons, credited under each; the &ldquo;More photos&rdquo; links open a fuller image search.
+      The whale mother-and-calf frame was shot in Hawai&rsquo;i&rsquo;s sanctuary &mdash; captioned honestly,
+      since Tonga is about being <em>in</em> that picture, not looking at it.</p>
+  </div>
+
+  <footer class="cadence">
+    <span class="mono">NEXT &middot;</span> pick the dream, then this page grows a sibling: a real itinerary
+    with dates, lodges, and the dive-op shortlist.
+    Companion pages: <a href="surf-feb-shortlist.html">The February Shortlist</a> &middot;
+    <a href="surf-dream-trips.html">Surf Dream Trips</a> &middot;
+    <a href="board-shopper.html">Board Shopper</a>.
+  </footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.carousel').forEach(function (c) {
+  var slides = c.querySelector('.slides');
+  var items = Array.prototype.slice.call(slides.children);
+  var dots = c.querySelector('.dots');
+  var n = items.length;
+
+  items.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Photo ' + (i + 1) + ' of ' + n);
+    b.addEventListener('click', function () { go(i); });
+    dots.appendChild(b);
+  });
+
+  function cur() { return Math.round(slides.scrollLeft / (slides.clientWidth || 1)); }
+  function go(i) {
+    var k = (i + n) % n;
+    var target = k * slides.clientWidth;
+    slides.scrollTo({ left: target, behavior: 'smooth' });
+    setTimeout(function () {
+      if (Math.abs(slides.scrollLeft - target) > 4) slides.scrollLeft = target;
+    }, 450);
+  }
+  function update() {
+    var k = cur();
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.classList.toggle('on', i === k);
+    });
+  }
+
+  slides.addEventListener('scroll', update, { passive: true });
+  c.querySelector('.nav.prev').addEventListener('click', function () { go(cur() - 1); });
+  c.querySelector('.nav.next').addEventListener('click', function () { go(cur() + 1); });
+  update();
+});
+</script>
+
+</body>
+</html>
