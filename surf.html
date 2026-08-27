@@ -25,12 +25,16 @@ padding:3px 11px;white-space:nowrap}
 .toc a:hover{border-color:var(--blue)}
 .best{background:var(--card-alt);border:1px solid var(--border);border-left:4px solid var(--purple);
 border-radius:6px;padding:18px 22px;margin:18px 0;font-size:15px}
-.gridwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px}
+.gridwrap{overflow:auto;max-height:min(80vh,760px);-webkit-overflow-scrolling:touch;margin:0 -4px}
 table.grid{border-collapse:separate;border-spacing:4px;width:100%;
 font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 table.grid th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;
 letter-spacing:0.5px;padding:4px;min-width:86px}
 table.grid th:first-child{min-width:0}
+table.grid tr:first-child th{position:sticky;top:0;background:var(--bg);z-index:3}
+table.grid tr:first-child th::after{content:'';position:absolute;inset:-4px;background:var(--bg);
+z-index:-1;box-shadow:0 1px 0 var(--border)}
+table.grid tr:first-child th:first-child{left:0;z-index:4}
 table.grid td.spot{font-weight:700;font-size:13px;text-align:right;padding-right:10px;
 position:sticky;left:0;background:var(--bg);z-index:2;max-width:110px}
 table.grid td.cell{border-radius:6px;border:1px solid var(--border);padding:8px 6px;
