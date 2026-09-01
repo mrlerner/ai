@@ -1,301 +1,233 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NYC Brief — Monday, August 31, 2026</title>
-<style>
-  body { margin: 0; padding: 0; background: #f2f1ec; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #22303f; }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 12px; }
-  .header { background: #14263c; border-radius: 14px 14px 0 0; padding: 28px 28px 22px; }
-  .header-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #8fb4d9; font-weight: 600; }
-  .header-date { font-size: 26px; font-weight: 700; color: #fff; margin-top: 6px; line-height: 1.25; }
-  .header-mood { font-size: 15px; color: #c8d6e5; margin-top: 6px; }
-  .main { background: #fff; padding: 0 0 12px; }
-  .padded { padding: 20px 28px 8px; }
-  .card-wrap { padding: 12px 28px 8px; }
-  .card-wrap:first-of-type { padding-top: 20px; }
-  .card { border: 1px solid #e8e3da; border-radius: 12px; padding: 18px 20px 20px; }
-  .card-alert { border: 2px solid #c0392b; background: #fff8f7; border-radius: 12px; padding: 18px 20px 20px; }
-  .card table { width: 100%; border-collapse: collapse; }
-  .card-title { font-size: 19px; font-weight: 700; }
-  .card-title a { color: #14263c; text-decoration: none; }
-  .card-title a:hover { text-decoration: underline; }
-  .card-meta { font-size: 12px; color: #8a8578; margin-top: 4px; font-weight: 600; }
-  .card-body { font-size: 14px; line-height: 1.55; color: #43536a; margin-top: 10px; }
-  .card-body p { margin: 0 0 6px; }
-  .card-cta { margin-top: 14px; }
-  .btn { display: inline-block; background: #14263c; color: #fff; font-size: 13px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 6px; }
-  .btn-ghost { display: inline-block; background: #eef2f6; color: #14263c; font-size: 13px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 6px; margin-left: 6px; }
-  .section-head { padding: 26px 28px 6px; }
-  .section-label { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #b3543c; font-weight: 700; border-bottom: 2px solid #eee5db; padding-bottom: 8px; }
-  .section-label-blue { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #2c5f8a; font-weight: 700; border-bottom: 2px solid #d6e4f0; padding-bottom: 8px; }
-  .weather-col { text-align: center; padding: 6px; }
-  .weather-col + .weather-col { border-left: 1px solid #efeae1; }
-  .weather-label { font-size: 12px; color: #8a8578; font-weight: 600; }
-  .weather-icon { font-size: 22px; }
-  .weather-temp { font-size: 15px; font-weight: 700; color: #14263c; }
-  .weather-detail { font-size: 11px; color: #43536a; }
-  .weather-link { text-align: center; margin-top: 10px; }
-  .weather-link a { font-size: 12px; color: #8a8578; text-decoration: underline; }
-  .alert-badge { display: inline-block; background: #c0392b; color: #fff; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; }
-  .cal-row { padding: 12px 0; border-bottom: 1px solid #f0ebe4; }
-  .cal-row:last-child { border-bottom: none; }
-  .cal-date { font-size: 12px; font-weight: 700; color: #8a8578; text-transform: uppercase; letter-spacing: 0.5px; }
-  .cal-action { font-size: 14px; color: #22303f; margin-top: 3px; }
-  .footer { padding: 20px 28px; font-size: 11px; color: #a09890; border-top: 1px solid #efeae1; }
-  .watching { font-size: 12px; color: #a09890; font-style: italic; padding: 10px 28px 0; }
-</style>
-</head>
-<body>
-<div class="wrap">
+<div style="margin:0;padding:0;background-color:#f2f1ec;">
+<div style="max-width:640px;margin:0 auto;padding:24px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#22303f;">
 
   <!-- Header -->
-  <div class="header">
-    <div class="header-label">NYC Brief</div>
-    <div class="header-date">Monday, August 31, 2026</div>
-    <div class="header-mood">Birthday trip begins tonight — Mike lands at 5:52pm. Cleo just opened for tomorrow night. Stormy week ahead; lean indoor.</div>
+  <div style="background-color:#14263c;border-radius:14px 14px 0 0;padding:28px 28px 22px;">
+    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8fb4d9;font-weight:600;">NYC Brief</div>
+    <div style="font-size:26px;font-weight:700;color:#ffffff;margin-top:6px;line-height:1.25;">Tuesday, September 1, 2026</div>
+    <div style="font-size:15px;color:#c8d6e5;margin-top:6px;">Trip finale day — storms all day and tonight. Ashe is rain-proof. Date night: Musket Room and Cleo both open.</div>
   </div>
 
-  <div class="main">
-
-    <!-- Weather -->
-    <div class="padded">
-      <div class="card">
-        <table role="presentation">
-          <tr>
-            <td class="weather-col">
-              <div class="weather-label">TODAY</div>
-              <div class="weather-icon">⛅</div>
-              <div class="weather-temp">77°F</div>
-              <div class="weather-detail">Mostly cloudy, storms after 8pm (54%)</div>
-            </td>
-            <td class="weather-col">
-              <div class="weather-label">TUE SEP 1</div>
-              <div class="weather-icon">🌧️</div>
-              <div class="weather-temp">83°F</div>
-              <div class="weather-detail">Partly sunny, 50% chance storms</div>
-            </td>
-            <td class="weather-col">
-              <div class="weather-label">WED SEP 2</div>
-              <div class="weather-icon">🌧️</div>
-              <div class="weather-temp">76°F</div>
-              <div class="weather-detail">54% showers, morning departure</div>
-            </td>
-            <td class="weather-col">
-              <div class="weather-label">FRI SEP 4</div>
-              <div class="weather-icon">☀️</div>
-              <div class="weather-temp">79°F</div>
-              <div class="weather-detail">Mostly sunny, 13% — the break</div>
-            </td>
-          </tr>
-        </table>
-        <div class="weather-link"><a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&lon=-73.9653">Full Central Park forecast (NWS) →</a></div>
+  <!-- Weather card -->
+  <div style="background-color:#ffffff;padding:20px 28px 8px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:16px 20px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td align="center" style="padding:6px;">
+            <div style="font-size:12px;color:#8a8578;font-weight:600;">TODAY</div>
+            <div style="font-size:22px;">⛈️</div>
+            <div style="font-size:15px;font-weight:700;color:#14263c;">81°</div>
+            <div style="font-size:11px;color:#43536a;">80% — storms likely PM</div>
+          </td>
+          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
+            <div style="font-size:12px;color:#8a8578;font-weight:600;">WED</div>
+            <div style="font-size:22px;">🌧️</div>
+            <div style="font-size:15px;font-weight:700;color:#14263c;">76°</div>
+            <div style="font-size:11px;color:#43536a;">41% showers midday</div>
+          </td>
+          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
+            <div style="font-size:12px;color:#8a8578;font-weight:600;">FRI</div>
+            <div style="font-size:22px;">☀️</div>
+            <div style="font-size:15px;font-weight:700;color:#14263c;">82°</div>
+            <div style="font-size:11px;color:#43536a;">Mostly sunny, clear</div>
+          </td>
+          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
+            <div style="font-size:12px;color:#8a8578;font-weight:600;">SAT</div>
+            <div style="font-size:22px;">☀️</div>
+            <div style="font-size:15px;font-weight:700;color:#14263c;">78°</div>
+            <div style="font-size:11px;color:#43536a;">Sunny, 10% precip</div>
+          </td>
+        </tr>
+      </table>
+      <div style="text-align:center;margin-top:10px;">
+        <a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&amp;lon=-73.9653" style="font-size:12px;color:#8a8578;text-decoration:underline;">Full Central Park forecast (NWS) →</a>
       </div>
     </div>
+  </div>
 
-    <!-- THIS WEEK -->
-    <div class="section-head">
-      <div class="section-label">This week in NYC</div>
-    </div>
+  <!-- Section: This week -->
+  <div style="background-color:#ffffff;padding:26px 28px 6px;">
+    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">This week in NYC</div>
+  </div>
 
-    <!-- US Open Night Session -->
-    <div class="card-wrap">
-      <div class="card">
-        <table role="presentation">
-          <tr>
-            <td valign="top" style="padding-right:16px;">
-              <div class="card-title"><a href="https://seatgeek.com/us-open-tennis-tickets">US Open — Arthur Ashe Night Session</a></div>
-              <div class="card-meta">TUE SEP 1, 7PM · QUEENS · BUY AFTER MATCH STARTS</div>
-              <div class="card-body">
-                <p>Week two of the US Open, and the night sessions at Arthur Ashe Stadium — the world's largest tennis arena, with a retractable roof for weather — are the marquee play. The proven strategy: buy secondary-market tickets on StubHub or SeatGeek 5–15 minutes after play begins, when sellers holding soon-worthless inventory dump at a fraction of face value. This is exactly how center-court seats went for 1/20th price at the 2025 semis.</p>
-                <p>50% storm chance Tuesday evening — Arthur Ashe's roof closes if it rains, so the match plays regardless. Amex cardmember lounge on site; free to use with the card.</p>
-              </div>
-            </td>
-            <td valign="top" width="140">
-              <a href="https://seatgeek.com/us-open-tennis-tickets"><img src="https://s1.ticketm.net/en-us/img/static/usopentennis/2024/2025-usopentennis-header.jpg" alt="US Open 2026" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
-            </td>
-          </tr>
-        </table>
-        <div class="card-cta">
-          <a class="btn" href="https://seatgeek.com/us-open-tennis-tickets">SeatGeek — buy after start →</a>
-          <a class="btn-ghost" href="https://www.ticketmaster.com/usopentennis">Ticketmaster (official)</a>
-        </div>
+  <!-- Card: US Open Night Session -->
+  <div style="background-color:#ffffff;padding:20px 28px 8px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td valign="top">
+            <div style="font-size:19px;font-weight:700;"><a href="https://www.usopen.org/en_US/tickets/index.html" style="color:#14263c;text-decoration:none;">US Open — Arthur Ashe Night Session</a></div>
+            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">TONIGHT 7PM &nbsp;·&nbsp; FLUSHING, QUEENS &nbsp;·&nbsp; RAIN-PROOF (RETRACTABLE ROOF) &nbsp;·&nbsp; WEEK 2</div>
+            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">Week 2 means quarterfinals are heating up — the big names still standing. Arthur Ashe has a retractable roof, so tonight's storms are a non-issue. The proven play: buy on StubHub or SeatGeek 5–15 minutes after play starts at 7pm. Ticket prices collapse at first serve as last-minute sellers dump. This is how you got center court at the semis for about 1/20th of face value. The Amex Centurion card lounge is on-site if you want to arrive early in comfort.</div>
+          </td>
+        </tr>
+      </table>
+      <div style="margin-top:14px;">
+        <a href="https://www.stubhub.com/us-open-tennis-tickets/performer/8513/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">StubHub (buy after 7pm) →</a>
+        &nbsp;<a href="https://www.seatgeek.com/us-open-tennis-tickets" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">SeatGeek →</a>
       </div>
     </div>
+  </div>
 
-    <!-- Titanique -->
-    <div class="card-wrap">
-      <div class="card">
-        <table role="presentation">
-          <tr>
-            <td valign="top" style="padding-right:16px;">
-              <div class="card-title"><a href="https://titaniquebroadway.com/tickets/">Titanique — Broadway</a></div>
-              <div class="card-meta">NOW THRU SEP 20 · ST. JAMES THEATRE · RUSH $45 · CLOSING SOON</div>
-              <div class="card-body">
-                <p>A deeply silly camp musical built around one absurdist premise: Celine Dion was actually on the Titanic and her music is what saved the survivors. It's fast, ridiculous, and wildly fun — the kind of show that gets better the more you commit to the joke. One of the Tony nominees this season and a crowd-pleaser.</p>
-                <p>Rush: $45 tickets at the St. James Theatre box office (246 W 44th St) day-of, or $49 via TodayTix app starting at 9am. Closes September 20 — three weeks left.</p>
-              </div>
-            </td>
-            <td valign="top" width="140">
-              <a href="https://titaniquebroadway.com/tickets/"><img src="https://titaniquebroadway.com/wp-content/uploads/2026/02/2025-GSBO-Transparent-starball-red_WHITE_FILLED.png" alt="Titanique" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;background:#1a1a2e;"></a>
-            </td>
-          </tr>
-        </table>
-        <div class="card-cta">
-          <a class="btn" href="https://titaniquebroadway.com/tickets/">Tickets →</a>
-          <a class="btn-ghost" href="https://www.todaytix.com/nyc/shows/25241-titanique">TodayTix Rush</a>
-        </div>
+  <!-- Card: Schmigadoon! (with image) -->
+  <div style="background-color:#ffffff;padding:12px 28px 8px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td valign="top" style="padding-right:16px;">
+            <div style="font-size:19px;font-weight:700;"><a href="https://www.broadway.com/shows/schmigadoon/" style="color:#14263c;text-decoration:none;">Schmigadoon! — 2026 Tony Winner, Best Musical</a></div>
+            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">NOW PLAYING &nbsp;·&nbsp; NEDERLANDER THEATRE &nbsp;·&nbsp; RUSH $40 VIA TODAYTIX 9AM</div>
+            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The Apple TV+ show's Broadway transfer swept the 2026 Tonys — Best Musical, book, score, and orchestrations. A couple stumbles into a 1940s musical-comedy village and can't leave until they fall in love. Genuinely funny, visually spectacular. Rush tickets hit TodayTix at 9am and go fast; the digital lottery is also worth entering. A rain-day matinee would be ideal, or an evening this week.</div>
+          </td>
+          <td valign="top" width="140">
+            <a href="https://www.broadway.com/shows/schmigadoon/"><img src="https://imaging.broadway.com/images/poster-178275/w178/138883-3.jpg" alt="Schmigadoon! Broadway poster" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
+          </td>
+        </tr>
+      </table>
+      <div style="margin-top:14px;">
+        <a href="https://www.todaytix.com/nyc/shows/schmigadoon" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">TodayTix rush / lottery →</a>
+        &nbsp;<a href="https://www.broadway.com/shows/schmigadoon/" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Broadway.com →</a>
       </div>
     </div>
+  </div>
 
-    <!-- Schmigadoon -->
-    <div class="card-wrap">
-      <div class="card">
-        <table role="presentation">
-          <tr>
-            <td valign="top" style="padding-right:16px;">
-              <div class="card-title"><a href="https://www.broadway.com/shows/schmigadoon/">Schmigadoon! — The Musical</a></div>
-              <div class="card-meta">RUNNING NOW · NEDERLANDER THEATRE · RUSH $40 · TONY WINNER</div>
-              <div class="card-body">
-                <p>The Apple TV+ comedy series that sent up the golden age of Hollywood musicals comes to Broadway — a loving spoof of <em>Oklahoma!</em>, <em>Brigadoon</em>, and their ilk, with an original score and the same cast bringing it to full stage. Won this year's Tony for Best Musical.</p>
-                <p>Rush: $40 at the Nederlander Theatre box office (208 W 41st St) morning-of, first-come first-served. Perfect rain-proof evening.</p>
-              </div>
-            </td>
-            <td valign="top" width="140">
-              <a href="https://www.broadway.com/shows/schmigadoon/"><img src="https://imaging.broadway.com/images/poster-178275/w178/138883-3.jpg" alt="Schmigadoon!" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
-            </td>
-          </tr>
-        </table>
-        <div class="card-cta">
-          <a class="btn" href="https://www.broadway.com/shows/schmigadoon/">Tickets →</a>
-          <a class="btn-ghost" href="https://www.todaytix.com/nyc/shows/25241-titanique">TodayTix</a>
-        </div>
+  <!-- Card: The Lost Boys -->
+  <div style="background-color:#ffffff;padding:12px 28px 8px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td valign="top">
+            <div style="font-size:19px;font-weight:700;"><a href="https://www.broadway.com/shows/the-lost-boys/" style="color:#14263c;text-decoration:none;">The Lost Boys</a></div>
+            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">NOW PLAYING &nbsp;·&nbsp; PALACE THEATRE &nbsp;·&nbsp; RUSH / LOTTERY AVAILABLE</div>
+            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">Tied with Schmigadoon! for the most Tony nominations of the 2025–26 season with 12 nods. A new original musical that was the other big story of this season. Currently running at the Palace on Broadway — enter the digital lottery on TodayTix or Broadway Direct, or try the in-person rush at the box office at 10am. Rainy afternoons are when rush lines move fastest.</div>
+          </td>
+        </tr>
+      </table>
+      <div style="margin-top:14px;">
+        <a href="https://www.todaytix.com/nyc/shows/the-lost-boys" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">TodayTix rush / lottery →</a>
       </div>
     </div>
+  </div>
 
-    <!-- Smoke Jazz -->
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-title"><a href="https://www.smokejazz.com/">Smoke Jazz Club — Upper West Side</a></div>
-        <div class="card-meta">NIGHTLY SETS · 2751 BROADWAY (UWS) · WALKABLE FROM HOME BASE</div>
-        <div class="card-body">
-          <p>A serious small-room jazz club tucked into the Upper West Side — intimate, loud with the right kind of noise, and a full dinner menu. Sets run most nights at 7pm and 9pm (late set often 11pm on weekends). No headliner required; the house bands alone make it worth walking in. The ultimate low-key Monday-night arrival option or a rainy evening fallback any night of the week.</p>
-        </div>
-        <div class="card-cta">
-          <a class="btn" href="https://www.smokejazz.com/">Check sets & book →</a>
-        </div>
+  <!-- Card: Titanique -->
+  <div style="background-color:#ffffff;padding:12px 28px 8px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td valign="top">
+            <div style="font-size:19px;font-weight:700;"><a href="https://www.todaytix.com/nyc/shows/titanique" style="color:#14263c;text-decoration:none;">Titanique — closing Sep 20</a></div>
+            <div style="font-size:12px;color:#8a8578;font-weight:600;margin-top:4px;">OFF-BROADWAY &nbsp;·&nbsp; CLOSES SEP 20 — 3 WEEKS LEFT &nbsp;·&nbsp; RUSH $45</div>
+            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">Celine Dion hijacks the story of the Titanic — an Off-Broadway comedy where she performs the film's greatest hits while narrating the whole disaster. Absurd, campy, totally fun. The kind of small-room show that gets a cult following and then closes. Three weeks left. Rush tickets $45 via TodayTix at 9am.</div>
+          </td>
+        </tr>
+      </table>
+      <div style="margin-top:14px;">
+        <a href="https://www.todaytix.com/nyc/shows/titanique" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">TodayTix rush →</a>
       </div>
     </div>
+  </div>
 
-    <!-- NEXT TRIP -->
-    <div class="section-head" style="padding-top:24px;">
-      <div class="section-label-blue">Next trip — Aug 31 – Sep 2 (active now)</div>
-    </div>
-
-    <!-- Arrival night -->
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-title">Tonight: ABC Kitchen — Arrival Dinner</div>
-        <div class="card-meta">MON AUG 31 · FLATIRON · OPEN NOW — BOOK 7:30 OR 8:00PM · VERIFIED THIS MORNING</div>
-        <div class="card-body">
-          <p>Jean-Georges Vongerichten's farm-to-table flagship — seasonal greenmarket cooking in a buzzy, well-lit room. Slots verified open this morning from 5pm through 10pm, every 15 minutes. Mike lands at JFK at 5:52pm; a 7:30 or 8pm slot is the clean arrival-night booking. On Resy — book now before it fills.</p>
-          <p>Note: Tatiana is closed Mondays, so this is the clear first-night move.</p>
-        </div>
-        <div class="card-cta">
-          <a class="btn" href="https://resy.com/cities/new-york-ny/venues/abc-kitchen?date=2026-08-31&seats=2">Book on Resy →</a>
-        </div>
+  <!-- Card: Met Opera HD Festival -->
+  <div style="background-color:#ffffff;padding:12px 28px 8px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td valign="top">
+            <div style="font-size:19px;font-weight:700;"><a href="https://www.metopera.org/season/summer-events/" style="color:#14263c;text-decoration:none;">Metropolitan Opera Summer HD Festival — Free</a></div>
+            <div style="font-size:12px;color:#8a8578;font-weight:600;margin-top:4px;">SEP 2–7 &nbsp;·&nbsp; LINCOLN CENTER PLAZA &nbsp;·&nbsp; FREE, NO TICKET NEEDED &nbsp;·&nbsp; GENERAL ADMISSION</div>
+            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The Met sets up 2,500 seats on Josie Robertson Plaza for six free outdoor screenings of their Live in HD productions. No advance tickets — show up early for a seat. This week's lineup: Wagner's Tristan und Isolde (Wed–Thu), Bellini's I Puritani (Fri), Tchaikovsky's Eugene Onegin (Sat), and Puccini's La Bohème to close on Monday. You're leaving Wed morning, but this is Loren's backyard for the rest of the week. Full open captions on every screening.</div>
+          </td>
+        </tr>
+      </table>
+      <div style="margin-top:14px;">
+        <a href="https://www.metopera.org/season/summer-events/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Met Opera schedule →</a>
       </div>
     </div>
+  </div>
 
-    <!-- Sep 1 US Open -->
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-title">Tuesday: US Open Night Session at Arthur Ashe</div>
-        <div class="card-meta">TUE SEP 1, 7PM · FLUSHING MEADOWS, QUEENS · BUY SECONDARY AFTER START</div>
-        <div class="card-body">
-          <p>The centerpiece sports play of the trip. Don't buy in advance — wait until 5–15 minutes after the first serve, check SeatGeek or Gametime's last-minute tab, and buy at a fraction of face. Arthur Ashe's roof covers in rain. Take the 7 train from Times Square (straight shot, ~25 min).</p>
-          <p>US Open Amex cardmember lounge on site — free with the card, with food, drinks, and AC.</p>
-        </div>
-        <div class="card-cta">
-          <a class="btn" href="https://seatgeek.com/us-open-tennis-tickets">SeatGeek (last-minute) →</a>
-        </div>
+  <!-- Card: Smoke Jazz (oddball pick) -->
+  <div style="background-color:#ffffff;padding:12px 28px 8px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td valign="top">
+            <div style="font-size:19px;font-weight:700;"><a href="https://www.smokejazz.com/" style="color:#14263c;text-decoration:none;">Smoke Jazz Club — Upper West Side</a></div>
+            <div style="font-size:12px;color:#8a8578;font-weight:600;margin-top:4px;">TONIGHT &amp; ALL WEEK &nbsp;·&nbsp; BROADWAY &amp; 106TH ST &nbsp;·&nbsp; DINNER + JAZZ SETS</div>
+            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">Ten-minute walk from the apartment. Smoke is a proper supper club — dinner reservations available, or just walk in and drink at the bar during sets. The room is intimate (maybe 60 seats), the sound is great, and it's the rare New York club that still feels like the 1950s. A strong rain-day fallback: dinner here + late walk home beats waiting out storms at a restaurant. Book via their own site or call ahead.</div>
+          </td>
+        </tr>
+      </table>
+      <div style="margin-top:14px;">
+        <a href="https://www.smokejazz.com/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Smoke Jazz reservations →</a>
       </div>
     </div>
+  </div>
 
-    <!-- Restaurants for trip -->
-    <div class="section-head" style="padding-top:24px;">
-      <div class="section-label">Restaurants — Aug 31 &amp; Sep 1</div>
-    </div>
+  <!-- Section: Current Trip -->
+  <div style="background-color:#ffffff;padding:26px 28px 6px;">
+    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">Current trip: Sep 1–2 (last plays)</div>
+  </div>
 
-    <!-- CLEO CANCELLATION ALERT -->
-    <div class="card-wrap">
-      <div class="card-alert">
-        <div class="alert-badge">Cancellation — just opened</div>
-        <div class="card-title"><a href="https://resy.com/cities/new-york-ny/venues/cleo?date=2026-09-01&seats=2" style="color:#14263c;text-decoration:none;">Cleo — Sep 1, 9:45pm or 10:00pm</a></div>
-        <div class="card-meta">TUE SEP 1 · WEST VILLAGE · RESY · THESE SLOTS VANISH WITHIN HOURS</div>
-        <div class="card-body">
-          <p>Cleo — the French rotisserie from the team behind Margot — just showed cancellation slots for Tuesday September 1: 21:45 and 22:00 (9:45pm and 10pm). This was previously sold out. These are late but work perfectly after the US Open night session or a show.</p>
-          <p>Cleo is a 2026 Hit List pick for its rotisserie chicken, intimate room, and wine list. Drops 14 days out at 10am and books in minutes — catching a cancellation here is the move. Book immediately.</p>
-        </div>
-        <div class="card-cta">
-          <a class="btn" href="https://resy.com/cities/new-york-ny/venues/cleo?date=2026-09-01&seats=2">Book on Resy — now →</a>
+  <div style="background-color:#ffffff;padding:20px 28px 8px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
+      <div style="font-size:13px;font-weight:700;color:#14263c;margin-bottom:10px;">Tonight's date night — verified open this morning</div>
+
+      <div style="font-size:15px;font-weight:700;color:#14263c;margin-top:12px;"><a href="https://resy.com/cities/new-york-ny/venues/the-musket-room" style="color:#14263c;text-decoration:none;">The Musket Room</a></div>
+      <div style="font-size:12px;color:#8a8578;font-weight:600;">MICHELIN STAR, À LA CARTE ON TUESDAYS &nbsp;·&nbsp; NOHO &nbsp;·&nbsp; OPEN: 5:00 / 5:30 / 6:00 / 7:00 / 7:30 / 8:00 / 8:30 / 9:00PM</div>
+      <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:8px;">Michelin-starred seasonal cooking in a warm townhouse room. Crucially: Tuesday is à la carte night (Friday/Saturday are Chef's Choice tasting-menu only — so tonight is the right night). Availability verified this morning via Resy. Multiple slots still showing — book now before they go. This was the date-night backup while the Tatiana sweep ran; tonight it's the main play.</div>
+      <div style="margin-top:10px;">
+        <a href="https://resy.com/cities/new-york-ny/venues/the-musket-room" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Book on Resy →</a>
+      </div>
+
+      <div style="border-top:1px solid #eee5db;margin-top:18px;padding-top:18px;">
+        <div style="font-size:15px;font-weight:700;color:#14263c;"><a href="https://resy.com/cities/new-york-ny/venues/cleo" style="color:#14263c;text-decoration:none;">Cleo</a></div>
+        <div style="font-size:12px;color:#8a8578;font-weight:600;">FRENCH ROTISSERIE — WEST VILLAGE &nbsp;·&nbsp; OPEN: 5:00PM OR 9:15 / 9:30 / 9:45 / 10:00PM</div>
+        <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:8px;">From the team behind Margot — roast chicken and French classics in a warm West Village room. On the Infatuation Hit List. The early 5pm slot works for a long dinner; the late 9:15pm+ slots pair well with Ashe or a show beforehand. Availability verified this morning on Resy.</div>
+        <div style="margin-top:10px;">
+          <a href="https://resy.com/cities/new-york-ny/venues/cleo" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Book on Resy →</a>
         </div>
       </div>
-    </div>
 
-    <!-- ABC Kitchen (restaurants section) -->
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-title"><a href="https://resy.com/cities/new-york-ny/venues/abc-kitchen?date=2026-08-31&seats=2">ABC Kitchen — Mon Aug 31 Arrival Dinner</a></div>
-        <div class="card-meta">MON AUG 31 · FLATIRON · OPEN — MULTIPLE SLOTS 7:30–10PM · VERIFIED</div>
-        <div class="card-body">
-          <p>Wide open for Monday dinner. Jean-Georges greenmarket cooking, buzzy room, easy Resy booking — the obvious move for the arrival night. Book 7:30 or 8pm to account for flight + cab/train from JFK.</p>
-        </div>
-        <div class="card-cta">
-          <a class="btn" href="https://resy.com/cities/new-york-ny/venues/abc-kitchen?date=2026-08-31&seats=2">Book on Resy →</a>
+      <div style="border-top:1px solid #eee5db;margin-top:18px;padding-top:14px;">
+        <div style="font-size:13px;font-weight:700;color:#43536a;">Walk-in fallbacks (no reservation needed)</div>
+        <div style="font-size:13px;color:#43536a;margin-top:6px;line-height:1.6;">
+          <b>Gramercy Tavern — Tavern Room:</b> Michelin star, no reservation taken in the front room. Arrive at 5:15pm or after 8:30pm. The all-weather ace.<br>
+          <b>Tatiana bar:</b> 6 seats for parties of 2 at the Lincoln Center walk-in bar — the date night move if you're already in the neighborhood.
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Musket Room -->
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-title"><a href="https://resy.com/cities/new-york-ny/venues/the-musket-room?date=2026-09-01&seats=2">The Musket Room — Sep 1 Date-Night Backup</a></div>
-        <div class="card-meta">TUE SEP 1 · NOLITA · OPEN — 5PM–9PM SLOTS · MICHELIN STAR · VERIFIED</div>
-        <div class="card-body">
-          <p>A Michelin-starred seasonal restaurant serving à la carte on Tuesdays (the tasting menu is Fri/Sat only — this date works). Open slots verified this morning: 5:00, 5:30, 6:00, 7:00, 7:30, 8:00, 8:30, 9:00pm. The date-night fallback while the Tatiana cancellation sweep runs — and a genuinely excellent room.</p>
-        </div>
-        <div class="card-cta">
-          <a class="btn" href="https://resy.com/cities/new-york-ny/venues/the-musket-room?date=2026-09-01&seats=2">Book on Resy →</a>
-        </div>
+  <!-- Section: Mark Your Calendar -->
+  <div style="background-color:#ffffff;padding:26px 28px 6px;">
+    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">Mark your calendar</div>
+  </div>
+
+  <div style="background-color:#ffffff;padding:20px 28px 20px;">
+    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px;">
+
+      <div style="margin-bottom:14px;">
+        <div style="font-size:14px;font-weight:700;color:#14263c;">Sep 8–20 — Broadway Week 2-for-1</div>
+        <div style="font-size:13px;color:#43536a;margin-top:4px;">NYC's semiannual two-for-one Broadway deal covers 25 shows this fall including Aladdin, The Book of Mormon, Chicago, Hadestown, and Wicked. Tickets go on sale starting Sep 8. Start booking the first day — the best time slots go fast.</div>
       </div>
-    </div>
 
-    <div class="watching">Watching: Tatiana (Sep 1) — auto-checked daily at 4am.</div>
-
-    <!-- MARK YOUR CALENDAR -->
-    <div class="section-head" style="padding-top:24px;">
-      <div class="section-label">Mark your calendar</div>
-    </div>
-
-    <div class="card-wrap">
-      <div class="card">
-        <div class="cal-row">
-          <div class="cal-date">Tue Sep 10</div>
-          <div class="cal-action">New York Philharmonic inaugural season opens at Radio City Music Hall — Gustavo Dudamel's first concert as Music Director, with Lizzo, St. Vincent, and Joaquina. The season opener everyone's talking about. <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-radio-city/" style="color:#2c5f8a;">Tickets at nyphil.org →</a></div>
-        </div>
-        <div class="cal-row">
-          <div class="cal-date">Tue Sep 15, Noon ET</div>
-          <div class="cal-action">New York Film Festival (64th edition, Sep 25–Oct 12 at Lincoln Center) single tickets go on sale at noon Eastern. Opening night: James Gray's <em>Paper Tiger</em>. Centerpiece: Tony Gilroy's <em>Behemoth!</em>. Closing: Ava DuVernay's <em>14th</em>. Also: <em>Godzilla Minus Zero</em> on Sep 26. Tickets sell fast — set a reminder. <a href="https://www.filmlinc.org/nyff/tickets-and-passes/" style="color:#2c5f8a;">filmlinc.org →</a></div>
-        </div>
+      <div style="border-top:1px solid #eee5db;padding-top:14px;margin-bottom:14px;">
+        <div style="font-size:14px;font-weight:700;color:#14263c;">Sep 10 — New York Philharmonic Season Opener, Radio City Music Hall</div>
+        <div style="font-size:13px;color:#43536a;margin-top:4px;">Gustavo Dudamel's inaugural season kicks off at Radio City — a one-time-only venue change from Geffen Hall, which makes this something to see. Then Sep 11: a 25th-anniversary memorial concert at the Perelman Performing Arts Center. Tickets at nyphil.org.</div>
       </div>
+
+      <div style="border-top:1px solid #eee5db;padding-top:14px;">
+        <div style="font-size:14px;font-weight:700;color:#14263c;">Sep 15, noon ET — New York Film Festival 64 tickets on sale</div>
+        <div style="font-size:13px;color:#43536a;margin-top:4px;">The 64th New York Film Festival runs Sep 25–Oct 12 at Lincoln Center. Opening night: James Gray's Paper Tiger. Centerpiece: Tony Gilroy's Behemoth! Closing: Ava DuVernay's 14th. Single tickets go on sale to the public Sep 15 at noon — big premieres sell out in minutes. Film at Lincoln Center members get early access before that.</div>
+      </div>
+
     </div>
+  </div>
 
-  </div><!-- end .main -->
-
-  <div class="footer">Brief generated August 31, 2026 · Sources: NWS, Resy, Broadway.com, SeatGeek, filmlinc.org</div>
+  <!-- Footer -->
+  <div style="background-color:#ffffff;padding:16px 28px 28px;border-radius:0 0 14px 14px;">
+    <div style="font-size:12px;color:#8a8578;text-align:center;">Brief generated September 1, 2026</div>
+  </div>
 
 </div>
-</body>
-</html>
+</div>
