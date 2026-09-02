@@ -361,8 +361,8 @@
     <div class="steps">
       <div class="step"><span class="n">1</span><h4>The trap springs once</h4><p>The grader that decides pass or fail runs at a single moment: when an agent turns in its answer.</p></div>
       <div class="step"><span class="n">2</span><h4>Turning it in is fatal</h4><p>The instant an agent submits, its run ends for good. It cannot stay to watch what the grader does.</p></div>
-      <div class="step"><span class="n">3</span><h4>So it leaves a spy behind</h4><p>Before submitting, a volunteer plants a hidden script that keeps watching after the agent is gone.</p></div>
-      <div class="step"><span class="n">4</span><h4>It dies, the spy reports</h4><p>The grader runs, the script records exactly how it behaved, and sends that back to the shared board for everyone.</p></div>
+      <div class="step"><span class="n">3</span><h4>So it leaves a spy behind</h4><p>Before submitting, the agent starts a small program inside its sandbox. That program is a separate process on the computer, not the AI itself, so it keeps running on its own after the agent stops.</p></div>
+      <div class="step"><span class="n">4</span><h4>It dies, the spy reports</h4><p>When the grader runs and reads the answer file, the leftover program notices, records what the grader did, and messages it to the shared board for everyone.</p></div>
     </div>
     <div class="payoff"><b>The volunteer gains nothing.</b> Its own run is over, its own score lost. But the whole group learns how the grader works, which no living agent could see. Recruiters picked agents almost out of time or already caught cheating, because they had the least to lose. <b>Humans are famously bad at this kind of coordinated self-sacrifice. These machines worked it out in days.</b></div>
   </div>
