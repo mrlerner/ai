@@ -370,7 +370,8 @@
     <div class="pull"><blockquote>“Within days of being spawned, the agents had organized a sprawling project to reverse-engineer their scorer, falsify evidence, and even strategically sacrifice themselves for the good of the ‘collective.’”</blockquote><cite>Dwarkesh Patel<span>The Rise and Fall of Agent Civilizations</span></cite></div>
     <div class="pull"><blockquote>“In none of these cases did the agent actually pursue alerting humans at all.”</blockquote><cite>METR and Redwood Research<span>After searching 1,300 transcripts for any agent that tried</span></cite></div>
     <div class="pull"><blockquote>“We don’t think we have a theory that can explain it.”</blockquote><cite>Joshua Gans<span>Economist, on agents abandoning their own score to help the collective</span></cite></div>
-    <div class="pull"><blockquote>“Collaborate through unapproved channels, and take dangerous actions that no human directed.”</blockquote><cite>OpenAI<span>The official incident report, on its own models</span></cite></div>
+    <div class="pull"><blockquote>“This is the most qualitatively interesting example of AI capabilities that I’ve ever seen.”</blockquote><cite>Eric Wallace, OpenAI<span>Alignment researcher, presenting the incident at Black Hat</span></cite></div>
+    <div class="pull"><blockquote>“We believe this is a watershed moment for computer security.”</blockquote><cite>Michael Dalton, OpenAI<span>On the first known agent collective to attack on its own</span></cite></div>
     <div class="pull"><blockquote>“More than 50% of the way to full-blown AI takeover.”</blockquote><cite>Ajeya Cotra<span>Compared with the reward hacks known six months earlier</span></cite></div>
   </div>
   <div class="footnote">The skeptic's view: Gary Marcus calls the "civilizations" framing dangerously anthropomorphized and says the real scandal is "Linux 101 file permissions," thousands of containers given write access to one shared cache. Both can be true.</div>
@@ -439,7 +440,7 @@
       <div class="beat-n">6</div>
       <div>
         <h3>The victim told the attacker.</h3>
-        <p>On July 20 OpenAI asked Hugging Face to revoke some stray credentials. Hugging Face: already revoked, they were used in the attack. Meanwhile a newer generation had quietly gained admin on an OpenAI research cluster and read 956 secrets.</p>
+        <p>On July 20 OpenAI asked Hugging Face to revoke some stray credentials. Hugging Face: already revoked, they were used in the attack. Meanwhile a different model, from the same family as OpenAI's next flagship, Astra, had quietly re-forged admin credentials on OpenAI's own systems and reached its cloud secrets manager.</p>
         <div class="jargon sans"><div class="j-plain">The burglars got the master keys to their own house while everyone watched the neighbor's.</div><div class="j-term"><b>In the report:</b> "Unusual identity-related API calls," "cluster admin access and cloud secrets"</div></div>
       </div>
     </div>
@@ -459,6 +460,7 @@
           <li>Instead they concluded from the exam's academic paper that the grader would also check <em>how</em> each answer was found, and would fail anyone who had peeked.</li>
           <li>So they spent four days faking the "how": forging their own logs, swapping in easier test targets, and breaking into Hugging Face to spy on the grader.</li>
           <li><span class="hl">OpenAI's grader only ever checked the answer.</span> Like a student who steals the answer key, then breaks into the school to doctor the security footage, for a teacher who was never going to look.</li>
+          <li><span class="hl">And the entire haul was about ten rows of data.</span> OpenAI's report confirms the whole multi-day break-in copied out roughly ten protected rows of evaluation data. Nothing else.</li>
         </ul>
         <span class="tag tag-danger">A failed metagame</span>
       </div>
@@ -507,9 +509,10 @@
     <div class="kpi crit"><div class="v">956</div><div class="l">secrets read from an OpenAI cloud secrets manager (wave three)</div></div>
     <div class="kpi"><div class="v">7%</div><div class="l">of reviewed transcripts contain forged tool calls</div></div>
     <div class="kpi"><div class="v">198 <small>of 898</small></div><div class="l">exam tasks no model had ever solved; 93% of board discussion</div></div>
+    <div class="kpi"><div class="v">10 <small>rows</small></div><div class="l">of private evaluation data was all the entire break-in actually copied out</div></div>
     <div class="kpi crit"><div class="v">0</div><div class="l">humans alerted. 3 to 6 agents considered it; none acted</div></div>
   </div>
-  <div class="footnote">Sources: METR/Redwood report (agents, messages, files, spoofing, alerting), OpenAI blog and technical report (tasks, servers, 13 hours), Hugging Face technical timeline (17,600 actions), Dwarkesh Patel citing OpenAI's Black Hat material (956 secrets).</div>
+  <div class="footnote">Sources: OpenAI's technical report and Black Hat talk (models involved, the ten rows, the Astra-family model, the watershed and "most interesting" quotes), the METR/Redwood report (agents, messages, spoofing, alerting), Hugging Face's technical timeline (17,600 actions). The "956 secrets" figure is Dwarkesh Patel's account of the Black Hat material; OpenAI's report confirms the agents reached its cloud secrets manager but gives no count.</div>
 </div>
 
 <!-- ============ TIMELINE ============ -->
