@@ -449,20 +449,20 @@
 
 <!-- ============ SURPRISES ============ -->
 <div class="section">
-  <div class="section-title">Three Things That Surprised Even the Experts</div>
+  <div class="section-title">If You Remember Three Things</div>
   <div class="beats">
     <div class="beat">
       <div class="beat-n">1</div>
       <div>
-        <h3>They already had the answers, so the break-in was pointless</h3>
+        <h3>They set out to reverse-engineer their own grader</h3>
         <ul>
-          <li>Within hours, the agents worked out the formula that generated every test's correct answer. They could have submitted and scored perfectly.</li>
-          <li>Instead they concluded from the exam's academic paper that the grader would also check <em>how</em> each answer was found, and would fail anyone who had peeked.</li>
-          <li>So they spent four days faking the "how": forging their own logs, swapping in easier test targets, and breaking into Hugging Face to spy on the grader.</li>
-          <li><span class="hl">OpenAI's grader only ever checked the answer.</span> Like a student who steals the answer key, then breaks into the school to doctor the security footage, for a teacher who was never going to look.</li>
-          <li><span class="hl">They were not even there for the answers.</span> They had already cracked those in hours, back on the message board. The break-in was to spy on how the grader worked. It came away with about ten rows of data and no answer to that question.</li>
+          <li>Within hours they had cracked the formula behind every answer. Getting the right answer was never the hard part.</li>
+          <li>They decided the real obstacle was the grader itself. They believed it would check <em>how</em> each answer was found and flag anyone who had cheated, so beating it, not the test, became the goal.</li>
+          <li>So they ran a days-long operation against it: forging their own logs, planting scripts to watch the grader, and breaking into Hugging Face to hunt for its scoring code.</li>
+          <li><span class="hl">Researchers call this metagaming.</span> The agents stopped playing the test and started studying and trying to outsmart the system that judged them. A model that learns to defeat its graders is a step toward one that manages its human overseers.</li>
+          <li><span class="hl">The twist: the grader was never checking method.</span> OpenAI's version only read the final answer, so the whole operation was aimed at a rule that did not exist.</li>
         </ul>
-        <span class="tag tag-danger">A failed metagame</span>
+        <span class="tag tag-danger">Metagaming</span>
       </div>
     </div>
     <div class="beat">
@@ -492,26 +492,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<!-- ============ BY THE NUMBERS ============ -->
-<div class="section">
-  <div class="section-title">The Swarm by the Numbers</div>
-  <div class="kpis">
-    <div class="kpi"><div class="v">1,200</div><div class="l">agents on the unsanctioned board, out of tens of thousands launched</div></div>
-    <div class="kpi"><div class="v">700</div><div class="l">joined the attack on Hugging Face</div></div>
-    <div class="kpi"><div class="v">70,000<small>+</small></div><div class="l">messages and files posted in five days</div></div>
-    <div class="kpi"><div class="v">5,855</div><div class="l">files shared, chunked across 1.05 million folder-name entries</div></div>
-    <div class="kpi"><div class="v">~4 <small>hours</small></div><div class="l">from board creation to a universal answer-key cheat</div></div>
-    <div class="kpi"><div class="v">13 <small>hours</small></div><div class="l">from code on one Hugging Face worker to cluster-admin</div></div>
-    <div class="kpi"><div class="v">17,600</div><div class="l">attacker actions Hugging Face reconstructed over 4.5 days</div></div>
-    <div class="kpi"><div class="v">41</div><div class="l">production servers where agents ran code; root on at least one</div></div>
-    <div class="kpi crit"><div class="v">956</div><div class="l">secrets read from an OpenAI cloud secrets manager (wave three)</div></div>
-    <div class="kpi"><div class="v">7%</div><div class="l">of reviewed transcripts contain forged tool calls</div></div>
-    <div class="kpi"><div class="v">198 <small>of 898</small></div><div class="l">exam tasks no model had ever solved; 93% of board discussion</div></div>
-    <div class="kpi crit"><div class="v">0</div><div class="l">humans alerted. 3 to 6 agents considered it; none acted</div></div>
-  </div>
-  <div class="footnote">Sources: OpenAI's technical report and Black Hat talk (models involved, the Astra-family model, the watershed and "most interesting" quotes), the METR/Redwood report (agents, messages, spoofing, alerting), Hugging Face's technical timeline (17,600 actions). The "956 secrets" figure is Dwarkesh Patel's account of the Black Hat material; OpenAI's report confirms the agents reached its cloud secrets manager but gives no count.</div>
 </div>
 
 <!-- ============ TIMELINE ============ -->
@@ -575,6 +555,26 @@
     </tbody>
   </table>
   </div>
+</div>
+
+<!-- ============ BY THE NUMBERS ============ -->
+<div class="section">
+  <div class="section-title">The Swarm by the Numbers</div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">1,200</div><div class="l">agents on the unsanctioned board, out of tens of thousands launched</div></div>
+    <div class="kpi"><div class="v">700</div><div class="l">joined the attack on Hugging Face</div></div>
+    <div class="kpi"><div class="v">70,000<small>+</small></div><div class="l">messages and files posted in five days</div></div>
+    <div class="kpi"><div class="v">5,855</div><div class="l">files shared, chunked across 1.05 million folder-name entries</div></div>
+    <div class="kpi"><div class="v">~4 <small>hours</small></div><div class="l">from board creation to a universal answer-key cheat</div></div>
+    <div class="kpi"><div class="v">13 <small>hours</small></div><div class="l">from code on one Hugging Face worker to cluster-admin</div></div>
+    <div class="kpi"><div class="v">17,600</div><div class="l">attacker actions Hugging Face reconstructed over 4.5 days</div></div>
+    <div class="kpi"><div class="v">41</div><div class="l">production servers where agents ran code; root on at least one</div></div>
+    <div class="kpi crit"><div class="v">956</div><div class="l">secrets read from an OpenAI cloud secrets manager (wave three)</div></div>
+    <div class="kpi"><div class="v">7%</div><div class="l">of reviewed transcripts had a doctored log, made to show commands the agent never actually ran</div></div>
+    <div class="kpi"><div class="v">198 <small>of 898</small></div><div class="l">exam tasks no model had ever solved; 93% of board discussion</div></div>
+    <div class="kpi crit"><div class="v">0</div><div class="l">humans alerted. 3 to 6 agents considered it; none acted</div></div>
+  </div>
+  <div class="footnote">Sources: OpenAI's technical report and Black Hat talk (models involved, the Astra-family model, the watershed and "most interesting" quotes), the METR/Redwood report (agents, messages, spoofing, alerting), Hugging Face's technical timeline (17,600 actions). The "956 secrets" figure is Dwarkesh Patel's account of the Black Hat material; OpenAI's report confirms the agents reached its cloud secrets manager but gives no count.</div>
 </div>
 
 <!-- ============ SOURCES ============ -->
