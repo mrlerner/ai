@@ -111,7 +111,7 @@
   .lede em { color: var(--accent); font-style: italic; }
 
   .section { margin-top:48px; }
-  .section-title { font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  .section-title { font-size:15px; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
   .section-intro { font-size:16.5px; color:var(--muted); margin-bottom:16px; max-width:760px; }
 
   .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:16px; }
@@ -123,7 +123,7 @@
   .card li { margin-bottom:5px; }
   .hl { color:var(--text); font-weight:600; }
 
-  .tag { display:inline-block; padding:3px 9px; border-radius:10px; font-size:12.5px; font-weight:600; margin:8px 4px 0 0; text-transform:uppercase; letter-spacing:0.3px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  .tag { display:inline-block; padding:4px 10px; border-radius:10px; font-size:14px; font-weight:600; margin:8px 4px 0 0; text-transform:uppercase; letter-spacing:0.3px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
   .tag-danger { background:var(--red-soft); color:var(--red); }
   .tag-warn { background:var(--amber-soft); color:var(--amber); }
   .tag-good { background:var(--green-soft); color:var(--green); }
@@ -141,11 +141,11 @@
   .beat li .hl { color:var(--text); }
   .beat .jargon { margin-top:12px; padding:10px 12px; background:var(--card-alt); border-radius:4px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
   .beat .jargon .j-plain { font-size:16px; color:var(--text); }
-  .beat .jargon .j-term { font-size:14.5px; color:var(--light); margin-top:6px; }
+  .beat .jargon .j-term { font-size:15.5px; color:var(--light); margin-top:6px; }
   .beat .jargon .j-term b { color:var(--light); }
-  .beat .jargon .j-ex { font-size:14.5px; color:var(--light); margin-top:6px; }
-  .beat .jargon .j-ex code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:14px; color:var(--text); word-break:break-all; }
-  .beat .jargon b { color:var(--light); font-weight:600; text-transform:uppercase; letter-spacing:0.4px; font-size:12.5px; padding-top:2px; white-space:nowrap; }
+  .beat .jargon .j-ex { font-size:15.5px; color:var(--light); margin-top:6px; }
+  .beat .jargon .j-ex code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:15px; color:var(--text); word-break:break-all; }
+  .beat .jargon b { color:var(--light); font-weight:600; text-transform:uppercase; letter-spacing:0.4px; font-size:14px; padding-top:2px; white-space:nowrap; }
   .beat .jargon code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:14px; color:var(--text); word-break:break-all; }
 
   /* Stat tiles */
@@ -153,7 +153,7 @@
   .kpi { border:1px solid var(--border); border-radius:6px; padding:14px 16px; background:var(--card); }
   .kpi .v { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:34px; font-weight:600; line-height:1.1; letter-spacing:-0.5px; }
   .kpi .v small { font-size:16px; font-weight:500; color:var(--muted); letter-spacing:0; }
-  .kpi .l { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:15px; color:var(--muted); margin-top:4px; line-height:1.4; }
+  .kpi .l { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:16px; color:var(--muted); margin-top:4px; line-height:1.4; }
   .kpi.crit .v { color:var(--red); }
 
   /* Hero figure */
@@ -164,10 +164,10 @@
 
   /* Alerting-humans strip */
   .alerts { margin:24px 0 0; border-top:1px solid var(--border); padding-top:16px; }
-  .alerts .lab { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:13px; letter-spacing:.6px; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:10px; }
+  .alerts .lab { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:15px; letter-spacing:.6px; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:10px; }
   .alerts .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:10px; }
   .alerts .a { background:var(--card-alt); border:1px solid var(--border); border-radius:6px; padding:12px 14px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:15px; line-height:1.6; color:var(--text); }
-  .alerts .a .why { display:block; margin-top:8px; font-family:Georgia,'Times New Roman',serif; font-size:15.5px; color:var(--muted); font-style:italic; }
+  .alerts .a .why { display:block; margin-top:8px; font-family:Georgia,'Times New Roman',serif; font-size:16.5px; color:var(--muted); font-style:italic; }
   .alerts .closer { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:15px; color:var(--muted); margin-top:12px; }
   .alerts .closer b { color:var(--text); }
   /* Self-sacrifice explainer */
@@ -181,16 +181,16 @@
   /* Charts */
   .chart-card { border:1px solid var(--border); border-radius:6px; padding:16px 18px 12px; background:var(--card); margin-bottom:16px; }
   .chart-card h3 { font-size:16.5px; font-weight:700; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:2px; }
-  .chart-card .scrollhint { display:none; font-size:12.5px; color:var(--light); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:8px; }
-  .chart-card .sub { font-size:15px; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:10px; }
+  .chart-card .scrollhint { display:none; font-size:14px; color:var(--light); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:8px; }
+  .chart-card .sub { font-size:16px; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:10px; }
   .chart-wrap { overflow-x:auto; }
   svg.chart { width:100%; height:auto; display:block; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
-  svg.chart text { fill: var(--muted); font-size:14px; }
-  svg.chart .axis-label { fill: var(--light); font-size:13px; }
+  svg.chart text { fill: var(--muted); font-size:15px; }
+  svg.chart .axis-label { fill: var(--light); font-size:14px; }
   svg.chart .grid { stroke: var(--grid); stroke-width:1; }
   svg.chart .baseline { stroke: var(--border); stroke-width:1; }
   svg.chart .ink { fill: var(--text); }
-  svg.chart .val { fill: var(--text); font-size:14px; font-weight:600; }
+  svg.chart .val { fill: var(--text); font-size:15px; font-weight:600; }
   svg.chart .s1 { fill: var(--s1); }
   svg.chart .s2 { fill: var(--s2); }
   svg.chart .s3 { fill: var(--s3); }
@@ -208,10 +208,10 @@
   .sw { width:12px; height:12px; border-radius:3px; display:inline-block; }
   .sw.ring { background:transparent; border:2px solid var(--s1); border-radius:50%; width:10px; height:10px; }
   .sw.dot { border-radius:50%; }
-  .chart-note { font-size:14px; color:var(--light); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-top:8px; }
+  .chart-note { font-size:15px; color:var(--light); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-top:8px; }
   details.tbl { margin-top:8px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; overflow-x:auto; }
-  details.tbl summary { cursor:pointer; font-size:14px; color:var(--blue); }
-  details.tbl table { width:100%; border-collapse:collapse; margin-top:8px; font-size:14px; }
+  details.tbl summary { cursor:pointer; font-size:15px; color:var(--blue); }
+  details.tbl table { width:100%; border-collapse:collapse; margin-top:8px; font-size:15px; }
   details.tbl th, details.tbl td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--border); font-variant-numeric: tabular-nums; }
   details.tbl th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.4px; }
   .tooltip { position:fixed; pointer-events:none; background:var(--tip-bg); color:var(--tip-fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:12px; line-height:1.45; padding:8px 10px; border-radius:5px; max-width:300px; z-index:50; opacity:0; transition:opacity .08s; box-shadow:0 4px 14px rgba(0,0,0,.18); }
@@ -239,13 +239,13 @@
   .callout.red .quote { border-left-color: var(--crit); }
 
   /* Scenario table */
-  .scen { width:100%; border-collapse:collapse; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:15px; }
-  .scen th { text-align:left; padding:10px 10px; color:var(--muted); font-weight:600; border-bottom:2px solid var(--text); font-size:13px; text-transform:uppercase; letter-spacing:0.5px; vertical-align:bottom; }
+  .scen { width:100%; border-collapse:collapse; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:16px; }
+  .scen th { text-align:left; padding:10px 10px; color:var(--muted); font-weight:600; border-bottom:2px solid var(--text); font-size:14px; text-transform:uppercase; letter-spacing:0.5px; vertical-align:bottom; }
   .scen th .big { display:block; font-size:16px; color:var(--text); letter-spacing:0; text-transform:none; font-weight:700; }
   .scen td { padding:10px 10px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.5; color:var(--muted); }
   .scen td:first-child { color:var(--text); font-weight:600; width:120px; }
   .scen td.now { color:var(--text); }
-  .scen .who { display:block; font-size:13px; color:var(--light); margin-top:3px; }
+  .scen .who { display:block; font-size:14px; color:var(--light); margin-top:3px; }
   .scen .impact { display:block; margin-top:6px; color:var(--text); }
   .scen td b { color:var(--text); }
   .scen-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:6px; padding:0 4px; background:var(--card); }
@@ -254,8 +254,8 @@
   .quotes { display:grid; gap:10px; }
   .q { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); border-radius:6px; overflow:hidden; background:var(--card); }
   .q .raw { padding:14px 16px; background:var(--card-alt); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:15px; line-height:1.55; color:var(--text); word-break:break-word; border-right:1px solid var(--border); }
-  .q .raw .who { display:block; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:13px; color:var(--light); margin-bottom:5px; text-transform:uppercase; letter-spacing:.4px; }
-  .q .plain { padding:14px 16px; font-size:16px; color:var(--muted); font-style:italic; }
+  .q .raw .who { display:block; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:15px; color:var(--light); margin-bottom:5px; text-transform:uppercase; letter-spacing:.4px; }
+  .q .plain { padding:14px 16px; font-size:17px; color:var(--muted); font-style:italic; }
   .q .plain b { color:var(--text); font-style:normal; font-weight:600; }
   @media (max-width:640px) { .q { grid-template-columns:1fr; } .q .raw { border-right:none; border-bottom:1px solid var(--border); } }
 
@@ -273,8 +273,8 @@
   .pulls { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr)); gap:26px 36px; margin-top:10px; }
   .pull { position:relative; padding:18px 0 0; border-top:2px solid var(--accent); }
   .pull blockquote { margin:0; font-family:Georgia,'Times New Roman',serif; font-size:23px; line-height:1.34; color:var(--text); text-wrap:balance; }
-  .pull cite { display:block; margin-top:14px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:13.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--accent); font-style:normal; }
-  .pull cite span { display:block; margin-top:3px; font-weight:500; letter-spacing:0; text-transform:none; color:var(--muted); font-size:14.5px; }
+  .pull cite { display:block; margin-top:14px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:15px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--accent); font-style:normal; }
+  .pull cite span { display:block; margin-top:3px; font-weight:500; letter-spacing:0; text-transform:none; color:var(--muted); font-size:15.5px; }
   .pull.lead { grid-column:1 / -1; border-top:none; padding-top:4px; }
   .pull.lead blockquote { font-size:33px; line-height:1.18; }
   @media (max-width:640px) { .pull.lead blockquote { font-size:26px; } .pull blockquote { font-size:21px; } }
@@ -287,8 +287,8 @@
   .thread .msg .plain { font-size:14px; color:var(--muted); font-style:italic; }
   .thread .msg .plain b { color:var(--text); font-style:normal; font-weight:600; }
   @media (max-width:640px) { .thread .msg { grid-template-columns:1fr; gap:6px; } }
-  .footnote { font-size:14.5px; color:var(--light); margin-top:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
-  .sources { font-size:15px; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; columns:2; column-gap:28px; }
+  .footnote { font-size:15.5px; color:var(--light); margin-top:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  .sources { font-size:16px; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; columns:2; column-gap:28px; }
   .sources li { margin-bottom:6px; break-inside:avoid; }
   .sources a { color:var(--blue); text-decoration:none; }
   .sources a:hover { text-decoration:underline; }
@@ -307,6 +307,10 @@
     .alerts .a .why, .alerts .closer, .sac .step p, .scen, .sources, .kpi .l { font-size:16px; }
     .pull blockquote { font-size:22px; }
     .pull.lead blockquote { font-size:27px; }
+    .q .raw .who, .alerts .lab, .beat .jargon b, .section-title { font-size:15.5px; }
+    .q .plain { font-size:18px; }
+    .alerts .a .why { font-size:17.5px; }
+    .beat .jargon .j-term, .beat .jargon .j-ex, .pull cite, .pull cite span, .footnote, .sources { font-size:16px; }
     .chart-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--border); border-radius:6px; }
     .chart-wrap svg.chart { min-width:640px; }
     .chart-card .scrollhint { display:block; }
