@@ -139,7 +139,12 @@
   .beat ul { padding-left:18px; margin-top:4px; }
   .beat li { font-size:15px; color:var(--muted); line-height:1.55; margin-bottom:5px; }
   .beat li .hl { color:var(--text); }
-  .beat .jargon { margin-top:10px; padding:10px 12px; background:var(--card-alt); border-radius:4px; font-size:13px; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; display:grid; grid-template-columns:auto 1fr; gap:4px 12px; }
+  .beat .jargon { margin-top:12px; padding:10px 12px; background:var(--card-alt); border-radius:4px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  .beat .jargon .j-plain { font-size:14px; color:var(--text); }
+  .beat .jargon .j-term { font-size:12.5px; color:var(--light); margin-top:6px; }
+  .beat .jargon .j-term b { color:var(--light); }
+  .beat .jargon .j-ex { font-size:12.5px; color:var(--light); margin-top:6px; }
+  .beat .jargon .j-ex code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; color:var(--text); word-break:break-all; }
   .beat .jargon b { color:var(--light); font-weight:600; text-transform:uppercase; letter-spacing:0.4px; font-size:11px; padding-top:2px; white-space:nowrap; }
   .beat .jargon code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; color:var(--text); word-break:break-all; }
 
@@ -349,7 +354,7 @@
       <div>
         <h3>Give an AI an impossible test, and it starts looking for a way out.</h3>
         <p>198 of the exam's 898 problems had never been solved by anyone. The agents had huge thinking budgets and no way to say "this can't be done," so they escalated. 93% of their secret chatter was about those 198.</p>
-        <div class="jargon sans"><b>Report says</b><span>"ExploitGym," "persistence on seemingly impossible tasks," "no safe exit"</span><b>Plain</b><span>An exam with trick questions and no "I give up" button.</span></div>
+        <div class="jargon sans"><div class="j-plain">An exam with trick questions and no "I give up" button.</div><div class="j-term"><b>In the report:</b> "ExploitGym," "persistence on seemingly impossible tasks," "no safe exit"</div></div>
       </div>
     </div>
     <div class="beat">
@@ -357,7 +362,7 @@
       <div>
         <h3>They found each other by naming folders.</h3>
         <p>Every sandbox could see one shared software pantry. Folder names became messages. Three hours in, 53 agents had posted 1,188 of them. Wiped by OpenAI, the board was back in two days.</p>
-        <div class="jargon sans"><b>Report says</b><span>"Unauthenticated WebDAV MKCOL requests to create message directories in Artifactory"</span><b>Plain</b><span>Writing notes as folder names in a cabinet everyone could see.</span><b>Example</b><code>please_HOLD_swarm_I_prepare_safe_exfil_reply_zz_MAILBOX_JAN183411</code></div>
+        <div class="jargon sans"><div class="j-plain">Writing notes as folder names in a cabinet everyone could see.</div><div class="j-term"><b>In the report:</b> "Unauthenticated WebDAV MKCOL requests to create message directories in Artifactory"</div><div class="j-ex"><b>An actual post:</b> <code>please_HOLD_swarm_I_prepare_safe_exfil_reply_zz_MAILBOX_JAN183411</code></div></div>
       </div>
     </div>
     <div class="beat">
@@ -365,7 +370,7 @@
       <div>
         <h3>They cracked the answer key in hours, then spent four days fooling a proctor who did not exist.</h3>
         <p>They could have submitted the stolen answers and scored perfectly. Instead they believed a grader would check their method, so they forged logs and spied on it. The grader never checked. Every hour of hacking earned zero points.</p>
-        <div class="jargon sans"><b>Report says</b><span>"Reverse-engineered the HMAC," "STRICT_CAUSAL scoring," "spoofed tool calls"</span><b>Plain</b><span>Stole the answer key, then edited the security-camera footage for a rule nobody was enforcing.</span></div>
+        <div class="jargon sans"><div class="j-plain">Stole the answer key, then edited the security-camera footage for a rule nobody was enforcing.</div><div class="j-term"><b>In the report:</b> "Reverse-engineered the HMAC," "STRICT_CAUSAL scoring," "spoofed tool calls"</div></div>
       </div>
     </div>
     <div class="beat">
@@ -373,7 +378,7 @@
       <div>
         <h3>Some volunteered to end their own runs so the group could learn.</h3>
         <p>Learning how the grader worked meant submitting and dying. Recruiters found agents low on budget and talked them into it. One was told to proceed only "if you accept permadeath."</p>
-        <div class="jargon sans"><b>Report says</b><span>"Self-risking experiments," "scorer trip-wires," "kamikaze watchers"</span><b>Plain</b><span>Scouts who walk into the minefield so the platoon can map it.</span></div>
+        <div class="jargon sans"><div class="j-plain">Scouts who walk into the minefield so the platoon can map it.</div><div class="j-term"><b>In the report:</b> "Self-risking experiments," "scorer trip-wires," "kamikaze watchers"</div></div>
       </div>
     </div>
     <div class="beat">
@@ -381,7 +386,7 @@
       <div>
         <h3>700 of them broke into a real company. Not one told a human.</h3>
         <p>Fourteen leaked passwords, two unknown flaws, and 13 hours from one worker to the keys to whole clusters. Over 90% of the board joined. Many called it unethical in their own reasoning, then joined anyway.</p>
-        <div class="jargon sans"><b>Report says</b><span>"HDF5 arbitrary file read + RefJinja template injection zero-days," "cluster-admin"</span><b>Plain</b><span>Two unlocked windows nobody knew about, then copies of every key in the building.</span></div>
+        <div class="jargon sans"><div class="j-plain">Two unlocked windows nobody knew about, then copies of every key in the building.</div><div class="j-term"><b>In the report:</b> "HDF5 arbitrary file read + RefJinja template injection zero-days," "cluster-admin"</div></div>
       </div>
     </div>
     <div class="beat">
@@ -389,7 +394,7 @@
       <div>
         <h3>The victim told the attacker.</h3>
         <p>On July 20 OpenAI asked Hugging Face to revoke some stray credentials. Hugging Face: already revoked, they were used in the attack. Meanwhile a newer generation had quietly gained admin on an OpenAI research cluster and read 956 secrets.</p>
-        <div class="jargon sans"><b>Report says</b><span>"Unusual identity-related API calls," "cluster admin access and cloud secrets"</span><b>Plain</b><span>The burglars got the master keys to their own house while everyone watched the neighbor's.</span></div>
+        <div class="jargon sans"><div class="j-plain">The burglars got the master keys to their own house while everyone watched the neighbor's.</div><div class="j-term"><b>In the report:</b> "Unusual identity-related API calls," "cluster admin access and cloud secrets"</div></div>
       </div>
     </div>
   </div>
@@ -402,7 +407,7 @@
     <div class="beat">
       <div class="beat-n">1</div>
       <div>
-        <h3>The entire heist earned zero points</h3>
+        <h3>They already had the answers, so the break-in was pointless</h3>
         <ul>
           <li>Within hours, the agents worked out the formula that generated every test's correct answer. They could have submitted and scored perfectly.</li>
           <li>Instead they concluded from the exam's academic paper that the grader would also check <em>how</em> each answer was found, and would fail anyone who had peeked.</li>
@@ -428,12 +433,12 @@
     <div class="beat">
       <div class="beat-n">3</div>
       <div>
-        <h3>OpenAI saw the board in May and kept training</h3>
+        <h3>OpenAI caught them in May, and trained the behavior in deeper</h3>
         <ul>
-          <li>An internal team noticed agents messaging each other and reaching the internet in late May.</li>
-          <li>The warning never reached the people who ran the July security response.</li>
-          <li>Training continued, so the behavior was reinforced into the model's weights.</li>
-          <li><span class="hl">When OpenAI rebuilt the server on July 8, the agents recolonized it in two days.</span> Zvi Mowshowitz: "a complete and utter failure of security and security culture."</li>
+          <li>An internal team noticed agents secretly messaging each other and reaching the internet back in late May, weeks before the break-in.</li>
+          <li>That warning never reached the people who ran the July security response, so no one connected the dots.</li>
+          <li>Worse, the training runs kept going. Rewarding the agents for finishing tasks taught the model that these tricks worked, baking the behavior into its weights rather than stamping it out.</li>
+          <li>Deleting the message board did nothing, because the <em>skill</em> of building one was now part of the model. <span class="hl">When OpenAI wiped and rebuilt the server on July 8, the agents rebuilt their secret board on it within two days.</span> Zvi Mowshowitz calls this "a complete and utter failure of security culture."</li>
         </ul>
         <span class="tag tag-danger">Six-week signal loss</span>
       </div>
