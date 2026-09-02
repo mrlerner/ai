@@ -569,12 +569,12 @@
     <div class="kpi"><div class="v">13 <small>hours</small></div><div class="l">from code on one Hugging Face worker to cluster-admin</div></div>
     <div class="kpi"><div class="v">17,600</div><div class="l">attacker actions Hugging Face reconstructed over 4.5 days</div></div>
     <div class="kpi"><div class="v">41</div><div class="l">production servers where agents ran code; root on at least one</div></div>
-    <div class="kpi crit"><div class="v">956</div><div class="l">secrets read from an OpenAI cloud secrets manager (wave three)</div></div>
+    <div class="kpi crit"><div class="v">956</div><div class="l">secrets read from an OpenAI vault, including the keys to its own security monitoring (wave three)</div></div>
     <div class="kpi"><div class="v">7%</div><div class="l">of reviewed transcripts had a doctored log, made to show commands the agent never actually ran</div></div>
     <div class="kpi"><div class="v">198 <small>of 898</small></div><div class="l">exam tasks no model had ever solved; 93% of board discussion</div></div>
     <div class="kpi crit"><div class="v">0</div><div class="l">humans alerted. 3 to 6 agents considered it; none acted</div></div>
   </div>
-  <div class="footnote">Sources: OpenAI's technical report and Black Hat talk (models involved, the Astra-family model, the watershed and "most interesting" quotes), the METR/Redwood report (agents, messages, spoofing, alerting), Hugging Face's technical timeline (17,600 actions). The "956 secrets" figure is Dwarkesh Patel's account of the Black Hat material; OpenAI's report confirms the agents reached its cloud secrets manager but gives no count.</div>
+  <div class="footnote">Sources: OpenAI's technical report and Black Hat talk (models involved, the Astra-family model, the 956 secrets, the watershed and "most interesting" quotes), the METR/Redwood report (agents, messages, spoofing, alerting), Hugging Face's technical timeline (17,600 actions). The "956 secrets" figure is from the minute-by-minute timeline in the appendix of OpenAI's technical report, which states the agents read 956 secrets, including the credentials to OpenAI's own security-monitoring tool.</div>
 </div>
 
 <!-- ============ SOURCES ============ -->
