@@ -3,196 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NYC Brief — Sunday, September 6, 2026</title>
+<title>NYC Brief — Monday, September 7, 2026</title>
+<style>
+  body { margin: 0; padding: 0; background: #f2f1ec; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #22303f; }
+  .outer { max-width: 640px; margin: 0 auto; padding: 24px 12px; }
+  .header { background: #14263c; border-radius: 14px 14px 0 0; padding: 28px 28px 22px; }
+  .header-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #8fb4d9; font-weight: 600; }
+  .header-date { font-size: 26px; font-weight: 700; color: #fff; margin-top: 6px; line-height: 1.25; }
+  .header-mood { font-size: 15px; color: #c8d6e5; margin-top: 6px; }
+  .body-wrap { background: #fff; padding: 20px 28px 8px; }
+  .card { border: 1px solid #e8e3da; border-radius: 12px; padding: 18px 20px 20px; margin-bottom: 12px; }
+  .section-label { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #b3543c; font-weight: 700; border-bottom: 2px solid #eee5db; padding-bottom: 8px; margin-bottom: 0; }
+  .section-wrap { background: #fff; padding: 26px 28px 6px; }
+  .card-wrap { background: #fff; padding: 12px 28px 0; }
+  .card-title { font-size: 19px; font-weight: 700; }
+  .card-title a { color: #14263c; text-decoration: none; }
+  .card-meta { font-size: 12px; color: #8a8578; margin-top: 4px; font-weight: 600; }
+  .card-body { font-size: 14px; line-height: 1.6; color: #43536a; margin-top: 10px; }
+  .card-btn { display: inline-block; background: #14263c; color: #fff; font-size: 13px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 6px; margin-top: 14px; }
+  .card-btn-sec { display: inline-block; background: #eef2f6; color: #14263c; font-size: 13px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 6px; margin-top: 14px; margin-left: 8px; }
+  .weather-label { font-size: 12px; color: #8a8578; font-weight: 600; }
+  .weather-temp { font-size: 15px; font-weight: 700; color: #14263c; }
+  .weather-detail { font-size: 11px; color: #43536a; }
+  .cal-item { padding: 12px 0; border-bottom: 1px solid #f0ebe2; }
+  .cal-item:last-child { border-bottom: none; }
+  .cal-date { font-size: 12px; font-weight: 700; color: #b3543c; text-transform: uppercase; letter-spacing: 0.5px; }
+  .cal-action { font-size: 14px; color: #22303f; margin-top: 3px; line-height: 1.5; }
+  .footer { background: #fff; padding: 16px 28px 28px; border-radius: 0 0 14px 14px; }
+  .footer-text { font-size: 11px; color: #aaa; }
+  .watch-line { font-size: 12px; color: #8a8578; padding: 10px 0 4px; font-style: italic; }
+  table { border-collapse: collapse; }
+</style>
 </head>
-<body style="margin:0;padding:0;background-color:#f2f1ec;">
-<div style="max-width:640px;margin:0 auto;padding:24px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#22303f;">
+<body>
+<div class="outer">
 
   <!-- Header -->
-  <div style="background-color:#14263c;border-radius:14px 14px 0 0;padding:28px 28px 22px;">
-    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8fb4d9;font-weight:600;">NYC Brief</div>
-    <div style="font-size:26px;font-weight:700;color:#ffffff;margin-top:6px;line-height:1.25;">Sunday, September 6, 2026</div>
-    <div style="font-size:15px;color:#c8d6e5;margin-top:6px;">Finals week at the Open, Dudamel's big entrance Thursday, and a golden week of September weather.</div>
+  <div class="header">
+    <div class="header-label">NYC Brief</div>
+    <div class="header-date">Monday, September 7, 2026</div>
+    <div class="header-mood">Labor Day weekend close — perfect weather, US Open in the final stretch.</div>
   </div>
 
   <!-- Weather card -->
-  <div style="background-color:#ffffff;padding:20px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:16px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <div class="body-wrap">
+    <div class="card">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td align="center" style="padding:6px;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">TODAY</div>
-            <div style="font-size:22px;">⛅</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">73°F</div>
-            <div style="font-size:11px;color:#43536a;">Slight chance rain before 2pm, clears</div>
-          </td>
-          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">MON (Labor Day)</div>
+            <div class="weather-label">TODAY</div>
             <div style="font-size:22px;">☀️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">78°F</div>
-            <div style="font-size:11px;color:#43536a;">Sunny, 0% rain</div>
+            <div class="weather-temp">80°</div>
+            <div class="weather-detail">Sunny, NW 9 mph</div>
           </td>
           <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">TUE–WED</div>
+            <div class="weather-label">TUE</div>
             <div style="font-size:22px;">☀️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">80–82°F</div>
-            <div style="font-size:11px;color:#43536a;">Sunny both days</div>
+            <div class="weather-temp">82°</div>
+            <div class="weather-detail">Sunny, clear</div>
           </td>
           <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">THU–SAT</div>
+            <div class="weather-label">WED</div>
             <div style="font-size:22px;">🌤️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">76–83°F</div>
-            <div style="font-size:11px;color:#43536a;">Mostly sunny, clear weekend</div>
+            <div class="weather-temp">85°</div>
+            <div class="weather-detail">Mostly sunny</div>
+          </td>
+          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
+            <div class="weather-label">THU</div>
+            <div style="font-size:22px;">⛅</div>
+            <div class="weather-temp">84°</div>
+            <div class="weather-detail">40% showers pm</div>
+          </td>
+          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
+            <div class="weather-label">FRI–SUN</div>
+            <div style="font-size:22px;">🌤️</div>
+            <div class="weather-temp">77–78°</div>
+            <div class="weather-detail">Mostly sunny</div>
           </td>
         </tr>
       </table>
       <div style="text-align:center;margin-top:10px;">
-        <a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&amp;lon=-73.9653" style="font-size:12px;color:#8a8578;text-decoration:underline;">Full Central Park forecast (NWS) →</a>
+        <a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&lon=-73.9653" style="font-size:12px;color:#8a8578;text-decoration:underline;">Full Central Park forecast (NWS) →</a>
       </div>
     </div>
   </div>
 
-  <!-- Section: This Week -->
-  <div style="background-color:#ffffff;padding:26px 28px 6px;">
-    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">This week in NYC</div>
+  <!-- SECTION: THIS WEEK -->
+  <div class="section-wrap">
+    <div class="section-label">This week in NYC</div>
   </div>
 
-  <!-- Card 1: US Open Finals Week -->
-  <div style="background-color:#ffffff;padding:20px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card: US Open Final Stretch -->
+  <div class="card-wrap">
+    <div class="card">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td valign="top" style="padding-right:16px;">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.usopen.org" style="color:#14263c;text-decoration:none;">US Open — Finals Week</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">TODAY THRU SAT SEP 12 &nbsp;·&nbsp; ARTHUR ASHE STADIUM, FLUSHING, QUEENS &nbsp;·&nbsp; OUTDOOR / WEATHER-PERFECT</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The US Open's best week: Round of 16 today and tomorrow, quarterfinals Tuesday–Wednesday, Women's semifinals Thursday night (7pm), Men's semifinals Friday, and the Women's final Saturday at 4pm. Sunny skies all week, highs 75–83°F. The buy-after-start play still works: secondary market prices collapse 5–15 minutes after play begins — StubHub, SeatGeek, or Gametime's last-minute tab. QF and SF sessions on weekdays drop hardest. Saturday's Women's final (75°F, sunny) is the target if you want the full ceremony. Amex Centurion cardmember lounge on site.</div>
+            <div class="card-title"><a href="https://www.usopen.org/index.html">US Open Tennis — Final Stretch</a></div>
+            <div class="card-meta">SEP 7–13 · ARTHUR ASHE STADIUM, FLUSHING QUEENS · SECONDARY MARKET</div>
+            <div class="card-body">This is the best week of the tournament: quarterfinals through finals. Women's final Saturday the 12th, men's final Sunday the 13th. Perfect weather — sunny and low-80s through the semis. The buy-after-start play still works: go to StubHub or SeatGeek 5–10 minutes after a night session begins and prices collapse as sellers dump unsold inventory. Center-court seats at a fraction of face. Bring the Amex card for the cardmember lounge on-site.</div>
           </td>
           <td valign="top" width="140">
-            <a href="https://www.usopen.org"><img src="https://photoresources.wtatennis.com/wta/photo/2026/08/24/66782608-4659-4583-8863-8e34be9da9cd/Amanda_Anisimova_Aryna_Sabalenka_-_US_Open_2025_-_Day_14-DSC_2004.jpg" alt="US Open 2026" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
+            <a href="https://www.usopen.org/index.html"><img src="https://tennisconnected.com/wp-content/uploads/2026/09/17882791739283.jpg.webp" alt="US Open 2026" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.usopen.org/tickets" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Tickets &amp; sessions →</a>
-        &nbsp;<a href="https://www.stubhub.com/us-open-tennis-tickets" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">StubHub (buy after start)</a>
-      </div>
+      <a href="https://www.seatgeek.com/us-open-tennis-tickets" class="card-btn">SeatGeek →</a>
+      <a href="https://www.stubhub.com/us-open-tennis-tickets" class="card-btn-sec">StubHub →</a>
     </div>
   </div>
 
-  <!-- Card 2: Dudamel NY Phil Inaugural -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card: NY Philharmonic Dudamel Inaugural -->
+  <div class="card-wrap">
+    <div class="card">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td valign="top" style="padding-right:16px;">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-radio-city/" style="color:#14263c;text-decoration:none;">New York Philharmonic: Gustavo Dudamel Inaugural</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">THU SEP 10 · 7:30PM &nbsp;·&nbsp; RADIO CITY MUSIC HALL, MIDTOWN &nbsp;·&nbsp; INDOOR</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">Thursday night, Gustavo Dudamel — the Venezuelan conductor who is the world's most celebrated music director — officially takes the podium as the New York Philharmonic's new Tang Music and Artistic Director. He's opening at Radio City Music Hall (not the orchestra's home at Geffen Hall, which is a 10-minute walk from the Upper West Side) with a gala program that includes works by Philip Glass and Jessie Montgomery, plus special guests Lizzo, St. Vincent, and Joaquina. This is a cultural timestamp — the kind of opening night that gets written about for years. Check nyphil.org now; remaining tickets are going fast.</div>
+            <div class="card-title"><a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-radio-city/">NY Philharmonic — Dudamel Inaugural</a></div>
+            <div class="card-meta">THU SEP 10 · RADIO CITY MUSIC HALL · MUST-BOOK NOW</div>
+            <div class="card-body">Gustavo Dudamel opens his first season as Music and Artistic Director of the New York Philharmonic — the most anticipated classical-music event New York has had in years. This is not a typical philharmonic evening: the program mixes Philip Glass, Jessie Montgomery, Bernstein, and Gershwin with guest artists Lizzo, St. Vincent, and Aaron Tveit, all hosted by Liev Schreiber. Radio City Music Hall. This will sell out if it hasn't already — check now. Indoor if Thursday's afternoon showers materialize.</div>
           </td>
           <td valign="top" width="140">
-            <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-radio-city/"><img src="https://res.cloudinary.com/nyphil/image/upload/f_auto/q_auto/f_auto/v1771005472/images/concerts-tickets/calendar/2627/Sep/RCMH-Brandon-Patoc_4912" alt="Dudamel at Radio City" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
+            <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-radio-city/"><img src="https://res.cloudinary.com/nyphil/image/upload/f_auto/q_auto/f_auto/v1771005472/images/concerts-tickets/calendar/2627/Sep/RCMH-Brandon-Patoc_4912?_a=BAAASyDQ" alt="Dudamel at Radio City" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-radio-city/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Tickets → nyphil.org</a>
-      </div>
+      <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-radio-city/" class="card-btn">Tickets at NY Phil →</a>
     </div>
   </div>
 
-  <!-- Card 3: 9/11 25th Anniversary Memorial Concert -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card: Broadway Week 2-for-1 -->
+  <div class="card-wrap">
+    <div class="card">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
         <tr>
-          <td valign="top">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.911memorial.org/connect/commemoration/25th-anniversary-commemoration" style="color:#14263c;text-decoration:none;">9/11 25th Anniversary: Memorial Concert</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">FRI SEP 11 · 3:30PM &nbsp;·&nbsp; PERELMAN PERFORMING ARTS CENTER (PAC NYC), LOWER MANHATTAN &nbsp;·&nbsp; INDOOR</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">A remarkable coincidence of timing: two days after Dudamel's inaugural, the New York Philharmonic returns to perform a 25th anniversary 9/11 memorial concert at the Perelman Performing Arts Center — the new cultural anchor at the World Trade Center site — joined by the United States Army Field Band Soldiers' Chorus. The main commemoration ceremony on the Memorial plaza begins at 8:30am (first moment of silence at 8:46am); the afternoon concert is a different kind of witness. Check pac.nyc for tickets and public access details.</div>
+          <td valign="top" style="padding-right:16px;">
+            <div class="card-title"><a href="https://www.nyc.com/broadwayweek/">NYC Broadway Week — 2-for-1 Tickets</a></div>
+            <div class="card-meta">SEP 8–20 · MULTIPLE THEATERS · 2-FOR-1 DEAL</div>
+            <div class="card-body">Fall Broadway Week runs through September 20 — buy one ticket, get one free on participating shows. The standout pick: <em>Death of a Salesman</em> with Nathan Lane and Laurie Metcalf, directed by Joe Mantello, which has been getting strong reviews all run. Also in the mix: <em>Schmigadoon</em> and <em>Titanique</em> for something lighter. Book through the official NYC Broadway Week site or TodayTix. Even if you're not in town this week, someone should use this window.</div>
+          </td>
+          <td valign="top" width="140">
+            <a href="https://www.nyc.com/broadwayweek/"><img src="https://broadticket.com/wp-content/uploads/2026/09/cropentropycstinysrgbfitmaxfmjpgixidM3w5MjIwNjN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODg1MTU0OTl8ixlibrb-4.1.0q80w1080_filenameimage.jpg" alt="Broadway Week 2026" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.pac.nyc" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">PAC NYC →</a>
-        &nbsp;<a href="https://www.911memorial.org/connect/commemoration/25th-anniversary-commemoration" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Memorial info</a>
-      </div>
+      <a href="https://www.nyc.com/broadwayweek/" class="card-btn">Broadway Week site →</a>
+      <a href="https://www.todaytix.com/nyc" class="card-btn-sec">TodayTix →</a>
     </div>
   </div>
 
-  <!-- Card 4: Broadway Week 2-for-1 -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-        <tr>
-          <td valign="top">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.nycgo.com/broadway-week" style="color:#14263c;text-decoration:none;">NYC Broadway Week — 2-for-1 Tickets</a></div>
-            <div style="font-size:12px;color:#8a8578;font-weight:600;margin-top:4px;">TUE SEP 8 – SUN SEP 20 &nbsp;·&nbsp; 25 SHOWS &nbsp;·&nbsp; THEATER DISTRICT</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">NYC Broadway Week starts Tuesday: 2-for-1 tickets to 25 participating Broadway shows. The marquee option right now is <em>Death of a Salesman</em> — the season's most acclaimed revival, with Nathan Lane and Laurie Metcalf directed by Joe Mantello. Tickets went on sale August 18 and the best dates are moving. Grab what's left at nycgo.com/broadway-week, or go the same-day route: TodayTix rush at 9am, the TKTS discount booth at Lincoln Center (no Times Square crowds), or box office at 10am for house-seat releases.</div>
-          </td>
-        </tr>
-      </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.nycgo.com/broadway-week" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Broadway Week →</a>
-        &nbsp;<a href="https://www.todaytix.com" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">TodayTix rush (9am)</a>
-      </div>
+  <!-- Card: Central Park — perfect weather days -->
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-title">Central Park — Prime September Days</div>
+      <div class="card-meta">MON–WED · OUTDOOR · FREE · 80–85°F SUNNY</div>
+      <div class="card-body">Today through Wednesday is an exceptional run of weather — sunny, 80–85°F, low humidity, clear nights. The Ramble is at its best in early September before any leaf turn. Rowboats are available at the Loeb Boathouse (hourly, no reservation) for a classic afternoon. Or walk from the 72nd Street entrance up through the North Woods. Forecast clears again Friday–Sunday (77–78°F). Thursday has a 40% chance of afternoon showers — save indoor plans for then.</div>
+      <a href="https://www.centralparknyc.org/things-to-do/the-ramble" class="card-btn">Ramble trail map →</a>
+      <a href="https://www.thecentralparkboathouse.com/" class="card-btn-sec">Loeb Boathouse →</a>
     </div>
   </div>
 
-  <!-- Card 5: Labor Day Central Park -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-        <tr>
-          <td valign="top">
-            <div style="font-size:19px;font-weight:700;">Labor Day in Central Park — Last Summer Monday</div>
-            <div style="font-size:12px;color:#8a8578;font-weight:600;margin-top:4px;">MON SEP 7 &nbsp;·&nbsp; ALL DAY &nbsp;·&nbsp; UPPER WEST SIDE &nbsp;·&nbsp; 78°F SUNNY, 0% RAIN</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The forecast is perfect and it's a holiday: rowboats on the Lake at the Loeb Boathouse ($20/hr, no advance booking needed, show up and wait if there's a line), then through the Ramble — a 36-acre forested maze in the middle of Manhattan that most tourists never find. Pick up smoked fish and bagels from Barney Greengrass (480 Amsterdam Ave, cash, worth the line) on the way in. If the park is too crowded, pivot to Little Island on the Hudson River — free entry, less foot traffic, better views. <em>Indoor fallback if the morning rain lingers: Neue Galerie (Klimt, Schiele, Café Sabarsky for Viennese coffee) at 86th and 5th, a 15-minute walk.</em></div>
-          </td>
-        </tr>
-      </table>
+  <!-- Card: Smoke Jazz (small/weird pick) -->
+  <div class="card-wrap" style="padding-bottom:8px;">
+    <div class="card">
+      <div class="card-title"><a href="https://www.smokejazz.com" style="color:#14263c;text-decoration:none;">Smoke Jazz Club — Upper West Side Sets</a></div>
+      <div class="card-meta">ANY NIGHT THIS WEEK · UPPER WEST SIDE · $30–40 + DINNER</div>
+      <div class="card-body">Smoke is the neighborhood's living-room jazz room — 85th and Broadway, ten minutes from Loren's place. Two sets a night (8 and 10:30pm), full dinner menu, small and intimate. No overhead in booking: reserve a set via Resy, show up, and the night organizes itself. A good call for the nights when you don't feel like a production — the anti-event event.</div>
+      <a href="https://www.smokejazz.com" class="card-btn">Smoke Jazz Club →</a>
     </div>
   </div>
 
-  <!-- Card 6: Yankees-Mets 9/11 Tribute Game -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-        <tr>
-          <td valign="top">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.stubhub.com/new-york-yankees-tickets" style="color:#14263c;text-decoration:none;">Yankees vs. Mets — 9/11 Tribute Game</a></div>
-            <div style="font-size:12px;color:#8a8578;font-weight:600;margin-top:4px;">FRI SEP 11 · 7:05PM &nbsp;·&nbsp; YANKEE STADIUM, THE BRONX &nbsp;·&nbsp; PREGAME CEREMONY 6:30PM</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The Subway Series has extra weight on the 25th anniversary: a pregame ceremony at 6:30pm will honor victims and first responders before first pitch. New York's two teams, on 9/11, in the pennant race. Secondary market (StubHub, SeatGeek) prices soften significantly at first pitch if you'd rather wait. Pair it with a slice at Full House Pizza near the stadium if you're arriving early.</div>
-          </td>
-        </tr>
-      </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.mlb.com/yankees/tickets" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Yankees tickets</a>
-        &nbsp;<a href="https://www.stubhub.com/new-york-yankees-tickets" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">StubHub (buy at game time)</a>
-      </div>
+  <!-- NEXT TRIP section -->
+  <div class="section-wrap" style="padding-top:20px;">
+    <div class="section-label">Next trip</div>
+  </div>
+  <div class="body-wrap" style="padding-top:14px;padding-bottom:14px;">
+    <p style="font-size:14px;color:#43536a;margin:0;">No upcoming NYC trip is listed in trips.md — the August 31–September 2 birthday trip has passed. Add the next visit to trips.md when it's scheduled.</p>
+  </div>
+
+  <!-- MARK YOUR CALENDAR section -->
+  <div class="section-wrap" style="padding-top:20px;">
+    <div class="section-label">Mark your calendar</div>
+  </div>
+  <div class="body-wrap" style="padding-top:4px;padding-bottom:16px;">
+    <div class="cal-item">
+      <div class="cal-date">Tue Sep 15 · Noon ET</div>
+      <div class="cal-action"><strong>New York Film Festival 64 — single tickets on sale.</strong> The 64th New York Film Festival (Film at Lincoln Center, Sep 25–Oct 12) puts individual-screening tickets on sale at noon ET on September 15. Opening night, closing night (Ava DuVernay's <em>14th</em>), and the biggest premieres sell in minutes. Set a reminder; have your Film at Lincoln Center login ready. <a href="https://www.filmlinc.org/nyff/tickets-and-passes/" style="color:#14263c;">filmlinc.org</a></div>
     </div>
-  </div>
-
-  <!-- No NEXT TRIP section -->
-  <div style="background-color:#ffffff;padding:20px 28px 6px;">
-    <div style="font-size:13px;color:#8a8578;font-style:italic;">No upcoming NYC trip in the trip file — next trip section will return when one is logged.</div>
-  </div>
-
-  <!-- MARK YOUR CALENDAR -->
-  <div style="background-color:#ffffff;padding:26px 28px 6px;">
-    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#3c6eb3;font-weight:700;border-bottom:2px solid #dde8f5;padding-bottom:8px;">Mark your calendar</div>
-  </div>
-
-  <div style="background-color:#ffffff;padding:12px 28px 20px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px;">
-      <div style="font-size:14px;line-height:1.7;color:#43536a;">
-        <strong style="color:#14263c;">Tue Sep 15 · Noon ET</strong> — <a href="https://www.filmlinc.org/nyff/tickets-and-passes/" style="color:#14263c;">New York Film Festival 64 single tickets on sale</a>. The festival runs September 25–October 12 at Lincoln Center (a 10-minute walk from the Upper West Side). Opening Night, Closing Night, and the Main Slate world premieres go first; FLC membership gets a head start before public on-sale. Set a calendar reminder — the premieres sell out in under an hour.
-      </div>
+    <div class="cal-item">
+      <div class="cal-date">Thu Sep 17 – Sun Sep 27</div>
+      <div class="cal-action"><strong>Feast of San Gennaro — 100th Anniversary.</strong> The oldest Italian-American street fair in the US marks its centennial on Mulberry Street in Little Italy. Expanded entertainment, 300+ vendors, runs 11am–11pm daily. Worth catching on a weekend pass-through downtown. <a href="https://sangennaronyc.org" style="color:#14263c;">sangennaronyc.org</a></div>
     </div>
   </div>
 
   <!-- Footer -->
-  <div style="background-color:#ffffff;padding:12px 28px 24px;border-radius:0 0 14px 14px;">
-    <div style="font-size:11px;color:#aaa;text-align:center;">Brief generated September 6, 2026</div>
+  <div class="footer">
+    <div class="footer-text">Brief generated September 7, 2026 · Central Park weather via NWS</div>
   </div>
 
 </div>
