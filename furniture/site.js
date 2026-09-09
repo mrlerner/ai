@@ -7,9 +7,15 @@ function cardHTML(it, {link}){
   const thumbs = it.photos.map((p,i)=>`<img src="${IMG(p)}" data-src="${IMG(p)}" class="${i===0?'on':''}" alt="">`).join('')
     + it.videos.map(v=>`<div class="vid" data-video="${VID(v)}">▶ VIDEO</div>`).join('');
   const title = link ? `<a class="itemlink" href="${PAGE(it)}">${it.name}</a>` : it.name;
+  const stage = it.photos.length
+    ? `<img class="main" src="${IMG(it.photos[0])}" alt="${it.name}">`
+    : `<div class="nophoto">Photos coming soon</div>`;
+  const priceLabel = it.priceLabel || "Approximate retail price";
+  const priceRow = it.price && it.price!=="TBD" ? `<dt>${priceLabel}</dt><dd>${it.price}${it.priceNote?` <span class="pnote">· ${it.priceNote}</span>`:''}</dd>` : "";
+  const askRow = it.asking ? `<dt>Asking price</dt><dd class="asking">${it.asking}${it.askingNote?` <span class="pnote">· ${it.askingNote}</span>`:''}</dd>` : "";
   return `
     <div class="gallery">
-      <div class="stage"><img class="main" src="${IMG(it.photos[0])}" alt="${it.name}"></div>
+      <div class="stage">${stage}</div>
       <div class="thumbs">${thumbs}</div>
     </div>
     <div class="info">
@@ -17,7 +23,7 @@ function cardHTML(it, {link}){
       <h2>${title}</h2>
       <p class="brand">${it.brand}</p>
       <div class="desc">${it.desc.map(p=>`<p>${p}</p>`).join('')}</div>
-      <dl>${it.price && it.price!=="TBD" ? `<dt>2019 purchase price</dt><dd>${it.price} <span class="pnote">· ${it.priceNote}</span></dd>` : ""}${it.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+      <dl>${askRow}${priceRow}${it.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
       <div class="tags">${it.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
       ${it.note?`<div class="note">${it.note}</div>`:''}
     </div>`;
