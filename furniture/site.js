@@ -20,7 +20,6 @@ function cardHTML(it, {link}){
       <dl><dt>Retail price</dt><dd>${it.price} <span class="pnote">· ${it.priceNote}</span></dd>${it.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
       <div class="tags">${it.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
       ${it.note?`<div class="note">${it.note}</div>`:''}
-      ${link?`<p class="permalink"><a href="${PAGE(it)}">Open this item on its own page →</a></p>`:''}
     </div>`;
 }
 
@@ -45,10 +44,6 @@ function mountCard(container, it, opts){
   });
 }
 
-function sourcesHTML(items){
-  const links = items.flatMap(it => it.sources || []).map(([l,u])=>`<a href="${u}">${l}</a>`);
-  return links.length ? ` Sources: ${links.join(', ')}.` : '';
-}
 
 function render(){
   const main = document.getElementById('items');
@@ -63,9 +58,6 @@ function render(){
   });
 
   items.forEach(it => mountCard(main, it, {link: !only}));
-
-  const src = document.getElementById('sources');
-  if (src) src.innerHTML = sourcesHTML(items);
 }
 
 const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
