@@ -202,19 +202,53 @@ const ITEMS = [
   },
   {
     id: "mobican-bed",
-    sources: [["Design Quest – Mobican Lea Bed","https://www.designquest.biz/mobican-lea-bed-with-upholstered-headboard.html"], ["Design Quest – Mobican Alexia Night Tables","https://www.designquest.biz/mobican-alexia-2-drawer-night-table-with-glass-top.html"]],
-    eyebrow: "Bedroom set · Walnut",
-    name: "Mobican Lea Bed with Upholstered Headboard and Pair of Alexia Night Tables, Walnut",
+    sources: [["Design Quest – Mobican Lea Bed","https://www.designquest.biz/mobican-lea-bed-with-upholstered-headboard.html"]],
+    eyebrow: "Bed · Walnut",
+    name: "Mobican Lea Bed with Upholstered Headboard, Walnut",
     brand: "Mobican (Quebec, Canada)",
-    price: "$3,293 bed + $982 per night table",
-    priceNote: "Design Quest list prices, queen bed; king is $62 more",
+    price: "$3,293",
+    priceNote: "Design Quest list price, queen; king is $62 more",
     desc: [
-      "A Canadian-made walnut bedroom set. The Lea platform bed has an upholstered headboard in two dark gray panels, capped and framed in walnut, on a walnut rail base with gently splayed tapered legs. It takes a mattress only, on a European slat system.",
-      "The two Alexia night tables match in warm walnut: a single soft-close drawer with a notched integrated pull, an open shelf below, a finished back, and a dark ebony-tinted glass top. The drawer boxes are solid maple and stamped Mobican."
+      "A Canadian-made walnut platform bed. The Lea has an upholstered headboard in two dark gray panels, capped and framed in walnut, on a walnut rail base with gently splayed tapered legs. It takes a mattress only, on a European slat system.",
+      "The matching pair of Alexia night tables and the leather storage bench at the foot of the bed are listed separately."
     ],
-    specs: [["Bed (queen)","67\" W × 85½\" L × 40\" H, 11\" floor to mattress (measure to confirm queen vs. king)"],["Night tables","25\" W × 17½\" D × 19\" H each, 1 drawer with open shelf, ebony glass top"],["Materials","Walnut veneer and solid wood, maple drawer boxes, upholstered headboard"],["Condition","Used, good; headboard fabric shows some surface marks (see photos)"]],
-    tags: ["Mobican","Walnut","Made in Canada","Glass top","Bed + 2 night tables"],
-    photos: ["IMG_8513","IMG_8514","IMG_8510","IMG_8511","IMG_8512"],
+    specs: [["Bed (queen)","67\" W × 85½\" L × 40\" H, 11\" floor to mattress (measure to confirm queen vs. king)"],["Materials","Walnut veneer and solid wood, upholstered headboard"],["Condition","Used, good; headboard fabric shows some surface marks (see photos)"]],
+    tags: ["Mobican","Walnut","Made in Canada","Platform bed"],
+    photos: ["IMG_2641","IMG_2642","IMG_2643"],
+    videos: [],
+  },
+  {
+    id: "night-tables",
+    sources: [["Mobican – Alexia Night Table, 1 Drawer with Glass Top","https://mobican.com/en/product/alexia-night-table-1-drawer-with-glass-top/"], ["City Schemes – Mobican collection (pricing)","https://www.cityschemes.com/collections/mobican"]],
+    eyebrow: "Set of 2 · Night tables · Walnut",
+    name: "Pair of Mobican Alexia Night Tables, Walnut with Ebony Glass Top",
+    brand: "Mobican (Quebec, Canada)",
+    price: "$857 each",
+    priceNote: "Mobican list price via City Schemes, September 2026",
+    desc: [
+      "Two matching night tables from Mobican's Alexia collection, in warm walnut with a dark ebony-tinted glass top. Each has a single soft-close drawer with a notched integrated pull cut into the top edge, and an open shelf below.",
+      "The back is finished, so they can sit away from a wall. Drawer boxes are solid maple and stamped Mobican. They match the Lea bed also on this list."
+    ],
+    specs: [["Each","25\" W × 17½\" D × 19\" H"],["Storage","1 soft-close drawer, open shelf"],["Materials","Walnut veneer and solid wood, maple drawer box, tempered glass top"],["Condition","Used, good (see photos)"]],
+    tags: ["Set of 2","Mobican","Walnut","Made in Canada","Glass top"],
+    photos: ["IMG_2644","IMG_2646","IMG_2645","IMG_2647"],
+    videos: [],
+  },
+  {
+    id: "storage-bench",
+    sources: [["CB2 – Dusk Leather and Wood Storage Bench (archived listing)","https://web.archive.org/web/20200505083812/https://www.cb2.com/dusk-leather-and-wood-storage-bench/s206064"]],
+    eyebrow: "Bench · Storage",
+    name: "CB2 Dusk Leather and Wood Storage Bench",
+    brand: "CB2",
+    price: "$799",
+    priceNote: "CB2 regular price (2019–2020 listing); discontinued",
+    desc: [
+      "CB2's Dusk storage bench: a tufted, dark brown leather top on a warm walnut box, with a half circle of brass at the center and walnut veneer rays fanning out from it across the front. It sits on short tapered legs.",
+      "The leather lid lifts on soft-close hinges to a roomy storage compartment, sized for blankets and pillows. Made for the foot of a bed or an entryway."
+    ],
+    specs: [["Overall","58\" W × 17¼\" D × 18½\" H"],["Interior","56\" W × 15½\" D × 10¾\" H"],["Materials","Leather top, solid and veneer walnut frame, brass inlay, soft-close hinges"],["Condition","Used; leather shows some creasing and light scuffs (see photos)"]],
+    tags: ["Storage","Leather","Walnut","Brass","Discontinued"],
+    photos: ["IMG_2638","IMG_2639","IMG_2640"],
     videos: [],
   },
   {
@@ -230,7 +264,7 @@ const ITEMS = [
     ],
     specs: [["Style","Low platform, box side rails, stitched panel headboard"],["Fabric","Light gray heathered weave"],["Feet","Black block feet, recessed"],["Condition","Used, good; fabric clean in photos"]],
     tags: ["Upholstered","Platform","Light gray"],
-    photos: ["IMG_8515","IMG_8525","IMG_8518","IMG_8526","IMG_8527"],
+    photos: ["IMG_2650","IMG_2648","IMG_2651"],
     videos: [],
   },
   {
