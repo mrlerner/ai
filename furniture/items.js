@@ -232,6 +232,38 @@ const ITEMS = [
     tags: ["Upholstered","Platform","Light gray"],
     photos: ["IMG_8515","IMG_8525","IMG_8518","IMG_8526","IMG_8527"],
     videos: [],
+  },
+  {
+    id: "orange-armchair",
+    eyebrow: "Armchair · Upholstered",
+    name: "Mid-Century Armchair, Rust Orange Tweed with Walnut Legs",
+    brand: "Maker not yet confirmed",
+    price: "TBD",
+    priceNote: "no maker label visible in the photos",
+    desc: [
+      "A mid-century style lounge chair upholstered in a rust-orange heathered tweed weave. The tall, slightly reclined back is a single tight-upholstered panel with a gentle curve at the top, and the low boxy arms flare out from the seat with a welted edge. A loose, welted seat cushion sits on a tight deck.",
+      "Slim round tapered legs in a dark walnut finish are splayed outward. Comfortable as a reading chair or as a pair of accent chairs in a living room."
+    ],
+    specs: [["Style","Mid-century lounge chair, tight back, loose seat cushion"],["Fabric","Rust-orange heathered tweed weave, welted seams"],["Legs","Round tapered wood, dark walnut finish"],["Quantity","1"],["Condition","Used, good; fabric clean in photos"]],
+    tags: ["Mid-century","Rust orange","Walnut legs","Tweed"],
+    photos: ["IMG_8534","IMG_8535","IMG_8537"],
+    videos: [],
+  },
+  {
+    id: "reclaimed-dresser",
+    eyebrow: "Dresser · Reclaimed wood",
+    name: "Reclaimed Wood Gentleman's Chest, Mixed Planks with Black Drawers",
+    brand: "Maker not yet confirmed",
+    price: "TBD",
+    priceNote: "no maker label visible in the photos",
+    desc: [
+      "A tall dresser built from mixed reclaimed hardwood planks, each drawer and door front showing a different tone and grain, from pale weathered gray to deep red-brown. Two small drawers run across the top; below them, a column of three black-painted drawers with curved cutout pulls sits beside a single-door cabinet, and two full-width drawers finish the bottom.",
+      "Matte black round knobs on the wood fronts, and the whole case sits on short angled black feet. Plenty of storage for a bedroom or a large entry."
+    ],
+    specs: [["Layout","2 small top drawers, 3 black drawers + 1 door in the middle, 2 wide bottom drawers"],["Materials","Reclaimed mixed hardwood planks, black-painted drawer fronts, black metal knobs"],["Feet","Angled black wood feet"],["Condition","Used, good; reclaimed surfaces have the intended checks and nail marks"]],
+    tags: ["Reclaimed wood","Dresser","Gentleman's chest","Black accents"],
+    photos: ["IMG_8540","IMG_8538"],
+    videos: [],
   }
 ];
 
