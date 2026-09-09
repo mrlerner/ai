@@ -330,39 +330,6 @@ const ITEMS = [
     tags: ["BDI","Desk","Glass top","Keyboard drawer","Cable management"],
     photos: ["bdi-desk-2"],
     videos: [],
-  },
-  {
-    id: "fir-desk",
-    eyebrow: "Desk · Reclaimed fir · 60\" wide",
-    name: "Reclaimed Fir Desk on Black Steel Base",
-    brand: "Custom fabricated in Fremont, Seattle",
-    price: "$1,000",
-    priceLabel: "Original price",
-    asking: "$500",
-    desc: [
-      "A simple, solid work table: a thick top of reclaimed solid fir on a welded black steel base. Custom fabricated by a shop in Fremont, so it is one of a kind.",
-      "At 60 by 30 inches it fits two monitors with room to spare, and the plain steel base leaves the full width open underneath. Works as a desk, a craft table, or a compact dining table."
-    ],
-    specs: [["Overall","60\" L × 30\" W × 30\" H"],["Top","Solid reclaimed fir"],["Base","Black steel"],["Condition","Used, good; reclaimed fir has natural checks and grain variation"]],
-    tags: ["Reclaimed fir","Steel base","Custom made","Seattle made"],
-    photos: [],
-    videos: [],
-  },
-  {
-    id: "steelcase-credenza",
-    eyebrow: "Credenza · Vintage 1960s · Refurbished",
-    name: "Steelcase 1960s Credenza, Fully Refurbished",
-    brand: "Steelcase (USA), 1960s · restored in Ballard, Seattle",
-    price: "≈ $5,000",
-    priceLabel: "Original price",
-    desc: [
-      "A mid-century steel credenza from Steelcase, the maker of the classic tanker desk, professionally refurbished about ten years ago. Steelcase built these for offices in the 1960s, so the case is heavy-gauge steel that will outlast anything made today.",
-      "Believed to have been restored by Space Oddity Vintage Furniture Studio in Ballard, which specializes in stripping and refinishing vintage Steelcase pieces. Works as a media console, a sideboard, or office storage."
-    ],
-    specs: [["Era","1960s"],["Materials","Steel case, refinished"],["Condition","Refurbished about 2016; used since, good"]],
-    tags: ["Steelcase","Vintage","Mid-century","Refurbished"],
-    photos: [],
-    videos: [],
   }
 ];
 
