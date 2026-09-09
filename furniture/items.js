@@ -83,15 +83,15 @@ const ITEMS = [
   {
     id: "tv",
     eyebrow: "Electronics",
-    name: "Sony Bravia 85\" X950G 4K HDR TV with Soundbar",
+    name: "Sony Bravia 85\" X950G 4K HDR TV with Sonos Soundbar",
     brand: "Sony · XBR-85X950G (2019)",
     price: "$4,999.99",
     desc: [
       "Sony's 2019 flagship LED, the X950G, in the largest 85\" size. Full-array local dimming backlight, X1 Ultimate processor, 120 Hz native panel, and X-Wide Angle for even color off-axis. HDR10, Dolby Vision, HLG and IMAX Enhanced; Android TV with Google Assistant, Chromecast built in, and Alexa compatible.",
-      "Wall mounted with a full-width fabric-grille soundbar beneath it, cut to the same width as the panel. Thin brushed-metal bezel, Sony badge centered on the bottom edge. Buyer would need to arrange removal from the wall mount."
+      "Wall mounted, with a Sonos soundbar housed behind the full-width fabric grille beneath the screen, cut to the same width as the panel. Thin brushed-metal bezel, Sony badge centered on the bottom edge. Buyer would need to arrange removal from the wall mount."
     ],
-    specs: [["Model","XBR-85X950G"],["Screen","84.6\" diagonal, 4K UHD 3840 × 2160, 120 Hz"],["Backlight","Full-array LED with local dimming"],["HDR","HDR10, Dolby Vision, HLG, IMAX Enhanced"],["Inputs","4 × HDMI (eARC), 3 × USB, Ethernet, Wi-Fi, Bluetooth"],["Smart","Android TV, Google Assistant, Chromecast, Alexa compatible"],["Includes","Full-width soundbar mounted below the screen, sized to match the 85\" panel"],["Condition","Used, working"]],
-    tags: ["Sony","85 inch","Full-array local dimming","Wall mounted","Soundbar included"],
+    specs: [["Model","XBR-85X950G"],["Screen","84.6\" diagonal, 4K UHD 3840 × 2160, 120 Hz"],["Backlight","Full-array LED with local dimming"],["HDR","HDR10, Dolby Vision, HLG, IMAX Enhanced"],["Inputs","4 × HDMI (eARC), 3 × USB, Ethernet, Wi-Fi, Bluetooth"],["Smart","Android TV, Google Assistant, Chromecast, Alexa compatible"],["Includes","Sonos soundbar (model not yet confirmed), housed behind the full-width fabric grille below the screen"],["Condition","Used, working"]],
+    tags: ["Sony","85 inch","Full-array local dimming","Wall mounted","Sonos soundbar included"],
     photos: ["IMG_8480","IMG_8484","IMG_2628"],
     videos: [],
   },
