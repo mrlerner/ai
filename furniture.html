@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Furniture List</title>
+<style>
+  :root{
+    --bg:#f6f3ee; --card:#ffffff; --ink:#1d1b18; --muted:#6b665e; --line:#e6e1d8;
+    --accent:#8a5a2b; --tag:#efe7dc;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
+  header{max-width:1100px;margin:0 auto;padding:48px 24px 8px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:44px;letter-spacing:-.01em;margin:0 0 8px}
+  .lede{color:var(--muted);max-width:720px;margin:0 0 20px}
+  .summary{max-width:1100px;margin:0 auto 40px;padding:0 24px;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:600;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#faf8f4}
+  tr:last-child td{border-bottom:0}
+  td.num{white-space:nowrap}
+  a{color:var(--accent)}
+  main{max-width:1100px;margin:0 auto;padding:0 24px 80px;display:grid;gap:36px}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+  @media (max-width:820px){.item{grid-template-columns:1fr}}
+  .gallery{background:#111;position:relative;min-width:0}
+  .gallery .main{width:100%;aspect-ratio:4/3;object-fit:contain;display:block;background:#111;cursor:zoom-in}
+  .thumbs{display:flex;gap:6px;padding:8px;overflow-x:auto;background:#1a1a1a}
+  .thumbs img,.thumbs .vid{width:72px;height:54px;object-fit:cover;border-radius:6px;cursor:pointer;opacity:.6;border:2px solid transparent;flex:0 0 auto}
+  .thumbs img.on,.thumbs .vid.on{opacity:1;border-color:#fff}
+  .thumbs .vid{display:grid;place-items:center;background:#333;color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em}
+  .gallery video{width:100%;aspect-ratio:4/3;background:#111;display:block}
+  .info{padding:28px 28px 24px;min-width:0}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 6px}
+  h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:28px;margin:0 0 4px;line-height:1.2}
+  .brand{color:var(--muted);margin:0 0 16px;font-size:15px}
+  .pnote{color:var(--muted)}
+  .desc p{margin:0 0 12px}
+  dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:16px 0 0;font-size:14px}
+  dt{color:var(--muted)}
+  dd{margin:0}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}
+  .tag{background:var(--tag);border-radius:999px;padding:4px 10px;font-size:12px;color:#4a4034}
+  .note{margin-top:16px;padding:12px 14px;background:#fff8ec;border:1px solid #f0e2c4;border-radius:10px;font-size:14px;color:#5a4a2c}
+  .status{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);font-size:14px;color:var(--muted)}
+  .status b{color:var(--ink)}
+  footer{max-width:1100px;margin:0 auto;padding:0 24px 60px;color:var(--muted);font-size:13px}
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;place-items:center;z-index:50;cursor:zoom-out}
+  .lb.open{display:grid}
+  .lb img{max-width:96vw;max-height:94vh;object-fit:contain}
+</style>
+</head>
+<body>
+<header>
+  <h1>Furniture List</h1>
+</header>
+
+<div class="summary">
+  <table>
+    <thead><tr><th>Item</th><th>Maker / Designer</th><th>Retail price</th><th>Status</th></tr></thead>
+    <tbody id="summaryBody"></tbody>
+  </table>
+</div>
+
+<main id="items"></main>
+
+<footer>
+  Retail prices are list prices from the maker or retailer as of September 2026 (or the last published price for discontinued pieces). They are for reference only and are not the asking prices. Sources: <a href="https://www.dwr.com/kitchen-dining-bar-counter-stools/bottega-piston-stool/6904.html">DWR – Bottega Piston Stool</a>, <a href="https://www.cb2.ae/en/product/moet-charcoal-leather-tufted-sofa/484783_CB2">CB2 – Moet Charcoal Leather Tufted Sofa</a>, <a href="https://www.dwr.com/living-sofas/jonas-sofa/2195231.html">DWR – Jonas Sofa</a>, <a href="https://www.westelm.com/products/celine-bench-metal-legs-h13652/">West Elm – Celine Bench, Metal Legs</a>.
+</footer>
+
+<div class="lb" id="lb"><img id="lbImg" alt=""></div>
+
+<script>
+// ---- Edit this list to change names, descriptions, prices, or status. ----
+const ITEMS = [
+  {
+    id: "stools",
+    eyebrow: "Set of 3 · Bar / counter stools",
+    name: "Bottega Piston Stools, Black Leather",
+    brand: "Frag (Italy) · sold by Design Within Reach · designed by Renzo Fauciglietti &amp; Graziella Bianchi",
+    price: "$1,895 each",
+    priceNote: "DWR list price · $5,685 for the set of three · currently on sale at DWR for $1,326.50 each",
+    desc: [
+      "The classic DWR piston stool. Black split-grain leather is hand-sewn over a lightly padded steel frame, on a brushed stainless-steel column with a square plate base and oval footrest.",
+      "A lever under the seat raises or lowers the seat with a gas piston, so the same stool works at counter height or bar height. The seat swivels a full 360°. Made in Italy, Frag logo embossed on the leather."
+    ],
+    specs: [["Seat height","21¾\" to 31½\" (adjustable)"],["Overall","38⅝\" H × 17⅜\" W × 18½\" D"],["Materials","Split-grain leather, steel frame, stainless-steel piston and base"],["Condition","Used, light wear to leather and base plates (see photos)"]],
+    tags: ["Set of 3","Adjustable height","Swivel","Made in Italy"],
+    photos: ["IMG_8449","IMG_8455","IMG_8453","IMG_8447","IMG_8456","IMG_8454","IMG_8448"],
+    videos: ["IMG_8452"],
+    status: "For sale"
+  },
+  {
+    id: "leather-sofa",
+    eyebrow: "Sofa · Leather",
+    name: "Moet Charcoal Leather Tufted Sofa",
+    brand: "CB2 · designed by Jannis Ellenberger (Ellenberger Studio, Bremen), 2020",
+    price: "≈ $4,300",
+    priceNote: "discontinued in the US; currently listed by CB2 UAE at AED 15,920, which converts to about US$4,300",
+    desc: [
+      "A low, deep 96-inch sofa in charcoal-black leather with a button-tufted back and seat, wrapped over an open acacia-wood frame. The leather back and side panels are set into the wood frame, so the sofa looks finished from every angle and can float in a room.",
+      "Designed for CB2 by German designer Jannis Ellenberger, whose work for CB2 also includes the Brace sofa and Drommen bed. The leather has a natural, lightly distressed finish that varies across the hide."
+    ],
+    specs: [["Overall","95¾\" W × 35\" D × 29¾\" H"],["Materials","Leather upholstery, solid acacia wood frame"],["Condition","Used, leather shows natural patina; frame in good shape (see photos)"]],
+    tags: ["Leather","Acacia frame","Tufted","Discontinued"],
+    photos: ["IMG_8465","IMG_8466","IMG_8467","IMG_8461","IMG_8468","IMG_8469","IMG_8463","IMG_8464","IMG_8470","IMG_8471","IMG_8462"],
+    videos: ["IMG_8460"],
+    status: "For sale"
+  },
+  {
+    id: "fabric-sofa",
+    eyebrow: "Sofa · Fabric",
+    name: "Jonas Sofa, Light Gray with Black Legs",
+    brand: "Design Within Reach · designed by Jonas Wagell (Sweden), 2016",
+    price: "$4,295",
+    priceNote: "DWR base list price · $4,495 to $6,095 depending on fabric",
+    desc: [
+      "DWR's best-known modern sofa. Swedish designer Jonas Wagell gave it feather-and-fiber back cushions with eased edges, gently arced arms, and slender, tall cast-aluminum legs, here in the black powder-coat finish.",
+      "Upholstered in a light gray textured weave. Two loose seat cushions and two back cushions; the back cushions were updated in 2019 for better shape retention. Made in the USA."
+    ],
+    specs: [["Overall","87½\" W × 37½\" D × 32½\" H"],["Seat","20\" H × 70\" W × 22\" D"],["Legs","Cast aluminum, black powder-coat, 7½\""],["Condition","Used, good; fabric clean (see photos)"]],
+    tags: ["Feather back cushions","Made in USA","87.5\" wide"],
+    photos: ["IMG_8477","IMG_8478","IMG_8479"],
+    videos: ["IMG_8473","IMG_8476"],
+    status: "For sale"
+  },
+  {
+    id: "bench",
+    eyebrow: "Bench · Velvet",
+    name: "Celine Bench, Pewter Distressed Velvet with Brass Legs",
+    brand: "West Elm",
+    price: "$699",
+    priceNote: "West Elm list price for this fabric and finish · the Celine Bench with metal legs runs $549 to $799 depending on fabric",
+    desc: [
+      "Inspired by the sculptural forms of Italian mid-century design, the Celine Bench curves a low upholstered back around a thick, reversible cushion. Upholstered in West Elm's Performance Distressed Velvet in Pewter, on slender tapered metal legs in an antique brass finish.",
+      "Works at the foot of a bed, in an entryway, or as extra seating in a living room. Solid wood frame, GREENGUARD Gold certified, contract grade."
+    ],
+    specs: [["Overall","52\" W × 19\" D × 23¼\" H"],["Fabric","Performance Distressed Velvet, Pewter"],["Legs","Tapered metal, antique brass finish, removable"],["Condition","Used, good; some pile variation typical of distressed velvet"]],
+    tags: ["Velvet","Brass legs","52\" wide"],
+    photos: ["IMG_8489","IMG_8488"],
+    videos: ["IMG_8490"],
+    status: "For sale"
+  },
+  {
+    id: "coffee-table",
+    eyebrow: "Coffee table · Glass",
+    name: "Sculptural Black Glass Coffee Table",
+    brand: "Maker not yet confirmed",
+    price: "TBD",
+    priceNote: "no maker label found in the photos; see note below",
+    desc: [
+      "A freeform, rounded-triangle top of smoked black tempered glass floats on a matte black sculpted base shaped like a boat hull or a fin, with no legs. The glass reads as a black mirror and the base tapers to a narrow footprint, so the table looks very light for its size.",
+      "Pairs well with either of the sofas above and sits at a low lounge height."
+    ],
+    specs: [["Top","Freeform black tempered glass"],["Base","Matte black sculpted base (lacquered composite or fiberglass)"],["Condition","Used, good; glass unchipped in photos"]],
+    tags: ["Black glass","Sculptural base","Freeform"],
+    photos: ["IMG_8486","IMG_8485","IMG_8487"],
+    videos: [],
+    note: "Reverse image searches (Google Lens, Bing) did not return an exact match. The closest designs are Driade's Waterfall table by Fredrikson Stallard ($5,775, but 85\" long and all polyurethane) and BDI's Fin table, and neither is this piece. Check the underside of the base for a label to pin down the maker and retail price.",
+    status: "For sale"
+  },
+  {
+    id: "tv",
+    eyebrow: "Electronics",
+    name: "Sony Bravia 85\" X950G 4K HDR TV with Soundbar",
+    brand: "Sony · XBR-85X950G (2019)",
+    price: "$4,999.99",
+    priceNote: "Sony launch price, 2019 · discontinued; used 85\" X950G sets change hands for roughly $600 to $1,200 in 2026",
+    desc: [
+      "Sony's 2019 flagship LED, the X950G, in the largest 85\" size. Full-array local dimming backlight, X1 Ultimate processor, 120 Hz native panel, and X-Wide Angle for even color off-axis. HDR10, Dolby Vision, HLG and IMAX Enhanced; Android TV with Google Assistant, Chromecast built in, and Alexa compatible.",
+      "Wall mounted with a full-width fabric-grille soundbar beneath it, cut to the same width as the panel. Thin brushed-metal bezel, Sony badge centered on the bottom edge. Buyer would need to arrange removal from the wall mount."
+    ],
+    specs: [["Model","XBR-85X950G"],["Screen","84.6\" diagonal, 4K UHD 3840 × 2160, 120 Hz"],["Backlight","Full-array LED with local dimming"],["HDR","HDR10, Dolby Vision, HLG, IMAX Enhanced"],["Inputs","4 × HDMI (eARC), 3 × USB, Ethernet, Wi-Fi, Bluetooth"],["Smart","Android TV, Google Assistant, Chromecast, Alexa compatible"],["Includes","Full-width soundbar mounted below the screen, sized to match the 85\" panel; no maker label found (likely a made-to-measure bar such as a Leon Horizon)"],["Condition","Used, working"]],
+    tags: ["Sony","85 inch","Full-array local dimming","Wall mounted","Soundbar included"],
+    photos: ["IMG_8480","IMG_8483","IMG_8484","IMG_2628"],
+    videos: [],
+    note: "TV model confirmed from the rear label (XBR-85X950G, serial 4003908). The soundbar carries no visible logo or model label; a bar custom-cut to the TV width is typically a passive unit from a custom-install brand (Leon, Sonance, James) driven by a separate receiver, so the buyer should confirm what amplifies it.",
+    status: "For sale"
+  }
+];
+
+const IMG = id => `furniture/images/${id}.jpg`;
+const VID = id => `furniture/videos/${id}.mp4`;
+
+function render(){
+  const main = document.getElementById('items');
+  const sum = document.getElementById('summaryBody');
+  ITEMS.forEach(it => {
+    // summary row
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><a href="#${it.id}">${it.name}</a></td><td>${it.brand.split(' · ')[0]}</td><td class="num">${it.price}</td><td>${it.status}</td>`;
+    sum.appendChild(tr);
+
+    // card
+    const sec = document.createElement('section');
+    sec.className = 'item'; sec.id = it.id;
+    const thumbs = it.photos.map((p,i)=>`<img src="${IMG(p)}" data-src="${IMG(p)}" class="${i===0?'on':''}" alt="">`).join('')
+      + it.videos.map(v=>`<div class="vid" data-video="${VID(v)}">▶ VIDEO</div>`).join('');
+    sec.innerHTML = `
+      <div class="gallery">
+        <div class="stage"><img class="main" src="${IMG(it.photos[0])}" alt="${it.name}"></div>
+        <div class="thumbs">${thumbs}</div>
+      </div>
+      <div class="info">
+        <p class="eyebrow">${it.eyebrow}</p>
+        <h2>${it.name}</h2>
+        <p class="brand">${it.brand}</p>
+        <div class="desc">${it.desc.map(p=>`<p>${p}</p>`).join('')}</div>
+        <dl><dt>Retail price</dt><dd>${it.price} <span class="pnote">· ${it.priceNote}</span></dd>${it.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+        <div class="tags">${it.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        ${it.note?`<div class="note">${it.note}</div>`:''}
+        <div class="status">Status: <b>${it.status}</b></div>
+      </div>`;
+    main.appendChild(sec);
+
+    const stage = sec.querySelector('.stage');
+    const tEls = [...sec.querySelectorAll('.thumbs > *')];
+    tEls.forEach(t => t.addEventListener('click', () => {
+      tEls.forEach(x=>x.classList.remove('on')); t.classList.add('on');
+      if (t.dataset.video){
+        stage.innerHTML = `<video controls autoplay muted playsinline src="${t.dataset.video}"></video>`;
+      } else {
+        stage.innerHTML = `<img class="main" src="${t.dataset.src}" alt="${it.name}">`;
+      }
+    }));
+    stage.addEventListener('click', e => {
+      if (e.target.tagName === 'IMG'){ openLb(e.target.src); }
+    });
+  });
+}
+const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
+function openLb(src){ lbImg.src = src; lb.classList.add('open'); }
+lb.addEventListener('click', ()=>lb.classList.remove('open'));
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') lb.classList.remove('open'); });
+render();
+</script>
+</body>
+</html>
