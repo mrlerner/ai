@@ -328,7 +328,7 @@ const ITEMS = [
     ],
     specs: [["Overall","67¾\" W × 32¼\" D × 29¾\" H"],["Top","Black satin-etched tempered glass"],["Storage","2 side drawers, 1 flip-front keyboard drawer, non-slip liners"],["Materials","Stained solid wood and hardwood veneer, tempered glass, powder-coated steel"],["Finish","To confirm (offered in charcoal stained ash, chocolate stained walnut, natural walnut)"],["Weight","183 lb"],["Condition","Used, good; product photos shown are BDI's, in charcoal stained ash"]],
     tags: ["BDI","Desk","Glass top","Keyboard drawer","Cable management"],
-    photos: ["bdi-desk-1", "bdi-desk-2", "bdi-desk-3", "bdi-desk-4", "bdi-desk-5", "bdi-desk-6"],
+    photos: ["bdi-desk-2"],
     videos: [],
   },
   {
