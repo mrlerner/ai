@@ -8,7 +8,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system
 header{max-width:1100px;margin:0 auto;padding:48px 24px 8px}
 h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:44px;letter-spacing:-.01em;margin:0 0 8px}
 .lede{color:var(--muted);max-width:720px;margin:0 0 20px}
-.summary{max-width:1100px;margin:0 auto 40px;padding:0 24px;overflow-x:auto}
+
 table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
 th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-weight:600;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#faf8f4}
@@ -21,7 +21,7 @@ main{max-width:1100px;margin:0 auto;padding:0 24px 80px;display:grid;gap:36px}
 @media (max-width:600px){
   header{padding:32px 16px 8px}
   h1{font-size:34px}
-  .summary,main,footer{padding-left:16px;padding-right:16px}
+  main,footer{padding-left:16px;padding-right:16px}
   table{table-layout:fixed;font-size:14px}
   th,td{padding:10px 6px;overflow-wrap:break-word}
   th:nth-child(1){width:42%} th:nth-child(2){width:26%} th:nth-child(3){width:32%}

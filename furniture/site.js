@@ -50,13 +50,6 @@ function render(){
   const only = main.dataset.item;
   const items = only ? ITEMS.filter(it => it.id === only) : ITEMS;
 
-  const sum = document.getElementById('summaryBody');
-  if (sum) items.forEach(it => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td><a href="${PAGE(it)}">${it.name}</a></td><td>${it.brand.split(' · ')[0]}</td><td class="num">${it.price}</td>`;
-    sum.appendChild(tr);
-  });
-
   items.forEach(it => mountCard(main, it, {link: !only}));
 }
 
