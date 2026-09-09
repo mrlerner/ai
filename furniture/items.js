@@ -350,56 +350,6 @@ const ITEMS = [
     videos: [],
   },
   {
-    id: "setu-chair",
-    sources: [["Herman Miller – Setu Chair","https://store.hermanmiller.com/office-chairs-performance-seating/setu-chair/7328.html?lang=en_US&amp;sku=643726"]],
-    eyebrow: "Office chair · Multipurpose",
-    name: "Herman Miller Setu Multipurpose Chair, Graphite / Alloy",
-    brand: "Herman Miller · designed by Studio 7.5 (Berlin)",
-    price: "$835",
-    priceLabel: "Original price",
-    asking: "$400",
-    desc: [
-      "Herman Miller's Setu chair in graphite with the alloy (silver) frame. The Kinematic Spine flexes with you as you lean, so the chair fits without any adjustment other than seat height. The Lyris suspension seat and back is a breathable elastomeric weave that supports without foam.",
-      "Configured with the 5-star base, standard seat height, and ribbon arms. Weighs about 19 pounds but supports up to 300, and it is 90 percent recyclable. Herman Miller backs it with a 12-year warranty."
-    ],
-    specs: [["Overall","38⅜\" H × 25\" W × 17¼\" D"],["Seat height","Standard, about 15½\" to 20\""],["Configuration","5-star base, ribbon arms, Lyris suspension seat and back, graphite / alloy"],["Materials","Polypropylene and aluminum frame, elastomeric suspension, plastic casters"],["Condition","Used, good"]],
-    tags: ["Herman Miller","Setu","Graphite","12-year warranty"],
-    photos: [],
-    videos: [],
-  },
-  {
-    id: "dining-set",
-    eyebrow: "Dining set · Table + 6 chairs",
-    name: "Dining Table with 6 Velvet Dining Chairs",
-    brand: "Maker not yet confirmed · purchased 2018",
-    price: "$3,695 table · $329 per chair",
-    priceLabel: "Original price",
-    desc: [
-      "A dining table with six matching velvet-upholstered dining chairs, bought together in 2018. Sold as a set.",
-      "The table has one minor water mark on the top. It is not noticeable in everyday use, and the top can be refinished if you want it perfect."
-    ],
-    specs: [["Set","1 table, 6 velvet dining chairs"],["Condition","Used, good; minor water mark on the table top (refinishable)"]],
-    tags: ["Set","Velvet chairs","Seats 6"],
-    photos: [],
-    videos: [],
-  },
-  {
-    id: "propane-heaters",
-    eyebrow: "Outdoor · Pair of propane heaters",
-    name: "Two Propane Patio Heaters with Blue Rhino Tanks",
-    brand: "Maker not yet confirmed",
-    price: "≈ $100 each",
-    priceLabel: "Original price",
-    desc: [
-      "Two propane patio heaters, four to five years old, each with its own Blue Rhino propane tank included. Ready to go for a balcony or patio as the evenings cool off.",
-      "Sold as a pair or separately."
-    ],
-    specs: [["Quantity","2 heaters, 2 propane tanks"],["Age","4 to 5 years"],["Condition","Used outdoors, working"]],
-    tags: ["Outdoor","Set of 2","Propane","Tanks included"],
-    photos: [],
-    videos: [],
-  },
-  {
     id: "steelcase-credenza",
     eyebrow: "Credenza · Vintage 1960s · Refurbished",
     name: "Steelcase 1960s Credenza, Fully Refurbished",
