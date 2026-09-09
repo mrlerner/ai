@@ -264,6 +264,23 @@ const ITEMS = [
     tags: ["Reclaimed wood","Dresser","Gentleman's chest","Black accents"],
     photos: ["IMG_8540","IMG_8538"],
     videos: [],
+  },
+  {
+    id: "corridor-sv-credenza",
+    eyebrow: "Media credenza · Louvered · 79\" wide",
+    name: "BDI Corridor SV 7129 Media Credenza, Charcoal Stained Ash",
+    brand: "BDI (USA) · designed by Matthew Weatherly",
+    price: "$3,499",
+    priceNote: "BDI list price via The Century House, September 2026",
+    sources: [["The Century House – BDI Corridor SV 7129","https://centuryhouseinc.com/product/bdi-corridor-sv-7129-media-console/"]],
+    desc: [
+      "The larger sibling of the Corridor console above: BDI's Corridor SV 7129 in charcoal-stained ash, a 79-inch four-door credenza raised on a slim black steel leg frame. The louvered solid-wood doors pass remote signals and let components breathe, and the top is black satin-etched tempered glass.",
+      "Behind the doors are two side compartments and a wide center compartment, each with adjustable shelves and flow-through ventilation. Rated for a TV up to 80 inches with a soundbar and six to eight components. The slim 15½-inch depth also works as a sideboard in a dining room or a long console in an entry."
+    ],
+    specs: [["Overall","79\" W × 15½\" D × 30\" H (10\" legs)"],["Doors","4 louvered doors, solid wood"],["Interior","2 side compartments (19\" W) and 1 center compartment (37.9\" W), adjustable shelves"],["Top","Black satin-etched tempered glass"],["Materials","Stained ash veneer and solid hardwood, powder-coated steel legs with levelers"],["Condition","Used, good; louvers intact, glass unchipped in photos"]],
+    tags: ["BDI","Charcoal ash","Glass top","Steel legs","79\" wide"],
+    photos: ["IMG_2630","IMG_2631","IMG_2632"],
+    videos: [],
   }
 ];
 
