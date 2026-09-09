@@ -64,5 +64,6 @@ main[data-item] h2{display:none}
 main[data-item] .brand{margin-top:0}
 
 .gallery.empty{background:#f1efea}
+.gallery.empty .thumbs{display:none}
 .nophoto{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;min-height:240px;color:var(--muted);font-size:15px}
 dd.asking{font-weight:600}
