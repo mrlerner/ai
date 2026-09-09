@@ -67,3 +67,7 @@ main[data-item] .brand{margin-top:0}
 .gallery.empty .thumbs{display:none}
 .nophoto{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;min-height:240px;color:var(--muted);font-size:15px}
 dd.asking{font-weight:600}
+
+.interest{margin:18px 0 0}
+.btn{display:inline-block;padding:10px 16px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px}
+.btn:hover{background:#6f4721}

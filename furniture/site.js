@@ -2,6 +2,10 @@
 const IMG = id => `images/${id}.jpg`;
 const VID = id => `videos/${id}.mp4`;
 const PAGE = it => `${it.id}.html`;
+const BASE = 'https://mrlerner.github.io/ai/furniture/';
+const CONTACT = 'serena_laursen@outlook.com';
+const PLAIN = s => String(s).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&quot;/g,'"');
+const MAILTO = it => { const n = PLAIN(it.name); return `mailto:${CONTACT}?subject=${encodeURIComponent("I'm interested in: " + n)}&body=${encodeURIComponent("Hi Serena,\n\nI'm interested in the " + n + ".\n" + BASE + PAGE(it) + "\n\n")}`; };
 
 function cardHTML(it, {link}){
   const thumbs = it.photos.map((p,i)=>`<img src="${IMG(p)}" data-src="${IMG(p)}" class="${i===0?'on':''}" alt="">`).join('')
@@ -26,6 +30,7 @@ function cardHTML(it, {link}){
       <dl>${askRow}${priceRow}${it.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
       <div class="tags">${it.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
       ${it.note?`<div class="note">${it.note}</div>`:''}
+      <p class="interest"><a class="btn" href="${MAILTO(it)}">I'm interested in this</a></p>
     </div>`;
 }
 
