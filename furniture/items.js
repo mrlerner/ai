@@ -243,14 +243,13 @@ const ITEMS = [
     name: "West Elm Ombre Pop Indoor/Outdoor Rug, Iron",
     brand: "West Elm",
     price: "$399 (8' × 10') or $699 (9' × 12')",
-    priceNote: "West Elm 2019 list prices; measure to confirm size",
     desc: [
-      "West Elm's Ombre Pop rug: a handwoven, flat-pile indoor/outdoor rug in 100% recycled polyester that feels close to wool. The Iron colorway reads as a soft oatmeal ground with faint horizontal linework and darker flecks, finished with a knotted fringe at each end.",
-      "It is reversible, shed-resistant and rated for outdoor use, so it works under a bed, in an entry, or on a covered patio. Made in India. Seen in the bed and night-table photos; it is the rug under the walnut bedroom set."
+      "West Elm's Ombre Pop rug in the Iron colorway: a handwoven, reversible flatweave in 100% recycled polyester with a softer-than-wool feel. Bands of black, gray and oatmeal are broken up by pops of yellow, orange and blue stripes, so it brings color without reading as busy.",
+      "Rated for indoor and outdoor use and shed-resistant, so it works in a living room, an entry, or on a covered patio. Made in India. Photos are West Elm's product images."
     ],
-    specs: [["Size","8' × 10' or 9' × 12' (to be measured)"],["Pile","Flat, 6 mm"],["Materials","100% recycled polyester, handwoven, reversible"],["Care","Vacuum on low without a beater bar; professional cleaning for stains"],["Condition","Used, good; some flattening in the traffic path (see photos)"]],
+    specs: [["Size","To be measured (made in 5' × 8', 8' × 10' and 9' × 12')"],["Pile","Flat, 6 mm"],["Materials","100% recycled polyester, handwoven, reversible"],["Care","Vacuum on low without a beater bar; blot spills"],["Condition","Used, good"]],
     tags: ["West Elm","Indoor/outdoor","Recycled polyester","Reversible","Fringe"],
-    photos: ["IMG_2647","IMG_2646","IMG_2640","IMG_2638"],
+    photos: ["rug-hero","rug-alt-1","rug-alt-2","rug-alt-3","rug-alt-4"],
     videos: [],
   },
   {
@@ -327,9 +326,9 @@ const ITEMS = [
       "The executive desk from BDI's Corridor Office collection, matching the two Corridor media pieces in this list. A satin-etched tempered glass work surface sits on a louvered hardwood case with a full modesty panel, so the desk looks finished from the front and can float in a room.",
       "Two side storage drawers and a flip-front keyboard drawer, all lined with non-slip material, plus wire management channels to keep cords out of sight. The satin-etched glass has a soft matte finish that resists scratches and fingerprints."
     ],
-    specs: [["Overall","67¾\" W × 32¼\" D × 29¾\" H"],["Top","Black satin-etched tempered glass"],["Storage","2 side drawers, 1 flip-front keyboard drawer, non-slip liners"],["Materials","Stained solid wood and hardwood veneer, tempered glass, powder-coated steel"],["Finish","To confirm (offered in charcoal stained ash, chocolate stained walnut, natural walnut)"],["Weight","183 lb"],["Condition","Used, good"]],
+    specs: [["Overall","67¾\" W × 32¼\" D × 29¾\" H"],["Top","Black satin-etched tempered glass"],["Storage","2 side drawers, 1 flip-front keyboard drawer, non-slip liners"],["Materials","Stained solid wood and hardwood veneer, tempered glass, powder-coated steel"],["Finish","To confirm (offered in charcoal stained ash, chocolate stained walnut, natural walnut)"],["Weight","183 lb"],["Condition","Used, good; product photos shown are BDI's, in charcoal stained ash"]],
     tags: ["BDI","Desk","Glass top","Keyboard drawer","Cable management"],
-    photos: [],
+    photos: ["bdi-desk-1", "bdi-desk-2", "bdi-desk-3", "bdi-desk-4", "bdi-desk-5", "bdi-desk-6"],
     videos: [],
   },
   {
