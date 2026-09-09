@@ -8,7 +8,6 @@ const ITEMS = [
     name: "Bottega Piston Stools, Dark Brown Leather",
     brand: "Frag (Italy) · sold by Design Within Reach · designed by Renzo Fauciglietti &amp; Graziella Bianchi",
     price: "$1,326.50 each",
-    priceNote: "current DWR sale price",
     desc: [
       "The classic DWR piston stool. Dark brown split-grain leather is hand-sewn over a lightly padded steel frame, on a brushed stainless-steel column with a square plate base and oval footrest.",
       "A lever under the seat raises or lowers the seat with a gas piston, so the same stool works at counter height or bar height. The seat swivels a full 360°. Made in Italy, Frag logo embossed on the leather."
@@ -25,7 +24,6 @@ const ITEMS = [
     name: "Moet Charcoal Leather Tufted Sofa",
     brand: "CB2 · designed by Jannis Ellenberger (Ellenberger Studio, Bremen), 2020",
     price: "≈ $4,300",
-    priceNote: "discontinued in the US; converted from CB2 UAE's current listing",
     desc: [
       "A low, deep 96-inch sofa in charcoal-black leather with a button-tufted back and seat, wrapped over an open acacia-wood frame. The leather back and side panels are set into the wood frame, so the sofa looks finished from every angle and can float in a room.",
       "Designed for CB2 by German designer Jannis Ellenberger, whose work for CB2 also includes the Brace sofa and Drommen bed. The leather has a natural, lightly distressed finish that varies across the hide."
@@ -42,7 +40,6 @@ const ITEMS = [
     name: "Jonas Sofa, Light Gray with Black Legs",
     brand: "Design Within Reach · designed by Jonas Wagell (Sweden), 2016",
     price: "$4,295",
-    priceNote: "DWR list price in the base fabric",
     desc: [
       "DWR's best-known modern sofa. Swedish designer Jonas Wagell gave it feather-and-fiber back cushions with eased edges, gently arced arms, and slender, tall cast-aluminum legs, here in the black powder-coat finish.",
       "Upholstered in a light gray textured weave. Two loose seat cushions and two back cushions; the back cushions were updated in 2019 for better shape retention. Made in the USA."
@@ -59,7 +56,6 @@ const ITEMS = [
     name: "Celine Bench, Pewter Distressed Velvet with Brass Legs",
     brand: "West Elm",
     price: "$699",
-    priceNote: "West Elm list price for this fabric and finish",
     desc: [
       "Inspired by the sculptural forms of Italian mid-century design, the Celine Bench curves a low upholstered back around a thick, reversible cushion. Upholstered in West Elm's Performance Distressed Velvet in Pewter, on slender tapered metal legs in an antique brass finish.",
       "Works at the foot of a bed, in an entryway, or as extra seating in a living room. Solid wood frame, GREENGUARD Gold certified, contract grade."
@@ -75,7 +71,6 @@ const ITEMS = [
     name: "Sculptural Black Glass Coffee Table",
     brand: "Maker not yet confirmed",
     price: "TBD",
-    priceNote: "no maker label found on the piece",
     desc: [
       "A freeform, rounded-triangle top of smoked black tempered glass floats on a matte black sculpted base shaped like a boat hull or a fin, with no legs. The glass reads as a black mirror and the base tapers to a narrow footprint, so the table looks very light for its size.",
       "Pairs well with either of the sofas above and sits at a low lounge height."
@@ -91,7 +86,6 @@ const ITEMS = [
     name: "Sony Bravia 85\" X950G 4K HDR TV with Soundbar",
     brand: "Sony · XBR-85X950G (2019)",
     price: "$4,999.99",
-    priceNote: "Sony launch price, 2019; discontinued",
     desc: [
       "Sony's 2019 flagship LED, the X950G, in the largest 85\" size. Full-array local dimming backlight, X1 Ultimate processor, 120 Hz native panel, and X-Wide Angle for even color off-axis. HDR10, Dolby Vision, HLG and IMAX Enhanced; Android TV with Google Assistant, Chromecast built in, and Alexa compatible.",
       "Wall mounted with a full-width fabric-grille soundbar beneath it, cut to the same width as the panel. Thin brushed-metal bezel, Sony badge centered on the bottom edge. Buyer would need to arrange removal from the wall mount."
@@ -108,7 +102,6 @@ const ITEMS = [
     name: "Orb Upholstered Dining Chair, Charcoal Tweed, Metal Legs",
     brand: "West Elm",
     price: "≈ $349–$449",
-    priceNote: "last West Elm list range by fabric; discontinued (\"no longer available\" on westelm.com)",
     desc: [
       "West Elm's Orb chair: a scooped, rounded shell with a cutout at the back, a fixed padded seat, and slim tapered legs in black powder-coated metal. Upholstered in a charcoal flecked tweed weave.",
       "Contract grade. Works as a dining chair, a desk chair, or an occasional chair in a bedroom corner."
@@ -124,7 +117,6 @@ const ITEMS = [
     name: "Pair of Upholstered Tub Chairs, Black & White Dash Weave",
     brand: "Maker not yet confirmed",
     price: "TBD",
-    priceNote: "no maker label visible in the photos",
     desc: [
       "Two matching barrel-back club chairs, fully upholstered including the legs (Parsons style), in a heavy black weave with an irregular white broken-dash pattern. The back wraps in a continuous curve into low arms, over a tight seat.",
       "Compact enough for a bedroom or a reading corner, and comfortable for their size."
@@ -141,7 +133,6 @@ const ITEMS = [
     name: "BDI Corridor 8177 Media Console, Charcoal Stained Ash",
     brand: "BDI (USA) · designed by Matthew Weatherly",
     price: "$3,799",
-    priceNote: "BDI list price via 2Modern, September 2026",
     desc: [
       "BDI's Corridor console in the charcoal-stained ash finish, topped with black satin-etched tempered glass. The slatted hardwood louvers on the doors and drawer front pass remote signals and ventilate the components behind them.",
       "Louvered doors on each side conceal adjustable shelving; the center bay is open with an adjustable shelf, and a wide louvered drawer below it holds media and remotes. Built-in cord management, flow-through ventilation, and hidden casters make it easy to pull out from the wall."
@@ -158,7 +149,6 @@ const ITEMS = [
     name: "Outdoor Bar Table with 4 Tolix H Stools",
     brand: "Tolix (France) stools · table maker not yet confirmed",
     price: "≈ $307 per stool + table TBD",
-    priceNote: "Tolix H75 raw-steel list price; no label found for the table",
     desc: [
       "A square bar-height table in black powder-coated aluminum with a slatted plank top and an umbrella hole, paired with four original Tolix H stools at 75 cm bar height. The stools carry the Tolix stamp on the seat apron.",
       "The stools are the raw-steel varnished finish, which Tolix rates for indoor use, so they have taken on surface patina and light rust from living on the balcony. Stackable."
@@ -174,7 +164,6 @@ const ITEMS = [
     name: "Pair of Outdoor Lounge Chairs, Black Aluminum with Blush Cushions",
     brand: "Maker not yet confirmed",
     price: "TBD",
-    priceNote: "no maker label visible in the photos",
     desc: [
       "Two deep-seat outdoor lounge chairs with black powder-coated aluminum frames and wide flat arms, fitted with thick back and seat cushions in a blush pink stripe outdoor fabric with welted edges.",
       "Shown on the balcony with a concrete drum side table between them."
@@ -190,7 +179,6 @@ const ITEMS = [
     name: "Nesting Console Tables, Reclaimed Wood and Black Iron",
     brand: "Maker not yet confirmed",
     price: "TBD",
-    priceNote: "no maker label visible in the photos",
     desc: [
       "Two console tables that nest one under the other: a taller, narrower table and a lower, deeper one. Each has a thick plank top of reclaimed wood with a weathered, uneven surface, on a thin welded square-tube iron frame in matte black with a stretcher at the base.",
       "Use them nested against a wall, side by side as a long console, or split up as a sofa table and an entry table."
@@ -207,7 +195,6 @@ const ITEMS = [
     name: "Mobican Lea Bed with Upholstered Headboard, Walnut",
     brand: "Mobican (Quebec, Canada)",
     price: "$3,293",
-    priceNote: "Design Quest list price, queen; king is $62 more",
     desc: [
       "A Canadian-made walnut platform bed. The Lea has an upholstered headboard in two dark gray panels, capped and framed in walnut, on a walnut rail base with gently splayed tapered legs. It takes a mattress only, on a European slat system.",
       "The matching pair of Alexia night tables and the leather storage bench at the foot of the bed are listed separately."
@@ -224,7 +211,6 @@ const ITEMS = [
     name: "Pair of Mobican Alexia Night Tables, Walnut with Ebony Glass Top",
     brand: "Mobican (Quebec, Canada)",
     price: "$857 each",
-    priceNote: "Mobican list price via City Schemes, September 2026",
     desc: [
       "Two matching night tables from Mobican's Alexia collection, in warm walnut with a dark ebony-tinted glass top. Each has a single soft-close drawer with a notched integrated pull cut into the top edge, and an open shelf below.",
       "The back is finished, so they can sit away from a wall. Drawer boxes are solid maple and stamped Mobican. They match the Lea bed also on this list."
@@ -241,7 +227,6 @@ const ITEMS = [
     name: "CB2 Dusk Leather and Wood Storage Bench",
     brand: "CB2",
     price: "$799",
-    priceNote: "CB2 regular price (2019–2020 listing); discontinued",
     desc: [
       "CB2's Dusk storage bench: a tufted, dark brown leather top on a warm walnut box, with a half circle of brass at the center and walnut veneer rays fanning out from it across the front. It sits on short tapered legs.",
       "The leather lid lifts on soft-close hinges to a roomy storage compartment, sized for blankets and pillows. Made for the foot of a bed or an entryway."
@@ -252,12 +237,28 @@ const ITEMS = [
     videos: [],
   },
   {
+    id: "rug",
+    sources: [["West Elm – Ombre Pop Indoor/Outdoor Rug","https://www.westelm.com/products/ombre-pop-indoor-outdoor-rug-t4390/"], ["West Elm Australia – Ombre Pop Indoor/Outdoor Rug, Iron","https://www.westelm.com.au/ombre-pop-indoor-outdoor-rug-t4390"]],
+    eyebrow: "Rug · Indoor/outdoor",
+    name: "West Elm Ombre Pop Indoor/Outdoor Rug, Iron",
+    brand: "West Elm",
+    price: "$399 (8' × 10') or $699 (9' × 12')",
+    priceNote: "West Elm 2019 list prices; measure to confirm size",
+    desc: [
+      "West Elm's Ombre Pop rug: a handwoven, flat-pile indoor/outdoor rug in 100% recycled polyester that feels close to wool. The Iron colorway reads as a soft oatmeal ground with faint horizontal linework and darker flecks, finished with a knotted fringe at each end.",
+      "It is reversible, shed-resistant and rated for outdoor use, so it works under a bed, in an entry, or on a covered patio. Made in India. Seen in the bed and night-table photos; it is the rug under the walnut bedroom set."
+    ],
+    specs: [["Size","8' × 10' or 9' × 12' (to be measured)"],["Pile","Flat, 6 mm"],["Materials","100% recycled polyester, handwoven, reversible"],["Care","Vacuum on low without a beater bar; professional cleaning for stains"],["Condition","Used, good; some flattening in the traffic path (see photos)"]],
+    tags: ["West Elm","Indoor/outdoor","Recycled polyester","Reversible","Fringe"],
+    photos: ["IMG_2647","IMG_2646","IMG_2640","IMG_2638"],
+    videos: [],
+  },
+  {
     id: "gray-bed",
     eyebrow: "Bed · Upholstered",
     name: "Gray Upholstered Platform Bed",
     brand: "Maker not yet confirmed",
     price: "TBD",
-    priceNote: "no maker label visible in the photos",
     desc: [
       "A low platform bed fully upholstered in a light gray wool-look weave. The headboard is a thick, gently angled slab with stitched vertical and horizontal seams that divide it into a grid of panels, and the side rails are wide, square-edged boxes that continue the same fabric.",
       "It sits on short black block feet that tuck under the frame, so the bed appears to float just above the floor."
@@ -273,7 +274,6 @@ const ITEMS = [
     name: "Mid-Century Armchair, Rust Orange Tweed with Walnut Legs",
     brand: "Maker not yet confirmed",
     price: "TBD",
-    priceNote: "no maker label visible in the photos",
     desc: [
       "A mid-century style lounge chair upholstered in a rust-orange heathered tweed weave. The tall, slightly reclined back is a single tight-upholstered panel with a gentle curve at the top, and the low boxy arms flare out from the seat with a welted edge. A loose, welted seat cushion sits on a tight deck.",
       "Slim round tapered legs in a dark walnut finish are splayed outward. Comfortable as a reading chair or as a pair of accent chairs in a living room."
@@ -291,7 +291,6 @@ const ITEMS = [
     brand: "Crate &amp; Barrel exclusive",
     price: "$2,600",
     priceLabel: "Original price",
-    priceNote: "Crate &amp; Barrel list price; discontinued. Recent resales online around $650 (outside Seattle)",
     desc: [
       "Atwood mixes rustic reclaimed peroba wood from Brazil with refined solid black walnut. Uniquely weathered planks of live-edge wood show distinctive variations in texture and tone, blending contemporary design with rustic materials for an earthy look that is modern and bold.",
       "The tall chest combines four traditional drawers, an open cubby and three easy-access bins in a versatile storage piece with loads of character. It stands on angular lacquered steel legs, and one door conceals a fixed shelf, with antique iron hardware matching the drawers. A Crate &amp; Barrel exclusive."
@@ -307,7 +306,6 @@ const ITEMS = [
     name: "BDI Corridor SV 7129 Media Credenza, Charcoal Stained Ash",
     brand: "BDI (USA) · designed by Matthew Weatherly",
     price: "$3,499",
-    priceNote: "BDI list price via The Century House, September 2026",
     sources: [["The Century House – BDI Corridor SV 7129","https://centuryhouseinc.com/product/bdi-corridor-sv-7129-media-console/"]],
     desc: [
       "The larger sibling of the Corridor 8177 console also in this list: BDI's Corridor SV 7129 in charcoal-stained ash, a 79-inch four-door credenza raised on a slim black steel leg frame. The louvered solid-wood doors pass remote signals and let components breathe, and the top is black satin-etched tempered glass.",
@@ -325,7 +323,6 @@ const ITEMS = [
     name: "BDI Corridor 6521 Executive Desk",
     brand: "BDI (USA) · designed by Matthew Weatherly",
     price: "$3,499",
-    priceNote: "BDI list price via 2Modern, September 2026",
     desc: [
       "The executive desk from BDI's Corridor Office collection, matching the two Corridor media pieces in this list. A satin-etched tempered glass work surface sits on a louvered hardwood case with a full modesty panel, so the desk looks finished from the front and can float in a room.",
       "Two side storage drawers and a flip-front keyboard drawer, all lined with non-slip material, plus wire management channels to keep cords out of sight. The satin-etched glass has a soft matte finish that resists scratches and fingerprints."
@@ -342,7 +339,6 @@ const ITEMS = [
     brand: "Custom fabricated in Fremont, Seattle",
     price: "$1,000",
     priceLabel: "Original price",
-    priceNote: "custom build cost",
     asking: "$500",
     desc: [
       "A simple, solid work table: a thick top of reclaimed solid fir on a welded black steel base. Custom fabricated by a shop in Fremont, so it is one of a kind.",
@@ -361,7 +357,6 @@ const ITEMS = [
     brand: "Herman Miller · designed by Studio 7.5 (Berlin)",
     price: "$835",
     priceLabel: "Original price",
-    priceNote: "Herman Miller price as configured; current store price is about $895",
     asking: "$400",
     desc: [
       "Herman Miller's Setu chair in graphite with the alloy (silver) frame. The Kinematic Spine flexes with you as you lean, so the chair fits without any adjustment other than seat height. The Lyris suspension seat and back is a breathable elastomeric weave that supports without foam.",
@@ -379,7 +374,6 @@ const ITEMS = [
     brand: "Maker not yet confirmed · purchased 2018",
     price: "$3,695 table · $329 per chair",
     priceLabel: "Original price",
-    priceNote: "$5,669 for the set, purchased 2018",
     desc: [
       "A dining table with six matching velvet-upholstered dining chairs, bought together in 2018. Sold as a set.",
       "The table has one minor water mark on the top. It is not noticeable in everyday use, and the top can be refinished if you want it perfect."
@@ -396,7 +390,6 @@ const ITEMS = [
     brand: "Maker not yet confirmed",
     price: "≈ $100 each",
     priceLabel: "Original price",
-    priceNote: "plus a Blue Rhino propane tank with each, about $35 to buy",
     desc: [
       "Two propane patio heaters, four to five years old, each with its own Blue Rhino propane tank included. Ready to go for a balcony or patio as the evenings cool off.",
       "Sold as a pair or separately."
@@ -413,7 +406,6 @@ const ITEMS = [
     brand: "Steelcase (USA), 1960s · restored in Ballard, Seattle",
     price: "≈ $5,000",
     priceLabel: "Original price",
-    priceNote: "paid for the refurbished piece about 10 years ago, from a vintage furniture studio in Ballard",
     desc: [
       "A mid-century steel credenza from Steelcase, the maker of the classic tanker desk, professionally refurbished about ten years ago. Steelcase built these for offices in the 1960s, so the case is heavy-gauge steel that will outlast anything made today.",
       "Believed to have been restored by Space Oddity Vintage Furniture Studio in Ballard, which specializes in stripping and refinishing vintage Steelcase pieces. Works as a media console, a sideboard, or office storage."

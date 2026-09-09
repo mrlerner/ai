@@ -11,10 +11,10 @@ function cardHTML(it, {link}){
     ? `<img class="main" src="${IMG(it.photos[0])}" alt="${it.name}">`
     : `<div class="nophoto">Photos coming soon</div>`;
   const priceLabel = it.priceLabel || "Approximate retail price";
-  const priceRow = it.price && it.price!=="TBD" ? `<dt>${priceLabel}</dt><dd>${it.price}${it.priceNote?` <span class="pnote">· ${it.priceNote}</span>`:''}</dd>` : "";
-  const askRow = it.asking ? `<dt>Asking price</dt><dd class="asking">${it.asking}${it.askingNote?` <span class="pnote">· ${it.askingNote}</span>`:''}</dd>` : "";
+  const priceRow = it.price && it.price!=="TBD" ? `<dt>${priceLabel}</dt><dd>${it.price}</dd>` : "";
+  const askRow = it.asking ? `<dt>Asking price</dt><dd class="asking">${it.asking}</dd>` : "";
   return `
-    <div class="gallery">
+    <div class="gallery${it.photos.length?'':' empty'}">
       <div class="stage">${stage}</div>
       <div class="thumbs">${thumbs}</div>
     </div>
