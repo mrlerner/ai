@@ -17,7 +17,7 @@ function cardHTML(it, {link}){
       <h2>${title}</h2>
       <p class="brand">${it.brand}</p>
       <div class="desc">${it.desc.map(p=>`<p>${p}</p>`).join('')}</div>
-      <dl><dt>Retail price</dt><dd>${it.price} <span class="pnote">· ${it.priceNote}</span></dd>${it.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+      <dl><dt>2019 purchase price</dt><dd>${it.price} <span class="pnote">· ${it.priceNote}</span></dd>${it.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
       <div class="tags">${it.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
       ${it.note?`<div class="note">${it.note}</div>`:''}
     </div>`;

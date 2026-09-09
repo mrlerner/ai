@@ -5,12 +5,12 @@ const ITEMS = [
     id: "stools",
     sources: [["DWR – Bottega Piston Stool","https://www.dwr.com/kitchen-dining-bar-counter-stools/bottega-piston-stool/6904.html"]],
     eyebrow: "Set of 3 · Bar / counter stools",
-    name: "Bottega Piston Stools, Black Leather",
+    name: "Bottega Piston Stools, Dark Brown Leather",
     brand: "Frag (Italy) · sold by Design Within Reach · designed by Renzo Fauciglietti &amp; Graziella Bianchi",
     price: "$1,326.50 each",
     priceNote: "current DWR sale price",
     desc: [
-      "The classic DWR piston stool. Black split-grain leather is hand-sewn over a lightly padded steel frame, on a brushed stainless-steel column with a square plate base and oval footrest.",
+      "The classic DWR piston stool. Dark brown split-grain leather is hand-sewn over a lightly padded steel frame, on a brushed stainless-steel column with a square plate base and oval footrest.",
       "A lever under the seat raises or lowers the seat with a gas piston, so the same stool works at counter height or bar height. The seat swivels a full 360°. Made in Italy, Frag logo embossed on the leather."
     ],
     specs: [["Seat height","21¾\" to 31½\" (adjustable)"],["Overall","38⅝\" H × 17⅜\" W × 18½\" D"],["Materials","Split-grain leather, steel frame, stainless-steel piston and base"],["Condition","Used, light wear to leather and base plates (see photos)"]],
