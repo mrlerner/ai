@@ -71,6 +71,6 @@ main[data-item] .brand{margin-top:0}
 dd.asking{font-weight:600}
 
 .interest{margin:0 0 18px}
-.btn{display:inline-block;padding:10px 16px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px}
-.btn:hover{background:#6f4721}
-.btn.taken,.btn.taken:hover{background:#9a948b;cursor:default}
+.btn{display:inline-block;padding:10px 16px;background:#2f6b3a;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px}
+.btn:hover{background:#255530}
+.btn.taken,.btn.taken:hover{background:#a33a2e;cursor:default}
