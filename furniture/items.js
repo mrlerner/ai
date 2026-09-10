@@ -46,7 +46,7 @@ const ITEMS = [
     ],
     specs: [["Overall","87½\" W × 37½\" D × 32½\" H"],["Seat","20\" H × 70\" W × 22\" D"],["Legs","Cast aluminum, black powder-coat, 7½\""],["Condition","Used, good; fabric clean (see photos)"]],
     tags: ["Feather back cushions","Made in USA","87.5\" wide"],
-    photos: ["IMG_8477","IMG_8478","IMG_8479"],
+    photos: ["IMG_2677","IMG_8477","IMG_8478","IMG_8479"],
     videos: ["IMG_8473","IMG_8476"]
   },
   {
