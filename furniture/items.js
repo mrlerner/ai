@@ -9,8 +9,8 @@ const ITEMS = [
     brand: "Frag (Italy) · sold by Design Within Reach · designed by Renzo Fauciglietti &amp; Graziella Bianchi",
     price: "$1,326.50 each",
     desc: [
-      "The classic DWR piston stool. Dark brown split-grain leather is hand-sewn over a lightly padded steel frame, on a brushed stainless-steel column with a square plate base and oval footrest.",
-      "A lever under the seat raises or lowers the seat with a gas piston, so the same stool works at counter height or bar height. The seat swivels a full 360°. Made in Italy, Frag logo embossed on the leather."
+      "Three Frag Bottega Piston stools from Design Within Reach. Dark brown split-grain leather seat and back on a steel frame, brushed stainless-steel column, square base plate and oval footrest. Each is 17⅜\" W × 18½\" D and 38⅝\" tall at the highest setting.",
+      "A lever under the seat adjusts seat height from 21¾\" to 31½\" (counter or bar height). Seat swivels 360°. Made in Italy, Frag logo embossed on the leather."
     ],
     specs: [["Seat height","21¾\" to 31½\" (adjustable)"],["Overall","38⅝\" H × 17⅜\" W × 18½\" D"],["Materials","Split-grain leather, steel frame, stainless-steel piston and base"],["Condition","Used, light wear to leather and base plates (see photos)"]],
     tags: ["Set of 3","Adjustable height","Swivel","Made in Italy"],
@@ -25,8 +25,8 @@ const ITEMS = [
     brand: "CB2 · designed by Jannis Ellenberger (Ellenberger Studio, Bremen), 2020",
     price: "≈ $4,300",
     desc: [
-      "A low, deep 96-inch sofa in charcoal-black leather with a button-tufted back and seat, wrapped over an open acacia-wood frame. The leather back and side panels are set into the wood frame, so the sofa looks finished from every angle and can float in a room.",
-      "Designed for CB2 by German designer Jannis Ellenberger, whose work for CB2 also includes the Brace sofa and Drommen bed. The leather has a natural, lightly distressed finish that varies across the hide."
+      "CB2 Moet sofa, 95¾\" W × 35\" D × 29¾\" H. Charcoal-black leather with button tufting on the back and seat, over an exposed solid acacia wood frame. Back and sides are finished, so it can sit away from a wall.",
+      "Designed by Jannis Ellenberger for CB2 in 2020. Discontinued."
     ],
     specs: [["Overall","95¾\" W × 35\" D × 29¾\" H"],["Materials","Leather upholstery, solid acacia wood frame"],["Condition","Used, leather shows natural patina; frame in good shape (see photos)"]],
     tags: ["Leather","Acacia frame","Tufted","Discontinued"],
@@ -41,8 +41,8 @@ const ITEMS = [
     brand: "Design Within Reach · designed by Jonas Wagell (Sweden), 2016",
     price: "$4,295",
     desc: [
-      "DWR's best-known modern sofa. Swedish designer Jonas Wagell gave it feather-and-fiber back cushions with eased edges, gently arced arms, and slender, tall cast-aluminum legs, here in the black powder-coat finish.",
-      "Upholstered in a light gray textured weave. Two loose seat cushions and two back cushions; the back cushions were updated in 2019 for better shape retention. Made in the USA."
+      "Design Within Reach Jonas sofa, 87½\" W × 37½\" D × 32½\" H, seat 20\" high. Light gray textured fabric. Two loose seat cushions and two feather-and-fiber back cushions. Cast-aluminum legs in black powder coat, 7½\" tall.",
+      "Designed by Jonas Wagell, 2016. Made in the USA."
     ],
     specs: [["Overall","87½\" W × 37½\" D × 32½\" H"],["Seat","20\" H × 70\" W × 22\" D"],["Legs","Cast aluminum, black powder-coat, 7½\""],["Condition","Used, good; fabric clean (see photos)"]],
     tags: ["Feather back cushions","Made in USA","87.5\" wide"],
@@ -57,10 +57,9 @@ const ITEMS = [
     brand: "West Elm",
     price: "$699",
     desc: [
-      "Inspired by the sculptural forms of Italian mid-century design, the Celine Bench curves a low upholstered back around a thick, reversible cushion. Upholstered in West Elm's Performance Distressed Velvet in Pewter, on slender tapered metal legs in an antique brass finish.",
-      "Works at the foot of a bed, in an entryway, or as extra seating in a living room. Solid wood frame, GREENGUARD Gold certified, contract grade."
+      "West Elm Celine bench, 52\" W × 19\" D × 23¼\" H. Low curved upholstered back and a thick reversible seat cushion in gray (Pewter) Performance Distressed Velvet. Tapered metal legs in an antique brass finish, removable. Solid wood frame."
     ],
-    specs: [["Overall","52\" W × 19\" D × 23¼\" H"],["Fabric","Performance Distressed Velvet, Pewter"],["Legs","Tapered metal, antique brass finish, removable"],["Condition","Used, good; some pile variation typical of distressed velvet"]],
+    specs: [["Overall","52\" W × 19\" D × 23¼\" H"],["Fabric","Performance Distressed Velvet, Pewter (gray)"],["Legs","Tapered metal, antique brass finish, removable"],["Condition","Used, good; some pile variation typical of distressed velvet"]],
     tags: ["Velvet","Brass legs","52\" wide"],
     photos: ["IMG_8489","IMG_8488"],
     videos: ["IMG_8490"]
@@ -72,42 +71,25 @@ const ITEMS = [
     brand: "Maker not yet confirmed",
     price: "TBD",
     desc: [
-      "A freeform, rounded-triangle top of smoked black tempered glass floats on a matte black sculpted base shaped like a boat hull or a fin, with no legs. The glass reads as a black mirror and the base tapers to a narrow footprint, so the table looks very light for its size.",
-      "Pairs well with either of the sofas above and sits at a low lounge height."
+      "Coffee table with a freeform, rounded-triangle top in smoked black tempered glass on a legless, matte black sculpted base. Maker and base material not confirmed. Dimensions to be measured."
     ],
-    specs: [["Top","Freeform black tempered glass"],["Base","Matte black sculpted base (lacquered composite or fiberglass)"],["Condition","Used, good; glass unchipped in photos"]],
+    specs: [["Dimensions","To be measured"],["Top","Freeform black tempered glass"],["Base","Matte black sculpted base, material not confirmed"],["Condition","Used, good; glass unchipped in photos"]],
     tags: ["Black glass","Sculptural base","Freeform"],
     photos: ["IMG_8486","IMG_8485","IMG_8487"],
     videos: [],
   },
   {
-    id: "tv",
-    eyebrow: "Electronics",
-    name: "Sony Bravia 85\" X950G 4K HDR TV with Sonos Soundbar",
-    brand: "Sony · XBR-85X950G (2019)",
-    price: "$4,999.99",
-    desc: [
-      "Sony's 2019 flagship LED, the X950G, in the largest 85\" size. Full-array local dimming backlight, X1 Ultimate processor, 120 Hz native panel, and X-Wide Angle for even color off-axis. HDR10, Dolby Vision, HLG and IMAX Enhanced; Android TV with Google Assistant, Chromecast built in, and Alexa compatible.",
-      "Wall mounted, with a Sonos soundbar housed behind the full-width fabric grille beneath the screen, cut to the same width as the panel. Thin brushed-metal bezel, Sony badge centered on the bottom edge. Buyer would need to arrange removal from the wall mount."
-    ],
-    specs: [["Model","XBR-85X950G"],["Screen","84.6\" diagonal, 4K UHD 3840 × 2160, 120 Hz"],["Backlight","Full-array LED with local dimming"],["HDR","HDR10, Dolby Vision, HLG, IMAX Enhanced"],["Inputs","4 × HDMI (eARC), 3 × USB, Ethernet, Wi-Fi, Bluetooth"],["Smart","Android TV, Google Assistant, Chromecast, Alexa compatible"],["Includes","Sonos soundbar (model not yet confirmed), housed behind the full-width fabric grille below the screen"],["Condition","Used, working"]],
-    tags: ["Sony","85 inch","Full-array local dimming","Wall mounted","Sonos soundbar included"],
-    photos: ["IMG_8480","IMG_8484","IMG_2628"],
-    videos: [],
-  },
-  {
     id: "orb-chair",
     sources: [["West Elm – Orb Upholstered Dining Chair","https://www.westelm.com/products/orb-upholstered-dining-chair-h2410/"]],
-    eyebrow: "Dining chair · Upholstered",
-    name: "Orb Upholstered Dining Chair, Charcoal Tweed, Metal Legs",
+    eyebrow: "Set of 8 · Dining chairs · Upholstered",
+    name: "Orb Upholstered Dining Chairs, Set of 8, Charcoal Tweed, Metal Legs",
     brand: "West Elm",
-    price: "≈ $349–$449",
+    price: "≈ $349–$449 each",
     desc: [
-      "West Elm's Orb chair: a scooped, rounded shell with a cutout at the back, a fixed padded seat, and slim tapered legs in black powder-coated metal. Upholstered in a charcoal flecked tweed weave.",
-      "Contract grade. Works as a dining chair, a desk chair, or an occasional chair in a bedroom corner."
+      "Eight West Elm Orb dining chairs, each 24¼\" W × 22½\" D × 31.6\" H. Charcoal flecked tweed upholstery over a rounded shell with a cutout at the back; fixed padded seat. Tapered black powder-coated metal legs with floor glides. Discontinued."
     ],
-    specs: [["Overall","24¼\" W × 22½\" D × 31.6\" H"],["Upholstery","Charcoal flecked tweed, fixed seat cushion"],["Legs","Tapered metal, black powder-coat, floor glides"],["Quantity","1 (see photos)"],["Condition","Used, good; no visible wear to fabric in photos"]],
-    tags: ["West Elm","Tweed","Metal legs","Discontinued"],
+    specs: [["Overall","24¼\" W × 22½\" D × 31.6\" H"],["Upholstery","Charcoal flecked tweed, fixed seat cushion"],["Legs","Tapered metal, black powder-coat, floor glides"],["Quantity","8"],["Condition","Used, good; no visible wear to fabric in photos"]],
+    tags: ["West Elm","Set of 8","Tweed","Metal legs","Discontinued"],
     photos: ["IMG_8494","IMG_8495"],
     videos: ["IMG_8493"]
   },
@@ -118,10 +100,9 @@ const ITEMS = [
     brand: "Maker not yet confirmed",
     price: "TBD",
     desc: [
-      "Two matching barrel-back club chairs, fully upholstered including the legs (Parsons style), in a heavy black weave with an irregular white broken-dash pattern. The back wraps in a continuous curve into low arms, over a tight seat.",
-      "Compact enough for a bedroom or a reading corner, and comfortable for their size."
+      "Two matching barrel-back tub chairs, fully upholstered including the legs, in a black weave with a white broken-dash pattern. Curved back continuing into low arms; tight seat. Maker not confirmed. Dimensions to be measured."
     ],
-    specs: [["Style","Barrel / tub chair, fully upholstered, Parsons legs"],["Fabric","Black with white broken-dash jacquard weave"],["Quantity","2"],["Condition","Used, good; fabric clean in photos"]],
+    specs: [["Dimensions","To be measured"],["Style","Barrel / tub chair, fully upholstered, Parsons legs"],["Fabric","Black with white broken-dash weave"],["Quantity","2"],["Condition","Used, good; fabric clean in photos"]],
     tags: ["Set of 2","Tub chair","Patterned weave"],
     photos: ["IMG_8497"],
     videos: ["IMG_8496"],
@@ -134,8 +115,8 @@ const ITEMS = [
     brand: "BDI (USA) · designed by Matthew Weatherly",
     price: "$3,799",
     desc: [
-      "BDI's Corridor console in the charcoal-stained ash finish, topped with black satin-etched tempered glass. The slatted hardwood louvers on the doors and drawer front pass remote signals and ventilate the components behind them.",
-      "Louvered doors on each side conceal adjustable shelving; the center bay is open with an adjustable shelf, and a wide louvered drawer below it holds media and remotes. Built-in cord management, flow-through ventilation, and hidden casters make it easy to pull out from the wall."
+      "BDI Corridor 8177 media console, 65\" W × 20¼\" D × 28¼\" H, in charcoal-stained ash with a black satin-etched tempered glass top (150 lb capacity).",
+      "Louvered doors on each side over adjustable shelves, an open center bay with an adjustable shelf, and a louvered drawer below. Remote signals pass through the louvers. Cable management, ventilation, hidden casters."
     ],
     specs: [["Overall","65\" W × 20¼\" D × 28¼\" H (8177)"],["Top","Black satin-etched tempered glass, 150 lb capacity"],["Materials","Stained solid hardwood and hardwood veneer, powder-coated steel"],["Features","Louvered doors and drawer, adjustable shelves, cable management, hidden casters"],["Condition","Used, good; louvers intact, glass unchipped in photos"]],
     tags: ["BDI","Charcoal ash","Glass top","Cable management","Hidden casters"],
@@ -147,14 +128,14 @@ const ITEMS = [
     sources: [["Tolix – H75 stool, raw steel","https://www.thecoolrepublic.com/en-us/furniture/bar-stools/stool-in-steel-h75-brut-satin-varnished-tolix"]],
     eyebrow: "Outdoor · Bar table + 4 stools",
     name: "Outdoor Bar Table with 4 Tolix H Stools",
-    brand: "Tolix (France) stools · table maker not yet confirmed",
-    price: "≈ $307 per stool + table TBD",
+    brand: "Crate and Barrel table · Tolix stools from Design Within Reach",
+    price: "$545 per stool + table TBD",
     desc: [
-      "A square bar-height table in black powder-coated aluminum with a slatted plank top and an umbrella hole, paired with four original Tolix H stools at 75 cm bar height. The stools carry the Tolix stamp on the seat apron.",
-      "The stools are the raw-steel varnished finish, which Tolix rates for indoor use, so they have taken on surface patina and light rust from living on the balcony. Stackable."
+      "Crate and Barrel square bar-height table in black powder-coated aluminum with a slatted top and an umbrella hole. Table dimensions to be measured.",
+      "Four Tolix H stools from Design Within Reach, raw steel with clear varnish, 75 cm (29½\") seat height, stackable, Tolix stamp on the seat apron. This finish is rated for indoor use; the stools have lived outdoors and show surface patina and rust spots."
     ],
-    specs: [["Table","Square slat-top bar table, black aluminum, umbrella hole"],["Stools","Tolix H stool, 75 cm (29½\") seat height, raw steel with clear varnish, stackable"],["Quantity","1 table, 4 stools"],["Condition","Used outdoors; stools show patina and rust spots, table finish good"]],
-    tags: ["Outdoor","Tolix","Bar height","Set of 4 stools"],
+    specs: [["Table","Crate and Barrel square slat-top bar table, black aluminum, umbrella hole; dimensions to be measured"],["Stools","Tolix H stool from Design Within Reach, 75 cm (29½\") seat height, raw steel with clear varnish, stackable"],["Quantity","1 table, 4 stools"],["Condition","Used outdoors; stools show patina and rust spots, table finish good"]],
+    tags: ["Outdoor","Crate and Barrel","Tolix","Design Within Reach","Bar height","Set of 4 stools"],
     photos: ["IMG_8500"],
     videos: [],
   },
@@ -165,10 +146,9 @@ const ITEMS = [
     brand: "Maker not yet confirmed",
     price: "TBD",
     desc: [
-      "Two deep-seat outdoor lounge chairs with black powder-coated aluminum frames and wide flat arms, fitted with thick back and seat cushions in a blush pink stripe outdoor fabric with welted edges.",
-      "Shown on the balcony with a concrete drum side table between them."
+      "Two outdoor lounge chairs with black powder-coated aluminum frames and flat slab arms. Back and seat cushions in a blush pink striped outdoor fabric with welted edges. Maker not confirmed. Dimensions to be measured."
     ],
-    specs: [["Frame","Black powder-coated aluminum, flat slab arms"],["Cushions","Blush pink stripe outdoor fabric, welted, back and seat"],["Quantity","2 chairs"],["Condition","Used outdoors; cushions show some fading and water marks (see photos)"]],
+    specs: [["Dimensions","To be measured"],["Frame","Black powder-coated aluminum, flat slab arms"],["Cushions","Blush pink stripe outdoor fabric, welted, back and seat"],["Quantity","2 chairs"],["Condition","Used outdoors; cushions show some fading and water marks (see photos)"]],
     tags: ["Outdoor","Set of 2","Aluminum","Cushions included"],
     photos: ["IMG_8502","IMG_8501","IMG_8503"],
     videos: [],
@@ -180,10 +160,9 @@ const ITEMS = [
     brand: "Maker not yet confirmed",
     price: "TBD",
     desc: [
-      "Two console tables that nest one under the other: a taller, narrower table and a lower, deeper one. Each has a thick plank top of reclaimed wood with a weathered, uneven surface, on a thin welded square-tube iron frame in matte black with a stretcher at the base.",
-      "Use them nested against a wall, side by side as a long console, or split up as a sofa table and an entry table."
+      "Two nesting console tables, one taller and narrower, one lower and deeper. Reclaimed wood plank tops with a weathered surface and natural finish, on matte black welded square-tube iron frames with a base stretcher. Maker not confirmed. Dimensions to be measured."
     ],
-    specs: [["Tops","Reclaimed wood planks, natural finish"],["Frames","Square-tube iron, matte black"],["Quantity","2 (nesting set)"],["Condition","Used, good; tops have the intended reclaimed-wood texture and checks"]],
+    specs: [["Dimensions","To be measured (both tables)"],["Tops","Reclaimed wood planks, natural finish"],["Frames","Square-tube iron, matte black"],["Quantity","2 (nesting set)"],["Condition","Used, good; tops have checks and texture from the reclaimed wood"]],
     tags: ["Set of 2","Nesting","Reclaimed wood","Iron frame"],
     photos: ["IMG_8506","IMG_8509","IMG_8508"],
     videos: ["IMG_8507"]
@@ -196,8 +175,8 @@ const ITEMS = [
     brand: "Mobican (Quebec, Canada)",
     price: "$3,293",
     desc: [
-      "A Canadian-made walnut platform bed. The Lea has an upholstered headboard in two dark gray panels, capped and framed in walnut, on a walnut rail base with gently splayed tapered legs. It takes a mattress only, on a European slat system.",
-      "The matching pair of Alexia night tables and the leather storage bench at the foot of the bed are listed separately."
+      "Mobican Lea platform bed in walnut, made in Quebec. Headboard upholstered in two dark gray panels, framed in walnut; walnut rail base with tapered legs. Takes a mattress only (no box spring) on a slat system.",
+      "Manufacturer's queen dimensions: 67\" W × 85½\" L × 40\" H, 11\" floor to mattress. Measure to confirm queen vs. king. The matching Alexia night tables and the leather storage bench are listed separately."
     ],
     specs: [["Bed (queen)","67\" W × 85½\" L × 40\" H, 11\" floor to mattress (measure to confirm queen vs. king)"],["Materials","Walnut veneer and solid wood, upholstered headboard"],["Condition","Used, good; headboard fabric shows some surface marks (see photos)"]],
     tags: ["Mobican","Walnut","Made in Canada","Platform bed"],
@@ -212,8 +191,8 @@ const ITEMS = [
     brand: "Mobican (Quebec, Canada)",
     price: "$857 each",
     desc: [
-      "Two matching night tables from Mobican's Alexia collection, in warm walnut with a dark ebony-tinted glass top. Each has a single soft-close drawer with a notched integrated pull cut into the top edge, and an open shelf below.",
-      "The back is finished, so they can sit away from a wall. Drawer boxes are solid maple and stamped Mobican. They match the Lea bed also on this list."
+      "Two Mobican Alexia night tables, walnut with an ebony-tinted tempered glass top, each 25\" W × 17½\" D × 19\" H. One soft-close drawer with a notched pull cut into the top edge, open shelf below. Finished back. Solid maple drawer boxes stamped Mobican.",
+      "Match the Lea bed on this list. Made in Quebec."
     ],
     specs: [["Each","25\" W × 17½\" D × 19\" H"],["Storage","1 soft-close drawer, open shelf"],["Materials","Walnut veneer and solid wood, maple drawer box, tempered glass top"],["Condition","Used, good (see photos)"]],
     tags: ["Set of 2","Mobican","Walnut","Made in Canada","Glass top"],
@@ -228,8 +207,8 @@ const ITEMS = [
     brand: "CB2",
     price: "$799",
     desc: [
-      "CB2's Dusk storage bench: a tufted, dark brown leather top on a warm walnut box, with a half circle of brass at the center and walnut veneer rays fanning out from it across the front. It sits on short tapered legs.",
-      "The leather lid lifts on soft-close hinges to a roomy storage compartment, sized for blankets and pillows. Made for the foot of a bed or an entryway."
+      "CB2 Dusk storage bench, 58\" W × 17¼\" D × 18½\" H. Tufted dark brown leather lid on a walnut box with a brass half-circle inlay and walnut veneer rays across the front. Short tapered legs.",
+      "Lid lifts on soft-close hinges. Interior 56\" W × 15½\" D × 10¾\" H. Discontinued."
     ],
     specs: [["Overall","58\" W × 17¼\" D × 18½\" H"],["Interior","56\" W × 15½\" D × 10¾\" H"],["Materials","Leather top, solid and veneer walnut frame, brass inlay, soft-close hinges"],["Condition","Used; leather shows some creasing and light scuffs (see photos)"]],
     tags: ["Storage","Leather","Walnut","Brass","Discontinued"],
@@ -244,8 +223,8 @@ const ITEMS = [
     brand: "West Elm",
     price: "$399 (8' × 10') or $699 (9' × 12')",
     desc: [
-      "West Elm's Ombre Pop rug in the Iron colorway: a handwoven, reversible flatweave in 100% recycled polyester with a softer-than-wool feel. Bands of black, gray and oatmeal are broken up by pops of yellow, orange and blue stripes, so it brings color without reading as busy.",
-      "Rated for indoor and outdoor use and shed-resistant, so it works in a living room, an entry, or on a covered patio. Made in India. Photos are West Elm's product images."
+      "West Elm Ombre Pop indoor/outdoor rug in the Iron colorway: black, gray and oatmeal bands with thin yellow, orange and blue stripes. Handwoven reversible flatweave, 100% recycled polyester, 6 mm pile, fringed ends. Made in India.",
+      "Size to be measured (made in 5' × 8', 8' × 10' and 9' × 12'). Photos are West Elm's product images."
     ],
     specs: [["Size","To be measured (made in 5' × 8', 8' × 10' and 9' × 12')"],["Pile","Flat, 6 mm"],["Materials","100% recycled polyester, handwoven, reversible"],["Care","Vacuum on low without a beater bar; blot spills"],["Condition","Used, good"]],
     tags: ["West Elm","Indoor/outdoor","Recycled polyester","Reversible","Fringe"],
@@ -259,10 +238,9 @@ const ITEMS = [
     brand: "Maker not yet confirmed",
     price: "TBD",
     desc: [
-      "A low platform bed fully upholstered in a light gray wool-look weave. The headboard is a thick, gently angled slab with stitched vertical and horizontal seams that divide it into a grid of panels, and the side rails are wide, square-edged boxes that continue the same fabric.",
-      "It sits on short black block feet that tuck under the frame, so the bed appears to float just above the floor."
+      "Low platform bed fully upholstered in a light gray heathered weave. Thick angled headboard with stitched seams forming a grid of panels; wide box side rails in the same fabric; recessed black block feet. Maker not confirmed. Mattress size and dimensions to be measured."
     ],
-    specs: [["Style","Low platform, box side rails, stitched panel headboard"],["Fabric","Light gray heathered weave"],["Feet","Black block feet, recessed"],["Condition","Used, good; fabric clean in photos"]],
+    specs: [["Size","To be measured"],["Style","Low platform, box side rails, stitched panel headboard"],["Fabric","Light gray heathered weave"],["Feet","Black block feet, recessed"],["Condition","Used, good; fabric clean in photos"]],
     tags: ["Upholstered","Platform","Light gray"],
     photos: ["IMG_2650","IMG_2648","IMG_2651"],
     videos: [],
@@ -274,10 +252,9 @@ const ITEMS = [
     brand: "Maker not yet confirmed",
     price: "TBD",
     desc: [
-      "A mid-century style lounge chair upholstered in a rust-orange heathered tweed weave. The tall, slightly reclined back is a single tight-upholstered panel with a gentle curve at the top, and the low boxy arms flare out from the seat with a welted edge. A loose, welted seat cushion sits on a tight deck.",
-      "Slim round tapered legs in a dark walnut finish are splayed outward. Comfortable as a reading chair or as a pair of accent chairs in a living room."
+      "Mid-century style armchair in a rust-orange heathered tweed. Tall tight-upholstered back, low boxy arms with welted edges, loose welted seat cushion. Round tapered wood legs in a dark walnut finish. Maker not confirmed. Dimensions to be measured."
     ],
-    specs: [["Style","Mid-century lounge chair, tight back, loose seat cushion"],["Fabric","Rust-orange heathered tweed weave, welted seams"],["Legs","Round tapered wood, dark walnut finish"],["Quantity","1"],["Condition","Used, good; fabric clean in photos"]],
+    specs: [["Dimensions","To be measured"],["Style","Mid-century lounge chair, tight back, loose seat cushion"],["Fabric","Rust-orange heathered tweed weave, welted seams"],["Legs","Round tapered wood, dark walnut finish"],["Quantity","1"],["Condition","Used, good; fabric clean in photos"]],
     tags: ["Mid-century","Rust orange","Walnut legs","Tweed"],
     photos: ["IMG_8534","IMG_8535","IMG_8537"],
     videos: [],
@@ -291,10 +268,10 @@ const ITEMS = [
     price: "$2,600",
     priceLabel: "Original price",
     desc: [
-      "Atwood mixes rustic reclaimed peroba wood from Brazil with refined solid black walnut. Uniquely weathered planks of live-edge wood show distinctive variations in texture and tone, blending contemporary design with rustic materials for an earthy look that is modern and bold.",
-      "The tall chest combines four traditional drawers, an open cubby and three easy-access bins in a versatile storage piece with loads of character. It stands on angular lacquered steel legs, and one door conceals a fixed shelf, with antique iron hardware matching the drawers. A Crate &amp; Barrel exclusive."
+      "Crate &amp; Barrel Atwood tall chest, 40¼\" W × 20½\" D × 56\" H. Reclaimed peroba wood from Brazil (weathered live-edge planks with checks and nail marks) with solid black walnut.",
+      "Four drawers, three open bins, one open cubby, and one door over a fixed shelf. Antique iron hardware, lacquered steel legs. Discontinued."
     ],
-    specs: [["Overall","40¼\" W × 20½\" D × 56\" H"],["Layout","4 drawers, 3 open bins, 1 open cubby, 1 door with fixed shelf"],["Materials","Reclaimed peroba wood, solid black walnut, lacquered steel legs, antique iron hardware"],["Condition","Used, good; reclaimed surfaces have the intended checks and nail marks"]],
+    specs: [["Overall","40¼\" W × 20½\" D × 56\" H"],["Layout","4 drawers, 3 open bins, 1 open cubby, 1 door with fixed shelf"],["Materials","Reclaimed peroba wood, solid black walnut, lacquered steel legs, antique iron hardware"],["Condition","Used, good; reclaimed surfaces have checks and nail marks"]],
     tags: ["Crate &amp; Barrel","Reclaimed peroba","Black walnut","Discontinued"],
     photos: ["IMG_8540","IMG_8538","IMG_8541"],
     videos: [],
@@ -307,8 +284,8 @@ const ITEMS = [
     price: "$3,499",
     sources: [["The Century House – BDI Corridor SV 7129","https://centuryhouseinc.com/product/bdi-corridor-sv-7129-media-console/"]],
     desc: [
-      "The larger sibling of the Corridor 8177 console also in this list: BDI's Corridor SV 7129 in charcoal-stained ash, a 79-inch four-door credenza raised on a slim black steel leg frame. The louvered solid-wood doors pass remote signals and let components breathe, and the top is black satin-etched tempered glass.",
-      "Behind the doors are two side compartments and a wide center compartment, each with adjustable shelves and flow-through ventilation. Rated for a TV up to 80 inches with a soundbar and six to eight components. The slim 15½-inch depth also works as a sideboard in a dining room or a long console in an entry."
+      "BDI Corridor SV 7129 media credenza, 79\" W × 15½\" D × 30\" H, in charcoal-stained ash on a black steel leg frame (10\" legs with levelers). Black satin-etched tempered glass top.",
+      "Four louvered solid-wood doors; remote signals pass through. Two side compartments (19\" W) and a center compartment (37.9\" W), each with adjustable shelves and ventilation. BDI rates it for TVs up to 80\". Larger sibling of the Corridor 8177 console on this list."
     ],
     specs: [["Overall","79\" W × 15½\" D × 30\" H (10\" legs)"],["Doors","4 louvered doors, solid wood"],["Interior","2 side compartments (19\" W) and 1 center compartment (37.9\" W), adjustable shelves"],["Top","Black satin-etched tempered glass"],["Materials","Stained ash veneer and solid hardwood, powder-coated steel legs with levelers"],["Condition","Used, good; louvers intact, glass unchipped in photos"]],
     tags: ["BDI","Charcoal ash","Glass top","Steel legs","79\" wide"],
@@ -323,8 +300,8 @@ const ITEMS = [
     brand: "BDI (USA) · designed by Matthew Weatherly",
     price: "$3,499",
     desc: [
-      "The executive desk from BDI's Corridor Office collection, matching the two Corridor media pieces in this list. A satin-etched tempered glass work surface sits on a louvered hardwood case with a full modesty panel, so the desk looks finished from the front and can float in a room.",
-      "Two side storage drawers and a flip-front keyboard drawer, all lined with non-slip material, plus wire management channels to keep cords out of sight. The satin-etched glass has a soft matte finish that resists scratches and fingerprints."
+      "BDI Corridor 6521 executive desk, 67¾\" W × 32¼\" D × 29¾\" H, 183 lb. Black satin-etched tempered glass top on a louvered hardwood case with a full modesty panel.",
+      "Two side drawers and a flip-front keyboard drawer with non-slip liners; wire management channels. Finish to be confirmed (charcoal stained ash, chocolate stained walnut or natural walnut). Photos are BDI's product images in charcoal stained ash."
     ],
     specs: [["Overall","67¾\" W × 32¼\" D × 29¾\" H"],["Top","Black satin-etched tempered glass"],["Storage","2 side drawers, 1 flip-front keyboard drawer, non-slip liners"],["Materials","Stained solid wood and hardwood veneer, tempered glass, powder-coated steel"],["Finish","To confirm (offered in charcoal stained ash, chocolate stained walnut, natural walnut)"],["Weight","183 lb"],["Condition","Used, good; product photos shown are BDI's, in charcoal stained ash"]],
     tags: ["BDI","Desk","Glass top","Keyboard drawer","Cable management"],
