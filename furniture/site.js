@@ -26,7 +26,7 @@ function cardHTML(it, {link}){
     <div class="info">
       <p class="eyebrow">${it.eyebrow}</p>
       <h2>${title}</h2>
-      <p class="brand">${it.brand}</p>
+      ${it.brand ? `<p class="brand">${it.brand}</p>` : ""}
       <p class="interest">${it.taken ? `<span class="btn taken">Taken</span>` : `<a class="btn" href="${MAILTO(it)}">I'm interested in this</a>`}</p>
       <div class="desc">${it.desc.map(p=>`<p>${p}</p>`).join('')}</div>
       <dl>${askRow}${priceRow}${it.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>

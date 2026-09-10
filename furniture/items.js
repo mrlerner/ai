@@ -68,12 +68,12 @@ const ITEMS = [
     id: "coffee-table",
     eyebrow: "Coffee table · Glass",
     name: "Sculptural Black Glass Coffee Table",
-    brand: "Maker not yet confirmed",
+    brand: "",
     price: "TBD",
     desc: [
-      "Coffee table with a freeform, rounded-triangle top in smoked black tempered glass on a legless, matte black sculpted base. Maker and base material not confirmed. Dimensions to be measured."
+      "Coffee table with a freeform, rounded-triangle top in smoked black tempered glass on a legless, matte black sculpted base. About 55\" L × 37\" W × 12\" H."
     ],
-    specs: [["Dimensions","To be measured"],["Top","Freeform black tempered glass"],["Base","Matte black sculpted base, material not confirmed"],["Condition","Used, good; glass unchipped in photos"]],
+    specs: [["Dimensions","About 55\" L × 37\" W × 12\" H"],["Top","Freeform black tempered glass"],["Base","Matte black sculpted base"],["Condition","Used, good; glass unchipped in photos"]],
     tags: ["Black glass","Sculptural base","Freeform"],
     photos: ["IMG_8486","IMG_8485","IMG_8487"],
     videos: [],
@@ -86,10 +86,10 @@ const ITEMS = [
     brand: "Sony · XBR-85X950G (2019)",
     price: "$4,999.99",
     desc: [
-      "Sony Bravia X950G, 85\" class (84.6\" diagonal), 4K 3840 × 2160, 120 Hz, full-array LED backlight with local dimming. Thin brushed-metal bezel, black. HDR10, Dolby Vision, HLG and IMAX Enhanced; Android TV with Chromecast built in. Overall dimensions to be measured.",
+      "Sony Bravia X950G, 85\" class (84.6\" diagonal), 4K 3840 × 2160, 120 Hz, full-array LED backlight with local dimming. Thin brushed-metal bezel, black. HDR10, Dolby Vision, HLG and IMAX Enhanced; Android TV with Chromecast built in.",
       "Wall mounted, with a Sonos soundbar (model to be confirmed) behind the fabric grille below the screen. Buyer arranges removal from the wall mount."
     ],
-    specs: [["Model","XBR-85X950G"],["Screen","84.6\" diagonal, 4K UHD 3840 × 2160, 120 Hz"],["Overall","To be measured"],["Backlight","Full-array LED with local dimming"],["HDR","HDR10, Dolby Vision, HLG, IMAX Enhanced"],["Inputs","4 × HDMI (eARC), 3 × USB, Ethernet, Wi-Fi, Bluetooth"],["Smart","Android TV, Google Assistant, Chromecast, Alexa compatible"],["Includes","Sonos soundbar, model to be confirmed"],["Condition","Used, working"]],
+    specs: [["Model","XBR-85X950G"],["Screen","84.6\" diagonal, 4K UHD 3840 × 2160, 120 Hz"],["Backlight","Full-array LED with local dimming"],["HDR","HDR10, Dolby Vision, HLG, IMAX Enhanced"],["Inputs","4 × HDMI (eARC), 3 × USB, Ethernet, Wi-Fi, Bluetooth"],["Smart","Android TV, Google Assistant, Chromecast, Alexa compatible"],["Includes","Sonos soundbar, model to be confirmed"],["Condition","Used, working"]],
     tags: ["Sony","85 inch","Wall mounted","Sonos soundbar included"],
     photos: ["IMG_8480","IMG_8484","IMG_2628"],
     videos: [],
@@ -113,12 +113,12 @@ const ITEMS = [
     id: "tub-chairs",
     eyebrow: "Pair · Tub chairs",
     name: "Pair of Upholstered Tub Chairs, Black & White Dash Weave",
-    brand: "Maker not yet confirmed",
+    brand: "",
     price: "TBD",
     desc: [
-      "Two matching barrel-back tub chairs, fully upholstered including the legs, in a black weave with a white broken-dash pattern. Curved back continuing into low arms; tight seat. Maker not confirmed. Dimensions to be measured."
+      "Two matching barrel-back tub chairs, fully upholstered including the legs, in a black weave with a white broken-dash pattern. Curved back continuing into low arms; tight seat. About 28\" W × 26\" D × 29\" H."
     ],
-    specs: [["Dimensions","To be measured"],["Style","Barrel / tub chair, fully upholstered, Parsons legs"],["Fabric","Black with white broken-dash weave"],["Quantity","2"],["Condition","Used, good; fabric clean in photos"]],
+    specs: [["Dimensions","About 28\" W × 26\" D × 29\" H"],["Style","Barrel / tub chair, fully upholstered, Parsons legs"],["Fabric","Black with white broken-dash weave"],["Quantity","2"],["Condition","Used, good; fabric clean in photos"]],
     tags: ["Set of 2","Tub chair","Patterned weave"],
     photos: ["IMG_8497"],
     videos: ["IMG_8496"],
@@ -147,10 +147,10 @@ const ITEMS = [
     brand: "Crate and Barrel table · Tolix stools from Design Within Reach",
     price: "$545 per stool + table TBD",
     desc: [
-      "Crate and Barrel square bar-height table in black powder-coated aluminum with a slatted top and an umbrella hole. Table dimensions to be measured.",
+      "Crate and Barrel square bar-height table in black powder-coated aluminum with a slatted top and an umbrella hole. About 35½\" square × 37\" H.",
       "Four Tolix H stools from Design Within Reach, raw steel with clear varnish, 75 cm (29½\") seat height, stackable, Tolix stamp on the seat apron. This finish is rated for indoor use; the stools have lived outdoors and show surface patina and rust spots."
     ],
-    specs: [["Table","Crate and Barrel square slat-top bar table, black aluminum, umbrella hole; dimensions to be measured"],["Stools","Tolix H stool from Design Within Reach, 75 cm (29½\") seat height, raw steel with clear varnish, stackable"],["Quantity","1 table, 4 stools"],["Condition","Used outdoors; stools show patina and rust spots, table finish good"]],
+    specs: [["Table","Crate and Barrel square slat-top bar table, black aluminum, umbrella hole; about 35½\" square × 37\" H"],["Stools","Tolix H stool from Design Within Reach, 75 cm (29½\") seat height, raw steel with clear varnish, stackable"],["Quantity","1 table, 4 stools"],["Condition","Used outdoors; stools show patina and rust spots, table finish good"]],
     tags: ["Outdoor","Crate and Barrel","Tolix","Design Within Reach","Bar height","Set of 4 stools"],
     photos: ["IMG_8500"],
     videos: [],
@@ -159,12 +159,12 @@ const ITEMS = [
     id: "outdoor-chairs",
     eyebrow: "Outdoor · Pair of lounge chairs",
     name: "Pair of Outdoor Lounge Chairs, Black Aluminum with Blush Cushions",
-    brand: "Maker not yet confirmed",
+    brand: "",
     price: "TBD",
     desc: [
-      "Two outdoor lounge chairs with black powder-coated aluminum frames and flat slab arms. Back and seat cushions in a blush pink striped outdoor fabric with welted edges. Maker not confirmed. Dimensions to be measured."
+      "Two outdoor lounge chairs with black powder-coated aluminum frames and flat slab arms. Back and seat cushions in a blush pink striped outdoor fabric with welted edges. About 30\" W × 31\" D × 37\" H."
     ],
-    specs: [["Dimensions","To be measured"],["Frame","Black powder-coated aluminum, flat slab arms"],["Cushions","Blush pink stripe outdoor fabric, welted, back and seat"],["Quantity","2 chairs"],["Condition","Used outdoors; cushions show some fading and water marks (see photos)"]],
+    specs: [["Dimensions","About 30\" W × 31\" D × 37\" H"],["Frame","Black powder-coated aluminum, flat slab arms"],["Cushions","Blush pink stripe outdoor fabric, welted, back and seat"],["Quantity","2 chairs"],["Condition","Used outdoors; cushions show some fading and water marks (see photos)"]],
     tags: ["Outdoor","Set of 2","Aluminum","Cushions included"],
     photos: ["IMG_8502","IMG_8501","IMG_8503"],
     videos: [],
@@ -173,12 +173,12 @@ const ITEMS = [
     id: "console-tables",
     eyebrow: "Set of 2 · Console tables",
     name: "Nesting Console Tables, Reclaimed Wood and Black Iron",
-    brand: "Maker not yet confirmed",
+    brand: "",
     price: "TBD",
     desc: [
-      "Two nesting console tables, one taller and narrower, one lower and deeper. Reclaimed wood plank tops with a weathered surface and natural finish, on matte black welded square-tube iron frames with a base stretcher. Maker not confirmed. Dimensions to be measured."
+      "Two nesting console tables, the smaller one sliding under the taller. Reclaimed wood plank tops with a weathered surface and natural finish, on matte black welded square-tube iron frames with a base stretcher. Taller table about 42\" W × 13\" D × 36\" H; smaller about 39\" W × 11\" D × 28\" H."
     ],
-    specs: [["Dimensions","To be measured (both tables)"],["Tops","Reclaimed wood planks, natural finish"],["Frames","Square-tube iron, matte black"],["Quantity","2 (nesting set)"],["Condition","Used, good; tops have checks and texture from the reclaimed wood"]],
+    specs: [["Taller table","About 42\" W × 13\" D × 36\" H"],["Smaller table","About 39\" W × 11\" D × 28\" H"],["Tops","Reclaimed wood planks, natural finish"],["Frames","Square-tube iron, matte black"],["Quantity","2 (nesting set)"],["Condition","Used, good; tops have checks and texture from the reclaimed wood"]],
     tags: ["Set of 2","Nesting","Reclaimed wood","Iron frame"],
     photos: ["IMG_8506","IMG_8509","IMG_8508"],
     videos: ["IMG_8507"]
@@ -235,10 +235,10 @@ const ITEMS = [
     id: "gray-bed",
     eyebrow: "Queen bed · Upholstered",
     name: "Gray Upholstered Queen Platform Bed",
-    brand: "Maker not yet confirmed",
+    brand: "",
     price: "TBD",
     desc: [
-      "Low platform bed fully upholstered in a light gray heathered weave. Thick angled headboard with stitched seams forming a grid of panels; wide box side rails in the same fabric; recessed black block feet. Queen size. Overall 64\" W x 92\" L; headboard 36\" H. Maker not confirmed."
+      "Low platform bed fully upholstered in a light gray heathered weave. Thick angled headboard with stitched seams forming a grid of panels; wide box side rails in the same fabric; recessed black block feet."
     ],
     specs: [["Size","Queen"],["Dimensions","64\" W x 92\" L overall; headboard 36\" H"],["Style","Low platform, box side rails, stitched panel headboard"],["Fabric","Light gray heathered weave"],["Feet","Black block feet, recessed"],["Condition","Used, good; fabric clean in photos"]],
     tags: ["Queen","Upholstered","Platform","Light gray"],
@@ -249,12 +249,12 @@ const ITEMS = [
     id: "orange-armchair",
     eyebrow: "Armchair · Upholstered",
     name: "Mid-Century Armchair, Rust Orange Tweed with Walnut Legs",
-    brand: "Maker not yet confirmed",
+    brand: "",
     price: "TBD",
     desc: [
-      "Mid-century style armchair in a rust-orange heathered tweed. Tall tight-upholstered back, low boxy arms with welted edges, loose welted seat cushion. Round tapered wood legs in a dark walnut finish. Maker not confirmed. Dimensions to be measured."
+      "Mid-century style armchair in a rust-orange heathered tweed. Tall tight-upholstered back, low boxy arms with welted edges, loose welted seat cushion. Round tapered wood legs in a dark walnut finish."
     ],
-    specs: [["Dimensions","To be measured"],["Style","Mid-century lounge chair, tight back, loose seat cushion"],["Fabric","Rust-orange heathered tweed weave, welted seams"],["Legs","Round tapered wood, dark walnut finish"],["Quantity","1"],["Condition","Used, good; fabric clean in photos"]],
+    specs: [["Dimensions","35\" H × 30\" W × 28\" D"],["Style","Mid-century lounge chair, tight back, loose seat cushion"],["Fabric","Rust-orange heathered tweed weave, welted seams"],["Legs","Round tapered wood, dark walnut finish"],["Quantity","1"],["Condition","Used, good; fabric clean in photos"]],
     tags: ["Mid-century","Rust orange","Walnut legs","Tweed"],
     photos: ["IMG_8534","IMG_8535","IMG_8537"],
     videos: [],
