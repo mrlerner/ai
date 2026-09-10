@@ -212,7 +212,7 @@ const ITEMS = [
     ],
     specs: [["Each","25\" W × 17½\" D × 19\" H"],["Storage","1 soft-close drawer, open shelf"],["Materials","Walnut veneer and solid wood, maple drawer box, tempered glass top"],["Condition","Used, good (see photos)"]],
     tags: ["Set of 2","Mobican","Walnut","Made in Canada","Glass top"],
-    photos: ["IMG_2644","IMG_2646","IMG_2645","IMG_2647"],
+    photos: ["IMG_2663","IMG_2662","IMG_2658","IMG_2659","IMG_2661","IMG_2660"],
     videos: [],
   },
   {
@@ -224,9 +224,9 @@ const ITEMS = [
     price: "$399 (8' × 10') or $699 (9' × 12')",
     desc: [
       "West Elm Ombre Pop indoor/outdoor rug in the Iron colorway: black, gray and oatmeal bands with thin yellow, orange and blue stripes. Handwoven reversible flatweave, 100% recycled polyester, 6 mm pile, fringed ends. Made in India.",
-      "Size to be measured (made in 5' × 8', 8' × 10' and 9' × 12'). Photos are West Elm's product images."
+      "Measures about 118\" × 92\" (the 8' × 10' size). Photos are West Elm's product images."
     ],
-    specs: [["Size","To be measured (made in 5' × 8', 8' × 10' and 9' × 12')"],["Pile","Flat, 6 mm"],["Materials","100% recycled polyester, handwoven, reversible"],["Care","Vacuum on low without a beater bar; blot spills"],["Condition","Used, good"]],
+    specs: [["Size","About 118\" × 92\" (8' × 10' nominal)"],["Pile","Flat, 6 mm"],["Materials","100% recycled polyester, handwoven, reversible"],["Care","Vacuum on low without a beater bar; blot spills"],["Condition","Used, good"]],
     tags: ["West Elm","Indoor/outdoor","Recycled polyester","Reversible","Fringe"],
     photos: ["rug-hero","rug-alt-1","rug-alt-2","rug-alt-3","rug-alt-4"],
     videos: [],
