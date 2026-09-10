@@ -79,6 +79,22 @@ const ITEMS = [
     videos: [],
   },
   {
+    id: "tv",
+    taken: true,
+    eyebrow: "Electronics · TV",
+    name: "Sony Bravia 85\" X950G 4K HDR TV with Sonos Soundbar",
+    brand: "Sony · XBR-85X950G (2019)",
+    price: "$4,999.99",
+    desc: [
+      "Sony Bravia X950G, 85\" class (84.6\" diagonal), 4K 3840 × 2160, 120 Hz, full-array LED backlight with local dimming. Thin brushed-metal bezel, black. HDR10, Dolby Vision, HLG and IMAX Enhanced; Android TV with Chromecast built in. Overall dimensions to be measured.",
+      "Wall mounted, with a Sonos soundbar (model to be confirmed) behind the fabric grille below the screen. Buyer arranges removal from the wall mount."
+    ],
+    specs: [["Model","XBR-85X950G"],["Screen","84.6\" diagonal, 4K UHD 3840 × 2160, 120 Hz"],["Overall","To be measured"],["Backlight","Full-array LED with local dimming"],["HDR","HDR10, Dolby Vision, HLG, IMAX Enhanced"],["Inputs","4 × HDMI (eARC), 3 × USB, Ethernet, Wi-Fi, Bluetooth"],["Smart","Android TV, Google Assistant, Chromecast, Alexa compatible"],["Includes","Sonos soundbar, model to be confirmed"],["Condition","Used, working"]],
+    tags: ["Sony","85 inch","Wall mounted","Sonos soundbar included"],
+    photos: ["IMG_8480","IMG_8484","IMG_2628"],
+    videos: [],
+  },
+  {
     id: "orb-chair",
     sources: [["West Elm – Orb Upholstered Dining Chair","https://www.westelm.com/products/orb-upholstered-dining-chair-h2410/"]],
     eyebrow: "Set of 8 · Dining chairs · Upholstered",
