@@ -310,13 +310,13 @@ const ITEMS = [
   },
   {
     id: "skiers-edge",
-    sources: [["Skier's Edge – T5 Big Mountain Series","http://www.skiersedge.ch/en/products/t5-models/t5-big-mountain-serie/"]],
+    sources: [["Skier's Edge – QS5 Big Mountain Series","http://www.skiersedge.ch/en/products/qs5-models/qs5-big-mountain-serie/"]],
     eyebrow: "Fitness · Ski trainer",
-    name: "Skier's Edge T5 Big Mountain Series Ski Trainer",
+    name: "Skier's Edge QS5 Big Mountain Series Ski Trainer",
     brand: "Skier's Edge (USA)",
     price: "TBD",
     desc: [
-      "Skier's Edge T5 Big Mountain lateral ski trainer, 63\" L × 14.5\" W, frame 11.6\" high, rails inclined 17°. White powder-coated welded steel truss frame with black rail ends and gray ski platforms; carriage runs on dual urethane wheels. Two power bands, 11 resistance settings.",
+      "Skier's Edge QS5 Big Mountain lateral ski trainer, 63\" L × 14.5\" W, frame 11.6\" high, rails inclined 17°. Silver aluminum rails on a black powder-coated steel truss frame with black rubber end feet; black and gray ski platforms. Carriage runs on dual urethane wheels. Two power bands, 11 resistance settings.",
       "Comes with the white poles with black grips and rubber tips. Last photo is the manufacturer's product image. Platform type (All Mountain Master or RPM) and any accessories to be confirmed."
     ],
     specs: [["Overall","63\" L × 14.5\" W × 11.6\" frame H"],["Rail incline","17°"],["Resistance","2 power bands, 11 settings (upgradable to 18)"],["Materials","Powder-coated welded steel frame, urethane wheels, aluminum poles"],["Includes","Poles; platform type and accessories to be confirmed"],["Condition","Used, working"]],
