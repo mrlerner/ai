@@ -196,7 +196,7 @@ const ITEMS = [
     ],
     specs: [["Bed (king)","83½\" W × 85½\" L × 40\" H headboard, 11\" floor to mattress"],["Mattress","King, included"],["Materials","Walnut veneer and solid wood, suede-upholstered headboard"],["Condition","Used, good. The headboard is suede, so the light and dark patches in the photos are the nap of the fabric, not marks"]],
     tags: ["Mobican","Kasala","King","Mattress included","Walnut","Made in Canada","Platform bed"],
-    photos: ["IMG_2641","IMG_2642","IMG_2643"],
+    photos: ["IMG_2678","IMG_2680","IMG_2679"],
     videos: [],
   },
   {
