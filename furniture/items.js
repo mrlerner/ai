@@ -169,17 +169,17 @@ const ITEMS = [
   },
   {
     id: "mobican-bed",
-    sources: [["Design Quest – Mobican Lea Bed","https://www.designquest.biz/mobican-lea-bed-with-upholstered-headboard.html"]],
-    eyebrow: "Bed · Walnut",
-    name: "Mobican Lea Bed with Upholstered Headboard, Walnut",
-    brand: "Mobican (Quebec, Canada)",
-    price: "$3,293",
+    sources: [["Mobican – Lea bed with upholstered headboard","https://mobican.com/en/product/lea-bed-with-upholstered-headboard/"],["Kasala – Mobican","https://www.kasala.com/catalog/category/our-brands/mobican/"],["Design Quest – Mobican Lea Bed (king price)","https://www.designquest.biz/mobican-lea-bed-with-upholstered-headboard.html"]],
+    eyebrow: "King bed + mattress · Walnut",
+    name: "Mobican Lea King Bed with Suede Headboard and Mattress, Walnut",
+    brand: "Mobican (Quebec, Canada) · bought at Kasala, Seattle",
+    price: "$3,355 (bed only)",
     desc: [
-      "Mobican Lea platform bed in walnut, made in Quebec. Headboard upholstered in two dark gray panels, framed in walnut; walnut rail base with tapered legs. Takes a mattress only (no box spring) on a slat system.",
-      "Manufacturer's queen dimensions: 67\" W × 85½\" L × 40\" H, 11\" floor to mattress. Measure to confirm queen vs. king. The matching Alexia night tables and the leather storage bench are listed separately."
+      "Mobican Lea platform bed in walnut, made in Quebec. King size, sold with its king mattress. Headboard upholstered in two dark gray suede panels, framed in walnut; walnut rail base with tapered legs. Mattress sits on a slat system, no box spring.",
+      "Manufacturer's king dimensions: 83½\" W × 85½\" L × 40\" H, 11\" floor to mattress. Bought at Kasala in Seattle, which still carries Mobican; the Lea is a current model. The matching Alexia night tables are listed separately."
     ],
-    specs: [["Bed (queen)","67\" W × 85½\" L × 40\" H, 11\" floor to mattress (measure to confirm queen vs. king)"],["Materials","Walnut veneer and solid wood, upholstered headboard"],["Condition","Used, good; headboard fabric shows some surface marks (see photos)"]],
-    tags: ["Mobican","Walnut","Made in Canada","Platform bed"],
+    specs: [["Bed (king)","83½\" W × 85½\" L × 40\" H headboard, 11\" floor to mattress"],["Mattress","King, included"],["Materials","Walnut veneer and solid wood, suede-upholstered headboard"],["Condition","Used, good. The headboard is suede, so the light and dark patches in the photos are the nap of the fabric, not marks"]],
+    tags: ["Mobican","Kasala","King","Mattress included","Walnut","Made in Canada","Platform bed"],
     photos: ["IMG_2641","IMG_2642","IMG_2643"],
     videos: [],
   },
@@ -200,22 +200,6 @@ const ITEMS = [
     videos: [],
   },
   {
-    id: "storage-bench",
-    sources: [["CB2 – Dusk Leather and Wood Storage Bench (archived listing)","https://web.archive.org/web/20200505083812/https://www.cb2.com/dusk-leather-and-wood-storage-bench/s206064"]],
-    eyebrow: "Bench · Storage",
-    name: "CB2 Dusk Leather and Wood Storage Bench",
-    brand: "CB2",
-    price: "$799",
-    desc: [
-      "CB2 Dusk storage bench, 58\" W × 17¼\" D × 18½\" H. Tufted dark brown leather lid on a walnut box with a brass half-circle inlay and walnut veneer rays across the front. Short tapered legs.",
-      "Lid lifts on soft-close hinges. Interior 56\" W × 15½\" D × 10¾\" H. Discontinued."
-    ],
-    specs: [["Overall","58\" W × 17¼\" D × 18½\" H"],["Interior","56\" W × 15½\" D × 10¾\" H"],["Materials","Leather top, solid and veneer walnut frame, brass inlay, soft-close hinges"],["Condition","Used; leather shows some creasing and light scuffs (see photos)"]],
-    tags: ["Storage","Leather","Walnut","Brass","Discontinued"],
-    photos: ["IMG_2638","IMG_2639","IMG_2640"],
-    videos: [],
-  },
-  {
     id: "rug",
     sources: [["West Elm – Ombre Pop Indoor/Outdoor Rug","https://www.westelm.com/products/ombre-pop-indoor-outdoor-rug-t4390/"], ["West Elm Australia – Ombre Pop Indoor/Outdoor Rug, Iron","https://www.westelm.com.au/ombre-pop-indoor-outdoor-rug-t4390"]],
     eyebrow: "Rug · Indoor/outdoor",
@@ -233,15 +217,15 @@ const ITEMS = [
   },
   {
     id: "gray-bed",
-    eyebrow: "Bed · Upholstered",
-    name: "Gray Upholstered Platform Bed",
+    eyebrow: "Queen bed · Upholstered",
+    name: "Gray Upholstered Queen Platform Bed",
     brand: "Maker not yet confirmed",
     price: "TBD",
     desc: [
-      "Low platform bed fully upholstered in a light gray heathered weave. Thick angled headboard with stitched seams forming a grid of panels; wide box side rails in the same fabric; recessed black block feet. Maker not confirmed. Mattress size and dimensions to be measured."
+      "Low platform bed fully upholstered in a light gray heathered weave. Thick angled headboard with stitched seams forming a grid of panels; wide box side rails in the same fabric; recessed black block feet. Queen size. Maker not confirmed; overall dimensions to be measured."
     ],
-    specs: [["Size","To be measured"],["Style","Low platform, box side rails, stitched panel headboard"],["Fabric","Light gray heathered weave"],["Feet","Black block feet, recessed"],["Condition","Used, good; fabric clean in photos"]],
-    tags: ["Upholstered","Platform","Light gray"],
+    specs: [["Size","Queen (overall dimensions to be measured)"],["Style","Low platform, box side rails, stitched panel headboard"],["Fabric","Light gray heathered weave"],["Feet","Black block feet, recessed"],["Condition","Used, good; fabric clean in photos"]],
+    tags: ["Queen","Upholstered","Platform","Light gray"],
     photos: ["IMG_2650","IMG_2648","IMG_2651"],
     videos: [],
   },
@@ -307,7 +291,24 @@ const ITEMS = [
     tags: ["BDI","Desk","Glass top","Keyboard drawer","Cable management"],
     photos: ["bdi-desk-2"],
     videos: [],
+  },
+  {
+    id: "skiers-edge",
+    sources: [["Skier's Edge – T5 Big Mountain Series","http://www.skiersedge.ch/en/products/t5-models/t5-big-mountain-serie/"]],
+    eyebrow: "Fitness · Ski trainer",
+    name: "Skier's Edge T5 Big Mountain Series Ski Trainer",
+    brand: "Skier's Edge (USA)",
+    price: "TBD",
+    desc: [
+      "Skier's Edge T5 Big Mountain lateral ski trainer, 63\" L × 14.5\" W, frame 11.6\" high, rails inclined 17°. White powder-coated welded steel truss frame with black rail ends and gray ski platforms; carriage runs on dual urethane wheels. Two power bands, 11 resistance settings.",
+      "Comes with the aluminum poles with rubber tips. Photo is the manufacturer's product image. Platform type (All Mountain Master or RPM) and any accessories to be confirmed."
+    ],
+    specs: [["Overall","63\" L × 14.5\" W × 11.6\" frame H"],["Rail incline","17°"],["Resistance","2 power bands, 11 settings (upgradable to 18)"],["Materials","Powder-coated welded steel frame, urethane wheels, aluminum poles"],["Includes","Poles; platform type and accessories to be confirmed"],["Condition","Used, working (house photos to come)"]],
+    tags: ["Skier's Edge","Ski trainer","Fitness","Poles included"],
+    photos: ["skiers-edge-1"],
+    videos: [],
   }
 ];
+
 
 if (typeof module !== "undefined") module.exports = ITEMS;
