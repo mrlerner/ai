@@ -30,7 +30,7 @@ const ITEMS = [
     ],
     specs: [["Overall","95¾\" W × 35\" D × 29¾\" H"],["Materials","Leather upholstery, solid acacia wood frame"],["Condition","Used, leather shows natural patina; frame in good shape (see photos)"]],
     tags: ["Leather","Acacia frame","Tufted","Discontinued"],
-    photos: ["IMG_8466","IMG_8461","IMG_8468","IMG_8463","IMG_8464","IMG_8471","IMG_8462"],
+    photos: ["IMG_2674","IMG_8466","IMG_8461","IMG_8468","IMG_8463","IMG_8464","IMG_8471","IMG_8462"],
     videos: ["IMG_8460"]
   },
   {
