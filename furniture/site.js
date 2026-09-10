@@ -21,6 +21,7 @@ function cardHTML(it, {link}){
     <div class="gallery${it.photos.length?'':' empty'}">
       <div class="stage">${stage}</div>
       <div class="thumbs">${thumbs}</div>
+      ${it.taken ? `<div class="taken-overlay"><span>Taken</span></div>` : ''}
     </div>
     <div class="info">
       <p class="eyebrow">${it.eyebrow}</p>
