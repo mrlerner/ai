@@ -61,7 +61,7 @@ const ITEMS = [
     ],
     specs: [["Overall","52\" W × 19\" D × 23¼\" H"],["Fabric","Performance Distressed Velvet, Pewter (gray)"],["Legs","Tapered metal, antique brass finish, removable"],["Condition","Used, good; some pile variation typical of distressed velvet"]],
     tags: ["Velvet","Brass legs","52\" wide"],
-    photos: ["IMG_8489","IMG_8488"],
+    photos: ["IMG_2664","IMG_8489","IMG_8488"],
     videos: ["IMG_8490"]
   },
   {
@@ -238,9 +238,9 @@ const ITEMS = [
     brand: "Maker not yet confirmed",
     price: "TBD",
     desc: [
-      "Low platform bed fully upholstered in a light gray heathered weave. Thick angled headboard with stitched seams forming a grid of panels; wide box side rails in the same fabric; recessed black block feet. Queen size. Maker not confirmed; overall dimensions to be measured."
+      "Low platform bed fully upholstered in a light gray heathered weave. Thick angled headboard with stitched seams forming a grid of panels; wide box side rails in the same fabric; recessed black block feet. Queen size. Overall 64\" W x 92\" L; headboard 36\" H. Maker not confirmed."
     ],
-    specs: [["Size","Queen (overall dimensions to be measured)"],["Style","Low platform, box side rails, stitched panel headboard"],["Fabric","Light gray heathered weave"],["Feet","Black block feet, recessed"],["Condition","Used, good; fabric clean in photos"]],
+    specs: [["Size","Queen"],["Dimensions","64\" W x 92\" L overall; headboard 36\" H"],["Style","Low platform, box side rails, stitched panel headboard"],["Fabric","Light gray heathered weave"],["Feet","Black block feet, recessed"],["Condition","Used, good; fabric clean in photos"]],
     tags: ["Queen","Upholstered","Platform","Light gray"],
     photos: ["IMG_2650","IMG_2648","IMG_2651"],
     videos: [],
