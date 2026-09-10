@@ -2,20 +2,20 @@
 // After editing, run `node build.js` to regenerate the per-item pages.
 const ITEMS = [
   {
-    id: "stools",
-    sources: [["DWR – Bottega Piston Stool","https://www.dwr.com/kitchen-dining-bar-counter-stools/bottega-piston-stool/6904.html"]],
-    eyebrow: "Set of 3 · Bar / counter stools",
-    name: "Bottega Piston Stools, Dark Brown Leather",
-    brand: "Frag (Italy) · sold by Design Within Reach · designed by Renzo Fauciglietti &amp; Graziella Bianchi",
-    price: "$1,326.50 each",
+    id: "fabric-sofa",
+    sources: [["DWR – Jonas Sofa","https://www.dwr.com/living-sofas/jonas-sofa/2195231.html"]],
+    eyebrow: "Sofa · Fabric",
+    name: "Jonas Sofa, Light Gray with Black Legs",
+    brand: "Design Within Reach · designed by Jonas Wagell (Sweden), 2016",
+    price: "$4,295",
     desc: [
-      "Three Frag Bottega Piston stools from Design Within Reach. Dark brown split-grain leather seat and back on a steel frame, brushed stainless-steel column, square base plate and oval footrest. Each is 17⅜\" W × 18½\" D and 38⅝\" tall at the highest setting.",
-      "A lever under the seat adjusts seat height from 21¾\" to 31½\" (counter or bar height). Seat swivels 360°. Made in Italy, Frag logo embossed on the leather."
+      "Design Within Reach Jonas sofa, 87½\" W × 37½\" D × 32½\" H, seat 20\" high. Light gray textured fabric. Two loose seat cushions and two feather-and-fiber back cushions. Cast-aluminum legs in black powder coat, 7½\" tall.",
+      "Designed by Jonas Wagell, 2016. Made in the USA."
     ],
-    specs: [["Seat height","21¾\" to 31½\" (adjustable)"],["Overall","38⅝\" H × 17⅜\" W × 18½\" D"],["Materials","Split-grain leather, steel frame, stainless-steel piston and base"],["Condition","Used, light wear to leather and base plates (see photos)"]],
-    tags: ["Set of 3","Adjustable height","Swivel","Made in Italy"],
-    photos: ["IMG_8455","IMG_8456","IMG_8454","IMG_8448"],
-    videos: ["IMG_8452"]
+    specs: [["Overall","87½\" W × 37½\" D × 32½\" H"],["Seat","20\" H × 70\" W × 22\" D"],["Legs","Cast aluminum, black powder-coat, 7½\""],["Condition","Used, good; fabric clean (see photos)"]],
+    tags: ["Feather back cushions","Made in USA","87.5\" wide"],
+    photos: ["IMG_2677","IMG_8477","IMG_8478","IMG_8479"],
+    videos: ["IMG_8473","IMG_8476"]
   },
   {
     id: "leather-sofa",
@@ -34,22 +34,6 @@ const ITEMS = [
     videos: ["IMG_8460"]
   },
   {
-    id: "fabric-sofa",
-    sources: [["DWR – Jonas Sofa","https://www.dwr.com/living-sofas/jonas-sofa/2195231.html"]],
-    eyebrow: "Sofa · Fabric",
-    name: "Jonas Sofa, Light Gray with Black Legs",
-    brand: "Design Within Reach · designed by Jonas Wagell (Sweden), 2016",
-    price: "$4,295",
-    desc: [
-      "Design Within Reach Jonas sofa, 87½\" W × 37½\" D × 32½\" H, seat 20\" high. Light gray textured fabric. Two loose seat cushions and two feather-and-fiber back cushions. Cast-aluminum legs in black powder coat, 7½\" tall.",
-      "Designed by Jonas Wagell, 2016. Made in the USA."
-    ],
-    specs: [["Overall","87½\" W × 37½\" D × 32½\" H"],["Seat","20\" H × 70\" W × 22\" D"],["Legs","Cast aluminum, black powder-coat, 7½\""],["Condition","Used, good; fabric clean (see photos)"]],
-    tags: ["Feather back cushions","Made in USA","87.5\" wide"],
-    photos: ["IMG_2677","IMG_8477","IMG_8478","IMG_8479"],
-    videos: ["IMG_8473","IMG_8476"]
-  },
-  {
     id: "bench",
     sources: [["West Elm – Celine Bench, Metal Legs","https://www.westelm.com/products/celine-bench-metal-legs-h13652/"]],
     eyebrow: "Bench · Velvet",
@@ -63,6 +47,22 @@ const ITEMS = [
     tags: ["Velvet","Brass legs","52\" wide"],
     photos: ["IMG_2664","IMG_8489","IMG_8488"],
     videos: ["IMG_8490"]
+  },
+  {
+    id: "stools",
+    sources: [["DWR – Bottega Piston Stool","https://www.dwr.com/kitchen-dining-bar-counter-stools/bottega-piston-stool/6904.html"]],
+    eyebrow: "Set of 3 · Bar / counter stools",
+    name: "Bottega Piston Stools, Dark Brown Leather",
+    brand: "Frag (Italy) · sold by Design Within Reach · designed by Renzo Fauciglietti &amp; Graziella Bianchi",
+    price: "$1,326.50 each",
+    desc: [
+      "Three Frag Bottega Piston stools from Design Within Reach. Dark brown split-grain leather seat and back on a steel frame, brushed stainless-steel column, square base plate and oval footrest. Each is 17⅜\" W × 18½\" D and 38⅝\" tall at the highest setting.",
+      "A lever under the seat adjusts seat height from 21¾\" to 31½\" (counter or bar height). Seat swivels 360°. Made in Italy, Frag logo embossed on the leather."
+    ],
+    specs: [["Seat height","21¾\" to 31½\" (adjustable)"],["Overall","38⅝\" H × 17⅜\" W × 18½\" D"],["Materials","Split-grain leather, steel frame, stainless-steel piston and base"],["Condition","Used, light wear to leather and base plates (see photos)"]],
+    tags: ["Set of 3","Adjustable height","Swivel","Made in Italy"],
+    photos: ["IMG_8455","IMG_8456","IMG_8454","IMG_8448"],
+    videos: ["IMG_8452"]
   },
   {
     id: "coffee-table",
