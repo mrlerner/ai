@@ -27,8 +27,6 @@ main{max-width:1100px;margin:0 auto;padding:0 24px 80px;display:grid;gap:36px}
   th:nth-child(1){width:42%} th:nth-child(2){width:26%} th:nth-child(3){width:32%}
   td.num{white-space:normal}
   .info{padding:20px 18px 20px}
-  dl{grid-template-columns:1fr;gap:2px 0}
-  dt{margin-top:8px}
 }
 .gallery{background:#111;position:relative;min-width:0}
 .gallery .main{width:100%;aspect-ratio:4/3;object-fit:contain;display:block;background:#111;cursor:zoom-in}
