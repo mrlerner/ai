@@ -23,7 +23,7 @@ const ITEMS = [
     eyebrow: "Sofa · Leather",
     name: "Moet Charcoal Leather Tufted Sofa",
     brand: "CB2 · designed by Jannis Ellenberger (Ellenberger Studio, Bremen), 2020",
-    price: "≈ $4,300",
+    price: "$4,300",
     desc: [
       "CB2 Moet sofa, 95¾\" W × 35\" D × 29¾\" H. Charcoal-black leather with button tufting on the back and seat, over an exposed solid acacia wood frame. Back and sides are finished, so it can sit away from a wall.",
       "Designed by Jannis Ellenberger for CB2 in 2020. Discontinued."
@@ -100,7 +100,7 @@ const ITEMS = [
     eyebrow: "Set of 8 · Dining chairs · Upholstered",
     name: "Orb Upholstered Dining Chairs, Set of 8, Charcoal Tweed, Metal Legs",
     brand: "West Elm",
-    price: "≈ $349–$449 each",
+    price: "$349–$449 each",
     desc: [
       "Eight West Elm Orb dining chairs, each 24¼\" W × 22½\" D × 31.6\" H. Charcoal flecked tweed upholstery over a rounded shell with a cutout at the back; fixed padded seat. Tapered black powder-coated metal legs with floor glides. Discontinued."
     ],
