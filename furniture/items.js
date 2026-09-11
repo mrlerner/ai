@@ -301,9 +301,9 @@ const ITEMS = [
     price: "$3,499",
     desc: [
       "BDI Corridor 6521 executive desk, 67¾\" W × 32¼\" D × 29¾\" H, 183 lb. Black satin-etched tempered glass top on a louvered hardwood case with a full modesty panel.",
-      "Two side drawers and a flip-front keyboard drawer with non-slip liners; wire management channels. Finish to be confirmed (charcoal stained ash, chocolate stained walnut or natural walnut). Photos are BDI's product images in charcoal stained ash."
+      "Two side drawers and a flip-front keyboard drawer with non-slip liners; wire management channels."
     ],
-    specs: [["Overall","67¾\" W × 32¼\" D × 29¾\" H"],["Top","Black satin-etched tempered glass"],["Storage","2 side drawers, 1 flip-front keyboard drawer, non-slip liners"],["Materials","Stained solid wood and hardwood veneer, tempered glass, powder-coated steel"],["Finish","To confirm (offered in charcoal stained ash, chocolate stained walnut, natural walnut)"],["Weight","183 lb"],["Condition","Used, good; product photos shown are BDI's, in charcoal stained ash"]],
+    specs: [["Overall","67¾\" W × 32¼\" D × 29¾\" H"],["Top","Black satin-etched tempered glass"],["Storage","2 side drawers, 1 flip-front keyboard drawer, non-slip liners"],["Materials","Stained solid wood and hardwood veneer, tempered glass, powder-coated steel"],["Weight","183 lb"],["Condition","Used, good"]],
     tags: ["BDI","Desk","Glass top","Keyboard drawer","Cable management"],
     photos: ["bdi-desk-2"],
     videos: [],
