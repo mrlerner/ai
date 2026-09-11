@@ -226,7 +226,7 @@ const ITEMS = [
       "West Elm Ombre Pop indoor/outdoor rug in the Iron colorway: black, gray and oatmeal bands with thin yellow, orange and blue stripes. Handwoven reversible flatweave, 100% recycled polyester, 6 mm pile, fringed ends. Made in India.",
       "Measures about 118\" × 92\" (the 8' × 10' size). Photos are West Elm's product images."
     ],
-    specs: [["Size","About 118\" × 92\" (8' × 10' nominal)"],["Pile","Flat, 6 mm"],["Materials","100% recycled polyester, handwoven, reversible"],["Care","Vacuum on low without a beater bar; blot spills"]],
+    specs: [["Size","About 118\" × 92\" (8' × 10' nominal)"],["Pile","Flat, 6 mm"],["Materials","100% recycled polyester, handwoven, reversible"]],
     tags: ["West Elm","Indoor/outdoor","Recycled polyester","Reversible","Fringe"],
     photos: ["rug-hero","rug-alt-1","rug-alt-2","rug-alt-3","rug-alt-4"],
     videos: [],
