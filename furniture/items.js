@@ -317,11 +317,11 @@ const ITEMS = [
     price: "TBD",
     desc: [
       "Skier's Edge QS5 Big Mountain lateral ski trainer, 63\" L × 14.5\" W, frame 11.6\" high, rails inclined 17°. Silver aluminum rails on a black powder-coated steel truss frame with black rubber end feet; black and gray ski platforms. Carriage runs on dual urethane wheels. Two power bands, 11 resistance settings.",
-      "Comes with the white poles with black grips and rubber tips. Last photo is the manufacturer's product image. Platform type (All Mountain Master or RPM) and any accessories to be confirmed."
+      "Comes with the white poles with black grips and rubber tips."
     ],
-    specs: [["Overall","63\" L × 14.5\" W × 11.6\" frame H"],["Rail incline","17°"],["Resistance","2 power bands, 11 settings (upgradable to 18)"],["Materials","Powder-coated welded steel frame, urethane wheels, aluminum poles"],["Includes","Poles; platform type and accessories to be confirmed"],["Condition","Used, working"]],
+    specs: [["Overall","63\" L × 14.5\" W × 11.6\" frame H"],["Rail incline","17°"],["Resistance","2 power bands, 11 settings (upgradable to 18)"],["Materials","Powder-coated welded steel frame, urethane wheels, aluminum poles"],["Includes","Poles"],["Condition","Used, working"]],
     tags: ["Skier's Edge","Ski trainer","Fitness","Poles included"],
-    photos: ["IMG_2653","IMG_2652","IMG_2654","IMG_2657","IMG_2655","skiers-edge-1"],
+    photos: ["IMG_2653","IMG_2652","IMG_2654","IMG_2657","IMG_2655"],
     videos: [],
   }
 ];
