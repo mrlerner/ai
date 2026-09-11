@@ -26,10 +26,10 @@ const ITEMS = [
     price: "$4,300",
     desc: [
       "CB2 Moet sofa, 95¾\" W × 35\" D × 29¾\" H. Charcoal-black leather with button tufting on the back and seat, over an exposed solid acacia wood frame. Back and sides are finished, so it can sit away from a wall.",
-      "Designed by Jannis Ellenberger for CB2 in 2020. Discontinued."
+      "Designed by Jannis Ellenberger for CB2 in 2020."
     ],
     specs: [["Overall","95¾\" W × 35\" D × 29¾\" H"],["Materials","Leather upholstery, solid acacia wood frame"]],
-    tags: ["Leather","Acacia frame","Tufted","Discontinued"],
+    tags: ["Leather","Acacia frame","Tufted"],
     photos: ["IMG_2674","IMG_8466","IMG_8461","IMG_8468","IMG_8463","IMG_8464","IMG_8471","IMG_8462"],
     videos: ["IMG_8460"]
   },
@@ -102,10 +102,10 @@ const ITEMS = [
     brand: "West Elm",
     price: "$349–$449 each",
     desc: [
-      "Eight West Elm Orb dining chairs, each 24¼\" W × 22½\" D × 31.6\" H. Charcoal flecked tweed upholstery over a rounded shell with a cutout at the back; fixed padded seat. Tapered black powder-coated metal legs with floor glides. Discontinued."
+      "Eight West Elm Orb dining chairs, each 24¼\" W × 22½\" D × 31.6\" H. Charcoal flecked tweed upholstery over a rounded shell with a cutout at the back; fixed padded seat. Tapered black powder-coated metal legs with floor glides."
     ],
     specs: [["Overall","24¼\" W × 22½\" D × 31.6\" H"],["Upholstery","Charcoal flecked tweed, fixed seat cushion"],["Legs","Tapered metal, black powder-coat, floor glides"],["Quantity","8"]],
-    tags: ["West Elm","Set of 8","Tweed","Metal legs","Discontinued"],
+    tags: ["West Elm","Set of 8","Tweed","Metal legs"],
     photos: ["IMG_8494","IMG_8495"],
     videos: ["IMG_8493"]
   },
@@ -269,10 +269,10 @@ const ITEMS = [
     priceLabel: "Original price",
     desc: [
       "Crate &amp; Barrel Atwood tall chest, 40¼\" W × 20½\" D × 56\" H. Reclaimed peroba wood from Brazil (weathered live-edge planks with checks and nail marks) with solid black walnut.",
-      "Four drawers, three open bins, one open cubby, and one door over a fixed shelf. Antique iron hardware, lacquered steel legs. Discontinued."
+      "Four drawers, three open bins, one open cubby, and one door over a fixed shelf. Antique iron hardware, lacquered steel legs."
     ],
     specs: [["Overall","40¼\" W × 20½\" D × 56\" H"],["Layout","4 drawers, 3 open bins, 1 open cubby, 1 door with fixed shelf"],["Materials","Reclaimed peroba wood, solid black walnut, lacquered steel legs, antique iron hardware"]],
-    tags: ["Crate &amp; Barrel","Reclaimed peroba","Black walnut","Discontinued"],
+    tags: ["Crate &amp; Barrel","Reclaimed peroba","Black walnut"],
     photos: ["IMG_8540","IMG_8538","IMG_8541"],
     videos: [],
   },
