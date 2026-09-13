@@ -1,162 +1,246 @@
-<div style="margin:0;padding:0;background-color:#f2f1ec;">
-<div style="max-width:640px;margin:0 auto;padding:24px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#22303f;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Brief — Sunday, September 13, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f2f1ec; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #22303f; }
+  .outer { max-width: 680px; margin: 0 auto; padding: 24px 12px; }
+  .header { background: #14263c; border-radius: 14px 14px 0 0; padding: 28px 28px 22px; }
+  .header-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #8fb4d9; font-weight: 600; }
+  .header-date { font-size: 26px; font-weight: 700; color: #fff; margin-top: 6px; line-height: 1.25; }
+  .header-mood { font-size: 15px; color: #c8d6e5; margin-top: 6px; }
+  .body-wrap { background: #fff; padding: 20px 28px 8px; }
+  .body-wrap-tight { background: #fff; padding: 12px 28px 8px; }
+  .card { border: 1px solid #e8e3da; border-radius: 12px; padding: 18px 20px 20px; }
+  .card-img-table { border-collapse: collapse; width: 100%; }
+  .card-img-table td { vertical-align: top; }
+  .card-img-td { padding-right: 16px; }
+  .card-title { font-size: 19px; font-weight: 700; }
+  .card-title a { color: #14263c; text-decoration: none; }
+  .card-meta { font-size: 12px; color: #8a8578; margin-top: 4px; font-weight: 600; }
+  .card-body { font-size: 14px; line-height: 1.6; color: #43536a; margin-top: 10px; }
+  .card-intel { font-size: 13px; line-height: 1.5; color: #7a5c2e; background: #faf5ea; border: 1px solid #efe3c8; border-radius: 8px; padding: 10px 14px; margin-top: 12px; }
+  .btn-primary { display: inline-block; background: #14263c; color: #fff; font-size: 13px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 6px; }
+  .btn-secondary { display: inline-block; background: #eef2f6; color: #14263c; font-size: 13px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 6px; }
+  .btn-row { margin-top: 14px; }
+  .btn-row a { margin-right: 6px; }
+  .section-header { background: #fff; padding: 26px 28px 6px; }
+  .section-label { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #b3543c; font-weight: 700; border-bottom: 2px solid #eee5db; padding-bottom: 8px; }
+  .weather-card { border: 1px solid #e8e3da; border-radius: 12px; padding: 16px 20px; }
+  .weather-col { text-align: center; padding: 6px; }
+  .weather-col + .weather-col { border-left: 1px solid #efeae1; }
+  .weather-day { font-size: 12px; color: #8a8578; font-weight: 600; }
+  .weather-icon { font-size: 22px; }
+  .weather-temp { font-size: 15px; font-weight: 700; color: #14263c; }
+  .weather-note { font-size: 11px; color: #43536a; }
+  .footer { background: #fff; padding: 20px 28px 28px; }
+  .footer-text { font-size: 12px; color: #aaa; border-top: 1px solid #e8e3da; padding-top: 14px; }
+  .cal-card { border: 1px solid #e8e3da; border-radius: 12px; overflow: hidden; }
+  .cal-item { padding: 14px 20px; border-bottom: 1px solid #efeae1; }
+  .cal-item:last-child { border-bottom: none; }
+  .cal-title { font-size: 15px; font-weight: 700; color: #14263c; }
+  .cal-detail { font-size: 13.5px; color: #43536a; line-height: 1.5; margin-top: 4px; }
+  img { display: block; border: 0; }
+</style>
+</head>
+<body>
+<div class="outer">
 
   <!-- Header -->
-  <div style="background-color:#14263c;border-radius:14px 14px 0 0;padding:28px 28px 22px;">
-    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8fb4d9;font-weight:600;">NYC Brief</div>
-    <div style="font-size:26px;font-weight:700;color:#ffffff;margin-top:6px;line-height:1.25;">Saturday, September 12, 2026</div>
-    <div style="font-size:15px;color:#c8d6e5;margin-top:6px;">Finals weekend at the Open — perfect today, storms roll in tonight. Geffen Hall and San Gennaro both open this week.</div>
+  <div class="header">
+    <div class="header-label">NYC Brief</div>
+    <div class="header-date">Sunday, September 13, 2026</div>
+    <div class="header-mood">Thunderstorms blow out by midday — then a beautiful midweek run opens up. US Open men's final is today.</div>
   </div>
 
-  <!-- Weather card -->
-  <div style="background-color:#ffffff;padding:20px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:16px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Weather -->
+  <div class="body-wrap">
+    <div class="weather-card">
+      <table style="border-collapse:collapse;width:100%;" role="presentation">
         <tr>
-          <td align="center" style="padding:6px;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">TODAY</div>
-            <div style="font-size:22px;">☀️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">76°</div>
-            <div style="font-size:11px;color:#43536a;">Mostly sunny; storms tonight</div>
+          <td class="weather-col">
+            <div class="weather-day">TODAY</div>
+            <div class="weather-icon">⛈️</div>
+            <div class="weather-temp">79°</div>
+            <div class="weather-note">90% storms a.m.</div>
           </td>
-          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">SUN</div>
-            <div style="font-size:22px;">⛈️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">78°</div>
-            <div style="font-size:11px;color:#43536a;">90% rain before 2pm</div>
+          <td class="weather-col">
+            <div class="weather-day">MON</div>
+            <div class="weather-icon">🌤️</div>
+            <div class="weather-temp">74°</div>
+            <div class="weather-note">Clearing, breezy</div>
           </td>
-          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">MON</div>
-            <div style="font-size:22px;">🌤️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">74°</div>
-            <div style="font-size:11px;color:#43536a;">Mostly sunny, clearing</div>
+          <td class="weather-col">
+            <div class="weather-day">TUE</div>
+            <div class="weather-icon">☀️</div>
+            <div class="weather-temp">69°</div>
+            <div class="weather-note">Sunny, perfect</div>
           </td>
-          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">TUE–THU</div>
-            <div style="font-size:22px;">☀️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">70–80°</div>
-            <div style="font-size:11px;color:#43536a;">Sunny to mostly sunny all week</div>
+          <td class="weather-col">
+            <div class="weather-day">WED</div>
+            <div class="weather-icon">☀️</div>
+            <div class="weather-temp">77°</div>
+            <div class="weather-note">Sunny, warm</div>
+          </td>
+          <td class="weather-col">
+            <div class="weather-day">THU</div>
+            <div class="weather-icon">🌤️</div>
+            <div class="weather-temp">78°</div>
+            <div class="weather-note">Mostly sunny</div>
+          </td>
+          <td class="weather-col">
+            <div class="weather-day">SAT</div>
+            <div class="weather-icon">🌦️</div>
+            <div class="weather-temp">76°</div>
+            <div class="weather-note">40% showers</div>
           </td>
         </tr>
       </table>
       <div style="text-align:center;margin-top:10px;">
-        <a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&amp;lon=-73.9653" style="font-size:12px;color:#8a8578;text-decoration:underline;">Full Central Park forecast (NWS) →</a>
+        <a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&lon=-73.9653" style="font-size:12px;color:#8a8578;text-decoration:underline;">Full Central Park forecast (National Weather Service) →</a>
       </div>
     </div>
   </div>
 
-  <!-- Section: This week -->
-  <div style="background-color:#ffffff;padding:26px 28px 6px;">
-    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">This week in NYC</div>
+  <!-- Section: This Week -->
+  <div class="section-header">
+    <div class="section-label">This week in NYC</div>
   </div>
 
-  <!-- Card 1: US Open Women's Final -->
-  <div style="background-color:#ffffff;padding:20px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <div style="font-size:19px;font-weight:700;"><a href="https://www.usopen.org/en_US/tickets/index.html" style="color:#14263c;text-decoration:none;">US Open Women's Final — Today at 4pm</a></div>
-      <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">TODAY · SAT SEP 12 · 4PM ET · ARTHUR ASHE STADIUM, FLUSHING · OUTDOOR — PERFECT CONDITIONS</div>
-      <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The US Open women's singles championship is this afternoon in ideal conditions — 76°F and sunny, no rain until tonight. Secondary-market prices on StubHub and Gametime will soften once play begins; the proven move is to buy 5–10 minutes after the match starts, when sellers dump inventory they can't use. Tonight's storms end the tournament weather window — this is the last clean day at Flushing.</div>
-      <div style="margin-top:14px;">
-        <a href="https://www.stubhub.com/us-open-tennis-tickets/performer/1281/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">StubHub secondary →</a>
-        &nbsp;<a href="https://www.gametime.co/" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Gametime last-minute →</a>
+  <!-- Card 1: US Open Men's Final — TODAY -->
+  <div class="body-wrap">
+    <div class="card">
+      <div class="card-title"><a href="https://www.usopen.org/en_US/tickets/index.html">US Open Men's Final</a></div>
+      <div class="card-meta">TODAY — SUN SEP 13, 2:00 PM &nbsp;·&nbsp; ARTHUR ASHE STADIUM, FLUSHING &nbsp;·&nbsp; OUTDOOR → STORMS CLEAR BY NOON</div>
+      <div class="card-body">The Grand Slam final, and today is the last day of the two-week tournament at the USTA Billie Jean King National Tennis Center. Storms are heavy this morning but the forecast clears by early afternoon — a 2pm start gives the courts time to dry. Secondary-market prices are dropping fast ($427 down from $561 earlier this week) and will collapse further once play begins.</div>
+      <div class="card-intel"><b>The play:</b> Buy on StubHub or SeatGeek 5–10 minutes after the match starts — sellers dump unwanted inventory the moment play begins. Works especially well for tennis finals where the outcome is in doubt. Indoor fallback: Gramercy Tavern walk-in Tavern Room if the morning storms linger past noon.</div>
+      <div class="btn-row">
+        <a class="btn-primary" href="https://www.stubhub.com/us-open-tennis-tickets/performer/us-open-tennis/">Secondary tickets →</a>
+        <a class="btn-secondary" href="https://www.usopen.org/">Official site</a>
       </div>
     </div>
   </div>
 
-  <!-- Card 2: US Open Men's Final -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <div style="font-size:19px;font-weight:700;"><a href="https://www.usopen.org/en_US/tickets/index.html" style="color:#14263c;text-decoration:none;">US Open Men's Final — Tomorrow at 2pm</a></div>
-      <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">SUN SEP 13 · 2PM ET · ARTHUR ASHE STADIUM · OUTDOOR — RAIN MORNING, CLEARING BY MATCH TIME</div>
-      <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The men's championship starts at 2pm Sunday — right at the edge of Sunday's storm window (90% rain before 2pm, forecast clearing by afternoon). Worth watching the morning weather; if it clears, the same secondary-market play works beautifully: buy on StubHub or Gametime a few minutes after serve and the price collapses. ABC is broadcasting for free if you'd rather watch indoors. This is the last event of the whole tournament — the stadium has real end-of-summer energy.</div>
-      <div style="margin-top:14px;">
-        <a href="https://www.usopen.org/en_US/tickets/index.html" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Official tickets →</a>
-        &nbsp;<a href="https://www.gametime.co/" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Gametime last-minute →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 3: NY Philharmonic - Dudamel at Geffen Hall -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card 2: NY Philharmonic / Dudamel at Geffen Hall -->
+  <div class="body-wrap-tight">
+    <div class="card">
+      <table class="card-img-table" role="presentation" cellpadding="0" cellspacing="0">
         <tr>
-          <td valign="top" style="padding-right:16px;">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams" style="color:#14263c;text-decoration:none;">NY Philharmonic: Dudamel at Geffen Hall</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">WED–SAT SEP 16–19 · DAVID GEFFEN HALL, LINCOLN CENTER · 7:30PM · $40–$175</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">After the Radio City opening spectacle, Gustavo Dudamel steps into his actual home — David Geffen Hall on the Upper West Side — for his first regular-week concerts as Music Director of the New York Philharmonic. The program: Prokofiev's Piano Concerto No. 3 and John Adams. This is the "be there at the beginning" moment, without the celebrity event-ness of the Radio City launch. Geffen Hall is a ten-minute walk from the Upper West Side.</div>
+          <td class="card-img-td">
+            <div class="card-title"><a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams">NY Philharmonic: Dudamel Conducts Prokofiev</a></div>
+            <div class="card-meta">TUE–FRI SEP 16–18, 7:30 PM &nbsp;·&nbsp; DAVID GEFFEN HALL, LINCOLN CENTER &nbsp;·&nbsp; FROM $35</div>
+            <div class="card-body">Gustavo Dudamel's first regular-season concerts as Music Director at Geffen Hall — the UWS home stage, a 10-minute walk from the Upper West Side. The program pairs Prokofiev's Symphony No. 5 (among the great 20th-century symphonies) with John Adams's "On the Transmigration of Souls" — his 9/11 memorial piece, written for the Philharmonic, premiered on the exact date 25 years ago. Plus a world premiere by Canadian composer Zosha Di Castri. Three nights this week; Tuesday through Thursday are all identical programs. Perfect 69–78° weather midweek.</div>
           </td>
           <td valign="top" width="140">
-            <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams"><img src="https://res.cloudinary.com/nyphil/image/upload/f_auto/q_auto/f_auto/v1772820550/images/concerts-tickets/Dudamel/Cropped_PH13FVI9-411210121?_a=BAAAV6DQ" alt="Gustavo Dudamel, New York Philharmonic" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
+            <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams">
+              <img src="https://res.cloudinary.com/nyphil/image/upload/f_auto/q_auto/f_auto/v1772820550/images/concerts-tickets/Dudamel/Cropped_PH13FVI9-411210121" alt="Gustavo Dudamel, NY Philharmonic Music Director" width="140" style="width:140px;height:auto;border-radius:8px;">
+            </a>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Tickets →</a>
+      <div class="btn-row">
+        <a class="btn-primary" href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams">Tickets →</a>
+        <a class="btn-secondary" href="https://www.nyphil.org/">NY Phil site</a>
       </div>
     </div>
   </div>
 
-  <!-- Card 4: Feast of San Gennaro -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card 3: Titanique — CLOSING -->
+  <div class="body-wrap-tight">
+    <div class="card">
+      <div class="card-title"><a href="https://www.broadway.com/shows/titanique/">Titanique — Closing Sunday</a></div>
+      <div class="card-meta">CLOSES SUN SEP 20 &nbsp;·&nbsp; ST. JAMES THEATRE, MIDTOWN &nbsp;·&nbsp; FROM $87 — OR 2-FOR-1 BROADWAY WEEK</div>
+      <div class="card-body">Last week to see this one. Titanique is a campy jukebox parody of the <i>Titanic</i> film, told through the lens of Céline Dion — who shows up as a character and narrates the whole disaster through her greatest hits. Transferred from a cult off-Broadway run to the St. James Theatre in March and is closing out its Broadway run next Sunday. Part absurdist comedy, part deeply committed Celine tribute. Very fun.</div>
+      <div class="card-intel"><b>Getting in cheap:</b> Fall Broadway Week runs through Sep 20 — 2-for-1 tickets available now at nyc.com/broadway-week. TodayTix rush releases at 9am daily. Box office day-of for any remaining house seats.</div>
+      <div class="btn-row">
+        <a class="btn-primary" href="https://www.broadway.com/shows/titanique/">Tickets →</a>
+        <a class="btn-secondary" href="https://www.todaytix.com/nyc/shows/titanique">TodayTix rush</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4: The Joyce — The Surge -->
+  <div class="body-wrap-tight">
+    <div class="card">
+      <div class="card-title"><a href="https://www.joyce.org/theme/fall-26-winter-27-5xnz">The Joyce Theater: The Surge — An Ode to Sinéad O'Connor</a></div>
+      <div class="card-meta">SEP 16–27, EVENINGS &nbsp;·&nbsp; THE JOYCE, 175 8TH AVE, CHELSEA &nbsp;·&nbsp; OPENING THIS WEEK</div>
+      <div class="card-body">The Joyce Theater — Chelsea's dedicated contemporary dance house — opens its fall season this week with a new work honoring Sinéad O'Connor, who died in 2023. A shorter cab ride from the Upper West Side than it sounds, and a good pairing with dinner at Graciela or Cleo (both in the West Village, a 10-minute walk). The Joyce is one of the few places in the city where you can reliably see world-class contemporary dance at reasonable prices.</div>
+      <div class="btn-row">
+        <a class="btn-primary" href="https://www.joyce.org/theme/fall-26-winter-27-5xnz">Joyce season →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5: San Gennaro 100th -->
+  <div class="body-wrap-tight">
+    <div class="card">
+      <div class="card-title"><a href="https://sangennaronyc.org/event-calendar/">Feast of San Gennaro — 100th Anniversary</a></div>
+      <div class="card-meta">SEP 17–27 &nbsp;·&nbsp; MULBERRY ST, LITTLE ITALY &nbsp;·&nbsp; FREE ENTRY &nbsp;·&nbsp; OUTDOOR — CHECK FORECAST LATE WEEK</div>
+      <div class="card-body">The 100th running of the Feast of San Gennaro — one of the longest-running and largest Italian-American street festivals in the country, spilling down Mulberry Street between Canal and Houston for 11 days. The centennial edition promises expanded programming, 300-plus vendors, live music, and the Grand Procession on Saturday, September 19. Open 11am–11pm weekdays, until midnight weekends. Saturday has a 40% rain chance — check the forecast before heading south; the first Thursday (Sep 17) looks ideal at 78° and mostly sunny.</div>
+      <div class="btn-row">
+        <a class="btn-primary" href="https://sangennaronyc.org/event-calendar/">Schedule →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 6: Schmigadoon + Broadway Week -->
+  <div class="body-wrap-tight">
+    <div class="card">
+      <table class="card-img-table" role="presentation" cellpadding="0" cellspacing="0">
         <tr>
-          <td valign="top" style="padding-right:16px;">
-            <div style="font-size:19px;font-weight:700;"><a href="https://sangennaronyc.org/" style="color:#14263c;text-decoration:none;">100th Feast of San Gennaro — Opens Thursday</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">OPENS THU SEP 17 THROUGH SUN SEP 27 · MULBERRY STREET, LITTLE ITALY · FREE · OUTDOOR — 80° &amp; SUNNY THURSDAY</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">This year marks the 100th anniversary of the Feast of San Gennaro, New York's iconic Italian street festival — eleven blocks of Mulberry Street (between Canal and Houston) taken over by 300-plus vendors serving cannoli, zeppole, sausage and peppers. It runs 11am–11pm weekdays. The religious procession happens Saturday September 19 (the saint's actual feast day), with Mass at the National Shrine of San Gennaro followed by the statue carried through the streets with marching bands. Perfect weather on Thursday for the opening day.</div>
+          <td class="card-img-td">
+            <div class="card-title"><a href="https://www.broadway.com/shows/schmigadoon/">Schmigadoon! — Tony Winner, 2-for-1 This Week</a></div>
+            <div class="card-meta">THROUGH APR 2027 &nbsp;·&nbsp; NEDERLANDER THEATRE &nbsp;·&nbsp; FROM $71 — 2-FOR-1 THROUGH SEP 20</div>
+            <div class="card-body">This week is the last chance to catch Schmigadoon! at Broadway Week 2-for-1 pricing — the offer runs through September 20. The Tony Award winner for Best Musical is a sharp, funny satire of the golden-age musical: two hikers stumble into a 1940s-style song-and-dance town and can't leave until they find true love. Runs through April 2027, but the 2-for-1 deal is only a few days left.</div>
           </td>
           <td valign="top" width="140">
-            <a href="https://sangennaronyc.org/"><img src="https://images.squarespace-cdn.com/content/61c754164c61de2425b6d67d/1720318952965-1TV81NP9ASPLB18VB2IN/FeastOfSanGennaroFood.jpg?content-type=image%2Fjpeg" alt="Feast of San Gennaro food" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
+            <a href="https://www.broadway.com/shows/schmigadoon/">
+              <img src="https://imaging.broadway.com/images/poster-178275/w178/138883-3.jpg" alt="Schmigadoon! Broadway" width="140" style="width:140px;height:auto;border-radius:8px;">
+            </a>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://sangennaronyc.org/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Festival site →</a>
+      <div class="card-intel"><b>2-for-1 Broadway Week:</b> Book via nyc.com/broadway-week through Sunday Sep 20. Applies to Tue–Thu and select weekend performances. Also works for Paranormal Activity at the August Wilson Theatre if you prefer a thriller.</div>
+      <div class="btn-row">
+        <a class="btn-primary" href="https://www.broadway.com/shows/schmigadoon/">Tickets →</a>
+        <a class="btn-secondary" href="https://www.nyc.com/broadway-week">Broadway Week 2-for-1</a>
       </div>
     </div>
   </div>
 
-  <!-- Card 5: Indigenous Enterprise at Joyce Theater -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <div style="font-size:19px;font-weight:700;"><a href="https://www.joyce.org/performances" style="color:#14263c;text-decoration:none;">Indigenous Enterprise at the Joyce Theater</a></div>
-      <div style="font-size:12px;color:#8a8578;font-weight:600;margin-top:4px;">SEP 16–21 · THE JOYCE, CHELSEA · $10–$59 · INDOOR</div>
-      <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The Joyce Theater in Chelsea — New York's dedicated contemporary dance house — opens its fall season with Indigenous Enterprise, a company that weaves authentic powwow dance traditions (grass dance, fancy dance, jingle dress) into full-scale contemporary performance with striking regalia. Short run; opening week is the time to catch it. The Joyce is walkable from the West Village restaurant corridor — Graciela, Cleo, and Capitaine are all within ten minutes.</div>
-      <div style="margin-top:14px;">
-        <a href="https://www.joyce.org/performances" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Tickets →</a>
+  <!-- NEXT TRIP section -->
+  <div class="section-header">
+    <div class="section-label">Next trip</div>
+  </div>
+  <div class="body-wrap">
+    <p style="font-size:14px;color:#8a8578;">No upcoming trip listed in trips.md — the August 31–September 2 birthday trip has passed. Update trips.md with the next visit to activate trip-mode picks.</p>
+  </div>
+
+  <!-- Mark Your Calendar -->
+  <div class="section-header">
+    <div class="section-label">Mark your calendar</div>
+  </div>
+  <div class="body-wrap">
+    <div class="cal-card">
+      <div class="cal-item">
+        <div class="cal-title">New York Film Festival — Single Tickets On Sale</div>
+        <div class="cal-detail"><b>Tuesday, September 15 at 12:00pm ET.</b> The 64th New York Film Festival (Sep 25–Oct 12) opens ticket sales to the general public on Tuesday at noon. Tickets are $35 general / $30 members; select screenings will offer $15 rush tickets throughout the festival. Members and pass holders get earlier access. The festival screens at Alice Tully Hall and other Lincoln Center venues — a 10-minute walk from the Upper West Side. <a href="https://www.filmlinc.org/nyff/tickets-and-passes/" style="color:#0f4c81;font-weight:600;">Tickets and passes →</a></div>
       </div>
-    </div>
-  </div>
-
-  <!-- Section: Next Trip -->
-  <div style="background-color:#ffffff;padding:26px 28px 6px;">
-    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">Next trip</div>
-  </div>
-
-  <div style="background-color:#ffffff;padding:16px 28px 20px;">
-    <div style="font-size:14px;line-height:1.55;color:#6b7a8d;font-style:italic;">No upcoming trip listed in trips.md. The August 31–September 2 birthday trip has passed. Add the next NYC dates to trips.md when they're set.</div>
-  </div>
-
-  <!-- Section: Mark Your Calendar -->
-  <div style="background-color:#ffffff;padding:20px 28px 6px;">
-    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">Mark your calendar</div>
-  </div>
-
-  <div style="background-color:#ffffff;padding:16px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;overflow:hidden;">
-      <div style="padding:16px 20px;">
-        <div style="font-size:15px;font-weight:700;color:#14263c;"><a href="https://www.filmlinc.org/nyff/tickets-and-passes/" style="color:#14263c;text-decoration:none;">NYFF64 single tickets on sale — Tuesday Sep 15, noon ET</a></div>
-        <div style="font-size:13.5px;line-height:1.55;color:#43536a;margin-top:6px;">The 64th New York Film Festival (September 25–October 12 at Lincoln Center) goes on general sale this Tuesday at noon. Member and pass-holder pre-sale is before that; general tickets at noon. Opener is <em>Paper Tiger</em>; the festival spans the Alice Tully Hall main slate plus screenings at the Brooklyn Academy of Music and three outer-borough venues. Big premieres — closing night, galas — sell in minutes. Set a calendar alarm for Tuesday at noon and go straight to <a href="https://www.filmlinc.org/nyff/tickets-and-passes/" style="color:#0f4c81;">filmlinc.org</a>.</div>
+      <div class="cal-item">
+        <div class="cal-title">Broadway Week 2-for-1 Tickets — Last Days</div>
+        <div class="cal-detail"><b>Offer ends Sunday, September 20.</b> Twenty-five Broadway shows are offering 2-for-1 pricing through next Sunday. Includes Schmigadoon!, Paranormal Activity, and others. Book at nyc.com/broadway-week before it closes.</div>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <div style="background-color:#ffffff;border-radius:0 0 14px 14px;padding:20px 28px 28px;">
-    <div style="font-size:11px;color:#a9a496;text-align:center;">Brief generated September 12, 2026 · weather via <a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&amp;lon=-73.9653" style="color:#a9a496;">NWS Central Park</a></div>
+  <div class="footer">
+    <div class="footer-text">Brief generated September 13, 2026</div>
   </div>
 
 </div>
-</div>
+</body>
+</html>
