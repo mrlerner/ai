@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Coral File</title>
+<style>
+  :root {
+    --ground: #eef1ef;
+    --card: #f7f9f8;
+    --ink: #17313f;
+    --ink-soft: #4a6373;
+    --line: #ccd7d4;
+    --swell: #2e7da6;
+    --swell-deep: #1c5a7c;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.22);
+    --flag-ink: #f5f8f7;
+    --pro: #2e7d52;
+    --con: #a05c2e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0c1b26;
+      --card: #122938;
+      --ink: #dce7ec;
+      --ink-soft: #8fa8b5;
+      --line: #24404f;
+      --swell: #5aa7cc;
+      --swell-deep: #7fc0de;
+      --wax: #e3b23c;
+      --wax-soft: rgba(227, 178, 60, 0.16);
+      --flag-ink: #0c1b26;
+      --pro: #6fc79a;
+      --con: #d99a6b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0c1b26;
+    --card: #122938;
+    --ink: #dce7ec;
+    --ink-soft: #8fa8b5;
+    --line: #24404f;
+    --swell: #5aa7cc;
+    --swell-deep: #7fc0de;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.16);
+    --flag-ink: #0c1b26;
+    --pro: #6fc79a;
+    --con: #d99a6b;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+
+  .mono {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  header.hero { margin-bottom: 2.6rem; }
+  .hero .eyebrow { color: var(--ink-soft); text-transform: uppercase; margin-bottom: 1rem; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.08;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  .hero p.dek { max-width: 36em; font-size: 1.05rem; color: var(--ink-soft); margin: 0 0 0.6rem; }
+
+  .rider {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--swell);
+    padding: 1rem 1.2rem 1.1rem;
+    margin: 1.6rem 0 0;
+    font-size: 0.95rem;
+    max-width: 44em;
+  }
+  .rider .mono { color: var(--swell-deep); }
+  .rider p { margin: 0.4rem 0 0; }
+
+  h3.section {
+    text-transform: uppercase;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin: 3rem 0 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  h3.section::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+
+  /* ---- vibe spectrum ---- */
+  .spectrum {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.3rem 1.4rem 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .spectrum .scale { position: relative; height: 148px; }
+  .spectrum .bar {
+    position: absolute; left: 0; right: 0; top: 72px; height: 6px;
+    background: linear-gradient(90deg, var(--line), var(--swell) 55%, var(--wax));
+    border-radius: 3px;
+  }
+  .spectrum .band {
+    position: absolute; top: 58px; height: 34px;
+    left: 30%; width: 34%;
+    background: var(--wax-soft);
+    border-left: 2px solid var(--wax);
+    border-right: 2px solid var(--wax);
+  }
+  .spectrum .stop { position: absolute; width: 0; }
+  .spectrum .dot {
+    position: absolute; top: 68px; left: -7px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--swell-deep);
+    border: 2px solid var(--card);
+  }
+  .spectrum .stop.veto .dot { background: var(--ink-soft); opacity: 0.55; }
+  .spectrum .lbl {
+    position: absolute; left: 0; transform: translateX(-50%);
+    text-align: center; width: 8.5em; color: var(--ink);
+  }
+  .spectrum .stop.veto .lbl { color: var(--ink-soft); }
+  .spectrum .lbl .why { display: block; font-style: italic; font-size: 0.78rem; color: var(--ink-soft); letter-spacing: 0; }
+  .spectrum .up .lbl { top: 8px; }
+  .spectrum .up .dot::before { content: ""; position: absolute; left: 5px; top: -26px; width: 2px; height: 24px; background: var(--line); }
+  .spectrum .down .lbl { top: 102px; }
+  .spectrum .down .dot::before { content: ""; position: absolute; left: 5px; top: 14px; width: 2px; height: 20px; background: var(--line); }
+  .spectrum .ends { display: flex; justify-content: space-between; color: var(--ink-soft); margin-top: 0.5rem; }
+  .spectrum-note { color: var(--ink-soft); font-size: 0.9rem; max-width: 40em; margin: 0 0 0.4rem; }
+
+  /* ---- trip cards ---- */
+  .trip {
+    background: var(--card);
+    border: 1px solid var(--line);
+    margin-bottom: 1.75rem;
+    display: grid;
+    grid-template-columns: 3.4rem 1fr;
+  }
+  .flag {
+    background: var(--swell);
+    color: var(--flag-ink);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 1.4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .trip.baseline .flag { background: var(--ink-soft); font-size: 0.95rem; padding-top: 1.6rem; writing-mode: vertical-rl; letter-spacing: 0.2em; }
+  .trip-body { padding: 1.4rem 1.6rem 1.5rem; min-width: 0; }
+  .trip-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; }
+  .trip h2 { font-size: 1.55rem; font-weight: 600; margin: 0; }
+  .trip .codename { color: var(--swell-deep); }
+  .route { color: var(--ink-soft); margin: 0.35rem 0 1rem; font-size: 0.95rem; }
+
+  /* ---- photo carousel (full width of card) ---- */
+  .carousel { --ph: 400px; position: relative; margin: 0.4rem 0 1.4rem; }
+  .carousel .slides {
+    display: flex; overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .carousel .slides::-webkit-scrollbar { display: none; }
+  .carousel .slide { flex: 0 0 100%; min-width: 100%; margin: 0; scroll-snap-align: center; }
+  .carousel .slide img {
+    width: 100%; height: var(--ph); display: block; object-fit: cover;
+    border: 1px solid var(--line); box-sizing: border-box;
+    background: var(--ground);
+  }
+  .carousel figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .carousel figcaption a { color: var(--swell-deep); }
+  .carousel .credit { display: block; font-size: 0.66rem; color: var(--ink-soft); opacity: 0.7; margin-top: 0.2rem; }
+  .carousel .credit a { color: inherit; }
+  .carousel .nav {
+    position: absolute; top: calc(var(--ph) / 2); transform: translateY(-50%);
+    width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--card) 82%, transparent);
+    color: var(--ink); font-size: 1rem; line-height: 1;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .carousel .nav:hover { background: var(--card); border-color: var(--swell); color: var(--swell-deep); }
+  .carousel .nav.prev { left: 0.7rem; }
+  .carousel .nav.next { right: 0.7rem; }
+  .carousel .dots {
+    position: absolute; top: calc(var(--ph) - 1.6rem); left: 0; right: 0;
+    display: flex; justify-content: center; gap: 0.45rem;
+  }
+  .carousel .dots button {
+    width: 9px; height: 9px; border-radius: 50%; padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    background: rgba(20, 40, 55, 0.35);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+    opacity: 0.8; cursor: pointer;
+  }
+  .carousel .dots button.on { background: #fff; opacity: 1; }
+
+  /* ---- full-width map below the photos ---- */
+  .mapwide { margin: 0 0 1.3rem; }
+  .mapwide iframe {
+    width: 100%; height: 320px; display: block; border: 0;
+    border: 1px solid var(--line);
+    background: var(--ground);
+  }
+  .mapwide figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .mapwide figcaption a { color: var(--swell-deep); }
+
+  dl.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.9rem 1.4rem;
+    margin: 0 0 1.1rem;
+  }
+  dl.facts div { min-width: 0; }
+  dl.facts dt { color: var(--ink-soft); text-transform: uppercase; margin-bottom: 0.15rem; }
+  dl.facts dd { margin: 0; font-size: 0.92rem; }
+
+  .roadtest {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--wax);
+    padding: 0.8rem 1rem 0.9rem;
+    margin: 0 0 1.2rem;
+    font-size: 0.93rem;
+  }
+  .roadtest .mono { color: var(--swell-deep); text-transform: uppercase; }
+  .roadtest p { margin: 0.35rem 0 0; }
+
+  .proscons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.6rem; margin: 0 0 1.2rem; }
+  .proscons h4 { margin: 0 0 0.4rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; }
+  .proscons .pros h4 { color: var(--pro); }
+  .proscons .cons h4 { color: var(--con); }
+  .proscons ul { margin: 0; padding: 0; list-style: none; font-size: 0.92rem; }
+  .proscons li { padding: 0.28rem 0 0.28rem 1.1rem; position: relative; border-top: 1px dotted var(--line); }
+  .proscons li:first-child { border-top: 0; }
+  .proscons .pros li::before { content: "+"; position: absolute; left: 0; color: var(--pro); font-weight: 700; }
+  .proscons .cons li::before { content: "\2212"; position: absolute; left: 0; color: var(--con); font-weight: 700; }
+
+  .moment {
+    border-left: 3px solid var(--wax);
+    padding: 0.15rem 0 0.15rem 0.9rem;
+    margin: 0;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .moment .mono { color: var(--swell-deep); font-style: normal; }
+
+  /* ---- comparison table ---- */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--card); }
+  table.compare { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.88rem; }
+  table.compare th, table.compare td { padding: 0.55rem 0.8rem; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+  table.compare thead th { border-top: 0; background: var(--wax-soft); font-weight: 600; }
+  table.compare tbody th {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 500; white-space: nowrap;
+  }
+  table.compare td.ref { color: var(--ink-soft); font-style: italic; }
+  table.compare td.win { color: var(--swell-deep); font-weight: 600; }
+
+  .verdict {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--swell);
+    padding: 1.2rem 1.4rem 1.3rem;
+  }
+  .verdict p { margin: 0.5rem 0 0; max-width: 42em; }
+  .verdict p:first-child { margin-top: 0; }
+  .verdict .mono { color: var(--swell-deep); }
+
+  .field-note {
+    margin-top: 3rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--wax);
+    padding: 1rem 1.1rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .field-note .mono { color: var(--swell-deep); }
+  .field-note p { margin: 0.4rem 0 0; }
+  .field-note a { color: var(--swell-deep); }
+
+  footer.cadence {
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  footer.cadence .mono { color: var(--swell-deep); }
+  footer.cadence a { color: var(--swell-deep); }
+
+  @media (max-width: 640px) {
+    .trip { grid-template-columns: 2.4rem 1fr; }
+    .trip-body { padding: 1.1rem 1rem 1.2rem; }
+    .carousel { --ph: 240px; }
+    .mapwide iframe { height: 240px; }
+    .proscons { grid-template-columns: 1fr; }
+    .spectrum .lbl { width: 6.5em; font-size: 0.62rem; }
+  }
+
+  table.compare { min-width: 780px; }
+</style>
+<style>
+  /* additions for this page */
+  .itin { overflow-x: auto; border: 1px solid var(--line); background: var(--card); margin-bottom: 1.2rem; }
+  table.itin-t { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.9rem; }
+  table.itin-t th, table.itin-t td { padding: 0.6rem 0.8rem; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+  table.itin-t thead th { border-top: 0; background: var(--wax-soft); font-weight: 600; }
+  table.itin-t tbody th { font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--swell-deep); font-weight: 500; white-space: nowrap; }
+  .alert { border: 1px solid var(--con); border-left: 4px solid var(--con); background: var(--card); padding: 1rem 1.2rem 1.1rem; margin: 0 0 1.6rem; font-size: 0.95rem; }
+  .alert .mono { color: var(--con); text-transform: uppercase; }
+  .alert p { margin: 0.4rem 0 0; }
+  .alert a, .verdict a, .field-note a, .rider a, dl.facts a, .roadtest a { color: var(--swell-deep); }
+  ul.check { margin: 0; padding: 0 0 0 1.2rem; font-size: 0.95rem; }
+  ul.check li { margin: 0.3rem 0; }
+  .facts-wide { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem 1.4rem; margin: 0 0 1.4rem; }
+  .facts-wide .cell { background: var(--card); border: 1px solid var(--line); padding: 0.9rem 1rem 1rem; font-size: 0.92rem; }
+  .facts-wide .cell .mono { color: var(--ink-soft); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .facts-wide .cell p { margin: 0.3rem 0 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow mono">FANTASY TIER &middot; SNORKEL + FREEDIVE + LEARNER SURF &middot; THE CORAL TRIANGLE AND BEYOND</div>
+    <h1>The Coral File</h1>
+    <p class="dek">The brief, sharpened: see great coral while great coral still exists &mdash; from the surface,
+      and on one breath &mdash; with a wave a learner can ride somewhere in the same trip.
+      <a href="surf-south-pacific.html">The South Pacific File</a> graded six islands on culture, reef and surf in
+      equal parts. This file regrades the map for the reef alone, and pulls the
+      <a href="https://en.wikipedia.org/wiki/Coral_Triangle" rel="noopener">Coral Triangle</a> onto it: Indonesia,
+      the Philippines, Papua New Guinea, the Solomons and Timor-Leste, where three-quarters of the world&rsquo;s
+      coral species live.</p>
+    <p class="dek">Every entry answers three questions: how good is the reef from the surface, does it work on one
+      breath, and where is the learner wave.</p>
+    <div class="rider">
+      <span class="mono">THE SNORKELER, HONESTLY</span>
+      <p>A strong snorkeler, not yet a freediver. The plan that unlocks this whole page is a two-day freediving
+        course on the front end of the trip (AIDA 2 or the SSI equivalent: relaxation, equalization, safe buddy
+        rules, 10&ndash;15 m). After that, the best reef is the reef between 3 and 15 m in clear, calm water with
+        good light &mdash; not the deep wall. Surf profile unchanged from the South Pacific File: comfortable to
+        about 5-foot faces, still building turns, wants forgiving waves.</p>
+    </div>
+  </header>
+
+  <h3 class="section">Before it&rsquo;s too late &middot; what the bleaching actually did</h3>
+  <div class="field-note" style="margin-top:0">
+    <span class="mono">THE FOURTH GLOBAL BLEACHING EVENT &middot; 2023&ndash;2025</span>
+    <p>The largest bleaching event on record ran from early 2023 to mid-2025. NOAA counts bleaching-level heat
+      stress on about 84% of the world&rsquo;s reef area, in all three ocean basins, and says the event
+      <a href="https://www.nesdis.noaa.gov/news/worlds-fourth-mass-coral-bleaching-event-likely-ended-2025" rel="noopener">likely ended in 2025</a>.
+      The South Pacific was hit first and hard: Fiji, Vanuatu, Samoa and French Polynesia all saw mass
+      bleaching in 2023&ndash;24, and Fiji had its first back-to-back years. In French Polynesia an 80-day marine
+      heatwave in early 2024 left a surveyed Tuamotu atoll with
+      <a href="https://link.springer.com/article/10.1007/s00338-026-02895-y" rel="noopener">27&ndash;43% of colonies recently dead</a>
+      by May 2024.</p>
+    <p>The counter-example is the reason this page exists. At Yenbuba in Raja Ampat, more than 70% of the dominant
+      coral bleached at the December 2024 peak; by November 2025 it was
+      <a href="https://www.nature.com/articles/s41598-026-49171-1" rel="noopener">under 20%, with widespread repigmentation</a>.
+      Researchers credit strong currents, deep-water upwelling, healthy grazing-fish populations, intact mangroves,
+      and shallow inlets that act as heat-training grounds for coral. Kimbe Bay, Alor, Komodo and Ata&uacute;ro share
+      most of those traits. The lesson for a trip: pick reefs with structural resilience &mdash; current, depth,
+      protection, fish &mdash; not a single pretty lagoon, and go in the next two or three seasons, not the next ten.</p>
+  </div>
+
+  <h3 class="section">The reef&ndash;wave spectrum</h3>
+  <p class="spectrum-note">How much of each trip is reef and how much is wave. The amber band is the target: a
+    reef that justifies the flight <em>and</em> a wave you can paddle into in the same itinerary.</p>
+  <div class="spectrum" role="img" aria-label="A spectrum from all reef to all wave. Raja Ampat, Kimbe Bay and Atauro sit far left as reef-only trips. Papatura in the Solomons, Komodo with Lombok, and Siargao with Southern Leyte sit inside the amber target band. Fiji sits at the wave edge of the band. Bali sits far right as a wave-first trip.">
+    <div class="scale">
+      <div class="band" style="left:36%; width:40%"></div>
+      <div class="bar"></div>
+      <div class="stop up" style="left:6%">
+        <span class="lbl mono">RAJA AMPAT<span class="why">reef, full stop</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down" style="left:16%">
+        <span class="lbl mono">KIMBE / ATA&Uacute;RO<span class="why">reef, tiny surf footnote</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop up" style="left:42%">
+        <span class="lbl mono">PAPATURA<span class="why">both, from one dock</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down" style="left:56%">
+        <span class="lbl mono">KOMODO + LOMBOK<span class="why">two bases, one flight</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop up" style="left:69%">
+        <span class="lbl mono">SIARGAO + LEYTE<span class="why">surf-first, reef ferry</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop down veto" style="left:80%">
+        <span class="lbl mono">FIJI<span class="why">see the S. Pacific File</span></span>
+        <span class="dot"></span>
+      </div>
+      <div class="stop up veto" style="left:94%">
+        <span class="lbl mono">BALI<span class="why">wave-first; the course stop</span></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+    <div class="ends mono"><span>ALL REEF &larr;</span><span>&rarr; ALL WAVE</span></div>
+  </div>
+
+  <h3 class="section">The six</h3>
+
+  <!-- 1 RAJA AMPAT -->
+  <article class="trip" id="raja-ampat">
+    <div class="flag" aria-hidden="true">1</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Raja Ampat</h2>
+        <span class="codename mono">KRI + ARBOREK HOMESTAYS, WEST PAPUA &middot; THE REEF, FULL STOP</span>
+      </div>
+      <p class="route">The epicenter of the Coral Triangle: the Bird&rsquo;s Head Seascape holds 574 coral species,
+        roughly three-quarters of every species on Earth. You sleep in a village homestay on stilts and the house
+        reef starts at the end of the jetty. There is no learner wave within a day of here &mdash; Lombok on the way
+        home is the surf.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Raja Ampat">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Reefscape_in_the_Bird%27s_Head_Seascape.jpg"
+              alt="A dense reefscape of soft corals and schooling fish in the Bird's Head Seascape" loading="lazy">
+            <figcaption>The Bird&rsquo;s Head reef at mid-depth: this is the picture the whole page is chasing, and much of it sits inside freediving range.
+              <a href="https://www.google.com/search?q=raja+ampat+snorkeling+reef&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Bird&rsquo;s Head Seascape / Jones/Shimlock, <a href="https://commons.wikimedia.org/wiki/File:Reefscape_in_the_Bird%27s_Head_Seascape.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Local_Children_Snorkeling_in_the_Bird%27s_Head_Seascape.jpg"
+              alt="Local children snorkeling over a shallow hard-coral garden in Raja Ampat" loading="lazy">
+            <figcaption>Shallow hard-coral gardens off the villages &mdash; the snorkel-first version needs no boat at all.
+              <span class="credit">Photo: Bird&rsquo;s Head Seascape / Jones/Shimlock, <a href="https://commons.wikimedia.org/wiki/File:Local_Children_Snorkeling_in_the_Bird%27s_Head_Seascape.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Sharks_in_The_Shore.jpg/1280px-Sharks_in_The_Shore.jpg"
+              alt="Blacktip reef sharks patrolling knee-deep water off a Raja Ampat beach" loading="lazy">
+            <figcaption>Blacktips in the shallows off a homestay beach. Fish density is the tell of a reef that still works.
+              <span class="credit">Photo: Rolandandika, <a href="https://commons.wikimedia.org/wiki/File:Sharks_in_The_Shore.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wayag_Island%2C_Raja_Ampat_%2814280693998%29.jpg/1280px-Wayag_Island%2C_Raja_Ampat_%2814280693998%29.jpg"
+              alt="Karst islets of Wayag rising from turquoise lagoons, Raja Ampat" loading="lazy">
+            <figcaption>Wayag&rsquo;s karst lagoons, the postcard. A long day-boat from Kri; most homestay weeks skip it for Piaynemo, which is closer and nearly as good.
+              <span class="credit">Photo: Elias Levy, <a href="https://commons.wikimedia.org/wiki/File:Wayag_Island,_Raja_Ampat_(14280693998).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of the Dampier Strait, Raja Ampat, with Sorong and Waisai" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=130.30%2C-1.05%2C131.45%2C-0.15&amp;layer=mapnik&amp;marker=-0.5608%2C130.6757"></iframe>
+        <figcaption>Kri Island (pin) in the Dampier Strait; Waisai, the ferry port, to the northeast; Sorong and its airport at bottom right.
+          <a href="https://maps.google.com/?q=Kri+Island,+Raja+Ampat" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA to Jakarta or Bali via Taipei/Tokyo; onward to Sorong (Jakarta nonstop ~4 h, or via Makassar); the public ferry to Waisai runs twice daily and takes about 2 h; the homestay boat meets you. Budget two travel days each way.</dd></div>
+        <div><dt class="mono">Under the mask</dt><dd>Jetty reefs on Kri and Arborek with 10&ndash;30 m off the end; Cape Kri&rsquo;s fish-count record; Manta Sandy; Yenbuba&rsquo;s coral slope, the one that bleached and came back. Snorkel and freedive trips run from the homestays without a tank.</dd></div>
+        <div><dt class="mono">On one breath</dt><dd>Dedicated freedive safaris base on Kri and Arborek (Freedive Nusa runs them from Bali; a local outfit, Raja Ampat Freediving, runs land-based weeks). Calm mornings, warm water, coral from the surface down.</dd></div>
+        <div><dt class="mono">Your surf</dt><dd>None here. The pairing is Lombok&rsquo;s Selong Belanak on the way home (see entry 3), or a Bali beach-break week at Canggu/Batu Bolong if the flights route that way.</dd></div>
+        <div><dt class="mono">When</dt><dd>October&ndash;April: calm seas, best visibility, 27&ndash;30&deg;C water. The mid-year windy season closes some islands.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The balance test &middot; reef + one breath + learner surf</span>
+        <p>Reef and freediving score as high as anything on Earth. Surf scores zero, honestly, and the fix is a
+          two-base trip: freedive course in Bali or Nusa Penida, a homestay week on Kri, then a Lombok learner
+          week before the flight home. Long, but every leg is doing a job.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>The highest coral diversity on the planet, and the best-documented recovery from the 2024 bleaching</li>
+          <li>House reefs off the jetty: the best snorkeling requires no boat, no schedule</li>
+          <li>Homestay money funds village reef patrols &mdash; your stay pays the right people</li>
+          <li>Freedive-specific trips already exist; you are not inventing the format</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Zero surf; the wave is an extra week and another flight away</li>
+          <li>Two travel days each way, and Sorong connections reshuffle</li>
+          <li>Homestays are honest: mattress on a floor, bucket showers, generator hours</li>
+          <li>Park fee, boat fuel and transfers add up faster than the room rate suggests</li>
+        </ul></div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> the reef you are trying to see before it&rsquo;s too late is this one &mdash; and it is the one that came back.</p>
+    </div>
+  </article>
+
+  <!-- 2 SOLOMONS / PAPATURA -->
+  <article class="trip" id="papatura">
+    <div class="flag" aria-hidden="true">2</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Papatura, Solomon Islands</h2>
+        <span class="codename mono">SANTA ISABEL (+ MAROVO LAGOON) &middot; BOTH, FROM ONE DOCK</span>
+      </div>
+      <p class="route">A small island resort off Santa Isabel where the same boat runs a beginner reef wave in the
+        morning and hard-and-soft coral gardens after lunch. The Solomons are the Coral Triangle&rsquo;s forgotten
+        corner: the same swells that hit Hawai&lsquo;i arrive a few days later, and almost nobody is here.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of the Solomon Islands">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Marovo_Lagoon_%2816_August_2008%29.jpg/1280px-Marovo_Lagoon_%2816_August_2008%29.jpg"
+              alt="A calm white-sand beach and shallow reef flat inside Marovo Lagoon, Solomon Islands" loading="lazy">
+            <figcaption>Marovo Lagoon, the world&rsquo;s largest saltwater lagoon: the add-on if the trip stretches to two weeks. Uepi Island sits on its outer edge.
+              <a href="https://www.google.com/search?q=papatura+solomon+islands+snorkeling+surf&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Xplore Dive, <a href="https://commons.wikimedia.org/wiki/File:Marovo_Lagoon_(16_August_2008).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Uepi%2C_Western_Province%2C_Solomon_Islands%2C_2012.jpg/1280px-Uepi%2C_Western_Province%2C_Solomon_Islands%2C_2012.jpg"
+              alt="Aerial view of Uepi Island and its reef, Western Province, Solomon Islands" loading="lazy">
+            <figcaption>Uepi from the air: lagoon on one side, an open-ocean drop-off on the other, and 30 m visibility between them.
+              <span class="credit">Photo: Yvonne Green / DFAT, <a href="https://commons.wikimedia.org/wiki/File:Uepi,_Western_Province,_Solomon_Islands,_2012.jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Santa Isabel and the New Georgia group, Solomon Islands" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=157.50%2C-8.80%2C159.40%2C-7.20&amp;layer=mapnik&amp;marker=-7.5853%2C158.7311"></iframe>
+        <figcaption>Suavanao airstrip (pin) on Santa Isabel; Papatura is a 10-minute boat ride off this coast. Marovo Lagoon and Uepi at bottom left.
+          <a href="https://maps.google.com/?q=Papatura+Island+Retreat,+Solomon+Islands" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA to Brisbane or Nadi, then Honiara (Brisbane ~3 h, Nadi ~2 h). Solomon Airlines flies Honiara&ndash;Suavanao five days a week; the resort boat is 10 minutes. Two travel days each way.</dd></div>
+        <div><dt class="mono">Your surf</dt><dd>Tarzan&rsquo;s, a right-and-left peak the resort calls its family wave, and Dolphins, a small left. Nine breaks total, most within 20 minutes by boat, typically 3&ndash;6 ft. Guided surf runs about AUD 100 a day for two sessions.</dd></div>
+        <div><dt class="mono">Under the mask</dt><dd>Hard and soft coral gardens off the resort, snorkel gear on hand, kayaks and SUPs free. Marovo Lagoon, one flight away, has what guides call the finest coral gardens in the South Pacific plus WWII wrecks in the shallows.</dd></div>
+        <div><dt class="mono">On one breath</dt><dd>No freedive school &mdash; bring the certification. Calm lagoon water and reef tops at 5&ndash;15 m make it easy solo-buddy territory.</dd></div>
+        <div><dt class="mono">When</dt><dd>The two seasons fight: surf runs late November&ndash;April on North Pacific swell; the calm, dry snorkel season is April&ndash;November. The overlap is late November or April, and cyclone season is November&ndash;April.</dd></div>
+        <div><dt class="mono">Health</dt><dd>High-risk malaria zone, year-round: prophylaxis is not optional. US advisory sits at Level 1.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The balance test &middot; reef + one breath + learner surf</span>
+        <p>The only entry where reef and learner wave share a dock. The reef is a notch below Raja Ampat and the
+          wave a notch below Lombok, but the combination is the brief written as a place. Aim the week at the
+          April shoulder: swell still running, seas calming, malaria pills in the bag.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Beginner reef wave and world-class snorkel in the same boat day</li>
+          <li>Emptiest lineups in this file &mdash; a capped resort, no town, no crowd</li>
+          <li>Hawai&lsquo;i&rsquo;s swell three days late, in 29&deg;C water</li>
+          <li>Marovo Lagoon extension turns a good week into a great two</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Surf season and calm-sea season barely overlap; you pick a shoulder and hope</li>
+          <li>Malaria prophylaxis and real remoteness</li>
+          <li>Resort-only economy: fewer culture days than the South Pacific File offers</li>
+          <li>Solomon Airlines schedules move; build slack into both ends</li>
+        </ul></div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> the both-at-once answer &mdash; less reef than Raja Ampat, less wave than Lombok, and the only place that delivers both before breakfast.</p>
+    </div>
+  </article>
+
+  <!-- 3 KOMODO + LOMBOK -->
+  <article class="trip" id="komodo-lombok">
+    <div class="flag" aria-hidden="true">3</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Komodo + Lombok</h2>
+        <span class="codename mono">LABUAN BAJO + SELONG BELANAK, INDONESIA &middot; THE CLEAN PAIRING</span>
+      </div>
+      <p class="route">Two bases, one 90-minute flight apart, each the best-in-class version of its half. Selong
+        Belanak is the finest sand-bottom learner wave in Indonesia. Komodo&rsquo;s current-fed reefs put mantas,
+        coral gardens and a pink beach inside snorkeling range. Freedive schools on Nusa Penida and the Gilis sit
+        on the route between them.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Lombok and Komodo">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pantai_Selong_Belanak.jpg/1280px-Pantai_Selong_Belanak.jpg"
+              alt="Outrigger fishing boats on the sand at Selong Belanak beach, Lombok, with a wide shallow bay behind" loading="lazy">
+            <figcaption>Selong Belanak: white sand, a shallow bay framed by reef, surf schools on the beach. The learner wave the whole region measures against.
+              <a href="https://www.google.com/search?q=selong+belanak+surf+beginner&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: R. Bayu Ramdhani, <a href="https://commons.wikimedia.org/wiki/File:Pantai_Selong_Belanak.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Manta_ray_silhouette_at_Manta_Alley.jpg/1280px-Manta_ray_silhouette_at_Manta_Alley.jpg"
+              alt="Silhouette of a manta ray against sunlight at Manta Alley, Komodo" loading="lazy">
+            <figcaption>Manta Alley, Komodo. The channel plankton brings the mantas up to snorkel depth most days of the year.
+              <span class="credit">Photo: Alexander Vasenin, <a href="https://commons.wikimedia.org/wiki/File:Manta_ray_silhouette_at_Manta_Alley.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Padar_Island%2C_Komodo_National_Park%2C_Indonesia%2C_20250822_0906_2625.jpg/1280px-Padar_Island%2C_Komodo_National_Park%2C_Indonesia%2C_20250822_0906_2625.jpg"
+              alt="Hikers climbing the stepped trail on Padar Island, Komodo National Park, in dry-season light" loading="lazy">
+            <figcaption>Padar at dawn, August 2025 &mdash; the dry-season boat day: Padar, Pink Beach&rsquo;s coral gardens, Manta Point, dragons on Rinca.
+              <span class="credit">Photo: Jakub Ha&#322;un, <a href="https://commons.wikimedia.org/wiki/File:Padar_Island,_Komodo_National_Park,_Indonesia,_20250822_0906_2625.jpg" rel="noopener">Wikimedia Commons</a>, CC BY 4.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Lombok, Sumbawa and Komodo, Indonesia" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=115.80%2C-9.20%2C120.40%2C-8.00&amp;layer=mapnik&amp;marker=-8.8718%2C116.1681"></iframe>
+        <figcaption>Selong Belanak (pin) on Lombok&rsquo;s south coast; the Gilis off Lombok&rsquo;s northwest tip; Labuan Bajo and Komodo National Park at the far right, past Sumbawa.
+          <a href="https://maps.google.com/?q=Selong+Belanak,+Lombok" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA to Bali via Taipei/Tokyo/Singapore (~20 h). Lombok is a 30-minute hop or a fast boat; Labuan Bajo is 1 h 15 from Bali or Lombok. The gentlest logistics in the Triangle.</dd></div>
+        <div><dt class="mono">Your surf</dt><dd>Selong Belanak&rsquo;s sand-bottom rollers with schools on the beach; Don Don&rsquo;s and Inside Gerupuk (soft A-frames in a sheltered bay); Tanjung Aan. October&ndash;April is the learner season &mdash; smaller, cleaner mornings, cheaper rooms. May&ndash;September is bigger and better for the next version of you.</dd></div>
+        <div><dt class="mono">Under the mask</dt><dd>Komodo from Labuan Bajo: Manta Point, Sebayur&rsquo;s healthy coral, Siaba Besar&rsquo;s turtles, Pink Beach gardens. A 3-day/2-night boat covers it. Nusa Tenggara bleached in 2024 &mdash; expect patchiness on the shallowest flats and thriving slopes where the current runs.</dd></div>
+        <div><dt class="mono">On one breath</dt><dd>Freedive Nusa on Nusa Penida (Manta Point there too, and Crystal Bay&rsquo;s hard-coral wall, the healthiest left in southern Bali), or the Gili islands&rsquo; cheap, well-regarded courses. Do the course first; the Komodo boat is the exam.</dd></div>
+        <div><dt class="mono">When</dt><dd>Komodo is best April&ndash;November; Lombok learner surf is best October&ndash;April. The overlaps: October&ndash;November, or April. Both are excellent months in both places.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The balance test &middot; reef + one breath + learner surf</span>
+        <p>Passes all three with the least friction of anything in this file. The trade is that Komodo&rsquo;s
+          reef, extraordinary as it is, sits a tier below Raja Ampat, and Komodo&rsquo;s currents mean the best
+          sites are guided drift snorkels, not lazy floats. Ten days, three bases, one country, no malaria pills.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>The best learner wave in Indonesia and a manta channel in one itinerary</li>
+          <li>Short domestic hops; a freedive school on the route between them</li>
+          <li>Two shoulder windows where both halves are in season</li>
+          <li>Cheap once landed; surf camps and liveaboards at every budget</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Komodo&rsquo;s shallow flats took 2024 bleaching; the slopes are the show</li>
+          <li>Currents make the best sites guided, not free-range</li>
+          <li>Labuan Bajo is busy and getting busier; book the boat, not the day tour</li>
+          <li>Bali transit adds a day each way</li>
+        </ul></div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> the itinerary you could book tomorrow &mdash; the reef a notch down from the record, the wave exactly right.</p>
+    </div>
+  </article>
+
+  <!-- 4 SIARGAO + SOUTHERN LEYTE -->
+  <article class="trip" id="siargao-leyte">
+    <div class="flag" aria-hidden="true">4</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Siargao + Southern Leyte</h2>
+        <span class="codename mono">GENERAL LUNA + SOGOD BAY, PHILIPPINES &middot; THE SURF-FIRST VERSION</span>
+      </div>
+      <p class="route">Siargao is the Philippines&rsquo; surf capital, and the beginner wave sits a hundred meters
+        from the famous one. Across the strait, Sogod Bay has walls divers rank among Asia&rsquo;s best and wild
+        whale sharks you may only meet by snorkeling. Cebu&rsquo;s Moalboal &mdash; sardine ball, freedive schools
+        &mdash; is the third leg if the trip stretches.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Siargao and the Philippines">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Surfing_%40_Siargao.jpg/1280px-Surfing_%40_Siargao.jpg"
+              alt="A beginner riding a soft longboard on a small wave over shallow reef in Siargao" loading="lazy">
+            <figcaption>Siargao&rsquo;s learner reefs: soft-top, knee-high, an instructor pushing you in. Jacking Horse works like this on small days.
+              <a href="https://www.google.com/search?q=jacking+horse+siargao+surf&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Niko.llanes, <a href="https://commons.wikimedia.org/wiki/File:Surfing_@_Siargao.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Siargao_Cloud_9.jpg/1280px-Siargao_Cloud_9.jpg"
+              alt="The Cloud 9 boardwalk and viewing tower over the reef at General Luna, Siargao" loading="lazy">
+            <figcaption>The Cloud 9 boardwalk. The famous barrel breaks off the end; Jacking Horse, your wave, is just to its left.
+              <span class="credit">Photo: Spraken eboy2887, <a href="https://commons.wikimedia.org/wiki/File:Siargao_Cloud_9.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Oslob_Whale_shark.jpg/1280px-Oslob_Whale_shark.jpg"
+              alt="A whale shark just below the surface with a snorkeler beside it" loading="lazy">
+            <figcaption>Whale shark at snorkel depth. This frame is Oslob, where the sharks are fed; Sogod Bay is the wild, seasonal, snorkel-only version &mdash; the one worth doing.
+              <span class="credit">Photo: Eurasic, <a href="https://commons.wikimedia.org/wiki/File:Oslob_Whale_shark.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Siargao, Surigao and Southern Leyte, Philippines" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=124.90%2C9.30%2C126.50%2C10.40&amp;layer=mapnik&amp;marker=9.7811%2C126.1571"></iframe>
+        <figcaption>General Luna, Siargao (pin); Surigao City across the strait; Pintuyan and Sogod Bay on Panaon Island at the left edge.
+          <a href="https://maps.google.com/?q=General+Luna,+Siargao" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA to Manila or Cebu (via Tokyo/Taipei, ~17&ndash;20 h), then a domestic flight to Siargao. Siargao to Southern Leyte is a fast craft to Surigao and a 3-hour ferry to Liloan &mdash; a full day &mdash; or a short flight via Cebu.</dd></div>
+        <div><dt class="mono">Your surf</dt><dd>Jacking Horse, a soft beginner-to-intermediate peak beside Cloud 9; Guyam and Rock Island on small days. Surf season September&ndash;March; peak power in September&ndash;October, friendliest for learners November&ndash;March. Cloud 9 itself: boardwalk, camera, no leash.</dd></div>
+        <div><dt class="mono">Under the mask</dt><dd>Sogod Bay: Napantao&rsquo;s wall, 20&ndash;30 m visibility, and wild whale sharks off Pintuyan November&ndash;April, snorkel only since 2009. Apo Island&rsquo;s community reserve (650 fish species) and Moalboal&rsquo;s sardines are a Cebu hop away.</dd></div>
+        <div><dt class="mono">On one breath</dt><dd>Moalboal is a freediving town: Mermaid Point for the course, Pescador Island for the graduation. Southern Leyte has its own freedive-specific operators for the walls and the sharks.</dd></div>
+        <div><dt class="mono">When</dt><dd>November&ndash;March: learner surf on Siargao, whale sharks and calm seas in Sogod Bay, the whole Visayas in dry season. Typhoon exposure is real July&ndash;December; Siargao was flattened by Odette in December 2021.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The balance test &middot; reef + one breath + learner surf</span>
+        <p>Surf leads and reef follows, which is the inverse of Raja Ampat. The coral is very good rather than
+          record-setting; the freediving culture is the best in this file; the whale sharks are the memory. The
+          catch is a long transit day between the two halves.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Daily learner waves in a real surf town, beside the famous one</li>
+          <li>Wild whale sharks and walls a ferry away; sardines and freedive schools a hop away</li>
+          <li>English everywhere, cheap once landed, strong dive infrastructure</li>
+          <li>The November&ndash;March window is exactly when the PNW is worst</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Reef a clear tier below Raja Ampat or Kimbe</li>
+          <li>Transit day between Siargao and Leyte, or a backtrack through Cebu</li>
+          <li>Typhoon season shadows the surf season&rsquo;s front half</li>
+          <li>Siargao has been discovered; General Luna is busy in season</li>
+        </ul></div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> if the board comes first and the mask second, this is the file&rsquo;s best answer &mdash; a real surf town with a whale shark bay across the water.</p>
+    </div>
+  </article>
+
+  <!-- 5 ATAURO -->
+  <article class="trip" id="atauro">
+    <div class="flag" aria-hidden="true">5</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Ata&uacute;ro, Timor-Leste</h2>
+        <span class="codename mono">BELOI + ADARA &middot; THE RECORD HOLDER</span>
+      </div>
+      <p class="route">A 2016 Conservation International survey counted an average of 253 reef-fish species per
+        site around Ata&uacute;ro &mdash; the highest ever recorded anywhere, beating Raja Ampat&rsquo;s own record. Deep
+        cold water in the Wetar Strait feeds the reef; walls drop off meters from the beach. A handful of eco-lodges,
+        a village of women freedivers, and almost no tourists.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Atauro Island">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/44-EastTimor-Dive_Atauro-Manta_Cove_03_%28Diver%29-APiazza.JPG"
+              alt="A diver beneath an overhang of soft coral at Manta Cove, Atauro Island" loading="lazy">
+            <figcaption>Manta Cove, Ata&uacute;ro. The walls start within a fin-kick of shore, so the snorkel and the dive share the same entry.
+              <a href="https://www.google.com/search?q=atauro+island+snorkeling+reef&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Andrepiazza, <a href="https://commons.wikimedia.org/wiki/File:44-EastTimor-Dive_Atauro-Manta_Cove_03_(Diver)-APiazza.JPG" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Atauro_island.jpg/1280px-Atauro_island.jpg"
+              alt="A rocky headland and calm bay on Atauro Island, Timor-Leste" loading="lazy">
+            <figcaption>Ata&uacute;ro&rsquo;s coast: dry hills, a rocky point, and the drop-off just past the sand.
+              <span class="credit">Photo: Maria Auxilia, <a href="https://commons.wikimedia.org/wiki/File:Atauro_island.jpg" rel="noopener">Wikimedia Commons</a>, CC0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Atauro Island and Dili, Timor-Leste" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=125.20%2C-8.75%2C126.00%2C-7.95&amp;layer=mapnik&amp;marker=-8.2179%2C125.5819"></iframe>
+        <figcaption>Ata&uacute;ro (pin), 25 km across the Wetar Strait from Dili at the bottom of the map.
+          <a href="https://maps.google.com/?q=Atauro+Island,+Timor-Leste" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>Fly to Dili from Bali or Darwin. Then the Nakroma ferry (Saturdays, ~3 h, a few dollars), the Laju Laju (Thursdays), a weekend fast boat (1 h), or a 15-minute MAF flight on Mon/Wed/Fri. The schedule sets your week for you.</dd></div>
+        <div><dt class="mono">Under the mask</dt><dd>Coral Garden for the shallow snorkel; Adara Wall dropping off meters from the beach; Watuai, the house reef one dive magazine ranked in the world&rsquo;s top ten. Eleven named sites, most a short boat ride or a swim from shore.</dd></div>
+        <div><dt class="mono">On one breath</dt><dd>The Wawata Topu, the women spearfishing freedivers of Adara village, are the island&rsquo;s tradition and its 2016 documentary. Deep water close in; bring the certification, there is no school.</dd></div>
+        <div><dt class="mono">Your surf</dt><dd>Honest answer: a footnote. Small reef setups east and west of Dili, inconsistent, beginner season October&ndash;May &mdash; and saltwater crocodiles outside the capital are a real hazard. Surf is a Bali stopover, not an Ata&uacute;ro plan.</dd></div>
+        <div><dt class="mono">When</dt><dd>Dry season May&ndash;November for calm crossings; visibility is strong year-round thanks to the deep strait.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The balance test &middot; reef + one breath + learner surf</span>
+        <p>Reef and freediving at the very top of the file, with the added pull of being the place nobody has
+          heard of. Surf fails outright. Treat it as Raja Ampat&rsquo;s quieter, cheaper, closer-to-Bali cousin &mdash;
+          and pair it with the same Lombok week.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>The highest reef-fish diversity ever surveyed, and you can reach it from the beach</li>
+          <li>Deep-strait upwelling: cool water, big visibility, structural bleaching resistance</li>
+          <li>Eco-lodges at village prices; one Bali flight closer than Raja Ampat</li>
+          <li>A living freediving culture to learn from</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>No learner surf worth planning around; crocodile risk on the mainland coast</li>
+          <li>Ferry days dictate the itinerary</li>
+          <li>Thin infrastructure; bring everything, expect generator hours</li>
+          <li>Fewer boat operators means fewer weather backups</li>
+        </ul></div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> the record, quietly held &mdash; go for the reef, accept that the board stays in Bali.</p>
+    </div>
+  </article>
+
+  <!-- 6 KIMBE BAY -->
+  <article class="trip" id="kimbe-bay">
+    <div class="flag" aria-hidden="true">6</div>
+    <div class="trip-body">
+      <div class="trip-head">
+        <h2>Kimbe Bay, PNG</h2>
+        <span class="codename mono">WALINDI, WEST NEW BRITAIN &middot; THE SNORKELER&rsquo;S DIVE CAPITAL</span>
+      </div>
+      <p class="route">The reefs here rise to within a meter of the surface, which is why guides say Kimbe is one of
+        the few places where the snorkeling matches the diving. About 900 fish species and 400 corals in one bay,
+        a dozen visiting whale and dolphin species, and a single plantation resort that has run it for forty years.</p>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Kimbe Bay">
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Kimbe_Bay_islands.jpg/1280px-Kimbe_Bay_islands.jpg"
+              alt="Forested islets and calm water in Kimbe Bay, West New Britain" loading="lazy">
+            <figcaption>Kimbe Bay&rsquo;s rainforest islets. The reef tops between them sit at snorkel depth; the walls drop into the deep bay.
+              <a href="https://www.google.com/search?q=kimbe+bay+reef+snorkeling&udm=2" rel="noopener">More photos &rarr;</a>
+              <span class="credit">Photo: Kimbe at en.wikipedia, <a href="https://commons.wikimedia.org/wiki/File:Kimbe_Bay_islands.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+          </figure>
+        </div>
+        <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+        <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="dots"></div>
+      </div>
+      <figure class="mapwide">
+        <iframe title="Map of Kimbe Bay, West New Britain, Papua New Guinea" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=149.40%2C-6.00%2C151.00%2C-4.80&amp;layer=mapnik&amp;marker=-5.5563%2C150.1530"></iframe>
+        <figcaption>Kimbe town (pin) at the head of the bay; Walindi is a short drive west along the coast; Hoskins airport to the east.
+          <a href="https://maps.google.com/?q=Walindi+Plantation+Resort,+Kimbe" rel="noopener">Google Maps &rarr;</a></figcaption>
+      </figure>
+      <dl class="facts">
+        <div><dt class="mono">Getting there</dt><dd>SEA to Brisbane, to Port Moresby, to Hoskins, then an hour by road. Two travel days each way &mdash; the same pilgrimage as Kavieng in the South Pacific File.</dd></div>
+        <div><dt class="mono">Under the mask</dt><dd>Reef tops at 1&ndash;5 m over walls, so the snorkel sees what the tank sees. Walindi runs dedicated snorkel boats; the bay is calm most of the year.</dd></div>
+        <div><dt class="mono">On one breath</dt><dd>Nearly ideal terrain: coral-topped pinnacles with clean drop-offs, warm still water, and boats that stay with you. No school; bring the cert.</dd></div>
+        <div><dt class="mono">Your surf</dt><dd>None nearby. PNG&rsquo;s learner surf story is the one the South Pacific File already told about Kavieng: not yet.</dd></div>
+        <div><dt class="mono">When</dt><dd>Year-round; the driest, calmest months are roughly May&ndash;November. Malaria prophylaxis required.</dd></div>
+      </dl>
+      <div class="roadtest">
+        <span class="mono">The balance test &middot; reef + one breath + learner surf</span>
+        <p>Reef and freediving at the top of the file; surf absent; travel enormous. Kimbe is the answer if the
+          question narrows to &ldquo;where is the best coral I can see from the surface,&rdquo; and the wrong
+          answer if the board is coming.</p>
+      </div>
+      <div class="proscons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Snorkeling as good as the diving, by design of the reef itself</li>
+          <li>More reef species than the whole Caribbean, in one bay</li>
+          <li>One resort, one boat, forty years of knowing every bommie</li>
+          <li>Pairs with Kavieng someday, when the turns arrive</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Hardest travel in the file after Raja Ampat, and no surf at the end of it</li>
+          <li>Malaria zone; remote medical backup</li>
+          <li>Single-resort pricing</li>
+          <li>Evenings are the resort, full stop</li>
+        </ul></div>
+      </div>
+      <p class="moment"><span class="mono">VS THE BRIEF &middot;</span> the purest reef trip on the page &mdash; file it beside Kavieng for the year the two PNG trips become one.</p>
+    </div>
+  </article>
+
+  <h3 class="section">Wildcards</h3>
+  <div class="facts-wide">
+    <div class="cell"><span class="mono">Alor, Indonesia</span>
+      <p>Cold upwellings, spectacular walls and some of the healthiest hard coral in the Triangle, with a small
+        freedive-and-bungalow operation on Kepa island. No surf; a domestic hop from Bali via Kupang. Freedive Nusa
+        runs expeditions here. The dark-horse reef pick.</p></div>
+    <div class="cell"><span class="mono">Wakatobi, Sulawesi</span>
+      <p>A single luxury resort with unlimited house-reef access, three snorkel boats a day, and a private charter
+        flight from Bali. Roughly 950 fish and 450 coral species in the park. The most comfortable coral on this
+        page, at the highest price. No surf.</p></div>
+    <div class="cell"><span class="mono">Bunaken, North Sulawesi</span>
+      <p>Protected since 1991; walls with turtles and clouds of fish a short boat from Manado. Coral inside the
+        park is healthier than out, but city plastic and early bleaching are showing. Cheap, accessible, a notch
+        below Raja Ampat.</p></div>
+    <div class="cell"><span class="mono">Bali: Amed + Nusa Penida</span>
+      <p>Not the reef destination &mdash; the classroom. Amed for the freediving course over the Liberty wreck,
+        Nusa Penida for mantas and Crystal Bay&rsquo;s hard-coral wall, Canggu and Batu Bolong for beginner beach
+        breaks. Every Indonesian option above routes through here anyway.</p></div>
+  </div>
+
+  <h3 class="section">What this does to the South Pacific File</h3>
+  <div class="verdict">
+    <p><span class="mono">RE-SCORED FOR REEF ONLY &middot;</span> <strong>Tahiti + the Tuamotus</strong> keeps the
+      best pass snorkel on Earth, but French Polynesia&rsquo;s 2024 heatwave killed a quarter or more of shallow
+      colonies at surveyed atolls, and Moorea&rsquo;s recovery has stalled. Check current reports before booking
+      around Fakarava. <strong>Fiji</strong> bleached two years running (2023&ndash;24, into 2025 at some sites);
+      the soft-coral capital may still be the soft-coral capital, but verify Rainbow Reef and Namena conditions
+      with the dive shops that season. <strong>Vanuatu</strong> was among the first to bleach in 2023; its aces
+      (the Coolidge, Million Dollar Point, the blue holes) are wrecks and freshwater, not coral, so the grade holds.
+      <strong>Samoa</strong> and <strong>Tonga</strong> were never coral-first. <strong>Kavieng</strong> is PNG, and
+      PNG is where the coral answer lives &mdash; Kimbe Bay is its snorkel-first sibling.</p>
+    <p>Net: for culture, the South Pacific File stands. For coral, the map shifts two thousand miles west.</p>
+  </div>
+
+  <h3 class="section">Side by side</h3>
+  <div class="tablewrap">
+    <table class="compare">
+      <thead><tr><th></th><th>Raja Ampat</th><th>Papatura</th><th>Komodo + Lombok</th><th>Siargao + Leyte</th><th>Ata&uacute;ro</th><th>Kimbe Bay</th></tr></thead>
+      <tbody>
+        <tr><th>Reef ceiling</th><td class="win">Highest on Earth; proven recovery</td><td>Very high; Marovo add-on</td><td>High; slopes over flats</td><td>Good; walls + whale sharks</td><td class="win">Record fish diversity</td><td class="win">Snorkel = dive</td></tr>
+        <tr><th>One breath</th><td class="win">Freedive safaris exist</td><td>Bring the cert</td><td class="win">Schools on the route</td><td class="win">Moalboal: the freedive town</td><td>Bring the cert</td><td>Bring the cert</td></tr>
+        <tr><th>Learner surf</th><td class="ref">None &mdash; add Lombok</td><td class="win">Tarzan&rsquo;s, from the dock</td><td class="win">Selong Belanak, daily</td><td class="win">Jacking Horse, daily</td><td class="ref">Footnote; crocs</td><td class="ref">None</td></tr>
+        <tr><th>Season</th><td>Oct&ndash;Apr</td><td>Late Nov or Apr shoulder</td><td>Oct&ndash;Nov or Apr</td><td>Nov&ndash;Mar</td><td>May&ndash;Nov</td><td>May&ndash;Nov</td></tr>
+        <tr><th>From SEA</th><td>2 days, 3 legs + ferry</td><td>2 days, 3 legs + boat</td><td class="win">~1 day + short hops</td><td>~1 day + domestic</td><td>~1.5 days via Bali</td><td>2 days, 3 legs + road</td></tr>
+        <tr><th>Malaria</th><td>Low; some advise pills</td><td class="ref">High &mdash; pills required</td><td class="win">No</td><td class="win">Negligible</td><td>Present; pills advised</td><td class="ref">High &mdash; pills required</td></tr>
+        <tr><th>Budget feel</th><td>Cheap rooms, dear boats</td><td>Mid; resort package</td><td class="win">Cheap once landed</td><td class="win">Cheapest here</td><td>Cheap</td><td>Single-resort pricing</td></tr>
+        <tr><th>One base?</th><td>One, plus Lombok for surf</td><td class="win">One</td><td>Three short hops</td><td>Two, a ferry apart</td><td>One, plus Bali</td><td class="win">One</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section">The call</h3>
+  <div class="verdict">
+    <p><span class="mono">IF THE REEF IS THE POINT &middot;</span> <strong>Raja Ampat, October&ndash;April.</strong>
+      Freedive course on Nusa Penida first, a homestay week on Kri, then Selong Belanak on the way home. Three
+      weeks, three jobs, and the reef that came back.</p>
+    <p><span class="mono">IF BOTH IN ONE PLACE &middot;</span> <strong>Papatura, in April.</strong> The only entry where
+      the learner wave and the coral garden share a dock. Malaria pills, cyclone-season awareness, and nobody else
+      in the lineup.</p>
+    <p><span class="mono">IF SIMPLEST LOGISTICS WIN &middot;</span> <strong>Komodo + Lombok.</strong> The trip you
+      could book tomorrow: the best learner wave in Indonesia, a manta channel, a freedive school between them, no
+      pills, two shoulder windows.</p>
+    <p><span class="mono">IF SURF LEADS &middot;</span> <strong>Siargao + Sogod Bay, November&ndash;March.</strong> A
+      real surf town, a beginner peak beside Cloud 9, and wild whale sharks a ferry away &mdash; in the months the
+      PNW is coldest.</p>
+    <p><span class="mono">IF THE RECORD MATTERS &middot;</span> <strong>Ata&uacute;ro.</strong> The most fish ever
+      counted on a reef, reachable from the beach, in a place nobody you know has been.</p>
+    <p><span class="mono">FILE FOR LATER &middot;</span> <strong>Kimbe Bay.</strong> The purest coral trip on the
+      page, filed beside Kavieng for the year PNG gets two weeks.</p>
+  </div>
+
+  <div class="field-note">
+    <span class="mono">FIELD NOTES &middot; SEP 2026</span>
+    <p>Bleaching sources: NOAA / ICRI on the <a href="https://www.nesdis.noaa.gov/news/worlds-fourth-mass-coral-bleaching-event-likely-ended-2025" rel="noopener">fourth global bleaching event</a>
+      (84% of reef area, likely ended 2025); the <a href="https://www.nature.com/articles/s41598-026-49171-1" rel="noopener">Raja Ampat recovery paper</a>
+      in <em>Scientific Reports</em> (Yenbuba, &gt;70% bleached Dec 2024, &lt;20% Nov 2025); The Nature
+      Conservancy on <a href="https://blog.nature.org/2026/01/04/stress-testing-corals-to-find-raja-ampats-most-resilient-reefs/" rel="noopener">Raja Ampat&rsquo;s resilient corals</a>;
+      the <a href="https://link.springer.com/article/10.1007/s00338-026-02895-y" rel="noopener">Tuamotu atoll study</a> in <em>Coral Reefs</em>;
+      the University of Illinois on <a href="https://news.illinois.edu/still-standing-but-mostly-dead-recovery-of-dying-coral-reef-in-moorea-stalls/" rel="noopener">Moorea&rsquo;s stalled recovery</a>;
+      Reef Check Indonesia on 2024 bleaching in Nusa Tenggara.</p>
+    <p>Destination sources: <a href="https://en.wikipedia.org/wiki/Coral_Triangle" rel="noopener">Coral Triangle</a> (76% of coral species; Bird&rsquo;s Head 574 species);
+      <a href="https://www.papatura.com/surf" rel="noopener">Papatura surf</a> (Tarzan&rsquo;s, Dolphins, Nov&ndash;Apr, AUD 100/day);
+      <a href="https://ataurotourism.org/places-to-go/diving-and-snorkeling-sites/" rel="noopener">Ata&uacute;ro dive sites</a> (253 species average, CI 2016);
+      <a href="https://www.uwphotographyguide.com/diving-kimbe-bay-png/" rel="noopener">Kimbe Bay</a> (900 fish, 400 corals, snorkel-grade reef tops);
+      <a href="https://freedivenusa.com/freedive-trips/raja-ampat/" rel="noopener">Freedive Nusa&rsquo;s Raja Ampat trips</a>;
+      <a href="https://thesurfatlas.com/surfing-indonesia/lombok-surf/" rel="noopener">Lombok surf</a>;
+      <a href="https://thesurfatlas.com/surfing-in-philippines/siargao-surfing/" rel="noopener">Siargao surf</a>;
+      <a href="https://www.diverbliss.com/swimming-with-whale-sharks-sogod-bay-philippines/" rel="noopener">Sogod Bay whale sharks</a>;
+      CDC and NHS Fit for Travel on Solomon Islands malaria.</p>
+    <p>Maps are live OpenStreetMap embeds with pins placed from OSM Nominatim coordinates. The Papatura pin sits
+      on Suavanao airstrip, ten minutes by boat from the resort, because the island itself is not yet in OSM.
+      Photo carousels are Creative Commons&ndash;licensed images from Wikimedia Commons, credited under each; the
+      whale shark frame is Oslob, captioned as such, because Sogod Bay&rsquo;s wild sharks have almost no free
+      imagery.</p>
+  </div>
+
+  <footer class="cadence">
+    <span class="mono">NEXT &middot;</span> pick the reef, then this page grows a sibling: dates against the season
+    windows, the freedive course booked first, homestay or resort shortlist, and the surf-camp contacts for the
+    Lombok or Siargao leg.
+    Companion pages: <a href="surf-south-pacific.html">The South Pacific File</a> &middot;
+    <a href="surf-kauai-june.html">Kaua&lsquo;i, First Week of June</a> &middot;
+    <a href="surf-feb-shortlist.html">The February Shortlist</a> &middot;
+    <a href="surf-dream-trips.html">Surf Dream Trips</a>.
+  </footer>
+
+</div>
+<script>
+document.querySelectorAll('.carousel').forEach(function (c) {
+  var slides = c.querySelector('.slides');
+  var items = Array.prototype.slice.call(slides.children);
+  var dots = c.querySelector('.dots');
+  var n = items.length;
+
+  items.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Photo ' + (i + 1) + ' of ' + n);
+    b.addEventListener('click', function () { go(i); });
+    dots.appendChild(b);
+  });
+
+  function cur() { return Math.round(slides.scrollLeft / (slides.clientWidth || 1)); }
+  function go(i) {
+    var k = (i + n) % n;
+    var target = k * slides.clientWidth;
+    slides.scrollTo({ left: target, behavior: 'smooth' });
+    setTimeout(function () {
+      if (Math.abs(slides.scrollLeft - target) > 4) slides.scrollLeft = target;
+    }, 450);
+  }
+  function update() {
+    var k = cur();
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.classList.toggle('on', i === k);
+    });
+  }
+
+  slides.addEventListener('scroll', update, { passive: true });
+  c.querySelector('.nav.prev').addEventListener('click', function () { go(cur() - 1); });
+  c.querySelector('.nav.next').addEventListener('click', function () { go(cur() + 1); });
+  update();
+});
+</script>
+</body>
+</html>

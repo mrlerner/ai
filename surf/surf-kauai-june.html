@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kauaʻi, First Week of June</title>
+<style>
+  :root {
+    --ground: #eef1ef;
+    --card: #f7f9f8;
+    --ink: #17313f;
+    --ink-soft: #4a6373;
+    --line: #ccd7d4;
+    --swell: #2e7da6;
+    --swell-deep: #1c5a7c;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.22);
+    --flag-ink: #f5f8f7;
+    --pro: #2e7d52;
+    --con: #a05c2e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0c1b26;
+      --card: #122938;
+      --ink: #dce7ec;
+      --ink-soft: #8fa8b5;
+      --line: #24404f;
+      --swell: #5aa7cc;
+      --swell-deep: #7fc0de;
+      --wax: #e3b23c;
+      --wax-soft: rgba(227, 178, 60, 0.16);
+      --flag-ink: #0c1b26;
+      --pro: #6fc79a;
+      --con: #d99a6b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0c1b26;
+    --card: #122938;
+    --ink: #dce7ec;
+    --ink-soft: #8fa8b5;
+    --line: #24404f;
+    --swell: #5aa7cc;
+    --swell-deep: #7fc0de;
+    --wax: #e3b23c;
+    --wax-soft: rgba(227, 178, 60, 0.16);
+    --flag-ink: #0c1b26;
+    --pro: #6fc79a;
+    --con: #d99a6b;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+
+  .mono {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  header.hero { margin-bottom: 2.6rem; }
+  .hero .eyebrow { color: var(--ink-soft); text-transform: uppercase; margin-bottom: 1rem; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.08;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  .hero p.dek { max-width: 36em; font-size: 1.05rem; color: var(--ink-soft); margin: 0 0 0.6rem; }
+
+  .rider {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--swell);
+    padding: 1rem 1.2rem 1.1rem;
+    margin: 1.6rem 0 0;
+    font-size: 0.95rem;
+    max-width: 44em;
+  }
+  .rider .mono { color: var(--swell-deep); }
+  .rider p { margin: 0.4rem 0 0; }
+
+  h3.section {
+    text-transform: uppercase;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin: 3rem 0 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  h3.section::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+
+  /* ---- vibe spectrum ---- */
+  .spectrum {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.3rem 1.4rem 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .spectrum .scale { position: relative; height: 148px; }
+  .spectrum .bar {
+    position: absolute; left: 0; right: 0; top: 72px; height: 6px;
+    background: linear-gradient(90deg, var(--line), var(--swell) 55%, var(--wax));
+    border-radius: 3px;
+  }
+  .spectrum .band {
+    position: absolute; top: 58px; height: 34px;
+    left: 30%; width: 34%;
+    background: var(--wax-soft);
+    border-left: 2px solid var(--wax);
+    border-right: 2px solid var(--wax);
+  }
+  .spectrum .stop { position: absolute; width: 0; }
+  .spectrum .dot {
+    position: absolute; top: 68px; left: -7px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--swell-deep);
+    border: 2px solid var(--card);
+  }
+  .spectrum .stop.veto .dot { background: var(--ink-soft); opacity: 0.55; }
+  .spectrum .lbl {
+    position: absolute; left: 0; transform: translateX(-50%);
+    text-align: center; width: 8.5em; color: var(--ink);
+  }
+  .spectrum .stop.veto .lbl { color: var(--ink-soft); }
+  .spectrum .lbl .why { display: block; font-style: italic; font-size: 0.78rem; color: var(--ink-soft); letter-spacing: 0; }
+  .spectrum .up .lbl { top: 8px; }
+  .spectrum .up .dot::before { content: ""; position: absolute; left: 5px; top: -26px; width: 2px; height: 24px; background: var(--line); }
+  .spectrum .down .lbl { top: 102px; }
+  .spectrum .down .dot::before { content: ""; position: absolute; left: 5px; top: 14px; width: 2px; height: 20px; background: var(--line); }
+  .spectrum .ends { display: flex; justify-content: space-between; color: var(--ink-soft); margin-top: 0.5rem; }
+  .spectrum-note { color: var(--ink-soft); font-size: 0.9rem; max-width: 40em; margin: 0 0 0.4rem; }
+
+  /* ---- trip cards ---- */
+  .trip {
+    background: var(--card);
+    border: 1px solid var(--line);
+    margin-bottom: 1.75rem;
+    display: grid;
+    grid-template-columns: 3.4rem 1fr;
+  }
+  .flag {
+    background: var(--swell);
+    color: var(--flag-ink);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 1.4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .trip.baseline .flag { background: var(--ink-soft); font-size: 0.95rem; padding-top: 1.6rem; writing-mode: vertical-rl; letter-spacing: 0.2em; }
+  .trip-body { padding: 1.4rem 1.6rem 1.5rem; min-width: 0; }
+  .trip-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; }
+  .trip h2 { font-size: 1.55rem; font-weight: 600; margin: 0; }
+  .trip .codename { color: var(--swell-deep); }
+  .route { color: var(--ink-soft); margin: 0.35rem 0 1rem; font-size: 0.95rem; }
+
+  /* ---- photo carousel (full width of card) ---- */
+  .carousel { --ph: 400px; position: relative; margin: 0.4rem 0 1.4rem; }
+  .carousel .slides {
+    display: flex; overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .carousel .slides::-webkit-scrollbar { display: none; }
+  .carousel .slide { flex: 0 0 100%; min-width: 100%; margin: 0; scroll-snap-align: center; }
+  .carousel .slide img {
+    width: 100%; height: var(--ph); display: block; object-fit: cover;
+    border: 1px solid var(--line); box-sizing: border-box;
+    background: var(--ground);
+  }
+  .carousel figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .carousel figcaption a { color: var(--swell-deep); }
+  .carousel .credit { display: block; font-size: 0.66rem; color: var(--ink-soft); opacity: 0.7; margin-top: 0.2rem; }
+  .carousel .credit a { color: inherit; }
+  .carousel .nav {
+    position: absolute; top: calc(var(--ph) / 2); transform: translateY(-50%);
+    width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--card) 82%, transparent);
+    color: var(--ink); font-size: 1rem; line-height: 1;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .carousel .nav:hover { background: var(--card); border-color: var(--swell); color: var(--swell-deep); }
+  .carousel .nav.prev { left: 0.7rem; }
+  .carousel .nav.next { right: 0.7rem; }
+  .carousel .dots {
+    position: absolute; top: calc(var(--ph) - 1.6rem); left: 0; right: 0;
+    display: flex; justify-content: center; gap: 0.45rem;
+  }
+  .carousel .dots button {
+    width: 9px; height: 9px; border-radius: 50%; padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    background: rgba(20, 40, 55, 0.35);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+    opacity: 0.8; cursor: pointer;
+  }
+  .carousel .dots button.on { background: #fff; opacity: 1; }
+
+  /* ---- full-width map below the photos ---- */
+  .mapwide { margin: 0 0 1.3rem; }
+  .mapwide iframe {
+    width: 100%; height: 320px; display: block; border: 0;
+    border: 1px solid var(--line);
+    background: var(--ground);
+  }
+  .mapwide figcaption { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.45rem; line-height: 1.4; }
+  .mapwide figcaption a { color: var(--swell-deep); }
+
+  dl.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.9rem 1.4rem;
+    margin: 0 0 1.1rem;
+  }
+  dl.facts div { min-width: 0; }
+  dl.facts dt { color: var(--ink-soft); text-transform: uppercase; margin-bottom: 0.15rem; }
+  dl.facts dd { margin: 0; font-size: 0.92rem; }
+
+  .roadtest {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--wax);
+    padding: 0.8rem 1rem 0.9rem;
+    margin: 0 0 1.2rem;
+    font-size: 0.93rem;
+  }
+  .roadtest .mono { color: var(--swell-deep); text-transform: uppercase; }
+  .roadtest p { margin: 0.35rem 0 0; }
+
+  .proscons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.6rem; margin: 0 0 1.2rem; }
+  .proscons h4 { margin: 0 0 0.4rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; }
+  .proscons .pros h4 { color: var(--pro); }
+  .proscons .cons h4 { color: var(--con); }
+  .proscons ul { margin: 0; padding: 0; list-style: none; font-size: 0.92rem; }
+  .proscons li { padding: 0.28rem 0 0.28rem 1.1rem; position: relative; border-top: 1px dotted var(--line); }
+  .proscons li:first-child { border-top: 0; }
+  .proscons .pros li::before { content: "+"; position: absolute; left: 0; color: var(--pro); font-weight: 700; }
+  .proscons .cons li::before { content: "\2212"; position: absolute; left: 0; color: var(--con); font-weight: 700; }
+
+  .moment {
+    border-left: 3px solid var(--wax);
+    padding: 0.15rem 0 0.15rem 0.9rem;
+    margin: 0;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .moment .mono { color: var(--swell-deep); font-style: normal; }
+
+  /* ---- comparison table ---- */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--card); }
+  table.compare { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.88rem; }
+  table.compare th, table.compare td { padding: 0.55rem 0.8rem; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+  table.compare thead th { border-top: 0; background: var(--wax-soft); font-weight: 600; }
+  table.compare tbody th {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 500; white-space: nowrap;
+  }
+  table.compare td.ref { color: var(--ink-soft); font-style: italic; }
+  table.compare td.win { color: var(--swell-deep); font-weight: 600; }
+
+  .verdict {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--swell);
+    padding: 1.2rem 1.4rem 1.3rem;
+  }
+  .verdict p { margin: 0.5rem 0 0; max-width: 42em; }
+  .verdict p:first-child { margin-top: 0; }
+  .verdict .mono { color: var(--swell-deep); }
+
+  .field-note {
+    margin-top: 3rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--wax);
+    padding: 1rem 1.1rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .field-note .mono { color: var(--swell-deep); }
+  .field-note p { margin: 0.4rem 0 0; }
+  .field-note a { color: var(--swell-deep); }
+
+  footer.cadence {
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  footer.cadence .mono { color: var(--swell-deep); }
+  footer.cadence a { color: var(--swell-deep); }
+
+  @media (max-width: 640px) {
+    .trip { grid-template-columns: 2.4rem 1fr; }
+    .trip-body { padding: 1.1rem 1rem 1.2rem; }
+    .carousel { --ph: 240px; }
+    .mapwide iframe { height: 240px; }
+    .proscons { grid-template-columns: 1fr; }
+    .spectrum .lbl { width: 6.5em; font-size: 0.62rem; }
+  }
+
+  table.compare { min-width: 780px; }
+</style>
+<style>
+  /* additions for this page */
+  .itin { overflow-x: auto; border: 1px solid var(--line); background: var(--card); margin-bottom: 1.2rem; }
+  table.itin-t { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.9rem; }
+  table.itin-t th, table.itin-t td { padding: 0.6rem 0.8rem; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+  table.itin-t thead th { border-top: 0; background: var(--wax-soft); font-weight: 600; }
+  table.itin-t tbody th { font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--swell-deep); font-weight: 500; white-space: nowrap; }
+  .alert { border: 1px solid var(--con); border-left: 4px solid var(--con); background: var(--card); padding: 1rem 1.2rem 1.1rem; margin: 0 0 1.6rem; font-size: 0.95rem; }
+  .alert .mono { color: var(--con); text-transform: uppercase; }
+  .alert p { margin: 0.4rem 0 0; }
+  .alert a, .verdict a, .field-note a, .rider a, dl.facts a, .roadtest a { color: var(--swell-deep); }
+  ul.check { margin: 0; padding: 0 0 0 1.2rem; font-size: 0.95rem; }
+  ul.check li { margin: 0.3rem 0; }
+  .facts-wide { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem 1.4rem; margin: 0 0 1.4rem; }
+  .facts-wide .cell { background: var(--card); border: 1px solid var(--line); padding: 0.9rem 1rem 1rem; font-size: 0.92rem; }
+  .facts-wide .cell .mono { color: var(--ink-soft); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .facts-wide .cell p { margin: 0.3rem 0 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow mono">PLANNED &middot; EARLY JUNE 2027 &middot; ONE WEEK &middot; HANALEI BASE</div>
+    <h1>Kaua&lsquo;i, First Week of June</h1>
+    <p class="dek">The brief: a concentrated tropical week, not a quasi-living surf stay &mdash; San Diego is for
+      that. Seven nights in one place on the North Shore, three or four surf mornings chosen each dawn rather than
+      booked ahead, N&#257; Pali by small boat as the centerpiece, one big hike, and the rest left unscheduled.
+      Early June, so the trip is done before the Pacific Northwest&rsquo;s July&ndash;September window opens.</p>
+    <p class="dek">Target dates: roughly <strong>June 3&ndash;10</strong> or <strong>June 6&ndash;13, 2027</strong>.
+      Saturday to Saturday, nonstop both ways.</p>
+    <div class="rider">
+      <span class="mono">THE RIDER, HONESTLY</span>
+      <p>Comfortable to about 5-foot faces, still building turns, happiest on forgiving, shouldery waves. Hanalei
+        in June is that wave when it exists at all; Kalapaki and the South Shore are the backups when the North
+        Shore goes flat. The one coaching session on the list is not a stand-up lesson &mdash; it is someone who picks
+        the right break for the day and explains Kaua&lsquo;i&rsquo;s reefs, currents, positioning and etiquette.</p>
+    </div>
+  </header>
+
+  <div class="alert">
+    <span class="mono">Read this first &middot; Hurricane Lowell, September 2026</span>
+    <p>Lowell crossed Kaua&lsquo;i on the night of September 6&ndash;7, 2026, with roughly 90 mph winds. It knocked
+      out power to 33,000 of the island&rsquo;s 36,000 utility customers and did the worst damage on the South Shore:
+      storm surge through the first floor of the Sheraton, along Lawai Road and in front of Brennecke&rsquo;s at
+      Po&lsquo;ip&#363;. As of mid-September every state park on the island is closed until further notice,
+      including H&#257;&lsquo;ena, K&#275;&lsquo;&#275;, the Kalalau Trail and the N&#257; Pali coast; the
+      H&#257;&lsquo;ena shuttle is suspended; Hanalei Beach Park near Black Pot is closed; N&#257; Pali Catamaran
+      is dark until at least September 19; and the main North Shore rental agency is not accepting arrivals
+      before October 1. Some remote park experiences may not reopen until 2027.</p>
+    <p>For a June 2027 trip that is nine months of recovery, which is probably enough &mdash; but it moves three
+      things onto the must-confirm list before booking anything non-refundable: that H&#257;&lsquo;ena State Park
+      and its reservation system are open, that the Hanalei-side boat operators are running, and that
+      Po&lsquo;ip&#363; Beach Park and its beach infrastructure are back. Sources:
+      <a href="https://www.civilbeat.org/2026/09/hurricane-lowell-hit-kauai-hard-but-worst-fears-averted/" rel="noopener">Civil Beat</a>,
+      <a href="https://www.kauai.gov/County-Press-Releases/730-a.m.-Sept.-8-County-of-Kaua%CA%BBi-Hurricane-Lowell-Update-2026" rel="noopener">County of Kaua&lsquo;i</a>,
+      <a href="https://gohaena.com/info-faqs/" rel="noopener">Go H&#257;&lsquo;ena</a>,
+      <a href="https://www.parrishkauai.com/parrish/hurricane-lowell-kauai-update/" rel="noopener">Parrish Kaua&lsquo;i update</a>.</p>
+  </div>
+
+  <div class="carousel" aria-roledescription="carousel" aria-label="Photos of Kauai" style="margin-bottom:2rem">
+    <div class="slides">
+      <figure class="slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Hanalei_Bay%2C_Kauai_%2810076644085%29.jpg/1280px-Hanalei_Bay%2C_Kauai_%2810076644085%29.jpg"
+          alt="Hanalei Bay from the beach on a calm summer day, with ironwood trees and the far headland" loading="lazy">
+        <figcaption>Hanalei Bay in summer mode: small, blue, and occasionally too flat. That is the trade the itinerary is built around.
+          <a href="https://www.google.com/search?q=hanalei+bay+summer+surf&udm=2" rel="noopener">More photos &rarr;</a>
+          <span class="credit">Photo: tdlucas5000, <a href="https://commons.wikimedia.org/wiki/File:Hanalei_Bay,_Kauai_(10076644085).jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Hanalei_Pier%2C_Hanalei_Bay%2C_Kauai%2C_Hawaii.jpg/1280px-Hanalei_Pier%2C_Hanalei_Bay%2C_Kauai%2C_Hawaii.jpg"
+          alt="Hanalei Pier stretching into the bay under grey morning light" loading="lazy">
+        <figcaption>The pier at Black Pot, the bay&rsquo;s east end. Pine Trees, the classic learner and longboard peak, breaks toward the middle; Waikoko, the reef-sheltered west end, is gentler still.
+          <span class="credit">Photo: Jawed Karim, <a href="https://commons.wikimedia.org/wiki/File:Hanalei_Pier,_Hanalei_Bay,_Kauai,_Hawaii.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Milolii_valley_Na_Pali_coast_Kauai_Hawaii_%2845554347574%29.jpg/1280px-Milolii_valley_Na_Pali_coast_Kauai_Hawaii_%2845554347574%29.jpg"
+          alt="Sea cliffs and the green valley floor of Miloli'i on the Na Pali Coast, seen from the water" loading="lazy">
+        <figcaption>Miloli&lsquo;i from the water. Summer is when the boats can get this close, into the caves and onto the beaches; winter swell closes all of it.
+          <span class="credit">Photo: dronepicr, <a href="https://commons.wikimedia.org/wiki/File:Milolii_valley_Na_Pali_coast_Kauai_Hawaii_(45554347574).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Na_Pali_Coast%2C_Kauai%2C_Hawaii.jpg/1280px-Na_Pali_Coast%2C_Kauai%2C_Hawaii.jpg"
+          alt="The fluted green cliffs of the Na Pali Coast seen from a high lookout" loading="lazy">
+        <figcaption>The N&#257; Pali from above &mdash; the view the Awa&lsquo;awapuhi Trail earns on the big hiking day.
+          <span class="credit">Photo: Jeff Kubina, <a href="https://commons.wikimedia.org/wiki/File:Na_Pali_Coast,_Kauai,_Hawaii.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/2_16_Kalapaki_Beach_2018-02-16_038-LR_%2826663853767%29.jpg/1280px-2_16_Kalapaki_Beach_2018-02-16_038-LR_%2826663853767%29.jpg"
+          alt="A surfer on a small clean wave at Kalapaki Beach" loading="lazy">
+        <figcaption>Kalapaki: a protected cove that stays clean when the exposed shores are blown out. The progression session, not the memory session.
+          <span class="credit">Photo: James Abbott, <a href="https://commons.wikimedia.org/wiki/File:2_16_Kalapaki_Beach_2018-02-16_038-LR_(26663853767).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Poipu_Beach_surfspot_Kauai_Hawaii_%2846277756091%29.jpg/1280px-Poipu_Beach_surfspot_Kauai_Hawaii_%2846277756091%29.jpg"
+          alt="Small waves rolling into the Poipu surf spot at sunset with surfers in the lineup" loading="lazy">
+        <figcaption>Po&lsquo;ip&#363; on a summer south swell. Lemon Drops, the slow beginner wave, breaks off the beach park &mdash; if the park is back in shape by June.
+          <span class="credit">Photo: dronepicr, <a href="https://commons.wikimedia.org/wiki/File:Poipu_Beach_surfspot_Kauai_Hawaii_(46277756091).jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Snorkeling_at_Anini_Beach%2C_Kauai_-_6932572664.jpg/1280px-Snorkeling_at_Anini_Beach%2C_Kauai_-_6932572664.jpg"
+          alt="A yellow butterflyfish over coral heads in shallow water at Anini Beach" loading="lazy">
+        <figcaption>&lsquo;Anini&rsquo;s fringing reef, the longest in Hawai&lsquo;i and the North Shore&rsquo;s calm-water snorkel in summer. Hawaiian reefs are about fish, turtles and lava, not coral gardens &mdash; see the Coral File for those.
+          <span class="credit">Photo: SNORKELINGDIVES.COM, <a href="https://commons.wikimedia.org/wiki/File:Snorkeling_at_Anini_Beach,_Kauai_-_6932572664.jpg" rel="noopener">Wikimedia Commons</a>, CC BY 2.0</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Waimea_Canyon%2C_Kaua%CA%BBi.jpg/1280px-Waimea_Canyon%2C_Kaua%CA%BBi.jpg"
+          alt="Red and green walls of Waimea Canyon under afternoon light" loading="lazy">
+        <figcaption>Waimea Canyon on the drive up to K&#333;ke&lsquo;e. One hiking day, done properly.
+          <span class="credit">Photo: Frank Schulenburg, <a href="https://commons.wikimedia.org/wiki/File:Waimea_Canyon,_Kaua%CA%BBi.jpg" rel="noopener">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption>
+      </figure>
+    </div>
+    <button class="nav prev" type="button" aria-label="Previous photo">&#8592;</button>
+    <button class="nav next" type="button" aria-label="Next photo">&#8594;</button>
+    <div class="dots"></div>
+  </div>
+
+  <figure class="mapwide">
+    <iframe title="Map of Kauai with Hanalei marked" loading="lazy"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-159.85%2C21.82%2C-159.25%2C22.30&amp;layer=mapnik&amp;marker=22.2034%2C-159.5030"></iframe>
+    <figcaption>Wai&lsquo;oli Beach Park, Hanalei (pin) &mdash; Pine Trees. Princeville on the bluff just east; H&#257;&lsquo;ena and K&#275;&lsquo;&#275; at the road&rsquo;s end west; the N&#257; Pali beyond. L&#299;hu&lsquo;e and Kalapaki at the east coast, Po&lsquo;ip&#363; on the south, Waimea Canyon and K&#333;ke&lsquo;e on the west side.
+      <a href="https://maps.google.com/?q=Hanalei,+HI" rel="noopener">Google Maps &rarr;</a></figcaption>
+  </figure>
+
+  <h3 class="section">The week</h3>
+  <div class="itin">
+    <table class="itin-t">
+      <thead><tr><th>Day</th><th>Morning</th><th>Afternoon</th></tr></thead>
+      <tbody>
+        <tr><th>Sat &middot; arrive</th><td>SEA &rarr; LIH, Alaska nonstop, about 6 h 15.</td><td>Rental car, groceries in Kapa&lsquo;a or L&#299;hu&lsquo;e, drive north (about an hour). Swim, sunset on Hanalei Bay.</td></tr>
+        <tr><th>Sun &middot; surf</th><td>7&ndash;10 am Hanalei if it is 1&ndash;3 ft and mellow: Pine Trees or Waikoko. Book the coaching session for this morning if possible.</td><td>Beach, Hanalei town, an easy snorkel at &lsquo;Anini, nothing else.</td></tr>
+        <tr><th>Mon &middot; N&#257; Pali</th><td>Early boat. Hanalei departure if running (4 h, sea caves, snorkel, 35-ft cats, ages 4+); otherwise the west-side raft from Kikiaola (6 h, N&#363;&lsquo;alolo Kai landing, 1 h 20&ndash;2 h drive each way).</td><td>Nothing. This day is spent by lunchtime.</td></tr>
+        <tr><th>Tue &middot; surf + H&#257;&lsquo;ena</th><td>7&ndash;9 am surf, wherever the dawn check says.</td><td>H&#257;&lsquo;ena State Park on the reservation you made 30 days ago: K&#275;&lsquo;&#275; snorkel, then the Kalalau Trail as far as Hanak&#257;p&#299;&lsquo;ai and back (2 mi each way, no permit needed to that point).</td></tr>
+        <tr><th>Wed &middot; south + east</th><td>Drive to Kalapaki; surf 8&ndash;10 am in the protected cove. Board rental from Hanalei, since the beach concession pauses lessons mid-June to mid-August.</td><td>Po&lsquo;ip&#363;: Lemon Drops if a south swell is running, snorkel at Po&lsquo;ip&#363; Beach Park (turtles, monk seals, lifeguards), dinner south, drive back in the dark.</td></tr>
+        <tr><th>Thu &middot; big hike</th><td>Waimea Canyon lookouts on the way up to K&#333;ke&lsquo;e; Awa&lsquo;awapuhi Trail, 6.4 mi round trip, 1,900 ft &mdash; downhill out, uphill back.</td><td>Lookouts, K&#333;ke&lsquo;e Lodge, the long drive north.</td></tr>
+        <tr><th>Fri &middot; flex</th><td>Surf wherever the conditions are best.</td><td>Hanalei beach, snorkel, SUP the river, or nothing scheduled at all.</td></tr>
+        <tr><th>Sat &middot; leave</th><td>One last dawn surf if the bay cooperates.</td><td>LIH &rarr; SEA.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section">Surf strategy</h3>
+  <div class="facts-wide">
+    <div class="cell"><span class="mono">Plan A &middot; Hanalei</span>
+      <p>Summer Hanalei is a different bay from winter: south wraps and afternoon trade windswell instead of North
+        Pacific power. Pine Trees (Wai&lsquo;oli) is the consistent, gentle longboard peak where the bay&rsquo;s
+        surfers actually paddle out; Waikoko at the west end is reef-sheltered and gentler again. Sandy bottom.
+        The honest risk is flat, not big &mdash; early June can go days with nothing rideable, which is why the week
+        never locks the break in advance.</p></div>
+    <div class="cell"><span class="mono">Plan B &middot; Kalapaki</span>
+      <p>A protected cove in front of L&#299;hu&lsquo;e that stays clean almost year-round. The place for a
+        progression-focused session: paddling, positioning, turns on a forgiving wave. Note that the on-beach
+        surf school suspends lessons from mid-June to mid-August, so rent a board on the North Shore and bring it.</p></div>
+    <div class="cell"><span class="mono">Plan C &middot; the South Shore</span>
+      <p>From May to October south swells light up Po&lsquo;ip&#363;: Lemon Drops is the slow beginner peak, too
+        slow for the locals and perfect for this brief. Best combined with the Po&lsquo;ip&#363; snorkel afternoon.
+        This is the shore Lowell hit hardest &mdash; confirm the beach park is open before building a day around it.</p></div>
+    <div class="cell"><span class="mono">The coaching session</span>
+      <p>Book one private, early in the week, with a school that coaches intermediates rather than teaching pop-ups:
+        Hanalei Surf School (founded by pro Evan Valiere; 90-minute privates on wave reading and positioning) or
+        Aloha Surfing School&rsquo;s 60-minute elite coaching at Hanalei, about $240 solo. The ask is
+        Kaua&lsquo;i-specific reef, current and etiquette knowledge, plus a read on where to surf the rest of the week.</p></div>
+    <div class="cell"><span class="mono">Water and gear</span>
+      <p>78&ndash;79&deg;F in June. Boardshorts and a rash guard; reef booties are a debate at Po&lsquo;ip&#363;, not at
+        Hanalei. Rent a longer board than pride suggests &mdash; the June waves are small and the whole point is time
+        on the wave, not the wave itself.</p></div>
+  </div>
+
+  <h3 class="section">N&#257; Pali &middot; the centerpiece</h3>
+  <dl class="facts">
+    <div><dt class="mono">Why summer</dt><dd>Smaller-raft and catamaran operators run their full sea-cave-and-snorkel itinerary May&ndash;September because winter swell closes the caves and the landings. June is squarely inside the window.</dd></div>
+    <div><dt class="mono">From Hanalei</dt><dd>N&#257; Pali Catamaran runs 35-ft cats from Hanalei Bay, 15 minutes from the coast, 4-hour snorkel-and-sightseeing tours, small enough to tuck into the caves, ages 4+. No full day lost to transit. They cancel when the bay is unsafe, so book Monday and keep Friday open as the fallback.</dd></div>
+    <div><dt class="mono">From the west side</dt><dd>Capt. Andy&rsquo;s and N&#257; Pali Riders run rigid-hull rafts from Kikiaola / Port Allen: about 6 hours, $285&ndash;295 per adult, a beach landing at N&#363;&lsquo;alolo Kai with a walk through the 800-year-old village site and a snorkel with a good chance of monk seals. Bouncier ride, bigger day, and a 1 h 20&ndash;2 h drive from Princeville each way.</dd></div>
+    <div><dt class="mono">The call</dt><dd>Hanalei-side boat if it is running in 2027 and everyone is fine with a modest boat in open water; the west-side raft if the N&#363;&lsquo;alolo Kai landing matters more than the drive. Either way: Monday, so a cancellation has four days to reschedule into.</dd></div>
+  </dl>
+
+  <h3 class="section">Hiking and H&#257;&lsquo;ena</h3>
+  <dl class="facts">
+    <div><dt class="mono">Awa&lsquo;awapuhi</dt><dd>6.4 mi round trip, about 1,900 ft, 4&ndash;4.5 h. It descends from 4,120 ft to the N&#363;&lsquo;alolo valley rim at 2,500 ft, so the climb is on the way home. The lookout is the N&#257; Pali from above, the mirror of Monday&rsquo;s boat. Start early; the ridge clouds over by early afternoon.</dd></div>
+    <div><dt class="mono">H&#257;&lsquo;ena reservations</dt><dd>Entry is by reservation only through gohaena.com, released 30 days ahead at midnight Hawai&lsquo;i time, and they sell out at once; cancellations reappear around 12:15 am and again 7&ndash;8 am. Options: the shuttle from Waip&#257; or Princeville ($45 adult, entry included) or parking plus entry ($20 per car per slot plus $5 per person) in three time slots. For a Tuesday visit, set an alarm for the Monday 30 days out.</dd></div>
+    <div><dt class="mono">Kalalau, the short version</dt><dd>K&#275;&lsquo;&#275; to Hanak&#257;p&#299;&lsquo;ai Beach is 2 miles each way with the coast views the trail is famous for; no permit is needed to that point, and anything past the valley requires a camping permit even for day hikers. Do not swim at Hanak&#257;p&#299;&lsquo;ai.</dd></div>
+    <div><dt class="mono">Tunnels, honestly</dt><dd>The inner lagoon at Makua (Tunnels) is now a pu&lsquo;uhonua fish refuge and snorkeling there is prohibited. K&#275;&lsquo;&#275; and &lsquo;Anini are the North Shore snorkels for this trip.</dd></div>
+  </dl>
+
+  <h3 class="section">Book ahead</h3>
+  <div class="roadtest">
+    <span class="mono">The checklist, in order</span>
+    <ul class="check">
+      <li><strong>Flights.</strong> Alaska&rsquo;s SEA&ndash;LIH nonstop runs twice daily, about 6 h 15 out. Saturday-to-Saturday for the June 5 or June 12 pattern.</li>
+      <li><strong>Lodging.</strong> Seven nights, Hanalei or Princeville, one place. Book early; June is high season and post-Lowell inventory may be thinner.</li>
+      <li><strong>Rental car.</strong> Non-negotiable on this island.</li>
+      <li><strong>N&#257; Pali boat.</strong> Monday; confirm the operator is running post-Lowell; keep Friday as the reschedule.</li>
+      <li><strong>H&#257;&lsquo;ena / K&#275;&lsquo;&#275;.</strong> Exactly 30 days before the Tuesday, midnight HST. Confirm the park has reopened first.</li>
+      <li><strong>Coaching.</strong> One private session Sunday or Tuesday morning.</li>
+      <li><strong>Board.</strong> Reserve a rental in Hanalei town for the week rather than trusting beach concessions.</li>
+    </ul>
+  </div>
+
+  <h3 class="section">June vs September</h3>
+  <div class="verdict">
+    <p><span class="mono">WHY JUNE WINS &middot;</span> The North Shore is at its most approachable, the N&#257; Pali
+      boats have their best access of the year, south swells are already running for the Po&lsquo;ip&#363; backup,
+      and temperatures are a notch below late summer. Early June also lands before the school-vacation crowds and,
+      most importantly, leaves July&ndash;September untouched for the Pacific Northwest.</p>
+    <p><span class="mono">THE COST &middot;</span> Hanalei can go flat. September brings more consistent North Shore
+      waves, but it spends the best PNW month and its hurricane exposure is what 2026 just demonstrated. The week
+      above absorbs the June risk by staying flexible and by having Kalapaki and the South Shore in reserve.</p>
+    <p><span class="mono">THE STRATEGY, RESTATED &middot;</span> San Diego for the long, quasi-living surf stays.
+      Kaua&lsquo;i for the concentrated tropical week, in early June, so the summer stays home.</p>
+  </div>
+
+  <div class="field-note">
+    <span class="mono">FIELD NOTES &middot; SEP 2026</span>
+    <p>Surf: <a href="https://www.hawaiimagazine.com/the-5-best-beginner-surf-spots-on-kauai/" rel="noopener">Hawai&lsquo;i Magazine</a>
+      and <a href="https://www.kauai.com/hanalei-bay-pine-trees" rel="noopener">Kauai.com</a> on Pine Trees, Waikoko, Kalapaki and Lemon Drops;
+      <a href="https://kauaibeachboys.com/tours-lessons/surf-lessons/" rel="noopener">Kaua&lsquo;i Beach Boys</a> on the mid-June to mid-August lesson pause;
+      <a href="https://hanaleisurflesson.com/surf-lessons/private-elite-surf-lessons-in-kauai-hanalei-bay/" rel="noopener">Aloha Surfing School</a> coaching pricing.
+      N&#257; Pali: <a href="https://www.napalicatamaran.com/" rel="noopener">N&#257; Pali Catamaran</a> (Hanalei departures, 4 h, ages 4+);
+      <a href="https://www.napali.com/raft/cave-expedition/" rel="noopener">Capt. Andy&rsquo;s raft expedition</a> (6 h, N&#363;&lsquo;alolo Kai);
+      <a href="https://www.hawaii-guide.com/blog/hawaii-na-pali-coast-boat-tours" rel="noopener">Hawaii Guide&rsquo;s 2026 boat-tour summary</a>.
+      H&#257;&lsquo;ena: <a href="https://gohaena.com/info-faqs/" rel="noopener">Go H&#257;&lsquo;ena FAQ</a> (30-day release, prices, Kalalau permit rule).
+      Hiking: <a href="https://dlnr.hawaii.gov/dsp/hiking/kauai/awaawapuhi-trail/" rel="noopener">DLNR Awa&lsquo;awapuhi Trail</a>.
+      Flights: <a href="https://www.flightsfrom.com/SEA-LIH" rel="noopener">SEA&ndash;LIH schedule</a>. Water temperature from seatemperature.info.</p>
+    <p>On reefs: Hawai&lsquo;i&rsquo;s coral is low-diversity by Pacific standards (a few dozen species against
+      the Coral Triangle&rsquo;s five hundred-plus), and the islands bleached in 2014&ndash;15 and 2019. Kaua&lsquo;i
+      snorkeling is about turtles, monk seals, reef fish and lava structure. For coral itself, see
+      <a href="surf-coral-file.html">The Coral File</a>.</p>
+    <p>The map is a live OpenStreetMap embed with the pin placed from OSM Nominatim coordinates for Wai&lsquo;oli
+      Beach Park. Photos are Creative Commons&ndash;licensed images from Wikimedia Commons, credited under each.</p>
+  </div>
+
+  <footer class="cadence">
+    <span class="mono">NEXT &middot;</span> when 2027 flights open, this page grows a sibling: exact dates, the lodging
+    shortlist, the boat booking, and a spring check on every post-Lowell closure above.
+    Companion pages: <a href="surf-dream-trips.html">Surf Dream Trips</a> &middot;
+    <a href="surf-feb-shortlist.html">The February Shortlist</a> &middot;
+    <a href="surf-coral-file.html">The Coral File</a> &middot;
+    <a href="surf-south-pacific.html">The South Pacific File</a>.
+  </footer>
+
+</div>
+<script>
+document.querySelectorAll('.carousel').forEach(function (c) {
+  var slides = c.querySelector('.slides');
+  var items = Array.prototype.slice.call(slides.children);
+  var dots = c.querySelector('.dots');
+  var n = items.length;
+
+  items.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Photo ' + (i + 1) + ' of ' + n);
+    b.addEventListener('click', function () { go(i); });
+    dots.appendChild(b);
+  });
+
+  function cur() { return Math.round(slides.scrollLeft / (slides.clientWidth || 1)); }
+  function go(i) {
+    var k = (i + n) % n;
+    var target = k * slides.clientWidth;
+    slides.scrollTo({ left: target, behavior: 'smooth' });
+    setTimeout(function () {
+      if (Math.abs(slides.scrollLeft - target) > 4) slides.scrollLeft = target;
+    }, 450);
+  }
+  function update() {
+    var k = cur();
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.classList.toggle('on', i === k);
+    });
+  }
+
+  slides.addEventListener('scroll', update, { passive: true });
+  c.querySelector('.nav.prev').addEventListener('click', function () { go(cur() - 1); });
+  c.querySelector('.nav.next').addEventListener('click', function () { go(cur() + 1); });
+  update();
+});
+</script>
+</body>
+</html>
