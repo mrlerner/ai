@@ -70,13 +70,21 @@ const clampLevel = (n) => Math.max(1, Math.min(LEVELS.length, n));
 // Question 1-2 -> level-1, 3-4 -> level, 5+ -> level+1 (or level if there is nothing above).
 function targetLevelFor(questionIndex) {
   const L = state.level;
+  if (L === 1) return questionIndex < 2 ? 1 : questionIndex < 4 ? 2 : 3;   // nothing below level 1, so climb sooner
   if (questionIndex < 2) return clampLevel(L - 1);
   if (questionIndex < 4) return L;
   return clampLevel(L + 1);
 }
 
+// How often each song has been asked (all time), so the least-played ones come up first.
+function playCounts() {
+  const c = {};
+  for (const x of state.history) c[x.id] = (c[x.id] || 0) + 1;
+  return c;
+}
+
 function pickSong() {
-  const seen = new Set([...(session?.seen || []), ...state.recent.slice(-6)]);
+  const seen = new Set([...(session?.seen || []), ...state.recent.slice(-10)]);
   const fresh = (arr) => arr.filter(s => !seen.has(s.id));
   const target = targetLevelFor(session ? session.asked : 0);
   let pool = [];
@@ -85,7 +93,11 @@ function pickSong() {
   if (!pool.length) pool = fresh(levelPool(target));
   if (!pool.length) pool = fresh(SONGS.filter(s => Math.abs(s.level - target) <= 1));
   if (!pool.length) pool = SONGS.filter(s => s.level <= target + 1);
-  return pool[Math.floor(Math.random() * pool.length)];
+  // least-played first: everything gets heard before anything repeats
+  const counts = playCounts();
+  const min = Math.min(...pool.map(s => counts[s.id] || 0));
+  const least = pool.filter(s => (counts[s.id] || 0) === min);
+  return least[Math.floor(Math.random() * least.length)];
 }
 
 function makeQuestion(song) {

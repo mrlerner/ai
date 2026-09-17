@@ -126,40 +126,52 @@ export class Spotify {
     });
   }
 
+  get preferredDevice() { try { return localStorage.getItem('ct.spotify.device'); } catch { return null; } }
+
   async connect() {
     if (this.ready) return true;
     if (!this.loggedIn) return false;
+    if (this.connecting) return this.connecting;   // never run two connects at once
+    this.connecting = this._connect().finally(() => { this.connecting = null; });
+    return this.connecting;
+  }
+
+  async _connect() {
     this.status = 'connecting'; this.onStatus();
     try {
       const me = await this.me();
       this.premium = me.product === 'premium';
       if (!this.premium) { this.status = 'error'; this.error = 'Spotify playback in the browser needs a Premium account. The synth band will play instead.'; this.onStatus(); return false; }
-      if (!Spotify.sdkSupported()) return this.connectDevice();
+      // a device the user picked earlier always wins over the in-page player
+      if (!Spotify.sdkSupported() || this.preferredDevice) return this.connectDevice();
       await this.loadSdk();
-      this.player = new window.Spotify.Player({
+      const player = new window.Spotify.Player({
         name: 'Chord Ear Trainer',
         getOAuthToken: cb => this.accessToken().then(cb),
         volume: 0.9,
       });
+      this.player = player;
+      const mine = () => this.player === player;   // ignore events from a player we have since discarded
       const ready = new Promise((resolve, reject) => {
-        this.player.addListener('ready', ({ device_id }) => { this.deviceId = device_id; resolve(); });
-        this.player.addListener('not_ready', () => { this.ready = false; this.status = 'connecting'; this.onStatus(); });
-        this.player.addListener('initialization_error', ({ message }) => reject(new Error(message)));
-        this.player.addListener('authentication_error', ({ message }) => reject(new Error(message)));
-        this.player.addListener('account_error', ({ message }) => reject(new Error(message)));
-        this.player.addListener('playback_error', ({ message }) => { console.warn('playback_error', message); });
-        this.player.addListener('player_state_changed', s => this._onState(s));
+        player.addListener('ready', ({ device_id }) => { if (mine()) { this.deviceId = device_id; } resolve(); });
+        player.addListener('not_ready', () => { if (mine()) { this.ready = false; this.status = 'connecting'; this.onStatus(); } });
+        player.addListener('initialization_error', ({ message }) => reject(new Error(message)));
+        player.addListener('authentication_error', ({ message }) => reject(new Error(message)));
+        player.addListener('account_error', ({ message }) => reject(new Error(message)));
+        player.addListener('playback_error', ({ message }) => { console.warn('playback_error', message); });
+        player.addListener('player_state_changed', s => { if (mine()) this._onState(s); });
         setTimeout(() => reject(new Error('Spotify player timed out')), 15000);
       });
-      const ok = await this.player.connect();
+      const ok = await player.connect();
       if (!ok) throw new Error('player.connect() failed');
       await ready;
-      this.ready = true; this.mode = 'sdk'; this.status = 'ready'; this.error = null; this.onStatus();
+      if (!mine()) return this.ready;   // user switched device while we were connecting
+      this.ready = true; this.mode = 'sdk'; this.deviceName = 'this browser'; this.status = 'ready'; this.error = null; this.onStatus();
       return true;
     } catch (e) {
       // SDK failed (unsupported browser, DRM blocked, …): fall back to driving another device
-      try { this.player && this.player.disconnect(); } catch { /* ignore */ }
-      this.player = null;
+      const p = this.player; this.player = null;
+      try { p && p.disconnect(); } catch { /* ignore */ }
       return this.connectDevice(e.message || String(e));
     }
   }
@@ -172,8 +184,9 @@ export class Spotify {
 
   async connectDevice(reason) {
     const devs = await this.listDevices();
-    const preferred = localStorage.getItem('ct.spotify.device');
+    const preferred = this.preferredDevice;
     const dev = devs.find(d => d.id === preferred) || devs.find(d => d.is_active) || devs.find(d => d.type === 'Smartphone') || devs[0];
+    if (preferred && dev && dev.id !== preferred) console.warn('preferred Spotify device not available; using', dev.name);
     if (!dev) {
       this.status = 'error'; this.mode = 'connect'; this.ready = false;
       this.error = 'Open the Spotify app on this phone (or any device), press play once, then tap retry.';
@@ -187,8 +200,10 @@ export class Spotify {
   async useDevice(id) {
     const dev = this.devices.find(d => d.id === id); if (!dev) return false;
     try { localStorage.setItem('ct.spotify.device', id); } catch { /* ignore */ }
+    const p = this.player; this.player = null;            // drop the in-page player first so its events are ignored
+    try { p && p.disconnect(); } catch { /* ignore */ }
+    this.stopLoop();
     this.deviceId = id; this.deviceName = dev.name; this.mode = 'connect'; this.ready = true; this.status = 'ready'; this.error = null;
-    if (this.player) { try { this.player.disconnect(); } catch { /* ignore */ } this.player = null; }
     this.onStatus(); return true;
   }
 
