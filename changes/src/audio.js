@@ -12,6 +12,34 @@ export class Band {
     this.playing = null; // current playback handle
   }
 
+  // iOS: Web Audio is silenced by the ring/silent switch unless the page also plays an HTML media element,
+  // and the context only resumes inside a user gesture. Both are handled here; call ensure() from a tap.
+  unlockIOS() {
+    if (this.unlocked) return;
+    const ua = navigator.userAgent || '';
+    const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (!ios) { this.unlocked = true; return; }
+    try {
+      if (!this.silent) {
+        // 1-second silent WAV, looped: keeps the audio session in "playback" so the ringer switch is ignored
+        const rate = 8000, n = rate, header = new ArrayBuffer(44 + n), v = new DataView(header);
+        const w = (o, str) => { for (let i = 0; i < str.length; i++) v.setUint8(o + i, str.charCodeAt(i)); };
+        w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVE'); w(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true);
+        v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true);
+        w(36, 'data'); v.setUint32(40, n, true); for (let i = 0; i < n; i++) v.setUint8(44 + i, 128);
+        const a = document.createElement('audio');
+        a.src = URL.createObjectURL(new Blob([header], { type: 'audio/wav' }));
+        a.loop = true; a.volume = 0.01; a.setAttribute('playsinline', ''); a.style.display = 'none';
+        document.body.appendChild(a);
+        this.silent = a;
+      }
+      const p = this.silent.play(); if (p && p.catch) p.catch(() => {});
+      // a one-sample buffer started inside the gesture unlocks the context on older iOS
+      if (this.ctx) { const b = this.ctx.createBuffer(1, 1, 22050); const src = this.ctx.createBufferSource(); src.buffer = b; src.connect(this.ctx.destination); src.start(0); }
+      this.unlocked = true;
+    } catch (e) { /* best effort */ }
+  }
+
   ensure() {
     if (!this.ctx) {
       this.ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -22,7 +50,8 @@ export class Band {
       this.master.connect(comp).connect(this.ctx.destination);
       this.noise = this._noiseBuffer();
     }
-    if (this.ctx.state === 'suspended') this.ctx.resume();
+    if (this.ctx.state === 'suspended' || this.ctx.state === 'interrupted') this.ctx.resume();
+    this.unlockIOS();
     return this.ctx;
   }
 

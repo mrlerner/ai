@@ -131,6 +131,7 @@ async function playQuestion() {
 
 function playSynth(opts = {}) {
   if (!q) return;
+  band.ensure();
   spotify.pause();
   playback.source = 'synth'; playback.playing = true; renderPlayButton();
   const tempo = q.song.tempo || 100;
@@ -373,7 +374,7 @@ function renderQuestion() {
   </main>`;
   bindCommon();
   $('#btn-play').onclick = togglePlay;
-  $('#btn-key').onclick = () => { spotify.pause(); playback.playing = false; renderPlayButton(); band.playKey(q.key); };
+  $('#btn-key').onclick = () => { band.ensure(); band.playKey(q.key); spotify.pause(); playback.playing = false; renderPlayButton(); };
   renderAnswer();
   renderReveal();
 }
@@ -647,6 +648,9 @@ function bindCommon() {
   const l = $('#btn-login'); if (l) l.onclick = () => spotify.login();
   const r = $('#btn-retry'); if (r) r.onclick = async () => { spotify.status = 'idle'; await spotify.connect(); render(); };
 }
+
+// iOS suspends the audio context when the page is backgrounded or another app takes audio; wake it on the next tap
+document.addEventListener('touchend', () => { if (band.ctx && band.ctx.state !== 'running') band.ctx.resume(); }, { passive: true });
 
 // ---------------------------------------------------------------- keyboard ----
 document.addEventListener('keydown', (e) => {
