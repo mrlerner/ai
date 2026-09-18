@@ -2925,5 +2925,15725 @@ export const SONGS = [
   "spotify": "spotify:track:1kgdslQYmeTR4thk9whoRw",
   "art": "https://i.scdn.co/image/ab67616d00001e0244cb13558d57f5a066fac381",
   "ug": "https://tabs.ultimate-guitar.com/tab/eric-clapton/tears-in-heaven-official-1934645"
+ },
+ {
+  "id": "1979-the-smashing-pumpkins",
+  "title": "1979",
+  "artist": "The Smashing Pumpkins",
+  "year": 2001,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Eb Ab.",
+  "spotify": "spotify:track:3h5zik31hTTat9jmpCZZNC",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c48f42fdafcffcedbdbce025",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/1979-official-2210253"
+ },
+ {
+  "id": "a-horse-with-no-name-america",
+  "title": "A Horse with No Name",
+  "artist": "America",
+  "year": 1972,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em D6add9/F#.",
+  "spotify": "spotify:track:54eZmuggBFJbV7k248bTTt",
+  "art": "https://i.scdn.co/image/ab67616d00001e02cc2ef2810c85fde8ec60cbc4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/america/a-horse-with-no-name-official-2238415"
+ },
+ {
+  "id": "about-a-girl-nirvana",
+  "title": "About a Girl",
+  "artist": "Nirvana",
+  "year": 1989,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em G.",
+  "spotify": "spotify:track:2SHTKB8YYlawTGIuJ2b2ok",
+  "art": "https://i.scdn.co/image/ab67616d00001e0297507fd22fb690cb9085a864",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/about-a-girl-official-1916707"
+ },
+ {
+  "id": "adore-you-harry-styles",
+  "title": "Adore You",
+  "artist": "Harry Styles",
+  "year": 2019,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cm Eb Ab Bb.",
+  "spotify": "spotify:track:3jjujdWJ72nww5eGnfs2E7",
+  "art": "https://i.scdn.co/image/ab67616d00001e0225180571abce9472f61bd722",
+  "ug": "https://tabs.ultimate-guitar.com/tab/harry-styles/adore-you-official-2981114"
+ },
+ {
+  "id": "africa-toto",
+  "title": "Africa",
+  "artist": "TOTO",
+  "year": 1982,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A G#m C#m.",
+  "spotify": "spotify:track:2374M0fQpWi3dLnB54qaLX",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ebd6d20c0082524244ef83df",
+  "ug": "https://tabs.ultimate-guitar.com/tab/toto/africa-official-2135331"
+ },
+ {
+  "id": "alison-elvis-costello",
+  "title": "Alison",
+  "artist": "Elvis Costello",
+  "year": 1977,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: B A C#m B F#m G#m.",
+  "spotify": "spotify:track:1v98rfd0an913AzHvMNG8a",
+  "art": "https://i.scdn.co/image/ab67616d00001e02008a93d976cfd5a76ba06b9b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/elvis-costello/alison-official-2972414"
+ },
+ {
+  "id": "alive-pearl-jam",
+  "title": "Alive",
+  "artist": "Pearl Jam",
+  "year": 1991,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bVI",
+    "beats": 4
+   },
+   {
+    "rn": "bIII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A F C.",
+  "spotify": "spotify:track:1L94M3KIu7QluZe63g64rv",
+  "art": "https://i.scdn.co/image/ab67616d00001e022d0e5ab5bd2e234fbcffa3e0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/alive-official-2099711"
+ },
+ {
+  "id": "all-apologies-nirvana",
+  "title": "All Apologies",
+  "artist": "Nirvana",
+  "year": 1993,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, chorus: F# G#.",
+  "spotify": "spotify:track:1Ic9pKxGSJGM0LKeqf6lGe",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c4f52ef8782f0e8ede4c1aaf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/all-apologies-official-1942279"
+ },
+ {
+  "id": "all-i-need-radiohead",
+  "title": "All I Need",
+  "artist": "Radiohead",
+  "year": 2007,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C C/E C/G.",
+  "spotify": "spotify:track:5Qv2Nby1xTr9pQyjkrc94J",
+  "art": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/all-i-need-official-2258529"
+ },
+ {
+  "id": "all-of-me-john-legend",
+  "title": "All of Me",
+  "artist": "John Legend",
+  "year": 2013,
+  "key": "F minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em C G D. Capo 1.",
+  "spotify": "spotify:track:3U4isOIWM3VvDubwSI3y7a",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bdcc3b587b5249932bc415c2",
+  "ug": "https://tabs.ultimate-guitar.com/tab/john-legend/all-of-me-official-2123125"
+ },
+ {
+  "id": "all-too-well-taylor-swift",
+  "title": "All Too Well",
+  "artist": "Taylor Swift",
+  "year": 2012,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C G Am F.",
+  "spotify": "spotify:track:1q3RiD1tIWUpGsNFADMlvl",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a7613d346501b828b56a0bc3",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/all-too-well-official-2439197"
+ },
+ {
+  "id": "alone-marshmello",
+  "title": "Alone",
+  "artist": "Marshmello",
+  "year": 2016,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G A Bm D.",
+  "spotify": "spotify:track:3MEYFivt6bilQ9q9mFWZ4g",
+  "art": "https://i.scdn.co/image/ab67616d00001e02956043cfb058f0be93022267",
+  "ug": "https://tabs.ultimate-guitar.com/tab/marshmello/alone-official-2507976"
+ },
+ {
+  "id": "althea-grateful-dead",
+  "title": "Althea",
+  "artist": "Grateful Dead",
+  "year": 1980,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm A E A Bm A E.",
+  "spotify": "spotify:track:5sz1xQRiw9Tu3mkLzhcHTj",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e5b02957e184d0da9a8d166c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/althea-official-2907767"
+ },
+ {
+  "id": "always-on-my-mind-willie-nelson",
+  "title": "Always on My Mind",
+  "artist": "Willie Nelson",
+  "year": 1982,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G D/F# Em D/A A.",
+  "spotify": "spotify:track:2xYQTU2bbg6WVAmpY1eae4",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e786801505efc5bb2e97ed04",
+  "ug": "https://tabs.ultimate-guitar.com/tab/willie-nelson/always-on-my-mind-official-2422313"
+ },
+ {
+  "id": "american-girl-tom-petty-and-the-heartbreakers",
+  "title": "American Girl",
+  "artist": "Tom Petty and the Heartbreakers",
+  "year": 2008,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D E G A.",
+  "spotify": "spotify:track:6SIV02mskzzc3KXK7t4NHj",
+  "art": "https://i.scdn.co/image/ab67616d00001e020c3a1b46b6b846dfdfbc6a7d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty-and-the-heartbreakers/american-girl-official-2485776"
+ },
+ {
+  "id": "anti-hero-taylor-swift",
+  "title": "Anti-Hero",
+  "artist": "Taylor Swift",
+  "year": 2022,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VIIsus4",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A E Bsus4 C#m.",
+  "spotify": "spotify:track:0V3wPSX9ygBnCm8psDIegu",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bb54dde68cd23e2a268ae0f5",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/anti-hero-official-4394123"
+ },
+ {
+  "id": "around-the-world-daft-punk",
+  "title": "Around the World",
+  "artist": "Daft Punk",
+  "year": 1997,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am C Em.",
+  "spotify": "spotify:track:1pKYYY0dkg23sQQXi0Q5zN",
+  "art": "https://i.scdn.co/image/ab67616d00001e028ac778cc7d88779f74d33311",
+  "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/around-the-world-official-2511060"
+ },
+ {
+  "id": "as-it-was-harry-styles",
+  "title": "As It Was",
+  "artist": "Harry Styles",
+  "year": 2022,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D Bm E A.",
+  "spotify": "spotify:track:4Dvkj6JhhA12EX05fT7y2e",
+  "art": "https://i.scdn.co/image/ab67616d00001e0282ce362511fb3d9dda6578ee",
+  "ug": "https://tabs.ultimate-guitar.com/tab/harry-styles/as-it-was-official-4138834"
+ },
+ {
+  "id": "august-taylor-swift",
+  "title": "august",
+  "artist": "Taylor Swift",
+  "year": 2020,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 4
+   },
+   {
+    "rn": "ii7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D Gsus2 Em7. Capo 3.",
+  "spotify": "spotify:track:3hUxzQpSfdDqwM3ZTFQY0K",
+  "art": "https://i.scdn.co/image/ab67616d00001e0295f754318336a07e85ec59bc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/august-official-3442244"
+ },
+ {
+  "id": "baba-o-riley-the-who",
+  "title": "Baba O'Riley",
+  "artist": "The Who",
+  "year": 1971,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F C Bb.",
+  "spotify": "spotify:track:3qiyyUfYe7CRYLucrPmulD",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fe24dcd263c08c6dd84b6e8c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-who/baba-oriley-official-2153349"
+ },
+ {
+  "id": "baby-s-arms-kurt-vile",
+  "title": "Baby's Arms",
+  "artist": "Kurt Vile",
+  "year": 2011,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "iii7",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "iii7",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "VIsus2",
+    "beats": 2,
+    "bass": "b7"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G/B Bm G/B Bm7 Bm/D G/B Bm7 Bm/D Esus2/D.",
+  "spotify": "spotify:track:6USEdtn8hvbDW2tOJAqVTS",
+  "art": "https://i.scdn.co/image/ab67616d00001e02560c307eeca71e7443b3b803",
+  "ug": "https://tabs.ultimate-guitar.com/tab/kurt-vile/babys-arms-official-5989013"
+ },
+ {
+  "id": "back-pocket-vulfpeck",
+  "title": "Back Pocket",
+  "artist": "Vulfpeck",
+  "year": 2015,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am Bm Am G.",
+  "spotify": "spotify:track:0tLwe28zupkUQMpoXIDgX2",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ba94b5ac9a0771550fe81682",
+  "ug": "https://tabs.ultimate-guitar.com/tab/vulfpeck/back-pocket-official-2260129"
+ },
+ {
+  "id": "bad-bad-leroy-brown-jim-croce",
+  "title": "Bad, Bad Leroy Brown",
+  "artist": "Jim Croce",
+  "year": 1973,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II7",
+    "beats": 2
+   },
+   {
+    "rn": "III7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D7 G A7 B7 C D7 C G.",
+  "spotify": "spotify:track:2r3XNMon9K7bl2KTtHsaQO",
+  "art": "https://i.scdn.co/image/ab67616d00001e026a7f07f0bf2eaadd24cd0262",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jim-croce/bad-bad-leroy-brown-official-3015878"
+ },
+ {
+  "id": "beat-it-michael-jackson",
+  "title": "Beat It",
+  "artist": "Michael Jackson",
+  "year": 1982,
+  "key": "Eb minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Ebm Db.",
+  "spotify": "spotify:track:3BovdzfaX4jb5KFQwoPfAw",
+  "art": "https://i.scdn.co/image/ab67616d00001e0232a7d87248d1b75463483df5",
+  "ug": "https://tabs.ultimate-guitar.com/tab/michael-jackson/beat-it-official-1910927"
+ },
+ {
+  "id": "behind-blue-eyes-the-who",
+  "title": "Behind Blue Eyes",
+  "artist": "The Who",
+  "year": 1971,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em G D Cadd9 Aadd9 Em G D.",
+  "spotify": "spotify:track:0cKk8BKEi7zXbdrYdyqBP5",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fe24dcd263c08c6dd84b6e8c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-who/behind-blue-eyes-official-2222339"
+ },
+ {
+  "id": "believe-cher",
+  "title": "Believe",
+  "artist": "Cher",
+  "year": 1998,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "ii7",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii7",
+    "beats": 4
+   },
+   {
+    "rn": "ii7",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F# C# G#m7 F# A#m7 G#m7 D#m.",
+  "spotify": "spotify:track:2goLsvvODILDzeeiT4dAoR",
+  "art": "https://i.scdn.co/image/ab67616d00001e0206ce0d1f846c525e847d60e7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/cher/believe-official-3286139"
+ },
+ {
+  "id": "believer-imagine-dragons",
+  "title": "Believer",
+  "artist": "Imagine Dragons",
+  "year": 2017,
+  "key": "Bb minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bbm Gb F.",
+  "spotify": "spotify:track:0pqnGHJpmpxLKifKRmU6WP",
+  "art": "https://i.scdn.co/image/ab67616d00001e025675e83f707f1d7271e5cf8a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/imagine-dragons/believer-official-1995087"
+ },
+ {
+  "id": "bell-bottom-blues-derek-the-dominos",
+  "title": "Bell Bottom Blues",
+  "artist": "Derek & The Dominos",
+  "year": 1970,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C E/B Am C/G F G F G.",
+  "spotify": "spotify:track:2YJgM8lj4u5YEZRSHSfL60",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fbcaf7402f38faac27610efc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/derek-and-the-dominos/bell-bottom-blues-official-2838650"
+ },
+ {
+  "id": "bertha-grateful-dead",
+  "title": "Bertha",
+  "artist": "Grateful Dead",
+  "year": 2017,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C/G G C/G G C/G G C/G.",
+  "spotify": "spotify:track:3IWEh4iRJVXqjwecoUG1hH",
+  "art": "https://i.scdn.co/image/ab67616d00001e0267b1fb643976ca1dfc4cb5c7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/bertha-official-3773399"
+ },
+ {
+  "id": "better-man-pearl-jam",
+  "title": "Better Man",
+  "artist": "Pearl Jam",
+  "year": 1994,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro 2",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "II",
+    "beats": 4,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 2: D/F# E/G#.",
+  "spotify": "spotify:track:2B98ljvzqpCVgt5reTHq28",
+  "art": "https://i.scdn.co/image/ab67616d00001e020ccbe4584f7827e66fa2ab3a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/better-man-official-2503071"
+ },
+ {
+  "id": "better-off-alone-alice-deejay",
+  "title": "Better Off Alone",
+  "artist": "Alice Deejay",
+  "year": 2000,
+  "key": "Ab minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E D#m G#m F#.",
+  "spotify": "spotify:track:5XVjNRubJUW0iPhhSWpLCj",
+  "art": "https://i.scdn.co/image/ab67616d00001e028d897b8994ce008298200408",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alice-deejay/better-off-alone-official-5436411"
+ },
+ {
+  "id": "big-empty-stone-temple-pilots",
+  "title": "Big Empty",
+  "artist": "Stone Temple Pilots",
+  "year": 2003,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I7",
+    "beats": 4
+   },
+   {
+    "rn": "bVI7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E7b5 C7.",
+  "spotify": "spotify:track:5nRRklOTvmgf8H3B9DrfYP",
+  "art": "https://i.scdn.co/image/ab67616d00001e0277696910e15c42a5e37636e5",
+  "ug": "https://tabs.ultimate-guitar.com/tab/stone-temple-pilots/big-empty-official-2411411"
+ },
+ {
+  "id": "billie-jean-michael-jackson",
+  "title": "Billie Jean",
+  "artist": "Michael Jackson",
+  "year": 1982,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "iv7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F#m7 Bm7.",
+  "spotify": "spotify:track:7J1uxwnxfQLu4APicE5Rnj",
+  "art": "https://i.scdn.co/image/ab67616d00001e0232a7d87248d1b75463483df5",
+  "ug": "https://tabs.ultimate-guitar.com/tab/michael-jackson/billie-jean-official-1939031"
+ },
+ {
+  "id": "bitter-sweet-symphony-the-verve",
+  "title": "Bitter Sweet Symphony",
+  "artist": "The Verve",
+  "year": 2023,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "v7",
+    "beats": 2
+   },
+   {
+    "rn": "bVIIsus2",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 1: E Bm7 Dsus2 A.",
+  "spotify": "spotify:track:6bW02u24bW0jQL8hJ9Ok5j",
+  "art": "https://i.scdn.co/image/ab67616d00001e025c893b7c8ed3b1e8e7866099",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-verve/bitter-sweet-symphony-official-2455234"
+ },
+ {
+  "id": "bizarre-love-triangle-new-order",
+  "title": "Bizarre Love Triangle",
+  "artist": "New Order",
+  "year": 1986,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Eb F Bb/D Eb.",
+  "spotify": "spotify:track:6wVViUl2xSRoDK2T7dMZbR",
+  "art": "https://i.scdn.co/image/ab67616d00001e02530a2c5dd17d2ddf8edc2978",
+  "ug": "https://tabs.ultimate-guitar.com/tab/new-order/bizarre-love-triangle-official-4250428"
+ },
+ {
+  "id": "blank-space-taylor-swift",
+  "title": "Blank Space",
+  "artist": "Taylor Swift",
+  "year": 2014,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F Dm Bb C.",
+  "spotify": "spotify:track:1p80LdxRV74UKvL8gnD7ky",
+  "art": "https://i.scdn.co/image/ab67616d00001e029abdf14e6058bd3903686148",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/blank-space-official-2172591"
+ },
+ {
+  "id": "bloodbuzz-ohio-the-national",
+  "title": "Bloodbuzz Ohio",
+  "artist": "The National",
+  "year": 2010,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A F#m.",
+  "spotify": "spotify:track:3lnF83kG6ePhTSWRoW62dO",
+  "art": "https://i.scdn.co/image/ab67616d00001e02287369f0a8e0d5e2c81e5afa",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-national/bloodbuzz-ohio-official-4640294"
+ },
+ {
+  "id": "blue-da-ba-dee-eiffel-65",
+  "title": "Blue (Da Ba Dee)",
+  "artist": "Eiffel 65",
+  "year": 1998,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Gm F D# Cm Gm F D# Cm.",
+  "spotify": "spotify:track:7lMIJ4EFWRVoAIPDpeGyM3",
+  "art": "https://i.scdn.co/image/ab67616d00001e02121c39c86d8b05c14022edfe",
+  "ug": "https://tabs.ultimate-guitar.com/tab/eiffel-65/blue-da-ba-dee-official-2139769"
+ },
+ {
+  "id": "blue-monday-new-order",
+  "title": "Blue Monday",
+  "artist": "New Order",
+  "year": 1987,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 1: Dm F C Dm Gm C.",
+  "spotify": "spotify:track:6hHc7Pks7wtBIW8Z6A0iFq",
+  "art": "https://i.scdn.co/image/ab67616d00001e02408739ba1ad5bccbfeda5ae1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/new-order/blue-monday-official-2749377"
+ },
+ {
+  "id": "boots-of-spanish-leather-bob-dylan",
+  "title": "Boots of Spanish Leather",
+  "artist": "Bob Dylan",
+  "year": 1964,
+  "key": "Ab",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C. Capo 1.",
+  "spotify": "spotify:track:6QHYEZlm9wyfXfEM1vSu1P",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b75cedd9435250e77b60bfbe",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/boots-of-spanish-leather-official-2983556"
+ },
+ {
+  "id": "born-slippy-nuxx-underworld",
+  "title": "Born Slippy .NUXX",
+  "artist": "Underworld",
+  "year": 2014,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "iii7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Eb Dm7 Bb/D.",
+  "spotify": "spotify:track:7xQYVjs4wZNdCwO0EeAWMC",
+  "art": "https://i.scdn.co/image/ab67616d00001e021e34bdf6792b78c2da36a767",
+  "ug": "https://tabs.ultimate-guitar.com/tab/underworld/born-slippy-official-6218642"
+ },
+ {
+  "id": "box-of-rain-grateful-dead",
+  "title": "Box of Rain",
+  "artist": "Grateful Dead",
+  "year": 1970,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I7sus4",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A E7sus4/A.",
+  "spotify": "spotify:track:7x2xjJV3YAPeLQJ7u3Kjet",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fd3f66a9ce4371f7ffa0346f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/box-of-rain-official-3221642"
+ },
+ {
+  "id": "boy-with-a-coin-iron-wine",
+  "title": "Boy with a Coin",
+  "artist": "Iron & Wine",
+  "year": 2007,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C Em.",
+  "spotify": "spotify:track:34q2Y1O5zMeuBhX4WYn0aZ",
+  "art": "https://i.scdn.co/image/ab67616d00001e02816243514f01ac30d0932622",
+  "ug": "https://tabs.ultimate-guitar.com/tab/iron-wine/boy-with-a-coin-official-4409576"
+ },
+ {
+  "id": "boys-don-t-cry-the-cure",
+  "title": "Boys Don't Cry",
+  "artist": "The Cure",
+  "year": 2001,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A Bm C#m D C#m Bm.",
+  "spotify": "spotify:track:2RKDbMwtJgKc76H9oPo7Cl",
+  "art": "https://i.scdn.co/image/ab67616d00001e020447ba639949dd26478decf6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-cure/boys-dont-cry-official-1947417"
+ },
+ {
+  "id": "brain-damage-pink-floyd",
+  "title": "Brain Damage",
+  "artist": "Pink Floyd",
+  "year": 1973,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV7",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D G7 D G7 D E/D A7 D.",
+  "spotify": "spotify:track:05uGBKRCuePsf43Hfm0JwX",
+  "art": "https://i.scdn.co/image/ab67616d00001e02db216ca805faf5fe35df4ee6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pink-floyd/brain-damage-official-2157747"
+ },
+ {
+  "id": "breezeblocks-alt-j",
+  "title": "Breezeblocks",
+  "artist": "alt-J",
+  "year": 2012,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F A Dm.",
+  "spotify": "spotify:track:3n69hLUdIsSa1WlRmjMZlW",
+  "art": "https://i.scdn.co/image/ab67616d00001e02609c89ad17eb28c2013c56c6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alt-j/breezeblocks-official-1991167"
+ },
+ {
+  "id": "brothers-in-arms-dire-straits",
+  "title": "Brothers in Arms",
+  "artist": "Dire Straits",
+  "year": 1985,
+  "key": "Ab minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: B D#m G#m D#m E F# G#m D#m.",
+  "spotify": "spotify:track:26tWBbtjvgi0tipRL2VQ2X",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fb995d2871f084b34afae3b3",
+  "ug": "https://tabs.ultimate-guitar.com/tab/dire-straits/brothers-in-arms-official-2460396"
+ },
+ {
+  "id": "brown-sugar-the-rolling-stones",
+  "title": "Brown Sugar",
+  "artist": "The Rolling Stones",
+  "year": 1971,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C/G G C F/C C C/G G C.",
+  "spotify": "spotify:track:34K7nU8EWQIRI93RfqhdRJ",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b11b3fc3c89477a7dd473bd7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/brown-sugar-official-2193715"
+ },
+ {
+  "id": "budapest-george-ezra",
+  "title": "Budapest",
+  "artist": "George Ezra",
+  "year": 2014,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F Bb.",
+  "spotify": "spotify:track:2ixsaeFioXJmMgkkbd4uj1",
+  "art": "https://i.scdn.co/image/ab67616d00001e023a60095e50104070cc89ed9f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/george-ezra/budapest-official-2254527"
+ },
+ {
+  "id": "can-t-feel-my-face-the-weeknd",
+  "title": "Can't Feel My Face",
+  "artist": "The Weeknd",
+  "year": 2015,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G F Am.",
+  "spotify": "spotify:track:22VdIZQfgXJea34mQxlt81",
+  "art": "https://i.scdn.co/image/ab67616d00001e027fcead687e99583072cc217b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-weeknd/cant-feel-my-face-official-2179995"
+ },
+ {
+  "id": "can-t-stop-the-feeling-justin-timberlake",
+  "title": "Can't Stop the Feeling!",
+  "artist": "Justin Timberlake",
+  "year": 2016,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VImaj7sus2",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Fmaj7sus2 Am7 C Am7.",
+  "spotify": "spotify:track:1WkMMavIMc4JZ8cfMmxHkI",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d965d29d7dcf46ade5a8a7e4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/justin-timberlake/cant-stop-the-feeling-official-2184879"
+ },
+ {
+  "id": "can-t-you-see-the-marshall-tucker-band",
+  "title": "Can't You See",
+  "artist": "The Marshall Tucker Band",
+  "year": 1973,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "Isus2",
+    "beats": 2,
+    "bass": "b7"
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D Dsus2/C G.",
+  "spotify": "spotify:track:4egy2d8QiyXn5tzVQiptTb",
+  "art": "https://i.scdn.co/image/ab67616d00001e02dede94a3ef0bb67eb53668b3",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-marshall-tucker-band/cant-you-see-official-2496684"
+ },
+ {
+  "id": "cannonball-the-breeders",
+  "title": "Cannonball",
+  "artist": "The Breeders",
+  "year": 1993,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb5 Eb5.",
+  "spotify": "spotify:track:1KdwPeY1WRWQGHCmRJTveb",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fbf772eed6abce36ddf9233c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-breeders/cannonball-official-2655717"
+ },
+ {
+  "id": "cardigan-taylor-swift",
+  "title": "cardigan",
+  "artist": "Taylor Swift",
+  "year": 2020,
+  "key": "F minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Fm Bb Ab Bb.",
+  "spotify": "spotify:track:4R2kfaDFhslZEMJqAFNpdd",
+  "art": "https://i.scdn.co/image/ab67616d00001e0295f754318336a07e85ec59bc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/cardigan-official-3309119"
+ },
+ {
+  "id": "caring-is-creepy-the-shins",
+  "title": "Caring Is Creepy",
+  "artist": "The Shins",
+  "year": 2001,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Bm A G Em D A G.",
+  "spotify": "spotify:track:75s6YTfSfE2Ojbb9P44PV9",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bcf47dc308162706db7b4fb0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-shins/caring-is-creepy-official-1977743"
+ },
+ {
+  "id": "carolina-in-my-mind-james-taylor",
+  "title": "Carolina in My Mind",
+  "artist": "James Taylor",
+  "year": 1976,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "M7"
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "V7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G G/F# Em A7. Capo 2.",
+  "spotify": "spotify:track:2T5Ch09nefwckOu5NQvjIk",
+  "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/carolina-in-my-mind-official-2603076"
+ },
+ {
+  "id": "casey-jones-grateful-dead",
+  "title": "Casey Jones",
+  "artist": "Grateful Dead",
+  "year": 2023,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C G.",
+  "spotify": "spotify:track:2JauMPiIOQzYAwpTLiQys5",
+  "art": "https://i.scdn.co/image/ab67616d00001e020b79e7da3d434a44145ae179",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/casey-jones-official-1974151"
+ },
+ {
+  "id": "castle-on-the-hill-ed-sheeran",
+  "title": "Castle on the Hill",
+  "artist": "Ed Sheeran",
+  "year": 2017,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D D/F# G Bm A.",
+  "spotify": "spotify:track:6PCUP3dWmTjcTtXY02oFdT",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96",
+  "ug": "https://tabs.ultimate-guitar.com/tab/ed-sheeran/castle-on-the-hill-official-2402571"
+ },
+ {
+  "id": "castles-made-of-sand-jimi-hendrix",
+  "title": "Castles Made of Sand",
+  "artist": "Jimi Hendrix",
+  "year": 1967,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Eadd9 F#add9 Aadd9 Badd9 Aadd9 F#add9 Eadd9 F#add9.",
+  "spotify": "spotify:track:3qebSLgUwaEqbwCM5sj5Kh",
+  "art": "https://i.scdn.co/image/ab67616d00001e0219dcd95d28b63d10164327f2",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jimi-hendrix/castles-made-of-sand-official-1939141"
+ },
+ {
+  "id": "chamber-of-reflection-mac-demarco",
+  "title": "Chamber of Reflection",
+  "artist": "Mac DeMarco",
+  "year": 2014,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am Bm C Am Bm Em.",
+  "spotify": "spotify:track:1Snko28yJOihcRVXs9dAo9",
+  "art": "https://i.scdn.co/image/ab67616d00001e028b221f2ccf777ae0d4b0db50",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mac-demarco/chamber-of-reflection-official-2081497"
+ },
+ {
+  "id": "champagne-supernova-oasis",
+  "title": "Champagne Supernova",
+  "artist": "Oasis",
+  "year": 1995,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 2",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "Isus2",
+    "beats": 2
+   },
+   {
+    "rn": "Isus2",
+    "beats": 2,
+    "bass": "b7"
+   },
+   {
+    "rn": "Isus2",
+    "beats": 2
+   },
+   {
+    "rn": "Isus2",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 2: Asus2 Asus2/G Asus2/F# Asus2/E Asus2 Asus2/G Asus2/F# E.",
+  "spotify": "spotify:track:6EMynpZ10GVcwVqiLZj6Ye",
+  "art": "https://i.scdn.co/image/ab67616d00001e022f2eeee9b405f4d00428d84c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/oasis/champagne-supernova-official-1999003"
+ },
+ {
+  "id": "chan-chan-buena-vista-social-club",
+  "title": "Chan Chan",
+  "artist": "Buena Vista Social Club",
+  "year": 1997,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm F Gm A.",
+  "spotify": "spotify:track:3bxZhauuIU4ubctdRZwPYW",
+  "art": "https://i.scdn.co/image/ab67616d00001e02dc784c3f0767e576a0848b81",
+  "ug": "https://tabs.ultimate-guitar.com/tab/buena-vista-social-club/chan-chan-official-3035289"
+ },
+ {
+  "id": "chandelier-sia",
+  "title": "Chandelier",
+  "artist": "Sia",
+  "year": 2015,
+  "key": "Bb minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Bbm Gbmaj7 Ab Fm.",
+  "spotify": "spotify:track:2s1sdSqGcKxpPr5lCl7jAV",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b55ed804149fffbb5e35ff34",
+  "ug": "https://tabs.ultimate-guitar.com/tab/sia/chandelier-official-2404069"
+ },
+ {
+  "id": "changes-david-bowie",
+  "title": "Changes",
+  "artist": "David Bowie",
+  "year": 1971,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "Imaj7",
+    "beats": 2
+   },
+   {
+    "rn": "bII",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "bIII7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cmaj7 C# Dm7 D#7 F D F D.",
+  "spotify": "spotify:track:0LrwgdLsFaWh9VXIjBRe8t",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e464904cc3fed2b40fc55120",
+  "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/changes-official-2182571"
+ },
+ {
+  "id": "chicago-sufjan-stevens",
+  "title": "Chicago",
+  "artist": "Sufjan Stevens",
+  "year": 2005,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A Em G D. Capo 5.",
+  "spotify": "spotify:track:1yupbrI7ROhigIHpQBevPh",
+  "art": "https://i.scdn.co/image/ab67616d00001e02712c76b4152918fb8d37c53d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/sufjan-stevens/chicago-official-5067451"
+ },
+ {
+  "id": "children-robert-miles",
+  "title": "Children",
+  "artist": "Robert Miles",
+  "year": 1996,
+  "key": "F minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "VIsus2",
+    "beats": 2
+   },
+   {
+    "rn": "IV7sus2",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dbsus2 Bb7sus2 Fmadd9.",
+  "spotify": "spotify:track:4wtR6HB3XekEengMX17cpc",
+  "art": "https://i.scdn.co/image/ab67616d00001e0285a2da83b5b340365ae7d8cd",
+  "ug": "https://tabs.ultimate-guitar.com/tab/robert-miles/children-official-3944354"
+ },
+ {
+  "id": "circles-post-malone",
+  "title": "Circles",
+  "artist": "Post Malone",
+  "year": 2019,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "Imaj7",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vii",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "Imaj7",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cmaj7 G Bmadd11 F Fm Cmaj7 G Fmaj7/C G6/D.",
+  "spotify": "spotify:track:21jGcNKet2qwijlDFuPiPb",
+  "art": "https://i.scdn.co/image/ab67616d00001e029478c87599550dd73bfa7e02",
+  "ug": "https://tabs.ultimate-guitar.com/tab/post-malone/circles-official-2827103"
+ },
+ {
+  "id": "clarity-zedd",
+  "title": "Clarity",
+  "artist": "Zedd",
+  "year": 2012,
+  "key": "Ab",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "IIsus4",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "iii7",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "IIsus4",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Bbsus4 Eb Ab Cm7 Dbmaj7 Bbsus4 Eb Ab.",
+  "spotify": "spotify:track:60wwxj6Dd9NJlirf84wr2c",
+  "art": "https://i.scdn.co/image/ab67616d00001e02941dd3b3343d9cb9329d37bf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/zedd/clarity-official-3917786"
+ },
+ {
+  "id": "closer-the-chainsmokers",
+  "title": "Closer",
+  "artist": "The Chainsmokers",
+  "year": 2016,
+  "key": "Db",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C# D# Fm D#.",
+  "spotify": "spotify:track:7BKLCZ1jbUBVqRi2FVlTVw",
+  "art": "https://i.scdn.co/image/ab67616d00001e02495ce6da9aeb159e94eaa453",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-chainsmokers/closer-official-2199569"
+ },
+ {
+  "id": "cocaine-eric-clapton",
+  "title": "Cocaine",
+  "artist": "Eric Clapton",
+  "year": 1977,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E D.",
+  "spotify": "spotify:track:3ykSdTGmYPFl8pDBXer1zG",
+  "art": "https://i.scdn.co/image/ab67616d00001e026f093a6ae88a5ca8ed53b9f7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/eric-clapton/cocaine-official-2092071"
+ },
+ {
+  "id": "come-as-you-are-nirvana",
+  "title": "Come As You Are",
+  "artist": "Nirvana",
+  "year": 1991,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em D.",
+  "spotify": "spotify:track:4P5KoWXOxwuobLmHXLMobV",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e175a19e530c898d167d39bf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/come-as-you-are-official-1911495"
+ },
+ {
+  "id": "come-monday-jimmy-buffett",
+  "title": "Come Monday",
+  "artist": "Jimmy Buffett",
+  "year": 1974,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A D E.",
+  "spotify": "spotify:track:0yje3JVMgJNZENayymCTHA",
+  "art": "https://i.scdn.co/image/ab67616d00001e02599269ba641a44e5f2ad64bb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jimmy-buffett/come-monday-official-2701596"
+ },
+ {
+  "id": "common-people-pulp",
+  "title": "Common People",
+  "artist": "Pulp",
+  "year": 2014,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C G.",
+  "spotify": "spotify:track:3SzP7yEGRSbfnkkNVMxxYa",
+  "art": "https://i.scdn.co/image/ab67616d00001e0218c3468d7d84d838e2791f0b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pulp/common-people-official-3016043"
+ },
+ {
+  "id": "corduroy-pearl-jam",
+  "title": "Corduroy",
+  "artist": "Pearl Jam",
+  "year": 1994,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em Asus2.",
+  "spotify": "spotify:track:5F6rwEF15hN1jnhNk2YQHn",
+  "art": "https://i.scdn.co/image/ab67616d00001e020ccbe4584f7827e66fa2ab3a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/corduroy-official-2940095"
+ },
+ {
+  "id": "counting-stars-onerepublic",
+  "title": "Counting Stars",
+  "artist": "OneRepublic",
+  "year": 2014,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F Am C G. Capo 4.",
+  "spotify": "spotify:track:6sy3LkhNFjJWlaeSMNwQ62",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e80e7dbce3996a1ae5967751",
+  "ug": "https://tabs.ultimate-guitar.com/tab/onerepublic/counting-stars-official-1976877"
+ },
+ {
+  "id": "cover-me-up-jason-isbell",
+  "title": "Cover Me Up",
+  "artist": "Jason Isbell",
+  "year": 2013,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G5. Capo 1.",
+  "spotify": "spotify:track:5qW6ZYct54PhKliCntyxRX",
+  "art": "https://i.scdn.co/image/ab67616d00001e02cadba04ee5fa8612182151c6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jason-isbell/cover-me-up-official-2511777"
+ },
+ {
+  "id": "crazy-little-thing-called-love-queen",
+  "title": "Crazy Little Thing Called Love",
+  "artist": "Queen",
+  "year": 1980,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D G Cadd9 G D G Cadd9 G.",
+  "spotify": "spotify:track:7uON6DWIjXgmLQIfGsWXpV",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a4e6eac83c0fe38bf682f643",
+  "ug": "https://tabs.ultimate-guitar.com/tab/queen/crazy-little-thing-called-love-official-1941927"
+ },
+ {
+  "id": "crazy-love-van-morrison",
+  "title": "Crazy Love",
+  "artist": "Van Morrison",
+  "year": 2022,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A C#m D A C#m A C#m D.",
+  "spotify": "spotify:track:0r6I5tMDusK3ql2n2MKMuY",
+  "art": "https://i.scdn.co/image/ab67616d00001e02298c7a198102a7b9a70f3157",
+  "ug": "https://tabs.ultimate-guitar.com/tab/van-morrison/crazy-love-official-2148835"
+ },
+ {
+  "id": "cruel-summer-taylor-swift",
+  "title": "Cruel Summer",
+  "artist": "Taylor Swift",
+  "year": 2019,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D E C#m F#m.",
+  "spotify": "spotify:track:1BxfuPKGuaTgP7aM0Bbdwr",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e787cffec20aa2a396a61647",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/cruel-summer-official-2812451"
+ },
+ {
+  "id": "crystalised-the-xx",
+  "title": "Crystalised",
+  "artist": "The xx",
+  "year": 2009,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm Em G Bm Em G Em Bm.",
+  "spotify": "spotify:track:5UBBJnFxsfjFxfrtvErQoH",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a46d603701aa0342e8cca64e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-xx/crystalised-official-1963519"
+ },
+ {
+  "id": "cut-your-hair-pavement",
+  "title": "Cut Your Hair",
+  "artist": "Pavement",
+  "year": 1994,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D C Gsus2 Em7 Gsus2 Em7.",
+  "spotify": "spotify:track:4tBl1xhBg5PETpBvFnQmGl",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b893831d1a12d3d4024a5867",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pavement/cut-your-hair-official-4196227"
+ },
+ {
+  "id": "dancing-queen-abba",
+  "title": "Dancing Queen",
+  "artist": "ABBA",
+  "year": 1976,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A D/A A D/A A D/A C#m/A A.",
+  "spotify": "spotify:track:0GjEhVFGZW8afUYGChu3Rr",
+  "art": "https://i.scdn.co/image/ab67616d00001e0270f7a1b35d5165c85b95a0e0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/abba/dancing-queen-official-1979611"
+ },
+ {
+  "id": "deal-grateful-dead",
+  "title": "Deal",
+  "artist": "Grateful Dead",
+  "year": 2013,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "III7",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I7",
+    "beats": 2
+   },
+   {
+    "rn": "IV7",
+    "beats": 2
+   },
+   {
+    "rn": "bv°",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "VI7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A C#7 F#m A7 D7 Ebdim7 A F#7.",
+  "spotify": "spotify:track:47J2U4dM6ArEhZmc3BiH1w",
+  "art": "https://i.scdn.co/image/ab67616d00001e020fffeae6a8b9791b69f99637",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/deal-official-2497428"
+ },
+ {
+  "id": "dean-town-vulfpeck",
+  "title": "Dean Town",
+  "artist": "Vulfpeck",
+  "year": 2016,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "iv7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F#m7 C# E Bm7.",
+  "spotify": "spotify:track:1dyUxu73YVV4661xsoib5b",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e1bf14e03942d33648b20c53",
+  "ug": "https://tabs.ultimate-guitar.com/tab/vulfpeck/dean-town-official-2252393"
+ },
+ {
+  "id": "debaser-pixies",
+  "title": "Debaser",
+  "artist": "Pixies",
+  "year": 1989,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi7",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb F C F Dm7 A Bb C.",
+  "spotify": "spotify:track:5cy5IStIn7OSHDEIgXeDyq",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e1b208a8d3229b61263899d1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pixies/debaser-official-2151611"
+ },
+ {
+  "id": "depreston-courtney-barnett",
+  "title": "Depreston",
+  "artist": "Courtney Barnett",
+  "year": 2015,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "Imaj7",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Fmaj7/C C.",
+  "spotify": "spotify:track:6TF5rRoap0R9SYG6HsmbKD",
+  "art": "https://i.scdn.co/image/ab67616d00001e02685e67dffa3e2d0072100e4a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/courtney-barnett/depreston-official-4312766"
+ },
+ {
+  "id": "despacito-luis-fonsi",
+  "title": "Despacito",
+  "artist": "Luis Fonsi",
+  "year": 2019,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm G D A.",
+  "spotify": "spotify:track:6habFhsOp2NvshLv26DqMb",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ef0d4234e1a645740f77d59c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/luis-fonsi/despacito-official-2402583"
+ },
+ {
+  "id": "desperado-eagles",
+  "title": "Desperado",
+  "artist": "Eagles",
+  "year": 1976,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IIsus2",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C Cm6 G Em Asus2 D.",
+  "spotify": "spotify:track:7CtHtpkGwE4JAhg7wsmAit",
+  "art": "https://i.scdn.co/image/ab67616d00001e0272033a5e2c7bfd38ed554ec6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/eagles/desperado-official-2090905"
+ },
+ {
+  "id": "digital-love-daft-punk",
+  "title": "Digital Love",
+  "artist": "Daft Punk",
+  "year": 2001,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "iii7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D A F#m7 D/E.",
+  "spotify": "spotify:track:2VEZx7NWsZ1D0eJ4uv5Fym",
+  "art": "https://i.scdn.co/image/ab67616d00001e021e81bff9807a9e629fce5ade",
+  "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/digital-love-official-2547189"
+ },
+ {
+  "id": "disarm-the-smashing-pumpkins",
+  "title": "Disarm",
+  "artist": "The Smashing Pumpkins",
+  "year": 2001,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em7 Cadd9 G D/F#.",
+  "spotify": "spotify:track:0Wl42CUb1phIU9O2aR1wXI",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c48f42fdafcffcedbdbce025",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/disarm-official-2450039"
+ },
+ {
+  "id": "doctor-my-eyes-jackson-browne",
+  "title": "Doctor My Eyes",
+  "artist": "Jackson Browne",
+  "year": 2014,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb/F F.",
+  "spotify": "spotify:track:28XOMVk9J2apw3qYbHTCD9",
+  "art": "https://i.scdn.co/image/ab67616d00001e024eb24bfd49d01e0f3c57a410",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jackson-browne/doctor-my-eyes-official-2890991"
+ },
+ {
+  "id": "dog-days-are-over-florence-the-machine",
+  "title": "Dog Days Are Over",
+  "artist": "Florence + The Machine",
+  "year": 2009,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G Am Em.",
+  "spotify": "spotify:track:1YLJVmuzeM2YSUkCCaTNUB",
+  "art": "https://i.scdn.co/image/ab67616d00001e020672b0f8756ae2af86e8a5ce",
+  "ug": "https://tabs.ultimate-guitar.com/tab/florence-the-machine/dog-days-are-over-official-2456808"
+ },
+ {
+  "id": "don-t-dream-it-s-over-crowded-house",
+  "title": "Don't Dream It's Over",
+  "artist": "Crowded House",
+  "year": 1986,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "Isus2",
+    "beats": 2
+   },
+   {
+    "rn": "VIsus2",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VIsus2",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Ebsus2 Csus2 Ab G Csus2.",
+  "spotify": "spotify:track:7G7tgVYORlDuVprcYHuFJh",
+  "art": "https://i.scdn.co/image/ab67616d00001e023ce3e2272e25916844f10d86",
+  "ug": "https://tabs.ultimate-guitar.com/tab/crowded-house/dont-dream-its-over-official-2425427"
+ },
+ {
+  "id": "don-t-start-now-dua-lipa",
+  "title": "Don't Start Now",
+  "artist": "Dua Lipa",
+  "year": 2020,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm D E5 Em Bm.",
+  "spotify": "spotify:track:3PfIrDoz19wz7qK7tYeu62",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c88bae7846e62a8ba59ee0bd",
+  "ug": "https://tabs.ultimate-guitar.com/tab/dua-lipa/dont-start-now-official-2968643"
+ },
+ {
+  "id": "don-t-stop-me-now-queen",
+  "title": "Don't Stop Me Now",
+  "artist": "Queen",
+  "year": 1978,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F Am Dm Gm C F Bb Gm.",
+  "spotify": "spotify:track:1NHWG8zxSEypSRF3UufrnO",
+  "art": "https://i.scdn.co/image/ab67616d00001e026c03b757ece416e014feef5e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/queen/dont-stop-me-now-official-2461688"
+ },
+ {
+  "id": "don-t-you-worry-child-swedish-house-mafia",
+  "title": "Don't You Worry Child",
+  "artist": "Swedish House Mafia",
+  "year": 2012,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G Bm G Bm G A Bm G.",
+  "spotify": "spotify:track:5tALkmrC4bRfrSDLimAzuq",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c13ab45ff17ebf5d8a5e854b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/swedish-house-mafia/dont-you-worry-child-official-2548140"
+ },
+ {
+  "id": "down-in-a-hole-alice-in-chains",
+  "title": "Down in a Hole",
+  "artist": "Alice In Chains",
+  "year": 1999,
+  "key": "Ab minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Abm Gb Db.",
+  "spotify": "spotify:track:48zAaZoXJxURbEHzxDDHXy",
+  "art": "https://i.scdn.co/image/ab67616d00001e0290b2d4ae1d0e6b9866d8107f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/down-in-a-hole-official-2557419"
+ },
+ {
+  "id": "dreams-fleetwood-mac",
+  "title": "Dreams",
+  "artist": "Fleetwood Mac",
+  "year": 1988,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F G.",
+  "spotify": "spotify:track:1lbXEepatjRVjoG8pZMtdp",
+  "art": "https://i.scdn.co/image/ab67616d00001e02eb832efe061888ee7ef10456",
+  "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/dreams-official-1958897"
+ },
+ {
+  "id": "dreams-the-cranberries",
+  "title": "Dreams",
+  "artist": "The Cranberries",
+  "year": 2002,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E A B.",
+  "spotify": "spotify:track:3W486X36Id1ChRaLhseMBj",
+  "art": "https://i.scdn.co/image/ab67616d00001e026c4efca9f5e949a2f9cc3ac4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-cranberries/dreams-official-2700996"
+ },
+ {
+  "id": "drive-r-e-m",
+  "title": "Drive",
+  "artist": "R.E.M.",
+  "year": 1992,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Dm G.",
+  "spotify": "spotify:track:3geRffSf6eAruhg23RkpKV",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35",
+  "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/drive-official-2146995"
+ },
+ {
+  "id": "drivers-license-olivia-rodrigo",
+  "title": "drivers license",
+  "artist": "Olivia Rodrigo",
+  "year": 2021,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Bb Gm Eb Bb.",
+  "spotify": "spotify:track:5wANPM4fQCJwkGd4rN57mH",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a91c10fe9472d9bd89802e5a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/olivia-rodrigo/drivers-license-official-3513449"
+ },
+ {
+  "id": "early-morning-rain-gordon-lightfoot",
+  "title": "Early Morning Rain",
+  "artist": "Gordon Lightfoot",
+  "year": 2010,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G/D A G/D D G/D. Capo 3.",
+  "spotify": "spotify:track:5M1gX3DQvgc7GI6dBWX9FL",
+  "art": "https://i.scdn.co/image/ab67616d00001e0216659de824475701b97f6ae9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/gordon-lightfoot/early-morning-rain-official-3693362"
+ },
+ {
+  "id": "elephant-tame-impala",
+  "title": "Elephant",
+  "artist": "Tame Impala",
+  "year": 2012,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Dm F Dm F G5 Dm A5 Bb5.",
+  "spotify": "spotify:track:6qZjm61s6u8Ead9sWxCDro",
+  "art": "https://i.scdn.co/image/ab67616d00001e02370c12f82872c9cfaee80193",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/elephant-official-2171909"
+ },
+ {
+  "id": "enjoy-the-silence-depeche-mode",
+  "title": "Enjoy the Silence",
+  "artist": "Depeche Mode",
+  "year": 1998,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cm Eb.",
+  "spotify": "spotify:track:6WK9dVrRABMkUXFLNlgWFh",
+  "art": "https://i.scdn.co/image/ab67616d00001e020a7d45a345534966a4ad2c39",
+  "ug": "https://tabs.ultimate-guitar.com/tab/depeche-mode/enjoy-the-silence-official-1947425"
+ },
+ {
+  "id": "even-flow-pearl-jam",
+  "title": "Even Flow",
+  "artist": "Pearl Jam",
+  "year": 1991,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D5/A C D.",
+  "spotify": "spotify:track:6QewNVIDKdSl8Y3ycuHIei",
+  "art": "https://i.scdn.co/image/ab67616d00001e022d0e5ab5bd2e234fbcffa3e0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/even-flow-official-2463844"
+ },
+ {
+  "id": "eventually-tame-impala",
+  "title": "Eventually",
+  "artist": "Tame Impala",
+  "year": 2015,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C G/B Em C G/B Dm C G/B.",
+  "spotify": "spotify:track:5M4yti0QxgqJieUYaEXcpw",
+  "art": "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/eventually-official-4271152"
+ },
+ {
+  "id": "everybody-hurts-r-e-m",
+  "title": "Everybody Hurts",
+  "artist": "R.E.M.",
+  "year": 1992,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G.",
+  "spotify": "spotify:track:6PypGyiu0Y2lCDBN1XZEnP",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35",
+  "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/everybody-hurts-official-1979985"
+ },
+ {
+  "id": "everybody-wants-to-rule-the-world-tears-for-fears",
+  "title": "Everybody Wants to Rule the World",
+  "artist": "Tears for Fears",
+  "year": 1985,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G/D.",
+  "spotify": "spotify:track:4RvWPyQ5RL0ao9LPZeSouE",
+  "art": "https://i.scdn.co/image/ab67616d00001e0222463d6939fec9e17b2a6235",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tears-for-fears/everybody-wants-to-rule-the-world-official-2189953"
+ },
+ {
+  "id": "everything-i-wanted-billie-eilish",
+  "title": "everything i wanted",
+  "artist": "Billie Eilish",
+  "year": 2019,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "Imaj7",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "vii7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dmaj7 E C#m7.",
+  "spotify": "spotify:track:3ZCTVFBt2Brf31RLEnCkWJ",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f2248cf6dad1d6c062587249",
+  "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/everything-i-wanted-official-2900324"
+ },
+ {
+  "id": "everything-in-its-right-place-radiohead",
+  "title": "Everything In Its Right Place",
+  "artist": "Radiohead",
+  "year": 2000,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bIII",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C Eb F.",
+  "spotify": "spotify:track:2kRFrWaLWiKq48YYVdGcm8",
+  "art": "https://i.scdn.co/image/ab67616d00001e026c7112082b63beefffe40151",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/everything-in-its-right-place-official-3537218"
+ },
+ {
+  "id": "everywhere-fleetwood-mac",
+  "title": "Everywhere",
+  "artist": "Fleetwood Mac",
+  "year": 1988,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro 2",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 2: E B E B E B C#m A.",
+  "spotify": "spotify:track:1prZ0pr6XoRCxcrC3MCL0M",
+  "art": "https://i.scdn.co/image/ab67616d00001e02eb832efe061888ee7ef10456",
+  "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/everywhere-official-2899292"
+ },
+ {
+  "id": "evil-ways-santana",
+  "title": "Evil Ways",
+  "artist": "Santana",
+  "year": 1969,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Gm C.",
+  "spotify": "spotify:track:5tmrnhMxx39jnu3kjopMdP",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c894463d06b775f87d57361b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/santana/evil-ways-official-2869295"
+ },
+ {
+  "id": "exit-music-for-a-film-radiohead",
+  "title": "Exit Music (For a Film)",
+  "artist": "Radiohead",
+  "year": 1997,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 2,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am E C/G Dsus2/F# Am E A Am. Capo 2.",
+  "spotify": "spotify:track:0z1o5L7HJx562xZSATcIpY",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/exit-music-for-a-film-official-1910935"
+ },
+ {
+  "id": "eyes-of-the-world-grateful-dead",
+  "title": "Eyes of the World",
+  "artist": "Grateful Dead",
+  "year": 2003,
+  "key": "E",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "Imaj7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "Imaj7",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "Imaj7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "Imaj7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Emaj7 A Emaj7 Bm A Emaj7 A Emaj7.",
+  "spotify": "spotify:track:0qJ6owHt00MMZTpNmNsPHC",
+  "art": "https://i.scdn.co/image/ab67616d00001e02aa6d9c3247dd7244683879fa",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/eyes-of-the-world-official-4054363"
+ },
+ {
+  "id": "fade-into-you-mazzy-star",
+  "title": "Fade Into You",
+  "artist": "Mazzy Star",
+  "year": 1993,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A E Bm.",
+  "spotify": "spotify:track:1LzNfuep1bnAUR9skqdHCK",
+  "art": "https://i.scdn.co/image/ab67616d00001e0289a392107ebd79818022b3ea",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mazzy-star/fade-into-you-official-2599002"
+ },
+ {
+  "id": "faded-alan-walker",
+  "title": "Faded",
+  "artist": "Alan Walker",
+  "year": 2015,
+  "key": "Eb minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am F C G. Capo 6.",
+  "spotify": "spotify:track:7gHs73wELdeycvS48JfIos",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c4d00cac55ae1b4598c9bc90",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alan-walker/faded-official-2125513"
+ },
+ {
+  "id": "fake-empire-the-national",
+  "title": "Fake Empire",
+  "artist": "The National",
+  "year": 2007,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C F G.",
+  "spotify": "spotify:track:7hanhZrUArC9qUerln4jh1",
+  "art": "https://i.scdn.co/image/ab67616d00001e02815d0d5cf4f0167ee18367d9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-national/fake-empire-official-4794506"
+ },
+ {
+  "id": "fake-plastic-trees-radiohead",
+  "title": "Fake Plastic Trees",
+  "artist": "Radiohead",
+  "year": 1995,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A Dmaj9/F# E6 Dsus2 A Dsus2.",
+  "spotify": "spotify:track:73CKjW3vsUXRpy3NnX4H7F",
+  "art": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/fake-plastic-trees-official-2146673"
+ },
+ {
+  "id": "father-and-son-cat-stevens",
+  "title": "Father and Son",
+  "artist": "Cat Stevens",
+  "year": 1970,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C.",
+  "spotify": "spotify:track:476V2d6iA2tWXgQboKmTtA",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e7248738c2f7ce3b5584b15d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/cat-stevens-yusuf-islam/father-and-son-official-2168611"
+ },
+ {
+  "id": "fearless-pink-floyd",
+  "title": "Fearless",
+  "artist": "Pink Floyd",
+  "year": 1971,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "bIII",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C A# G.",
+  "spotify": "spotify:track:7AalBKBoLDR4UmRYRJpdbj",
+  "art": "https://i.scdn.co/image/ab67616d00001e029eee212bba82bed8da96a8f7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pink-floyd/fearless-official-2942651"
+ },
+ {
+  "id": "feel-so-close-calvin-harris",
+  "title": "Feel So Close",
+  "artist": "Calvin Harris",
+  "year": 2012,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am Em G C.",
+  "spotify": "spotify:track:1gihuPhrLraKYrJMAEONyc",
+  "art": "https://i.scdn.co/image/ab67616d00001e02dcef905cb144d4867119850b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/calvin-harris/feel-so-close-official-2242277"
+ },
+ {
+  "id": "feeling-good-nina-simone",
+  "title": "Feeling Good",
+  "artist": "Nina Simone",
+  "year": 1965,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "bVI",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G5 F5 Eb5 D5 G5 F5 Eb5 D5.",
+  "spotify": "spotify:track:6Rqn2GFlmvmV4w9Ala0I1e",
+  "art": "https://i.scdn.co/image/ab67616d00001e02892abb1ade35b4863b29e051",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nina-simone/feeling-good-official-2523978"
+ },
+ {
+  "id": "feels-like-we-only-go-backwards-tame-impala",
+  "title": "Feels Like We Only Go Backwards",
+  "artist": "Tame Impala",
+  "year": 2012,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "v",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Dm C Dm G Gm.",
+  "spotify": "spotify:track:0LtOwyZoSNZKJWHqjzADpW",
+  "art": "https://i.scdn.co/image/ab67616d00001e02370c12f82872c9cfaee80193",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/feels-like-we-only-go-backwards-official-2172143"
+ },
+ {
+  "id": "fell-in-love-with-a-girl-the-white-stripes",
+  "title": "Fell in Love with a Girl",
+  "artist": "The White Stripes",
+  "year": 2001,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: B A D E.",
+  "spotify": "spotify:track:21Qsj3cMVCx2xF2EVVNbEu",
+  "art": "https://i.scdn.co/image/ab67616d00001e02033dbfae219de887bd94952a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-white-stripes/fell-in-love-with-a-girl-official-1952221"
+ },
+ {
+  "id": "femme-fatale-the-velvet-underground",
+  "title": "Femme Fatale",
+  "artist": "The Velvet Underground",
+  "year": 1967,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, chorus: Dm Bb G.",
+  "spotify": "spotify:track:3PG7BAJG9WkmNOJOlc4uAo",
+  "art": "https://i.scdn.co/image/ab67616d00001e0298260c528e6eec9dd431c1d7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-velvet-underground/femme-fatale-official-1981235"
+ },
+ {
+  "id": "fire-and-rain-james-taylor",
+  "title": "Fire and Rain",
+  "artist": "James Taylor",
+  "year": 1976,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "v7",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "bVIImaj7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A Em7 D A E Gmaj7. Capo 3.",
+  "spotify": "spotify:track:1XUKItaRs2494LclJwHhl8",
+  "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/fire-and-rain-official-2154635"
+ },
+ {
+  "id": "fire-on-the-mountain-grateful-dead",
+  "title": "Fire on the Mountain",
+  "artist": "Grateful Dead",
+  "year": 1978,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bVII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: B A.",
+  "spotify": "spotify:track:2hhUkjqmkIGIeMDmRRANl1",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b70ce9037c7235db514acee8",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/fire-on-the-mountain-official-3167333"
+ },
+ {
+  "id": "flightless-bird-american-mouth-iron-wine",
+  "title": "Flightless Bird, American Mouth",
+  "artist": "Iron & Wine",
+  "year": 2007,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "VII",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G/B Am F G C. Capo 3.",
+  "spotify": "spotify:track:1fEGtTZjrjJW8eUeewnNJR",
+  "art": "https://i.scdn.co/image/ab67616d00001e02816243514f01ac30d0932622",
+  "ug": "https://tabs.ultimate-guitar.com/tab/iron-wine/flightless-bird-american-mouth-official-3520778"
+ },
+ {
+  "id": "float-on-modest-mouse",
+  "title": "Float On",
+  "artist": "Modest Mouse",
+  "year": 2004,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F# A#m D#m A#m.",
+  "spotify": "spotify:track:2lwwrWVKdf3LR9lbbhnr6R",
+  "art": "https://i.scdn.co/image/ab67616d00001e02cc68329bfbf34037df965dc1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/modest-mouse/float-on-official-1964279"
+ },
+ {
+  "id": "folsom-prison-blues-johnny-cash",
+  "title": "Folsom Prison Blues",
+  "artist": "Johnny Cash",
+  "year": 1964,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "V7",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V7",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: B7 E A E B7 E. Capo 1.",
+  "spotify": "spotify:track:0LTSNmOLBt25GMjHlxp9OR",
+  "art": "https://i.scdn.co/image/ab67616d00001e022fc24df8bf525d82a5d8cf88",
+  "ug": "https://tabs.ultimate-guitar.com/tab/johnny-cash/folsom-prison-blues-official-2148833"
+ },
+ {
+  "id": "found-out-about-you-gin-blossoms",
+  "title": "Found Out About You",
+  "artist": "Gin Blossoms",
+  "year": 1992,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C D Em D.",
+  "spotify": "spotify:track:5WmDRnuGYo31xrWNDcYaps",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e3100bdcdc758b5fab7e4894",
+  "ug": "https://tabs.ultimate-guitar.com/tab/gin-blossoms/found-out-about-you-official-3430250"
+ },
+ {
+  "id": "fourth-of-july-sufjan-stevens",
+  "title": "Fourth of July",
+  "artist": "Sufjan Stevens",
+  "year": 2015,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D/F# E D.",
+  "spotify": "spotify:track:5Qnrgqy1pAm9GyNQOgyVFz",
+  "art": "https://i.scdn.co/image/ab67616d00001e02820e2ac14772ae3162c6d479",
+  "ug": "https://tabs.ultimate-guitar.com/tab/sufjan-stevens/fourth-of-july-official-4004107"
+ },
+ {
+  "id": "franklin-s-tower-grateful-dead",
+  "title": "Franklin's Tower",
+  "artist": "Grateful Dead",
+  "year": 2013,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D G A G.",
+  "spotify": "spotify:track:1B5ezpcefpeIxy1kHwRF6u",
+  "art": "https://i.scdn.co/image/ab67616d00001e020fffeae6a8b9791b69f99637",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/franklins-tower-official-3594311"
+ },
+ {
+  "id": "friday-i-m-in-love-the-cure",
+  "title": "Friday I'm in Love",
+  "artist": "The Cure",
+  "year": 1992,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G D A Bm G D A.",
+  "spotify": "spotify:track:263aNAQCeFSWipk896byo6",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d9613cde07a49c85e972bc9a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-cure/friday-im-in-love-official-2468986"
+ },
+ {
+  "id": "genesis-grimes",
+  "title": "Genesis",
+  "artist": "Grimes",
+  "year": 2012,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F# A#m C#.",
+  "spotify": "spotify:track:3cjvqsvvU80g7WJPMVh8iq",
+  "art": "https://i.scdn.co/image/ab67616d00001e02550133f6d334ed152d75aa56",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grimes/genesis-official-5156992"
+ },
+ {
+  "id": "gigantic-pixies",
+  "title": "Gigantic",
+  "artist": "Pixies",
+  "year": 1997,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G5 D5 E5 B5 C5 D5.",
+  "spotify": "spotify:track:0ExL3yud4W6gVfG6brvGE3",
+  "art": "https://i.scdn.co/image/ab67616d00001e02aa13b5cb5c07db8c508b96db",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pixies/gigantic-official-2150155"
+ },
+ {
+  "id": "girl-from-the-north-country-bob-dylan",
+  "title": "Girl from the North Country",
+  "artist": "Bob Dylan",
+  "year": 1969,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C/G. Capo 3.",
+  "spotify": "spotify:track:4K1imZQQ0yKtJ40vGmUajS",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d2796d29db72c9d7f9083fe0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/girl-from-the-north-country-official-2076165"
+ },
+ {
+  "id": "gloria-them",
+  "title": "Gloria",
+  "artist": "Them",
+  "year": 2015,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E D A.",
+  "spotify": "spotify:track:3mi127LX5PWsLydEBYCRBG",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d29dc42d61470e946adbbefc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/them/gloria-official-2201583"
+ },
+ {
+  "id": "glory-box-portishead",
+  "title": "Glory Box",
+  "artist": "Portishead",
+  "year": 1994,
+  "key": "Eb minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2,
+    "bass": "7"
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Ebm Ebm/C# Ebm/C Bmaj7.",
+  "spotify": "spotify:track:3Ty7OTBNSigGEpeW2PqcsC",
+  "art": "https://i.scdn.co/image/ab67616d00001e02dc20397b139223620af148f6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/portishead/glory-box-official-2217707"
+ },
+ {
+  "id": "glycerine-bush",
+  "title": "Glycerine",
+  "artist": "Bush",
+  "year": 1994,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F C Dm Bb.",
+  "spotify": "spotify:track:5buITai6eMzU8rJonMEI6e",
+  "art": "https://i.scdn.co/image/ab67616d00001e021581237e4d580feafaed6bc0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bush/glycerine-official-1964285"
+ },
+ {
+  "id": "go-your-own-way-fleetwood-mac",
+  "title": "Go Your Own Way",
+  "artist": "Fleetwood Mac",
+  "year": 1988,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F C Bb F Bb.",
+  "spotify": "spotify:track:15rjQH7nTcTomKwfVMd4xl",
+  "art": "https://i.scdn.co/image/ab67616d00001e02eb832efe061888ee7ef10456",
+  "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/go-your-own-way-official-1971283"
+ },
+ {
+  "id": "gold-soundz-pavement",
+  "title": "Gold Soundz",
+  "artist": "Pavement",
+  "year": 1994,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A B Dsus2.",
+  "spotify": "spotify:track:3QVtDnXU5zqGWxWDFBMiDj",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b893831d1a12d3d4024a5867",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pavement/gold-soundz-official-4225780"
+ },
+ {
+  "id": "good-4-u-olivia-rodrigo",
+  "title": "good 4 u",
+  "artist": "Olivia Rodrigo",
+  "year": 2021,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F#m E.",
+  "spotify": "spotify:track:4ZtFanR9U6ndgddUvNcjcG",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a91c10fe9472d9bd89802e5a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/olivia-rodrigo/good-4-u-official-3707024"
+ },
+ {
+  "id": "good-hearted-woman-waylon-jennings",
+  "title": "Good Hearted Woman",
+  "artist": "Waylon Jennings",
+  "year": 1972,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D G A.",
+  "spotify": "spotify:track:4KmAGKJbeY2DUiLInlet53",
+  "art": "https://i.scdn.co/image/ab67616d00001e0207b338d851f7c61515d23f31",
+  "ug": "https://tabs.ultimate-guitar.com/tab/waylon-jennings/good-hearted-woman-official-3715223"
+ },
+ {
+  "id": "grandma-s-hands-bill-withers",
+  "title": "Grandma's Hands",
+  "artist": "Bill Withers",
+  "year": 1971,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "IV7",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "IV7",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em7 B7 Em7 B7 A7 B7 A7 B7.",
+  "spotify": "spotify:track:1qfDfZAvrkSAFrAR2FTQDv",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f64b9ea8a8a409c6af86134f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bill-withers/grandmas-hands-official-3473366"
+ },
+ {
+  "id": "gravity-rides-everything-modest-mouse",
+  "title": "Gravity Rides Everything",
+  "artist": "Modest Mouse",
+  "year": 2000,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cadd9 G. Capo 9.",
+  "spotify": "spotify:track:1pPqVrG2RCHXx81Aw4xp99",
+  "art": "https://i.scdn.co/image/ab67616d00001e028f7128431367ce70f773651c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/modest-mouse/gravity-rides-everything-official-2090821"
+ },
+ {
+  "id": "green-light-lorde",
+  "title": "Green Light",
+  "artist": "Lorde",
+  "year": 2017,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F#m A D F#m A D F#m A.",
+  "spotify": "spotify:track:6ie2Bw3xLj2JcGowOlcMhb",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f8553e18a11209d4becd0336",
+  "ug": "https://tabs.ultimate-guitar.com/tab/lorde/green-light-official-3696161"
+ },
+ {
+  "id": "gypsy-fleetwood-mac",
+  "title": "Gypsy",
+  "artist": "Fleetwood Mac",
+  "year": 1988,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb C.",
+  "spotify": "spotify:track:19Ym5Sg0YyOCa6ao21bdoG",
+  "art": "https://i.scdn.co/image/ab67616d00001e02eb832efe061888ee7ef10456",
+  "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/gypsy-official-2511078"
+ },
+ {
+  "id": "happier-than-ever-billie-eilish",
+  "title": "Happier Than Ever",
+  "artist": "Billie Eilish",
+  "year": 2021,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C.",
+  "spotify": "spotify:track:4RVwu0g32PAqgUiJoXsdF8",
+  "art": "https://i.scdn.co/image/ab67616d00001e022a038d3bf875d23e4aeaa84e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/happier-than-ever-official-3813380"
+ },
+ {
+  "id": "happy-pharrell-williams",
+  "title": "Happy",
+  "artist": "Pharrell Williams",
+  "year": 2016,
+  "key": "F",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "bVImaj7",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, chorus: C#maj7 Cm F.",
+  "spotify": "spotify:track:0eMxgAHmuvoqpLyYQrbKvQ",
+  "art": "https://i.scdn.co/image/ab67616d00001e028dc2293204ab999264f4628a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pharrell-williams/happy-official-1981805"
+ },
+ {
+  "id": "havana-camila-cabello",
+  "title": "Havana",
+  "artist": "Camila Cabello",
+  "year": 2018,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "verse 2",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "V7",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 2: B7 Em. Capo 3.",
+  "spotify": "spotify:track:1emahendvBPcwY0q3orN2R",
+  "art": "https://i.scdn.co/image/ab67616d00001e027d89ae9f800c500a88cab62f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/camila-cabello/havana-official-2283097"
+ },
+ {
+  "id": "heart-shaped-box-nirvana",
+  "title": "Heart-Shaped Box",
+  "artist": "Nirvana",
+  "year": 1993,
+  "key": "Ab",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bVI",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G# E C#.",
+  "spotify": "spotify:track:11LmqTE2naFULdEP94AUBa",
+  "art": "https://i.scdn.co/image/ab67616d00001e02aca059cebc1841277db22d1c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/heart-shaped-box-official-1912337"
+ },
+ {
+  "id": "heat-waves-glass-animals",
+  "title": "Heat Waves",
+  "artist": "Glass Animals",
+  "year": 2020,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C#m B G#m F# C#m B G#m F#.",
+  "spotify": "spotify:track:3USxtqRwSYz57Ewm6wWRMp",
+  "art": "https://i.scdn.co/image/ab67616d00001e02712701c5e263efc8726b1464",
+  "ug": "https://tabs.ultimate-guitar.com/tab/glass-animals/heat-waves-official-3583421"
+ },
+ {
+  "id": "hello-adele",
+  "title": "Hello",
+  "artist": "Adele",
+  "year": 2015,
+  "key": "F minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em G D C. Capo 1.",
+  "spotify": "spotify:track:62PaSfnXSMyLshYJrlTuL3",
+  "art": "https://i.scdn.co/image/ab67616d00001e0247ce408fb4926d69da6713c2",
+  "ug": "https://tabs.ultimate-guitar.com/tab/adele/hello-official-1977701"
+ },
+ {
+  "id": "hello-in-there-john-prine",
+  "title": "Hello in There",
+  "artist": "John Prine",
+  "year": 1971,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G Am D7 G Am D7 Bm/D C. Capo 5.",
+  "spotify": "spotify:track:7IijX5DkLaf3G4qF6xDLYa",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b190c3479aedf6a29340847d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/john-prine/hello-in-there-official-3689675"
+ },
+ {
+  "id": "here-comes-my-girl-tom-petty-and-the-heartbreakers",
+  "title": "Here Comes My Girl",
+  "artist": "Tom Petty and the Heartbreakers",
+  "year": 1979,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4,
+    "bass": "b7"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A B/A.",
+  "spotify": "spotify:track:685sEpLJe80Zzuxz3siOVT",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ebca7d93f21ba366fe005966",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty-and-the-heartbreakers/here-comes-my-girl-official-4218850"
+ },
+ {
+  "id": "here-comes-the-rain-again-eurythmics",
+  "title": "Here Comes the Rain Again",
+  "artist": "Eurythmics",
+  "year": 1991,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am F G.",
+  "spotify": "spotify:track:3ZooowctgcKwNx7XtRK3W0",
+  "art": "https://i.scdn.co/image/ab67616d00001e02796a9d2d88c0df505dae4f4a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/eurythmics/here-comes-the-rain-again-official-3917210"
+ },
+ {
+  "id": "here-comes-your-man-pixies",
+  "title": "Here Comes Your Man",
+  "artist": "Pixies",
+  "year": 1989,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "bIII",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F6/A G5 A D G5 A D G5.",
+  "spotify": "spotify:track:4IvZLDtwBHmBmwgDIUbuwa",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e1b208a8d3229b61263899d1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pixies/here-comes-your-man-official-2057626"
+ },
+ {
+  "id": "here-pavement",
+  "title": "Here",
+  "artist": "Pavement",
+  "year": 1992,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A E6 Dmaj9.",
+  "spotify": "spotify:track:5Kf86o9j8foGuExTJVoejE",
+  "art": "https://i.scdn.co/image/ab67616d00001e0290f9b2a0016f80531e1c087c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pavement/here-official-5833493"
+ },
+ {
+  "id": "heroes-david-bowie",
+  "title": "Heroes",
+  "artist": "David Bowie",
+  "year": 2026,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G.",
+  "spotify": "spotify:track:0WkxEasbtL1Z6KKxerPDtG",
+  "art": "https://i.scdn.co/image/ab67616d00001e0268fe324f22bf71d65a16aac6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/heroes-official-2457982"
+ },
+ {
+  "id": "hey-brother-avicii",
+  "title": "Hey Brother",
+  "artist": "Avicii",
+  "year": 2013,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Gm Eb/Bb Bb F Gm Eb/Bb Bb F.",
+  "spotify": "spotify:track:4lhqb6JvbHId48OUJGwymk",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e14f11f796cef9f9a82691a7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/avicii/hey-brother-official-1997143"
+ },
+ {
+  "id": "hey-jealousy-gin-blossoms",
+  "title": "Hey Jealousy",
+  "artist": "Gin Blossoms",
+  "year": 1992,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VIsus2",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dsus2 E F#m7 E.",
+  "spotify": "spotify:track:4o7ZPI2fmEi3piRe0Hrfpy",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e3100bdcdc758b5fab7e4894",
+  "ug": "https://tabs.ultimate-guitar.com/tab/gin-blossoms/hey-jealousy-official-2680818"
+ },
+ {
+  "id": "hey-you-pink-floyd",
+  "title": "Hey You",
+  "artist": "Pink Floyd",
+  "year": 1979,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "vii",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em Dm.",
+  "spotify": "spotify:track:7F02x6EKYIQV3VcTaTm7oN",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b694e89ba937dd2631ff584c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pink-floyd/hey-you-official-2075819"
+ },
+ {
+  "id": "hide-and-seek-imogen-heap",
+  "title": "Hide and Seek",
+  "artist": "Imogen Heap",
+  "year": 2005,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A E F#m9 A E F#m9/C# A E.",
+  "spotify": "spotify:track:2tej1KSqNuxwywIpY1rDRc",
+  "art": "https://i.scdn.co/image/ab67616d00001e0296623f4784c88259592fb8a1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/imogen-heap/hide-and-seek-official-3903305"
+ },
+ {
+  "id": "hit-the-road-jack-ray-charles",
+  "title": "Hit the Road Jack",
+  "artist": "Ray Charles",
+  "year": 2021,
+  "key": "Ab minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Abm Gb Fb Eb Abm Gb.",
+  "spotify": "spotify:track:1GHzX0BcT6SNC2LxQbeKCp",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d4110362da043673812d1d55",
+  "ug": "https://tabs.ultimate-guitar.com/tab/ray-charles/hit-the-road-jack-official-2149083"
+ },
+ {
+  "id": "ho-hey-the-lumineers",
+  "title": "Ho Hey",
+  "artist": "The Lumineers",
+  "year": 2012,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C Am G C.",
+  "spotify": "spotify:track:0DwClY2t9YAWHBROMIgrXb",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f350c13195ce048876b5fea4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-lumineers/ho-hey-official-2422311"
+ },
+ {
+  "id": "holocene-bon-iver",
+  "title": "Holocene",
+  "artist": "Bon Iver",
+  "year": 2011,
+  "key": "Bb minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C Am7 G6add11 Am7 Fmaj7/C. Capo 1.",
+  "spotify": "spotify:track:35KiiILklye1JRRctaLUb4",
+  "art": "https://i.scdn.co/image/ab67616d00001e024b6b1547455bbecb9f6bba64",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bon-iver/holocene-official-2460498"
+ },
+ {
+  "id": "home-edward-sharpe-the-magnetic-zeros",
+  "title": "Home",
+  "artist": "Edward Sharpe & The Magnetic Zeros",
+  "year": 2009,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm D G.",
+  "spotify": "spotify:track:2x1jP9BexWtOKudvuUHbaD",
+  "art": "https://i.scdn.co/image/ab67616d00001e02807aad47d0c190e56f263038",
+  "ug": "https://tabs.ultimate-guitar.com/tab/edward-sharpe-and-the-magnetic-zeros/home-official-2461884"
+ },
+ {
+  "id": "honky-tonk-women-the-rolling-stones",
+  "title": "Honky Tonk Women",
+  "artist": "The Rolling Stones",
+  "year": 2019,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G C G A D G C G.",
+  "spotify": "spotify:track:3fnPv1LRMxENr63afVhaz1",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f27dae5cc83df7f478bc44f2",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/honky-tonk-women-official-2440353"
+ },
+ {
+  "id": "hound-dog-elvis-presley",
+  "title": "Hound Dog",
+  "artist": "Elvis Presley",
+  "year": 1958,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "IV7",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F7 C G7.",
+  "spotify": "spotify:track:64Ny7djQ6rNJspquof2KoX",
+  "art": "https://i.scdn.co/image/ab67616d00001e0265e7f92b6667ac6cbb239845",
+  "ug": "https://tabs.ultimate-guitar.com/tab/elvis-presley/hound-dog-official-2006911"
+ },
+ {
+  "id": "how-soon-is-now-the-smiths",
+  "title": "How Soon Is Now?",
+  "artist": "The Smiths",
+  "year": 1984,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bIII",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E G/E Aadd9/E. Capo 2.",
+  "spotify": "spotify:track:1YrnDTqvcnUKxAIeXyaEmU",
+  "art": "https://i.scdn.co/image/ab67616d00001e0204480d4422fe67d383386660",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-smiths/how-soon-is-now-official-2513157"
+ },
+ {
+  "id": "hung-up-madonna",
+  "title": "Hung Up",
+  "artist": "Madonna",
+  "year": 2005,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Dm F C.",
+  "spotify": "spotify:track:3850dYVgOFIXJh5U4BFEWH",
+  "art": "https://i.scdn.co/image/ab67616d00001e02aaa9d84415623c1e790cd07b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/madonna/hung-up-official-5945486"
+ },
+ {
+  "id": "i-can-t-get-no-satisfaction-the-rolling-stones",
+  "title": "(I Can't Get No) Satisfaction",
+  "artist": "The Rolling Stones",
+  "year": 1965,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E A D A.",
+  "spotify": "spotify:track:2PzU4IB8Dr6mxV3lHuaG34",
+  "art": "https://i.scdn.co/image/ab67616d00001e0205c5be85b64eaff732f7cb0b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/i-cant-get-no-satisfaction-official-1940667"
+ },
+ {
+  "id": "i-got-a-name-jim-croce",
+  "title": "I Got a Name",
+  "artist": "Jim Croce",
+  "year": 2012,
+  "key": "E",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: E B C#m A B E B C#m.",
+  "spotify": "spotify:track:0BTFSLbKC5VRBNvjnkrfEk",
+  "art": "https://i.scdn.co/image/ab67616d00001e02dc682ce03f7dbc0cf239e2c8",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jim-croce/i-got-a-name-official-2905871"
+ },
+ {
+  "id": "i-love-rock-n-roll-joan-jett-the-blackhearts",
+  "title": "I Love Rock 'n' Roll",
+  "artist": "Joan Jett & The Blackhearts",
+  "year": 1981,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bIII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "bIII",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bIII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E G A B G E G A.",
+  "spotify": "spotify:track:4jTqsgDaffdNH0BMBwhjFv",
+  "art": "https://i.scdn.co/image/ab67616d00001e029d931a490797521a395708e8",
+  "ug": "https://tabs.ultimate-guitar.com/tab/joan-jett-and-the-blackhearts/i-love-rock-n-roll-official-1964243"
+ },
+ {
+  "id": "i-need-my-girl-the-national",
+  "title": "I Need My Girl",
+  "artist": "The National",
+  "year": 2013,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am F C G. Capo 3.",
+  "spotify": "spotify:track:50M7nY1oQuNHecs0ahWAtI",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a970b73f34155a90e04d6414",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-national/i-need-my-girl-official-2620278"
+ },
+ {
+  "id": "i-will-wait-mumford-sons",
+  "title": "I Will Wait",
+  "artist": "Mumford & Sons",
+  "year": 2012,
+  "key": "Db",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "M7"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "Vsus4",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "M7"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am C/B C C/F C/E Gsus4 Am C/B. Capo 1.",
+  "spotify": "spotify:track:3Bclyko7WmwM2oGmKj8sue",
+  "art": "https://i.scdn.co/image/ab67616d00001e029ad7dd6870950bbcb02bed09",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mumford-sons/i-will-wait-official-2465332"
+ },
+ {
+  "id": "i-won-t-back-down-tom-petty",
+  "title": "I Won't Back Down",
+  "artist": "Tom Petty",
+  "year": 1989,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em D G.",
+  "spotify": "spotify:track:7gSQv1OHpkIoAdUiRLdmI6",
+  "art": "https://i.scdn.co/image/ab67616d00001e0236572e6726714544f5bed456",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty/i-wont-back-down-official-2175865"
+ },
+ {
+  "id": "if-i-needed-you-townes-van-zandt",
+  "title": "If I Needed You",
+  "artist": "Townes Van Zandt",
+  "year": 1972,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C D. Capo 4.",
+  "spotify": "spotify:track:3FMQnxcc6FcPscLeLqtW5S",
+  "art": "https://i.scdn.co/image/ab67616d00001e02cbf5711413cc786599eb25d0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/townes-van-zandt/if-i-needed-you-official-3481154"
+ },
+ {
+  "id": "if-we-were-vampires-jason-isbell",
+  "title": "If We Were Vampires",
+  "artist": "Jason Isbell",
+  "year": 2017,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm Am Bb Dm Am Bb Dm F.",
+  "spotify": "spotify:track:250RLekaiL1q9qZer975Eg",
+  "art": "https://i.scdn.co/image/ab67616d00001e028aac8a5f5e60ea65ec028392",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jason-isbell-and-the-400-unit/if-we-were-vampires-official-2580987"
+ },
+ {
+  "id": "if-you-could-read-my-mind-gordon-lightfoot",
+  "title": "If You Could Read My Mind",
+  "artist": "Gordon Lightfoot",
+  "year": 1970,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G F G F G C D Em. Capo 2.",
+  "spotify": "spotify:track:57ct8jKi6trntXiRV0NnXi",
+  "art": "https://i.scdn.co/image/ab67616d00001e028fd7eec31ed567629f4ab420",
+  "ug": "https://tabs.ultimate-guitar.com/tab/gordon-lightfoot/if-you-could-read-my-mind-official-2623575"
+ },
+ {
+  "id": "insomnia-faithless",
+  "title": "Insomnia",
+  "artist": "Faithless",
+  "year": 2008,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "Vsus4",
+    "beats": 4
+   },
+   {
+    "rn": "i7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: B/D# Bm F#sus4 Bm7.",
+  "spotify": "spotify:track:3XTefle3zvDkjgS1Fiq14A",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ae4ee821be74164699522b8b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/faithless/insomnia-official-4628042"
+ },
+ {
+  "id": "instant-crush-daft-punk",
+  "title": "Instant Crush",
+  "artist": "Daft Punk",
+  "year": 2013,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "Vsus2",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F Dm Am Csus2 F Dm. Capo 1.",
+  "spotify": "spotify:track:2cGxRwrMyEAp8dEbuZaVv6",
+  "art": "https://i.scdn.co/image/ab67616d00001e029b9b36b0e22870b9f542d937",
+  "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/instant-crush-official-1957175"
+ },
+ {
+  "id": "interstate-love-song-stone-temple-pilots",
+  "title": "Interstate Love Song",
+  "artist": "Stone Temple Pilots",
+  "year": 2003,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "vi7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 2
+   },
+   {
+    "rn": "III7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C#m7 E Asus2 G#7 A E A E.",
+  "spotify": "spotify:track:600s08VdbjiyAjDGDjYSFI",
+  "art": "https://i.scdn.co/image/ab67616d00001e0277696910e15c42a5e37636e5",
+  "ug": "https://tabs.ultimate-guitar.com/tab/stone-temple-pilots/interstate-love-song-official-1958787"
+ },
+ {
+  "id": "into-the-mystic-van-morrison",
+  "title": "Into the Mystic",
+  "artist": "Van Morrison",
+  "year": 2015,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C G. Capo 3.",
+  "spotify": "spotify:track:1285TFFkLTTis9UL9IGZRi",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d29dc42d61470e946adbbefc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/van-morrison/into-the-mystic-official-2610144"
+ },
+ {
+  "id": "intro-the-xx",
+  "title": "Intro",
+  "artist": "The xx",
+  "year": 2025,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "IIImaj7",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VIIsus4",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Fmaj7 Am Dm Emadd11 Dmadd11 Csus4.",
+  "spotify": "spotify:track:2dIi21bJASzEKP20LIutOE",
+  "art": "https://i.scdn.co/image/ab67616d00001e02789657ec664daa222cab1e5a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-xx/intro-official-1961281"
+ },
+ {
+  "id": "island-in-the-sun-weezer",
+  "title": "Island in the Sun",
+  "artist": "Weezer",
+  "year": 2001,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em Am D G.",
+  "spotify": "spotify:track:2MLHyLy5z5l5YRp7momlgw",
+  "art": "https://i.scdn.co/image/ab67616d00001e021e0dc5baaabda304b0ad1815",
+  "ug": "https://tabs.ultimate-guitar.com/tab/weezer/island-in-the-sun-official-1944021"
+ },
+ {
+  "id": "islands-the-xx",
+  "title": "Islands",
+  "artist": "The xx",
+  "year": 2009,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Abm F# E Dbm B E.",
+  "spotify": "spotify:track:0Rqwa6i410IwhTiugt6vXi",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a46d603701aa0342e8cca64e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-xx/islands-official-1980549"
+ },
+ {
+  "id": "isn-t-she-lovely-stevie-wonder",
+  "title": "Isn't She Lovely",
+  "artist": "Stevie Wonder",
+  "year": 2002,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "IV7",
+    "beats": 4
+   },
+   {
+    "rn": "VII7",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "i7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C#m7 F#9 B9 E C#m7.",
+  "spotify": "spotify:track:3NlLmKBJozwoi0k03Feb1N",
+  "art": "https://i.scdn.co/image/ab67616d00001e02835ed5fb9b70f46c3177ffde",
+  "ug": "https://tabs.ultimate-guitar.com/tab/stevie-wonder/isnt-she-lovely-official-2139803"
+ },
+ {
+  "id": "it-ain-t-me-babe-bob-dylan",
+  "title": "It Ain't Me Babe",
+  "artist": "Bob Dylan",
+  "year": 1964,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C.",
+  "spotify": "spotify:track:5nbNWAfT1S6V1vqj3snHxS",
+  "art": "https://i.scdn.co/image/ab67616d00001e0225c549de2a2ddcc4ecb62f4a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/it-aint-me-babe-official-2214709"
+ },
+ {
+  "id": "it-makes-no-difference-the-band",
+  "title": "It Makes No Difference",
+  "artist": "The Band",
+  "year": 1975,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F Bb Gm Eb F Bb Eb Bb.",
+  "spotify": "spotify:track:0fWe4v0BssKanrISjrYQ6T",
+  "art": "https://i.scdn.co/image/ab67616d00001e022974b64fbb5cdeb32911f132",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-band/it-makes-no-difference-official-5357706"
+ },
+ {
+  "id": "jeremy-pearl-jam",
+  "title": "Jeremy",
+  "artist": "Pearl Jam",
+  "year": 1991,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bVII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A G.",
+  "spotify": "spotify:track:62nQ8UZVqR2RMvkJHkcO2o",
+  "art": "https://i.scdn.co/image/ab67616d00001e022d0e5ab5bd2e234fbcffa3e0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/jeremy-official-2496090"
+ },
+ {
+  "id": "jesus-etc-wilco",
+  "title": "Jesus, Etc.",
+  "artist": "Wilco",
+  "year": 2003,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am Em. Capo 5.",
+  "spotify": "spotify:track:4wd09wCccmxUB7XVJp0RNn",
+  "art": "https://i.scdn.co/image/ab67616d00001e0227f0b3e25bfd979d8ae1d54b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/wilco/jesus-etc-official-2163521"
+ },
+ {
+  "id": "johnny-b-goode-chuck-berry",
+  "title": "Johnny B. Goode",
+  "artist": "Chuck Berry",
+  "year": 1959,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb Eb Bb F Eb Bb.",
+  "spotify": "spotify:track:2QfiRTz5Yc8DdShCxG1tB2",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a496dc8c33ca6d10668b3157",
+  "ug": "https://tabs.ultimate-guitar.com/tab/chuck-berry/johnny-b-goode-official-1920905"
+ },
+ {
+  "id": "just-like-a-woman-bob-dylan",
+  "title": "Just Like a Woman",
+  "artist": "Bob Dylan",
+  "year": 1966,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C F G. Capo 4.",
+  "spotify": "spotify:track:37Dl7jQMmt0gUnzTKqnjkN",
+  "art": "https://i.scdn.co/image/ab67616d00001e028ca88d5178d1ac6f679f144f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/just-like-a-woman-official-3288926"
+ },
+ {
+  "id": "karma-police-radiohead",
+  "title": "Karma Police",
+  "artist": "Radiohead",
+  "year": 1997,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am D/F# Em G Am F Em G.",
+  "spotify": "spotify:track:63OQupATfueTdZMWTxW03A",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/karma-police-official-1911473"
+ },
+ {
+  "id": "king-of-pain-the-police",
+  "title": "King of Pain",
+  "artist": "The Police",
+  "year": 1983,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm A.",
+  "spotify": "spotify:track:1V15l05snHYHYVxerjMFGo",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c8e97cafeb2acb85b21a777e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-police/king-of-pain-official-3428666"
+ },
+ {
+  "id": "kyoto-phoebe-bridgers",
+  "title": "Kyoto",
+  "artist": "Phoebe Bridgers",
+  "year": 2020,
+  "key": "B",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C G. Capo 4.",
+  "spotify": "spotify:track:4vjvx7Zxkb4AltGcZ0BBvI",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a91b75c9ef65ed8d760ff600",
+  "ug": "https://tabs.ultimate-guitar.com/tab/phoebe-bridgers/kyoto-official-3515813"
+ },
+ {
+  "id": "l-a-freeway-guy-clark",
+  "title": "L.A. Freeway",
+  "artist": "Guy Clark",
+  "year": 1975,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C G D7. Capo 2.",
+  "spotify": "spotify:track:0HFu4LUT4kKxwIPFnS7UGz",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f130dad135270ab83d81cf9a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/guy-clark/la-freeway-official-4569017"
+ },
+ {
+  "id": "la-grange-zz-top",
+  "title": "La Grange",
+  "artist": "ZZ Top",
+  "year": 2022,
+  "key": "C",
+  "tempo": 100,
+  "section": "guitar solo 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bIII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, guitar solo 1: C5 Eb5 F5.",
+  "spotify": "spotify:track:2YgjwTiG85B2tvqmdRNpba",
+  "art": "https://i.scdn.co/image/ab67616d00001e0290f9c593fd4fc8a3d247e500",
+  "ug": "https://tabs.ultimate-guitar.com/tab/zz-top/la-grange-official-1919569"
+ },
+ {
+  "id": "last-nite-the-strokes",
+  "title": "Last Nite",
+  "artist": "The Strokes",
+  "year": 2001,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C F G F G F G F.",
+  "spotify": "spotify:track:3SUusuA9jH1v6PVwtYMbdv",
+  "art": "https://i.scdn.co/image/ab67616d00001e0213f2466b83507515291acce4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-strokes/last-nite-official-1954987"
+ },
+ {
+  "id": "lay-lady-lay-bob-dylan",
+  "title": "Lay Lady Lay",
+  "artist": "Bob Dylan",
+  "year": 1969,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "bVII",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A C#m G Bm.",
+  "spotify": "spotify:track:4uYwlMp841PLJmj1gJJwIq",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d2796d29db72c9d7f9083fe0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/lay-lady-lay-official-1953959"
+ },
+ {
+  "id": "lean-on-major-lazer",
+  "title": "Lean On",
+  "artist": "Major Lazer",
+  "year": 2015,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "VImaj7",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Ebmaj7 Gm.",
+  "spotify": "spotify:track:01aTsQoKoeXofSTvKuunzv",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d6d24aee7b49a2db98a76856",
+  "ug": "https://tabs.ultimate-guitar.com/tab/major-lazer/lean-on-official-3772715"
+ },
+ {
+  "id": "learn-to-fly-foo-fighters",
+  "title": "Learn to Fly",
+  "artist": "Foo Fighters",
+  "year": 1999,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "Isus4",
+    "beats": 4
+   },
+   {
+    "rn": "v7",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bsus4 F#m11 E.",
+  "spotify": "spotify:track:5OQsiBsky2k2kDKy2bX2eT",
+  "art": "https://i.scdn.co/image/ab67616d00001e026c52084ed1f1748f213783b3",
+  "ug": "https://tabs.ultimate-guitar.com/tab/foo-fighters/learn-to-fly-official-1911409"
+ },
+ {
+  "id": "let-down-radiohead",
+  "title": "Let Down",
+  "artist": "Radiohead",
+  "year": 1997,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A E F#m E.",
+  "spotify": "spotify:track:2fuYa3Lx06QQJAm0MjztKr",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/let-down-official-2828797"
+ },
+ {
+  "id": "let-it-happen-tame-impala",
+  "title": "Let It Happen",
+  "artist": "Tame Impala",
+  "year": 2015,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "VIIsus4",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A F#m G#sus4.",
+  "spotify": "spotify:track:2X485T9Z5Ly0xyaghN73ed",
+  "art": "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/let-it-happen-official-2617596"
+ },
+ {
+  "id": "let-s-stay-together-al-green",
+  "title": "Let's Stay Together",
+  "artist": "Al Green",
+  "year": 1972,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "ii7",
+    "beats": 4
+   },
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "ii7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Gm9 Am7 Gm7 Am7 Gm9 Am7 Gm7 C.",
+  "spotify": "spotify:track:63xdwScd1Ai1GigAwQxE8y",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a1fc113a6858d0824d9aaf38",
+  "ug": "https://tabs.ultimate-guitar.com/tab/al-green/lets-stay-together-official-2151455"
+ },
+ {
+  "id": "levitating-dua-lipa",
+  "title": "Levitating",
+  "artist": "Dua Lipa",
+  "year": 2020,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm F#m Em.",
+  "spotify": "spotify:track:39LLxExYz6ewLAcYrzQQyP",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c88bae7846e62a8ba59ee0bd",
+  "ug": "https://tabs.ultimate-guitar.com/tab/dua-lipa/levitating-official-3532892"
+ },
+ {
+  "id": "life-on-mars-david-bowie",
+  "title": "Life on Mars?",
+  "artist": "David Bowie",
+  "year": 2021,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "Imaj7",
+    "beats": 2,
+    "bass": "7"
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "b7"
+   },
+   {
+    "rn": "VI7",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F Fmaj7/E F/Eb D7 Gm Bb/F C7.",
+  "spotify": "spotify:track:6q0bTn8XKEdSrSxfJpfNQz",
+  "art": "https://i.scdn.co/image/ab67616d00001e026533c426fc884ede08e1cdd9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/life-on-mars-official-1997901"
+ },
+ {
+  "id": "lightning-crashes-live",
+  "title": "Lightning Crashes",
+  "artist": "Live",
+  "year": 1994,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "Isus2",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E Bsus2 F#.",
+  "spotify": "spotify:track:48iWbsOaBUAGzMdoSmqyg1",
+  "art": "https://i.scdn.co/image/ab67616d00001e0223d8d82a798baa960fdb5070",
+  "ug": "https://tabs.ultimate-guitar.com/tab/live/lightning-crashes-official-2581824"
+ },
+ {
+  "id": "like-a-prayer-madonna",
+  "title": "Like a Prayer",
+  "artist": "Madonna",
+  "year": 1989,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm C Gm Dm C Gm Dm C/E.",
+  "spotify": "spotify:track:2v7ywbUzCgcVohHaKUcacV",
+  "art": "https://i.scdn.co/image/ab67616d00001e02744ce5f9db16330eb4027f26",
+  "ug": "https://tabs.ultimate-guitar.com/tab/madonna/like-a-prayer-official-2661312"
+ },
+ {
+  "id": "linger-the-cranberries",
+  "title": "Linger",
+  "artist": "The Cranberries",
+  "year": 2002,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D A.",
+  "spotify": "spotify:track:3HHehSGzW9dhs2V7Sod4jX",
+  "art": "https://i.scdn.co/image/ab67616d00001e026c4efca9f5e949a2f9cc3ac4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-cranberries/linger-official-2466400"
+ },
+ {
+  "id": "lithium-nirvana",
+  "title": "Lithium",
+  "artist": "Nirvana",
+  "year": 1991,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "bVI",
+    "beats": 4
+   },
+   {
+    "rn": "bVII",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "bVII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D5 F#5 B5 G5 A#5 C5 A5 C5.",
+  "spotify": "spotify:track:2YodwKJnbPyNKe8XXSE9V7",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e175a19e530c898d167d39bf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/lithium-official-1915739"
+ },
+ {
+  "id": "little-dark-age-mgmt",
+  "title": "Little Dark Age",
+  "artist": "MGMT",
+  "year": 2018,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "bvii°",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D#m7b5 C#/F F#m.",
+  "spotify": "spotify:track:2Y0iGXY6m6immVb2ktbseM",
+  "art": "https://i.scdn.co/image/ab67616d00001e02872a896e7c3776d6949df476",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mgmt/little-dark-age-official-3723359"
+ },
+ {
+  "id": "little-lion-man-mumford-sons",
+  "title": "Little Lion Man",
+  "artist": "Mumford & Sons",
+  "year": 2009,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am C. Capo 5.",
+  "spotify": "spotify:track:2kXjRzwcTZhGLnVjUud8l3",
+  "art": "https://i.scdn.co/image/ab67616d00001e0207989cd8699c9aaa2c232d08",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mumford-sons/little-lion-man-official-2457976"
+ },
+ {
+  "id": "live-forever-oasis",
+  "title": "Live Forever",
+  "artist": "Oasis",
+  "year": 1994,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G D Am7 C D.",
+  "spotify": "spotify:track:5IfBLN9VPPJOwcKmAZhdXe",
+  "art": "https://i.scdn.co/image/ab67616d00001e027c8f18614002cc5542f6c7aa",
+  "ug": "https://tabs.ultimate-guitar.com/tab/oasis/live-forever-official-1918931"
+ },
+ {
+  "id": "lola-the-kinks",
+  "title": "Lola",
+  "artist": "The Kinks",
+  "year": 1970,
+  "key": "E",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "bVI",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C D E A D E A E.",
+  "spotify": "spotify:track:4Tjs8b6jL1s18sjURJtswp",
+  "art": "https://i.scdn.co/image/ab67616d00001e02da0e0c87f57499b479e7da59",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-kinks/lola-official-2502318"
+ },
+ {
+  "id": "lost-cause-beck",
+  "title": "Lost Cause",
+  "artist": "Beck",
+  "year": 2002,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C F.",
+  "spotify": "spotify:track:29i8axWOLDmgbiutJb9prB",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e7fc5b50ff71f92809db9d79",
+  "ug": "https://tabs.ultimate-guitar.com/tab/beck/lost-cause-official-2260659"
+ },
+ {
+  "id": "love-story-taylor-swift",
+  "title": "Love Story",
+  "artist": "Taylor Swift",
+  "year": 2008,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D A Bm G.",
+  "spotify": "spotify:track:1vrd6UOGamcKNGnSHJQlSt",
+  "art": "https://i.scdn.co/image/ab67616d00001e027b25c072237f29ee50025fdc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/love-story-official-1945931"
+ },
+ {
+  "id": "lovely-billie-eilish",
+  "title": "lovely",
+  "artist": "Billie Eilish",
+  "year": 2021,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em C Em Bm C Em Bm.",
+  "spotify": "spotify:track:7b4eqsDeLUzSrGth8uB2D1",
+  "art": "https://i.scdn.co/image/ab67616d00001e0214dcfb7581bf14f6ce8e6d67",
+  "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/lovely-official-2403519"
+ },
+ {
+  "id": "lovely-day-bill-withers",
+  "title": "Lovely Day",
+  "artist": "Bill Withers",
+  "year": 1977,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "bVImaj7",
+    "beats": 2
+   },
+   {
+    "rn": "v7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E C#m Amaj7 Cmaj7 Bm7.",
+  "spotify": "spotify:track:0bRXwKfigvpKZUurwqAlEh",
+  "art": "https://i.scdn.co/image/ab67616d00001e0267c1113f55ab816ef61d3993",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bill-withers/lovely-day-official-2513979"
+ },
+ {
+  "id": "lover-you-should-ve-come-over-jeff-buckley",
+  "title": "Lover, You Should've Come Over",
+  "artist": "Jeff Buckley",
+  "year": 1994,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C Gmaj7 Bm/D D A G D.",
+  "spotify": "spotify:track:6Jv7kjGkhY2fT4yuBF3aTz",
+  "art": "https://i.scdn.co/image/ab67616d00001e02afc2d1d2c8703a10aeded0af",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jeff-buckley/lover-you-shouldve-come-over-official-2846810"
+ },
+ {
+  "id": "lovesong-the-cure",
+  "title": "Lovesong",
+  "artist": "The Cure",
+  "year": 2001,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am G F Em.",
+  "spotify": "spotify:track:7K71priwuwcWwbgfHVQJdq",
+  "art": "https://i.scdn.co/image/ab67616d00001e020447ba639949dd26478decf6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-cure/lovesong-official-2493933"
+ },
+ {
+  "id": "loving-cup-the-rolling-stones",
+  "title": "Loving Cup",
+  "artist": "The Rolling Stones",
+  "year": 1972,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A G D A G D G D. Capo 5.",
+  "spotify": "spotify:track:34OzAaQeAWlFnZBSyUAtRh",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ad5b5ed2169d072a44e98a31",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/loving-cup-official-4333637"
+ },
+ {
+  "id": "low-cracker",
+  "title": "Low",
+  "artist": "Cracker",
+  "year": 1993,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D C E G.",
+  "spotify": "spotify:track:6ctbCIikHbC6tSOL1rewQX",
+  "art": "https://i.scdn.co/image/ab67616d00001e0296c7a11160c470cd0b84e049",
+  "ug": "https://tabs.ultimate-guitar.com/tab/cracker/low-official-3270497"
+ },
+ {
+  "id": "lucky-man-the-verve",
+  "title": "Lucky Man",
+  "artist": "The Verve",
+  "year": 1997,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "Vsus2",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G D Asus2.",
+  "spotify": "spotify:track:2mxPSHEwjJWOQS7lGw6btF",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c038b03e66fb6de76a5b3904",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-verve/lucky-man-official-2457986"
+ },
+ {
+  "id": "lucky-radiohead",
+  "title": "Lucky",
+  "artist": "Radiohead",
+  "year": 1997,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em Am G Bm Em C G Bm.",
+  "spotify": "spotify:track:14xj58ZexBaEaHARb11Cqs",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/lucky-official-2270221"
+ },
+ {
+  "id": "lyin-eyes-eagles",
+  "title": "Lyin' Eyes",
+  "artist": "Eagles",
+  "year": 1975,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "V7",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C Am D7 G.",
+  "spotify": "spotify:track:5lQKRR3MdJLtAwNBiT8Cq0",
+  "art": "https://i.scdn.co/image/ab67616d00001e025d0a8e54aba5181c79593b94",
+  "ug": "https://tabs.ultimate-guitar.com/tab/eagles/lyin-eyes-official-2065343"
+ },
+ {
+  "id": "maggie-may-rod-stewart",
+  "title": "Maggie May",
+  "artist": "Rod Stewart",
+  "year": 1971,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 1: Am G Am G C G Am D5.",
+  "spotify": "spotify:track:6rovOdp3HgK1DeAMYDzoA7",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f20825485137abccd82b9665",
+  "ug": "https://tabs.ultimate-guitar.com/tab/rod-stewart/maggie-may-official-2589156"
+ },
+ {
+  "id": "man-in-the-box-alice-in-chains",
+  "title": "Man in the Box",
+  "artist": "Alice In Chains",
+  "year": 1990,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, chorus: Ebm Gb Db Ab Gb.",
+  "spotify": "spotify:track:6gZVQvQZOFpzIy3HblJ20F",
+  "art": "https://i.scdn.co/image/ab67616d00001e023cf83c82a8e976d7b51e2d00",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/man-in-the-box-official-1950401"
+ },
+ {
+  "id": "man-on-the-moon-r-e-m",
+  "title": "Man on the Moon",
+  "artist": "R.E.M.",
+  "year": 1992,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C Dadd4add9.",
+  "spotify": "spotify:track:4jLv3tDBu8ww2R07DvL12s",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35",
+  "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/man-on-the-moon-official-2117705"
+ },
+ {
+  "id": "maps-yeah-yeah-yeahs",
+  "title": "Maps",
+  "artist": "Yeah Yeah Yeahs",
+  "year": 2003,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G.",
+  "spotify": "spotify:track:0hDQV9X1Da5JrwhK8gu86p",
+  "art": "https://i.scdn.co/image/ab67616d00001e021b1cb4ef0f096f9d66fc3dc6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/yeah-yeah-yeahs/maps-official-2030173"
+ },
+ {
+  "id": "margaritaville-jimmy-buffett",
+  "title": "Margaritaville",
+  "artist": "Jimmy Buffett",
+  "year": 1977,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G A D.",
+  "spotify": "spotify:track:4EEjMyQub6tgFVshlM9j1M",
+  "art": "https://i.scdn.co/image/ab67616d00001e024fdb0337978c7464cdfb1783",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jimmy-buffett/margaritaville-official-2500125"
+ },
+ {
+  "id": "mary-jane-s-last-dance-tom-petty-and-the-heartbreakers",
+  "title": "Mary Jane's Last Dance",
+  "artist": "Tom Petty and the Heartbreakers",
+  "year": 2008,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 1: Am G Dsus2.",
+  "spotify": "spotify:track:3dmqIB2Qxe2XZobw9gXxJ6",
+  "art": "https://i.scdn.co/image/ab67616d00001e020c3a1b46b6b846dfdfbc6a7d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty-and-the-heartbreakers/mary-janes-last-dance-official-2320809"
+ },
+ {
+  "id": "masterpiece-big-thief",
+  "title": "Masterpiece",
+  "artist": "Big Thief",
+  "year": 2016,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am C. Capo 4.",
+  "spotify": "spotify:track:2orcl4a2qxEpbsYeZXKsyR",
+  "art": "https://i.scdn.co/image/ab67616d00001e0228b2424c5b007b0e073c42ce",
+  "ug": "https://tabs.ultimate-guitar.com/tab/big-thief/masterpiece-official-3859406"
+ },
+ {
+  "id": "matilda-alt-j",
+  "title": "Matilda",
+  "artist": "alt-J",
+  "year": 2012,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G.",
+  "spotify": "spotify:track:3aA5fk4c6a7e5HM4rJqkSF",
+  "art": "https://i.scdn.co/image/ab67616d00001e02609c89ad17eb28c2013c56c6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alt-j/matilda-official-2003807"
+ },
+ {
+  "id": "mayonaise-the-smashing-pumpkins",
+  "title": "Mayonaise",
+  "artist": "The Smashing Pumpkins",
+  "year": 1993,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb Cm7 Eb Bb Cm7 Eb Cm7 Eb.",
+  "spotify": "spotify:track:0jmKzJmUEKNbC7eU8YfOiA",
+  "art": "https://i.scdn.co/image/ab67616d00001e025274788f34fc7656d2856dfd",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/mayonaise-official-2591178"
+ },
+ {
+  "id": "me-and-bobby-mcgee-janis-joplin",
+  "title": "Me and Bobby McGee",
+  "artist": "Janis Joplin",
+  "year": 1971,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G D.",
+  "spotify": "spotify:track:1IqFh00G2kvvMm8pRMpehA",
+  "art": "https://i.scdn.co/image/ab67616d00001e026f8c26346723dd0531696bed",
+  "ug": "https://tabs.ultimate-guitar.com/tab/janis-joplin/me-and-bobby-mcgee-official-2426665"
+ },
+ {
+  "id": "midnight-city-m83",
+  "title": "Midnight City",
+  "artist": "M83",
+  "year": 2011,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "vi7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G Bm A Em7.",
+  "spotify": "spotify:track:1eyzqe2QqGZUmfcPZtrIyt",
+  "art": "https://i.scdn.co/image/ab67616d00001e0290e9adff5f77dd1ff6d24e47",
+  "ug": "https://tabs.ultimate-guitar.com/tab/m83/midnight-city-official-1989671"
+ },
+ {
+  "id": "miss-misery-elliott-smith",
+  "title": "Miss Misery",
+  "artist": "Elliott Smith",
+  "year": 1998,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm Cadd9 Bb F Bbmaj7/F Gm F Am.",
+  "spotify": "spotify:track:4zetUxeSCCDwrr1jJT0SuD",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e35493a3ac213db02b3ec36e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/elliott-smith/miss-misery-official-4133908"
+ },
+ {
+  "id": "moonage-daydream-david-bowie",
+  "title": "Moonage Daydream",
+  "artist": "David Bowie",
+  "year": 1972,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D F# Bm D/A E G.",
+  "spotify": "spotify:track:6mib3N4E8PZHAGQ3xy7bho",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c41f4e1133b0e6c5fcf58680",
+  "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/moonage-daydream-official-2616939"
+ },
+ {
+  "id": "moondance-van-morrison",
+  "title": "Moondance",
+  "artist": "Van Morrison",
+  "year": 2015,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "ii7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am7 Bm7.",
+  "spotify": "spotify:track:4KB5c7FPhmWhRpwg2DdNzX",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d29dc42d61470e946adbbefc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/van-morrison/moondance-official-2631969"
+ },
+ {
+  "id": "moonshadow-cat-stevens",
+  "title": "Moonshadow",
+  "artist": "Cat Stevens",
+  "year": 2020,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G D G D G D Em A.",
+  "spotify": "spotify:track:0b9mC3lK41f83OroAsl0UQ",
+  "art": "https://i.scdn.co/image/ab67616d00001e022d918617eefd2d07002c829c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/cat-stevens-yusuf-islam/moonshadow-official-2874983"
+ },
+ {
+  "id": "motion-sickness-phoebe-bridgers",
+  "title": "Motion Sickness",
+  "artist": "Phoebe Bridgers",
+  "year": 2018,
+  "key": "Db",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F C F C Am C G F. Capo 1.",
+  "spotify": "spotify:track:25Syi9wnfn6ZGAmiOBypPq",
+  "art": "https://i.scdn.co/image/ab67616d00001e0208afb5dc296054856909f8fd",
+  "ug": "https://tabs.ultimate-guitar.com/tab/phoebe-bridgers/motion-sickness-official-3184985"
+ },
+ {
+  "id": "mr-jones-counting-crows",
+  "title": "Mr. Jones",
+  "artist": "Counting Crows",
+  "year": 1993,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am F Dm G Am F G.",
+  "spotify": "spotify:track:5DiXcVovI0FcY2s0icWWUu",
+  "art": "https://i.scdn.co/image/ab67616d00001e027e09670f90cd47b3fb9a23e0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/counting-crows/mr-jones-official-2210961"
+ },
+ {
+  "id": "mr-tambourine-man-bob-dylan",
+  "title": "Mr. Tambourine Man",
+  "artist": "Bob Dylan",
+  "year": 1965,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G/B A D G/B D G/B D Em7 A. Capo 3.",
+  "spotify": "spotify:track:3RkQ3UwOyPqpIiIvGVewuU",
+  "art": "https://i.scdn.co/image/ab67616d00001e02017ebe3583ccc27baf4b9eeb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/mr-tambourine-man-official-2010709"
+ },
+ {
+  "id": "my-kind-of-woman-mac-demarco",
+  "title": "My Kind of Woman",
+  "artist": "Mac DeMarco",
+  "year": 2012,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bVIImaj7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em D Cmaj7.",
+  "spotify": "spotify:track:38tfi9dtBQQ5Wyt7EL0G3z",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ecfde7feaa212a1b60a197a1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mac-demarco/my-kind-of-woman-official-1963309"
+ },
+ {
+  "id": "mykonos-fleet-foxes",
+  "title": "Mykonos",
+  "artist": "Fleet Foxes",
+  "year": 2008,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm A G F#m G Bm A F#m. Capo 2.",
+  "spotify": "spotify:track:3Ck96jIZdVzpWbbZ6mojsE",
+  "art": "https://i.scdn.co/image/ab67616d00001e024a8854d880d67850e1c7b98c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/fleet-foxes/mykonos-official-2547201"
+ },
+ {
+  "id": "myth-beach-house",
+  "title": "Myth",
+  "artist": "Beach House",
+  "year": 2012,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Eb Gm Eb Gm Ab Bb Eb.",
+  "spotify": "spotify:track:2NfxtzCIrpCmJX5Z2KMdD5",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bb9f22f4b196fa10308d77a7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/beach-house/myth-official-3617015"
+ },
+ {
+  "id": "mythological-beauty-big-thief",
+  "title": "Mythological Beauty",
+  "artist": "Big Thief",
+  "year": 2017,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "ii7",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dadd11 Dadd11/G Em9 Dadd11/G. Capo 3.",
+  "spotify": "spotify:track:3DM9c4wXXe0FBIBE6sgahF",
+  "art": "https://i.scdn.co/image/ab67616d00001e02eeb6db11310ea7159381cfdb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/big-thief/mythological-beauty-official-5124526"
+ },
+ {
+  "id": "naked-as-we-came-iron-wine",
+  "title": "Naked As We Came",
+  "artist": "Iron & Wine",
+  "year": 2004,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4,
+    "bass": "7"
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em/D Asus2. Capo 2.",
+  "spotify": "spotify:track:6UIxGIqWlO5wsddY44AV1R",
+  "art": "https://i.scdn.co/image/ab67616d00001e02031c73667e732e3e208a6328",
+  "ug": "https://tabs.ultimate-guitar.com/tab/iron-wine/naked-as-we-came-official-2034387"
+ },
+ {
+  "id": "needle-in-the-hay-elliott-smith",
+  "title": "Needle in the Hay",
+  "artist": "Elliott Smith",
+  "year": 1995,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F C E7 Am F Am F C.",
+  "spotify": "spotify:track:7I7O0huqjKrXHX0aaLuO5B",
+  "art": "https://i.scdn.co/image/ab67616d00001e024b46d1c138ed05574c6449ca",
+  "ug": "https://tabs.ultimate-guitar.com/tab/elliott-smith/needle-in-the-hay-official-2063191"
+ },
+ {
+  "id": "new-person-same-old-mistakes-tame-impala",
+  "title": "New Person, Same Old Mistakes",
+  "artist": "Tame Impala",
+  "year": 2015,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "bII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cm Db.",
+  "spotify": "spotify:track:52ojopYMUzeNcudsoz7O9D",
+  "art": "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/new-person-same-old-mistakes-official-2657826"
+ },
+ {
+  "id": "nightswimming-r-e-m",
+  "title": "Nightswimming",
+  "artist": "R.E.M.",
+  "year": 1992,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C G D.",
+  "spotify": "spotify:track:6G0NzOx2jEPFsSmhr9N8Ys",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35",
+  "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/nightswimming-official-2097477"
+ },
+ {
+  "id": "no-excuses-alice-in-chains",
+  "title": "No Excuses",
+  "artist": "Alice In Chains",
+  "year": 1994,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Abadd9 Bbadd11.",
+  "spotify": "spotify:track:4PtZE0h5oyPhCtPjg3NeYQ",
+  "art": "https://i.scdn.co/image/ab67616d00001e0225b42be683b8d3c6500db726",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/no-excuses-official-1997151"
+ },
+ {
+  "id": "no-one-s-gonna-love-you-band-of-horses",
+  "title": "No One's Gonna Love You",
+  "artist": "Band of Horses",
+  "year": 2007,
+  "key": "Db",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C G/B Em. Capo 1.",
+  "spotify": "spotify:track:2IvNxLl01CTAfCOA103Tgx",
+  "art": "https://i.scdn.co/image/ab67616d00001e022b87b0858c3bbf5261698326",
+  "ug": "https://tabs.ultimate-guitar.com/tab/band-of-horses/no-ones-gonna-love-you-official-2459940"
+ },
+ {
+  "id": "no-rain-blind-melon",
+  "title": "No Rain",
+  "artist": "Blind Melon",
+  "year": 1992,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bVII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E D.",
+  "spotify": "spotify:track:6txWz9UapYHVxEd7dDIHXT",
+  "art": "https://i.scdn.co/image/ab67616d00001e027ed1df1690df31d094d7c2bc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/blind-melon/no-rain-official-2212151"
+ },
+ {
+  "id": "no-surprises-radiohead",
+  "title": "No Surprises",
+  "artist": "Radiohead",
+  "year": 1997,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D Gm. Capo 3.",
+  "spotify": "spotify:track:10nyNJ6zNy2YVYLrcwLccB",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/no-surprises-official-1910937"
+ },
+ {
+  "id": "no-woman-whitney",
+  "title": "No Woman",
+  "artist": "Whitney",
+  "year": 2016,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "IIImaj7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em A Gmaj7.",
+  "spotify": "spotify:track:5KPXcfXaGOaWUqOHLDXFRP",
+  "art": "https://i.scdn.co/image/ab67616d00001e0206e9db385d0f3f8aec617963",
+  "ug": "https://tabs.ultimate-guitar.com/tab/whitney/no-woman-official-2236563"
+ },
+ {
+  "id": "nothingman-pearl-jam",
+  "title": "Nothingman",
+  "artist": "Pearl Jam",
+  "year": 1994,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "vi7",
+    "beats": 2,
+    "bass": "7"
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Fadd9 F6/A Dm11/C F6/A Bbadd9.",
+  "spotify": "spotify:track:74kd56Y1oNbQVEQnMdO9LH",
+  "art": "https://i.scdn.co/image/ab67616d00001e020ccbe4584f7827e66fa2ab3a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/nothingman-official-3056896"
+ },
+ {
+  "id": "nude-radiohead",
+  "title": "Nude",
+  "artist": "Radiohead",
+  "year": 2007,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "intro 2",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 2: A C#m.",
+  "spotify": "spotify:track:35YyxFpE0ZTOoqFx5bADW8",
+  "art": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/nude-official-2461304"
+ },
+ {
+  "id": "nutshell-alice-in-chains",
+  "title": "Nutshell",
+  "artist": "Alice In Chains",
+  "year": 1994,
+  "key": "Eb minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Ebm Gb Db B.",
+  "spotify": "spotify:track:2JuasWPUodaUxf5nwNpciQ",
+  "art": "https://i.scdn.co/image/ab67616d00001e0225b42be683b8d3c6500db726",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/nutshell-official-2455220"
+ },
+ {
+  "id": "oblivion-grimes",
+  "title": "Oblivion",
+  "artist": "Grimes",
+  "year": 2012,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D Bm.",
+  "spotify": "spotify:track:3LGsgpx4TfxhXbr07OFKqs",
+  "art": "https://i.scdn.co/image/ab67616d00001e02550133f6d334ed152d75aa56",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grimes/oblivion-official-4033609"
+ },
+ {
+  "id": "ocean-eyes-billie-eilish",
+  "title": "Ocean Eyes",
+  "artist": "Billie Eilish",
+  "year": 2016,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cmaj7 G/D Em Cmaj7 G/D Em Cmaj7 G/D.",
+  "spotify": "spotify:track:2uIX8YMNjGMD7441kqyyNU",
+  "art": "https://i.scdn.co/image/ab67616d00001e022cafcdd985630d72594ecc49",
+  "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/ocean-eyes-official-2403523"
+ },
+ {
+  "id": "oh-my-sweet-carolina-ryan-adams",
+  "title": "Oh My Sweet Carolina",
+  "artist": "Ryan Adams",
+  "year": 2000,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C F C G. Capo 2.",
+  "spotify": "spotify:track:2Zcr8xMMZyNT5wMsj3SWmw",
+  "art": "https://i.scdn.co/image/ab67616d00001e02028ce9b6e1637653b589a45b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/ryan-adams/oh-my-sweet-carolina-official-5316657"
+ },
+ {
+  "id": "on-the-road-again-willie-nelson",
+  "title": "On the Road Again",
+  "artist": "Willie Nelson",
+  "year": 2001,
+  "key": "E",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: E G# F#m A B.",
+  "spotify": "spotify:track:3MpK9vnxxgYvh0CNeGvx6G",
+  "art": "https://i.scdn.co/image/ab67616d00001e027f570d8b2e794f1493dca2ca",
+  "ug": "https://tabs.ultimate-guitar.com/tab/willie-nelson/on-the-road-again-official-2617599"
+ },
+ {
+  "id": "one-more-time-daft-punk",
+  "title": "One More Time",
+  "artist": "Daft Punk",
+  "year": 2001,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G A G A G A F#m7 A.",
+  "spotify": "spotify:track:0DiWol3AO6WpXZgp0goxAV",
+  "art": "https://i.scdn.co/image/ab67616d00001e021e81bff9807a9e629fce5ade",
+  "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/one-more-time-official-3581246"
+ },
+ {
+  "id": "ooh-la-la-faces",
+  "title": "Ooh La La",
+  "artist": "Faces",
+  "year": 1973,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D Em7.",
+  "spotify": "spotify:track:4lJ6YVXQ0jUk5ILu0PSrA4",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f3b07d17992714fd8d7110ae",
+  "ug": "https://tabs.ultimate-guitar.com/tab/faces/ooh-la-la-official-2521236"
+ },
+ {
+  "id": "ophelia-the-band",
+  "title": "Ophelia",
+  "artist": "The Band",
+  "year": 1989,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "V+",
+    "beats": 4
+   },
+   {
+    "rn": "I7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Gaug C7.",
+  "spotify": "spotify:track:6Oqxnfz2JYAlZAESd8BpQO",
+  "art": "https://i.scdn.co/image/ab67616d00001e0243514544b879aede26b32cf4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-band/ophelia-official-3375509"
+ },
+ {
+  "id": "ophelia-the-lumineers",
+  "title": "Ophelia",
+  "artist": "The Lumineers",
+  "year": 2016,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Dm Bb F.",
+  "spotify": "spotify:track:14AyWf6y7KlWWLfAjdKMKI",
+  "art": "https://i.scdn.co/image/ab67616d00001e0221b550b66cf1391c6642088c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-lumineers/ophelia-official-2575167"
+ },
+ {
+  "id": "outshined-soundgarden",
+  "title": "Outshined",
+  "artist": "Soundgarden",
+  "year": 1997,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D5 F5.",
+  "spotify": "spotify:track:0NRUbpPIbzcAY5jONDJtdo",
+  "art": "https://i.scdn.co/image/ab67616d00001e021056c0e5a471b61dbf011d4e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/soundgarden/outshined-official-2581821"
+ },
+ {
+  "id": "over-the-hills-and-far-away-led-zeppelin",
+  "title": "Over the Hills and Far Away",
+  "artist": "Led Zeppelin",
+  "year": 1973,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 1: G D G D G D Cadd9 G.",
+  "spotify": "spotify:track:2eDdFHgqNJltzlvlZFVDWd",
+  "art": "https://i.scdn.co/image/ab67616d00001e021aa47e71c4edfeaddb65cd54",
+  "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/over-the-hills-and-far-away-official-2456790"
+ },
+ {
+  "id": "oye-como-va-santana",
+  "title": "Oye Como Va",
+  "artist": "Santana",
+  "year": 1970,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "IV7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am7 D9.",
+  "spotify": "spotify:track:5u6y4u5EgDv0peILf60H5t",
+  "art": "https://i.scdn.co/image/ab67616d00001e02283cccda1ee115b8f44f1c8b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/santana/oye-como-va-official-2608293"
+ },
+ {
+  "id": "pain-the-war-on-drugs",
+  "title": "Pain",
+  "artist": "The War on Drugs",
+  "year": 2017,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VImaj7",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cmaj7 Em Cmaj7 Em Cmaj7 Em Cmaj7 Em. Capo 3.",
+  "spotify": "spotify:track:59P1nrdEImkAKa1nyW9X2e",
+  "art": "https://i.scdn.co/image/ab67616d00001e0222b42fc5bda488d3ce88a8d2",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-war-on-drugs/pain-official-5233497"
+ },
+ {
+  "id": "paint-it-black-the-rolling-stones",
+  "title": "Paint It Black",
+  "artist": "The Rolling Stones",
+  "year": 1966,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm A. Capo 2.",
+  "spotify": "spotify:track:63T7DJ1AFDD6Bn8VzG6JE8",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bad7062c3fd2f2d037989694",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/paint-it-black-official-2137031"
+ },
+ {
+  "id": "paradise-john-prine",
+  "title": "Paradise",
+  "artist": "John Prine",
+  "year": 1971,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G D A.",
+  "spotify": "spotify:track:47QsP5uPZp3he5UrVsK8bs",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b190c3479aedf6a29340847d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/john-prine/paradise-official-2358509"
+ },
+ {
+  "id": "paul-big-thief",
+  "title": "Paul",
+  "artist": "Big Thief",
+  "year": 2016,
+  "key": "B",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVI+",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "bVI+",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: B Gaug F# G#m E F#7 Gaug F#.",
+  "spotify": "spotify:track:2MYidPOz5NHAtKUySTzbwx",
+  "art": "https://i.scdn.co/image/ab67616d00001e0228b2424c5b007b0e073c42ce",
+  "ug": "https://tabs.ultimate-guitar.com/tab/big-thief/paul-official-2519496"
+ },
+ {
+  "id": "peace-train-cat-stevens",
+  "title": "Peace Train",
+  "artist": "Cat Stevens",
+  "year": 2020,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C F/C C F/C G Am F/C G.",
+  "spotify": "spotify:track:3Z70E4D11aJgcEhswb7PfE",
+  "art": "https://i.scdn.co/image/ab67616d00001e024ad8c05fb717dabfd32bfe54",
+  "ug": "https://tabs.ultimate-guitar.com/tab/cat-stevens-yusuf-islam/peace-train-official-2961554"
+ },
+ {
+  "id": "people-are-strange-the-doors",
+  "title": "People Are Strange",
+  "artist": "The Doors",
+  "year": 1967,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse: Em Am Em Am Em B7 Em Am.",
+  "spotify": "spotify:track:1Jmqubf9kGkWeYQXQKImL5",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bf2970ff212e11093844fbea",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-doors/people-are-strange-official-1967723"
+ },
+ {
+  "id": "perfect-day-lou-reed",
+  "title": "Perfect Day",
+  "artist": "Lou Reed",
+  "year": 1972,
+  "key": "Bb minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F Bbm.",
+  "spotify": "spotify:track:4TOMI010Sd4ZAX4aZ5TS85",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fe5213edd4f8550a8030efcf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/lou-reed/perfect-day-official-2690928"
+ },
+ {
+  "id": "personal-jesus-depeche-mode",
+  "title": "Personal Jesus",
+  "artist": "Depeche Mode",
+  "year": 1990,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em Am G F#. Capo 2.",
+  "spotify": "spotify:track:2wUlYDGGXlSvm2NkGj0Qio",
+  "art": "https://i.scdn.co/image/ab67616d00001e02234bbbad4dce31cd2950af3e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/depeche-mode/personal-jesus-official-2097581"
+ },
+ {
+  "id": "photograph-ed-sheeran",
+  "title": "Photograph",
+  "artist": "Ed Sheeran",
+  "year": 2014,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E C#m B A E.",
+  "spotify": "spotify:track:1HNkqx9Ahdgi1Ixy2xkKkL",
+  "art": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd",
+  "ug": "https://tabs.ultimate-guitar.com/tab/ed-sheeran/photograph-official-1955517"
+ },
+ {
+  "id": "pictures-of-you-the-cure",
+  "title": "Pictures of You",
+  "artist": "The Cure",
+  "year": 1997,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E F#m.",
+  "spotify": "spotify:track:5CgHsJyqFuW1U0E3d4Eyi6",
+  "art": "https://i.scdn.co/image/ab67616d00001e022780880a9583a363c28c60d5",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-cure/pictures-of-you-official-2793742"
+ },
+ {
+  "id": "pink-moon-nick-drake",
+  "title": "Pink Moon",
+  "artist": "Nick Drake",
+  "year": 1972,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G F G F C. Capo 2.",
+  "spotify": "spotify:track:4KROoGIaPaR1pBHPnR3bwC",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e369195caf5d169bf5e9eafc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nick-drake/pink-moon-official-2769859"
+ },
+ {
+  "id": "polly-nirvana",
+  "title": "Polly",
+  "artist": "Nirvana",
+  "year": 1991,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E5 G5 D5 C5.",
+  "spotify": "spotify:track:3tlXDvaNrrOmdvG0XVUOcv",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e175a19e530c898d167d39bf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/polly-official-1910947"
+ },
+ {
+  "id": "pumped-up-kicks-foster-the-people",
+  "title": "Pumped Up Kicks",
+  "artist": "Foster The People",
+  "year": 2011,
+  "key": "F minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Fm Ab Eb Bb.",
+  "spotify": "spotify:track:7w87IxuO7BDcJ3YUqCyMTT",
+  "art": "https://i.scdn.co/image/ab67616d00001e02121d5f92cf90576907dfb1e5",
+  "ug": "https://tabs.ultimate-guitar.com/tab/foster-the-people/pumped-up-kicks-official-1948629"
+ },
+ {
+  "id": "pyramid-song-radiohead",
+  "title": "Pyramid Song",
+  "artist": "Radiohead",
+  "year": 2001,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bIImaj7",
+    "beats": 4
+   },
+   {
+    "rn": "bIII",
+    "beats": 4
+   },
+   {
+    "rn": "bIImaj7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F# Gmaj7 A6 Gmaj7.",
+  "spotify": "spotify:track:55q3Ro66yXWi9rsEddeEN4",
+  "art": "https://i.scdn.co/image/ab67616d00001e02863e0e305637100311c91aa7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/pyramid-song-official-2749629"
+ },
+ {
+  "id": "radioactive-imagine-dragons",
+  "title": "Radioactive",
+  "artist": "Imagine Dragons",
+  "year": 2012,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm D A.",
+  "spotify": "spotify:track:4G8gkOterJn0Ywt6uhqbhp",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b2b2747c89d2157b0b29fb6a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/imagine-dragons/radioactive-official-1955149"
+ },
+ {
+  "id": "ramble-on-led-zeppelin",
+  "title": "Ramble On",
+  "artist": "Led Zeppelin",
+  "year": 1969,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E D/E F#m7 A.",
+  "spotify": "spotify:track:3MODES4TNtygekLl146Dxd",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fc4f17340773c6c3579fea0d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/ramble-on-official-1968201"
+ },
+ {
+  "id": "rather-be-clean-bandit",
+  "title": "Rather Be",
+  "artist": "Clean Bandit",
+  "year": 2024,
+  "key": "Ab minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G#m F# E B G#m F# E B.",
+  "spotify": "spotify:track:4piC5I66eQEmzNJRX1TNMX",
+  "art": "https://i.scdn.co/image/ab67616d00001e0258f9aad6bf6fcf19aee2874e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/clean-bandit/rather-be-official-2541408"
+ },
+ {
+  "id": "real-love-baby-father-john-misty",
+  "title": "Real Love Baby",
+  "artist": "Father John Misty",
+  "year": 2016,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D Em.",
+  "spotify": "spotify:track:0Z57YWES04xGh3AImDz6Qr",
+  "art": "https://i.scdn.co/image/ab67616d00001e02eca90909f4e566b1569d0e7d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/father-john-misty/real-love-baby-official-2730939"
+ },
+ {
+  "id": "rebel-rebel-david-bowie",
+  "title": "Rebel Rebel",
+  "artist": "David Bowie",
+  "year": 2003,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D E.",
+  "spotify": "spotify:track:3bdEtobvgxJNoV8kiNGObK",
+  "art": "https://i.scdn.co/image/ab67616d00001e0246934aab226096a59611a76b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/rebel-rebel-official-2085319"
+ },
+ {
+  "id": "rebellion-lies-arcade-fire",
+  "title": "Rebellion (Lies)",
+  "artist": "Arcade Fire",
+  "year": 2004,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb Eb Bb Gm.",
+  "spotify": "spotify:track:0xOeB16JDbBJBJKSdHbElT",
+  "art": "https://i.scdn.co/image/ab67616d00001e027870762a58313ad6f981d664",
+  "ug": "https://tabs.ultimate-guitar.com/tab/arcade-fire/rebellion-lies-official-5224374"
+ },
+ {
+  "id": "red-eyes-the-war-on-drugs",
+  "title": "Red Eyes",
+  "artist": "The War on Drugs",
+  "year": 2014,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C D. Capo 3.",
+  "spotify": "spotify:track:0rUIff1QHd5zlOBtlHVqd9",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f34338e9270f9c0561cf4c7e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-war-on-drugs/red-eyes-official-3385358"
+ },
+ {
+  "id": "refugee-tom-petty-and-the-heartbreakers",
+  "title": "Refugee",
+  "artist": "Tom Petty and the Heartbreakers",
+  "year": 1979,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F#m A E.",
+  "spotify": "spotify:track:4mcZYzoGwPRDdhWVlygiHf",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ebca7d93f21ba366fe005966",
+  "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty-and-the-heartbreakers/refugee-official-2827106"
+ },
+ {
+  "id": "reptilia-the-strokes",
+  "title": "Reptilia",
+  "artist": "The Strokes",
+  "year": 2003,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm E.",
+  "spotify": "spotify:track:57Xjny5yNzAcsxnusKmAfA",
+  "art": "https://i.scdn.co/image/ab67616d00001e020f35726025e0f025da4c688f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-strokes/reptilia-official-1934141"
+ },
+ {
+  "id": "rhiannon-fleetwood-mac",
+  "title": "Rhiannon",
+  "artist": "Fleetwood Mac",
+  "year": 1975,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am F.",
+  "spotify": "spotify:track:05oETzWbd4SI33qK2gbJfR",
+  "art": "https://i.scdn.co/image/ab67616d00001e024fb043195e8d07e72edc7226",
+  "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/rhiannon-official-1969839"
+ },
+ {
+  "id": "riders-on-the-storm-the-doors",
+  "title": "Riders on the Storm",
+  "artist": "The Doors",
+  "year": 1971,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "iv7",
+    "beats": 4
+   },
+   {
+    "rn": "v7",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em Am7 Bm7 C D Em D C.",
+  "spotify": "spotify:track:14XWXWv5FoCbFzLksawpEe",
+  "art": "https://i.scdn.co/image/ab67616d00001e0211d9db4f0db1e2689ca22c3d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-doors/riders-on-the-storm-official-2212149"
+ },
+ {
+  "id": "right-back-to-it-waxahatchee",
+  "title": "Right Back to It",
+  "artist": "Waxahatchee",
+  "year": 2024,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F C G Am G. Capo 6.",
+  "spotify": "spotify:track:17Zzi8qsn8mdm0t0JTGeQo",
+  "art": "https://i.scdn.co/image/ab67616d00001e020bc584e8e6aefded5b054117",
+  "ug": "https://tabs.ultimate-guitar.com/tab/waxahatchee/right-back-to-it-official-5208795"
+ },
+ {
+  "id": "ring-of-fire-johnny-cash",
+  "title": "Ring of Fire",
+  "artist": "Johnny Cash",
+  "year": 2002,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C G D G.",
+  "spotify": "spotify:track:5rDkA2TFOImbiVenmnE9r4",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c17beab3e27f18af397a00b2",
+  "ug": "https://tabs.ultimate-guitar.com/tab/johnny-cash/ring-of-fire-official-1955561"
+ },
+ {
+  "id": "river-man-nick-drake",
+  "title": "River Man",
+  "artist": "Nick Drake",
+  "year": 1969,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "I7",
+    "beats": 4,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Aadd9 C9/G. Capo 3.",
+  "spotify": "spotify:track:3Uh7rAb7F0XGVpEEDwfH1k",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bd158c797b1026005c2917bc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nick-drake/river-man-official-3959488"
+ },
+ {
+  "id": "roads-portishead",
+  "title": "Roads",
+  "artist": "Portishead",
+  "year": 1994,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am G F E Am G F E.",
+  "spotify": "spotify:track:2sW8fmnISifQTRgnRrQTYW",
+  "art": "https://i.scdn.co/image/ab67616d00001e02dc20397b139223620af148f6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/portishead/roads-official-1984057"
+ },
+ {
+  "id": "rolling-in-the-deep-adele",
+  "title": "Rolling in the Deep",
+  "artist": "Adele",
+  "year": 2011,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Cm Gm Bb Gm Bb.",
+  "spotify": "spotify:track:1c8gk2PeTE04A1pIDH9YMk",
+  "art": "https://i.scdn.co/image/ab67616d00001e027e7e5dd9d1ab19fcded8a17f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/adele/rolling-in-the-deep-official-1911375"
+ },
+ {
+  "id": "romeo-and-juliet-dire-straits",
+  "title": "Romeo and Juliet",
+  "artist": "Dire Straits",
+  "year": 1980,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D A G A. Capo 3.",
+  "spotify": "spotify:track:57MflfPN3ObQQAQtPUp0WF",
+  "art": "https://i.scdn.co/image/ab67616d00001e025b5e5240a4c483b5fb9f2cb0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/dire-straits/romeo-and-juliet-official-2464568"
+ },
+ {
+  "id": "rooster-alice-in-chains",
+  "title": "Rooster",
+  "artist": "Alice In Chains",
+  "year": 2001,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bIII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F Ab.",
+  "spotify": "spotify:track:4odMw0bAPDR7kSwb15r7S7",
+  "art": "https://i.scdn.co/image/ab67616d00001e02647a4d34d01e14d967106fbb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/rooster-official-2018423"
+ },
+ {
+  "id": "roses-the-chainsmokers",
+  "title": "Roses",
+  "artist": "The Chainsmokers",
+  "year": 2015,
+  "key": "E",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: E C#m7.",
+  "spotify": "spotify:track:3vv9phIu6Y1vX3jcqaGz5Z",
+  "art": "https://i.scdn.co/image/ab67616d00001e028d2cfad007b9431f48aef135",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-chainsmokers/roses-official-6145391"
+ },
+ {
+  "id": "round-here-counting-crows",
+  "title": "Round Here",
+  "artist": "Counting Crows",
+  "year": 1993,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C D Em G.",
+  "spotify": "spotify:track:35qwJUKVy1OIt0wQ3xEXi0",
+  "art": "https://i.scdn.co/image/ab67616d00001e027e09670f90cd47b3fb9a23e0",
+  "ug": "https://tabs.ultimate-guitar.com/tab/counting-crows/round-here-official-2768179"
+ },
+ {
+  "id": "roxanne-the-police",
+  "title": "Roxanne",
+  "artist": "The Police",
+  "year": 1978,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "i",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "VII",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "VI",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "VIIsus4",
+    "beats": 4
+   },
+   {
+    "rn": "I7sus4",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Gm Dm/F Gm/Bb F/A Eb/G Fsus4 G7sus4.",
+  "spotify": "spotify:track:3EYOJ48Et32uATr9ZmLnAo",
+  "art": "https://i.scdn.co/image/ab67616d00001e022043dd3544a339547d04b436",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-police/roxanne-official-1964181"
+ },
+ {
+  "id": "royals-lorde",
+  "title": "Royals",
+  "artist": "Lorde",
+  "year": 2013,
+  "key": "D",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "bVII",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, chorus: C G D.",
+  "spotify": "spotify:track:4SDWMFvYJKtK1QPhIOeZhd",
+  "art": "https://i.scdn.co/image/ab67616d00001e02244fb8bb9594476ab5cb39b9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/lorde/royals-official-2165481"
+ },
+ {
+  "id": "ruby-tuesday-the-rolling-stones",
+  "title": "Ruby Tuesday",
+  "artist": "The Rolling Stones",
+  "year": 1967,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am G F G C Am G F.",
+  "spotify": "spotify:track:4hupcimlg3UBbW1kAQ6vrT",
+  "art": "https://i.scdn.co/image/ab67616d00001e028260863a56134f1516913d7f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/ruby-tuesday-official-2179767"
+ },
+ {
+  "id": "runaway-del-shannon",
+  "title": "Runaway",
+  "artist": "Del Shannon",
+  "year": 1961,
+  "key": "Bb minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "V7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am G F E7. Capo 1.",
+  "spotify": "spotify:track:45Szkclj1lt4ubm7RFK68t",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f1fdd06fe4e73052f3a5a26c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/del-shannon/runaway-official-2524677"
+ },
+ {
+  "id": "runner-alex-g",
+  "title": "Runner",
+  "artist": "Alex G",
+  "year": 2022,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "IVmaj7",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cmaj7/G G D/F#. Capo 4.",
+  "spotify": "spotify:track:5PmvRPR1SedsWA08jDDgF9",
+  "art": "https://i.scdn.co/image/ab67616d00001e02be60963d00f15bb052f73b52",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alex-g-sandy-alex-g/runner-official-4687394"
+ },
+ {
+  "id": "running-on-empty-jackson-browne",
+  "title": "Running on Empty",
+  "artist": "Jackson Browne",
+  "year": 1978,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D/A A.",
+  "spotify": "spotify:track:6aqm56xP40foYBBtAWWrnY",
+  "art": "https://i.scdn.co/image/ab67616d00001e028d6479b1461b26b8b6603935",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jackson-browne/running-on-empty-official-3157007"
+ },
+ {
+  "id": "salad-days-mac-demarco",
+  "title": "Salad Days",
+  "artist": "Mac DeMarco",
+  "year": 2014,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Cmaj7 G Cmaj7 G Cmaj7 G D7. Capo 2.",
+  "spotify": "spotify:track:6942romFscvCKkkrTwkAvD",
+  "art": "https://i.scdn.co/image/ab67616d00001e028b221f2ccf777ae0d4b0db50",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mac-demarco/salad-days-official-2474214"
+ },
+ {
+  "id": "sam-stone-john-prine",
+  "title": "Sam Stone",
+  "artist": "John Prine",
+  "year": 1971,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A D. Capo 3.",
+  "spotify": "spotify:track:4BIej0swGWja46j5B7l4s1",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b190c3479aedf6a29340847d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/john-prine/sam-stone-official-3820238"
+ },
+ {
+  "id": "sandstorm-darude",
+  "title": "Sandstorm",
+  "artist": "Darude",
+  "year": 2001,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em C G.",
+  "spotify": "spotify:track:6Sy9BUbgFse0n0LPA5lwy5",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f9ef39657ba18c612641ee6d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/darude/sandstorm-official-2515956"
+ },
+ {
+  "id": "satellite-of-love-lou-reed",
+  "title": "Satellite of Love",
+  "artist": "Lou Reed",
+  "year": 1972,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F G Gm C F G Gm C.",
+  "spotify": "spotify:track:5WyuRWUcOOhAic0tj9Pl28",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fe5213edd4f8550a8030efcf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/lou-reed/satellite-of-love-official-5034241"
+ },
+ {
+  "id": "save-your-tears-the-weeknd",
+  "title": "Save Your Tears",
+  "artist": "The Weeknd",
+  "year": 2020,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C Am Em G.",
+  "spotify": "spotify:track:5QO79kh1waicV47BqGRL3g",
+  "art": "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-weeknd/save-your-tears-official-3283448"
+ },
+ {
+  "id": "say-it-ain-t-so-weezer",
+  "title": "Say It Ain't So",
+  "artist": "Weezer",
+  "year": 2004,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cm G Ab Eb.",
+  "spotify": "spotify:track:56MEbUIvvfEEkLIl51wxGD",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ccb905a7b403aa786f96b374",
+  "ug": "https://tabs.ultimate-guitar.com/tab/weezer/say-it-aint-so-official-1952129"
+ },
+ {
+  "id": "say-yes-elliott-smith",
+  "title": "Say Yes",
+  "artist": "Elliott Smith",
+  "year": 1997,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F Cadd11/E Dm C Bb F6/A G.",
+  "spotify": "spotify:track:4IKMZtDIqyQDA6a4YvsgpK",
+  "art": "https://i.scdn.co/image/ab67616d00001e022f3552dc6f9e4e2748c5b8ba",
+  "ug": "https://tabs.ultimate-guitar.com/tab/elliott-smith/say-yes-official-2201759"
+ },
+ {
+  "id": "scarlet-begonias-grateful-dead",
+  "title": "Scarlet Begonias",
+  "artist": "Grateful Dead",
+  "year": 1974,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: B E.",
+  "spotify": "spotify:track:4B8dwlhCUupgn54QQoczQZ",
+  "art": "https://i.scdn.co/image/ab67616d00001e028a7f0d3a3dd5e8ca8ab92a18",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/scarlet-begonias-official-3028202"
+ },
+ {
+  "id": "sea-of-love-cat-power",
+  "title": "Sea of Love",
+  "artist": "Cat Power",
+  "year": 2000,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "II",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C E F D.",
+  "spotify": "spotify:track:33kKcOJoyNduHwXhEnga8X",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b46c268f75fbd2878754d990",
+  "ug": "https://tabs.ultimate-guitar.com/tab/cat-power/sea-of-love-official-2080781"
+ },
+ {
+  "id": "september-earth-wind-fire",
+  "title": "September",
+  "artist": "Earth, Wind & Fire",
+  "year": 1978,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VImaj7",
+    "beats": 2
+   },
+   {
+    "rn": "v7",
+    "beats": 2
+   },
+   {
+    "rn": "iv7",
+    "beats": 2
+   },
+   {
+    "rn": "v7",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 2
+   },
+   {
+    "rn": "v7",
+    "beats": 2
+   },
+   {
+    "rn": "iv7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dmaj7 C#m7 Bm7 C#m7 F#m7 Dmaj7 C#m7 Bm7.",
+  "spotify": "spotify:track:2grjqo0Frpf2okIBiifQKs",
+  "art": "https://i.scdn.co/image/ab67616d00001e022e7558daae7a80e1f5819aa1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/earth-wind-fire/september-official-2467028"
+ },
+ {
+  "id": "september-gurls-big-star",
+  "title": "September Gurls",
+  "artist": "Big Star",
+  "year": 1974,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D A/D G/D. Capo 2.",
+  "spotify": "spotify:track:74njazGdnO2igjEkb0mGiy",
+  "art": "https://i.scdn.co/image/ab67616d00001e02471e287a6c0dd5e063059c55",
+  "ug": "https://tabs.ultimate-guitar.com/tab/big-star/september-gurls-official-4617872"
+ },
+ {
+  "id": "set-fire-to-the-rain-adele",
+  "title": "Set Fire to the Rain",
+  "artist": "Adele",
+  "year": 2011,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm F C Gm Dm F.",
+  "spotify": "spotify:track:73CMRj62VK8nUS4ezD2wvi",
+  "art": "https://i.scdn.co/image/ab67616d00001e027e7e5dd9d1ab19fcded8a17f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/adele/set-fire-to-the-rain-official-2260835"
+ },
+ {
+  "id": "shake-it-out-florence-the-machine",
+  "title": "Shake It Out",
+  "artist": "Florence + The Machine",
+  "year": 2011,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F Bb F Dm Bb F C Dm.",
+  "spotify": "spotify:track:4lY95OMGb9WxP6IYut64ir",
+  "art": "https://i.scdn.co/image/ab67616d00001e02527d94ecf554774fc313bf48",
+  "ug": "https://tabs.ultimate-guitar.com/tab/florence-the-machine/shake-it-out-official-2471978"
+ },
+ {
+  "id": "sharp-dressed-man-zz-top",
+  "title": "Sharp Dressed Man",
+  "artist": "ZZ Top",
+  "year": 2014,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Cm Bb F.",
+  "spotify": "spotify:track:7aXgo7vAHDjHR0JrCX2qJv",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bea91eceb63b4476a00e385c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/zz-top/sharp-dressed-man-official-1948617"
+ },
+ {
+  "id": "she-s-leaving-you-mj-lenderman",
+  "title": "She's Leaving You",
+  "artist": "MJ Lenderman",
+  "year": 2024,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IIsus2",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C Gsus2 Bb F.",
+  "spotify": "spotify:track:4hJ5jWbqstdYt555NhdtNk",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b18fae872e1700b83e72a15b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mj-lenderman/shes-leaving-you-official-5357694"
+ },
+ {
+  "id": "shelter-from-the-storm-bob-dylan",
+  "title": "Shelter from the Storm",
+  "artist": "Bob Dylan",
+  "year": 1975,
+  "key": "E",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "Vsus4",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D Asus4 G. Capo 2.",
+  "spotify": "spotify:track:3y4Uza6K58JXQ7RYya8ZI5",
+  "art": "https://i.scdn.co/image/ab67616d00001e023b5e52dc6433b80b060ce1df",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/shelter-from-the-storm-official-3145673"
+ },
+ {
+  "id": "shelter-porter-robinson",
+  "title": "Shelter",
+  "artist": "Porter Robinson",
+  "year": 2016,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "v7",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "v7",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "IIImaj7",
+    "beats": 2,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F Em7 G Em7 Am7 Am/D Cmaj7/E.",
+  "spotify": "spotify:track:5UNJM92MCcDgs4kGgm5fc1",
+  "art": "https://i.scdn.co/image/ab67616d00001e0279921d9de5b4e523a379876d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/porter-robinson/shelter-official-3800840"
+ },
+ {
+  "id": "simple-twist-of-fate-bob-dylan",
+  "title": "Simple Twist of Fate",
+  "artist": "Bob Dylan",
+  "year": 1975,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "M7"
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "b7"
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2,
+    "bass": "M7"
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D D/C# D/C G/B Gm D Dmaj9/C# G/B. Capo 2.",
+  "spotify": "spotify:track:3wAX3qn53iQUFE84hpfeen",
+  "art": "https://i.scdn.co/image/ab67616d00001e023b5e52dc6433b80b060ce1df",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/simple-twist-of-fate-official-2506920"
+ },
+ {
+  "id": "sister-golden-hair-america",
+  "title": "Sister Golden Hair",
+  "artist": "America",
+  "year": 1975,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C#m A E G#m C#m B A.",
+  "spotify": "spotify:track:5VSAonaAPhhGn0G7hMYwWK",
+  "art": "https://i.scdn.co/image/ab67616d00001e02865a956fe40cf54597e97fd2",
+  "ug": "https://tabs.ultimate-guitar.com/tab/america/sister-golden-hair-official-1956617"
+ },
+ {
+  "id": "skinny-love-bon-iver",
+  "title": "Skinny Love",
+  "artist": "Bon Iver",
+  "year": 2008,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am C Am C Am C Gadd11/B Am.",
+  "spotify": "spotify:track:3B3eOgLJSqPEA0RfboIQVM",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bf7c317a63c4f128b8823406",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bon-iver/skinny-love-official-2229501"
+ },
+ {
+  "id": "skyfall-adele",
+  "title": "Skyfall",
+  "artist": "Adele",
+  "year": 2012,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Cm Ab F Fm Cm Ab F Fm.",
+  "spotify": "spotify:track:6VObnIkLVruX4UVyxWhlqm",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b479bb2aed275bb1b13d83da",
+  "ug": "https://tabs.ultimate-guitar.com/tab/adele/skyfall-official-2151601"
+ },
+ {
+  "id": "slide-away-oasis",
+  "title": "Slide Away",
+  "artist": "Oasis",
+  "year": 1994,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am7 G Fmaj7/C.",
+  "spotify": "spotify:track:1CZpWzCvN6fl2WslWTyPn2",
+  "art": "https://i.scdn.co/image/ab67616d00001e027c8f18614002cc5542f6c7aa",
+  "ug": "https://tabs.ultimate-guitar.com/tab/oasis/slide-away-official-2832523"
+ },
+ {
+  "id": "so-lonely-the-police",
+  "title": "So Lonely",
+  "artist": "The Police",
+  "year": 1978,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C G Am F.",
+  "spotify": "spotify:track:2wnsBaxrmkthIFAm6vqCuX",
+  "art": "https://i.scdn.co/image/ab67616d00001e022043dd3544a339547d04b436",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-police/so-lonely-official-2632474"
+ },
+ {
+  "id": "somebody-that-i-used-to-know-gotye",
+  "title": "Somebody That I Used to Know",
+  "artist": "Gotye",
+  "year": 2011,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm C.",
+  "spotify": "spotify:track:4wCmqSrbyCgxEXROQE6vtV",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e1d47c00ddecbfb810c807ed",
+  "ug": "https://tabs.ultimate-guitar.com/tab/gotye/somebody-that-i-used-to-know-official-2429917"
+ },
+ {
+  "id": "somebody-told-me-the-killers",
+  "title": "Somebody Told Me",
+  "artist": "The Killers",
+  "year": 2004,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "bVI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A#5 D#5 F#5.",
+  "spotify": "spotify:track:6PwjJ58I4t7Mae9xfZ9l9v",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ccdddd46119a4ff53eaf1f5d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-killers/somebody-told-me-official-1945495"
+ },
+ {
+  "id": "someday-the-strokes",
+  "title": "Someday",
+  "artist": "The Strokes",
+  "year": 2001,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A Bm D.",
+  "spotify": "spotify:track:7hm4HTk9encxT0LYC0J6oI",
+  "art": "https://i.scdn.co/image/ab67616d00001e0213f2466b83507515291acce4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-strokes/someday-official-1945805"
+ },
+ {
+  "id": "someone-you-loved-lewis-capaldi",
+  "title": "Someone You Loved",
+  "artist": "Lewis Capaldi",
+  "year": 2019,
+  "key": "Db",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Db Ab Bbm Gb.",
+  "spotify": "spotify:track:7qEHsqek33rTcFNT9PFqLf",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fc2101e6889d6ce9025f85f2",
+  "ug": "https://tabs.ultimate-guitar.com/tab/lewis-capaldi/someone-you-loved-official-2571216"
+ },
+ {
+  "id": "something-about-us-daft-punk",
+  "title": "Something About Us",
+  "artist": "Daft Punk",
+  "year": 2001,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "VImaj7",
+    "beats": 2
+   },
+   {
+    "rn": "v7",
+    "beats": 2
+   },
+   {
+    "rn": "i7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bbmaj7 Am7 Dm9 Gadd9 Bbmaj7 A7 Am7/D Dm7/G.",
+  "spotify": "spotify:track:1NeLwFETswx8Fzxl2AFl91",
+  "art": "https://i.scdn.co/image/ab67616d00001e021e81bff9807a9e629fce5ade",
+  "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/something-about-us-official-1956009"
+ },
+ {
+  "id": "something-in-the-way-nirvana",
+  "title": "Something in the Way",
+  "artist": "Nirvana",
+  "year": 1991,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bVI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F5 Db5.",
+  "spotify": "spotify:track:1nFtiJxYdhtFfFtfXBv06s",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e175a19e530c898d167d39bf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/something-in-the-way-official-1955669"
+ },
+ {
+  "id": "something-just-like-this-the-chainsmokers",
+  "title": "Something Just Like This",
+  "artist": "The Chainsmokers",
+  "year": 2017,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, chorus: Bm A G A.",
+  "spotify": "spotify:track:1dNIEtp7AY3oDAKCGg2XkH",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f79b7f08426e2899a832d3e6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-chainsmokers/something-just-like-this-official-2432569"
+ },
+ {
+  "id": "song-2-blur",
+  "title": "Song 2",
+  "artist": "Blur",
+  "year": 2000,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "bIII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 1: Gb5 E5 A5 B5 Db5.",
+  "spotify": "spotify:track:3GfOAdcoc3X5GPiiXmpBjK",
+  "art": "https://i.scdn.co/image/ab67616d00001e0234cbf7013afccc7df67fa43f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/blur/song-2-official-1911343"
+ },
+ {
+  "id": "sour-times-portishead",
+  "title": "Sour Times",
+  "artist": "Portishead",
+  "year": 1994,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "biii",
+    "beats": 4
+   },
+   {
+    "rn": "bII",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "biii",
+    "beats": 4
+   },
+   {
+    "rn": "bII",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bvii",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F#m E D# F#m E D# C#m.",
+  "spotify": "spotify:track:6vTtCOimcPs5H1Jr9d0Aep",
+  "art": "https://i.scdn.co/image/ab67616d00001e02dc20397b139223620af148f6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/portishead/sour-times-official-4811942"
+ },
+ {
+  "id": "space-song-beach-house",
+  "title": "Space Song",
+  "artist": "Beach House",
+  "year": 2015,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro/fade in",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro/fade in: Eb Cm Fm Bb.",
+  "spotify": "spotify:track:7H0ya83CMmgFcOhw0UB6ow",
+  "art": "https://i.scdn.co/image/ab67616d00001e029b7190e673e46271b2754aab",
+  "ug": "https://tabs.ultimate-guitar.com/tab/beach-house/space-song-official-2517453"
+ },
+ {
+  "id": "starboy-the-weeknd",
+  "title": "Starboy",
+  "artist": "The Weeknd",
+  "year": 2016,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am G F G Am G F G.",
+  "spotify": "spotify:track:7MXVkk9YMctZqd1Srtv4MB",
+  "art": "https://i.scdn.co/image/ab67616d00001e024718e2b124f79258be7bc452",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-weeknd/starboy-official-3489986"
+ },
+ {
+  "id": "starman-david-bowie",
+  "title": "Starman",
+  "artist": "David Bowie",
+  "year": 1972,
+  "key": "F",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bIII",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Gm F C F Ab Bb Gm F.",
+  "spotify": "spotify:track:0pQskrTITgmCMyr85tb9qq",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c41f4e1133b0e6c5fcf58680",
+  "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/starman-official-2085341"
+ },
+ {
+  "id": "start-me-up-the-rolling-stones",
+  "title": "Start Me Up",
+  "artist": "The Rolling Stones",
+  "year": 2021,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F Bb.",
+  "spotify": "spotify:track:0INM0SfWqrD33nTDGA5Mts",
+  "art": "https://i.scdn.co/image/ab67616d00001e0206b22c84b37f280cbacdeffb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/start-me-up-official-2451105"
+ },
+ {
+  "id": "stay-with-me-faces",
+  "title": "Stay with Me",
+  "artist": "Faces",
+  "year": 1971,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E D A.",
+  "spotify": "spotify:track:7fLTytvnvxy653VWxflTRf",
+  "art": "https://i.scdn.co/image/ab67616d00001e028568fcf6a48b4404bc5817fb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/faces/stay-with-me-official-2960696"
+ },
+ {
+  "id": "stay-with-me-sam-smith",
+  "title": "Stay with Me",
+  "artist": "Sam Smith",
+  "year": 2014,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am7 F C.",
+  "spotify": "spotify:track:5Nm9ERjJZ5oyfXZTECKmRt",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b11bdc91cb9ac6b14f5c1dae",
+  "ug": "https://tabs.ultimate-guitar.com/tab/sam-smith/stay-with-me-official-1969985"
+ },
+ {
+  "id": "stay-zedd",
+  "title": "Stay",
+  "artist": "Zedd",
+  "year": 2017,
+  "key": "Db",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "vii7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Db Fm Eb Db Fm Eb Cm7.",
+  "spotify": "spotify:track:6uBhi9gBXWjanegOb2Phh0",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b993cba8ff7d0a8e9ee18d46",
+  "ug": "https://tabs.ultimate-guitar.com/tab/zedd/stay-official-2785192"
+ },
+ {
+  "id": "street-spirit-fade-out-radiohead",
+  "title": "Street Spirit (Fade Out)",
+  "artist": "Radiohead",
+  "year": 1995,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "Isus4",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am Asus4.",
+  "spotify": "spotify:track:2QwObYJWyJTiozvs0RI7CF",
+  "art": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/street-spirit-fade-out-official-1930545"
+ },
+ {
+  "id": "stubborn-love-the-lumineers",
+  "title": "Stubborn Love",
+  "artist": "The Lumineers",
+  "year": 2012,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F/C Am F/C C F/C Am G C.",
+  "spotify": "spotify:track:4wG82w1L31yQhgGiWt6gIb",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f350c13195ce048876b5fea4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-lumineers/stubborn-love-official-2463848"
+ },
+ {
+  "id": "style-taylor-swift",
+  "title": "Style",
+  "artist": "Taylor Swift",
+  "year": 2014,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bm G.",
+  "spotify": "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5",
+  "art": "https://i.scdn.co/image/ab67616d00001e029abdf14e6058bd3903686148",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/style-official-2193711"
+ },
+ {
+  "id": "sugar-magnolia-grateful-dead",
+  "title": "Sugar Magnolia",
+  "artist": "Grateful Dead",
+  "year": 1970,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A D.",
+  "spotify": "spotify:track:2EB1aFLWC4uIfld5Z3Yj1z",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fd3f66a9ce4371f7ffa0346f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/sugar-magnolia-official-3291902"
+ },
+ {
+  "id": "summer-calvin-harris",
+  "title": "Summer",
+  "artist": "Calvin Harris",
+  "year": 2014,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em C.",
+  "spotify": "spotify:track:6YUTL4dYpB9xZO5qExPf05",
+  "art": "https://i.scdn.co/image/ab67616d00001e028fba5806a323efd272677c4d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/calvin-harris/summer-official-4451639"
+ },
+ {
+  "id": "sunday-morning-the-velvet-underground",
+  "title": "Sunday Morning",
+  "artist": "The Velvet Underground",
+  "year": 1967,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F Bb.",
+  "spotify": "spotify:track:11607FzqoipskTsXrwEHnJ",
+  "art": "https://i.scdn.co/image/ab67616d00001e0298260c528e6eec9dd431c1d7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-velvet-underground/sunday-morning-official-1981061"
+ },
+ {
+  "id": "sunflower-post-malone",
+  "title": "Sunflower",
+  "artist": "Post Malone",
+  "year": 2018,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G Em G.",
+  "spotify": "spotify:track:3KkXRkHbMCARz0aVfEt68P",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e2e352d89826aef6dbd5ff8f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/post-malone/sunflower-official-2523066"
+ },
+ {
+  "id": "sunny-afternoon-the-kinks",
+  "title": "Sunny Afternoon",
+  "artist": "The Kinks",
+  "year": 1966,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2,
+    "bass": "7"
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "b7"
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm Dm/C Dm/B Dm/Bb A A/G A/F A/E.",
+  "spotify": "spotify:track:09Plbz3Ja2gxU9xCsqA5KY",
+  "art": "https://i.scdn.co/image/ab67616d00001e0278581804d382a515978d3308",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-kinks/sunny-afternoon-official-2139793"
+ },
+ {
+  "id": "sweet-baby-james-james-taylor",
+  "title": "Sweet Baby James",
+  "artist": "James Taylor",
+  "year": 1976,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G Em A D A G F#m Bm.",
+  "spotify": "spotify:track:1lZJzhTAzXWgEY3RSw9cvx",
+  "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/sweet-baby-james-official-2450663"
+ },
+ {
+  "id": "sweet-jane-the-velvet-underground",
+  "title": "Sweet Jane",
+  "artist": "The Velvet Underground",
+  "year": 1970,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D A Bm G A D A D.",
+  "spotify": "spotify:track:2LAZn3ygMkecVRmyXvGjHO",
+  "art": "https://i.scdn.co/image/ab67616d00001e025816a37263f88929907c2dbd",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-velvet-underground/sweet-jane-official-2189969"
+ },
+ {
+  "id": "tainted-love-soft-cell",
+  "title": "Tainted Love",
+  "artist": "Soft Cell",
+  "year": 1981,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Gm Bb Eb Csus2 Gm Bb.",
+  "spotify": "spotify:track:58E1XVmZTODC67YNjneuXM",
+  "art": "https://i.scdn.co/image/ab67616d00001e02db5f42a5cd45458926cab59d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/soft-cell/tainted-love-official-2597652"
+ },
+ {
+  "id": "take-it-easy-eagles",
+  "title": "Take It Easy",
+  "artist": "Eagles",
+  "year": 1972,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V7sus4",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C D7sus4.",
+  "spotify": "spotify:track:4yugZvBYaoREkJKtbG08Qr",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c13acd642ba9f6f5f127aa1b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/eagles/take-it-easy-official-2213493"
+ },
+ {
+  "id": "take-me-out-franz-ferdinand",
+  "title": "Take Me Out",
+  "artist": "Franz Ferdinand",
+  "year": 2004,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am D G B Em Am D G.",
+  "spotify": "spotify:track:20I8RduZC2PWMWTDCZuuAN",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a5d1c06a8172d4861367953c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/franz-ferdinand/take-me-out-official-1911499"
+ },
+ {
+  "id": "take-me-to-church-hozier",
+  "title": "Take Me to Church",
+  "artist": "Hozier",
+  "year": 2014,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em Am Em Am G Am Em Am.",
+  "spotify": "spotify:track:1CS7Sd1u5tWkstBhpssyjP",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bd5c6f1a9461fc68c5dc1623",
+  "ug": "https://tabs.ultimate-guitar.com/tab/hozier/take-me-to-church-official-1990435"
+ },
+ {
+  "id": "tangerine-led-zeppelin",
+  "title": "Tangerine",
+  "artist": "Led Zeppelin",
+  "year": 1970,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am C/G Am G D Am G D.",
+  "spotify": "spotify:track:4ywWJqYKOwaVVh9xXARWUS",
+  "art": "https://i.scdn.co/image/ab67616d00001e0290a50cfe99a4c19ff3cbfbdb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/tangerine-official-2082289"
+ },
+ {
+  "id": "tangled-up-in-blue-bob-dylan",
+  "title": "Tangled Up in Blue",
+  "artist": "Bob Dylan",
+  "year": 1975,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "bVII",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: A G A G A G D A.",
+  "spotify": "spotify:track:6Vcwr9tb3ZLO63F8DL8cqu",
+  "art": "https://i.scdn.co/image/ab67616d00001e023b5e52dc6433b80b060ce1df",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/tangled-up-in-blue-official-2859809"
+ },
+ {
+  "id": "team-lorde",
+  "title": "Team",
+  "artist": "Lorde",
+  "year": 2013,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: F# D#m C#.",
+  "spotify": "spotify:track:3G6hD9B2ZHOsgf4WfNu7X1",
+  "art": "https://i.scdn.co/image/ab67616d00001e02187331e276c898d39764cc98",
+  "ug": "https://tabs.ultimate-guitar.com/tab/lorde/team-official-2466096"
+ },
+ {
+  "id": "tender-blur",
+  "title": "Tender",
+  "artist": "Blur",
+  "year": 1999,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A E7.",
+  "spotify": "spotify:track:42cxPm9jgbaxIVN77XA1m6",
+  "art": "https://i.scdn.co/image/ab67616d00001e0294983882a5effd77742a9f52",
+  "ug": "https://tabs.ultimate-guitar.com/tab/blur/tender-official-3258425"
+ },
+ {
+  "id": "tequila-sunrise-eagles",
+  "title": "Tequila Sunrise",
+  "artist": "Eagles",
+  "year": 1973,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G D7 Am D7.",
+  "spotify": "spotify:track:1WYokrkFOb9TFVuTrmxTTt",
+  "art": "https://i.scdn.co/image/ab67616d00001e022d73b1bb77cee09f0278be04",
+  "ug": "https://tabs.ultimate-guitar.com/tab/eagles/tequila-sunrise-official-2580984"
+ },
+ {
+  "id": "tessellate-alt-j",
+  "title": "Tessellate",
+  "artist": "alt-J",
+  "year": 2012,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "IVsus2",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Em Asus2.",
+  "spotify": "spotify:track:1o22EcqsCANhwYdaNOSdwS",
+  "art": "https://i.scdn.co/image/ab67616d00001e02609c89ad17eb28c2013c56c6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/alt-j/tessellate-official-4757849"
+ },
+ {
+  "id": "thank-you-led-zeppelin",
+  "title": "Thank You",
+  "artist": "Led Zeppelin",
+  "year": 1969,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "bVIIsus2",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D Csus2 G/B.",
+  "spotify": "spotify:track:4ZkhFcoS3apzze9w2yI9NO",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fc4f17340773c6c3579fea0d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/thank-you-official-2522124"
+ },
+ {
+  "id": "that-s-the-way-led-zeppelin",
+  "title": "That's the Way",
+  "artist": "Led Zeppelin",
+  "year": 1970,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "Imaj7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Gbmaj7 Cb/Gb.",
+  "spotify": "spotify:track:1ZUv3ISx2nFaz0JimVdcoT",
+  "art": "https://i.scdn.co/image/ab67616d00001e0290a50cfe99a4c19ff3cbfbdb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/thats-the-way-official-2909645"
+ },
+ {
+  "id": "the-chain-fleetwood-mac",
+  "title": "The Chain",
+  "artist": "Fleetwood Mac",
+  "year": 1977,
+  "key": "E",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I7",
+    "beats": 4
+   },
+   {
+    "rn": "IV7",
+    "beats": 4
+   },
+   {
+    "rn": "bVII",
+    "beats": 4
+   },
+   {
+    "rn": "bVI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D7 G7 C Bb. Capo 2.",
+  "spotify": "spotify:track:5e9TFTbltYBg2xThimr0rU",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e52a59a28efa4773dd2bfe1b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/the-chain-official-2451091"
+ },
+ {
+  "id": "the-drugs-don-t-work-the-verve",
+  "title": "The Drugs Don't Work",
+  "artist": "The Verve",
+  "year": 1997,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "Vsus4",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "Vsus4",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C Am Em Fadd9 Gsus4 C Gsus4.",
+  "spotify": "spotify:track:15kLz0zNFdtsaJdXKSGmTU",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c038b03e66fb6de76a5b3904",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-verve/the-drugs-dont-work-official-2837255"
+ },
+ {
+  "id": "the-girl-from-ipanema-stan-getz",
+  "title": "The Girl from Ipanema",
+  "artist": "Stan Getz",
+  "year": 1964,
+  "key": "Db",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "II7",
+    "beats": 4,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Db6/Ab Eb9/Bb.",
+  "spotify": "spotify:track:7znjbX9XdoQayIrVNdd50Z",
+  "art": "https://i.scdn.co/image/ab67616d00001e02417cc363d7286a88489dee3c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/stan-getz/the-girl-from-ipanema-official-2523963"
+ },
+ {
+  "id": "the-greatest-cat-power",
+  "title": "The Greatest",
+  "artist": "Cat Power",
+  "year": 2006,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "v",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C Am Em.",
+  "spotify": "spotify:track:0OVXLPJPDCFn1IV6bFxY1N",
+  "art": "https://i.scdn.co/image/ab67616d00001e026e9c987d28f8c6033f424655",
+  "ug": "https://tabs.ultimate-guitar.com/tab/cat-power/the-greatest-official-5496219"
+ },
+ {
+  "id": "the-magician-andy-shauf",
+  "title": "The Magician",
+  "artist": "Andy Shauf",
+  "year": 2016,
+  "key": "A",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "I7",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Am Cmaj7 G7 Cmaj7 Am Cmaj7 G7 Cmaj7. Capo 2.",
+  "spotify": "spotify:track:3dsd09qrt34YuS6NPbQtYq",
+  "art": "https://i.scdn.co/image/ab67616d00001e0215fb6d36c33c0323b1142ac1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/andy-shauf/the-magician-official-5850455"
+ },
+ {
+  "id": "the-man-who-sold-the-world-david-bowie",
+  "title": "The Man Who Sold the World",
+  "artist": "David Bowie",
+  "year": 1970,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A Dm F Dm A.",
+  "spotify": "spotify:track:4mWahKerLaVddUjb8d1Q4Q",
+  "art": "https://i.scdn.co/image/ab67616d00001e0246926e777bd6665f03128d29",
+  "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/the-man-who-sold-the-world-official-2076777"
+ },
+ {
+  "id": "the-middle-zedd",
+  "title": "The Middle",
+  "artist": "Zedd",
+  "year": 2018,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C G D.",
+  "spotify": "spotify:track:09IStsImFySgyp0pIQdqAc",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fbe22d168a743b782a5e856a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/zedd/the-middle-official-2405851"
+ },
+ {
+  "id": "the-nights-avicii",
+  "title": "The Nights",
+  "artist": "Avicii",
+  "year": 2014,
+  "key": "Eb minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C#m B. Capo 2.",
+  "spotify": "spotify:track:0ct6r3EGTcMLPtrXHDvVjc",
+  "art": "https://i.scdn.co/image/ab67616d00001e020ae4f4d42e4a09f3a29f64ad",
+  "ug": "https://tabs.ultimate-guitar.com/tab/avicii/the-nights-official-2506269"
+ },
+ {
+  "id": "the-one-i-love-r-e-m",
+  "title": "The One I Love",
+  "artist": "R.E.M.",
+  "year": 1987,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VIIsus2",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "Isus4",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em Dsus2 Em Esus4.",
+  "spotify": "spotify:track:7707eDBpR4qtNFoQ6nQyeR",
+  "art": "https://i.scdn.co/image/ab67616d00001e02a7c7f94cfccd5ab6de233916",
+  "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/the-one-i-love-official-1949149"
+ },
+ {
+  "id": "the-suburbs-arcade-fire",
+  "title": "The Suburbs",
+  "artist": "Arcade Fire",
+  "year": 2010,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C Am E G. Capo 2.",
+  "spotify": "spotify:track:2UWdUez9MB9yzL7Y81Mcip",
+  "art": "https://i.scdn.co/image/ab67616d00001e02532391d63cfd6d32677f7af6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/arcade-fire/the-suburbs-official-2955794"
+ },
+ {
+  "id": "the-underdog-spoon",
+  "title": "The Underdog",
+  "artist": "Spoon",
+  "year": 2017,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "iii7",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G B5 C Bm7 D G B5 C.",
+  "spotify": "spotify:track:7cDbqFvw45zdLHGltdb1g9",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bdfc7608e3b6e894301be8de",
+  "ug": "https://tabs.ultimate-guitar.com/tab/spoon/the-underdog-official-4054819"
+ },
+ {
+  "id": "the-world-at-large-modest-mouse",
+  "title": "The World at Large",
+  "artist": "Modest Mouse",
+  "year": 2004,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4,
+    "bass": "3"
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F# A#m B/D# A#m.",
+  "spotify": "spotify:track:5op53ANI4exiWqFHKuwWxd",
+  "art": "https://i.scdn.co/image/ab67616d00001e02cc68329bfbf34037df965dc1",
+  "ug": "https://tabs.ultimate-guitar.com/tab/modest-mouse/the-world-at-large-official-5066104"
+ },
+ {
+  "id": "there-is-a-light-that-never-goes-out-the-smiths",
+  "title": "There Is a Light That Never Goes Out",
+  "artist": "The Smiths",
+  "year": 2026,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm7 F G6. Capo 4.",
+  "spotify": "spotify:track:0VP21iWqJpnX8vpmbKPBxE",
+  "art": "https://i.scdn.co/image/ab67616d00001e02526a6833a7c37a60a1444e4c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-smiths/there-is-a-light-that-never-goes-out-official-2141083"
+ },
+ {
+  "id": "these-days-jackson-browne",
+  "title": "These Days",
+  "artist": "Jackson Browne",
+  "year": 2014,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "vi7",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C G/B Am7 G F. Capo 5.",
+  "spotify": "spotify:track:5XVB6wUIkbaXRotfmHvDNf",
+  "art": "https://i.scdn.co/image/ab67616d00001e024eb24bfd49d01e0f3c57a410",
+  "ug": "https://tabs.ultimate-guitar.com/tab/jackson-browne/these-days-official-3347273"
+ },
+ {
+  "id": "things-behind-the-sun-nick-drake",
+  "title": "Things Behind the Sun",
+  "artist": "Nick Drake",
+  "year": 1972,
+  "key": "C# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "Isus2",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "VIsus2",
+    "beats": 4
+   },
+   {
+    "rn": "V7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Asus2 Am E F6sus2 E7. Capo 4.",
+  "spotify": "spotify:track:2s89qv9maW8RMCoaxtvNtn",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e369195caf5d169bf5e9eafc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/nick-drake/things-behind-the-sun-official-4262890"
+ },
+ {
+  "id": "this-charming-man-the-smiths",
+  "title": "This Charming Man",
+  "artist": "The Smiths",
+  "year": 2021,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "ii7",
+    "beats": 2
+   },
+   {
+    "rn": "IVmaj7",
+    "beats": 2
+   },
+   {
+    "rn": "iii",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G D Am7 Cmaj7 Bm D G D. Capo 2.",
+  "spotify": "spotify:track:7rxSFGldptqUFBTFoXWHn8",
+  "art": "https://i.scdn.co/image/ab67616d00001e02efcbf0d4022c880739f80819",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-smiths/this-charming-man-official-2197459"
+ },
+ {
+  "id": "time-to-pretend-mgmt",
+  "title": "Time to Pretend",
+  "artist": "MGMT",
+  "year": 2007,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1-1",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1-1: D G.",
+  "spotify": "spotify:track:4iG2gAwKXsOcijVaVXzRPW",
+  "art": "https://i.scdn.co/image/ab67616d00001e02abdf7749aeb5229dbf305f03",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mgmt/time-to-pretend-official-2279869"
+ },
+ {
+  "id": "times-like-these-foo-fighters",
+  "title": "Times Like These",
+  "artist": "Foo Fighters",
+  "year": 2002,
+  "key": "B minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D G5 Bm F#5 G5 Bm F#5 G5.",
+  "spotify": "spotify:track:67vYdAAM3oGsEImCRfbtsF",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bfff163b0602156a983fa079",
+  "ug": "https://tabs.ultimate-guitar.com/tab/foo-fighters/times-like-these-official-1944325"
+ },
+ {
+  "id": "titanium-david-guetta",
+  "title": "Titanium",
+  "artist": "David Guetta",
+  "year": 2023,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C G Am C Em Am. Capo 3.",
+  "spotify": "spotify:track:4drgH8MGED51vOGSJZKUZy",
+  "art": "https://i.scdn.co/image/ab67616d00001e025816efc0528991122f4a360f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/david-guetta/titanium-official-1960181"
+ },
+ {
+  "id": "today-the-smashing-pumpkins",
+  "title": "Today",
+  "artist": "The Smashing Pumpkins",
+  "year": 2001,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Eb Bb Ab Eb Bb Ab Eb Bb.",
+  "spotify": "spotify:track:1XPta4VLT78HQnVFd1hlsK",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c48f42fdafcffcedbdbce025",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/today-official-2479631"
+ },
+ {
+  "id": "tonight-tonight-the-smashing-pumpkins",
+  "title": "Tonight, Tonight",
+  "artist": "The Smashing Pumpkins",
+  "year": 2001,
+  "key": "Eb minor",
+  "tempo": 100,
+  "section": "intro 1",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 2,
+    "bass": "3"
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 2,
+    "bass": "3"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro 1: Gb Ebm Bmaj7/Eb Ebm Bmaj7/Eb.",
+  "spotify": "spotify:track:5kguToT39QaxxYEuPwFkp6",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c48f42fdafcffcedbdbce025",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/tonight-tonight-official-2584962"
+ },
+ {
+  "id": "toxic-britney-spears",
+  "title": "Toxic",
+  "artist": "Britney Spears",
+  "year": 2003,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Eb G Cm.",
+  "spotify": "spotify:track:6I9VzXrHxO9rA9A5euc8Ak",
+  "art": "https://i.scdn.co/image/ab67616d00001e02efc6988972cb04105f002cd4",
+  "ug": "https://tabs.ultimate-guitar.com/tab/britney-spears/toxic-official-2442043"
+ },
+ {
+  "id": "truckin-grateful-dead",
+  "title": "Truckin'",
+  "artist": "Grateful Dead",
+  "year": 1970,
+  "key": "E",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, chorus: E A B A E.",
+  "spotify": "spotify:track:1I6l01BaBgBCVkfQCpIlR6",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fd3f66a9ce4371f7ffa0346f",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/truckin-official-3323219"
+ },
+ {
+  "id": "tumbling-dice-the-rolling-stones",
+  "title": "Tumbling Dice",
+  "artist": "The Rolling Stones",
+  "year": 1972,
+  "key": "B",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G5 D G5 D G5 C D. Capo 4.",
+  "spotify": "spotify:track:4hq0S6wznq7SHDyMOFXL9i",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ba42bfcfeed19018b1f8cab8",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/tumbling-dice-official-2504781"
+ },
+ {
+  "id": "tupelo-honey-van-morrison",
+  "title": "Tupelo Honey",
+  "artist": "Van Morrison",
+  "year": 2015,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb Dm/A Eb.",
+  "spotify": "spotify:track:1fRnysUhiECVtlgdFN8Io4",
+  "art": "https://i.scdn.co/image/ab67616d00001e02d29dc42d61470e946adbbefc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/van-morrison/tupelo-honey-official-3981733"
+ },
+ {
+  "id": "two-princes-spin-doctors",
+  "title": "Two Princes",
+  "artist": "Spin Doctors",
+  "year": 1991,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: D Bm A G.",
+  "spotify": "spotify:track:4ePP9So5xRzspjLFVVbj90",
+  "art": "https://i.scdn.co/image/ab67616d00001e02436e38032cf3389d01426eca",
+  "ug": "https://tabs.ultimate-guitar.com/tab/spin-doctors/two-princes-official-2557584"
+ },
+ {
+  "id": "uncle-john-s-band-grateful-dead",
+  "title": "Uncle John's Band",
+  "artist": "Grateful Dead",
+  "year": 1970,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G Bm C D.",
+  "spotify": "spotify:track:0kp728Knw5PYvU3QzMZ0yJ",
+  "art": "https://i.scdn.co/image/ab67616d00001e024d3659e33c2d63d5b54d1f2c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/uncle-johns-band-official-2873561"
+ },
+ {
+  "id": "under-cover-of-darkness-the-strokes",
+  "title": "Under Cover of Darkness",
+  "artist": "The Strokes",
+  "year": 2011,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: B C#m.",
+  "spotify": "spotify:track:6u0x5ad9ewHvs3z6u9Oe3c",
+  "art": "https://i.scdn.co/image/ab67616d00001e02397d02cfe1aab2923f9d1697",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-strokes/under-cover-of-darkness-official-1964919"
+ },
+ {
+  "id": "under-pressure-queen",
+  "title": "Under Pressure",
+  "artist": "Queen",
+  "year": 1982,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D A G A.",
+  "spotify": "spotify:track:2nrG5UtAcqXbYttu7MXP1p",
+  "art": "https://i.scdn.co/image/ab67616d00001e0244c0a9843fac69db4d56d14e",
+  "ug": "https://tabs.ultimate-guitar.com/tab/queen/under-pressure-official-2461852"
+ },
+ {
+  "id": "under-the-milky-way-the-church",
+  "title": "Under the Milky Way",
+  "artist": "The Church",
+  "year": 1988,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "Isus4",
+    "beats": 4
+   },
+   {
+    "rn": "VImaj7",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am Asus4 Fmaj7 G.",
+  "spotify": "spotify:track:1RCtHLyq1xIbgGMrYRrKJ2",
+  "art": "https://i.scdn.co/image/ab67616d00001e024b75b4c598bbf7c852d3b3fe",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-church/under-the-milky-way-official-2883731"
+ },
+ {
+  "id": "undone-the-sweater-song-weezer",
+  "title": "Undone - The Sweater Song",
+  "artist": "Weezer",
+  "year": 1994,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F# B C# B.",
+  "spotify": "spotify:track:5WhtlIoxoZrMmuaWWEQhwV",
+  "art": "https://i.scdn.co/image/ab67616d00001e02345536847e60f622ee0eae96",
+  "ug": "https://tabs.ultimate-guitar.com/tab/weezer/undone-the-sweater-song-official-2093161"
+ },
+ {
+  "id": "uptown-funk-mark-ronson",
+  "title": "Uptown Funk",
+  "artist": "Mark Ronson",
+  "year": 2015,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "IV7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm7 G7.",
+  "spotify": "spotify:track:32OlwWuMpZ6b0aN2RZOeMS",
+  "art": "https://i.scdn.co/image/ab67616d00001e029860171ddfee17f77a570cf6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mark-ronson/uptown-funk-official-2449279"
+ },
+ {
+  "id": "us-and-them-pink-floyd",
+  "title": "Us and Them",
+  "artist": "Pink Floyd",
+  "year": 1973,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "II7sus2",
+    "beats": 2,
+    "bass": "7"
+   },
+   {
+    "rn": "imaj7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D E7sus2/D Dmmaj7 G/D.",
+  "spotify": "spotify:track:1TKTiKp3zbNgrBH2IwSwIx",
+  "art": "https://i.scdn.co/image/ab67616d00001e02db216ca805faf5fe35df4ee6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pink-floyd/us-and-them-official-2209923"
+ },
+ {
+  "id": "use-me-bill-withers",
+  "title": "Use Me",
+  "artist": "Bill Withers",
+  "year": 1972,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "IV7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em7 A7.",
+  "spotify": "spotify:track:4gRA0i5sxx3jAhHaVjPnUN",
+  "art": "https://i.scdn.co/image/ab67616d00001e0272641ed682401fc46c18ac12",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bill-withers/use-me-official-2117257"
+ },
+ {
+  "id": "vampire-olivia-rodrigo",
+  "title": "vampire",
+  "artist": "Olivia Rodrigo",
+  "year": 2023,
+  "key": "F",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F A Bb Bbm.",
+  "spotify": "spotify:track:1kuGVB7EU95pJObxwvfwKS",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e85259a1cae29a8d91f2093d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/olivia-rodrigo/vampire-official-4844345"
+ },
+ {
+  "id": "ventura-highway-america",
+  "title": "Ventura Highway",
+  "artist": "America",
+  "year": 1972,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "Imaj7",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dmaj7/A G6.",
+  "spotify": "spotify:track:4IU1RL4BKvFyXtbTwaHAvW",
+  "art": "https://i.scdn.co/image/ab67616d00001e025e2289475a30c75dfca7d228",
+  "ug": "https://tabs.ultimate-guitar.com/tab/america/ventura-highway-official-2598216"
+ },
+ {
+  "id": "veridis-quo-daft-punk",
+  "title": "Veridis Quo",
+  "artist": "Daft Punk",
+  "year": 2001,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Dm G Am F Am/E.",
+  "spotify": "spotify:track:2LD2gT7gwAurzdQDQtILds",
+  "art": "https://i.scdn.co/image/ab67616d00001e021e81bff9807a9e629fce5ade",
+  "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/veridis-quo-official-5606436"
+ },
+ {
+  "id": "waiting-for-love-avicii",
+  "title": "Waiting for Love",
+  "artist": "Avicii",
+  "year": 2015,
+  "key": "F# minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: F#m C# D.",
+  "spotify": "spotify:track:2P4OICZRVAQcYAV2JReRfj",
+  "art": "https://i.scdn.co/image/ab67616d00001e025393c5d3cac806092a9bc468",
+  "ug": "https://tabs.ultimate-guitar.com/tab/avicii/waiting-for-love-official-2599509"
+ },
+ {
+  "id": "wake-up-arcade-fire",
+  "title": "Wake Up",
+  "artist": "Arcade Fire",
+  "year": 2004,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C Am F C.",
+  "spotify": "spotify:track:6Hmj7SrLRbreLVfVS7mV1S",
+  "art": "https://i.scdn.co/image/ab67616d00001e027870762a58313ad6f981d664",
+  "ug": "https://tabs.ultimate-guitar.com/tab/arcade-fire/wake-up-official-3239978"
+ },
+ {
+  "id": "walk-of-life-dire-straits",
+  "title": "Walk of Life",
+  "artist": "Dire Straits",
+  "year": 1985,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: E A B A B7.",
+  "spotify": "spotify:track:423o3ZHIaBtGXyhF1uH41a",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fb995d2871f084b34afae3b3",
+  "ug": "https://tabs.ultimate-guitar.com/tab/dire-straits/walk-of-life-official-2210953"
+ },
+ {
+  "id": "walk-on-the-wild-side-lou-reed",
+  "title": "Walk on the Wild Side",
+  "artist": "Lou Reed",
+  "year": 1972,
+  "key": "C",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: C F6 C F6 C D F6 D.",
+  "spotify": "spotify:track:5p3JunprHCxClJjOmcLV8G",
+  "art": "https://i.scdn.co/image/ab67616d00001e02fe5213edd4f8550a8030efcf",
+  "ug": "https://tabs.ultimate-guitar.com/tab/lou-reed/walk-on-the-wild-side-official-2157833"
+ },
+ {
+  "id": "waltz-2-xo-elliott-smith",
+  "title": "Waltz #2 (XO)",
+  "artist": "Elliott Smith",
+  "year": 1998,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Gm Bb Eb Bb Eb Bb F7 Bb.",
+  "spotify": "spotify:track:5AMrnF761nziCWUfjBgRUI",
+  "art": "https://i.scdn.co/image/ab67616d00001e02cdf1be0ff556d169eade4368",
+  "ug": "https://tabs.ultimate-guitar.com/tab/elliott-smith/waltz-2-xo-official-3893375"
+ },
+ {
+  "id": "waterloo-sunset-the-kinks",
+  "title": "Waterloo Sunset",
+  "artist": "The Kinks",
+  "year": 1967,
+  "key": "B",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 4,
+  "chords": [
+   {
+    "rn": "I7",
+    "beats": 2
+   },
+   {
+    "rn": "I7",
+    "beats": 2,
+    "bass": "7"
+   },
+   {
+    "rn": "I7",
+    "beats": 2
+   },
+   {
+    "rn": "I7",
+    "beats": 2,
+    "bass": "5"
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: B7 B7/A B7/G# B7/F# B7/E B/D# B/C# B7.",
+  "spotify": "spotify:track:3G0EALIIp5DAeIERxXBHmo",
+  "art": "https://i.scdn.co/image/ab67616d00001e027c29f8edb00aedba1e901f32",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-kinks/waterloo-sunset-official-2152823"
+ },
+ {
+  "id": "watermelon-sugar-harry-styles",
+  "title": "Watermelon Sugar",
+  "artist": "Harry Styles",
+  "year": 2019,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "iv7",
+    "beats": 4
+   },
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Dm7 Am7 C G.",
+  "spotify": "spotify:track:6UelLqGlWMcVH1E5c4H7lY",
+  "art": "https://i.scdn.co/image/ab67616d00001e0225180571abce9472f61bd722",
+  "ug": "https://tabs.ultimate-guitar.com/tab/harry-styles/watermelon-sugar-official-2940077"
+ },
+ {
+  "id": "we-re-going-to-be-friends-the-white-stripes",
+  "title": "We're Going to Be Friends",
+  "artist": "The White Stripes",
+  "year": 2001,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G C G D C G D C.",
+  "spotify": "spotify:track:13lZDbwonGhOflQLQIfdtZ",
+  "art": "https://i.scdn.co/image/ab67616d00001e02033dbfae219de887bd94952a",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-white-stripes/were-going-to-be-friends-official-2003431"
+ },
+ {
+  "id": "weird-fishes-arpeggi-radiohead",
+  "title": "Weird Fishes / Arpeggi",
+  "artist": "Radiohead",
+  "year": 2007,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "ii7",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "IIImaj7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em7 F#m7 A Gmaj7.",
+  "spotify": "spotify:track:4wajJ1o7jWIg62YqpkHC7S",
+  "art": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/weird-fishes-arpeggi-official-2254571"
+ },
+ {
+  "id": "werewolves-of-london-warren-zevon",
+  "title": "Werewolves of London",
+  "artist": "Warren Zevon",
+  "year": 1978,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D C G.",
+  "spotify": "spotify:track:6kotXaSQaGYxE62hVpdHWu",
+  "art": "https://i.scdn.co/image/ab67616d00001e02719d1d37e0e4ecf4d01c99cb",
+  "ug": "https://tabs.ultimate-guitar.com/tab/warren-zevon/werewolves-of-london-official-2156793"
+ },
+ {
+  "id": "what-s-so-funny-bout-peace-love-and-understanding-elvis-costello-the-attractions",
+  "title": "(What's So Funny 'Bout) Peace, Love and Understanding",
+  "artist": "Elvis Costello & The Attractions",
+  "year": 1979,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C.",
+  "spotify": "spotify:track:0xedT3pJWCBjoh0Nyqeuxj",
+  "art": "https://i.scdn.co/image/ab67616d00001e02932b791e8e5907f61ac1bc29",
+  "ug": "https://tabs.ultimate-guitar.com/tab/elvis-costello-the-attractions/whats-so-funny-bout-peace-love-and-understanding-official-4033255"
+ },
+ {
+  "id": "when-the-party-s-over-billie-eilish",
+  "title": "when the party's over",
+  "artist": "Billie Eilish",
+  "year": 2019,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: A B C#m B E B.",
+  "spotify": "spotify:track:43zdsphuZLzwA9k4DJhU0I",
+  "art": "https://i.scdn.co/image/ab67616d00001e0250a3147b4edd7701a876c6ce",
+  "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/when-the-partys-over-official-2499228"
+ },
+ {
+  "id": "white-gloves-khruangbin",
+  "title": "White Gloves",
+  "artist": "Khruangbin",
+  "year": 2015,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "IV7",
+    "beats": 4
+   },
+   {
+    "rn": "v7",
+    "beats": 4
+   },
+   {
+    "rn": "i7",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C7 Dm7 Gm7.",
+  "spotify": "spotify:track:7g18n5nxV5ep8ugBR3BmHD",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e08ee206ad63148105336a19",
+  "ug": "https://tabs.ultimate-guitar.com/tab/khruangbin/white-gloves-official-2534844"
+ },
+ {
+  "id": "white-winter-hymnal-fleet-foxes",
+  "title": "White Winter Hymnal",
+  "artist": "Fleet Foxes",
+  "year": 2008,
+  "key": "E",
+  "tempo": 100,
+  "section": "verse",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse: E F#m A B E A E.",
+  "spotify": "spotify:track:0GegHVxeozw3rdjte45Bfx",
+  "art": "https://i.scdn.co/image/ab67616d00001e023818b4c636e2a7fdea3bf965",
+  "ug": "https://tabs.ultimate-guitar.com/tab/fleet-foxes/white-winter-hymnal-official-2077317"
+ },
+ {
+  "id": "wild-world-cat-stevens",
+  "title": "Wild World",
+  "artist": "Cat Stevens",
+  "year": 1970,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am D G C F Dm E.",
+  "spotify": "spotify:track:7mjSHL2Eb0kAwiKbvNNyD9",
+  "art": "https://i.scdn.co/image/ab67616d00001e02e7248738c2f7ce3b5584b15d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/cat-stevens-yusuf-islam/wild-world-official-1951405"
+ },
+ {
+  "id": "wildest-dreams-taylor-swift",
+  "title": "Wildest Dreams",
+  "artist": "Taylor Swift",
+  "year": 2014,
+  "key": "F minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Db Fm Eb.",
+  "spotify": "spotify:track:59HjlYCeBsxdI0fcm3zglw",
+  "art": "https://i.scdn.co/image/ab67616d00001e029abdf14e6058bd3903686148",
+  "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/wildest-dreams-official-2451741"
+ },
+ {
+  "id": "wishlist-pearl-jam",
+  "title": "Wishlist",
+  "artist": "Pearl Jam",
+  "year": 1998,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C F.",
+  "spotify": "spotify:track:7hObovvcbBpXgZHQ9if4WU",
+  "art": "https://i.scdn.co/image/ab67616d00001e0261f735e295a29d948d4f4223",
+  "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/wishlist-official-2511960"
+ },
+ {
+  "id": "witchy-woman-eagles",
+  "title": "Witchy Woman",
+  "artist": "Eagles",
+  "year": 1972,
+  "key": "G minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "V7",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: Gm D9 C Bb.",
+  "spotify": "spotify:track:436yrzQWA32vb1sTZKXg9r",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c13acd642ba9f6f5f127aa1b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/eagles/witchy-woman-official-2570262"
+ },
+ {
+  "id": "without-you-avicii",
+  "title": "Without You",
+  "artist": "Avicii",
+  "year": 2021,
+  "key": "D",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 6,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: D Bm G D A Bm G D.",
+  "spotify": "spotify:track:0R0AjmZEuxboyZJgB3Dz5m",
+  "art": "https://i.scdn.co/image/ab67616d00001e02648e71074124bb731e480478",
+  "ug": "https://tabs.ultimate-guitar.com/tab/avicii/without-you-official-2450567"
+ },
+ {
+  "id": "wristwatch-mj-lenderman",
+  "title": "Wristwatch",
+  "artist": "MJ Lenderman",
+  "year": 2024,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "iv",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Bb Dm Gm F.",
+  "spotify": "spotify:track:4j2DQgFAyVuKOBFpq4vEPR",
+  "art": "https://i.scdn.co/image/ab67616d00001e02b18fae872e1700b83e72a15b",
+  "ug": "https://tabs.ultimate-guitar.com/tab/mj-lenderman/wristwatch-official-5422674"
+ },
+ {
+  "id": "you-ain-t-goin-nowhere-bob-dylan",
+  "title": "You Ain't Goin' Nowhere",
+  "artist": "Bob Dylan",
+  "year": 1975,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G Am C.",
+  "spotify": "spotify:track:5WeQHNrOlxBv9NZTrz6xgE",
+  "art": "https://i.scdn.co/image/ab67616d00001e02cd5c1c3ca27371ffdcdc5783",
+  "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/you-aint-goin-nowhere-official-3858161"
+ },
+ {
+  "id": "you-really-got-me-the-kinks",
+  "title": "You Really Got Me",
+  "artist": "The Kinks",
+  "year": 1964,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, verse 1: G A D.",
+  "spotify": "spotify:track:6tZdL3Zp8JgrfDbsSeSV1S",
+  "art": "https://i.scdn.co/image/ab67616d00001e023b662e4bab01440eb4f31793",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-kinks/you-really-got-me-official-1988501"
+ },
+ {
+  "id": "you-ve-got-a-friend-james-taylor",
+  "title": "You've Got a Friend",
+  "artist": "James Taylor",
+  "year": 1976,
+  "key": "A",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: G C. Capo 2.",
+  "spotify": "spotify:track:5ONuwMIXAukbMNQCCSjjm0",
+  "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
+  "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/youve-got-a-friend-official-2481691"
  }
 ];
