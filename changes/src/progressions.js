@@ -2,7 +2,7 @@
 // Keyed by mode ("M" major / "m" minor) + the numeral sequence with extensions stripped and
 // consecutive repeats collapsed, e.g. "M:vi-V-I". Unknown patterns fall back to explain().
 
-import { parseRn, chordInfo } from './theory.js';
+import { parseRn, chordInfo, pcName } from './theory.js';
 
 export const PATTERNS = {
   // ---------------------------------------------------------------- two chords
@@ -184,6 +184,63 @@ export const PATTERNS = {
     'I to IV, with the IV played over its third so the bass only drops a minor third (C to A) instead of leaping up a fourth. Same lift, smaller step. Hearing that the bass went down while the harmony went “up” to IV is the whole lesson.' },
   'M:I-V/3-IV': { name: 'I–V/3–IV', text:
     'Home, the dominant on its third, then IV. Spelled E/G#, the second chord is a first-inversion V: the bass steps down a half step from A to G# and the chord passes rather than resolves, then leaps to D. It shares two notes and its bass with C#m, so hearing it as iii is fair; the point is the bass line, A down to G#, and the fact that nothing cadences.' },
+  // ---------------------------------------------------------------- common patterns from the expanded corpus
+  'm:i-IV': { name: 'i–IV (Dorian vamp)', text:
+    'A minor chord and a major chord a fourth above it, rocking back and forth. That major IV is the Dorian note: the sixth degree raised, so the loop sounds cooler and less tragic than plain minor. Santana, Pearl Jam and R.E.M. all sit on it for whole verses because it grooves without ever needing to resolve.' },
+  'm:i-VII': { name: 'i–VII', text:
+    'Minor home and the major chord a whole step below it. There is no leading tone, so VII does not pull back to i; it just leans down and steps back up, like a slow nod. The classic Aeolian rock vamp: dark, steady, built for a riff or a chant on top.' },
+  'M:I-II': { name: 'I–II', text:
+    'The tonic and a major chord a whole step up. II is not in the major scale (the diatonic chord there is minor), so it sounds bright and slightly raised, like Lydian mode. Two chords, no resolution, a lot of shimmer: Fleetwood Mac and Nirvana both use it as a floating vamp.' },
+  'M:I-vi': { name: 'I–vi', text:
+    'Home and its relative minor. They share two of three notes, so the change is small: the bass drops a minor third and the colour dims. It is the first half of the ’50s progression with the cadence left off, which is why it feels like a mood rather than a journey.' },
+  'm:i-III': { name: 'i–III', text:
+    'A minor chord and its relative major, a minor third up. They share two notes, so the harmony barely moves while the bass climbs and the light changes. Ambiguous on purpose: hear it long enough and you stop knowing which one is home. Nirvana and Depeche Mode use exactly that uncertainty.' },
+  'M:IV-I-V': { name: 'IV–I–V', text:
+    'The three primary chords with the lift first: IV drops to I, then V pulls back toward IV. Starting on IV makes home arrive in the middle of the loop, so the cycle feels like a wave that keeps re-cresting. Blues turnarounds and pop choruses both use this order.' },
+  'm:VI-i': { name: 'VI–i', text:
+    'The sixth degree of a minor key resolving down to the tonic. VI is a major chord, so the loop alternates a bright chord with a dark one; the bass drops a major third (F down to A in A minor) and the mood drops with it.' },
+  'm:i-VII-IV': { name: 'i–VII–IV', text:
+    'Minor home, the major chord a step below, then the major IV. The IV is the Dorian colour again, and together the three chords make the hard-rock vamp behind Mary Jane’s Last Dance and Sharp Dressed Man: dark but not sad, with room for a riff.' },
+  'M:V-I': { name: 'V–I', text:
+    'The dominant resolving to the tonic, over and over: the most basic cadence in Western music turned into a loop. Because the phrase starts on V, every cycle begins with tension and ends with release, which is why it feels like a hook even with only two chords.' },
+  'm:i-III-VII': { name: 'i–III–VII', text:
+    'Minor tonic, relative major, then the chord a step below home. All three are natural minor; nothing has a leading tone, so the loop circles rather than resolves. The VII at the end sets up a soft landing on i, a step down. Refugee and Radioactive both drive on this.' },
+  'M:I-ii': { name: 'I–ii', text:
+    'Home and the minor chord a step above it. ii shares no notes with I, so the change is a real shift even though the bass only moves a whole step. It is the sound of a verse that wants to go to IV or V but keeps deciding not to: relaxed, a little unresolved.' },
+  'm:i-VI-III': { name: 'i–VI–III', text:
+    'Minor home, then VI and III, both major and both from the relative major key. The bass leaps up a major sixth and then drops a fourth. It sounds like the minor four-chord loop with the V left off, so it never quite gets its cadence; the return to i is a fall rather than a resolution.' },
+  'M:vi-I-IV-I': { name: 'vi–I–IV–I', text:
+    'Starts on the relative minor, brightens to I, lifts to IV, and settles home. No V at all, so the loop is all warmth and no push: two plagal landings on I per cycle. The Growlers use this shape for their sunniest songs.' },
+  'M:I-bVI': { name: 'I–bVI', text:
+    'The tonic and a major chord on the flattened sixth, borrowed from the parallel minor. The two chords share one note and sit a major third apart, a relation that sounds sudden and cinematic; grunge used it for menace, film scores use it for awe.' },
+  'm:i-iv': { name: 'i–iv', text:
+    'Minor home and minor subdominant, the darkest two-chord loop there is. No major chord anywhere, no leading tone, just a step up a fourth and back. Billie Jean sits on it for the entire verse and lets the bass line do the talking.' },
+  'M:IV-I': { name: 'IV–I', text:
+    'The “Amen” cadence as a loop: IV falling to I, again and again. It is the softest resolution in the key, no leading tone, just the bass dropping a fourth. Gentle, hymn-like, and easy to lose your place in because both chords feel like home.' },
+  'M:I-IV-bVII-IV': { name: 'I–IV–bVII–IV', text:
+    'Home, the lift, a borrowed bVII, and the lift again. The bVII is the rock-and-roll chord, the flattened seventh that major keys do not contain; here it arrives from IV by a whole step down and returns the same way. Satisfaction and Crazy Little Thing both swagger on it.' },
+  'M:IV/5-I': { name: 'IV/5–I (pedal)', text:
+    'IV with the tonic in the bass, resolving to I. The bass never moves; only the chord above it changes, which is a pedal point. It sounds suspended and open, and it is a good test of whether you are hearing the harmony or just following the low note.' },
+  'm:VI-i-VI-i': { name: 'VI–i', text:
+    'Alternating the major sixth-degree chord with the minor tonic. The pair share one note; the bass drops a major third into home each time. Anthemic dance music likes it because the major chord feels like a lift and the minor one like the landing.' },
+  'M:I-vi-IV-I': { name: 'I–vi–IV–I', text:
+    'Home, the relative minor, the lift, home. The ’50s progression with the V replaced by a return to I, so it resolves plagally and softly. Two shared notes between I and vi make the first change subtle; the IV–I at the end is the only real motion.' },
+  'M:I-bIII-IV': { name: 'I–bIII–IV', text:
+    'Tonic, a borrowed major chord on the flattened third, then IV. The bIII comes from the parallel minor and sits a half step below IV, so the bass climbs I, bIII, IV in a chromatic-feeling step. La Grange and Everything In Its Right Place both use that lurch.' },
+  'M:I-V-I-V': { name: 'I–V', text:
+    'Home and away, twice. V carries the leading tone, so each time you sit on it the ear waits to be let back to I. Reduced to two chords it is pure tension-and-release, which suits a driving verse.' },
+  'm:VI-VII-i-VII': { name: 'VI–VII–i–VII', text:
+    'Two major chords climbing by step into the minor tonic, then a step back down. The VI–VII–i rise is the “power ballad” ascent (think the end of every 80s chorus), and dropping back to VII keeps the loop from closing.' },
+  'M:I-iii-V': { name: 'I–iii–V', text:
+    'Home, the soft minor chord on the third, then the dominant. iii shares two notes with I, so the first move is a shading; V then supplies the pull. It has a quiet, slightly formal feel, like a hymn that got a backbeat.' },
+  'm:V-i': { name: 'V–i (minor cadence)', text:
+    'A major dominant falling into a minor tonic, looped. The leading tone in V makes the pull strong and the minor landing makes it dramatic: the flamenco and tango cadence. Perfect Day and Havana both lean on it.' },
+  'M:I-bVII-I-bVII': { name: 'I–bVII', text:
+    'The tonic and the major chord a whole step below it, borrowed from Mixolydian. There is no leading tone, so it does not resolve; it rocks. Folk and country use it for a plainspoken, open sound, and Dylan and Lightfoot both hang whole verses on it.' },
+  'm:i-VI': { name: 'i–VI', text:
+    'Minor home and the major chord on the sixth degree. They share one note; the bass leaps up a major sixth and the light comes on, then it drops back into shadow. Rhiannon is this loop for its whole verse.' },
+  'M:I-ii-IV': { name: 'I–ii–IV', text:
+    'Home, the minor chord a step up, then the lift. ii and IV share two notes, so the middle move is a brightening of the same colour rather than a new chord. No V, so the loop never pushes; it drifts back to I.' },
 };
 
 // -------------------------------------------------------------- fallback ----
@@ -223,13 +280,46 @@ export function explain(chords, key) {
   if (PATTERNS[kb]) return PATTERNS[kb];
   const k = patternKey(chords, key);
   if (PATTERNS[k]) return { name: PATTERNS[k].name, text: PATTERNS[k].text + inversionNote(chords, key) };
-  const roles = key.mode === 'minor' ? ROLE_MINOR : ROLE_MAJOR;
-  const seq = k.slice(2).split('-');
-  const parts = seq.map(rn => { const r = roles[rn]; return r ? `${rn} is ${r}` : rn; });
-  const hasV = seq.includes('V') || seq.includes('vii°');
-  const borrowed = seq.filter(rn => /^b|^iv$|^II$|^III$|^VI$/.test(rn) && key.mode === 'major');
-  let text = `${seq.join('–')}. ${parts.join('; ')}.`;
-  text += hasV ? ' There is a real dominant in the loop, so it resolves each time round.' : ' There is no dominant with a leading tone, so the loop circles rather than resolves.';
-  if (borrowed.length) text += ` ${borrowed.join(' and ')} come from outside the key, which is where the colour is.`;
-  return { name: seq.join('–'), text };
+  return generated(chords, key);
+}
+
+const DEG_NAME = ['tonic', 'second degree', 'third degree', 'fourth degree', 'fifth degree', 'sixth degree', 'seventh degree'];
+function interval(a, b) {
+  const d = (b - a + 12) % 12;
+  return { 0: 'stays put', 1: 'up a half step', 2: 'up a whole step', 3: 'up a minor third', 4: 'up a major third', 5: 'up a fourth', 6: 'a tritone away', 7: 'down a fourth', 8: 'down a major third', 9: 'down a minor third', 10: 'down a whole step', 11: 'down a half step' }[d];
+}
+function role(rn, mode) {
+  const c = strip(rn);
+  const major = { I: 'home', ii: 'a pre-dominant minor chord', iii: 'the soft minor chord on the third', IV: 'the lift', V: 'the dominant, with the leading tone that pulls home', vi: 'the relative minor', 'vii°': 'the leading-tone chord', bVII: 'a borrowed flat-seven chord (Mixolydian)', bVI: 'a borrowed chord from the parallel minor', bIII: 'a borrowed chord from the parallel minor', iv: 'the minor subdominant, borrowed from the parallel minor', II: 'a major II, the bright Lydian chord', III: 'a major III, a secondary dominant aimed at vi', VI: 'a major VI, a secondary dominant aimed at ii', v: 'a minor dominant with no leading tone', i: 'a minor tonic', 'V/V': 'the dominant of the dominant' };
+  const minor = { i: 'home', 'ii°': 'the diminished chord on the second degree', III: 'the relative major', iv: 'the minor subdominant', v: 'the minor dominant, no leading tone', V: 'the major dominant, with a leading tone that pulls to i', VI: 'the major chord on the sixth degree', VII: 'the subtonic, a soft stand-in for V', IV: 'a major IV, the Dorian colour', II: 'a major II', bII: 'the Neapolitan chord', I: 'a major tonic', ii: 'a minor ii, Dorian', 'vii°': 'the leading-tone chord' };
+  return (mode === 'minor' ? minor : major)[c] || c;
+}
+
+function generated(chords, key) {
+  const infos = chords.map(c => chordInfo(c, key));
+  const seq = patternKey(chords, key, true).slice(2).split('-');
+  const distinct = [...new Set(seq)];
+  const minor = key.mode === 'minor';
+  const hasDom = seq.some(r => /^V(?!I)/.test(r) || r === 'vii°');
+  const borrowed = distinct.filter(r => /^b/.test(r) || (!minor && /^(iv|II|III|VI|v)$/.test(r)) || (minor && /^(IV|II|bII|I|ii)$/.test(r)));
+  const inv = chords.filter(c => c.bass && c.bass !== 'root');
+  const parts = [];
+  parts.push(`${seq.join('–')} in ${minor ? 'a minor key' : 'a major key'}: ${distinct.length} chord${distinct.length > 1 ? 's' : ''}, ${hasDom ? 'with a real dominant, so each cycle resolves' : 'with no leading-tone dominant, so the loop circles rather than resolves'}.`);
+  // the moves
+  const moves = [];
+  for (let i = 0; i < chords.length; i++) {
+    const a = chords[i], b = chords[(i + 1) % chords.length];
+    if (chords.length === 1) break;
+    const ia = infos[i], ib = infos[(i + 1) % chords.length];
+    const bassA = ia.bassPc, bassB = ib.bassPc;
+    if (i === chords.length - 1 && chords.length === 2) break; // the return move of a two-chord loop is just the reverse
+    moves.push(`${strip(a.rn)} to ${strip(b.rn)}: the bass goes ${interval(bassA, bassB)} (${pcName(bassA, key)} to ${pcName(bassB, key)})`);
+  }
+  if (moves.length) parts.push(moves.join('; ') + '.');
+  // roles of the interesting chords
+  const notable = distinct.filter(r => !/^(I|i|IV|V|vi|iv)$/.test(strip(r)) || /^b/.test(r)).slice(0, 3);
+  if (notable.length) parts.push(notable.map(r => `${strip(r)} is ${role(r, key.mode)}`).join('; ') + '.');
+  if (borrowed.length) parts.push(`${borrowed.map(strip).join(' and ')} come${borrowed.length === 1 ? 's' : ''} from outside the key; that is where the colour is.`);
+  if (inv.length) parts.push(inversionNote(chords, key).trim());
+  return { name: seq.join('–'), text: parts.join(' ') };
 }

@@ -2948,7 +2948,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Eb Ab.",
+  "note": "Intro (official chart): Eb, Ab. Bass line: Eb, Ab.",
   "spotify": "spotify:track:3h5zik31hTTat9jmpCZZNC",
   "art": "https://i.scdn.co/image/ab67616d00001e02c48f42fdafcffcedbdbce025",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/1979-official-2210253"
@@ -2976,7 +2976,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em D6add9/F#.",
+  "note": "Intro (official chart): Em, D6add9/F#. Bass line: E, F#.",
   "spotify": "spotify:track:54eZmuggBFJbV7k248bTTt",
   "art": "https://i.scdn.co/image/ab67616d00001e02cc2ef2810c85fde8ec60cbc4",
   "ug": "https://tabs.ultimate-guitar.com/tab/america/a-horse-with-no-name-official-2238415"
@@ -3003,7 +3003,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em G.",
+  "note": "Intro (official chart): Em, G. Bass line: E, G.",
   "spotify": "spotify:track:2SHTKB8YYlawTGIuJ2b2ok",
   "art": "https://i.scdn.co/image/ab67616d00001e0297507fd22fb690cb9085a864",
   "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/about-a-girl-official-1916707"
@@ -3038,7 +3038,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cm Eb Ab Bb.",
+  "note": "Intro (official chart): Cm, Eb, Ab, Bb. Bass line: C, Eb, Ab, Bb.",
   "spotify": "spotify:track:3jjujdWJ72nww5eGnfs2E7",
   "art": "https://i.scdn.co/image/ab67616d00001e0225180571abce9472f61bd722",
   "ug": "https://tabs.ultimate-guitar.com/tab/harry-styles/adore-you-official-2981114"
@@ -3069,7 +3069,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A G#m C#m.",
+  "note": "Intro (official chart): A, G#m, C#m. Bass line: A, G#, C#.",
   "spotify": "spotify:track:2374M0fQpWi3dLnB54qaLX",
   "art": "https://i.scdn.co/image/ab67616d00001e02ebd6d20c0082524244ef83df",
   "ug": "https://tabs.ultimate-guitar.com/tab/toto/africa-official-2135331"
@@ -3112,7 +3112,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: B A C#m B F#m G#m.",
+  "note": "Intro (official chart): B, A, C#m, B, F#m, G#m. Bass line: B, A, C#, B, F#, G#.",
   "spotify": "spotify:track:1v98rfd0an913AzHvMNG8a",
   "art": "https://i.scdn.co/image/ab67616d00001e02008a93d976cfd5a76ba06b9b",
   "ug": "https://tabs.ultimate-guitar.com/tab/elvis-costello/alison-official-2972414"
@@ -3143,7 +3143,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A F C.",
+  "note": "Intro (official chart): A, F, C. Bass line: A, F, C.",
   "spotify": "spotify:track:1L94M3KIu7QluZe63g64rv",
   "art": "https://i.scdn.co/image/ab67616d00001e022d0e5ab5bd2e234fbcffa3e0",
   "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/alive-official-2099711"
@@ -3156,7 +3156,7 @@ export const SONGS = [
   "key": "Gb",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -3170,7 +3170,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, chorus: F# G#.",
+  "note": "Chorus (official chart): Gb, Ab. Bass line: Gb, Ab.",
   "spotify": "spotify:track:1Ic9pKxGSJGM0LKeqf6lGe",
   "art": "https://i.scdn.co/image/ab67616d00001e02c4f52ef8782f0e8ede4c1aaf",
   "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/all-apologies-official-1942279"
@@ -3203,7 +3203,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C C/E C/G.",
+  "note": "Intro (official chart): C, C/E, C/G. Bass line: C, E, G.",
   "spotify": "spotify:track:5Qv2Nby1xTr9pQyjkrc94J",
   "art": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/all-i-need-official-2258529"
@@ -3238,7 +3238,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em C G D. Capo 1.",
+  "note": "Intro (official chart): Fm, Db, Ab, Eb. Capo 1. Bass line: F, Db, Ab, Eb.",
   "spotify": "spotify:track:3U4isOIWM3VvDubwSI3y7a",
   "art": "https://i.scdn.co/image/ab67616d00001e02bdcc3b587b5249932bc415c2",
   "ug": "https://tabs.ultimate-guitar.com/tab/john-legend/all-of-me-official-2123125"
@@ -3273,7 +3273,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C G Am F.",
+  "note": "Intro (official chart): C, G, Am, F. Bass line: C, G, A, F.",
   "spotify": "spotify:track:1q3RiD1tIWUpGsNFADMlvl",
   "art": "https://i.scdn.co/image/ab67616d00001e02a7613d346501b828b56a0bc3",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/all-too-well-official-2439197"
@@ -3308,7 +3308,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G A Bm D.",
+  "note": "Intro (official chart): G, A, Bm, D. Bass line: G, A, B, D.",
   "spotify": "spotify:track:3MEYFivt6bilQ9q9mFWZ4g",
   "art": "https://i.scdn.co/image/ab67616d00001e02956043cfb058f0be93022267",
   "ug": "https://tabs.ultimate-guitar.com/tab/marshmello/alone-official-2507976"
@@ -3355,7 +3355,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm A E A Bm A E.",
+  "note": "Intro (official chart): Bm, A, E, A, Bm, A, E. Bass line: B, A, E, A, B, A, E.",
   "spotify": "spotify:track:5sz1xQRiw9Tu3mkLzhcHTj",
   "art": "https://i.scdn.co/image/ab67616d00001e02e5b02957e184d0da9a8d166c",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/althea-official-2907767"
@@ -3396,7 +3396,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G D/F# Em D/A A.",
+  "note": "Intro (official chart): G, D/F#, Em, D/A, A. Bass line: G, F#, E, A, A.",
   "spotify": "spotify:track:2xYQTU2bbg6WVAmpY1eae4",
   "art": "https://i.scdn.co/image/ab67616d00001e02e786801505efc5bb2e97ed04",
   "ug": "https://tabs.ultimate-guitar.com/tab/willie-nelson/always-on-my-mind-official-2422313"
@@ -3431,7 +3431,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D E G A.",
+  "note": "Intro (official chart): D, E, G, A. Bass line: D, E, G, A.",
   "spotify": "spotify:track:6SIV02mskzzc3KXK7t4NHj",
   "art": "https://i.scdn.co/image/ab67616d00001e020c3a1b46b6b846dfdfbc6a7d",
   "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty-and-the-heartbreakers/american-girl-official-2485776"
@@ -3444,7 +3444,7 @@ export const SONGS = [
   "key": "C# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -3466,7 +3466,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A E Bsus4 C#m.",
+  "note": "Verse (official chart): A, E, Bsus4, C#m. Bass line: A, E, B, C#.",
   "spotify": "spotify:track:0V3wPSX9ygBnCm8psDIegu",
   "art": "https://i.scdn.co/image/ab67616d00001e02bb54dde68cd23e2a268ae0f5",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/anti-hero-official-4394123"
@@ -3479,7 +3479,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -3497,7 +3497,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am C Em.",
+  "note": "Verse (official chart): Am, C, Em. Bass line: A, C, E.",
   "spotify": "spotify:track:1pKYYY0dkg23sQQXi0Q5zN",
   "art": "https://i.scdn.co/image/ab67616d00001e028ac778cc7d88779f74d33311",
   "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/around-the-world-official-2511060"
@@ -3532,7 +3532,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D Bm E A.",
+  "note": "Intro (official chart): D, Bm, E, A. Bass line: D, B, E, A.",
   "spotify": "spotify:track:4Dvkj6JhhA12EX05fT7y2e",
   "art": "https://i.scdn.co/image/ab67616d00001e0282ce362511fb3d9dda6578ee",
   "ug": "https://tabs.ultimate-guitar.com/tab/harry-styles/as-it-was-official-4138834"
@@ -3545,7 +3545,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -3563,7 +3563,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D Gsus2 Em7. Capo 3.",
+  "note": "Verse (official chart): F, Bbsus2, Gm7. Capo 3. Bass line: F, Bb, G.",
   "spotify": "spotify:track:3hUxzQpSfdDqwM3ZTFQY0K",
   "art": "https://i.scdn.co/image/ab67616d00001e0295f754318336a07e85ec59bc",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/august-official-3442244"
@@ -3594,7 +3594,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F C Bb.",
+  "note": "Intro (official chart): F, C, Bb. Bass line: F, C, Bb.",
   "spotify": "spotify:track:3qiyyUfYe7CRYLucrPmulD",
   "art": "https://i.scdn.co/image/ab67616d00001e02fe24dcd263c08c6dd84b6e8c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-who/baba-oriley-official-2153349"
@@ -3655,7 +3655,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G/B Bm G/B Bm7 Bm/D G/B Bm7 Bm/D Esus2/D.",
+  "note": "Intro (official chart): G/B, Bm, G/B, Bm7, Bm/D, G/B, Bm7, Bm/D, Esus2/D. Bass line: B, B, B, B, D, B, B, D, D.",
   "spotify": "spotify:track:6USEdtn8hvbDW2tOJAqVTS",
   "art": "https://i.scdn.co/image/ab67616d00001e02560c307eeca71e7443b3b803",
   "ug": "https://tabs.ultimate-guitar.com/tab/kurt-vile/babys-arms-official-5989013"
@@ -3668,7 +3668,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -3690,7 +3690,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am Bm Am G.",
+  "note": "Verse (official chart): Am, Bm, Am, G. Bass line: A, B, A, G.",
   "spotify": "spotify:track:0tLwe28zupkUQMpoXIDgX2",
   "art": "https://i.scdn.co/image/ab67616d00001e02ba94b5ac9a0771550fe81682",
   "ug": "https://tabs.ultimate-guitar.com/tab/vulfpeck/back-pocket-official-2260129"
@@ -3703,7 +3703,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -3741,7 +3741,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D7 G A7 B7 C D7 C G.",
+  "note": "Verse (official chart): D7, G, A7, B7, C, D7, C, G. Bass line: D, G, A, B, C, D, C, G.",
   "spotify": "spotify:track:2r3XNMon9K7bl2KTtHsaQO",
   "art": "https://i.scdn.co/image/ab67616d00001e026a7f07f0bf2eaadd24cd0262",
   "ug": "https://tabs.ultimate-guitar.com/tab/jim-croce/bad-bad-leroy-brown-official-3015878"
@@ -3768,7 +3768,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Ebm Db.",
+  "note": "Intro (official chart): Ebm, Db. Bass line: Eb, Db.",
   "spotify": "spotify:track:3BovdzfaX4jb5KFQwoPfAw",
   "art": "https://i.scdn.co/image/ab67616d00001e0232a7d87248d1b75463483df5",
   "ug": "https://tabs.ultimate-guitar.com/tab/michael-jackson/beat-it-official-1910927"
@@ -3781,7 +3781,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -3819,7 +3819,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em G D Cadd9 Aadd9 Em G D.",
+  "note": "Verse (official chart): Em, G, D, Cadd9, Aadd9, Em, G, D. Bass line: E, G, D, C, A, E, G, D.",
   "spotify": "spotify:track:0cKk8BKEi7zXbdrYdyqBP5",
   "art": "https://i.scdn.co/image/ab67616d00001e02fe24dcd263c08c6dd84b6e8c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-who/behind-blue-eyes-official-2222339"
@@ -3866,7 +3866,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F# C# G#m7 F# A#m7 G#m7 D#m.",
+  "note": "Intro (official chart): Gb, Db, Abm7, Gb, Bbm7, Abm7, Ebm. Bass line: Gb, Db, Ab, Gb, Bb, Ab, Eb.",
   "spotify": "spotify:track:2goLsvvODILDzeeiT4dAoR",
   "art": "https://i.scdn.co/image/ab67616d00001e0206ce0d1f846c525e847d60e7",
   "ug": "https://tabs.ultimate-guitar.com/tab/cher/believe-official-3286139"
@@ -3897,7 +3897,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bbm Gb F.",
+  "note": "Intro (official chart): Bbm, Gb, F. Bass line: Bb, Gb, F.",
   "spotify": "spotify:track:0pqnGHJpmpxLKifKRmU6WP",
   "art": "https://i.scdn.co/image/ab67616d00001e025675e83f707f1d7271e5cf8a",
   "ug": "https://tabs.ultimate-guitar.com/tab/imagine-dragons/believer-official-1995087"
@@ -3950,7 +3950,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C E/B Am C/G F G F G.",
+  "note": "Intro (official chart): C, E/B, Am, C/G, F, G, F, G. Bass line: C, B, A, G, F, G, F, G.",
   "spotify": "spotify:track:2YJgM8lj4u5YEZRSHSfL60",
   "art": "https://i.scdn.co/image/ab67616d00001e02fbcaf7402f38faac27610efc",
   "ug": "https://tabs.ultimate-guitar.com/tab/derek-and-the-dominos/bell-bottom-blues-official-2838650"
@@ -3987,7 +3987,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C/G G C/G G C/G G C/G.",
+  "note": "Intro (official chart): G, C/G, G, C/G, G, C/G, G, C/G.",
   "spotify": "spotify:track:3IWEh4iRJVXqjwecoUG1hH",
   "art": "https://i.scdn.co/image/ab67616d00001e0267b1fb643976ca1dfc4cb5c7",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/bertha-official-3773399"
@@ -4016,7 +4016,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 2: D/F# E/G#.",
+  "note": "Intro (official chart): D/F#, E/G#. Bass line: F#, G#.",
   "spotify": "spotify:track:2B98ljvzqpCVgt5reTHq28",
   "art": "https://i.scdn.co/image/ab67616d00001e020ccbe4584f7827e66fa2ab3a",
   "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/better-man-official-2503071"
@@ -4051,7 +4051,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E D#m G#m F#.",
+  "note": "Intro (official chart): E, Ebm, Abm, Gb. Bass line: E, Eb, Ab, Gb.",
   "spotify": "spotify:track:5XVjNRubJUW0iPhhSWpLCj",
   "art": "https://i.scdn.co/image/ab67616d00001e028d897b8994ce008298200408",
   "ug": "https://tabs.ultimate-guitar.com/tab/alice-deejay/better-off-alone-official-5436411"
@@ -4078,7 +4078,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E7b5 C7.",
+  "note": "Intro (official chart): E7b5, C7. Bass line: E, C.",
   "spotify": "spotify:track:5nRRklOTvmgf8H3B9DrfYP",
   "art": "https://i.scdn.co/image/ab67616d00001e0277696910e15c42a5e37636e5",
   "ug": "https://tabs.ultimate-guitar.com/tab/stone-temple-pilots/big-empty-official-2411411"
@@ -4091,7 +4091,7 @@ export const SONGS = [
   "key": "F# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -4105,7 +4105,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F#m7 Bm7.",
+  "note": "Verse (official chart): F#m7, Bm7. Bass line: F#, B.",
   "spotify": "spotify:track:7J1uxwnxfQLu4APicE5Rnj",
   "art": "https://i.scdn.co/image/ab67616d00001e0232a7d87248d1b75463483df5",
   "ug": "https://tabs.ultimate-guitar.com/tab/michael-jackson/billie-jean-official-1939031"
@@ -4140,7 +4140,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 1: E Bm7 Dsus2 A.",
+  "note": "Intro (official chart): E, Bm7, Dsus2, A. Bass line: E, B, D, A.",
   "spotify": "spotify:track:6bW02u24bW0jQL8hJ9Ok5j",
   "art": "https://i.scdn.co/image/ab67616d00001e025c893b7c8ed3b1e8e7866099",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-verve/bitter-sweet-symphony-official-2455234"
@@ -4176,7 +4176,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Eb F Bb/D Eb.",
+  "note": "Intro (official chart): Eb, F, Bb/D, Eb. Bass line: Eb, F, D, Eb.",
   "spotify": "spotify:track:6wVViUl2xSRoDK2T7dMZbR",
   "art": "https://i.scdn.co/image/ab67616d00001e02530a2c5dd17d2ddf8edc2978",
   "ug": "https://tabs.ultimate-guitar.com/tab/new-order/bizarre-love-triangle-official-4250428"
@@ -4189,7 +4189,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -4211,7 +4211,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F Dm Bb C.",
+  "note": "Verse (official chart): F, Dm, Bb, C. Bass line: F, D, Bb, C.",
   "spotify": "spotify:track:1p80LdxRV74UKvL8gnD7ky",
   "art": "https://i.scdn.co/image/ab67616d00001e029abdf14e6058bd3903686148",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/blank-space-official-2172591"
@@ -4224,7 +4224,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -4238,7 +4238,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A F#m.",
+  "note": "Verse (official chart): A, F#m. Bass line: A, F#.",
   "spotify": "spotify:track:3lnF83kG6ePhTSWRoW62dO",
   "art": "https://i.scdn.co/image/ab67616d00001e02287369f0a8e0d5e2c81e5afa",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-national/bloodbuzz-ohio-official-4640294"
@@ -4251,7 +4251,7 @@ export const SONGS = [
   "key": "G minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -4273,7 +4273,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Gm F D# Cm Gm F D# Cm.",
+  "note": "Verse (official chart): Gm, F, Eb, Cm, Gm, F, Eb, Cm. Bass line: G, F, Eb, C, G, F, Eb, C.",
   "spotify": "spotify:track:7lMIJ4EFWRVoAIPDpeGyM3",
   "art": "https://i.scdn.co/image/ab67616d00001e02121c39c86d8b05c14022edfe",
   "ug": "https://tabs.ultimate-guitar.com/tab/eiffel-65/blue-da-ba-dee-official-2139769"
@@ -4316,7 +4316,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 1: Dm F C Dm Gm C.",
+  "note": "Intro (official chart): Dm, F, C, Dm, Gm, C. Bass line: D, F, C, D, G, C.",
   "spotify": "spotify:track:6hHc7Pks7wtBIW8Z6A0iFq",
   "art": "https://i.scdn.co/image/ab67616d00001e02408739ba1ad5bccbfeda5ae1",
   "ug": "https://tabs.ultimate-guitar.com/tab/new-order/blue-monday-official-2749377"
@@ -4343,7 +4343,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C. Capo 1.",
+  "note": "Intro (official chart): Ab, Db. Capo 1. Bass line: Ab, Db.",
   "spotify": "spotify:track:6QHYEZlm9wyfXfEM1vSu1P",
   "art": "https://i.scdn.co/image/ab67616d00001e02b75cedd9435250e77b60bfbe",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/boots-of-spanish-leather-official-2983556"
@@ -4375,7 +4375,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Eb Dm7 Bb/D.",
+  "note": "Intro (official chart): Eb, Dm7, Bb/D. Bass line: Eb, D, D.",
   "spotify": "spotify:track:7xQYVjs4wZNdCwO0EeAWMC",
   "art": "https://i.scdn.co/image/ab67616d00001e021e34bdf6792b78c2da36a767",
   "ug": "https://tabs.ultimate-guitar.com/tab/underworld/born-slippy-official-6218642"
@@ -4402,7 +4402,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A E7sus4/A.",
+  "note": "Intro (official chart): A, E7sus4/A.",
   "spotify": "spotify:track:7x2xjJV3YAPeLQJ7u3Kjet",
   "art": "https://i.scdn.co/image/ab67616d00001e02fd3f66a9ce4371f7ffa0346f",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/box-of-rain-official-3221642"
@@ -4429,7 +4429,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C Em.",
+  "note": "Intro (official chart): C, Em. Bass line: C, E.",
   "spotify": "spotify:track:34q2Y1O5zMeuBhX4WYn0aZ",
   "art": "https://i.scdn.co/image/ab67616d00001e02816243514f01ac30d0932622",
   "ug": "https://tabs.ultimate-guitar.com/tab/iron-wine/boy-with-a-coin-official-4409576"
@@ -4472,7 +4472,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A Bm C#m D C#m Bm.",
+  "note": "Intro (official chart): A, Bm, C#m, D, C#m, Bm. Bass line: A, B, C#, D, C#, B.",
   "spotify": "spotify:track:2RKDbMwtJgKc76H9oPo7Cl",
   "art": "https://i.scdn.co/image/ab67616d00001e020447ba639949dd26478decf6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-cure/boys-dont-cry-official-1947417"
@@ -4485,7 +4485,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -4507,7 +4507,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D G7 D G7 D E/D A7 D.",
+  "note": "Verse (official chart): D, G7, D, G7, D, E/D, A7, D. Bass line: D, G, D, G, D, D, A, D.",
   "spotify": "spotify:track:05uGBKRCuePsf43Hfm0JwX",
   "art": "https://i.scdn.co/image/ab67616d00001e02db216ca805faf5fe35df4ee6",
   "ug": "https://tabs.ultimate-guitar.com/tab/pink-floyd/brain-damage-official-2157747"
@@ -4520,7 +4520,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -4538,7 +4538,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F A Dm.",
+  "note": "Verse (official chart): F, A, Dm. Bass line: F, A, D.",
   "spotify": "spotify:track:3n69hLUdIsSa1WlRmjMZlW",
   "art": "https://i.scdn.co/image/ab67616d00001e02609c89ad17eb28c2013c56c6",
   "ug": "https://tabs.ultimate-guitar.com/tab/alt-j/breezeblocks-official-1991167"
@@ -4551,7 +4551,7 @@ export const SONGS = [
   "key": "Ab minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -4589,7 +4589,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: B D#m G#m D#m E F# G#m D#m.",
+  "note": "Verse (official chart): B, Ebm, Abm, Ebm, E, Gb, Abm, Ebm. Bass line: B, Eb, Ab, Eb, E, Gb, Ab, Eb.",
   "spotify": "spotify:track:26tWBbtjvgi0tipRL2VQ2X",
   "art": "https://i.scdn.co/image/ab67616d00001e02fb995d2871f084b34afae3b3",
   "ug": "https://tabs.ultimate-guitar.com/tab/dire-straits/brothers-in-arms-official-2460396"
@@ -4643,7 +4643,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C/G G C F/C C C/G G C.",
+  "note": "Intro (official chart): C/G, G, C, F/C, C, C/G, G, C. Bass line: G, G, C, C, C, G, G, C.",
   "spotify": "spotify:track:34K7nU8EWQIRI93RfqhdRJ",
   "art": "https://i.scdn.co/image/ab67616d00001e02b11b3fc3c89477a7dd473bd7",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/brown-sugar-official-2193715"
@@ -4656,7 +4656,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -4670,7 +4670,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F Bb.",
+  "note": "Verse (official chart): F, Bb. Bass line: F, Bb.",
   "spotify": "spotify:track:2ixsaeFioXJmMgkkbd4uj1",
   "art": "https://i.scdn.co/image/ab67616d00001e023a60095e50104070cc89ed9f",
   "ug": "https://tabs.ultimate-guitar.com/tab/george-ezra/budapest-official-2254527"
@@ -4701,7 +4701,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G F Am.",
+  "note": "Intro (official chart): G, F, Am. Bass line: G, F, A.",
   "spotify": "spotify:track:22VdIZQfgXJea34mQxlt81",
   "art": "https://i.scdn.co/image/ab67616d00001e027fcead687e99583072cc217b",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-weeknd/cant-feel-my-face-official-2179995"
@@ -4714,7 +4714,7 @@ export const SONGS = [
   "key": "A minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -4736,7 +4736,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Fmaj7sus2 Am7 C Am7.",
+  "note": "Verse (official chart): Fmaj7sus2, Am7, C, Am7. Bass line: F, A, C, A.",
   "spotify": "spotify:track:1WkMMavIMc4JZ8cfMmxHkI",
   "art": "https://i.scdn.co/image/ab67616d00001e02d965d29d7dcf46ade5a8a7e4",
   "ug": "https://tabs.ultimate-guitar.com/tab/justin-timberlake/cant-stop-the-feeling-official-2184879"
@@ -4768,7 +4768,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D Dsus2/C G.",
+  "note": "Intro (official chart): D, Dsus2/C, G. Bass line: D, C, G.",
   "spotify": "spotify:track:4egy2d8QiyXn5tzVQiptTb",
   "art": "https://i.scdn.co/image/ab67616d00001e02dede94a3ef0bb67eb53668b3",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-marshall-tucker-band/cant-you-see-official-2496684"
@@ -4795,7 +4795,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb5 Eb5.",
+  "note": "Intro (official chart): Bb5, Eb5. Bass line: Bb, Eb.",
   "spotify": "spotify:track:1KdwPeY1WRWQGHCmRJTveb",
   "art": "https://i.scdn.co/image/ab67616d00001e02fbf772eed6abce36ddf9233c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-breeders/cannonball-official-2655717"
@@ -4808,7 +4808,7 @@ export const SONGS = [
   "key": "F minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -4830,7 +4830,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Fm Bb Ab Bb.",
+  "note": "Verse (official chart): Fm, Bb, Ab, Bb. Bass line: F, Bb, Ab, Bb.",
   "spotify": "spotify:track:4R2kfaDFhslZEMJqAFNpdd",
   "art": "https://i.scdn.co/image/ab67616d00001e0295f754318336a07e85ec59bc",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/cardigan-official-3309119"
@@ -4843,7 +4843,7 @@ export const SONGS = [
   "key": "B minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -4877,7 +4877,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Bm A G Em D A G.",
+  "note": "Verse (official chart): Bm, A, G, Em, D, A, G. Bass line: B, A, G, E, D, A, G.",
   "spotify": "spotify:track:75s6YTfSfE2Ojbb9P44PV9",
   "art": "https://i.scdn.co/image/ab67616d00001e02bcf47dc308162706db7b4fb0",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-shins/caring-is-creepy-official-1977743"
@@ -4917,7 +4917,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G G/F# Em A7. Capo 2.",
+  "note": "Intro (official chart): E, A, A/G#, F#m, B7. Capo 2. Bass line: E, A, G#, F#, B.",
   "spotify": "spotify:track:2T5Ch09nefwckOu5NQvjIk",
   "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
   "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/carolina-in-my-mind-official-2603076"
@@ -4944,7 +4944,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C G.",
+  "note": "Intro (official chart): C, G. Bass line: C, G.",
   "spotify": "spotify:track:2JauMPiIOQzYAwpTLiQys5",
   "art": "https://i.scdn.co/image/ab67616d00001e020b79e7da3d434a44145ae179",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/casey-jones-official-1974151"
@@ -4957,7 +4957,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -4984,7 +4984,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D D/F# G Bm A.",
+  "note": "Verse (official chart): D, D/F#, G, Bm, A. Bass line: D, F#, G, B, A.",
   "spotify": "spotify:track:6PCUP3dWmTjcTtXY02oFdT",
   "art": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96",
   "ug": "https://tabs.ultimate-guitar.com/tab/ed-sheeran/castle-on-the-hill-official-2402571"
@@ -5035,7 +5035,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Eadd9 F#add9 Aadd9 Badd9 Aadd9 F#add9 Eadd9 F#add9.",
+  "note": "Intro (official chart): Eadd9, F#add9, Aadd9, Badd9, Aadd9, F#add9, Eadd9, F#add9. Bass line: E, F#, A, B, A, F#, E, F#.",
   "spotify": "spotify:track:3qebSLgUwaEqbwCM5sj5Kh",
   "art": "https://i.scdn.co/image/ab67616d00001e0219dcd95d28b63d10164327f2",
   "ug": "https://tabs.ultimate-guitar.com/tab/jimi-hendrix/castles-made-of-sand-official-1939141"
@@ -5078,7 +5078,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am Bm C Am Bm Em.",
+  "note": "Intro (official chart): Am, Bm, C, Am, Bm, Em. Bass line: A, B, C, A, B, E.",
   "spotify": "spotify:track:1Snko28yJOihcRVXs9dAo9",
   "art": "https://i.scdn.co/image/ab67616d00001e028b221f2ccf777ae0d4b0db50",
   "ug": "https://tabs.ultimate-guitar.com/tab/mac-demarco/chamber-of-reflection-official-2081497"
@@ -5091,7 +5091,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 2",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -5115,7 +5115,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 2: Asus2 Asus2/G Asus2/F# Asus2/E Asus2 Asus2/G Asus2/F# E.",
+  "note": "Verse (official chart): Asus2, Asus2/G, Asus2/F#, Asus2/E, Asus2, Asus2/G, Asus2/F#, E. Bass line: A, G, F#, E, A, G, F#, E.",
   "spotify": "spotify:track:6EMynpZ10GVcwVqiLZj6Ye",
   "art": "https://i.scdn.co/image/ab67616d00001e022f2eeee9b405f4d00428d84c",
   "ug": "https://tabs.ultimate-guitar.com/tab/oasis/champagne-supernova-official-1999003"
@@ -5150,7 +5150,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm F Gm A.",
+  "note": "Intro (official chart): Dm, F, Gm, A. Bass line: D, F, G, A.",
   "spotify": "spotify:track:3bxZhauuIU4ubctdRZwPYW",
   "art": "https://i.scdn.co/image/ab67616d00001e02dc784c3f0767e576a0848b81",
   "ug": "https://tabs.ultimate-guitar.com/tab/buena-vista-social-club/chan-chan-official-3035289"
@@ -5163,7 +5163,7 @@ export const SONGS = [
   "key": "Bb minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -5185,7 +5185,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Bbm Gbmaj7 Ab Fm.",
+  "note": "Verse (official chart): Bbm, Gbmaj7, Ab, Fm. Bass line: Bb, Gb, Ab, F.",
   "spotify": "spotify:track:2s1sdSqGcKxpPr5lCl7jAV",
   "art": "https://i.scdn.co/image/ab67616d00001e02b55ed804149fffbb5e35ff34",
   "ug": "https://tabs.ultimate-guitar.com/tab/sia/chandelier-official-2404069"
@@ -5236,7 +5236,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cmaj7 C# Dm7 D#7 F D F D.",
+  "note": "Intro (official chart): Cmaj7, C#, Dm7, D#7, F, D, F, D. Bass line: C, C#, D, D#, F, D, F, D.",
   "spotify": "spotify:track:0LrwgdLsFaWh9VXIjBRe8t",
   "art": "https://i.scdn.co/image/ab67616d00001e02e464904cc3fed2b40fc55120",
   "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/changes-official-2182571"
@@ -5271,7 +5271,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A Em G D. Capo 5.",
+  "note": "Intro (official chart): D, Am, C, G. Capo 5. Bass line: D, A, C, G.",
   "spotify": "spotify:track:1yupbrI7ROhigIHpQBevPh",
   "art": "https://i.scdn.co/image/ab67616d00001e02712c76b4152918fb8d37c53d",
   "ug": "https://tabs.ultimate-guitar.com/tab/sufjan-stevens/chicago-official-5067451"
@@ -5302,7 +5302,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dbsus2 Bb7sus2 Fmadd9.",
+  "note": "Intro (official chart): Dbsus2, Bb7sus2, Fmadd9. Bass line: Db, Bb, F.",
   "spotify": "spotify:track:4wtR6HB3XekEengMX17cpc",
   "art": "https://i.scdn.co/image/ab67616d00001e0285a2da83b5b340365ae7d8cd",
   "ug": "https://tabs.ultimate-guitar.com/tab/robert-miles/children-official-3944354"
@@ -5359,7 +5359,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cmaj7 G Bmadd11 F Fm Cmaj7 G Fmaj7/C G6/D.",
+  "note": "Intro (official chart): Cmaj7, G, Bmadd11, F, Fm, Cmaj7, G, Fmaj7/C, G6/D. Bass line: C, G, B, F, F, C, G, C, D.",
   "spotify": "spotify:track:21jGcNKet2qwijlDFuPiPb",
   "art": "https://i.scdn.co/image/ab67616d00001e029478c87599550dd73bfa7e02",
   "ug": "https://tabs.ultimate-guitar.com/tab/post-malone/circles-official-2827103"
@@ -5372,7 +5372,7 @@ export const SONGS = [
   "key": "Ab",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -5410,7 +5410,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Bbsus4 Eb Ab Cm7 Dbmaj7 Bbsus4 Eb Ab.",
+  "note": "Verse (official chart): Bbsus4, Eb, Ab, Cm7, Dbmaj7, Bbsus4, Eb, Ab. Bass line: Bb, Eb, Ab, C, Db, Bb, Eb, Ab.",
   "spotify": "spotify:track:60wwxj6Dd9NJlirf84wr2c",
   "art": "https://i.scdn.co/image/ab67616d00001e02941dd3b3343d9cb9329d37bf",
   "ug": "https://tabs.ultimate-guitar.com/tab/zedd/clarity-official-3917786"
@@ -5445,7 +5445,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C# D# Fm D#.",
+  "note": "Intro (official chart): Db, Eb, Fm, Eb. Bass line: Db, Eb, F, Eb.",
   "spotify": "spotify:track:7BKLCZ1jbUBVqRi2FVlTVw",
   "art": "https://i.scdn.co/image/ab67616d00001e02495ce6da9aeb159e94eaa453",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-chainsmokers/closer-official-2199569"
@@ -5472,7 +5472,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E D.",
+  "note": "Intro (official chart): E, D. Bass line: E, D.",
   "spotify": "spotify:track:3ykSdTGmYPFl8pDBXer1zG",
   "art": "https://i.scdn.co/image/ab67616d00001e026f093a6ae88a5ca8ed53b9f7",
   "ug": "https://tabs.ultimate-guitar.com/tab/eric-clapton/cocaine-official-2092071"
@@ -5499,7 +5499,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em D.",
+  "note": "Intro (official chart): Em, D. Bass line: E, D.",
   "spotify": "spotify:track:4P5KoWXOxwuobLmHXLMobV",
   "art": "https://i.scdn.co/image/ab67616d00001e02e175a19e530c898d167d39bf",
   "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/come-as-you-are-official-1911495"
@@ -5512,7 +5512,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -5530,7 +5530,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A D E.",
+  "note": "Verse (official chart): A, D, E. Bass line: A, D, E.",
   "spotify": "spotify:track:0yje3JVMgJNZENayymCTHA",
   "art": "https://i.scdn.co/image/ab67616d00001e02599269ba641a44e5f2ad64bb",
   "ug": "https://tabs.ultimate-guitar.com/tab/jimmy-buffett/come-monday-official-2701596"
@@ -5543,7 +5543,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -5557,7 +5557,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C G.",
+  "note": "Verse (official chart): C, G. Bass line: C, G.",
   "spotify": "spotify:track:3SzP7yEGRSbfnkkNVMxxYa",
   "art": "https://i.scdn.co/image/ab67616d00001e0218c3468d7d84d838e2791f0b",
   "ug": "https://tabs.ultimate-guitar.com/tab/pulp/common-people-official-3016043"
@@ -5584,7 +5584,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em Asus2.",
+  "note": "Intro (official chart): Em, Asus2. Bass line: E, A.",
   "spotify": "spotify:track:5F6rwEF15hN1jnhNk2YQHn",
   "art": "https://i.scdn.co/image/ab67616d00001e020ccbe4584f7827e66fa2ab3a",
   "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/corduroy-official-2940095"
@@ -5597,7 +5597,7 @@ export const SONGS = [
   "key": "C# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -5619,7 +5619,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F Am C G. Capo 4.",
+  "note": "Verse (official chart): A, C#m, E, B. Capo 4. Bass line: A, C#, E, B.",
   "spotify": "spotify:track:6sy3LkhNFjJWlaeSMNwQ62",
   "art": "https://i.scdn.co/image/ab67616d00001e02e80e7dbce3996a1ae5967751",
   "ug": "https://tabs.ultimate-guitar.com/tab/onerepublic/counting-stars-official-1976877"
@@ -5646,7 +5646,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G5. Capo 1.",
+  "note": "Intro (official chart): Eb, Ab5. Capo 1. Bass line: Eb, Ab.",
   "spotify": "spotify:track:5qW6ZYct54PhKliCntyxRX",
   "art": "https://i.scdn.co/image/ab67616d00001e02cadba04ee5fa8612182151c6",
   "ug": "https://tabs.ultimate-guitar.com/tab/jason-isbell/cover-me-up-official-2511777"
@@ -5659,7 +5659,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -5681,7 +5681,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D G Cadd9 G D G Cadd9 G.",
+  "note": "Verse (official chart): D, G, Cadd9, G, D, G, Cadd9, G. Bass line: D, G, C, G, D, G, C, G.",
   "spotify": "spotify:track:7uON6DWIjXgmLQIfGsWXpV",
   "art": "https://i.scdn.co/image/ab67616d00001e02a4e6eac83c0fe38bf682f643",
   "ug": "https://tabs.ultimate-guitar.com/tab/queen/crazy-little-thing-called-love-official-1941927"
@@ -5694,7 +5694,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -5732,7 +5732,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A C#m D A C#m A C#m D.",
+  "note": "Verse (official chart): A, C#m, D, A, C#m, A, C#m, D. Bass line: A, C#, D, A, C#, A, C#, D.",
   "spotify": "spotify:track:0r6I5tMDusK3ql2n2MKMuY",
   "art": "https://i.scdn.co/image/ab67616d00001e02298c7a198102a7b9a70f3157",
   "ug": "https://tabs.ultimate-guitar.com/tab/van-morrison/crazy-love-official-2148835"
@@ -5745,7 +5745,7 @@ export const SONGS = [
   "key": "F# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -5767,7 +5767,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D E C#m F#m.",
+  "note": "Verse (official chart): D, E, C#m, F#m. Bass line: D, E, C#, F#.",
   "spotify": "spotify:track:1BxfuPKGuaTgP7aM0Bbdwr",
   "art": "https://i.scdn.co/image/ab67616d00001e02e787cffec20aa2a396a61647",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/cruel-summer-official-2812451"
@@ -5818,7 +5818,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm Em G Bm Em G Em Bm.",
+  "note": "Intro (official chart): Bm, Em, G, Bm, Em, G, Em, Bm. Bass line: B, E, G, B, E, G, E, B.",
   "spotify": "spotify:track:5UBBJnFxsfjFxfrtvErQoH",
   "art": "https://i.scdn.co/image/ab67616d00001e02a46d603701aa0342e8cca64e",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-xx/crystalised-official-1963519"
@@ -5861,7 +5861,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D C Gsus2 Em7 Gsus2 Em7.",
+  "note": "Intro (official chart): D, C, Gsus2, Em7, Gsus2, Em7. Bass line: D, C, G, E, G, E.",
   "spotify": "spotify:track:4tBl1xhBg5PETpBvFnQmGl",
   "art": "https://i.scdn.co/image/ab67616d00001e02b893831d1a12d3d4024a5867",
   "ug": "https://tabs.ultimate-guitar.com/tab/pavement/cut-your-hair-official-4196227"
@@ -5898,7 +5898,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A D/A A D/A A D/A C#m/A A.",
+  "note": "Intro (official chart): A, D/A, A, D/A, A, D/A, C#m/A, A.",
   "spotify": "spotify:track:0GjEhVFGZW8afUYGChu3Rr",
   "art": "https://i.scdn.co/image/ab67616d00001e0270f7a1b35d5165c85b95a0e0",
   "ug": "https://tabs.ultimate-guitar.com/tab/abba/dancing-queen-official-1979611"
@@ -5911,7 +5911,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -5949,7 +5949,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A C#7 F#m A7 D7 Ebdim7 A F#7.",
+  "note": "Verse (official chart): A, C#7, F#m, A7, D7, D#dim7, A, F#7. Bass line: A, C#, F#, A, D, D#, A, F#.",
   "spotify": "spotify:track:47J2U4dM6ArEhZmc3BiH1w",
   "art": "https://i.scdn.co/image/ab67616d00001e020fffeae6a8b9791b69f99637",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/deal-official-2497428"
@@ -5984,7 +5984,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F#m7 C# E Bm7.",
+  "note": "Intro (official chart): F#m7, C#, E, Bm7. Bass line: F#, C#, E, B.",
   "spotify": "spotify:track:1dyUxu73YVV4661xsoib5b",
   "art": "https://i.scdn.co/image/ab67616d00001e02e1bf14e03942d33648b20c53",
   "ug": "https://tabs.ultimate-guitar.com/tab/vulfpeck/dean-town-official-2252393"
@@ -6035,7 +6035,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb F C F Dm7 A Bb C.",
+  "note": "Intro (official chart): Bb, F, C, F, Dm7, A, Bb, C. Bass line: Bb, F, C, F, D, A, Bb, C.",
   "spotify": "spotify:track:5cy5IStIn7OSHDEIgXeDyq",
   "art": "https://i.scdn.co/image/ab67616d00001e02e1b208a8d3229b61263899d1",
   "ug": "https://tabs.ultimate-guitar.com/tab/pixies/debaser-official-2151611"
@@ -6048,7 +6048,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -6063,7 +6063,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Fmaj7/C C.",
+  "note": "Verse (official chart): Fmaj7/C, C.",
   "spotify": "spotify:track:6TF5rRoap0R9SYG6HsmbKD",
   "art": "https://i.scdn.co/image/ab67616d00001e02685e67dffa3e2d0072100e4a",
   "ug": "https://tabs.ultimate-guitar.com/tab/courtney-barnett/depreston-official-4312766"
@@ -6098,7 +6098,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm G D A.",
+  "note": "Intro (official chart): Bm, G, D, A. Bass line: B, G, D, A.",
   "spotify": "spotify:track:6habFhsOp2NvshLv26DqMb",
   "art": "https://i.scdn.co/image/ab67616d00001e02ef0d4234e1a645740f77d59c",
   "ug": "https://tabs.ultimate-guitar.com/tab/luis-fonsi/despacito-official-2402583"
@@ -6145,7 +6145,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C Cm6 G Em Asus2 D.",
+  "note": "Intro (official chart): G, C, Cm6, G, Em, Asus2, D. Bass line: G, C, C, G, E, A, D.",
   "spotify": "spotify:track:7CtHtpkGwE4JAhg7wsmAit",
   "art": "https://i.scdn.co/image/ab67616d00001e0272033a5e2c7bfd38ed554ec6",
   "ug": "https://tabs.ultimate-guitar.com/tab/eagles/desperado-official-2090905"
@@ -6180,7 +6180,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D A F#m7 D/E.",
+  "note": "Intro (official chart): D, A, F#m7, D/E. Bass line: D, A, F#, E.",
   "spotify": "spotify:track:2VEZx7NWsZ1D0eJ4uv5Fym",
   "art": "https://i.scdn.co/image/ab67616d00001e021e81bff9807a9e629fce5ade",
   "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/digital-love-official-2547189"
@@ -6216,7 +6216,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em7 Cadd9 G D/F#.",
+  "note": "Intro (official chart): Em7, Cadd9, G, D/F#. Bass line: E, C, G, F#.",
   "spotify": "spotify:track:0Wl42CUb1phIU9O2aR1wXI",
   "art": "https://i.scdn.co/image/ab67616d00001e02c48f42fdafcffcedbdbce025",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/disarm-official-2450039"
@@ -6244,7 +6244,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb/F F.",
+  "note": "Intro (official chart): Bb/F, F.",
   "spotify": "spotify:track:28XOMVk9J2apw3qYbHTCD9",
   "art": "https://i.scdn.co/image/ab67616d00001e024eb24bfd49d01e0f3c57a410",
   "ug": "https://tabs.ultimate-guitar.com/tab/jackson-browne/doctor-my-eyes-official-2890991"
@@ -6275,7 +6275,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G Am Em.",
+  "note": "Intro (official chart): G, Am, Em. Bass line: G, A, E.",
   "spotify": "spotify:track:1YLJVmuzeM2YSUkCCaTNUB",
   "art": "https://i.scdn.co/image/ab67616d00001e020672b0f8756ae2af86e8a5ce",
   "ug": "https://tabs.ultimate-guitar.com/tab/florence-the-machine/dog-days-are-over-official-2456808"
@@ -6288,7 +6288,7 @@ export const SONGS = [
   "key": "Eb",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -6314,7 +6314,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Ebsus2 Csus2 Ab G Csus2.",
+  "note": "Verse (official chart): Ebsus2, Csus2, Ab, G, Csus2. Bass line: Eb, C, Ab, G, C.",
   "spotify": "spotify:track:7G7tgVYORlDuVprcYHuFJh",
   "art": "https://i.scdn.co/image/ab67616d00001e023ce3e2272e25916844f10d86",
   "ug": "https://tabs.ultimate-guitar.com/tab/crowded-house/dont-dream-its-over-official-2425427"
@@ -6353,7 +6353,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm D E5 Em Bm.",
+  "note": "Intro (official chart): Bm, D, E5, Em, Bm. Bass line: B, D, E, E, B.",
   "spotify": "spotify:track:3PfIrDoz19wz7qK7tYeu62",
   "art": "https://i.scdn.co/image/ab67616d00001e02c88bae7846e62a8ba59ee0bd",
   "ug": "https://tabs.ultimate-guitar.com/tab/dua-lipa/dont-start-now-official-2968643"
@@ -6366,7 +6366,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -6404,7 +6404,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F Am Dm Gm C F Bb Gm.",
+  "note": "Verse (official chart): F, Am, Dm, Gm, C, F, Bb, Gm. Bass line: F, A, D, G, C, F, Bb, G.",
   "spotify": "spotify:track:1NHWG8zxSEypSRF3UufrnO",
   "art": "https://i.scdn.co/image/ab67616d00001e026c03b757ece416e014feef5e",
   "ug": "https://tabs.ultimate-guitar.com/tab/queen/dont-stop-me-now-official-2461688"
@@ -6417,7 +6417,7 @@ export const SONGS = [
   "key": "B minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -6439,7 +6439,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G Bm G Bm G A Bm G.",
+  "note": "Verse (official chart): G, Bm, G, Bm, G, A, Bm, G. Bass line: G, B, G, B, G, A, B, G.",
   "spotify": "spotify:track:5tALkmrC4bRfrSDLimAzuq",
   "art": "https://i.scdn.co/image/ab67616d00001e02c13ab45ff17ebf5d8a5e854b",
   "ug": "https://tabs.ultimate-guitar.com/tab/swedish-house-mafia/dont-you-worry-child-official-2548140"
@@ -6470,7 +6470,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Abm Gb Db.",
+  "note": "Intro (official chart): Abm, Gb, Db. Bass line: Ab, Gb, Db.",
   "spotify": "spotify:track:48zAaZoXJxURbEHzxDDHXy",
   "art": "https://i.scdn.co/image/ab67616d00001e0290b2d4ae1d0e6b9866d8107f",
   "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/down-in-a-hole-official-2557419"
@@ -6497,7 +6497,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F G.",
+  "note": "Intro (official chart): F, G. Bass line: F, G.",
   "spotify": "spotify:track:1lbXEepatjRVjoG8pZMtdp",
   "art": "https://i.scdn.co/image/ab67616d00001e02eb832efe061888ee7ef10456",
   "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/dreams-official-1958897"
@@ -6528,7 +6528,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E A B.",
+  "note": "Intro (official chart): E, A, B. Bass line: E, A, B.",
   "spotify": "spotify:track:3W486X36Id1ChRaLhseMBj",
   "art": "https://i.scdn.co/image/ab67616d00001e026c4efca9f5e949a2f9cc3ac4",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-cranberries/dreams-official-2700996"
@@ -6541,7 +6541,7 @@ export const SONGS = [
   "key": "D minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -6555,7 +6555,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Dm G.",
+  "note": "Verse (official chart): Dm, G. Bass line: D, G.",
   "spotify": "spotify:track:3geRffSf6eAruhg23RkpKV",
   "art": "https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35",
   "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/drive-official-2146995"
@@ -6568,7 +6568,7 @@ export const SONGS = [
   "key": "Bb",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -6590,7 +6590,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Bb Gm Eb Bb.",
+  "note": "Verse (official chart): Bb, Gm, Eb, Bb. Bass line: Bb, G, Eb, Bb.",
   "spotify": "spotify:track:5wANPM4fQCJwkGd4rN57mH",
   "art": "https://i.scdn.co/image/ab67616d00001e02a91c10fe9472d9bd89802e5a",
   "ug": "https://tabs.ultimate-guitar.com/tab/olivia-rodrigo/drivers-license-official-3513449"
@@ -6636,7 +6636,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G/D A G/D D G/D. Capo 3.",
+  "note": "Intro (official chart): F, Bb/F, C, Bb/F, F, Bb/F. Capo 3. Bass line: F, F, C, F, F, F.",
   "spotify": "spotify:track:5M1gX3DQvgc7GI6dBWX9FL",
   "art": "https://i.scdn.co/image/ab67616d00001e0216659de824475701b97f6ae9",
   "ug": "https://tabs.ultimate-guitar.com/tab/gordon-lightfoot/early-morning-rain-official-3693362"
@@ -6649,7 +6649,7 @@ export const SONGS = [
   "key": "D minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -6687,7 +6687,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Dm F Dm F G5 Dm A5 Bb5.",
+  "note": "Verse (official chart): Dm, F, Dm, F, G5, Dm, A5, Bb5. Bass line: D, F, D, F, G, D, A, Bb.",
   "spotify": "spotify:track:6qZjm61s6u8Ead9sWxCDro",
   "art": "https://i.scdn.co/image/ab67616d00001e02370c12f82872c9cfaee80193",
   "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/elephant-official-2171909"
@@ -6714,7 +6714,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cm Eb.",
+  "note": "Intro (official chart): Cm, Eb. Bass line: C, Eb.",
   "spotify": "spotify:track:6WK9dVrRABMkUXFLNlgWFh",
   "art": "https://i.scdn.co/image/ab67616d00001e020a7d45a345534966a4ad2c39",
   "ug": "https://tabs.ultimate-guitar.com/tab/depeche-mode/enjoy-the-silence-official-1947425"
@@ -6746,7 +6746,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D5/A C D.",
+  "note": "Intro (official chart): D5/A, C, D. Bass line: A, C, D.",
   "spotify": "spotify:track:6QewNVIDKdSl8Y3ycuHIei",
   "art": "https://i.scdn.co/image/ab67616d00001e022d0e5ab5bd2e234fbcffa3e0",
   "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/even-flow-official-2463844"
@@ -6800,7 +6800,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C G/B Em C G/B Dm C G/B.",
+  "note": "Intro (official chart): C, G/B, Em, C, G/B, Dm, C, G/B. Bass line: C, B, E, C, B, D, C, B.",
   "spotify": "spotify:track:5M4yti0QxgqJieUYaEXcpw",
   "art": "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
   "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/eventually-official-4271152"
@@ -6827,7 +6827,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G.",
+  "note": "Intro (official chart): D, G. Bass line: D, G.",
   "spotify": "spotify:track:6PypGyiu0Y2lCDBN1XZEnP",
   "art": "https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35",
   "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/everybody-hurts-official-1979985"
@@ -6855,7 +6855,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G/D.",
+  "note": "Intro (official chart): D, G/D.",
   "spotify": "spotify:track:4RvWPyQ5RL0ao9LPZeSouE",
   "art": "https://i.scdn.co/image/ab67616d00001e0222463d6939fec9e17b2a6235",
   "ug": "https://tabs.ultimate-guitar.com/tab/tears-for-fears/everybody-wants-to-rule-the-world-official-2189953"
@@ -6886,7 +6886,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dmaj7 E C#m7.",
+  "note": "Intro (official chart): Dmaj7, E, C#m7. Bass line: D, E, C#.",
   "spotify": "spotify:track:3ZCTVFBt2Brf31RLEnCkWJ",
   "art": "https://i.scdn.co/image/ab67616d00001e02f2248cf6dad1d6c062587249",
   "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/everything-i-wanted-official-2900324"
@@ -6899,7 +6899,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -6917,7 +6917,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C Eb F.",
+  "note": "Verse (official chart): C, D#, F. Bass line: C, D#, F.",
   "spotify": "spotify:track:2kRFrWaLWiKq48YYVdGcm8",
   "art": "https://i.scdn.co/image/ab67616d00001e026c7112082b63beefffe40151",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/everything-in-its-right-place-official-3537218"
@@ -6952,7 +6952,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 2: E B E B E B C#m A.",
+  "note": "Intro (official chart): E, B, E, B, E, B, C#m, A. Bass line: E, B, E, B, E, B, C#, A.",
   "spotify": "spotify:track:1prZ0pr6XoRCxcrC3MCL0M",
   "art": "https://i.scdn.co/image/ab67616d00001e02eb832efe061888ee7ef10456",
   "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/everywhere-official-2899292"
@@ -6979,7 +6979,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Gm C.",
+  "note": "Intro (official chart): Gm, C. Bass line: G, C.",
   "spotify": "spotify:track:5tmrnhMxx39jnu3kjopMdP",
   "art": "https://i.scdn.co/image/ab67616d00001e02c894463d06b775f87d57361b",
   "ug": "https://tabs.ultimate-guitar.com/tab/santana/evil-ways-official-2869295"
@@ -6992,7 +6992,7 @@ export const SONGS = [
   "key": "B minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -7016,7 +7016,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am E C/G Dsus2/F# Am E A Am. Capo 2.",
+  "note": "Verse (official chart): Bm, F#, D/A, Esus2/G#, Bm, F#, B, Bm. Capo 2. Bass line: B, F#, A, G#, B, F#, B, B.",
   "spotify": "spotify:track:0z1o5L7HJx562xZSATcIpY",
   "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/exit-music-for-a-film-official-1910935"
@@ -7029,7 +7029,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -7067,7 +7067,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Emaj7 A Emaj7 Bm A Emaj7 A Emaj7.",
+  "note": "Verse (official chart): Emaj7, A, Emaj7, Bm, A, Emaj7, A, Emaj7. Bass line: E, A, E, B, A, E, A, E.",
   "spotify": "spotify:track:0qJ6owHt00MMZTpNmNsPHC",
   "art": "https://i.scdn.co/image/ab67616d00001e02aa6d9c3247dd7244683879fa",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/eyes-of-the-world-official-4054363"
@@ -7098,7 +7098,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A E Bm.",
+  "note": "Intro (official chart): A, E, Bm. Bass line: A, E, B.",
   "spotify": "spotify:track:1LzNfuep1bnAUR9skqdHCK",
   "art": "https://i.scdn.co/image/ab67616d00001e0289a392107ebd79818022b3ea",
   "ug": "https://tabs.ultimate-guitar.com/tab/mazzy-star/fade-into-you-official-2599002"
@@ -7133,7 +7133,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am F C G. Capo 6.",
+  "note": "Intro (official chart): Ebm, B, Gb, Db. Capo 6. Bass line: Eb, B, Gb, Db.",
   "spotify": "spotify:track:7gHs73wELdeycvS48JfIos",
   "art": "https://i.scdn.co/image/ab67616d00001e02c4d00cac55ae1b4598c9bc90",
   "ug": "https://tabs.ultimate-guitar.com/tab/alan-walker/faded-official-2125513"
@@ -7164,7 +7164,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C F G.",
+  "note": "Intro (official chart): C, F, G. Bass line: C, F, G.",
   "spotify": "spotify:track:7hanhZrUArC9qUerln4jh1",
   "art": "https://i.scdn.co/image/ab67616d00001e02815d0d5cf4f0167ee18367d9",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-national/fake-empire-official-4794506"
@@ -7177,7 +7177,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -7208,7 +7208,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A Dmaj9/F# E6 Dsus2 A Dsus2.",
+  "note": "Verse (official chart): A, Dmaj9/F#, E6, Dsus2, A, Dsus2. Bass line: A, F#, E, D, A, D.",
   "spotify": "spotify:track:73CKjW3vsUXRpy3NnX4H7F",
   "art": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/fake-plastic-trees-official-2146673"
@@ -7235,7 +7235,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C.",
+  "note": "Intro (official chart): G, C. Bass line: G, C.",
   "spotify": "spotify:track:476V2d6iA2tWXgQboKmTtA",
   "art": "https://i.scdn.co/image/ab67616d00001e02e7248738c2f7ce3b5584b15d",
   "ug": "https://tabs.ultimate-guitar.com/tab/cat-stevens-yusuf-islam/father-and-son-official-2168611"
@@ -7266,7 +7266,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C A# G.",
+  "note": "Intro (official chart): C, A#, G. Bass line: C, A#, G.",
   "spotify": "spotify:track:7AalBKBoLDR4UmRYRJpdbj",
   "art": "https://i.scdn.co/image/ab67616d00001e029eee212bba82bed8da96a8f7",
   "ug": "https://tabs.ultimate-guitar.com/tab/pink-floyd/fearless-official-2942651"
@@ -7279,7 +7279,7 @@ export const SONGS = [
   "key": "A minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -7301,7 +7301,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am Em G C.",
+  "note": "Verse (official chart): Am, Em, G, C. Bass line: A, E, G, C.",
   "spotify": "spotify:track:1gihuPhrLraKYrJMAEONyc",
   "art": "https://i.scdn.co/image/ab67616d00001e02dcef905cb144d4867119850b",
   "ug": "https://tabs.ultimate-guitar.com/tab/calvin-harris/feel-so-close-official-2242277"
@@ -7314,7 +7314,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -7336,7 +7336,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G5 F5 Eb5 D5 G5 F5 Eb5 D5.",
+  "note": "Verse (official chart): G5, F5, D#5, D5, G5, F5, D#5, D5. Bass line: G, F, D#, D, G, F, D#, D.",
   "spotify": "spotify:track:6Rqn2GFlmvmV4w9Ala0I1e",
   "art": "https://i.scdn.co/image/ab67616d00001e02892abb1ade35b4863b29e051",
   "ug": "https://tabs.ultimate-guitar.com/tab/nina-simone/feeling-good-official-2523978"
@@ -7349,7 +7349,7 @@ export const SONGS = [
   "key": "G minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -7375,7 +7375,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Dm C Dm G Gm.",
+  "note": "Verse (official chart): Dm, C, Dm, G, Gm. Bass line: D, C, D, G, G.",
   "spotify": "spotify:track:0LtOwyZoSNZKJWHqjzADpW",
   "art": "https://i.scdn.co/image/ab67616d00001e02370c12f82872c9cfaee80193",
   "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/feels-like-we-only-go-backwards-official-2172143"
@@ -7410,7 +7410,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: B A D E.",
+  "note": "Intro (official chart): B, A, D, E. Bass line: B, A, D, E.",
   "spotify": "spotify:track:21Qsj3cMVCx2xF2EVVNbEu",
   "art": "https://i.scdn.co/image/ab67616d00001e02033dbfae219de887bd94952a",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-white-stripes/fell-in-love-with-a-girl-official-1952221"
@@ -7423,7 +7423,7 @@ export const SONGS = [
   "key": "D minor",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -7441,7 +7441,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, chorus: Dm Bb G.",
+  "note": "Chorus (official chart): Dm, Bb, G. Bass line: D, Bb, G.",
   "spotify": "spotify:track:3PG7BAJG9WkmNOJOlc4uAo",
   "art": "https://i.scdn.co/image/ab67616d00001e0298260c528e6eec9dd431c1d7",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-velvet-underground/femme-fatale-official-1981235"
@@ -7484,7 +7484,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A Em7 D A E Gmaj7. Capo 3.",
+  "note": "Intro (official chart): C, Gm7, F, C, G, A#maj7. Capo 3. Bass line: C, G, F, C, G, A#.",
   "spotify": "spotify:track:1XUKItaRs2494LclJwHhl8",
   "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
   "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/fire-and-rain-official-2154635"
@@ -7511,7 +7511,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: B A.",
+  "note": "Intro (official chart): B, A. Bass line: B, A.",
   "spotify": "spotify:track:2hhUkjqmkIGIeMDmRRANl1",
   "art": "https://i.scdn.co/image/ab67616d00001e02b70ce9037c7235db514acee8",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/fire-on-the-mountain-official-3167333"
@@ -7524,7 +7524,7 @@ export const SONGS = [
   "key": "C minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -7551,7 +7551,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G/B Am F G C. Capo 3.",
+  "note": "Verse (official chart): Bb/D, Cm, Ab, Bb, Eb. Capo 3. Bass line: D, C, Ab, Bb, Eb.",
   "spotify": "spotify:track:1fEGtTZjrjJW8eUeewnNJR",
   "art": "https://i.scdn.co/image/ab67616d00001e02816243514f01ac30d0932622",
   "ug": "https://tabs.ultimate-guitar.com/tab/iron-wine/flightless-bird-american-mouth-official-3520778"
@@ -7586,7 +7586,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F# A#m D#m A#m.",
+  "note": "Intro (official chart): Gb, Bbm, Ebm, Bbm. Bass line: Gb, Bb, Eb, Bb.",
   "spotify": "spotify:track:2lwwrWVKdf3LR9lbbhnr6R",
   "art": "https://i.scdn.co/image/ab67616d00001e02cc68329bfbf34037df965dc1",
   "ug": "https://tabs.ultimate-guitar.com/tab/modest-mouse/float-on-official-1964279"
@@ -7599,7 +7599,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -7629,7 +7629,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: B7 E A E B7 E. Capo 1.",
+  "note": "Verse (official chart): C7, F, Bb, F, C7, F. Capo 1. Bass line: C, F, Bb, F, C, F.",
   "spotify": "spotify:track:0LTSNmOLBt25GMjHlxp9OR",
   "art": "https://i.scdn.co/image/ab67616d00001e022fc24df8bf525d82a5d8cf88",
   "ug": "https://tabs.ultimate-guitar.com/tab/johnny-cash/folsom-prison-blues-official-2148833"
@@ -7664,7 +7664,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C D Em D.",
+  "note": "Intro (official chart): C, D, Em, D. Bass line: C, D, E, D.",
   "spotify": "spotify:track:5WmDRnuGYo31xrWNDcYaps",
   "art": "https://i.scdn.co/image/ab67616d00001e02e3100bdcdc758b5fab7e4894",
   "ug": "https://tabs.ultimate-guitar.com/tab/gin-blossoms/found-out-about-you-official-3430250"
@@ -7696,7 +7696,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D/F# E D.",
+  "note": "Intro (official chart): D/F#, E, D. Bass line: F#, E, D.",
   "spotify": "spotify:track:5Qnrgqy1pAm9GyNQOgyVFz",
   "art": "https://i.scdn.co/image/ab67616d00001e02820e2ac14772ae3162c6d479",
   "ug": "https://tabs.ultimate-guitar.com/tab/sufjan-stevens/fourth-of-july-official-4004107"
@@ -7709,7 +7709,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -7731,7 +7731,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D G A G.",
+  "note": "Verse (official chart): D, G, A, G. Bass line: D, G, A, G.",
   "spotify": "spotify:track:1B5ezpcefpeIxy1kHwRF6u",
   "art": "https://i.scdn.co/image/ab67616d00001e020fffeae6a8b9791b69f99637",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/franklins-tower-official-3594311"
@@ -7782,7 +7782,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G D A Bm G D A.",
+  "note": "Intro (official chart): D, G, D, A, Bm, G, D, A. Bass line: D, G, D, A, B, G, D, A.",
   "spotify": "spotify:track:263aNAQCeFSWipk896byo6",
   "art": "https://i.scdn.co/image/ab67616d00001e02d9613cde07a49c85e972bc9a",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-cure/friday-im-in-love-official-2468986"
@@ -7813,7 +7813,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F# A#m C#.",
+  "note": "Intro (official chart): Gb, Bbm, Db. Bass line: Gb, Bb, Db.",
   "spotify": "spotify:track:3cjvqsvvU80g7WJPMVh8iq",
   "art": "https://i.scdn.co/image/ab67616d00001e02550133f6d334ed152d75aa56",
   "ug": "https://tabs.ultimate-guitar.com/tab/grimes/genesis-official-5156992"
@@ -7856,7 +7856,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G5 D5 E5 B5 C5 D5.",
+  "note": "Intro (official chart): G5, D5, E5, B5, C5, D5. Bass line: G, D, E, B, C, D.",
   "spotify": "spotify:track:0ExL3yud4W6gVfG6brvGE3",
   "art": "https://i.scdn.co/image/ab67616d00001e02aa13b5cb5c07db8c508b96db",
   "ug": "https://tabs.ultimate-guitar.com/tab/pixies/gigantic-official-2150155"
@@ -7884,7 +7884,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C/G. Capo 3.",
+  "note": "Intro (official chart): Bb, Eb/Bb. Capo 3.",
   "spotify": "spotify:track:4K1imZQQ0yKtJ40vGmUajS",
   "art": "https://i.scdn.co/image/ab67616d00001e02d2796d29db72c9d7f9083fe0",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/girl-from-the-north-country-official-2076165"
@@ -7915,7 +7915,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E D A.",
+  "note": "Intro (official chart): E, D, A. Bass line: E, D, A.",
   "spotify": "spotify:track:3mi127LX5PWsLydEBYCRBG",
   "art": "https://i.scdn.co/image/ab67616d00001e02d29dc42d61470e946adbbefc",
   "ug": "https://tabs.ultimate-guitar.com/tab/them/gloria-official-2201583"
@@ -7951,7 +7951,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Ebm Ebm/C# Ebm/C Bmaj7.",
+  "note": "Intro (official chart): Ebm, Ebm/Db, Ebm/C, Bmaj7. Bass line: Eb, Db, C, B.",
   "spotify": "spotify:track:3Ty7OTBNSigGEpeW2PqcsC",
   "art": "https://i.scdn.co/image/ab67616d00001e02dc20397b139223620af148f6",
   "ug": "https://tabs.ultimate-guitar.com/tab/portishead/glory-box-official-2217707"
@@ -7986,7 +7986,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F C Dm Bb.",
+  "note": "Intro (official chart): F, C, Dm, Bb. Bass line: F, C, D, Bb.",
   "spotify": "spotify:track:5buITai6eMzU8rJonMEI6e",
   "art": "https://i.scdn.co/image/ab67616d00001e021581237e4d580feafaed6bc0",
   "ug": "https://tabs.ultimate-guitar.com/tab/bush/glycerine-official-1964285"
@@ -7999,7 +7999,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -8025,7 +8025,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F C Bb F Bb.",
+  "note": "Verse (official chart): F, C, Bb, F, Bb. Bass line: F, C, Bb, F, Bb.",
   "spotify": "spotify:track:15rjQH7nTcTomKwfVMd4xl",
   "art": "https://i.scdn.co/image/ab67616d00001e02eb832efe061888ee7ef10456",
   "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/go-your-own-way-official-1971283"
@@ -8038,7 +8038,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -8056,7 +8056,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A B Dsus2.",
+  "note": "Verse (official chart): A, B, Dsus2. Bass line: A, B, D.",
   "spotify": "spotify:track:3QVtDnXU5zqGWxWDFBMiDj",
   "art": "https://i.scdn.co/image/ab67616d00001e02b893831d1a12d3d4024a5867",
   "ug": "https://tabs.ultimate-guitar.com/tab/pavement/gold-soundz-official-4225780"
@@ -8083,7 +8083,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F#m E.",
+  "note": "Intro (official chart): F#m, E. Bass line: F#, E.",
   "spotify": "spotify:track:4ZtFanR9U6ndgddUvNcjcG",
   "art": "https://i.scdn.co/image/ab67616d00001e02a91c10fe9472d9bd89802e5a",
   "ug": "https://tabs.ultimate-guitar.com/tab/olivia-rodrigo/good-4-u-official-3707024"
@@ -8096,7 +8096,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -8114,7 +8114,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D G A.",
+  "note": "Verse (official chart): D, G, A. Bass line: D, G, A.",
   "spotify": "spotify:track:4KmAGKJbeY2DUiLInlet53",
   "art": "https://i.scdn.co/image/ab67616d00001e0207b338d851f7c61515d23f31",
   "ug": "https://tabs.ultimate-guitar.com/tab/waylon-jennings/good-hearted-woman-official-3715223"
@@ -8127,7 +8127,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -8165,7 +8165,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em7 B7 Em7 B7 A7 B7 A7 B7.",
+  "note": "Verse (official chart): Em7, B7, Em7, B7, A7, B7, A7, B7. Bass line: E, B, E, B, A, B, A, B.",
   "spotify": "spotify:track:1qfDfZAvrkSAFrAR2FTQDv",
   "art": "https://i.scdn.co/image/ab67616d00001e02f64b9ea8a8a409c6af86134f",
   "ug": "https://tabs.ultimate-guitar.com/tab/bill-withers/grandmas-hands-official-3473366"
@@ -8192,7 +8192,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cadd9 G. Capo 9.",
+  "note": "Intro (official chart): Aadd9, E. Capo 9. Bass line: A, E.",
   "spotify": "spotify:track:1pPqVrG2RCHXx81Aw4xp99",
   "art": "https://i.scdn.co/image/ab67616d00001e028f7128431367ce70f773651c",
   "ug": "https://tabs.ultimate-guitar.com/tab/modest-mouse/gravity-rides-everything-official-2090821"
@@ -8205,7 +8205,7 @@ export const SONGS = [
   "key": "F# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -8243,7 +8243,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F#m A D F#m A D F#m A.",
+  "note": "Verse (official chart): F#m, A, D, F#m, A, D, F#m, A. Bass line: F#, A, D, F#, A, D, F#, A.",
   "spotify": "spotify:track:6ie2Bw3xLj2JcGowOlcMhb",
   "art": "https://i.scdn.co/image/ab67616d00001e02f8553e18a11209d4becd0336",
   "ug": "https://tabs.ultimate-guitar.com/tab/lorde/green-light-official-3696161"
@@ -8270,7 +8270,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb C.",
+  "note": "Intro (official chart): Bb, C. Bass line: Bb, C.",
   "spotify": "spotify:track:19Ym5Sg0YyOCa6ao21bdoG",
   "art": "https://i.scdn.co/image/ab67616d00001e02eb832efe061888ee7ef10456",
   "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/gypsy-official-2511078"
@@ -8297,7 +8297,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C.",
+  "note": "Intro (official chart): G, C. Bass line: G, C.",
   "spotify": "spotify:track:4RVwu0g32PAqgUiJoXsdF8",
   "art": "https://i.scdn.co/image/ab67616d00001e022a038d3bf875d23e4aeaa84e",
   "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/happier-than-ever-official-3813380"
@@ -8310,7 +8310,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -8328,7 +8328,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, chorus: C#maj7 Cm F.",
+  "note": "Chorus (official chart): Dbmaj7, Cm, F. Bass line: Db, C, F.",
   "spotify": "spotify:track:0eMxgAHmuvoqpLyYQrbKvQ",
   "art": "https://i.scdn.co/image/ab67616d00001e028dc2293204ab999264f4628a",
   "ug": "https://tabs.ultimate-guitar.com/tab/pharrell-williams/happy-official-1981805"
@@ -8341,7 +8341,7 @@ export const SONGS = [
   "key": "G minor",
   "tempo": 100,
   "section": "verse 2",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -8355,7 +8355,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 2: B7 Em. Capo 3.",
+  "note": "Verse (official chart): D7, Gm. Capo 3. Bass line: D, G.",
   "spotify": "spotify:track:1emahendvBPcwY0q3orN2R",
   "art": "https://i.scdn.co/image/ab67616d00001e027d89ae9f800c500a88cab62f",
   "ug": "https://tabs.ultimate-guitar.com/tab/camila-cabello/havana-official-2283097"
@@ -8386,7 +8386,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G# E C#.",
+  "note": "Intro (official chart): Ab, E, Db. Bass line: Ab, E, Db.",
   "spotify": "spotify:track:11LmqTE2naFULdEP94AUBa",
   "art": "https://i.scdn.co/image/ab67616d00001e02aca059cebc1841277db22d1c",
   "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/heart-shaped-box-official-1912337"
@@ -8421,7 +8421,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C#m B G#m F# C#m B G#m F#.",
+  "note": "Intro (official chart): C#m, B, G#m, F#, C#m, B, G#m, F#. Bass line: C#, B, G#, F#, C#, B, G#, F#.",
   "spotify": "spotify:track:3USxtqRwSYz57Ewm6wWRMp",
   "art": "https://i.scdn.co/image/ab67616d00001e02712701c5e263efc8726b1464",
   "ug": "https://tabs.ultimate-guitar.com/tab/glass-animals/heat-waves-official-3583421"
@@ -8434,7 +8434,7 @@ export const SONGS = [
   "key": "F minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -8456,7 +8456,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em G D C. Capo 1.",
+  "note": "Verse (official chart): Fm, Ab, Eb, Db. Capo 1. Bass line: F, Ab, Eb, Db.",
   "spotify": "spotify:track:62PaSfnXSMyLshYJrlTuL3",
   "art": "https://i.scdn.co/image/ab67616d00001e0247ce408fb4926d69da6713c2",
   "ug": "https://tabs.ultimate-guitar.com/tab/adele/hello-official-1977701"
@@ -8508,7 +8508,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G Am D7 G Am D7 Bm/D C. Capo 5.",
+  "note": "Intro (official chart): C, Dm, G7, C, Dm, G7, Em/G, F. Capo 5. Bass line: C, D, G, C, D, G, G, F.",
   "spotify": "spotify:track:7IijX5DkLaf3G4qF6xDLYa",
   "art": "https://i.scdn.co/image/ab67616d00001e02b190c3479aedf6a29340847d",
   "ug": "https://tabs.ultimate-guitar.com/tab/john-prine/hello-in-there-official-3689675"
@@ -8536,7 +8536,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A B/A.",
+  "note": "Intro (official chart): A, B/A.",
   "spotify": "spotify:track:685sEpLJe80Zzuxz3siOVT",
   "art": "https://i.scdn.co/image/ab67616d00001e02ebca7d93f21ba366fe005966",
   "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty-and-the-heartbreakers/here-comes-my-girl-official-4218850"
@@ -8567,7 +8567,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am F G.",
+  "note": "Intro (official chart): Am, F, G. Bass line: A, F, G.",
   "spotify": "spotify:track:3ZooowctgcKwNx7XtRK3W0",
   "art": "https://i.scdn.co/image/ab67616d00001e02796a9d2d88c0df505dae4f4a",
   "ug": "https://tabs.ultimate-guitar.com/tab/eurythmics/here-comes-the-rain-again-official-3917210"
@@ -8619,7 +8619,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F6/A G5 A D G5 A D G5.",
+  "note": "Intro (official chart): F6/A, G5, A, D, G5, A, D, G5. Bass line: A, G, A, D, G, A, D, G.",
   "spotify": "spotify:track:4IvZLDtwBHmBmwgDIUbuwa",
   "art": "https://i.scdn.co/image/ab67616d00001e02e1b208a8d3229b61263899d1",
   "ug": "https://tabs.ultimate-guitar.com/tab/pixies/here-comes-your-man-official-2057626"
@@ -8632,7 +8632,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -8650,7 +8650,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A E6 Dmaj9.",
+  "note": "Verse (official chart): A, E6, Dmaj9. Bass line: A, E, D.",
   "spotify": "spotify:track:5Kf86o9j8foGuExTJVoejE",
   "art": "https://i.scdn.co/image/ab67616d00001e0290f9b2a0016f80531e1c087c",
   "ug": "https://tabs.ultimate-guitar.com/tab/pavement/here-official-5833493"
@@ -8677,7 +8677,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G.",
+  "note": "Intro (official chart): D, G. Bass line: D, G.",
   "spotify": "spotify:track:0WkxEasbtL1Z6KKxerPDtG",
   "art": "https://i.scdn.co/image/ab67616d00001e0268fe324f22bf71d65a16aac6",
   "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/heroes-official-2457982"
@@ -8690,7 +8690,7 @@ export const SONGS = [
   "key": "G minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -8713,7 +8713,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Gm Eb/Bb Bb F Gm Eb/Bb Bb F.",
+  "note": "Verse (official chart): Gm, Eb/Bb, Bb, F, Gm, Eb/Bb, Bb, F. Bass line: G, Bb, Bb, F, G, Bb, Bb, F.",
   "spotify": "spotify:track:4lhqb6JvbHId48OUJGwymk",
   "art": "https://i.scdn.co/image/ab67616d00001e02e14f11f796cef9f9a82691a7",
   "ug": "https://tabs.ultimate-guitar.com/tab/avicii/hey-brother-official-1997143"
@@ -8748,7 +8748,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dsus2 E F#m7 E.",
+  "note": "Intro (official chart): Dsus2, E, F#m7, E. Bass line: D, E, F#, E.",
   "spotify": "spotify:track:4o7ZPI2fmEi3piRe0Hrfpy",
   "art": "https://i.scdn.co/image/ab67616d00001e02e3100bdcdc758b5fab7e4894",
   "ug": "https://tabs.ultimate-guitar.com/tab/gin-blossoms/hey-jealousy-official-2680818"
@@ -8775,7 +8775,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em Dm.",
+  "note": "Intro (official chart): Em, Dm. Bass line: E, D.",
   "spotify": "spotify:track:7F02x6EKYIQV3VcTaTm7oN",
   "art": "https://i.scdn.co/image/ab67616d00001e02b694e89ba937dd2631ff584c",
   "ug": "https://tabs.ultimate-guitar.com/tab/pink-floyd/hey-you-official-2075819"
@@ -8788,7 +8788,7 @@ export const SONGS = [
   "key": "F# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -8827,7 +8827,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A E F#m9 A E F#m9/C# A E.",
+  "note": "Verse (official chart): A, E, F#m9, A, E, F#m9/C#, A, E. Bass line: A, E, F#, A, E, C#, A, E.",
   "spotify": "spotify:track:2tej1KSqNuxwywIpY1rDRc",
   "art": "https://i.scdn.co/image/ab67616d00001e0296623f4784c88259592fb8a1",
   "ug": "https://tabs.ultimate-guitar.com/tab/imogen-heap/hide-and-seek-official-3903305"
@@ -8870,7 +8870,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Abm Gb Fb Eb Abm Gb.",
+  "note": "Intro (official chart): Abm, Gb, E, Eb, Abm, Gb. Bass line: Ab, Gb, E, Eb, Ab, Gb.",
   "spotify": "spotify:track:1GHzX0BcT6SNC2LxQbeKCp",
   "art": "https://i.scdn.co/image/ab67616d00001e02d4110362da043673812d1d55",
   "ug": "https://tabs.ultimate-guitar.com/tab/ray-charles/hit-the-road-jack-official-2149083"
@@ -8883,7 +8883,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -8905,7 +8905,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C Am G C.",
+  "note": "Verse (official chart): C, Am, G, C. Bass line: C, A, G, C.",
   "spotify": "spotify:track:0DwClY2t9YAWHBROMIgrXb",
   "art": "https://i.scdn.co/image/ab67616d00001e02f350c13195ce048876b5fea4",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-lumineers/ho-hey-official-2422311"
@@ -8945,7 +8945,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C Am7 G6add11 Am7 Fmaj7/C. Capo 1.",
+  "note": "Intro (official chart): Db, Bbm7, Ab6add11, Bbm7, Gbmaj7/Db. Capo 1. Bass line: Db, Bb, Ab, Bb, Db.",
   "spotify": "spotify:track:35KiiILklye1JRRctaLUb4",
   "art": "https://i.scdn.co/image/ab67616d00001e024b6b1547455bbecb9f6bba64",
   "ug": "https://tabs.ultimate-guitar.com/tab/bon-iver/holocene-official-2460498"
@@ -8976,7 +8976,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm D G.",
+  "note": "Intro (official chart): Bm, D, G. Bass line: B, D, G.",
   "spotify": "spotify:track:2x1jP9BexWtOKudvuUHbaD",
   "art": "https://i.scdn.co/image/ab67616d00001e02807aad47d0c190e56f263038",
   "ug": "https://tabs.ultimate-guitar.com/tab/edward-sharpe-and-the-magnetic-zeros/home-official-2461884"
@@ -8989,7 +8989,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -9027,7 +9027,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G C G A D G C G.",
+  "note": "Verse (official chart): G, C, G, A, D, G, C, G. Bass line: G, C, G, A, D, G, C, G.",
   "spotify": "spotify:track:3fnPv1LRMxENr63afVhaz1",
   "art": "https://i.scdn.co/image/ab67616d00001e02f27dae5cc83df7f478bc44f2",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/honky-tonk-women-official-2440353"
@@ -9040,7 +9040,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -9058,7 +9058,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F7 C G7.",
+  "note": "Verse (official chart): F7, C, G7. Bass line: F, C, G.",
   "spotify": "spotify:track:64Ny7djQ6rNJspquof2KoX",
   "art": "https://i.scdn.co/image/ab67616d00001e0265e7f92b6667ac6cbb239845",
   "ug": "https://tabs.ultimate-guitar.com/tab/elvis-presley/hound-dog-official-2006911"
@@ -9090,7 +9090,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E G/E Aadd9/E. Capo 2.",
+  "note": "Intro (official chart): Gb, A/Gb, Badd9/Gb. Capo 2.",
   "spotify": "spotify:track:1YrnDTqvcnUKxAIeXyaEmU",
   "art": "https://i.scdn.co/image/ab67616d00001e0204480d4422fe67d383386660",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-smiths/how-soon-is-now-official-2513157"
@@ -9103,7 +9103,7 @@ export const SONGS = [
   "key": "D minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -9121,7 +9121,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Dm F C.",
+  "note": "Verse (official chart): Dm, F, C. Bass line: D, F, C.",
   "spotify": "spotify:track:3850dYVgOFIXJh5U4BFEWH",
   "art": "https://i.scdn.co/image/ab67616d00001e02aaa9d84415623c1e790cd07b",
   "ug": "https://tabs.ultimate-guitar.com/tab/madonna/hung-up-official-5945486"
@@ -9156,7 +9156,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E A D A.",
+  "note": "Intro (official chart): E, A, D, A. Bass line: E, A, D, A.",
   "spotify": "spotify:track:2PzU4IB8Dr6mxV3lHuaG34",
   "art": "https://i.scdn.co/image/ab67616d00001e0205c5be85b64eaff732f7cb0b",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/i-cant-get-no-satisfaction-official-1940667"
@@ -9169,7 +9169,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -9207,7 +9207,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: E B C#m A B E B C#m.",
+  "note": "Verse (official chart): E, B, C#m, A, B, E, B, C#m. Bass line: E, B, C#, A, B, E, B, C#.",
   "spotify": "spotify:track:0BTFSLbKC5VRBNvjnkrfEk",
   "art": "https://i.scdn.co/image/ab67616d00001e02dc682ce03f7dbc0cf239e2c8",
   "ug": "https://tabs.ultimate-guitar.com/tab/jim-croce/i-got-a-name-official-2905871"
@@ -9258,7 +9258,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E G A B G E G A.",
+  "note": "Intro (official chart): E, G, A, B, G, E, G, A. Bass line: E, G, A, B, G, E, G, A.",
   "spotify": "spotify:track:4jTqsgDaffdNH0BMBwhjFv",
   "art": "https://i.scdn.co/image/ab67616d00001e029d931a490797521a395708e8",
   "ug": "https://tabs.ultimate-guitar.com/tab/joan-jett-and-the-blackhearts/i-love-rock-n-roll-official-1964243"
@@ -9293,7 +9293,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am F C G. Capo 3.",
+  "note": "Intro (official chart): Cm, Ab, Eb, Bb. Capo 3. Bass line: C, Ab, Eb, Bb.",
   "spotify": "spotify:track:50M7nY1oQuNHecs0ahWAtI",
   "art": "https://i.scdn.co/image/ab67616d00001e02a970b73f34155a90e04d6414",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-national/i-need-my-girl-official-2620278"
@@ -9343,7 +9343,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am C/B C C/F C/E Gsus4 Am C/B. Capo 1.",
+  "note": "Intro (official chart): Bbm, Db/C, Db, Db/Gb, Db/F, Absus4, Bbm, Db/C. Capo 1. Bass line: Bb, C, Db, Gb, F, Ab, Bb, C.",
   "spotify": "spotify:track:3Bclyko7WmwM2oGmKj8sue",
   "art": "https://i.scdn.co/image/ab67616d00001e029ad7dd6870950bbcb02bed09",
   "ug": "https://tabs.ultimate-guitar.com/tab/mumford-sons/i-will-wait-official-2465332"
@@ -9374,7 +9374,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em D G.",
+  "note": "Intro (official chart): Em, D, G. Bass line: E, D, G.",
   "spotify": "spotify:track:7gSQv1OHpkIoAdUiRLdmI6",
   "art": "https://i.scdn.co/image/ab67616d00001e0236572e6726714544f5bed456",
   "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty/i-wont-back-down-official-2175865"
@@ -9405,7 +9405,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C D. Capo 4.",
+  "note": "Intro (official chart): B, E, F#. Capo 4. Bass line: B, E, F#.",
   "spotify": "spotify:track:3FMQnxcc6FcPscLeLqtW5S",
   "art": "https://i.scdn.co/image/ab67616d00001e02cbf5711413cc786599eb25d0",
   "ug": "https://tabs.ultimate-guitar.com/tab/townes-van-zandt/if-i-needed-you-official-3481154"
@@ -9456,7 +9456,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm Am Bb Dm Am Bb Dm F.",
+  "note": "Intro (official chart): Dm, Am, Bb, Dm, Am, Bb, Dm, F. Bass line: D, A, Bb, D, A, Bb, D, F.",
   "spotify": "spotify:track:250RLekaiL1q9qZer975Eg",
   "art": "https://i.scdn.co/image/ab67616d00001e028aac8a5f5e60ea65ec028392",
   "ug": "https://tabs.ultimate-guitar.com/tab/jason-isbell-and-the-400-unit/if-we-were-vampires-official-2580987"
@@ -9469,7 +9469,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -9491,7 +9491,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G F G F G C D Em. Capo 2.",
+  "note": "Verse (official chart): A, G, A, G, A, D, E, F#m. Capo 2. Bass line: A, G, A, G, A, D, E, F#.",
   "spotify": "spotify:track:57ct8jKi6trntXiRV0NnXi",
   "art": "https://i.scdn.co/image/ab67616d00001e028fd7eec31ed567629f4ab420",
   "ug": "https://tabs.ultimate-guitar.com/tab/gordon-lightfoot/if-you-could-read-my-mind-official-2623575"
@@ -9527,7 +9527,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: B/D# Bm F#sus4 Bm7.",
+  "note": "Intro (official chart): B/D#, Bm, F#sus4, Bm7. Bass line: D#, B, F#, B.",
   "spotify": "spotify:track:3XTefle3zvDkjgS1Fiq14A",
   "art": "https://i.scdn.co/image/ab67616d00001e02ae4ee821be74164699522b8b",
   "ug": "https://tabs.ultimate-guitar.com/tab/faithless/insomnia-official-4628042"
@@ -9570,7 +9570,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F Dm Am Csus2 F Dm. Capo 1.",
+  "note": "Intro (official chart): Gb, Ebm, Bbm, Dbsus2, Gb, Ebm. Capo 1. Bass line: Gb, Eb, Bb, Db, Gb, Eb.",
   "spotify": "spotify:track:2cGxRwrMyEAp8dEbuZaVv6",
   "art": "https://i.scdn.co/image/ab67616d00001e029b9b36b0e22870b9f542d937",
   "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/instant-crush-official-1957175"
@@ -9621,7 +9621,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C#m7 E Asus2 G#7 A E A E.",
+  "note": "Intro (official chart): C#m7, E, Asus2, G#7, A, E, A, E. Bass line: C#, E, A, G#, A, E, A, E.",
   "spotify": "spotify:track:600s08VdbjiyAjDGDjYSFI",
   "art": "https://i.scdn.co/image/ab67616d00001e0277696910e15c42a5e37636e5",
   "ug": "https://tabs.ultimate-guitar.com/tab/stone-temple-pilots/interstate-love-song-official-1958787"
@@ -9634,7 +9634,7 @@ export const SONGS = [
   "key": "Eb",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -9648,7 +9648,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C G. Capo 3.",
+  "note": "Verse (official chart): Eb, Bb. Capo 3. Bass line: Eb, Bb.",
   "spotify": "spotify:track:1285TFFkLTTis9UL9IGZRi",
   "art": "https://i.scdn.co/image/ab67616d00001e02d29dc42d61470e946adbbefc",
   "ug": "https://tabs.ultimate-guitar.com/tab/van-morrison/into-the-mystic-official-2610144"
@@ -9691,7 +9691,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Fmaj7 Am Dm Emadd11 Dmadd11 Csus4.",
+  "note": "Intro (official chart): Fmaj7, Am, Dm, Emadd11, Dmadd11, Csus4. Bass line: F, A, D, E, D, C.",
   "spotify": "spotify:track:2dIi21bJASzEKP20LIutOE",
   "art": "https://i.scdn.co/image/ab67616d00001e02789657ec664daa222cab1e5a",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-xx/intro-official-1961281"
@@ -9726,7 +9726,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em Am D G.",
+  "note": "Intro (official chart): Em, Am, D, G. Bass line: E, A, D, G.",
   "spotify": "spotify:track:2MLHyLy5z5l5YRp7momlgw",
   "art": "https://i.scdn.co/image/ab67616d00001e021e0dc5baaabda304b0ad1815",
   "ug": "https://tabs.ultimate-guitar.com/tab/weezer/island-in-the-sun-official-1944021"
@@ -9769,7 +9769,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Abm F# E Dbm B E.",
+  "note": "Intro (official chart): G#m, F#, E, C#m, B, E. Bass line: G#, F#, E, C#, B, E.",
   "spotify": "spotify:track:0Rqwa6i410IwhTiugt6vXi",
   "art": "https://i.scdn.co/image/ab67616d00001e02a46d603701aa0342e8cca64e",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-xx/islands-official-1980549"
@@ -9808,7 +9808,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C#m7 F#9 B9 E C#m7.",
+  "note": "Intro (official chart): C#m7, F#9, B9, E, C#m7. Bass line: C#, F#, B, E, C#.",
   "spotify": "spotify:track:3NlLmKBJozwoi0k03Feb1N",
   "art": "https://i.scdn.co/image/ab67616d00001e02835ed5fb9b70f46c3177ffde",
   "ug": "https://tabs.ultimate-guitar.com/tab/stevie-wonder/isnt-she-lovely-official-2139803"
@@ -9835,7 +9835,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C.",
+  "note": "Intro (official chart): G, C. Bass line: G, C.",
   "spotify": "spotify:track:5nbNWAfT1S6V1vqj3snHxS",
   "art": "https://i.scdn.co/image/ab67616d00001e0225c549de2a2ddcc4ecb62f4a",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/it-aint-me-babe-official-2214709"
@@ -9870,7 +9870,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F Bb Gm Eb F Bb Eb Bb.",
+  "note": "Intro (official chart): F, Bb, Gm, Eb, F, Bb, Eb, Bb. Bass line: F, Bb, G, Eb, F, Bb, Eb, Bb.",
   "spotify": "spotify:track:0fWe4v0BssKanrISjrYQ6T",
   "art": "https://i.scdn.co/image/ab67616d00001e022974b64fbb5cdeb32911f132",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-band/it-makes-no-difference-official-5357706"
@@ -9897,7 +9897,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A G.",
+  "note": "Intro (official chart): A, G. Bass line: A, G.",
   "spotify": "spotify:track:62nQ8UZVqR2RMvkJHkcO2o",
   "art": "https://i.scdn.co/image/ab67616d00001e022d0e5ab5bd2e234fbcffa3e0",
   "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/jeremy-official-2496090"
@@ -9924,7 +9924,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am Em. Capo 5.",
+  "note": "Intro (official chart): Dm, Am. Capo 5. Bass line: D, A.",
   "spotify": "spotify:track:4wd09wCccmxUB7XVJp0RNn",
   "art": "https://i.scdn.co/image/ab67616d00001e0227f0b3e25bfd979d8ae1d54b",
   "ug": "https://tabs.ultimate-guitar.com/tab/wilco/jesus-etc-official-2163521"
@@ -9967,7 +9967,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb Eb Bb F Eb Bb.",
+  "note": "Intro (official chart): Bb, Eb, Bb, F, Eb, Bb. Bass line: Bb, Eb, Bb, F, Eb, Bb.",
   "spotify": "spotify:track:2QfiRTz5Yc8DdShCxG1tB2",
   "art": "https://i.scdn.co/image/ab67616d00001e02a496dc8c33ca6d10668b3157",
   "ug": "https://tabs.ultimate-guitar.com/tab/chuck-berry/johnny-b-goode-official-1920905"
@@ -9998,7 +9998,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C F G. Capo 4.",
+  "note": "Intro (official chart): E, A, B. Capo 4. Bass line: E, A, B.",
   "spotify": "spotify:track:37Dl7jQMmt0gUnzTKqnjkN",
   "art": "https://i.scdn.co/image/ab67616d00001e028ca88d5178d1ac6f679f144f",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/just-like-a-woman-official-3288926"
@@ -10034,7 +10034,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am D/F# Em G Am F Em G.",
+  "note": "Intro (official chart): Am, D/F#, Em, G, Am, F, Em, G. Bass line: A, F#, E, G, A, F, E, G.",
   "spotify": "spotify:track:63OQupATfueTdZMWTxW03A",
   "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/karma-police-official-1911473"
@@ -10061,7 +10061,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm A.",
+  "note": "Intro (official chart): Bm, A. Bass line: B, A.",
   "spotify": "spotify:track:1V15l05snHYHYVxerjMFGo",
   "art": "https://i.scdn.co/image/ab67616d00001e02c8e97cafeb2acb85b21a777e",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-police/king-of-pain-official-3428666"
@@ -10074,7 +10074,7 @@ export const SONGS = [
   "key": "B",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -10088,7 +10088,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C G. Capo 4.",
+  "note": "Verse (official chart): E, B. Capo 4. Bass line: E, B.",
   "spotify": "spotify:track:4vjvx7Zxkb4AltGcZ0BBvI",
   "art": "https://i.scdn.co/image/ab67616d00001e02a91b75c9ef65ed8d760ff600",
   "ug": "https://tabs.ultimate-guitar.com/tab/phoebe-bridgers/kyoto-official-3515813"
@@ -10123,7 +10123,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C G D7. Capo 2.",
+  "note": "Intro (official chart): A, D, A, E7. Capo 2. Bass line: A, D, A, E.",
   "spotify": "spotify:track:0HFu4LUT4kKxwIPFnS7UGz",
   "art": "https://i.scdn.co/image/ab67616d00001e02f130dad135270ab83d81cf9a",
   "ug": "https://tabs.ultimate-guitar.com/tab/guy-clark/la-freeway-official-4569017"
@@ -10136,7 +10136,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "guitar solo 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -10154,7 +10154,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, guitar solo 1: C5 Eb5 F5.",
+  "note": "Guitar (official chart): C5, D#5, F5. Bass line: C, D#, F.",
   "spotify": "spotify:track:2YgjwTiG85B2tvqmdRNpba",
   "art": "https://i.scdn.co/image/ab67616d00001e0290f9c593fd4fc8a3d247e500",
   "ug": "https://tabs.ultimate-guitar.com/tab/zz-top/la-grange-official-1919569"
@@ -10205,7 +10205,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C F G F G F G F.",
+  "note": "Intro (official chart): C, F, G, F, G, F, G, F. Bass line: C, F, G, F, G, F, G, F.",
   "spotify": "spotify:track:3SUusuA9jH1v6PVwtYMbdv",
   "art": "https://i.scdn.co/image/ab67616d00001e0213f2466b83507515291acce4",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-strokes/last-nite-official-1954987"
@@ -10240,7 +10240,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A C#m G Bm.",
+  "note": "Intro (official chart): A, C#m, G, Bm. Bass line: A, C#, G, B.",
   "spotify": "spotify:track:4uYwlMp841PLJmj1gJJwIq",
   "art": "https://i.scdn.co/image/ab67616d00001e02d2796d29db72c9d7f9083fe0",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/lay-lady-lay-official-1953959"
@@ -10267,7 +10267,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Ebmaj7 Gm.",
+  "note": "Intro (official chart): Ebmaj7, Gm. Bass line: Eb, G.",
   "spotify": "spotify:track:01aTsQoKoeXofSTvKuunzv",
   "art": "https://i.scdn.co/image/ab67616d00001e02d6d24aee7b49a2db98a76856",
   "ug": "https://tabs.ultimate-guitar.com/tab/major-lazer/lean-on-official-3772715"
@@ -10298,7 +10298,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bsus4 F#m11 E.",
+  "note": "Intro (official chart): Bsus4, F#m11, E. Bass line: B, F#, E.",
   "spotify": "spotify:track:5OQsiBsky2k2kDKy2bX2eT",
   "art": "https://i.scdn.co/image/ab67616d00001e026c52084ed1f1748f213783b3",
   "ug": "https://tabs.ultimate-guitar.com/tab/foo-fighters/learn-to-fly-official-1911409"
@@ -10311,7 +10311,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -10333,7 +10333,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A E F#m E.",
+  "note": "Verse (official chart): A, E, F#m, E. Bass line: A, E, F#, E.",
   "spotify": "spotify:track:2fuYa3Lx06QQJAm0MjztKr",
   "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/let-down-official-2828797"
@@ -10364,7 +10364,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A F#m G#sus4.",
+  "note": "Intro (official chart): A, F#m, G#sus4. Bass line: A, F#, G#.",
   "spotify": "spotify:track:2X485T9Z5Ly0xyaghN73ed",
   "art": "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
   "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/let-it-happen-official-2617596"
@@ -10399,7 +10399,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Gm9 Am7 Gm7 Am7 Gm9 Am7 Gm7 C.",
+  "note": "Intro (official chart): Gm9, Am7, Gm7, Am7, Gm9, Am7, Gm7, C. Bass line: G, A, G, A, G, A, G, C.",
   "spotify": "spotify:track:63xdwScd1Ai1GigAwQxE8y",
   "art": "https://i.scdn.co/image/ab67616d00001e02a1fc113a6858d0824d9aaf38",
   "ug": "https://tabs.ultimate-guitar.com/tab/al-green/lets-stay-together-official-2151455"
@@ -10430,7 +10430,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm F#m Em.",
+  "note": "Intro (official chart): Bm, F#m, Em. Bass line: B, F#, E.",
   "spotify": "spotify:track:39LLxExYz6ewLAcYrzQQyP",
   "art": "https://i.scdn.co/image/ab67616d00001e02c88bae7846e62a8ba59ee0bd",
   "ug": "https://tabs.ultimate-guitar.com/tab/dua-lipa/levitating-official-3532892"
@@ -10443,7 +10443,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -10480,7 +10480,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F Fmaj7/E F/Eb D7 Gm Bb/F C7.",
+  "note": "Verse (official chart): F, Fmaj7/E, F/Eb, D7, Gm, Bb/F, C7. Bass line: F, E, Eb, D, G, F, C.",
   "spotify": "spotify:track:6q0bTn8XKEdSrSxfJpfNQz",
   "art": "https://i.scdn.co/image/ab67616d00001e026533c426fc884ede08e1cdd9",
   "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/life-on-mars-official-1997901"
@@ -10511,7 +10511,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E Bsus2 F#.",
+  "note": "Intro (official chart): E, Bsus2, F#. Bass line: E, B, F#.",
   "spotify": "spotify:track:48iWbsOaBUAGzMdoSmqyg1",
   "art": "https://i.scdn.co/image/ab67616d00001e0223d8d82a798baa960fdb5070",
   "ug": "https://tabs.ultimate-guitar.com/tab/live/lightning-crashes-official-2581824"
@@ -10563,7 +10563,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm C Gm Dm C Gm Dm C/E.",
+  "note": "Intro (official chart): Dm, C, Gm, Dm, C, Gm, Dm, C/E. Bass line: D, C, G, D, C, G, D, E.",
   "spotify": "spotify:track:2v7ywbUzCgcVohHaKUcacV",
   "art": "https://i.scdn.co/image/ab67616d00001e02744ce5f9db16330eb4027f26",
   "ug": "https://tabs.ultimate-guitar.com/tab/madonna/like-a-prayer-official-2661312"
@@ -10590,7 +10590,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D A.",
+  "note": "Intro (official chart): D, A. Bass line: D, A.",
   "spotify": "spotify:track:3HHehSGzW9dhs2V7Sod4jX",
   "art": "https://i.scdn.co/image/ab67616d00001e026c4efca9f5e949a2f9cc3ac4",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-cranberries/linger-official-2466400"
@@ -10641,7 +10641,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D5 F#5 B5 G5 A#5 C5 A5 C5.",
+  "note": "Intro (official chart): D5, F#5, B5, G5, A#5, C5, A5, C5. Bass line: D, F#, B, G, A#, C, A, C.",
   "spotify": "spotify:track:2YodwKJnbPyNKe8XXSE9V7",
   "art": "https://i.scdn.co/image/ab67616d00001e02e175a19e530c898d167d39bf",
   "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/lithium-official-1915739"
@@ -10654,7 +10654,7 @@ export const SONGS = [
   "key": "F# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -10673,7 +10673,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D#m7b5 C#/F F#m.",
+  "note": "Verse (official chart): D#m7b5, C#/F, F#m. Bass line: D#, F, F#.",
   "spotify": "spotify:track:2Y0iGXY6m6immVb2ktbseM",
   "art": "https://i.scdn.co/image/ab67616d00001e02872a896e7c3776d6949df476",
   "ug": "https://tabs.ultimate-guitar.com/tab/mgmt/little-dark-age-official-3723359"
@@ -10700,7 +10700,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am C. Capo 5.",
+  "note": "Intro (official chart): Dm, F. Capo 5. Bass line: D, F.",
   "spotify": "spotify:track:2kXjRzwcTZhGLnVjUud8l3",
   "art": "https://i.scdn.co/image/ab67616d00001e0207989cd8699c9aaa2c232d08",
   "ug": "https://tabs.ultimate-guitar.com/tab/mumford-sons/little-lion-man-official-2457976"
@@ -10713,7 +10713,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -10739,7 +10739,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G D Am7 C D.",
+  "note": "Verse (official chart): G, D, Am7, C, D. Bass line: G, D, A, C, D.",
   "spotify": "spotify:track:5IfBLN9VPPJOwcKmAZhdXe",
   "art": "https://i.scdn.co/image/ab67616d00001e027c8f18614002cc5542f6c7aa",
   "ug": "https://tabs.ultimate-guitar.com/tab/oasis/live-forever-official-1918931"
@@ -10752,7 +10752,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -10790,7 +10790,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C D E A D E A E.",
+  "note": "Verse (official chart): C, D, E, A, D, E, A, E. Bass line: C, D, E, A, D, E, A, E.",
   "spotify": "spotify:track:4Tjs8b6jL1s18sjURJtswp",
   "art": "https://i.scdn.co/image/ab67616d00001e02da0e0c87f57499b479e7da59",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-kinks/lola-official-2502318"
@@ -10817,7 +10817,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C F.",
+  "note": "Intro (official chart): C, F. Bass line: C, F.",
   "spotify": "spotify:track:29i8axWOLDmgbiutJb9prB",
   "art": "https://i.scdn.co/image/ab67616d00001e02e7fc5b50ff71f92809db9d79",
   "ug": "https://tabs.ultimate-guitar.com/tab/beck/lost-cause-official-2260659"
@@ -10852,7 +10852,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D A Bm G.",
+  "note": "Intro (official chart): D, A, Bm, G. Bass line: D, A, B, G.",
   "spotify": "spotify:track:1vrd6UOGamcKNGnSHJQlSt",
   "art": "https://i.scdn.co/image/ab67616d00001e027b25c072237f29ee50025fdc",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/love-story-official-1945931"
@@ -10899,7 +10899,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em C Em Bm C Em Bm.",
+  "note": "Intro (official chart): Em, C, Em, Bm, C, Em, Bm. Bass line: E, C, E, B, C, E, B.",
   "spotify": "spotify:track:7b4eqsDeLUzSrGth8uB2D1",
   "art": "https://i.scdn.co/image/ab67616d00001e0214dcfb7581bf14f6ce8e6d67",
   "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/lovely-official-2403519"
@@ -10938,7 +10938,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E C#m Amaj7 Cmaj7 Bm7.",
+  "note": "Intro (official chart): E, C#m, Amaj7, Cmaj7, Bm7. Bass line: E, C#, A, C, B.",
   "spotify": "spotify:track:0bRXwKfigvpKZUurwqAlEh",
   "art": "https://i.scdn.co/image/ab67616d00001e0267c1113f55ab816ef61d3993",
   "ug": "https://tabs.ultimate-guitar.com/tab/bill-withers/lovely-day-official-2513979"
@@ -10990,7 +10990,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C Gmaj7 Bm/D D A G D.",
+  "note": "Intro (official chart): G, C, Gmaj7, Bm/D, D, A, G, D. Bass line: G, C, G, D, D, A, G, D.",
   "spotify": "spotify:track:6Jv7kjGkhY2fT4yuBF3aTz",
   "art": "https://i.scdn.co/image/ab67616d00001e02afc2d1d2c8703a10aeded0af",
   "ug": "https://tabs.ultimate-guitar.com/tab/jeff-buckley/lover-you-shouldve-come-over-official-2846810"
@@ -11025,7 +11025,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am G F Em.",
+  "note": "Intro (official chart): Am, G, F, Em. Bass line: A, G, F, E.",
   "spotify": "spotify:track:7K71priwuwcWwbgfHVQJdq",
   "art": "https://i.scdn.co/image/ab67616d00001e020447ba639949dd26478decf6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-cure/lovesong-official-2493933"
@@ -11038,7 +11038,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -11076,7 +11076,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A G D A G D G D. Capo 5.",
+  "note": "Verse (official chart): D, C, G, D, C, G, C, G. Capo 5. Bass line: D, C, G, D, C, G, C, G.",
   "spotify": "spotify:track:34OzAaQeAWlFnZBSyUAtRh",
   "art": "https://i.scdn.co/image/ab67616d00001e02ad5b5ed2169d072a44e98a31",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/loving-cup-official-4333637"
@@ -11111,7 +11111,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D C E G.",
+  "note": "Intro (official chart): D, C, E, G. Bass line: D, C, E, G.",
   "spotify": "spotify:track:6ctbCIikHbC6tSOL1rewQX",
   "art": "https://i.scdn.co/image/ab67616d00001e0296c7a11160c470cd0b84e049",
   "ug": "https://tabs.ultimate-guitar.com/tab/cracker/low-official-3270497"
@@ -11142,7 +11142,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G D Asus2.",
+  "note": "Intro (official chart): G, D, Asus2. Bass line: G, D, A.",
   "spotify": "spotify:track:2mxPSHEwjJWOQS7lGw6btF",
   "art": "https://i.scdn.co/image/ab67616d00001e02c038b03e66fb6de76a5b3904",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-verve/lucky-man-official-2457986"
@@ -11155,7 +11155,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -11177,7 +11177,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em Am G Bm Em C G Bm.",
+  "note": "Verse (official chart): Em, Am, G, Bm, Em, C, G, Bm. Bass line: E, A, G, B, E, C, G, B.",
   "spotify": "spotify:track:14xj58ZexBaEaHARb11Cqs",
   "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/lucky-official-2270221"
@@ -11216,7 +11216,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C Am D7 G.",
+  "note": "Intro (official chart): G, C, Am, D7, G. Bass line: G, C, A, D, G.",
   "spotify": "spotify:track:5lQKRR3MdJLtAwNBiT8Cq0",
   "art": "https://i.scdn.co/image/ab67616d00001e025d0a8e54aba5181c79593b94",
   "ug": "https://tabs.ultimate-guitar.com/tab/eagles/lyin-eyes-official-2065343"
@@ -11267,7 +11267,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 1: Am G Am G C G Am D5.",
+  "note": "Intro (official chart): Am, G, Am, G, C, G, Am, D5. Bass line: A, G, A, G, C, G, A, D.",
   "spotify": "spotify:track:6rovOdp3HgK1DeAMYDzoA7",
   "art": "https://i.scdn.co/image/ab67616d00001e02f20825485137abccd82b9665",
   "ug": "https://tabs.ultimate-guitar.com/tab/rod-stewart/maggie-may-official-2589156"
@@ -11280,7 +11280,7 @@ export const SONGS = [
   "key": "Gb",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -11306,7 +11306,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, chorus: Ebm Gb Db Ab Gb.",
+  "note": "Chorus (official chart): Ebm, Gb, Db, Ab, Gb. Bass line: Eb, Gb, Db, Ab, Gb.",
   "spotify": "spotify:track:6gZVQvQZOFpzIy3HblJ20F",
   "art": "https://i.scdn.co/image/ab67616d00001e023cf83c82a8e976d7b51e2d00",
   "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/man-in-the-box-official-1950401"
@@ -11333,7 +11333,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C Dadd4add9.",
+  "note": "Intro (official chart): C, Dadd4add9. Bass line: C, D.",
   "spotify": "spotify:track:4jLv3tDBu8ww2R07DvL12s",
   "art": "https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35",
   "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/man-on-the-moon-official-2117705"
@@ -11360,7 +11360,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G.",
+  "note": "Intro (official chart): D, G. Bass line: D, G.",
   "spotify": "spotify:track:0hDQV9X1Da5JrwhK8gu86p",
   "art": "https://i.scdn.co/image/ab67616d00001e021b1cb4ef0f096f9d66fc3dc6",
   "ug": "https://tabs.ultimate-guitar.com/tab/yeah-yeah-yeahs/maps-official-2030173"
@@ -11395,7 +11395,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G A D.",
+  "note": "Intro (official chart): D, G, A, D. Bass line: D, G, A, D.",
   "spotify": "spotify:track:4EEjMyQub6tgFVshlM9j1M",
   "art": "https://i.scdn.co/image/ab67616d00001e024fdb0337978c7464cdfb1783",
   "ug": "https://tabs.ultimate-guitar.com/tab/jimmy-buffett/margaritaville-official-2500125"
@@ -11426,7 +11426,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 1: Am G Dsus2.",
+  "note": "Intro (official chart): Am, G, Dsus2. Bass line: A, G, D.",
   "spotify": "spotify:track:3dmqIB2Qxe2XZobw9gXxJ6",
   "art": "https://i.scdn.co/image/ab67616d00001e020c3a1b46b6b846dfdfbc6a7d",
   "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty-and-the-heartbreakers/mary-janes-last-dance-official-2320809"
@@ -11453,7 +11453,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am C. Capo 4.",
+  "note": "Intro (official chart): C#m, E. Capo 4. Bass line: C#, E.",
   "spotify": "spotify:track:2orcl4a2qxEpbsYeZXKsyR",
   "art": "https://i.scdn.co/image/ab67616d00001e0228b2424c5b007b0e073c42ce",
   "ug": "https://tabs.ultimate-guitar.com/tab/big-thief/masterpiece-official-3859406"
@@ -11480,7 +11480,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G.",
+  "note": "Intro (official chart): D, G. Bass line: D, G.",
   "spotify": "spotify:track:3aA5fk4c6a7e5HM4rJqkSF",
   "art": "https://i.scdn.co/image/ab67616d00001e02609c89ad17eb28c2013c56c6",
   "ug": "https://tabs.ultimate-guitar.com/tab/alt-j/matilda-official-2003807"
@@ -11531,7 +11531,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb Cm7 Eb Bb Cm7 Eb Cm7 Eb.",
+  "note": "Intro (official chart): Bb, Cm7, Eb, Bb, Cm7, Eb, Cm7, Eb. Bass line: Bb, C, Eb, Bb, C, Eb, C, Eb.",
   "spotify": "spotify:track:0jmKzJmUEKNbC7eU8YfOiA",
   "art": "https://i.scdn.co/image/ab67616d00001e025274788f34fc7656d2856dfd",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/mayonaise-official-2591178"
@@ -11544,7 +11544,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -11558,7 +11558,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G D.",
+  "note": "Verse (official chart): G, D. Bass line: G, D.",
   "spotify": "spotify:track:1IqFh00G2kvvMm8pRMpehA",
   "art": "https://i.scdn.co/image/ab67616d00001e026f8c26346723dd0531696bed",
   "ug": "https://tabs.ultimate-guitar.com/tab/janis-joplin/me-and-bobby-mcgee-official-2426665"
@@ -11593,7 +11593,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G Bm A Em7.",
+  "note": "Intro (official chart): G, Bm, A, Em7. Bass line: G, B, A, E.",
   "spotify": "spotify:track:1eyzqe2QqGZUmfcPZtrIyt",
   "art": "https://i.scdn.co/image/ab67616d00001e0290e9adff5f77dd1ff6d24e47",
   "ug": "https://tabs.ultimate-guitar.com/tab/m83/midnight-city-official-1989671"
@@ -11645,7 +11645,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm Cadd9 Bb F Bbmaj7/F Gm F Am.",
+  "note": "Intro (official chart): Dm, Cadd9, Bb, F, Bbmaj7/F, Gm, F, Am. Bass line: D, C, Bb, F, F, G, F, A.",
   "spotify": "spotify:track:4zetUxeSCCDwrr1jJT0SuD",
   "art": "https://i.scdn.co/image/ab67616d00001e02e35493a3ac213db02b3ec36e",
   "ug": "https://tabs.ultimate-guitar.com/tab/elliott-smith/miss-misery-official-4133908"
@@ -11658,7 +11658,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -11689,7 +11689,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D F# Bm D/A E G.",
+  "note": "Verse (official chart): D, F#, Bm, D/A, E, G. Bass line: D, F#, B, A, E, G.",
   "spotify": "spotify:track:6mib3N4E8PZHAGQ3xy7bho",
   "art": "https://i.scdn.co/image/ab67616d00001e02c41f4e1133b0e6c5fcf58680",
   "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/moonage-daydream-official-2616939"
@@ -11716,7 +11716,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am7 Bm7.",
+  "note": "Intro (official chart): Am7, Bm7. Bass line: A, B.",
   "spotify": "spotify:track:4KB5c7FPhmWhRpwg2DdNzX",
   "art": "https://i.scdn.co/image/ab67616d00001e02d29dc42d61470e946adbbefc",
   "ug": "https://tabs.ultimate-guitar.com/tab/van-morrison/moondance-official-2631969"
@@ -11729,7 +11729,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -11751,7 +11751,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G D G D G D Em A.",
+  "note": "Verse (official chart): G, D, G, D, G, D, Em, A. Bass line: G, D, G, D, G, D, E, A.",
   "spotify": "spotify:track:0b9mC3lK41f83OroAsl0UQ",
   "art": "https://i.scdn.co/image/ab67616d00001e022d918617eefd2d07002c829c",
   "ug": "https://tabs.ultimate-guitar.com/tab/cat-stevens-yusuf-islam/moonshadow-official-2874983"
@@ -11764,7 +11764,7 @@ export const SONGS = [
   "key": "Db",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -11802,7 +11802,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F C F C Am C G F. Capo 1.",
+  "note": "Verse (official chart): Gb, Db, Gb, Db, Bbm, Db, Ab, Gb. Capo 1. Bass line: Gb, Db, Gb, Db, Bb, Db, Ab, Gb.",
   "spotify": "spotify:track:25Syi9wnfn6ZGAmiOBypPq",
   "art": "https://i.scdn.co/image/ab67616d00001e0208afb5dc296054856909f8fd",
   "ug": "https://tabs.ultimate-guitar.com/tab/phoebe-bridgers/motion-sickness-official-3184985"
@@ -11849,7 +11849,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am F Dm G Am F G.",
+  "note": "Intro (official chart): Am, F, Dm, G, Am, F, G. Bass line: A, F, D, G, A, F, G.",
   "spotify": "spotify:track:5DiXcVovI0FcY2s0icWWUu",
   "art": "https://i.scdn.co/image/ab67616d00001e027e09670f90cd47b3fb9a23e0",
   "ug": "https://tabs.ultimate-guitar.com/tab/counting-crows/mr-jones-official-2210961"
@@ -11862,7 +11862,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -11907,7 +11907,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G/B A D G/B D G/B D Em7 A. Capo 3.",
+  "note": "Verse (official chart): Bb/D, C, F, Bb/D, F, Bb/D, F, Gm7, C. Capo 3. Bass line: D, C, F, D, F, D, F, G, C.",
   "spotify": "spotify:track:3RkQ3UwOyPqpIiIvGVewuU",
   "art": "https://i.scdn.co/image/ab67616d00001e02017ebe3583ccc27baf4b9eeb",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/mr-tambourine-man-official-2010709"
@@ -11938,7 +11938,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em D Cmaj7.",
+  "note": "Intro (official chart): Em, D, Cmaj7. Bass line: E, D, C.",
   "spotify": "spotify:track:38tfi9dtBQQ5Wyt7EL0G3z",
   "art": "https://i.scdn.co/image/ab67616d00001e02ecfde7feaa212a1b60a197a1",
   "ug": "https://tabs.ultimate-guitar.com/tab/mac-demarco/my-kind-of-woman-official-1963309"
@@ -11989,7 +11989,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm A G F#m G Bm A F#m. Capo 2.",
+  "note": "Intro (official chart): C#m, B, A, G#m, A, C#m, B, G#m. Capo 2. Bass line: C#, B, A, G#, A, C#, B, G#.",
   "spotify": "spotify:track:3Ck96jIZdVzpWbbZ6mojsE",
   "art": "https://i.scdn.co/image/ab67616d00001e024a8854d880d67850e1c7b98c",
   "ug": "https://tabs.ultimate-guitar.com/tab/fleet-foxes/mykonos-official-2547201"
@@ -12036,7 +12036,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Eb Gm Eb Gm Ab Bb Eb.",
+  "note": "Intro (official chart): Eb, Gm, Eb, Gm, Ab, Bb, Eb. Bass line: Eb, G, Eb, G, Ab, Bb, Eb.",
   "spotify": "spotify:track:2NfxtzCIrpCmJX5Z2KMdD5",
   "art": "https://i.scdn.co/image/ab67616d00001e02bb9f22f4b196fa10308d77a7",
   "ug": "https://tabs.ultimate-guitar.com/tab/beach-house/myth-official-3617015"
@@ -12067,7 +12067,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dadd11 Dadd11/G Em9 Dadd11/G. Capo 3.",
+  "note": "Intro (official chart): Fadd11, Fadd11/Bb, Gm9, Fadd11/Bb. Capo 3. Bass line: F, Bb, G, Bb.",
   "spotify": "spotify:track:3DM9c4wXXe0FBIBE6sgahF",
   "art": "https://i.scdn.co/image/ab67616d00001e02eeb6db11310ea7159381cfdb",
   "ug": "https://tabs.ultimate-guitar.com/tab/big-thief/mythological-beauty-official-5124526"
@@ -12080,7 +12080,7 @@ export const SONGS = [
   "key": "F# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -12095,7 +12095,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em/D Asus2. Capo 2.",
+  "note": "Verse (official chart): F#m/E, Bsus2. Capo 2. Bass line: E, B.",
   "spotify": "spotify:track:6UIxGIqWlO5wsddY44AV1R",
   "art": "https://i.scdn.co/image/ab67616d00001e02031c73667e732e3e208a6328",
   "ug": "https://tabs.ultimate-guitar.com/tab/iron-wine/naked-as-we-came-official-2034387"
@@ -12130,7 +12130,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F C E7 Am F Am F C.",
+  "note": "Intro (official chart): F, C, E7, Am, F, Am, F, C. Bass line: F, C, E, A, F, A, F, C.",
   "spotify": "spotify:track:7I7O0huqjKrXHX0aaLuO5B",
   "art": "https://i.scdn.co/image/ab67616d00001e024b46d1c138ed05574c6449ca",
   "ug": "https://tabs.ultimate-guitar.com/tab/elliott-smith/needle-in-the-hay-official-2063191"
@@ -12157,7 +12157,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cm Db.",
+  "note": "Intro (official chart): Cm, Db. Bass line: C, Db.",
   "spotify": "spotify:track:52ojopYMUzeNcudsoz7O9D",
   "art": "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
   "ug": "https://tabs.ultimate-guitar.com/tab/tame-impala/new-person-same-old-mistakes-official-2657826"
@@ -12192,7 +12192,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C G D.",
+  "note": "Intro (official chart): G, C, G, D. Bass line: G, C, G, D.",
   "spotify": "spotify:track:6G0NzOx2jEPFsSmhr9N8Ys",
   "art": "https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35",
   "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/nightswimming-official-2097477"
@@ -12219,7 +12219,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Abadd9 Bbadd11.",
+  "note": "Intro (official chart): Abadd9, Bbadd11. Bass line: Ab, Bb.",
   "spotify": "spotify:track:4PtZE0h5oyPhCtPjg3NeYQ",
   "art": "https://i.scdn.co/image/ab67616d00001e0225b42be683b8d3c6500db726",
   "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/no-excuses-official-1997151"
@@ -12251,7 +12251,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C G/B Em. Capo 1.",
+  "note": "Intro (official chart): Db, Ab/C, Fm. Capo 1. Bass line: Db, C, F.",
   "spotify": "spotify:track:2IvNxLl01CTAfCOA103Tgx",
   "art": "https://i.scdn.co/image/ab67616d00001e022b87b0858c3bbf5261698326",
   "ug": "https://tabs.ultimate-guitar.com/tab/band-of-horses/no-ones-gonna-love-you-official-2459940"
@@ -12278,7 +12278,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E D.",
+  "note": "Intro (official chart): E, D. Bass line: E, D.",
   "spotify": "spotify:track:6txWz9UapYHVxEd7dDIHXT",
   "art": "https://i.scdn.co/image/ab67616d00001e027ed1df1690df31d094d7c2bc",
   "ug": "https://tabs.ultimate-guitar.com/tab/blind-melon/no-rain-official-2212151"
@@ -12305,7 +12305,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D Gm. Capo 3.",
+  "note": "Intro (official chart): F, Bbm. Capo 3. Bass line: F, Bb.",
   "spotify": "spotify:track:10nyNJ6zNy2YVYLrcwLccB",
   "art": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/no-surprises-official-1910937"
@@ -12318,7 +12318,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -12336,7 +12336,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em A Gmaj7.",
+  "note": "Verse (official chart): Em, A, Gmaj7. Bass line: E, A, G.",
   "spotify": "spotify:track:5KPXcfXaGOaWUqOHLDXFRP",
   "art": "https://i.scdn.co/image/ab67616d00001e0206e9db385d0f3f8aec617963",
   "ug": "https://tabs.ultimate-guitar.com/tab/whitney/no-woman-official-2236563"
@@ -12378,7 +12378,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Fadd9 F6/A Dm11/C F6/A Bbadd9.",
+  "note": "Intro (official chart): Fadd9, F6/A, Dm11/C, F6/A, Bbadd9. Bass line: F, A, C, A, Bb.",
   "spotify": "spotify:track:74kd56Y1oNbQVEQnMdO9LH",
   "art": "https://i.scdn.co/image/ab67616d00001e020ccbe4584f7827e66fa2ab3a",
   "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/nothingman-official-3056896"
@@ -12405,7 +12405,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 2: A C#m.",
+  "note": "Intro (official chart): A, C#m. Bass line: A, C#.",
   "spotify": "spotify:track:35YyxFpE0ZTOoqFx5bADW8",
   "art": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/nude-official-2461304"
@@ -12440,7 +12440,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Ebm Gb Db B.",
+  "note": "Intro (official chart): Ebm, Gb, Db, B. Bass line: Eb, Gb, Db, B.",
   "spotify": "spotify:track:2JuasWPUodaUxf5nwNpciQ",
   "art": "https://i.scdn.co/image/ab67616d00001e0225b42be683b8d3c6500db726",
   "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/nutshell-official-2455220"
@@ -12467,7 +12467,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D Bm.",
+  "note": "Intro (official chart): D, Bm. Bass line: D, B.",
   "spotify": "spotify:track:3LGsgpx4TfxhXbr07OFKqs",
   "art": "https://i.scdn.co/image/ab67616d00001e02550133f6d334ed152d75aa56",
   "ug": "https://tabs.ultimate-guitar.com/tab/grimes/oblivion-official-4033609"
@@ -12521,7 +12521,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cmaj7 G/D Em Cmaj7 G/D Em Cmaj7 G/D.",
+  "note": "Intro (official chart): Cmaj7, G/D, Em, Cmaj7, G/D, Em, Cmaj7, G/D. Bass line: C, D, E, C, D, E, C, D.",
   "spotify": "spotify:track:2uIX8YMNjGMD7441kqyyNU",
   "art": "https://i.scdn.co/image/ab67616d00001e022cafcdd985630d72594ecc49",
   "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/ocean-eyes-official-2403523"
@@ -12534,7 +12534,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -12556,7 +12556,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C F C G. Capo 2.",
+  "note": "Verse (official chart): D, G, D, A. Capo 2. Bass line: D, G, D, A.",
   "spotify": "spotify:track:2Zcr8xMMZyNT5wMsj3SWmw",
   "art": "https://i.scdn.co/image/ab67616d00001e02028ce9b6e1637653b589a45b",
   "ug": "https://tabs.ultimate-guitar.com/tab/ryan-adams/oh-my-sweet-carolina-official-5316657"
@@ -12569,7 +12569,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -12595,7 +12595,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: E G# F#m A B.",
+  "note": "Verse (official chart): E, G#, F#m, A, B. Bass line: E, G#, F#, A, B.",
   "spotify": "spotify:track:3MpK9vnxxgYvh0CNeGvx6G",
   "art": "https://i.scdn.co/image/ab67616d00001e027f570d8b2e794f1493dca2ca",
   "ug": "https://tabs.ultimate-guitar.com/tab/willie-nelson/on-the-road-again-official-2617599"
@@ -12630,7 +12630,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G A G A G A F#m7 A.",
+  "note": "Intro (official chart): G, A, G, A, G, A, F#m7, A. Bass line: G, A, G, A, G, A, F#, A.",
   "spotify": "spotify:track:0DiWol3AO6WpXZgp0goxAV",
   "art": "https://i.scdn.co/image/ab67616d00001e021e81bff9807a9e629fce5ade",
   "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/one-more-time-official-3581246"
@@ -12657,7 +12657,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D Em7.",
+  "note": "Intro (official chart): D, Em7. Bass line: D, E.",
   "spotify": "spotify:track:4lJ6YVXQ0jUk5ILu0PSrA4",
   "art": "https://i.scdn.co/image/ab67616d00001e02f3b07d17992714fd8d7110ae",
   "ug": "https://tabs.ultimate-guitar.com/tab/faces/ooh-la-la-official-2521236"
@@ -12684,7 +12684,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Gaug C7.",
+  "note": "Intro (official chart): Gaug, C7. Bass line: G, C.",
   "spotify": "spotify:track:6Oqxnfz2JYAlZAESd8BpQO",
   "art": "https://i.scdn.co/image/ab67616d00001e0243514544b879aede26b32cf4",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-band/ophelia-official-3375509"
@@ -12697,7 +12697,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -12715,7 +12715,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Dm Bb F.",
+  "note": "Verse (official chart): Dm, Bb, F. Bass line: D, Bb, F.",
   "spotify": "spotify:track:14AyWf6y7KlWWLfAjdKMKI",
   "art": "https://i.scdn.co/image/ab67616d00001e0221b550b66cf1391c6642088c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-lumineers/ophelia-official-2575167"
@@ -12742,7 +12742,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D5 F5.",
+  "note": "Intro (official chart): D5, F5. Bass line: D, F.",
   "spotify": "spotify:track:0NRUbpPIbzcAY5jONDJtdo",
   "art": "https://i.scdn.co/image/ab67616d00001e021056c0e5a471b61dbf011d4e",
   "ug": "https://tabs.ultimate-guitar.com/tab/soundgarden/outshined-official-2581821"
@@ -12777,7 +12777,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 1: G D G D G D Cadd9 G.",
+  "note": "Intro (official chart): G, D, G, D, G, D, Cadd9, G. Bass line: G, D, G, D, G, D, C, G.",
   "spotify": "spotify:track:2eDdFHgqNJltzlvlZFVDWd",
   "art": "https://i.scdn.co/image/ab67616d00001e021aa47e71c4edfeaddb65cd54",
   "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/over-the-hills-and-far-away-official-2456790"
@@ -12804,7 +12804,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am7 D9.",
+  "note": "Intro (official chart): Am7, D9. Bass line: A, D.",
   "spotify": "spotify:track:5u6y4u5EgDv0peILf60H5t",
   "art": "https://i.scdn.co/image/ab67616d00001e02283cccda1ee115b8f44f1c8b",
   "ug": "https://tabs.ultimate-guitar.com/tab/santana/oye-como-va-official-2608293"
@@ -12839,7 +12839,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cmaj7 Em Cmaj7 Em Cmaj7 Em Cmaj7 Em. Capo 3.",
+  "note": "Intro (official chart): Ebmaj7, Gm, Ebmaj7, Gm, Ebmaj7, Gm, Ebmaj7, Gm. Capo 3. Bass line: Eb, G, Eb, G, Eb, G, Eb, G.",
   "spotify": "spotify:track:59P1nrdEImkAKa1nyW9X2e",
   "art": "https://i.scdn.co/image/ab67616d00001e0222b42fc5bda488d3ce88a8d2",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-war-on-drugs/pain-official-5233497"
@@ -12866,7 +12866,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm A. Capo 2.",
+  "note": "Intro (official chart): Em, B. Capo 2. Bass line: E, B.",
   "spotify": "spotify:track:63T7DJ1AFDD6Bn8VzG6JE8",
   "art": "https://i.scdn.co/image/ab67616d00001e02bad7062c3fd2f2d037989694",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/paint-it-black-official-2137031"
@@ -12901,7 +12901,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G D A.",
+  "note": "Intro (official chart): D, G, D, A. Bass line: D, G, D, A.",
   "spotify": "spotify:track:47QsP5uPZp3he5UrVsK8bs",
   "art": "https://i.scdn.co/image/ab67616d00001e02b190c3479aedf6a29340847d",
   "ug": "https://tabs.ultimate-guitar.com/tab/john-prine/paradise-official-2358509"
@@ -12914,7 +12914,7 @@ export const SONGS = [
   "key": "B",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -12952,7 +12952,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: B Gaug F# G#m E F#7 Gaug F#.",
+  "note": "Verse (official chart): B, Gaug, F#, G#m, E, F#7, Gaug, F#. Bass line: B, G, F#, G#, E, F#, G, F#.",
   "spotify": "spotify:track:2MYidPOz5NHAtKUySTzbwx",
   "art": "https://i.scdn.co/image/ab67616d00001e0228b2424c5b007b0e073c42ce",
   "ug": "https://tabs.ultimate-guitar.com/tab/big-thief/paul-official-2519496"
@@ -13006,7 +13006,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C F/C C F/C G Am F/C G.",
+  "note": "Intro (official chart): C, F/C, C, F/C, G, Am, F/C, G. Bass line: C, C, C, C, G, A, C, G.",
   "spotify": "spotify:track:3Z70E4D11aJgcEhswb7PfE",
   "art": "https://i.scdn.co/image/ab67616d00001e024ad8c05fb717dabfd32bfe54",
   "ug": "https://tabs.ultimate-guitar.com/tab/cat-stevens-yusuf-islam/peace-train-official-2961554"
@@ -13019,7 +13019,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -13041,7 +13041,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse: Em Am Em Am Em B7 Em Am.",
+  "note": "Verse (official chart): Em, Am, Em, Am, Em, B7, Em, Am. Bass line: E, A, E, A, E, B, E, A.",
   "spotify": "spotify:track:1Jmqubf9kGkWeYQXQKImL5",
   "art": "https://i.scdn.co/image/ab67616d00001e02bf2970ff212e11093844fbea",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-doors/people-are-strange-official-1967723"
@@ -13068,7 +13068,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F Bbm.",
+  "note": "Intro (official chart): F, Bbm. Bass line: F, Bb.",
   "spotify": "spotify:track:4TOMI010Sd4ZAX4aZ5TS85",
   "art": "https://i.scdn.co/image/ab67616d00001e02fe5213edd4f8550a8030efcf",
   "ug": "https://tabs.ultimate-guitar.com/tab/lou-reed/perfect-day-official-2690928"
@@ -13081,7 +13081,7 @@ export const SONGS = [
   "key": "F# minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -13103,7 +13103,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em Am G F#. Capo 2.",
+  "note": "Verse (official chart): F#m, Bm, A, G#. Capo 2. Bass line: F#, B, A, G#.",
   "spotify": "spotify:track:2wUlYDGGXlSvm2NkGj0Qio",
   "art": "https://i.scdn.co/image/ab67616d00001e02234bbbad4dce31cd2950af3e",
   "ug": "https://tabs.ultimate-guitar.com/tab/depeche-mode/personal-jesus-official-2097581"
@@ -13142,7 +13142,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E C#m B A E.",
+  "note": "Intro (official chart): E, C#m, B, A, E. Bass line: E, C#, B, A, E.",
   "spotify": "spotify:track:1HNkqx9Ahdgi1Ixy2xkKkL",
   "art": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd",
   "ug": "https://tabs.ultimate-guitar.com/tab/ed-sheeran/photograph-official-1955517"
@@ -13169,7 +13169,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E F#m.",
+  "note": "Intro (official chart): E, F#m. Bass line: E, F#.",
   "spotify": "spotify:track:5CgHsJyqFuW1U0E3d4Eyi6",
   "art": "https://i.scdn.co/image/ab67616d00001e022780880a9583a363c28c60d5",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-cure/pictures-of-you-official-2793742"
@@ -13182,7 +13182,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -13208,7 +13208,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G F G F C. Capo 2.",
+  "note": "Verse (official chart): A, G, A, G, D. Capo 2. Bass line: A, G, A, G, D.",
   "spotify": "spotify:track:4KROoGIaPaR1pBHPnR3bwC",
   "art": "https://i.scdn.co/image/ab67616d00001e02e369195caf5d169bf5e9eafc",
   "ug": "https://tabs.ultimate-guitar.com/tab/nick-drake/pink-moon-official-2769859"
@@ -13243,7 +13243,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E5 G5 D5 C5.",
+  "note": "Intro (official chart): E5, G5, D5, C5. Bass line: E, G, D, C.",
   "spotify": "spotify:track:3tlXDvaNrrOmdvG0XVUOcv",
   "art": "https://i.scdn.co/image/ab67616d00001e02e175a19e530c898d167d39bf",
   "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/polly-official-1910947"
@@ -13278,7 +13278,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Fm Ab Eb Bb.",
+  "note": "Intro (official chart): Fm, Ab, Eb, Bb. Bass line: F, Ab, Eb, Bb.",
   "spotify": "spotify:track:7w87IxuO7BDcJ3YUqCyMTT",
   "art": "https://i.scdn.co/image/ab67616d00001e02121d5f92cf90576907dfb1e5",
   "ug": "https://tabs.ultimate-guitar.com/tab/foster-the-people/pumped-up-kicks-official-1948629"
@@ -13313,7 +13313,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F# Gmaj7 A6 Gmaj7.",
+  "note": "Intro (official chart): Gb, Gmaj7, A6, Gmaj7. Bass line: Gb, G, A, G.",
   "spotify": "spotify:track:55q3Ro66yXWi9rsEddeEN4",
   "art": "https://i.scdn.co/image/ab67616d00001e02863e0e305637100311c91aa7",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/pyramid-song-official-2749629"
@@ -13344,7 +13344,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm D A.",
+  "note": "Intro (official chart): Bm, D, A. Bass line: B, D, A.",
   "spotify": "spotify:track:4G8gkOterJn0Ywt6uhqbhp",
   "art": "https://i.scdn.co/image/ab67616d00001e02b2b2747c89d2157b0b29fb6a",
   "ug": "https://tabs.ultimate-guitar.com/tab/imagine-dragons/radioactive-official-1955149"
@@ -13379,7 +13379,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E D/E F#m7 A.",
+  "note": "Intro (official chart): E, D/E, F#m7, A. Bass line: E, E, F#, A.",
   "spotify": "spotify:track:3MODES4TNtygekLl146Dxd",
   "art": "https://i.scdn.co/image/ab67616d00001e02fc4f17340773c6c3579fea0d",
   "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/ramble-on-official-1968201"
@@ -13414,7 +13414,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G#m F# E B G#m F# E B.",
+  "note": "Intro (official chart): Abm, Gb, E, B, Abm, Gb, E, B. Bass line: Ab, Gb, E, B, Ab, Gb, E, B.",
   "spotify": "spotify:track:4piC5I66eQEmzNJRX1TNMX",
   "art": "https://i.scdn.co/image/ab67616d00001e0258f9aad6bf6fcf19aee2874e",
   "ug": "https://tabs.ultimate-guitar.com/tab/clean-bandit/rather-be-official-2541408"
@@ -13441,7 +13441,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D Em.",
+  "note": "Intro (official chart): D, Em. Bass line: D, E.",
   "spotify": "spotify:track:0Z57YWES04xGh3AImDz6Qr",
   "art": "https://i.scdn.co/image/ab67616d00001e02eca90909f4e566b1569d0e7d",
   "ug": "https://tabs.ultimate-guitar.com/tab/father-john-misty/real-love-baby-official-2730939"
@@ -13468,7 +13468,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D E.",
+  "note": "Intro (official chart): D, E. Bass line: D, E.",
   "spotify": "spotify:track:3bdEtobvgxJNoV8kiNGObK",
   "art": "https://i.scdn.co/image/ab67616d00001e0246934aab226096a59611a76b",
   "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/rebel-rebel-official-2085319"
@@ -13503,7 +13503,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb Eb Bb Gm.",
+  "note": "Intro (official chart): Bb, Eb, Bb, Gm. Bass line: Bb, Eb, Bb, G.",
   "spotify": "spotify:track:0xOeB16JDbBJBJKSdHbElT",
   "art": "https://i.scdn.co/image/ab67616d00001e027870762a58313ad6f981d664",
   "ug": "https://tabs.ultimate-guitar.com/tab/arcade-fire/rebellion-lies-official-5224374"
@@ -13530,7 +13530,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C D. Capo 3.",
+  "note": "Intro (official chart): Eb, F. Capo 3. Bass line: Eb, F.",
   "spotify": "spotify:track:0rUIff1QHd5zlOBtlHVqd9",
   "art": "https://i.scdn.co/image/ab67616d00001e02f34338e9270f9c0561cf4c7e",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-war-on-drugs/red-eyes-official-3385358"
@@ -13561,7 +13561,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F#m A E.",
+  "note": "Intro (official chart): F#m, A, E. Bass line: F#, A, E.",
   "spotify": "spotify:track:4mcZYzoGwPRDdhWVlygiHf",
   "art": "https://i.scdn.co/image/ab67616d00001e02ebca7d93f21ba366fe005966",
   "ug": "https://tabs.ultimate-guitar.com/tab/tom-petty-and-the-heartbreakers/refugee-official-2827106"
@@ -13588,7 +13588,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm E.",
+  "note": "Intro (official chart): Bm, E. Bass line: B, E.",
   "spotify": "spotify:track:57Xjny5yNzAcsxnusKmAfA",
   "art": "https://i.scdn.co/image/ab67616d00001e020f35726025e0f025da4c688f",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-strokes/reptilia-official-1934141"
@@ -13615,7 +13615,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am F.",
+  "note": "Intro (official chart): Am, F. Bass line: A, F.",
   "spotify": "spotify:track:05oETzWbd4SI33qK2gbJfR",
   "art": "https://i.scdn.co/image/ab67616d00001e024fb043195e8d07e72edc7226",
   "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/rhiannon-official-1969839"
@@ -13628,7 +13628,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -13666,7 +13666,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em Am7 Bm7 C D Em D C.",
+  "note": "Verse (official chart): Em, Am7, Bm7, C, D, Em, D, C. Bass line: E, A, B, C, D, E, D, C.",
   "spotify": "spotify:track:14XWXWv5FoCbFzLksawpEe",
   "art": "https://i.scdn.co/image/ab67616d00001e0211d9db4f0db1e2689ca22c3d",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-doors/riders-on-the-storm-official-2212149"
@@ -13705,7 +13705,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F C G Am G. Capo 6.",
+  "note": "Intro (official chart): B, F#, C#, D#m, C#. Capo 6. Bass line: B, F#, C#, D#, C#.",
   "spotify": "spotify:track:17Zzi8qsn8mdm0t0JTGeQo",
   "art": "https://i.scdn.co/image/ab67616d00001e020bc584e8e6aefded5b054117",
   "ug": "https://tabs.ultimate-guitar.com/tab/waxahatchee/right-back-to-it-official-5208795"
@@ -13744,7 +13744,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C G D G.",
+  "note": "Intro (official chart): G, C, G, D, G. Bass line: G, C, G, D, G.",
   "spotify": "spotify:track:5rDkA2TFOImbiVenmnE9r4",
   "art": "https://i.scdn.co/image/ab67616d00001e02c17beab3e27f18af397a00b2",
   "ug": "https://tabs.ultimate-guitar.com/tab/johnny-cash/ring-of-fire-official-1955561"
@@ -13772,7 +13772,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Aadd9 C9/G. Capo 3.",
+  "note": "Intro (official chart): Cadd9, Eb9/Bb. Capo 3. Bass line: C, Bb.",
   "spotify": "spotify:track:3Uh7rAb7F0XGVpEEDwfH1k",
   "art": "https://i.scdn.co/image/ab67616d00001e02bd158c797b1026005c2917bc",
   "ug": "https://tabs.ultimate-guitar.com/tab/nick-drake/river-man-official-3959488"
@@ -13807,7 +13807,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am G F E Am G F E.",
+  "note": "Intro (official chart): Am, G, F, E, Am, G, F, E. Bass line: A, G, F, E, A, G, F, E.",
   "spotify": "spotify:track:2sW8fmnISifQTRgnRrQTYW",
   "art": "https://i.scdn.co/image/ab67616d00001e02dc20397b139223620af148f6",
   "ug": "https://tabs.ultimate-guitar.com/tab/portishead/roads-official-1984057"
@@ -13820,7 +13820,7 @@ export const SONGS = [
   "key": "C minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -13846,7 +13846,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Cm Gm Bb Gm Bb.",
+  "note": "Verse (official chart): Cm, Gm, Bb, Gm, Bb. Bass line: C, G, Bb, G, Bb.",
   "spotify": "spotify:track:1c8gk2PeTE04A1pIDH9YMk",
   "art": "https://i.scdn.co/image/ab67616d00001e027e7e5dd9d1ab19fcded8a17f",
   "ug": "https://tabs.ultimate-guitar.com/tab/adele/rolling-in-the-deep-official-1911375"
@@ -13881,7 +13881,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D A G A. Capo 3.",
+  "note": "Intro (official chart): F, C, Bb, C. Capo 3. Bass line: F, C, Bb, C.",
   "spotify": "spotify:track:57MflfPN3ObQQAQtPUp0WF",
   "art": "https://i.scdn.co/image/ab67616d00001e025b5e5240a4c483b5fb9f2cb0",
   "ug": "https://tabs.ultimate-guitar.com/tab/dire-straits/romeo-and-juliet-official-2464568"
@@ -13908,7 +13908,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F Ab.",
+  "note": "Intro (official chart): F, Ab. Bass line: F, Ab.",
   "spotify": "spotify:track:4odMw0bAPDR7kSwb15r7S7",
   "art": "https://i.scdn.co/image/ab67616d00001e02647a4d34d01e14d967106fbb",
   "ug": "https://tabs.ultimate-guitar.com/tab/alice-in-chains/rooster-official-2018423"
@@ -13921,7 +13921,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -13935,7 +13935,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: E C#m7.",
+  "note": "Verse (official chart): E, C#m7. Bass line: E, C#.",
   "spotify": "spotify:track:3vv9phIu6Y1vX3jcqaGz5Z",
   "art": "https://i.scdn.co/image/ab67616d00001e028d2cfad007b9431f48aef135",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-chainsmokers/roses-official-6145391"
@@ -13948,7 +13948,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -13970,7 +13970,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C D Em G.",
+  "note": "Verse (official chart): C, D, Em, G. Bass line: C, D, E, G.",
   "spotify": "spotify:track:35qwJUKVy1OIt0wQ3xEXi0",
   "art": "https://i.scdn.co/image/ab67616d00001e027e09670f90cd47b3fb9a23e0",
   "ug": "https://tabs.ultimate-guitar.com/tab/counting-crows/round-here-official-2768179"
@@ -14021,7 +14021,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Gm Dm/F Gm/Bb F/A Eb/G Fsus4 G7sus4.",
+  "note": "Intro (official chart): Gm, Dm/F, Gm/Bb, F/A, Eb/G, Fsus4, G7sus4. Bass line: G, F, Bb, A, G, F, G.",
   "spotify": "spotify:track:3EYOJ48Et32uATr9ZmLnAo",
   "art": "https://i.scdn.co/image/ab67616d00001e022043dd3544a339547d04b436",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-police/roxanne-official-1964181"
@@ -14034,7 +14034,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -14052,7 +14052,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, chorus: C G D.",
+  "note": "Chorus (official chart): C, G, D. Bass line: C, G, D.",
   "spotify": "spotify:track:4SDWMFvYJKtK1QPhIOeZhd",
   "art": "https://i.scdn.co/image/ab67616d00001e02244fb8bb9594476ab5cb39b9",
   "ug": "https://tabs.ultimate-guitar.com/tab/lorde/royals-official-2165481"
@@ -14065,7 +14065,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -14103,7 +14103,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am G F G C Am G F.",
+  "note": "Verse (official chart): Am, G, F, G, C, Am, G, F. Bass line: A, G, F, G, C, A, G, F.",
   "spotify": "spotify:track:4hupcimlg3UBbW1kAQ6vrT",
   "art": "https://i.scdn.co/image/ab67616d00001e028260863a56134f1516913d7f",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/ruby-tuesday-official-2179767"
@@ -14116,7 +14116,7 @@ export const SONGS = [
   "key": "Bb minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -14138,7 +14138,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am G F E7. Capo 1.",
+  "note": "Verse (official chart): Bbm, Ab, Gb, F7. Capo 1. Bass line: Bb, Ab, Gb, F.",
   "spotify": "spotify:track:45Szkclj1lt4ubm7RFK68t",
   "art": "https://i.scdn.co/image/ab67616d00001e02f1fdd06fe4e73052f3a5a26c",
   "ug": "https://tabs.ultimate-guitar.com/tab/del-shannon/runaway-official-2524677"
@@ -14171,7 +14171,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cmaj7/G G D/F#. Capo 4.",
+  "note": "Intro (official chart): Emaj7/B, B, F#/A#. Capo 4. Bass line: B, B, A#.",
   "spotify": "spotify:track:5PmvRPR1SedsWA08jDDgF9",
   "art": "https://i.scdn.co/image/ab67616d00001e02be60963d00f15bb052f73b52",
   "ug": "https://tabs.ultimate-guitar.com/tab/alex-g-sandy-alex-g/runner-official-4687394"
@@ -14184,7 +14184,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -14199,7 +14199,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D/A A.",
+  "note": "Verse (official chart): D/A, A.",
   "spotify": "spotify:track:6aqm56xP40foYBBtAWWrnY",
   "art": "https://i.scdn.co/image/ab67616d00001e028d6479b1461b26b8b6603935",
   "ug": "https://tabs.ultimate-guitar.com/tab/jackson-browne/running-on-empty-official-3157007"
@@ -14212,7 +14212,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -14246,7 +14246,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Cmaj7 G Cmaj7 G Cmaj7 G D7. Capo 2.",
+  "note": "Verse (official chart): Dmaj7, A, Dmaj7, A, Dmaj7, A, E7. Capo 2. Bass line: D, A, D, A, D, A, E.",
   "spotify": "spotify:track:6942romFscvCKkkrTwkAvD",
   "art": "https://i.scdn.co/image/ab67616d00001e028b221f2ccf777ae0d4b0db50",
   "ug": "https://tabs.ultimate-guitar.com/tab/mac-demarco/salad-days-official-2474214"
@@ -14273,7 +14273,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A D. Capo 3.",
+  "note": "Intro (official chart): C, F. Capo 3. Bass line: C, F.",
   "spotify": "spotify:track:4BIej0swGWja46j5B7l4s1",
   "art": "https://i.scdn.co/image/ab67616d00001e02b190c3479aedf6a29340847d",
   "ug": "https://tabs.ultimate-guitar.com/tab/john-prine/sam-stone-official-3820238"
@@ -14304,7 +14304,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em C G.",
+  "note": "Intro (official chart): Em, C, G. Bass line: E, C, G.",
   "spotify": "spotify:track:6Sy9BUbgFse0n0LPA5lwy5",
   "art": "https://i.scdn.co/image/ab67616d00001e02f9ef39657ba18c612641ee6d",
   "ug": "https://tabs.ultimate-guitar.com/tab/darude/sandstorm-official-2515956"
@@ -14317,7 +14317,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -14339,7 +14339,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F G Gm C F G Gm C.",
+  "note": "Verse (official chart): F, G, Gm, C, F, G, Gm, C. Bass line: F, G, G, C, F, G, G, C.",
   "spotify": "spotify:track:5WyuRWUcOOhAic0tj9Pl28",
   "art": "https://i.scdn.co/image/ab67616d00001e02fe5213edd4f8550a8030efcf",
   "ug": "https://tabs.ultimate-guitar.com/tab/lou-reed/satellite-of-love-official-5034241"
@@ -14352,7 +14352,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -14374,7 +14374,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C Am Em G.",
+  "note": "Verse (official chart): C, Am, Em, G. Bass line: C, A, E, G.",
   "spotify": "spotify:track:5QO79kh1waicV47BqGRL3g",
   "art": "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-weeknd/save-your-tears-official-3283448"
@@ -14409,7 +14409,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cm G Ab Eb.",
+  "note": "Intro (official chart): Cm, G, Ab, Eb. Bass line: C, G, Ab, Eb.",
   "spotify": "spotify:track:56MEbUIvvfEEkLIl51wxGD",
   "art": "https://i.scdn.co/image/ab67616d00001e02ccb905a7b403aa786f96b374",
   "ug": "https://tabs.ultimate-guitar.com/tab/weezer/say-it-aint-so-official-1952129"
@@ -14422,7 +14422,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -14458,7 +14458,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F Cadd11/E Dm C Bb F6/A G.",
+  "note": "Verse (official chart): F, Cadd11/E, Dm, C, Bb, F6/A, G. Bass line: F, E, D, C, Bb, A, G.",
   "spotify": "spotify:track:4IKMZtDIqyQDA6a4YvsgpK",
   "art": "https://i.scdn.co/image/ab67616d00001e022f3552dc6f9e4e2748c5b8ba",
   "ug": "https://tabs.ultimate-guitar.com/tab/elliott-smith/say-yes-official-2201759"
@@ -14485,7 +14485,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: B E.",
+  "note": "Intro (official chart): B, E. Bass line: B, E.",
   "spotify": "spotify:track:4B8dwlhCUupgn54QQoczQZ",
   "art": "https://i.scdn.co/image/ab67616d00001e028a7f0d3a3dd5e8ca8ab92a18",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/scarlet-begonias-official-3028202"
@@ -14498,7 +14498,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -14520,7 +14520,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C E F D.",
+  "note": "Verse (official chart): C, E, F, D. Bass line: C, E, F, D.",
   "spotify": "spotify:track:33kKcOJoyNduHwXhEnga8X",
   "art": "https://i.scdn.co/image/ab67616d00001e02b46c268f75fbd2878754d990",
   "ug": "https://tabs.ultimate-guitar.com/tab/cat-power/sea-of-love-official-2080781"
@@ -14571,7 +14571,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dmaj7 C#m7 Bm7 C#m7 F#m7 Dmaj7 C#m7 Bm7.",
+  "note": "Intro (official chart): Dmaj7, C#m7, Bm7, C#m7, F#m7, Dmaj7, C#m7, Bm7. Bass line: D, C#, B, C#, F#, D, C#, B.",
   "spotify": "spotify:track:2grjqo0Frpf2okIBiifQKs",
   "art": "https://i.scdn.co/image/ab67616d00001e022e7558daae7a80e1f5819aa1",
   "ug": "https://tabs.ultimate-guitar.com/tab/earth-wind-fire/september-official-2467028"
@@ -14603,7 +14603,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D A/D G/D. Capo 2.",
+  "note": "Intro (official chart): E, B/E, A/E. Capo 2.",
   "spotify": "spotify:track:74njazGdnO2igjEkb0mGiy",
   "art": "https://i.scdn.co/image/ab67616d00001e02471e287a6c0dd5e063059c55",
   "ug": "https://tabs.ultimate-guitar.com/tab/big-star/september-gurls-official-4617872"
@@ -14646,7 +14646,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm F C Gm Dm F.",
+  "note": "Intro (official chart): Dm, F, C, Gm, Dm, F. Bass line: D, F, C, G, D, F.",
   "spotify": "spotify:track:73CMRj62VK8nUS4ezD2wvi",
   "art": "https://i.scdn.co/image/ab67616d00001e027e7e5dd9d1ab19fcded8a17f",
   "ug": "https://tabs.ultimate-guitar.com/tab/adele/set-fire-to-the-rain-official-2260835"
@@ -14697,7 +14697,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F Bb F Dm Bb F C Dm.",
+  "note": "Intro (official chart): F, Bb, F, Dm, Bb, F, C, Dm. Bass line: F, Bb, F, D, Bb, F, C, D.",
   "spotify": "spotify:track:4lY95OMGb9WxP6IYut64ir",
   "art": "https://i.scdn.co/image/ab67616d00001e02527d94ecf554774fc313bf48",
   "ug": "https://tabs.ultimate-guitar.com/tab/florence-the-machine/shake-it-out-official-2471978"
@@ -14710,7 +14710,7 @@ export const SONGS = [
   "key": "C minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -14728,7 +14728,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Cm Bb F.",
+  "note": "Verse (official chart): Cm, Bb, F. Bass line: C, Bb, F.",
   "spotify": "spotify:track:7aXgo7vAHDjHR0JrCX2qJv",
   "art": "https://i.scdn.co/image/ab67616d00001e02bea91eceb63b4476a00e385c",
   "ug": "https://tabs.ultimate-guitar.com/tab/zz-top/sharp-dressed-man-official-1948617"
@@ -14763,7 +14763,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C Gsus2 Bb F.",
+  "note": "Intro (official chart): C, Gsus2, Bb, F. Bass line: C, G, Bb, F.",
   "spotify": "spotify:track:4hJ5jWbqstdYt555NhdtNk",
   "art": "https://i.scdn.co/image/ab67616d00001e02b18fae872e1700b83e72a15b",
   "ug": "https://tabs.ultimate-guitar.com/tab/mj-lenderman/shes-leaving-you-official-5357694"
@@ -14776,7 +14776,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -14794,7 +14794,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D Asus4 G. Capo 2.",
+  "note": "Verse (official chart): E, Bsus4, A. Capo 2. Bass line: E, B, A.",
   "spotify": "spotify:track:3y4Uza6K58JXQ7RYya8ZI5",
   "art": "https://i.scdn.co/image/ab67616d00001e023b5e52dc6433b80b060ce1df",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/shelter-from-the-storm-official-3145673"
@@ -14842,7 +14842,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F Em7 G Em7 Am7 Am/D Cmaj7/E.",
+  "note": "Intro (official chart): F, Em7, G, Em7, Am7, Am/D, Cmaj7/E. Bass line: F, E, G, E, A, D, E.",
   "spotify": "spotify:track:5UNJM92MCcDgs4kGgm5fc1",
   "art": "https://i.scdn.co/image/ab67616d00001e0279921d9de5b4e523a379876d",
   "ug": "https://tabs.ultimate-guitar.com/tab/porter-robinson/shelter-official-3800840"
@@ -14898,7 +14898,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D D/C# D/C G/B Gm D Dmaj9/C# G/B. Capo 2.",
+  "note": "Intro (official chart): E, E/D#, E/D, A/C#, Am, E, Emaj9/D#, A/C#. Capo 2. Bass line: E, D#, D, C#, A, E, D#, C#.",
   "spotify": "spotify:track:3wAX3qn53iQUFE84hpfeen",
   "art": "https://i.scdn.co/image/ab67616d00001e023b5e52dc6433b80b060ce1df",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/simple-twist-of-fate-official-2506920"
@@ -14945,7 +14945,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C#m A E G#m C#m B A.",
+  "note": "Intro (official chart): C#m, A, E, G#m, C#m, B, A. Bass line: C#, A, E, G#, C#, B, A.",
   "spotify": "spotify:track:5VSAonaAPhhGn0G7hMYwWK",
   "art": "https://i.scdn.co/image/ab67616d00001e02865a956fe40cf54597e97fd2",
   "ug": "https://tabs.ultimate-guitar.com/tab/america/sister-golden-hair-official-1956617"
@@ -14980,7 +14980,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am C Am C Am C Gadd11/B Am.",
+  "note": "Intro (official chart): Am, C, Am, C, Am, C, Gadd11/B, Am. Bass line: A, C, A, C, A, C, B, A.",
   "spotify": "spotify:track:3B3eOgLJSqPEA0RfboIQVM",
   "art": "https://i.scdn.co/image/ab67616d00001e02bf7c317a63c4f128b8823406",
   "ug": "https://tabs.ultimate-guitar.com/tab/bon-iver/skinny-love-official-2229501"
@@ -15015,7 +15015,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Cm Ab F Fm Cm Ab F Fm.",
+  "note": "Intro (official chart): Cm, Ab, F, Fm, Cm, Ab, F, Fm. Bass line: C, Ab, F, F, C, Ab, F, F.",
   "spotify": "spotify:track:6VObnIkLVruX4UVyxWhlqm",
   "art": "https://i.scdn.co/image/ab67616d00001e02b479bb2aed275bb1b13d83da",
   "ug": "https://tabs.ultimate-guitar.com/tab/adele/skyfall-official-2151601"
@@ -15047,7 +15047,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am7 G Fmaj7/C.",
+  "note": "Intro (official chart): Am7, G, Fmaj7/C. Bass line: A, G, C.",
   "spotify": "spotify:track:1CZpWzCvN6fl2WslWTyPn2",
   "art": "https://i.scdn.co/image/ab67616d00001e027c8f18614002cc5542f6c7aa",
   "ug": "https://tabs.ultimate-guitar.com/tab/oasis/slide-away-official-2832523"
@@ -15060,7 +15060,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -15082,7 +15082,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C G Am F.",
+  "note": "Verse (official chart): C, G, Am, F. Bass line: C, G, A, F.",
   "spotify": "spotify:track:2wnsBaxrmkthIFAm6vqCuX",
   "art": "https://i.scdn.co/image/ab67616d00001e022043dd3544a339547d04b436",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-police/so-lonely-official-2632474"
@@ -15109,7 +15109,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm C.",
+  "note": "Intro (official chart): Dm, C. Bass line: D, C.",
   "spotify": "spotify:track:4wCmqSrbyCgxEXROQE6vtV",
   "art": "https://i.scdn.co/image/ab67616d00001e02e1d47c00ddecbfb810c807ed",
   "ug": "https://tabs.ultimate-guitar.com/tab/gotye/somebody-that-i-used-to-know-official-2429917"
@@ -15122,7 +15122,7 @@ export const SONGS = [
   "key": "Bb",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -15140,7 +15140,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A#5 D#5 F#5.",
+  "note": "Verse (official chart): Bb5, Eb5, Gb5. Bass line: Bb, Eb, Gb.",
   "spotify": "spotify:track:6PwjJ58I4t7Mae9xfZ9l9v",
   "art": "https://i.scdn.co/image/ab67616d00001e02ccdddd46119a4ff53eaf1f5d",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-killers/somebody-told-me-official-1945495"
@@ -15171,7 +15171,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A Bm D.",
+  "note": "Intro (official chart): A, Bm, D. Bass line: A, B, D.",
   "spotify": "spotify:track:7hm4HTk9encxT0LYC0J6oI",
   "art": "https://i.scdn.co/image/ab67616d00001e0213f2466b83507515291acce4",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-strokes/someday-official-1945805"
@@ -15206,7 +15206,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Db Ab Bbm Gb.",
+  "note": "Intro (official chart): Db, Ab, Bbm, Gb. Bass line: Db, Ab, Bb, Gb.",
   "spotify": "spotify:track:7qEHsqek33rTcFNT9PFqLf",
   "art": "https://i.scdn.co/image/ab67616d00001e02fc2101e6889d6ce9025f85f2",
   "ug": "https://tabs.ultimate-guitar.com/tab/lewis-capaldi/someone-you-loved-official-2571216"
@@ -15241,7 +15241,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bbmaj7 Am7 Dm9 Gadd9 Bbmaj7 A7 Am7/D Dm7/G.",
+  "note": "Intro (official chart): Bbmaj7, Am7, Dm9, Gadd9, Bbmaj7, A7, Am7/D, Dm7/G. Bass line: Bb, A, D, G, Bb, A, D, G.",
   "spotify": "spotify:track:1NeLwFETswx8Fzxl2AFl91",
   "art": "https://i.scdn.co/image/ab67616d00001e021e81bff9807a9e629fce5ade",
   "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/something-about-us-official-1956009"
@@ -15268,7 +15268,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F5 Db5.",
+  "note": "Intro (official chart): F5, Db5. Bass line: F, Db.",
   "spotify": "spotify:track:1nFtiJxYdhtFfFtfXBv06s",
   "art": "https://i.scdn.co/image/ab67616d00001e02e175a19e530c898d167d39bf",
   "ug": "https://tabs.ultimate-guitar.com/tab/nirvana/something-in-the-way-official-1955669"
@@ -15281,7 +15281,7 @@ export const SONGS = [
   "key": "B minor",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -15303,7 +15303,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, chorus: Bm A G A.",
+  "note": "Chorus (official chart): Bm, A, G, A. Bass line: B, A, G, A.",
   "spotify": "spotify:track:1dNIEtp7AY3oDAKCGg2XkH",
   "art": "https://i.scdn.co/image/ab67616d00001e02f79b7f08426e2899a832d3e6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-chainsmokers/something-just-like-this-official-2432569"
@@ -15342,7 +15342,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 1: Gb5 E5 A5 B5 Db5.",
+  "note": "Intro (official chart): Gb5, E5, A5, B5, Db5. Bass line: Gb, E, A, B, Db.",
   "spotify": "spotify:track:3GfOAdcoc3X5GPiiXmpBjK",
   "art": "https://i.scdn.co/image/ab67616d00001e0234cbf7013afccc7df67fa43f",
   "ug": "https://tabs.ultimate-guitar.com/tab/blur/song-2-official-1911343"
@@ -15389,7 +15389,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F#m E D# F#m E D# C#m.",
+  "note": "Intro (official chart): Gbm, E, Eb, Gbm, E, Eb, Dbm. Bass line: Gb, E, Eb, Gb, E, Eb, Db.",
   "spotify": "spotify:track:6vTtCOimcPs5H1Jr9d0Aep",
   "art": "https://i.scdn.co/image/ab67616d00001e02dc20397b139223620af148f6",
   "ug": "https://tabs.ultimate-guitar.com/tab/portishead/sour-times-official-4811942"
@@ -15424,7 +15424,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro/fade in: Eb Cm Fm Bb.",
+  "note": "Intro/fade (official chart): Eb, Cm, Fm, Bb. Bass line: Eb, C, F, Bb.",
   "spotify": "spotify:track:7H0ya83CMmgFcOhw0UB6ow",
   "art": "https://i.scdn.co/image/ab67616d00001e029b7190e673e46271b2754aab",
   "ug": "https://tabs.ultimate-guitar.com/tab/beach-house/space-song-official-2517453"
@@ -15437,7 +15437,7 @@ export const SONGS = [
   "key": "A minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -15459,7 +15459,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am G F G Am G F G.",
+  "note": "Verse (official chart): Am, G, F, G, Am, G, F, G. Bass line: A, G, F, G, A, G, F, G.",
   "spotify": "spotify:track:7MXVkk9YMctZqd1Srtv4MB",
   "art": "https://i.scdn.co/image/ab67616d00001e024718e2b124f79258be7bc452",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-weeknd/starboy-official-3489986"
@@ -15472,7 +15472,7 @@ export const SONGS = [
   "key": "F",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -15510,7 +15510,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Gm F C F Ab Bb Gm F.",
+  "note": "Verse (official chart): Gm, F, C, F, Ab, Bb, Gm, F. Bass line: G, F, C, F, Ab, Bb, G, F.",
   "spotify": "spotify:track:0pQskrTITgmCMyr85tb9qq",
   "art": "https://i.scdn.co/image/ab67616d00001e02c41f4e1133b0e6c5fcf58680",
   "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/starman-official-2085341"
@@ -15537,7 +15537,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F Bb.",
+  "note": "Intro (official chart): F, Bb. Bass line: F, Bb.",
   "spotify": "spotify:track:0INM0SfWqrD33nTDGA5Mts",
   "art": "https://i.scdn.co/image/ab67616d00001e0206b22c84b37f280cbacdeffb",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/start-me-up-official-2451105"
@@ -15568,7 +15568,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E D A.",
+  "note": "Intro (official chart): E, D, A. Bass line: E, D, A.",
   "spotify": "spotify:track:7fLTytvnvxy653VWxflTRf",
   "art": "https://i.scdn.co/image/ab67616d00001e028568fcf6a48b4404bc5817fb",
   "ug": "https://tabs.ultimate-guitar.com/tab/faces/stay-with-me-official-2960696"
@@ -15599,7 +15599,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am7 F C.",
+  "note": "Intro (official chart): Am7, F, C. Bass line: A, F, C.",
   "spotify": "spotify:track:5Nm9ERjJZ5oyfXZTECKmRt",
   "art": "https://i.scdn.co/image/ab67616d00001e02b11bdc91cb9ac6b14f5c1dae",
   "ug": "https://tabs.ultimate-guitar.com/tab/sam-smith/stay-with-me-official-1969985"
@@ -15646,7 +15646,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Db Fm Eb Db Fm Eb Cm7.",
+  "note": "Intro (official chart): Db, Fm, Eb, Db, Fm, Eb, Cm7. Bass line: Db, F, Eb, Db, F, Eb, C.",
   "spotify": "spotify:track:6uBhi9gBXWjanegOb2Phh0",
   "art": "https://i.scdn.co/image/ab67616d00001e02b993cba8ff7d0a8e9ee18d46",
   "ug": "https://tabs.ultimate-guitar.com/tab/zedd/stay-official-2785192"
@@ -15673,7 +15673,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am Asus4.",
+  "note": "Intro (official chart): Am, Asus4.",
   "spotify": "spotify:track:2QwObYJWyJTiozvs0RI7CF",
   "art": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/street-spirit-fade-out-official-1930545"
@@ -15710,7 +15710,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F/C Am F/C C F/C Am G C.",
+  "note": "Intro (official chart): F/C, Am, F/C, C, F/C, Am, G, C. Bass line: C, A, C, C, C, A, G, C.",
   "spotify": "spotify:track:4wG82w1L31yQhgGiWt6gIb",
   "art": "https://i.scdn.co/image/ab67616d00001e02f350c13195ce048876b5fea4",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-lumineers/stubborn-love-official-2463848"
@@ -15737,7 +15737,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bm G.",
+  "note": "Intro (official chart): Bm, G. Bass line: B, G.",
   "spotify": "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5",
   "art": "https://i.scdn.co/image/ab67616d00001e029abdf14e6058bd3903686148",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/style-official-2193711"
@@ -15764,7 +15764,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A D.",
+  "note": "Intro (official chart): A, D. Bass line: A, D.",
   "spotify": "spotify:track:2EB1aFLWC4uIfld5Z3Yj1z",
   "art": "https://i.scdn.co/image/ab67616d00001e02fd3f66a9ce4371f7ffa0346f",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/sugar-magnolia-official-3291902"
@@ -15791,7 +15791,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em C.",
+  "note": "Intro (official chart): Em, C. Bass line: E, C.",
   "spotify": "spotify:track:6YUTL4dYpB9xZO5qExPf05",
   "art": "https://i.scdn.co/image/ab67616d00001e028fba5806a323efd272677c4d",
   "ug": "https://tabs.ultimate-guitar.com/tab/calvin-harris/summer-official-4451639"
@@ -15818,7 +15818,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F Bb.",
+  "note": "Intro (official chart): F, Bb. Bass line: F, Bb.",
   "spotify": "spotify:track:11607FzqoipskTsXrwEHnJ",
   "art": "https://i.scdn.co/image/ab67616d00001e0298260c528e6eec9dd431c1d7",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-velvet-underground/sunday-morning-official-1981061"
@@ -15853,7 +15853,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G Em G.",
+  "note": "Intro (official chart): D, G, Em, G. Bass line: D, G, E, G.",
   "spotify": "spotify:track:3KkXRkHbMCARz0aVfEt68P",
   "art": "https://i.scdn.co/image/ab67616d00001e02e2e352d89826aef6dbd5ff8f",
   "ug": "https://tabs.ultimate-guitar.com/tab/post-malone/sunflower-official-2523066"
@@ -15903,7 +15903,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm Dm/C Dm/B Dm/Bb A A/G A/F A/E.",
+  "note": "Intro (official chart): Dm, Dm/C, Dm/B, Dm/Bb, A, A/G, A/F, A/E. Bass line: D, C, B, Bb, A, G, F, E.",
   "spotify": "spotify:track:09Plbz3Ja2gxU9xCsqA5KY",
   "art": "https://i.scdn.co/image/ab67616d00001e0278581804d382a515978d3308",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-kinks/sunny-afternoon-official-2139793"
@@ -15916,7 +15916,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -15954,7 +15954,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G Em A D A G F#m Bm.",
+  "note": "Verse (official chart): G, Em, A, D, A, G, F#m, Bm. Bass line: G, E, A, D, A, G, F#, B.",
   "spotify": "spotify:track:1lZJzhTAzXWgEY3RSw9cvx",
   "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
   "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/sweet-baby-james-official-2450663"
@@ -16005,7 +16005,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D A Bm G A D A D.",
+  "note": "Intro (official chart): D, A, Bm, G, A, D, A, D. Bass line: D, A, B, G, A, D, A, D.",
   "spotify": "spotify:track:2LAZn3ygMkecVRmyXvGjHO",
   "art": "https://i.scdn.co/image/ab67616d00001e025816a37263f88929907c2dbd",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-velvet-underground/sweet-jane-official-2189969"
@@ -16048,7 +16048,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Gm Bb Eb Csus2 Gm Bb.",
+  "note": "Intro (official chart): Gm, Bb, Eb, Csus2, Gm, Bb. Bass line: G, Bb, Eb, C, G, Bb.",
   "spotify": "spotify:track:58E1XVmZTODC67YNjneuXM",
   "art": "https://i.scdn.co/image/ab67616d00001e02db5f42a5cd45458926cab59d",
   "ug": "https://tabs.ultimate-guitar.com/tab/soft-cell/tainted-love-official-2597652"
@@ -16079,7 +16079,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C D7sus4.",
+  "note": "Intro (official chart): G, C, D7sus4. Bass line: G, C, D.",
   "spotify": "spotify:track:4yugZvBYaoREkJKtbG08Qr",
   "art": "https://i.scdn.co/image/ab67616d00001e02c13acd642ba9f6f5f127aa1b",
   "ug": "https://tabs.ultimate-guitar.com/tab/eagles/take-it-easy-official-2213493"
@@ -16092,7 +16092,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -16130,7 +16130,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am D G B Em Am D G.",
+  "note": "Verse (official chart): Am, D, G, B, Em, Am, D, G. Bass line: A, D, G, B, E, A, D, G.",
   "spotify": "spotify:track:20I8RduZC2PWMWTDCZuuAN",
   "art": "https://i.scdn.co/image/ab67616d00001e02a5d1c06a8172d4861367953c",
   "ug": "https://tabs.ultimate-guitar.com/tab/franz-ferdinand/take-me-out-official-1911499"
@@ -16143,7 +16143,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -16181,7 +16181,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em Am Em Am G Am Em Am.",
+  "note": "Verse (official chart): Em, Am, Em, Am, G, Am, Em, Am. Bass line: E, A, E, A, G, A, E, A.",
   "spotify": "spotify:track:1CS7Sd1u5tWkstBhpssyjP",
   "art": "https://i.scdn.co/image/ab67616d00001e02bd5c6f1a9461fc68c5dc1623",
   "ug": "https://tabs.ultimate-guitar.com/tab/hozier/take-me-to-church-official-1990435"
@@ -16233,7 +16233,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am C/G Am G D Am G D.",
+  "note": "Intro (official chart): Am, C/G, Am, G, D, Am, G, D. Bass line: A, G, A, G, D, A, G, D.",
   "spotify": "spotify:track:4ywWJqYKOwaVVh9xXARWUS",
   "art": "https://i.scdn.co/image/ab67616d00001e0290a50cfe99a4c19ff3cbfbdb",
   "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/tangerine-official-2082289"
@@ -16246,7 +16246,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -16268,7 +16268,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: A G A G A G D A.",
+  "note": "Verse (official chart): A, G, A, G, A, G, D, A. Bass line: A, G, A, G, A, G, D, A.",
   "spotify": "spotify:track:6Vcwr9tb3ZLO63F8DL8cqu",
   "art": "https://i.scdn.co/image/ab67616d00001e023b5e52dc6433b80b060ce1df",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/tangled-up-in-blue-official-2859809"
@@ -16281,7 +16281,7 @@ export const SONGS = [
   "key": "Gb",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -16299,7 +16299,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: F# D#m C#.",
+  "note": "Verse (official chart): Gb, Ebm, Db. Bass line: Gb, Eb, Db.",
   "spotify": "spotify:track:3G6hD9B2ZHOsgf4WfNu7X1",
   "art": "https://i.scdn.co/image/ab67616d00001e02187331e276c898d39764cc98",
   "ug": "https://tabs.ultimate-guitar.com/tab/lorde/team-official-2466096"
@@ -16326,7 +16326,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A E7.",
+  "note": "Intro (official chart): A, E7. Bass line: A, E.",
   "spotify": "spotify:track:42cxPm9jgbaxIVN77XA1m6",
   "art": "https://i.scdn.co/image/ab67616d00001e0294983882a5effd77742a9f52",
   "ug": "https://tabs.ultimate-guitar.com/tab/blur/tender-official-3258425"
@@ -16339,7 +16339,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -16361,7 +16361,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G D7 Am D7.",
+  "note": "Verse (official chart): G, D7, Am, D7. Bass line: G, D, A, D.",
   "spotify": "spotify:track:1WYokrkFOb9TFVuTrmxTTt",
   "art": "https://i.scdn.co/image/ab67616d00001e022d73b1bb77cee09f0278be04",
   "ug": "https://tabs.ultimate-guitar.com/tab/eagles/tequila-sunrise-official-2580984"
@@ -16374,7 +16374,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -16388,7 +16388,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Em Asus2.",
+  "note": "Verse (official chart): Em, Asus2. Bass line: E, A.",
   "spotify": "spotify:track:1o22EcqsCANhwYdaNOSdwS",
   "art": "https://i.scdn.co/image/ab67616d00001e02609c89ad17eb28c2013c56c6",
   "ug": "https://tabs.ultimate-guitar.com/tab/alt-j/tessellate-official-4757849"
@@ -16420,7 +16420,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D Csus2 G/B.",
+  "note": "Intro (official chart): D, Csus2, G/B. Bass line: D, C, B.",
   "spotify": "spotify:track:4ZkhFcoS3apzze9w2yI9NO",
   "art": "https://i.scdn.co/image/ab67616d00001e02fc4f17340773c6c3579fea0d",
   "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/thank-you-official-2522124"
@@ -16448,7 +16448,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Gbmaj7 Cb/Gb.",
+  "note": "Intro (official chart): Gbmaj7, B/Gb.",
   "spotify": "spotify:track:1ZUv3ISx2nFaz0JimVdcoT",
   "art": "https://i.scdn.co/image/ab67616d00001e0290a50cfe99a4c19ff3cbfbdb",
   "ug": "https://tabs.ultimate-guitar.com/tab/led-zeppelin/thats-the-way-official-2909645"
@@ -16461,7 +16461,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -16483,7 +16483,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D7 G7 C Bb. Capo 2.",
+  "note": "Verse (official chart): E7, A7, D, C. Capo 2. Bass line: E, A, D, C.",
   "spotify": "spotify:track:5e9TFTbltYBg2xThimr0rU",
   "art": "https://i.scdn.co/image/ab67616d00001e02e52a59a28efa4773dd2bfe1b",
   "ug": "https://tabs.ultimate-guitar.com/tab/fleetwood-mac/the-chain-official-2451091"
@@ -16530,7 +16530,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C Am Em Fadd9 Gsus4 C Gsus4.",
+  "note": "Intro (official chart): C, Am, Em, Fadd9, Gsus4, C, Gsus4. Bass line: C, A, E, F, G, C, G.",
   "spotify": "spotify:track:15kLz0zNFdtsaJdXKSGmTU",
   "art": "https://i.scdn.co/image/ab67616d00001e02c038b03e66fb6de76a5b3904",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-verve/the-drugs-dont-work-official-2837255"
@@ -16543,7 +16543,7 @@ export const SONGS = [
   "key": "Db",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 4,
   "chords": [
@@ -16559,7 +16559,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Db6/Ab Eb9/Bb.",
+  "note": "Verse (official chart): Db6/Ab, Eb9/Bb. Bass line: Ab, Bb.",
   "spotify": "spotify:track:7znjbX9XdoQayIrVNdd50Z",
   "art": "https://i.scdn.co/image/ab67616d00001e02417cc363d7286a88489dee3c",
   "ug": "https://tabs.ultimate-guitar.com/tab/stan-getz/the-girl-from-ipanema-official-2523963"
@@ -16590,7 +16590,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C Am Em.",
+  "note": "Intro (official chart): C, Am, Em. Bass line: C, A, E.",
   "spotify": "spotify:track:0OVXLPJPDCFn1IV6bFxY1N",
   "art": "https://i.scdn.co/image/ab67616d00001e026e9c987d28f8c6033f424655",
   "ug": "https://tabs.ultimate-guitar.com/tab/cat-power/the-greatest-official-5496219"
@@ -16603,7 +16603,7 @@ export const SONGS = [
   "key": "A",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -16625,7 +16625,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Am Cmaj7 G7 Cmaj7 Am Cmaj7 G7 Cmaj7. Capo 2.",
+  "note": "Verse (official chart): Bm, Dmaj7, A7, Dmaj7, Bm, Dmaj7, A7, Dmaj7. Capo 2. Bass line: B, D, A, D, B, D, A, D.",
   "spotify": "spotify:track:3dsd09qrt34YuS6NPbQtYq",
   "art": "https://i.scdn.co/image/ab67616d00001e0215fb6d36c33c0323b1142ac1",
   "ug": "https://tabs.ultimate-guitar.com/tab/andy-shauf/the-magician-official-5850455"
@@ -16664,7 +16664,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A Dm F Dm A.",
+  "note": "Intro (official chart): A, Dm, F, Dm, A. Bass line: A, D, F, D, A.",
   "spotify": "spotify:track:4mWahKerLaVddUjb8d1Q4Q",
   "art": "https://i.scdn.co/image/ab67616d00001e0246926e777bd6665f03128d29",
   "ug": "https://tabs.ultimate-guitar.com/tab/david-bowie/the-man-who-sold-the-world-official-2076777"
@@ -16677,7 +16677,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -16695,7 +16695,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C G D.",
+  "note": "Verse (official chart): C, G, D. Bass line: C, G, D.",
   "spotify": "spotify:track:09IStsImFySgyp0pIQdqAc",
   "art": "https://i.scdn.co/image/ab67616d00001e02fbe22d168a743b782a5e856a",
   "ug": "https://tabs.ultimate-guitar.com/tab/zedd/the-middle-official-2405851"
@@ -16708,7 +16708,7 @@ export const SONGS = [
   "key": "Eb minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -16722,7 +16722,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C#m B. Capo 2.",
+  "note": "Verse (official chart): Ebm, Db. Capo 2. Bass line: Eb, Db.",
   "spotify": "spotify:track:0ct6r3EGTcMLPtrXHDvVjc",
   "art": "https://i.scdn.co/image/ab67616d00001e020ae4f4d42e4a09f3a29f64ad",
   "ug": "https://tabs.ultimate-guitar.com/tab/avicii/the-nights-official-2506269"
@@ -16757,7 +16757,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em Dsus2 Em Esus4.",
+  "note": "Intro (official chart): Em, Dsus2, Em, Esus4. Bass line: E, D, E, E.",
   "spotify": "spotify:track:7707eDBpR4qtNFoQ6nQyeR",
   "art": "https://i.scdn.co/image/ab67616d00001e02a7c7f94cfccd5ab6de233916",
   "ug": "https://tabs.ultimate-guitar.com/tab/r-e-m-/the-one-i-love-official-1949149"
@@ -16792,7 +16792,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C Am E G. Capo 2.",
+  "note": "Intro (official chart): D, Bm, F#, A. Capo 2. Bass line: D, B, F#, A.",
   "spotify": "spotify:track:2UWdUez9MB9yzL7Y81Mcip",
   "art": "https://i.scdn.co/image/ab67616d00001e02532391d63cfd6d32677f7af6",
   "ug": "https://tabs.ultimate-guitar.com/tab/arcade-fire/the-suburbs-official-2955794"
@@ -16843,7 +16843,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G B5 C Bm7 D G B5 C.",
+  "note": "Intro (official chart): G, B5, C, Bm7, D, G, B5, C. Bass line: G, B, C, B, D, G, B, C.",
   "spotify": "spotify:track:7cDbqFvw45zdLHGltdb1g9",
   "art": "https://i.scdn.co/image/ab67616d00001e02bdfc7608e3b6e894301be8de",
   "ug": "https://tabs.ultimate-guitar.com/tab/spoon/the-underdog-official-4054819"
@@ -16879,7 +16879,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F# A#m B/D# A#m.",
+  "note": "Intro (official chart): Gb, Bbm, B/Eb, Bbm. Bass line: Gb, Bb, Eb, Bb.",
   "spotify": "spotify:track:5op53ANI4exiWqFHKuwWxd",
   "art": "https://i.scdn.co/image/ab67616d00001e02cc68329bfbf34037df965dc1",
   "ug": "https://tabs.ultimate-guitar.com/tab/modest-mouse/the-world-at-large-official-5066104"
@@ -16910,7 +16910,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm7 F G6. Capo 4.",
+  "note": "Intro (official chart): F#m7, A, B6. Capo 4. Bass line: F#, A, B.",
   "spotify": "spotify:track:0VP21iWqJpnX8vpmbKPBxE",
   "art": "https://i.scdn.co/image/ab67616d00001e02526a6833a7c37a60a1444e4c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-smiths/there-is-a-light-that-never-goes-out-official-2141083"
@@ -16950,7 +16950,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C G/B Am7 G F. Capo 5.",
+  "note": "Intro (official chart): F, C/E, Dm7, C, Bb. Capo 5. Bass line: F, E, D, C, Bb.",
   "spotify": "spotify:track:5XVB6wUIkbaXRotfmHvDNf",
   "art": "https://i.scdn.co/image/ab67616d00001e024eb24bfd49d01e0f3c57a410",
   "ug": "https://tabs.ultimate-guitar.com/tab/jackson-browne/these-days-official-3347273"
@@ -16989,7 +16989,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Asus2 Am E F6sus2 E7. Capo 4.",
+  "note": "Intro (official chart): C#sus2, C#m, G#, A6sus2, G#7. Capo 4. Bass line: C#, C#, G#, A, G#.",
   "spotify": "spotify:track:2s89qv9maW8RMCoaxtvNtn",
   "art": "https://i.scdn.co/image/ab67616d00001e02e369195caf5d169bf5e9eafc",
   "ug": "https://tabs.ultimate-guitar.com/tab/nick-drake/things-behind-the-sun-official-4262890"
@@ -17040,7 +17040,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G D Am7 Cmaj7 Bm D G D. Capo 2.",
+  "note": "Intro (official chart): A, E, Bm7, Dmaj7, C#m, E, A, E. Capo 2. Bass line: A, E, B, D, C#, E, A, E.",
   "spotify": "spotify:track:7rxSFGldptqUFBTFoXWHn8",
   "art": "https://i.scdn.co/image/ab67616d00001e02efcbf0d4022c880739f80819",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-smiths/this-charming-man-official-2197459"
@@ -17053,7 +17053,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1-1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 6,
   "chords": [
@@ -17067,7 +17067,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1-1: D G.",
+  "note": "Verse (official chart): D, G. Bass line: D, G.",
   "spotify": "spotify:track:4iG2gAwKXsOcijVaVXzRPW",
   "art": "https://i.scdn.co/image/ab67616d00001e02abdf7749aeb5229dbf305f03",
   "ug": "https://tabs.ultimate-guitar.com/tab/mgmt/time-to-pretend-official-2279869"
@@ -17118,7 +17118,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D G5 Bm F#5 G5 Bm F#5 G5.",
+  "note": "Intro (official chart): D, G5, Bm, F#5, G5, Bm, F#5, G5. Bass line: D, G, B, F#, G, B, F#, G.",
   "spotify": "spotify:track:67vYdAAM3oGsEImCRfbtsF",
   "art": "https://i.scdn.co/image/ab67616d00001e02bfff163b0602156a983fa079",
   "ug": "https://tabs.ultimate-guitar.com/tab/foo-fighters/times-like-these-official-1944325"
@@ -17161,7 +17161,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C G Am C Em Am. Capo 3.",
+  "note": "Intro (official chart): Eb, Bb, Cm, Eb, Gm, Cm. Capo 3. Bass line: Eb, Bb, C, Eb, G, C.",
   "spotify": "spotify:track:4drgH8MGED51vOGSJZKUZy",
   "art": "https://i.scdn.co/image/ab67616d00001e025816efc0528991122f4a360f",
   "ug": "https://tabs.ultimate-guitar.com/tab/david-guetta/titanium-official-1960181"
@@ -17212,7 +17212,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Eb Bb Ab Eb Bb Ab Eb Bb.",
+  "note": "Intro (official chart): Eb, Bb, Ab, Eb, Bb, Ab, Eb, Bb. Bass line: Eb, Bb, Ab, Eb, Bb, Ab, Eb, Bb.",
   "spotify": "spotify:track:1XPta4VLT78HQnVFd1hlsK",
   "art": "https://i.scdn.co/image/ab67616d00001e02c48f42fdafcffcedbdbce025",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/today-official-2479631"
@@ -17253,7 +17253,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro 1: Gb Ebm Bmaj7/Eb Ebm Bmaj7/Eb.",
+  "note": "Intro (official chart): Gb, Ebm, Bmaj7/Eb, Ebm, Bmaj7/Eb. Bass line: Gb, Eb, Eb, Eb, Eb.",
   "spotify": "spotify:track:5kguToT39QaxxYEuPwFkp6",
   "art": "https://i.scdn.co/image/ab67616d00001e02c48f42fdafcffcedbdbce025",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-smashing-pumpkins/tonight-tonight-official-2584962"
@@ -17266,7 +17266,7 @@ export const SONGS = [
   "key": "C minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -17284,7 +17284,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Eb G Cm.",
+  "note": "Verse (official chart): Eb, G, Cm. Bass line: Eb, G, C.",
   "spotify": "spotify:track:6I9VzXrHxO9rA9A5euc8Ak",
   "art": "https://i.scdn.co/image/ab67616d00001e02efc6988972cb04105f002cd4",
   "ug": "https://tabs.ultimate-guitar.com/tab/britney-spears/toxic-official-2442043"
@@ -17297,7 +17297,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -17323,7 +17323,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, chorus: E A B A E.",
+  "note": "Chorus (official chart): E, A, B, A, E. Bass line: E, A, B, A, E.",
   "spotify": "spotify:track:1I6l01BaBgBCVkfQCpIlR6",
   "art": "https://i.scdn.co/image/ab67616d00001e02fd3f66a9ce4371f7ffa0346f",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/truckin-official-3323219"
@@ -17336,7 +17336,7 @@ export const SONGS = [
   "key": "B",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -17370,7 +17370,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G5 D G5 D G5 C D. Capo 4.",
+  "note": "Verse (official chart): B5, F#, B5, F#, B5, E, F#. Capo 4. Bass line: B, F#, B, F#, B, E, F#.",
   "spotify": "spotify:track:4hq0S6wznq7SHDyMOFXL9i",
   "art": "https://i.scdn.co/image/ab67616d00001e02ba42bfcfeed19018b1f8cab8",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-rolling-stones/tumbling-dice-official-2504781"
@@ -17402,7 +17402,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb Dm/A Eb.",
+  "note": "Intro (official chart): Bb, Dm/A, Eb. Bass line: Bb, A, Eb.",
   "spotify": "spotify:track:1fRnysUhiECVtlgdFN8Io4",
   "art": "https://i.scdn.co/image/ab67616d00001e02d29dc42d61470e946adbbefc",
   "ug": "https://tabs.ultimate-guitar.com/tab/van-morrison/tupelo-honey-official-3981733"
@@ -17415,7 +17415,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -17437,7 +17437,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: D Bm A G.",
+  "note": "Verse (official chart): D, Bm, A, G. Bass line: D, B, A, G.",
   "spotify": "spotify:track:4ePP9So5xRzspjLFVVbj90",
   "art": "https://i.scdn.co/image/ab67616d00001e02436e38032cf3389d01426eca",
   "ug": "https://tabs.ultimate-guitar.com/tab/spin-doctors/two-princes-official-2557584"
@@ -17472,7 +17472,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G Bm C D.",
+  "note": "Intro (official chart): G, Bm, C, D. Bass line: G, B, C, D.",
   "spotify": "spotify:track:0kp728Knw5PYvU3QzMZ0yJ",
   "art": "https://i.scdn.co/image/ab67616d00001e024d3659e33c2d63d5b54d1f2c",
   "ug": "https://tabs.ultimate-guitar.com/tab/grateful-dead/uncle-johns-band-official-2873561"
@@ -17499,7 +17499,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: B C#m.",
+  "note": "Intro (official chart): B, C#m. Bass line: B, C#.",
   "spotify": "spotify:track:6u0x5ad9ewHvs3z6u9Oe3c",
   "art": "https://i.scdn.co/image/ab67616d00001e02397d02cfe1aab2923f9d1697",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-strokes/under-cover-of-darkness-official-1964919"
@@ -17534,7 +17534,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D A G A.",
+  "note": "Intro (official chart): D, A, G, A. Bass line: D, A, G, A.",
   "spotify": "spotify:track:2nrG5UtAcqXbYttu7MXP1p",
   "art": "https://i.scdn.co/image/ab67616d00001e0244c0a9843fac69db4d56d14e",
   "ug": "https://tabs.ultimate-guitar.com/tab/queen/under-pressure-official-2461852"
@@ -17569,7 +17569,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am Asus4 Fmaj7 G.",
+  "note": "Intro (official chart): Am, Asus4, Fmaj7, G. Bass line: A, A, F, G.",
   "spotify": "spotify:track:1RCtHLyq1xIbgGMrYRrKJ2",
   "art": "https://i.scdn.co/image/ab67616d00001e024b75b4c598bbf7c852d3b3fe",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-church/under-the-milky-way-official-2883731"
@@ -17604,7 +17604,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F# B C# B.",
+  "note": "Intro (official chart): Gb, B, Db, B. Bass line: Gb, B, Db, B.",
   "spotify": "spotify:track:5WhtlIoxoZrMmuaWWEQhwV",
   "art": "https://i.scdn.co/image/ab67616d00001e02345536847e60f622ee0eae96",
   "ug": "https://tabs.ultimate-guitar.com/tab/weezer/undone-the-sweater-song-official-2093161"
@@ -17631,7 +17631,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm7 G7.",
+  "note": "Intro (official chart): Dm7, G7. Bass line: D, G.",
   "spotify": "spotify:track:32OlwWuMpZ6b0aN2RZOeMS",
   "art": "https://i.scdn.co/image/ab67616d00001e029860171ddfee17f77a570cf6",
   "ug": "https://tabs.ultimate-guitar.com/tab/mark-ronson/uptown-funk-official-2449279"
@@ -17668,7 +17668,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D E7sus2/D Dmmaj7 G/D.",
+  "note": "Intro (official chart): D, E7sus2/D, Dmmaj7, G/D.",
   "spotify": "spotify:track:1TKTiKp3zbNgrBH2IwSwIx",
   "art": "https://i.scdn.co/image/ab67616d00001e02db216ca805faf5fe35df4ee6",
   "ug": "https://tabs.ultimate-guitar.com/tab/pink-floyd/us-and-them-official-2209923"
@@ -17695,7 +17695,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em7 A7.",
+  "note": "Intro (official chart): Em7, A7. Bass line: E, A.",
   "spotify": "spotify:track:4gRA0i5sxx3jAhHaVjPnUN",
   "art": "https://i.scdn.co/image/ab67616d00001e0272641ed682401fc46c18ac12",
   "ug": "https://tabs.ultimate-guitar.com/tab/bill-withers/use-me-official-2117257"
@@ -17730,7 +17730,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F A Bb Bbm.",
+  "note": "Intro (official chart): F, A, Bb, Bbm. Bass line: F, A, Bb, Bb.",
   "spotify": "spotify:track:1kuGVB7EU95pJObxwvfwKS",
   "art": "https://i.scdn.co/image/ab67616d00001e02e85259a1cae29a8d91f2093d",
   "ug": "https://tabs.ultimate-guitar.com/tab/olivia-rodrigo/vampire-official-4844345"
@@ -17758,7 +17758,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dmaj7/A G6.",
+  "note": "Intro (official chart): Dmaj7/A, G6. Bass line: A, G.",
   "spotify": "spotify:track:4IU1RL4BKvFyXtbTwaHAvW",
   "art": "https://i.scdn.co/image/ab67616d00001e025e2289475a30c75dfca7d228",
   "ug": "https://tabs.ultimate-guitar.com/tab/america/ventura-highway-official-2598216"
@@ -17798,7 +17798,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Dm G Am F Am/E.",
+  "note": "Intro (official chart): Dm, G, Am, F, Am/E. Bass line: D, G, A, F, E.",
   "spotify": "spotify:track:2LD2gT7gwAurzdQDQtILds",
   "art": "https://i.scdn.co/image/ab67616d00001e021e81bff9807a9e629fce5ade",
   "ug": "https://tabs.ultimate-guitar.com/tab/daft-punk/veridis-quo-official-5606436"
@@ -17829,7 +17829,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: F#m C# D.",
+  "note": "Intro (official chart): F#m, C#, D. Bass line: F#, C#, D.",
   "spotify": "spotify:track:2P4OICZRVAQcYAV2JReRfj",
   "art": "https://i.scdn.co/image/ab67616d00001e025393c5d3cac806092a9bc468",
   "ug": "https://tabs.ultimate-guitar.com/tab/avicii/waiting-for-love-official-2599509"
@@ -17842,7 +17842,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -17864,7 +17864,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C Am F C.",
+  "note": "Verse (official chart): C, Am, F, C. Bass line: C, A, F, C.",
   "spotify": "spotify:track:6Hmj7SrLRbreLVfVS7mV1S",
   "art": "https://i.scdn.co/image/ab67616d00001e027870762a58313ad6f981d664",
   "ug": "https://tabs.ultimate-guitar.com/tab/arcade-fire/wake-up-official-3239978"
@@ -17903,7 +17903,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: E A B A B7.",
+  "note": "Intro (official chart): E, A, B, A, B7. Bass line: E, A, B, A, B.",
   "spotify": "spotify:track:423o3ZHIaBtGXyhF1uH41a",
   "art": "https://i.scdn.co/image/ab67616d00001e02fb995d2871f084b34afae3b3",
   "ug": "https://tabs.ultimate-guitar.com/tab/dire-straits/walk-of-life-official-2210953"
@@ -17916,7 +17916,7 @@ export const SONGS = [
   "key": "C",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -17938,7 +17938,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: C F6 C F6 C D F6 D.",
+  "note": "Verse (official chart): C, F6, C, F6, C, D, F6, D. Bass line: C, F, C, F, C, D, F, D.",
   "spotify": "spotify:track:5p3JunprHCxClJjOmcLV8G",
   "art": "https://i.scdn.co/image/ab67616d00001e02fe5213edd4f8550a8030efcf",
   "ug": "https://tabs.ultimate-guitar.com/tab/lou-reed/walk-on-the-wild-side-official-2157833"
@@ -17989,7 +17989,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Gm Bb Eb Bb Eb Bb F7 Bb.",
+  "note": "Intro (official chart): Gm, Bb, Eb, Bb, Eb, Bb, F7, Bb. Bass line: G, Bb, Eb, Bb, Eb, Bb, F, Bb.",
   "spotify": "spotify:track:5AMrnF761nziCWUfjBgRUI",
   "art": "https://i.scdn.co/image/ab67616d00001e02cdf1be0ff556d169eade4368",
   "ug": "https://tabs.ultimate-guitar.com/tab/elliott-smith/waltz-2-xo-official-3893375"
@@ -18026,7 +18026,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: B7 B7/A B7/G# B7/F# B7/E B/D# B/C# B7.",
+  "note": "Intro (official chart): B7, B7/A, B7/G#, B7/F#, B7/E, B/D#, B/C#, B7. Bass line: B, A, G#, F#, E, D#, C#, B.",
   "spotify": "spotify:track:3G0EALIIp5DAeIERxXBHmo",
   "art": "https://i.scdn.co/image/ab67616d00001e027c29f8edb00aedba1e901f32",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-kinks/waterloo-sunset-official-2152823"
@@ -18039,7 +18039,7 @@ export const SONGS = [
   "key": "A minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -18061,7 +18061,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Dm7 Am7 C G.",
+  "note": "Verse (official chart): Dm7, Am7, C, G. Bass line: D, A, C, G.",
   "spotify": "spotify:track:6UelLqGlWMcVH1E5c4H7lY",
   "art": "https://i.scdn.co/image/ab67616d00001e0225180571abce9472f61bd722",
   "ug": "https://tabs.ultimate-guitar.com/tab/harry-styles/watermelon-sugar-official-2940077"
@@ -18074,7 +18074,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -18112,7 +18112,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G C G D C G D C.",
+  "note": "Verse (official chart): G, C, G, D, C, G, D, C. Bass line: G, C, G, D, C, G, D, C.",
   "spotify": "spotify:track:13lZDbwonGhOflQLQIfdtZ",
   "art": "https://i.scdn.co/image/ab67616d00001e02033dbfae219de887bd94952a",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-white-stripes/were-going-to-be-friends-official-2003431"
@@ -18147,7 +18147,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em7 F#m7 A Gmaj7.",
+  "note": "Intro (official chart): Em7, F#m7, A, Gmaj7. Bass line: E, F#, A, G.",
   "spotify": "spotify:track:4wajJ1o7jWIg62YqpkHC7S",
   "art": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9",
   "ug": "https://tabs.ultimate-guitar.com/tab/radiohead/weird-fishes-arpeggi-official-2254571"
@@ -18178,7 +18178,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D C G.",
+  "note": "Intro (official chart): D, C, G. Bass line: D, C, G.",
   "spotify": "spotify:track:6kotXaSQaGYxE62hVpdHWu",
   "art": "https://i.scdn.co/image/ab67616d00001e02719d1d37e0e4ecf4d01c99cb",
   "ug": "https://tabs.ultimate-guitar.com/tab/warren-zevon/werewolves-of-london-official-2156793"
@@ -18205,7 +18205,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C.",
+  "note": "Intro (official chart): G, C. Bass line: G, C.",
   "spotify": "spotify:track:0xedT3pJWCBjoh0Nyqeuxj",
   "art": "https://i.scdn.co/image/ab67616d00001e02932b791e8e5907f61ac1bc29",
   "ug": "https://tabs.ultimate-guitar.com/tab/elvis-costello-the-attractions/whats-so-funny-bout-peace-love-and-understanding-official-4033255"
@@ -18248,7 +18248,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: A B C#m B E B.",
+  "note": "Intro (official chart): A, B, C#m, B, E, B. Bass line: A, B, C#, B, E, B.",
   "spotify": "spotify:track:43zdsphuZLzwA9k4DJhU0I",
   "art": "https://i.scdn.co/image/ab67616d00001e0250a3147b4edd7701a876c6ce",
   "ug": "https://tabs.ultimate-guitar.com/tab/billie-eilish/when-the-partys-over-official-2499228"
@@ -18279,7 +18279,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C7 Dm7 Gm7.",
+  "note": "Intro (official chart): C7, Dm7, Gm7. Bass line: C, D, G.",
   "spotify": "spotify:track:7g18n5nxV5ep8ugBR3BmHD",
   "art": "https://i.scdn.co/image/ab67616d00001e02e08ee206ad63148105336a19",
   "ug": "https://tabs.ultimate-guitar.com/tab/khruangbin/white-gloves-official-2534844"
@@ -18292,7 +18292,7 @@ export const SONGS = [
   "key": "E",
   "tempo": 100,
   "section": "verse",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -18326,7 +18326,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse: E F#m A B E A E.",
+  "note": "Verse (official chart): E, F#m, A, B, E, A, E. Bass line: E, F#, A, B, E, A, E.",
   "spotify": "spotify:track:0GegHVxeozw3rdjte45Bfx",
   "art": "https://i.scdn.co/image/ab67616d00001e023818b4c636e2a7fdea3bf965",
   "ug": "https://tabs.ultimate-guitar.com/tab/fleet-foxes/white-winter-hymnal-official-2077317"
@@ -18373,7 +18373,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am D G C F Dm E.",
+  "note": "Intro (official chart): Am, D, G, C, F, Dm, E. Bass line: A, D, G, C, F, D, E.",
   "spotify": "spotify:track:7mjSHL2Eb0kAwiKbvNNyD9",
   "art": "https://i.scdn.co/image/ab67616d00001e02e7248738c2f7ce3b5584b15d",
   "ug": "https://tabs.ultimate-guitar.com/tab/cat-stevens-yusuf-islam/wild-world-official-1951405"
@@ -18404,7 +18404,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Db Fm Eb.",
+  "note": "Intro (official chart): Db, Fm, Eb. Bass line: Db, F, Eb.",
   "spotify": "spotify:track:59HjlYCeBsxdI0fcm3zglw",
   "art": "https://i.scdn.co/image/ab67616d00001e029abdf14e6058bd3903686148",
   "ug": "https://tabs.ultimate-guitar.com/tab/taylor-swift/wildest-dreams-official-2451741"
@@ -18431,7 +18431,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C F.",
+  "note": "Intro (official chart): C, F. Bass line: C, F.",
   "spotify": "spotify:track:7hObovvcbBpXgZHQ9if4WU",
   "art": "https://i.scdn.co/image/ab67616d00001e0261f735e295a29d948d4f4223",
   "ug": "https://tabs.ultimate-guitar.com/tab/pearl-jam/wishlist-official-2511960"
@@ -18444,7 +18444,7 @@ export const SONGS = [
   "key": "G minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -18466,7 +18466,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: Gm D9 C Bb.",
+  "note": "Verse (official chart): Gm, D9, C, Bb. Bass line: G, D, C, Bb.",
   "spotify": "spotify:track:436yrzQWA32vb1sTZKXg9r",
   "art": "https://i.scdn.co/image/ab67616d00001e02c13acd642ba9f6f5f127aa1b",
   "ug": "https://tabs.ultimate-guitar.com/tab/eagles/witchy-woman-official-2570262"
@@ -18517,7 +18517,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: D Bm G D A Bm G D.",
+  "note": "Intro (official chart): D, Bm, G, D, A, Bm, G, D. Bass line: D, B, G, D, A, B, G, D.",
   "spotify": "spotify:track:0R0AjmZEuxboyZJgB3Dz5m",
   "art": "https://i.scdn.co/image/ab67616d00001e02648e71074124bb731e480478",
   "ug": "https://tabs.ultimate-guitar.com/tab/avicii/without-you-official-2450567"
@@ -18552,7 +18552,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Bb Dm Gm F.",
+  "note": "Intro (official chart): Bb, Dm, Gm, F. Bass line: Bb, D, G, F.",
   "spotify": "spotify:track:4j2DQgFAyVuKOBFpq4vEPR",
   "art": "https://i.scdn.co/image/ab67616d00001e02b18fae872e1700b83e72a15b",
   "ug": "https://tabs.ultimate-guitar.com/tab/mj-lenderman/wristwatch-official-5422674"
@@ -18565,7 +18565,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -18583,7 +18583,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G Am C.",
+  "note": "Verse (official chart): G, Am, C. Bass line: G, A, C.",
   "spotify": "spotify:track:5WeQHNrOlxBv9NZTrz6xgE",
   "art": "https://i.scdn.co/image/ab67616d00001e02cd5c1c3ca27371ffdcdc5783",
   "ug": "https://tabs.ultimate-guitar.com/tab/bob-dylan/you-aint-goin-nowhere-official-3858161"
@@ -18596,7 +18596,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -18614,7 +18614,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, verse 1: G A D.",
+  "note": "Verse (official chart): G, A, D. Bass line: G, A, D.",
   "spotify": "spotify:track:6tZdL3Zp8JgrfDbsSeSV1S",
   "art": "https://i.scdn.co/image/ab67616d00001e023b662e4bab01440eb4f31793",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-kinks/you-really-got-me-official-1988501"
@@ -18641,7 +18641,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: G C. Capo 2.",
+  "note": "Intro (official chart): A, D. Capo 2. Bass line: A, D.",
   "spotify": "spotify:track:5ONuwMIXAukbMNQCCSjjm0",
   "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
   "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/youve-got-a-friend-official-2481691"
@@ -18654,7 +18654,7 @@ export const SONGS = [
   "key": "C minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -18668,7 +18668,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: Cm Eb.",
+  "note": "Verse (community chart): Cm, Eb. Bass line: C, Eb.",
   "spotify": "spotify:track:66DLxEE13aCNH7cp49DkjL",
   "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/chinese-fountain-chords-1672328"
@@ -18695,7 +18695,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, intro: G Em. Capo 6.",
+  "note": "Intro (community chart): Db, Bbm. Capo 6. Bass line: Db, Bb.",
   "spotify": "spotify:track:2usVEoiqi71BfnF4sOOH1T",
   "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/one-million-lovers-chords-1504568"
@@ -18708,7 +18708,7 @@ export const SONGS = [
   "key": "Bb",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 1,
   "chords": [
@@ -18726,7 +18726,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: Bb F Eb.",
+  "note": "Verse (community chart): Bb, F, Eb. Bass line: Bb, F, Eb.",
   "spotify": "spotify:track:2ZTYBpd26YxDAFPlAAvObi",
   "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/someday-chords-2953688"
@@ -18777,7 +18777,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, intro: C G F C G C G F. Capo 1.",
+  "note": "Intro (community chart): Db, Ab, Gb, Db, Ab, Db, Ab, Gb. Capo 1. Bass line: Db, Ab, Gb, Db, Ab, Db, Ab, Gb.",
   "spotify": "spotify:track:0PW0Puq2iQSQ6JlrKww7ko",
   "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/dull-boy-chords-1674030"
@@ -18812,7 +18812,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, intro: G D D# Em.",
+  "note": "Intro (community chart): G, D, D#, Em. Bass line: G, D, D#, E.",
   "spotify": "spotify:track:5ipcQgSdSkzP3tcUsJQzIC",
   "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/big-toe-chords-1520557"
@@ -18825,7 +18825,7 @@ export const SONGS = [
   "key": "D",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -18839,7 +18839,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: D Bm.",
+  "note": "Verse (community chart): D, Bm. Bass line: D, B.",
   "spotify": "spotify:track:1o8vWw6RuA02faWIji9Ymw",
   "art": "https://i.scdn.co/image/ab67616d00001e027a29ccf66a86c18884677373",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/late-bloomers-chords-2018717"
@@ -18852,7 +18852,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -18882,7 +18882,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, chorus: G A D A G A.",
+  "note": "Chorus (community chart): G, A, D, A, G, A. Bass line: G, A, D, A, G, A.",
   "spotify": "spotify:track:6Ig2iLUX11ZNpI7EBCZqyt",
   "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/city-club-chords-1870862"
@@ -18909,7 +18909,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, intro: Gm F. Capo 1.",
+  "note": "Intro (community chart): Abm, Gb. Capo 1. Bass line: Ab, Gb.",
   "spotify": "spotify:track:1EXMtjti643XyQLiGDdki0",
   "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/ill-be-around-chords-2096397"
@@ -18922,7 +18922,7 @@ export const SONGS = [
   "key": "D minor",
   "tempo": 100,
   "section": "verse",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -18940,7 +18940,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse: Dm Bb F.",
+  "note": "Verse (community chart): Dm, Bb, F. Bass line: D, Bb, F.",
   "spotify": "spotify:track:0THSRc1W4Xqv08PyUDtzj4",
   "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/naked-kids-chords-1664573"
@@ -18971,7 +18971,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, intro: E A G.",
+  "note": "Intro (community chart): E, A, G. Bass line: E, A, G.",
   "spotify": "spotify:track:1CJ7UtxyGk5vezi8FupC9I",
   "art": "https://i.scdn.co/image/ab67616d00001e0263de5bd3b464666940d5f15d",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/sea-lion-goth-blues-chords-4760261"
@@ -18984,7 +18984,7 @@ export const SONGS = [
   "key": "Gb",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -19006,7 +19006,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: Ebm F# B F#.",
+  "note": "Verse (community chart): Ebm, Gb, B, Gb. Bass line: Eb, Gb, B, Gb.",
   "spotify": "spotify:track:44naxxtw2fww4u8ZnquTLX",
   "art": "https://i.scdn.co/image/ab67616d00001e027c5f6013a33aa74001752b47",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/humdrum-blues-chords-1465553"
@@ -19019,7 +19019,7 @@ export const SONGS = [
   "key": "Db",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -19037,7 +19037,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: C# F#m A.",
+  "note": "Verse (community chart): Db, Gbm, A. Bass line: Db, Gb, A.",
   "spotify": "spotify:track:3SIcv7gFAfCp7T3BakaJgE",
   "art": "https://i.scdn.co/image/ab67616d00001e0263de5bd3b464666940d5f15d",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/graveyards-full-chords-1519255"
@@ -19050,7 +19050,7 @@ export const SONGS = [
   "key": "F minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -19072,7 +19072,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: Em G A G Em G A G. Capo 1.",
+  "note": "Verse (community chart): Fm, Ab, Bb, Ab, Fm, Ab, Bb, Ab. Capo 1. Bass line: F, Ab, Bb, Ab, F, Ab, Bb, Ab.",
   "spotify": "spotify:track:6k2PV8h0JMeQ9Sq6OCbo62",
   "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/salt-on-a-slug-chords-2101085"
@@ -19085,7 +19085,7 @@ export const SONGS = [
   "key": "D minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 5,
   "chords": [
@@ -19107,7 +19107,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: Dm Dsus4 Dm F Dm Dsus4 Dm F.",
+  "note": "Verse (community chart): Dm, Dsus4, Dm, F, Dm, Dsus4, Dm, F. Bass line: D, D, D, F, D, D, D, F.",
   "spotify": "spotify:track:2HtRQoycUasDCpCsteWiwr",
   "art": "https://i.scdn.co/image/ab67616d00001e026defdcb10092f04692633807",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/gay-thoughts-chords-1464511"
@@ -19120,7 +19120,7 @@ export const SONGS = [
   "key": "Bb",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 7,
   "chords": [
@@ -19158,7 +19158,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: Gm Eb Bb D G Eb Bb D.",
+  "note": "Verse (community chart): Gm, Eb, Bb, D, G, Eb, Bb, D. Bass line: G, Eb, Bb, D, G, Eb, Bb, D.",
   "spotify": "spotify:track:1cPtXxIS4nw3y7uFQj27wP",
   "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/good-advice-chords-1665999"
@@ -19171,7 +19171,7 @@ export const SONGS = [
   "key": "Eb minor",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -19193,7 +19193,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: D#m F# B A#m.",
+  "note": "Verse (community chart): Ebm, Gb, B, Bbm. Bass line: Eb, Gb, B, Bb.",
   "spotify": "spotify:track:7AZUA9MVVF1715JSvccDGg",
   "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/beach-rats-chords-3135986"
@@ -19206,7 +19206,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "verse 1",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -19224,7 +19224,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 1: G Bm C.",
+  "note": "Verse (community chart): G, Bm, C. Bass line: G, B, C.",
   "spotify": "spotify:track:2RO4CbCaSq8vjrUOegjhyg",
   "art": "https://i.scdn.co/image/ab67616d00001e02ecd1bb95b9c6316398db1abc",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/try-hard-fool-chords-2824568"
@@ -19237,7 +19237,7 @@ export const SONGS = [
   "key": "C minor",
   "tempo": 100,
   "section": "verse 3",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -19251,7 +19251,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse 3: Cm7 Fm7.",
+  "note": "Verse (community chart): Cm7, Fm7. Bass line: C, F.",
   "spotify": "spotify:track:67fMJRKLTiyz9Hj9jvbwDE",
   "art": "https://i.scdn.co/image/ab67616d00001e026defdcb10092f04692633807",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/uncle-sams-a-dick-chords-4740719"
@@ -19264,7 +19264,7 @@ export const SONGS = [
   "key": "E minor",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 3,
   "chords": [
@@ -19282,7 +19282,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, chorus: Em Am G.",
+  "note": "Chorus (community chart): Em, Am, G. Bass line: E, A, G.",
   "spotify": "spotify:track:7oQheIYw1RjEWjFRjGJAcr",
   "art": "https://i.scdn.co/image/ab67616d00001e02c99541a7c2648e67e36d4541",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/acid-rain-chords-1940707"
@@ -19317,7 +19317,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, intro: G Em G Em G Em Am A.",
+  "note": "Intro (community chart): G, Em, G, Em, G, Em, Am, A. Bass line: G, E, G, E, G, E, A, A.",
   "spotify": "spotify:track:7fKmug2c1zcKu5vE8LhmVz",
   "art": "https://i.scdn.co/image/ab67616d00001e02ecd1bb95b9c6316398db1abc",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/natural-affair-chords-2841500"
@@ -19330,7 +19330,7 @@ export const SONGS = [
   "key": "Eb",
   "tempo": 100,
   "section": "verse",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -19356,7 +19356,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, verse: Cm Eb Fm Eb Bb.",
+  "note": "Verse (community chart): Cm, Eb, Fm, Eb, Bb. Bass line: C, Eb, F, Eb, Bb.",
   "spotify": "spotify:track:6DXjlrHSp02BQyiYuMwktZ",
   "art": "https://i.scdn.co/image/ab67616d00001e02ecd1bb95b9c6316398db1abc",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/foghorn-town-chords-3091214"
@@ -19383,7 +19383,7 @@ export const SONGS = [
    }
   ],
   "src": "ug",
-  "note": "Community chart, intro riff: Cm C.",
+  "note": "Intro (community chart): Cm, C.",
   "spotify": "spotify:track:3KPV7Kb7zJQxGhADgQPHzG",
   "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/row-chords-3133433"
@@ -19396,7 +19396,7 @@ export const SONGS = [
   "key": "G",
   "tempo": 100,
   "section": "chorus",
-  "start": 0,
+  "start": 12,
   "dur": 24,
   "level": 2,
   "chords": [
@@ -19410,7 +19410,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, chorus: Am G.",
+  "note": "Chorus (official chart): Am, G. Bass line: A, G.",
   "spotify": "spotify:track:5Hm2xN1TlvWsnVMFEpyg0O",
   "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/love-test-official-5903388"
@@ -19441,7 +19441,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Am Dm F.",
+  "note": "Intro (official chart): Am, Dm, F. Bass line: A, D, F.",
   "spotify": "spotify:track:2O07FF1DMc1oRDlkIo33FC",
   "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/night-ride-official-4209871"
@@ -19472,7 +19472,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: C Em G.",
+  "note": "Intro (official chart): C, Em, G. Bass line: C, E, G.",
   "spotify": "spotify:track:571hDJQ2yYvOlvEZy6F00V",
   "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/black-memories-official-2506290"
@@ -19507,7 +19507,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em G C G.",
+  "note": "Intro (official chart): Em, G, C, G. Bass line: E, G, C, G.",
   "spotify": "spotify:track:6pWpVZskdC0Ixopr4BxzdM",
   "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/rare-hearts-official-4085392"
@@ -19542,7 +19542,7 @@ export const SONGS = [
    }
   ],
   "src": "official",
-  "note": "Official chart, intro: Em G C G.",
+  "note": "Intro (official chart): Em, G, C, G. Bass line: E, G, C, G.",
   "spotify": "spotify:track:76c1AuZodByXM3X2k48wju",
   "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/dope-on-a-rope-official-3920222"
