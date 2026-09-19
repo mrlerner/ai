@@ -3907,7 +3907,7 @@ export const SONGS = [
   "title": "Bell Bottom Blues",
   "artist": "Derek & The Dominos",
   "year": 1970,
-  "key": "C",
+  "key": "A minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -3915,7 +3915,16 @@ export const SONGS = [
   "level": 7,
   "chords": [
    {
-    "rn": "I",
+    "rn": "III",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4,
+    "bass": "5"
+   },
+   {
+    "rn": "i",
     "beats": 4
    },
    {
@@ -3924,28 +3933,19 @@ export const SONGS = [
     "bass": "5"
    },
    {
-    "rn": "vi",
+    "rn": "VI",
     "beats": 4
    },
    {
-    "rn": "I",
-    "beats": 4,
-    "bass": "5"
-   },
-   {
-    "rn": "IV",
+    "rn": "VII",
     "beats": 4
    },
    {
-    "rn": "V",
+    "rn": "VI",
     "beats": 4
    },
    {
-    "rn": "IV",
-    "beats": 4
-   },
-   {
-    "rn": "V",
+    "rn": "VII",
     "beats": 4
    }
   ],
@@ -4711,27 +4711,27 @@ export const SONGS = [
   "title": "Can't Stop the Feeling!",
   "artist": "Justin Timberlake",
   "year": 2016,
-  "key": "A minor",
+  "key": "C",
   "tempo": 100,
   "section": "verse 1",
   "start": 12,
   "dur": 24,
-  "level": 3,
+  "level": 2,
   "chords": [
    {
-    "rn": "VImaj7sus2",
+    "rn": "IVmaj7sus2",
     "beats": 2
    },
    {
-    "rn": "i7",
+    "rn": "vi7",
     "beats": 2
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    },
    {
-    "rn": "i7",
+    "rn": "vi7",
     "beats": 2
    }
   ],
@@ -7521,7 +7521,7 @@ export const SONGS = [
   "title": "Flightless Bird, American Mouth",
   "artist": "Iron & Wine",
   "year": 2007,
-  "key": "C minor",
+  "key": "Eb",
   "tempo": 100,
   "section": "verse 1",
   "start": 12,
@@ -7529,24 +7529,24 @@ export const SONGS = [
   "level": 4,
   "chords": [
    {
-    "rn": "VII",
+    "rn": "V",
     "beats": 2,
     "bass": "3"
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 2
    },
    {
-    "rn": "VI",
+    "rn": "IV",
     "beats": 2
    },
    {
-    "rn": "VII",
+    "rn": "V",
     "beats": 2
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    }
   ],
@@ -8785,7 +8785,7 @@ export const SONGS = [
   "title": "Hide and Seek",
   "artist": "Imogen Heap",
   "year": 2005,
-  "key": "F# minor",
+  "key": "A",
   "tempo": 100,
   "section": "verse 1",
   "start": 12,
@@ -8793,36 +8793,36 @@ export const SONGS = [
   "level": 6,
   "chords": [
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    },
    {
-    "rn": "VII",
+    "rn": "V",
     "beats": 2
    },
    {
-    "rn": "i7",
+    "rn": "vi7",
     "beats": 2
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    },
    {
-    "rn": "VII",
+    "rn": "V",
     "beats": 2
    },
    {
-    "rn": "i7",
+    "rn": "vi7",
     "beats": 2,
     "bass": "5"
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    },
    {
-    "rn": "VII",
+    "rn": "V",
     "beats": 2
    }
   ],
@@ -8915,7 +8915,7 @@ export const SONGS = [
   "title": "Holocene",
   "artist": "Bon Iver",
   "year": 2011,
-  "key": "Bb minor",
+  "key": "Db",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -8923,23 +8923,23 @@ export const SONGS = [
   "level": 4,
   "chords": [
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    },
    {
-    "rn": "i7",
+    "rn": "vi7",
     "beats": 2
    },
    {
-    "rn": "VII",
+    "rn": "V",
     "beats": 2
    },
    {
-    "rn": "i7",
+    "rn": "vi7",
     "beats": 2
    },
    {
-    "rn": "VImaj7",
+    "rn": "IVmaj7",
     "beats": 2,
     "bass": "5"
    }
@@ -9303,7 +9303,7 @@ export const SONGS = [
   "title": "I Will Wait",
   "artist": "Mumford & Sons",
   "year": 2012,
-  "key": "Db",
+  "key": "Bb minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -9311,33 +9311,33 @@ export const SONGS = [
   "level": 7,
   "chords": [
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2,
     "bass": "M7"
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2,
     "bass": "3"
    },
    {
-    "rn": "Vsus4",
+    "rn": "VIIsus4",
     "beats": 2
    },
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2,
     "bass": "M7"
    }
@@ -9580,7 +9580,7 @@ export const SONGS = [
   "title": "Interstate Love Song",
   "artist": "Stone Temple Pilots",
   "year": 2003,
-  "key": "E",
+  "key": "C# minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -9588,35 +9588,35 @@ export const SONGS = [
   "level": 7,
   "chords": [
    {
-    "rn": "vi7",
+    "rn": "i7",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "IVsus2",
+    "rn": "VIsus2",
     "beats": 2
    },
    {
-    "rn": "III7",
+    "rn": "V7",
     "beats": 2
    },
    {
-    "rn": "IV",
+    "rn": "VI",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "IV",
+    "rn": "VI",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    }
   ],
@@ -9658,7 +9658,7 @@ export const SONGS = [
   "title": "Intro",
   "artist": "The xx",
   "year": 2025,
-  "key": "D minor",
+  "key": "F",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -9666,27 +9666,27 @@ export const SONGS = [
   "level": 6,
   "chords": [
    {
-    "rn": "IIImaj7",
+    "rn": "Imaj7",
     "beats": 2
    },
    {
-    "rn": "v",
+    "rn": "iii",
     "beats": 2
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 2
    },
    {
-    "rn": "ii",
+    "rn": "vii",
     "beats": 2
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 2
    },
    {
-    "rn": "VIIsus4",
+    "rn": "Vsus4",
     "beats": 2
    }
   ],
@@ -9779,31 +9779,31 @@ export const SONGS = [
   "title": "Isn't She Lovely",
   "artist": "Stevie Wonder",
   "year": 2002,
-  "key": "C# minor",
+  "key": "E",
   "tempo": 100,
   "section": "intro",
   "start": 0,
   "dur": 24,
-  "level": 3,
+  "level": 5,
   "chords": [
    {
-    "rn": "i7",
+    "rn": "vi7",
     "beats": 4
    },
    {
-    "rn": "IV7",
+    "rn": "II7",
     "beats": 4
    },
    {
-    "rn": "VII7",
+    "rn": "V7",
     "beats": 4
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 4
    },
    {
-    "rn": "i7",
+    "rn": "vi7",
     "beats": 4
    }
   ],
@@ -10008,7 +10008,7 @@ export const SONGS = [
   "title": "Karma Police",
   "artist": "Radiohead",
   "year": 1997,
-  "key": "G",
+  "key": "E minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -10016,20 +10016,20 @@ export const SONGS = [
   "level": 4,
   "chords": [
    {
-    "rn": "ii",
+    "rn": "iv",
     "beats": 2
    },
    {
-    "rn": "V",
+    "rn": "VII",
     "beats": 2,
     "bass": "3"
    },
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    }
   ],
@@ -11277,31 +11277,31 @@ export const SONGS = [
   "title": "Man in the Box",
   "artist": "Alice In Chains",
   "year": 1990,
-  "key": "Gb",
+  "key": "Eb minor",
   "tempo": 100,
   "section": "chorus",
   "start": 12,
   "dur": 24,
-  "level": 5,
+  "level": 3,
   "chords": [
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "V",
+    "rn": "VII",
     "beats": 2
    },
    {
-    "rn": "II",
+    "rn": "IV",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    }
   ],
@@ -11603,7 +11603,7 @@ export const SONGS = [
   "title": "Miss Misery",
   "artist": "Elliott Smith",
   "year": 1998,
-  "key": "F",
+  "key": "D minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -11611,36 +11611,36 @@ export const SONGS = [
   "level": 7,
   "chords": [
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "V",
+    "rn": "VII",
     "beats": 2
    },
    {
-    "rn": "IV",
+    "rn": "VI",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "IVmaj7",
+    "rn": "VImaj7",
     "beats": 2,
     "bass": "5"
    },
    {
-    "rn": "ii",
+    "rn": "iv",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "iii",
+    "rn": "v",
     "beats": 2
    }
   ],
@@ -12105,27 +12105,27 @@ export const SONGS = [
   "title": "Needle in the Hay",
   "artist": "Elliott Smith",
   "year": 1995,
-  "key": "A minor",
+  "key": "C",
   "tempo": 100,
   "section": "intro",
   "start": 0,
   "dur": 24,
-  "level": 3,
+  "level": 5,
   "chords": [
    {
-    "rn": "VI",
+    "rn": "IV",
     "beats": 2
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    },
    {
-    "rn": "V7",
+    "rn": "III7",
     "beats": 2
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 2
    }
   ],
@@ -12477,7 +12477,7 @@ export const SONGS = [
   "title": "Ocean Eyes",
   "artist": "Billie Eilish",
   "year": 2016,
-  "key": "G",
+  "key": "E minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -12485,37 +12485,37 @@ export const SONGS = [
   "level": 6,
   "chords": [
    {
-    "rn": "IVmaj7",
+    "rn": "VImaj7",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2,
     "bass": "5"
    },
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "IVmaj7",
+    "rn": "VImaj7",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2,
     "bass": "5"
    },
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "IVmaj7",
+    "rn": "VImaj7",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2,
     "bass": "5"
    }
@@ -13945,27 +13945,27 @@ export const SONGS = [
   "title": "Round Here",
   "artist": "Counting Crows",
   "year": 1993,
-  "key": "E minor",
+  "key": "G",
   "tempo": 100,
   "section": "verse 1",
   "start": 12,
   "dur": 24,
-  "level": 3,
+  "level": 2,
   "chords": [
    {
-    "rn": "VI",
+    "rn": "IV",
     "beats": 2
    },
    {
-    "rn": "VII",
+    "rn": "V",
     "beats": 2
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 2
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    }
   ],
@@ -14908,7 +14908,7 @@ export const SONGS = [
   "title": "Sister Golden Hair",
   "artist": "America",
   "year": 1975,
-  "key": "C# minor",
+  "key": "E",
   "tempo": 100,
   "section": "intro",
   "start": 0,
@@ -14916,31 +14916,31 @@ export const SONGS = [
   "level": 7,
   "chords": [
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 4
    },
    {
-    "rn": "VI",
+    "rn": "IV",
     "beats": 4
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 4
    },
    {
-    "rn": "v",
+    "rn": "iii",
     "beats": 4
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 4
    },
    {
-    "rn": "VII",
+    "rn": "V",
     "beats": 4
    },
    {
-    "rn": "VI",
+    "rn": "IV",
     "beats": 4
    }
   ],
@@ -17077,43 +17077,43 @@ export const SONGS = [
   "title": "Times Like These",
   "artist": "Foo Fighters",
   "year": 2002,
-  "key": "B minor",
+  "key": "D",
   "tempo": 100,
   "section": "intro",
   "start": 0,
   "dur": 24,
-  "level": 3,
+  "level": 5,
   "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "vi",
+    "beats": 2
+   },
    {
     "rn": "III",
     "beats": 2
    },
    {
-    "rn": "VI",
+    "rn": "IV",
     "beats": 2
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 2
    },
    {
-    "rn": "V",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "VI",
-    "beats": 2
-   },
-   {
-    "rn": "i",
-    "beats": 2
-   },
-   {
-    "rn": "V",
-    "beats": 2
-   },
-   {
-    "rn": "VI",
+    "rn": "IV",
     "beats": 2
    }
   ],
@@ -17948,43 +17948,43 @@ export const SONGS = [
   "title": "Waltz #2 (XO)",
   "artist": "Elliott Smith",
   "year": 1998,
-  "key": "Bb",
+  "key": "G minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
   "dur": 24,
-  "level": 2,
+  "level": 3,
   "chords": [
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "IV",
+    "rn": "VI",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "IV",
+    "rn": "VI",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "V7",
+    "rn": "VII7",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    }
   ],
@@ -18981,27 +18981,27 @@ export const SONGS = [
   "title": "Humdrum Blues",
   "artist": "The Growlers",
   "year": 2013,
-  "key": "Gb",
+  "key": "Eb minor",
   "tempo": 100,
   "section": "verse 1",
   "start": 12,
   "dur": 24,
-  "level": 2,
+  "level": 3,
   "chords": [
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "IV",
+    "rn": "VI",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    }
   ],
@@ -19117,7 +19117,7 @@ export const SONGS = [
   "title": "Good Advice",
   "artist": "The Growlers",
   "year": 2014,
-  "key": "Bb",
+  "key": "G minor",
   "tempo": 100,
   "section": "verse 1",
   "start": 12,
@@ -19125,19 +19125,7 @@ export const SONGS = [
   "level": 7,
   "chords": [
    {
-    "rn": "vi",
-    "beats": 2
-   },
-   {
-    "rn": "IV",
-    "beats": 2
-   },
-   {
-    "rn": "I",
-    "beats": 2
-   },
-   {
-    "rn": "III",
+    "rn": "i",
     "beats": 2
    },
    {
@@ -19145,7 +19133,11 @@ export const SONGS = [
     "beats": 2
    },
    {
-    "rn": "IV",
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "V",
     "beats": 2
    },
    {
@@ -19153,7 +19145,15 @@ export const SONGS = [
     "beats": 2
    },
    {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
     "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "V",
     "beats": 2
    }
   ],
@@ -19292,27 +19292,27 @@ export const SONGS = [
   "title": "Natural Affair",
   "artist": "The Growlers",
   "year": 2019,
-  "key": "E minor",
+  "key": "G",
   "tempo": 100,
   "section": "intro",
   "start": 0,
   "dur": 24,
-  "level": 3,
+  "level": 5,
   "chords": [
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 2
    },
    {
-    "rn": "III",
+    "rn": "I",
     "beats": 2
    },
    {
-    "rn": "i",
+    "rn": "vi",
     "beats": 2
    }
   ],
@@ -19327,31 +19327,31 @@ export const SONGS = [
   "title": "Foghorn Town",
   "artist": "The Growlers",
   "year": 2019,
-  "key": "Eb",
+  "key": "C minor",
   "tempo": 100,
   "section": "verse",
   "start": 12,
   "dur": 24,
-  "level": 2,
+  "level": 3,
   "chords": [
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "ii",
+    "rn": "iv",
     "beats": 2
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 2
    },
    {
-    "rn": "V",
+    "rn": "VII",
     "beats": 2
    }
   ],
@@ -19482,27 +19482,27 @@ export const SONGS = [
   "title": "Rare Hearts",
   "artist": "The Growlers",
   "year": 2014,
-  "key": "G",
+  "key": "E minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
   "dur": 24,
-  "level": 2,
+  "level": 3,
   "chords": [
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 4
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 4
    },
    {
-    "rn": "IV",
+    "rn": "VI",
     "beats": 4
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 4
    }
   ],
@@ -19517,27 +19517,27 @@ export const SONGS = [
   "title": "Dope on a Rope",
   "artist": "The Growlers",
   "year": 2016,
-  "key": "G",
+  "key": "E minor",
   "tempo": 100,
   "section": "intro",
   "start": 0,
   "dur": 24,
-  "level": 2,
+  "level": 3,
   "chords": [
    {
-    "rn": "vi",
+    "rn": "i",
     "beats": 4
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 4
    },
    {
-    "rn": "IV",
+    "rn": "VI",
     "beats": 4
    },
    {
-    "rn": "I",
+    "rn": "III",
     "beats": 4
    }
   ],
