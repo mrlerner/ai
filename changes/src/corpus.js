@@ -18645,5 +18645,906 @@ export const SONGS = [
   "spotify": "spotify:track:5ONuwMIXAukbMNQCCSjjm0",
   "art": "https://i.scdn.co/image/ab67616d00001e0223ed6d11c4dff5ce4c47a7e7",
   "ug": "https://tabs.ultimate-guitar.com/tab/james-taylor/youve-got-a-friend-official-2481691"
+ },
+ {
+  "id": "chinese-fountain-the-growlers",
+  "title": "Chinese Fountain",
+  "artist": "The Growlers",
+  "year": 2014,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: Cm Eb.",
+  "spotify": "spotify:track:66DLxEE13aCNH7cp49DkjL",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/chinese-fountain-chords-1672328"
+ },
+ {
+  "id": "one-million-lovers-the-growlers",
+  "title": "One Million Lovers",
+  "artist": "The Growlers",
+  "year": 2013,
+  "key": "Db",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, intro: G Em. Capo 6.",
+  "spotify": "spotify:track:2usVEoiqi71BfnF4sOOH1T",
+  "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/one-million-lovers-chords-1504568"
+ },
+ {
+  "id": "someday-the-growlers",
+  "title": "Someday",
+  "artist": "The Growlers",
+  "year": 2013,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: Bb F Eb.",
+  "spotify": "spotify:track:2ZTYBpd26YxDAFPlAAvObi",
+  "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/someday-chords-2953688"
+ },
+ {
+  "id": "dull-boy-the-growlers",
+  "title": "Dull Boy",
+  "artist": "The Growlers",
+  "year": 2014,
+  "key": "Db",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 1,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, intro: C G F C G C G F. Capo 1.",
+  "spotify": "spotify:track:0PW0Puq2iQSQ6JlrKww7ko",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/dull-boy-chords-1674030"
+ },
+ {
+  "id": "big-toe-the-growlers",
+  "title": "Big Toe",
+  "artist": "The Growlers",
+  "year": 2014,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "bVI",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, intro: G D D# Em.",
+  "spotify": "spotify:track:5ipcQgSdSkzP3tcUsJQzIC",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/big-toe-chords-1520557"
+ },
+ {
+  "id": "late-bloomers-the-growlers",
+  "title": "Late Bloomers",
+  "artist": "The Growlers",
+  "year": 2017,
+  "key": "D",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "vi",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: D Bm.",
+  "spotify": "spotify:track:1o8vWw6RuA02faWIji9Ymw",
+  "art": "https://i.scdn.co/image/ab67616d00001e027a29ccf66a86c18884677373",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/late-bloomers-chords-2018717"
+ },
+ {
+  "id": "city-club-the-growlers",
+  "title": "City Club",
+  "artist": "The Growlers",
+  "year": 2016,
+  "key": "G",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "II",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, chorus: G A D A G A.",
+  "spotify": "spotify:track:6Ig2iLUX11ZNpI7EBCZqyt",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/city-club-chords-1870862"
+ },
+ {
+  "id": "i-ll-be-around-the-growlers",
+  "title": "I'll Be Around",
+  "artist": "The Growlers",
+  "year": 2016,
+  "key": "Ab minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VII",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, intro: Gm F. Capo 1.",
+  "spotify": "spotify:track:1EXMtjti643XyQLiGDdki0",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/ill-be-around-chords-2096397"
+ },
+ {
+  "id": "naked-kids-the-growlers",
+  "title": "Naked Kids",
+  "artist": "The Growlers",
+  "year": 2013,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "verse",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse: Dm Bb F.",
+  "spotify": "spotify:track:0THSRc1W4Xqv08PyUDtzj4",
+  "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/naked-kids-chords-1664573"
+ },
+ {
+  "id": "sea-lion-goth-blues-the-growlers",
+  "title": "Sea Lion Goth Blues",
+  "artist": "The Growlers",
+  "year": 2010,
+  "key": "E",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "bIII",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, intro: E A G.",
+  "spotify": "spotify:track:1CJ7UtxyGk5vezi8FupC9I",
+  "art": "https://i.scdn.co/image/ab67616d00001e0263de5bd3b464666940d5f15d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/sea-lion-goth-blues-chords-4760261"
+ },
+ {
+  "id": "humdrum-blues-the-growlers",
+  "title": "Humdrum Blues",
+  "artist": "The Growlers",
+  "year": 2013,
+  "key": "Gb",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: Ebm F# B F#.",
+  "spotify": "spotify:track:44naxxtw2fww4u8ZnquTLX",
+  "art": "https://i.scdn.co/image/ab67616d00001e027c5f6013a33aa74001752b47",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/humdrum-blues-chords-1465553"
+ },
+ {
+  "id": "graveyard-s-full-the-growlers",
+  "title": "Graveyard's Full",
+  "artist": "The Growlers",
+  "year": 2010,
+  "key": "Db",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "bVI",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: C# F#m A.",
+  "spotify": "spotify:track:3SIcv7gFAfCp7T3BakaJgE",
+  "art": "https://i.scdn.co/image/ab67616d00001e0263de5bd3b464666940d5f15d",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/graveyards-full-chords-1519255"
+ },
+ {
+  "id": "salt-on-a-slug-the-growlers",
+  "title": "Salt on a Slug",
+  "artist": "The Growlers",
+  "year": 2013,
+  "key": "F minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: Em G A G Em G A G. Capo 1.",
+  "spotify": "spotify:track:6k2PV8h0JMeQ9Sq6OCbo62",
+  "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/salt-on-a-slug-chords-2101085"
+ },
+ {
+  "id": "gay-thoughts-the-growlers",
+  "title": "Gay Thoughts",
+  "artist": "The Growlers",
+  "year": 2015,
+  "key": "D minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "Isus4",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: Dm Dsus4 Dm F Dm Dsus4 Dm F.",
+  "spotify": "spotify:track:2HtRQoycUasDCpCsteWiwr",
+  "art": "https://i.scdn.co/image/ab67616d00001e026defdcb10092f04692633807",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/gay-thoughts-chords-1464511"
+ },
+ {
+  "id": "good-advice-the-growlers",
+  "title": "Good Advice",
+  "artist": "The Growlers",
+  "year": 2014,
+  "key": "Bb",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 7,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "IV",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: Gm Eb Bb D G Eb Bb D.",
+  "spotify": "spotify:track:1cPtXxIS4nw3y7uFQj27wP",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/good-advice-chords-1665999"
+ },
+ {
+  "id": "beach-rats-the-growlers",
+  "title": "Beach Rats",
+  "artist": "The Growlers",
+  "year": 2013,
+  "key": "Eb minor",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "v",
+    "beats": 2
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: D#m F# B A#m.",
+  "spotify": "spotify:track:7AZUA9MVVF1715JSvccDGg",
+  "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/beach-rats-chords-3135986"
+ },
+ {
+  "id": "try-hard-fool-the-growlers",
+  "title": "Try Hard Fool",
+  "artist": "The Growlers",
+  "year": 2019,
+  "key": "G",
+  "tempo": 100,
+  "section": "verse 1",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 1: G Bm C.",
+  "spotify": "spotify:track:2RO4CbCaSq8vjrUOegjhyg",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ecd1bb95b9c6316398db1abc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/try-hard-fool-chords-2824568"
+ },
+ {
+  "id": "uncle-sam-s-a-dick-the-growlers",
+  "title": "Uncle Sam's a Dick",
+  "artist": "The Growlers",
+  "year": 2015,
+  "key": "C minor",
+  "tempo": 100,
+  "section": "verse 3",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i7",
+    "beats": 4
+   },
+   {
+    "rn": "iv7",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse 3: Cm7 Fm7.",
+  "spotify": "spotify:track:67fMJRKLTiyz9Hj9jvbwDE",
+  "art": "https://i.scdn.co/image/ab67616d00001e026defdcb10092f04692633807",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/uncle-sams-a-dick-chords-4740719"
+ },
+ {
+  "id": "acid-rain-the-growlers",
+  "title": "Acid Rain",
+  "artist": "The Growlers",
+  "year": 2009,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "III",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, chorus: Em Am G.",
+  "spotify": "spotify:track:7oQheIYw1RjEWjFRjGJAcr",
+  "art": "https://i.scdn.co/image/ab67616d00001e02c99541a7c2648e67e36d4541",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/acid-rain-chords-1940707"
+ },
+ {
+  "id": "natural-affair-the-growlers",
+  "title": "Natural Affair",
+  "artist": "The Growlers",
+  "year": 2019,
+  "key": "E minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   },
+   {
+    "rn": "III",
+    "beats": 2
+   },
+   {
+    "rn": "i",
+    "beats": 2
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, intro: G Em G Em G Em Am A.",
+  "spotify": "spotify:track:7fKmug2c1zcKu5vE8LhmVz",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ecd1bb95b9c6316398db1abc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/natural-affair-chords-2841500"
+ },
+ {
+  "id": "foghorn-town-the-growlers",
+  "title": "Foghorn Town",
+  "artist": "The Growlers",
+  "year": 2019,
+  "key": "Eb",
+  "tempo": 100,
+  "section": "verse",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "ii",
+    "beats": 2
+   },
+   {
+    "rn": "I",
+    "beats": 2
+   },
+   {
+    "rn": "V",
+    "beats": 2
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, verse: Cm Eb Fm Eb Bb.",
+  "spotify": "spotify:track:6DXjlrHSp02BQyiYuMwktZ",
+  "art": "https://i.scdn.co/image/ab67616d00001e02ecd1bb95b9c6316398db1abc",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/foghorn-town-chords-3091214"
+ },
+ {
+  "id": "row-the-growlers",
+  "title": "Row",
+  "artist": "The Growlers",
+  "year": 2013,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro riff",
+  "start": 0,
+  "dur": 24,
+  "level": 5,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "ug",
+  "note": "Community chart, intro riff: Cm C.",
+  "spotify": "spotify:track:3KPV7Kb7zJQxGhADgQPHzG",
+  "art": "https://i.scdn.co/image/ab67616d00001e0246f5cbbe233845b0ecb5985c",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/row-chords-3133433"
+ },
+ {
+  "id": "love-test-the-growlers",
+  "title": "Love Test",
+  "artist": "The Growlers",
+  "year": 2014,
+  "key": "G",
+  "tempo": 100,
+  "section": "chorus",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "ii",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, chorus: Am G.",
+  "spotify": "spotify:track:5Hm2xN1TlvWsnVMFEpyg0O",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/love-test-official-5903388"
+ },
+ {
+  "id": "night-ride-the-growlers",
+  "title": "Night Ride",
+  "artist": "The Growlers",
+  "year": 2016,
+  "key": "A minor",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 3,
+  "chords": [
+   {
+    "rn": "i",
+    "beats": 4
+   },
+   {
+    "rn": "iv",
+    "beats": 4
+   },
+   {
+    "rn": "VI",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Am Dm F.",
+  "spotify": "spotify:track:2O07FF1DMc1oRDlkIo33FC",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/night-ride-official-4209871"
+ },
+ {
+  "id": "black-memories-the-growlers",
+  "title": "Black Memories",
+  "artist": "The Growlers",
+  "year": 2014,
+  "key": "C",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "iii",
+    "beats": 4
+   },
+   {
+    "rn": "V",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: C Em G.",
+  "spotify": "spotify:track:571hDJQ2yYvOlvEZy6F00V",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/black-memories-official-2506290"
+ },
+ {
+  "id": "rare-hearts-the-growlers",
+  "title": "Rare Hearts",
+  "artist": "The Growlers",
+  "year": 2014,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em G C G.",
+  "spotify": "spotify:track:6pWpVZskdC0Ixopr4BxzdM",
+  "art": "https://i.scdn.co/image/ab67616d00001e02f334626f3f2dbf4e2f811fb6",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/rare-hearts-official-4085392"
+ },
+ {
+  "id": "dope-on-a-rope-the-growlers",
+  "title": "Dope on a Rope",
+  "artist": "The Growlers",
+  "year": 2016,
+  "key": "G",
+  "tempo": 100,
+  "section": "intro",
+  "start": 0,
+  "dur": 24,
+  "level": 2,
+  "chords": [
+   {
+    "rn": "vi",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   },
+   {
+    "rn": "IV",
+    "beats": 4
+   },
+   {
+    "rn": "I",
+    "beats": 4
+   }
+  ],
+  "src": "official",
+  "note": "Official chart, intro: Em G C G.",
+  "spotify": "spotify:track:76c1AuZodByXM3X2k48wju",
+  "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
+  "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/dope-on-a-rope-official-3920222"
  }
 ];
