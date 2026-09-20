@@ -3,220 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NYC Brief — Saturday, September 19, 2026</title>
+<title>NYC Brief — Sunday, September 20, 2026</title>
+<style>
+  body { margin: 0; padding: 0; background-color: #f2f1ec; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #22303f; }
+  .outer { max-width: 640px; margin: 0 auto; padding: 24px 12px; }
+  .header { background-color: #14263c; border-radius: 14px 14px 0 0; padding: 28px 28px 22px; }
+  .header-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #8fb4d9; font-weight: 600; }
+  .header-date { font-size: 26px; font-weight: 700; color: #ffffff; margin-top: 6px; line-height: 1.25; }
+  .header-mood { font-size: 15px; color: #c8d6e5; margin-top: 6px; }
+  .section-bg { background-color: #ffffff; padding: 20px 28px 8px; }
+  .section-bg-tight { background-color: #ffffff; padding: 12px 28px 8px; }
+  .weather-card { border: 1px solid #e8e3da; border-radius: 12px; padding: 16px 20px; }
+  .weather-table { border-collapse: collapse; width: 100%; }
+  .weather-cell { text-align: center; padding: 6px; }
+  .weather-cell + .weather-cell { border-left: 1px solid #efeae1; }
+  .weather-label { font-size: 12px; color: #8a8578; font-weight: 600; }
+  .weather-icon { font-size: 22px; }
+  .weather-temp { font-size: 15px; font-weight: 700; color: #14263c; }
+  .weather-desc { font-size: 11px; color: #43536a; }
+  .weather-link { text-align: center; margin-top: 10px; }
+  .weather-link a { font-size: 12px; color: #8a8578; text-decoration: underline; }
+  .section-label { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #b3543c; font-weight: 700; border-bottom: 2px solid #eee5db; padding-bottom: 8px; }
+  .card { border: 1px solid #e8e3da; border-radius: 12px; padding: 18px 20px 20px; }
+  .card-table { border-collapse: collapse; width: 100%; }
+  .card-title { font-size: 19px; font-weight: 700; }
+  .card-title a { color: #14263c; text-decoration: none; }
+  .card-meta { font-size: 12px; color: #8a8578; margin-top: 4px; font-weight: 600; }
+  .card-body { font-size: 14px; line-height: 1.55; color: #43536a; margin-top: 10px; }
+  .card-img { width: 140px; height: auto; border-radius: 8px; display: block; border: 0; }
+  .btn { display: inline-block; background-color: #14263c; color: #ffffff; font-size: 13px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 6px; margin-top: 14px; }
+  .btn-sec { display: inline-block; background-color: #eef2f6; color: #14263c; font-size: 13px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 6px; margin-top: 14px; margin-left: 8px; }
+  .section-label-blue { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #2a6496; font-weight: 700; border-bottom: 2px solid #dce8f0; padding-bottom: 8px; }
+  .watching { font-size: 12px; color: #8a8578; margin-top: 8px; padding: 8px 0 0; border-top: 1px solid #f0ece6; }
+  .footer { background-color: #f7f5f0; border-top: 1px solid #e8e3da; padding: 14px 28px; font-size: 11px; color: #9a9590; border-radius: 0 0 14px 14px; }
+</style>
 </head>
-<body style="margin:0;padding:0;background-color:#f2f1ec;">
-<div style="max-width:640px;margin:0 auto;padding:24px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#22303f;">
+<body>
+<div class="outer">
 
   <!-- Header -->
-  <div style="background-color:#14263c;border-radius:14px 14px 0 0;padding:28px 28px 22px;">
-    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8fb4d9;font-weight:600;">NYC Brief</div>
-    <div style="font-size:26px;font-weight:700;color:#ffffff;margin-top:6px;line-height:1.25;">Saturday, September 19, 2026</div>
-    <div style="font-size:15px;color:#c8d6e5;margin-top:6px;">One perfect Saturday before autumn closes in — and the cultural calendar suddenly has everything at once.</div>
+  <div class="header">
+    <div class="header-label">NYC Brief</div>
+    <div class="header-date">Sunday, September 20, 2026</div>
+    <div class="header-mood">Full week of rain — the city hands you a pass to stay inside and do it properly. Opera, film, Mahler, books.</div>
   </div>
 
   <!-- Weather card -->
-  <div style="background-color:#ffffff;padding:20px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:16px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <div class="section-bg">
+    <div class="weather-card">
+      <table class="weather-table" role="presentation" cellpadding="0" cellspacing="0">
         <tr>
-          <td align="center" style="padding:6px;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">TODAY</div>
-            <div style="font-size:22px;">🌤️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">70°F</div>
-            <div style="font-size:11px;color:#43536a;">Partly sunny — go outside</div>
+          <td class="weather-cell">
+            <div class="weather-label">SUN</div>
+            <div class="weather-icon">🌧️</div>
+            <div class="weather-temp">70°F</div>
+            <div class="weather-desc">100% rain + storms</div>
           </td>
-          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">SUN</div>
-            <div style="font-size:22px;">🌧️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">71°F</div>
-            <div style="font-size:11px;color:#43536a;">Rain all day, 83%</div>
+          <td class="weather-cell">
+            <div class="weather-label">MON</div>
+            <div class="weather-icon">🌥️</div>
+            <div class="weather-temp">68°F</div>
+            <div class="weather-desc">Mostly cloudy, 20%</div>
           </td>
-          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">MON–WED</div>
-            <div style="font-size:22px;">🌥️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">62–66°F</div>
-            <div style="font-size:11px;color:#43536a;">Chance of showers, cooler</div>
+          <td class="weather-cell">
+            <div class="weather-label">TUE</div>
+            <div class="weather-icon">🌦️</div>
+            <div class="weather-temp">62°F</div>
+            <div class="weather-desc">Chance showers, 40%</div>
           </td>
-          <td align="center" style="padding:6px;border-left:1px solid #efeae1;">
-            <div style="font-size:12px;color:#8a8578;font-weight:600;">THU–FRI</div>
-            <div style="font-size:22px;">🌦️</div>
-            <div style="font-size:15px;font-weight:700;color:#14263c;">63–64°F</div>
-            <div style="font-size:11px;color:#43536a;">Showery, but it's film festival week</div>
+          <td class="weather-cell">
+            <div class="weather-label">WED</div>
+            <div class="weather-icon">🌦️</div>
+            <div class="weather-temp">63°F</div>
+            <div class="weather-desc">Chance showers, 30%</div>
+          </td>
+          <td class="weather-cell">
+            <div class="weather-label">SAT</div>
+            <div class="weather-icon">⛅</div>
+            <div class="weather-temp">67°F</div>
+            <div class="weather-desc">Partly sunny, 20%</div>
           </td>
         </tr>
       </table>
-      <div style="text-align:center;margin-top:10px;">
-        <a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&amp;lon=-73.9653" style="font-size:12px;color:#8a8578;text-decoration:underline;">Full Central Park forecast (National Weather Service) →</a>
+      <div class="weather-link">
+        <a href="https://forecast.weather.gov/MapClick.php?lat=40.7828&lon=-73.9653">Full Central Park forecast (National Weather Service) →</a>
       </div>
     </div>
   </div>
 
-  <!-- Section: This Week -->
-  <div style="background-color:#ffffff;padding:26px 28px 6px;">
-    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">This week in NYC</div>
+  <!-- THIS WEEK section label -->
+  <div class="section-bg" style="padding-top:26px;padding-bottom:6px;">
+    <div class="section-label">This week in NYC</div>
   </div>
 
-  <!-- Card 1: Return of the Buffalo — TODAY -->
-  <div style="background-color:#ffffff;padding:20px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card 1: Met Opera Macbeth -->
+  <div class="section-bg-tight">
+    <div class="card">
+      <table class="card-table" role="presentation" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <div class="card-title"><a href="https://www.metopera.org/season/2026-27-season/macbeth/">Met Opera Season Opener: Verdi's Macbeth</a></div>
+            <div class="card-meta">MON SEP 22, OPENING NIGHT &nbsp;·&nbsp; LINCOLN CENTER &nbsp;·&nbsp; INDOOR &nbsp;·&nbsp; UWS HOME TURF</div>
+            <div class="card-body">
+              The Metropolitan Opera's 2026-27 season kicks off Monday night with a new production of Verdi's <em>Macbeth</em> — the most anticipated opening in years. Soprano Lise Davidsen, one of the biggest voices in opera right now, takes the stage as Lady Macbeth, with baritone Quinn Kelsey in the title role. Music director Yannick Nézet-Séguin conducts, and director Louisa Proske makes her Met debut helming the production. The run goes through October 20; opening night is the moment. Lincoln Center is a 10-minute walk from the Upper West Side.
+            </div>
+            <div class="card-body" style="margin-top:6px;font-size:13px;">
+              <strong>Getting in:</strong> Opening night may have premium pricing; subsequent performances (next dates: Sep 24, 27, Oct 1) are easier to book and still feature the same cast. Check metopera.org for availability; the Live in HD cinema broadcast is Oct 17 if you'd rather see it big-screen.
+            </div>
+          </td>
+        </tr>
+      </table>
+      <a href="https://www.metopera.org/season/2026-27-season/macbeth/" class="btn">Tickets &amp; calendar →</a>
+    </div>
+  </div>
+
+  <!-- Card 2: NY Philharmonic / Dudamel / Mahler -->
+  <div class="section-bg-tight">
+    <div class="card">
+      <table class="card-table" role="presentation" cellpadding="0" cellspacing="0">
         <tr>
           <td valign="top" style="padding-right:16px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#b3543c;margin-bottom:6px;">TODAY ONLY — FREE — OUTDOOR / RAIN FALLBACK BELOW</div>
-            <div style="font-size:19px;font-weight:700;"><a href="https://stannswarehouse.org/show/return-of-the-buffalo-tatanka-owe-akupi/" style="color:#14263c;text-decoration:none;">Return of the Buffalo: Tatanka Owe Akupi</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">TODAY + TOMORROW · DOWNTOWN BROOKLYN &amp; LOWER MANHATTAN · FREE</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">Fifty life-sized buffalo puppets roam free through the streets of downtown Brooklyn and Lower Manhattan, accompanied by live music, poetry, and performance. Created by St. Ann's Warehouse in partnership with The Walk Productions, with performers including Sam Waterston, Rosario Dawson, Rhiannon Giddens, and Pilobolus Dance Company. A large-scale public art spectacle honoring Indigenous history — no tickets, no reservations, just show up. Today's the day: partly sunny and 70°F. Tomorrow (Sunday) is a washout. <strong>Indoor fallback:</strong> if weather turns, the Brooklyn Museum is a 10-minute walk.</div>
+            <div class="card-title"><a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-mahler-and-tania-leon">NY Philharmonic: Dudamel Conducts Mahler 5th + World Premiere</a></div>
+            <div class="card-meta">THU–MON SEP 24–29 &nbsp;·&nbsp; DAVID GEFFEN HALL, LINCOLN CENTER &nbsp;·&nbsp; INDOOR &nbsp;·&nbsp; UWS</div>
+            <div class="card-body">
+              Gustavo Dudamel's inaugural season as the New York Philharmonic's music and artistic director continues this week with Mahler's passionate Fifth Symphony — the soaring one, the one from <em>Death in Venice</em>. The program opens with a world premiere by Tania León, the Pulitzer Prize-winning Cuban-American composer. Dudamel is the biggest thing to happen to the Philharmonic in a generation; these early-season concerts will be talked about. Geffen Hall is steps from the apartment.
+            </div>
+            <div class="card-body" style="margin-top:6px;font-size:13px;">
+              <strong>Getting in:</strong> Thursday Sep 24 and Friday Sep 25 evenings have good availability. Tickets from around $45. nyphil.org.
+            </div>
           </td>
           <td valign="top" width="140">
-            <a href="https://stannswarehouse.org/show/return-of-the-buffalo-tatanka-owe-akupi/"><img src="https://cloudimages.broadwayworld.com/regionalshows/nd6a68fe63737cc.jpg" alt="Return of the Buffalo puppets" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
+            <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-mahler-and-tania-leon">
+              <img src="https://res.cloudinary.com/nyphil/image/upload/f_auto/q_auto/f_auto/v1771609775/images/concerts-tickets/calendar/2627/Sep/04-NYP-Gustavo-052023-Fadi-Kheir_1?_a=BAAAV6DQ" alt="Gustavo Dudamel conducting the New York Philharmonic" class="card-img">
+            </a>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://stannswarehouse.org/show/return-of-the-buffalo-tatanka-owe-akupi/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Event info →</a>
-      </div>
+      <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-mahler-and-tania-leon" class="btn">Tickets →</a>
     </div>
   </div>
 
-  <!-- Card 2: Met Opera opens -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card 3: NYFF64 -->
+  <div class="section-bg-tight">
+    <div class="card">
+      <table class="card-table" role="presentation" cellpadding="0" cellspacing="0">
         <tr>
           <td valign="top">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.metopera.org/season/2026-27-season/macbeth/" style="color:#14263c;text-decoration:none;">Met Opera Season Opener: Verdi's Macbeth</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">TUE SEP 22 + RUNS THROUGH OCT 20 · MET OPERA HOUSE, LINCOLN CENTER · UPPER WEST SIDE</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The Metropolitan Opera's 2026–27 season opens with a new production of Verdi's Macbeth — baritone Quinn Kelsey in the title role, soprano Lise Davidsen as Lady Macbeth, and Music Director Yannick Nézet-Séguin on the podium. Davidsen, the Norwegian soprano who owns the Wagner and Strauss repertoire, takes on early Verdi for the first time here, which is a programming gamble worth watching. Opening night is the gala occasion; later performances through October 20 are an easier ticket. The October 17 performance is broadcast to cinemas worldwide as part of the Metropolitan Opera's Live in HD series — worth noting as an easy entry point. Tickets at metopera.org.</div>
+            <div class="card-title"><a href="https://www.filmlinc.org/nyff/">New York Film Festival opens Friday — NYFF64</a></div>
+            <div class="card-meta">OPENS FRI SEP 25 &nbsp;·&nbsp; LINCOLN CENTER + BAM &amp; OTHERS &nbsp;·&nbsp; THRU OCT 12 &nbsp;·&nbsp; $35/TICKET</div>
+            <div class="card-body">
+              The 64th New York Film Festival opens Friday night at Alice Tully Hall with <em>Paper Tiger</em> (distributed by Neon), and the weekend Spotlight Gala brings a world premiere: <em>Godzilla Minus Zero</em>, the sequel to the Oscar-winning <em>Godzilla Minus One</em>, screening Saturday night. General admission is $35 per screening with a two-ticket limit per film; pass holders and Film at Lincoln Center members got first access. Single tickets went on sale September 15 at noon — popular screenings are selling out but the full run through October 12 has options. The festival also screens at the Brooklyn Academy of Music and the Museum of the Moving Image in Astoria.
+            </div>
+            <div class="card-body" style="margin-top:6px;font-size:13px;">
+              <strong>Getting in:</strong> Browse filmlinc.org for remaining availability; less-buzzed films in the main slate are the value play — same curators, same screens, no scramble.
+            </div>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.metopera.org/season/2026-27-season/macbeth/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Tickets &amp; dates →</a>
-      </div>
+      <a href="https://www.filmlinc.org/nyff/tickets-and-passes/" class="btn">Browse screenings &amp; tickets →</a>
     </div>
   </div>
 
-  <!-- Card 3: NY Phil Dudamel Mahler -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card 4: Brooklyn Book Festival -->
+  <div class="section-bg-tight">
+    <div class="card">
+      <table class="card-table" role="presentation" cellpadding="0" cellspacing="0">
         <tr>
           <td valign="top" style="padding-right:16px;">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-mahler-and-tania-leon" style="color:#14263c;text-decoration:none;">NY Philharmonic: Dudamel Conducts Mahler</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">WED SEP 24 – MON SEP 29 · DAVID GEFFEN HALL, LINCOLN CENTER · UPPER WEST SIDE</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">Gustavo Dudamel's inaugural New York Philharmonic season is in full swing, and this week's program is a pairing worth planning around: a world premiere by composer Tania León alongside Mahler's Fifth Symphony, one of the most overwhelming pieces in the orchestral repertoire. Geffen Hall is a ten-minute walk from the Upper West Side. Multiple performances Wednesday through Monday — pick a night that works. Tickets at nyphil.org.</div>
+            <div class="card-title"><a href="https://brooklynbookfestival.org/">Brooklyn Book Festival — Flagship Day</a></div>
+            <div class="card-meta">SUN SEP 27, 10AM–6PM &nbsp;·&nbsp; BOROUGH HALL, DOWNTOWN BROOKLYN &nbsp;·&nbsp; FREE</div>
+            <div class="card-body">
+              New York City's largest free literary festival runs all week (Sep 20–28) with events across all five boroughs, but the centerpiece is Sunday's Flagship Day in the open-air parks around Borough Hall — 250+ publishers, readings, panels, and a massive book market. This year's lineup includes Joyce Carol Oates, Marlon James (<em>The Disappearers</em>), Tracy K. Smith, Colson Whitehead, and Douglas Stuart; Amitav Ghosh is being honored as "Best of Brooklyn." A subway ride to Brooklyn for a literary afternoon followed by dinner in the neighborhood is an easy move if the weather breaks (Saturday clears somewhat, Sunday's forecast is still uncertain).
+            </div>
           </td>
           <td valign="top" width="140">
-            <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-mahler-and-tania-leon"><img src="https://res.cloudinary.com/nyphil/image/upload/f_auto/q_auto/f_auto/v1771609775/images/concerts-tickets/calendar/2627/Sep/04-NYP-Gustavo-052023-Fadi-Kheir_1?_a=BAAAV6DQ" alt="Gustavo Dudamel and the New York Philharmonic" width="140" style="width:140px;height:auto;border-radius:8px;display:block;border:0;"></a>
+            <a href="https://brooklynbookfestival.org/">
+              <img src="https://brooklynbookfestival.org/wp-content/uploads/2026/01/BKBF2026-Footer-768x306-1.png" alt="Brooklyn Book Festival 2026" class="card-img">
+            </a>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-mahler-and-tania-leon" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Tickets →</a>
-      </div>
+      <a href="https://brooklynbookfestival.org/" class="btn">Festival info →</a>
     </div>
   </div>
 
-  <!-- Card 4: NYFF64 Opens -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+  <!-- Card 5: 92NY / Climate Week lecture pick -->
+  <div class="section-bg-tight">
+    <div class="card">
+      <table class="card-table" role="presentation" cellpadding="0" cellspacing="0">
         <tr>
           <td valign="top">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.filmlinc.org/nyff/" style="color:#14263c;text-decoration:none;">64th New York Film Festival — Opens Thursday</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">OPENS THU SEP 25 · ALICE TULLY HALL + WALTER READE THEATER, LINCOLN CENTER · THROUGH OCT 12</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">The 64th New York Film Festival opens Thursday evening with <em>Paper Tiger</em>, the opening night selection. The bigger-buzz gala is Friday September 26: the world premiere of <em>Godzilla Minus Zero</em>, the sequel to the Oscar-winning <em>Godzilla Minus One</em>. Single tickets are already on sale at filmlinc.org — $35 general admission, $30 for Film at Lincoln Center members, two-ticket limit per screening. Premium galas are priced higher and move fast. The better play for spontaneous filmgoers: <strong>$15 rush tickets</strong> are released throughout the festival, announced next to showtimes on film pages. The festival runs through October 12 — plenty of time to pick good films as reviews come in.</div>
+            <div class="card-title"><a href="https://www.climateweeknyc.org/">Climate Week NYC — Public Events Citywide</a></div>
+            <div class="card-meta">THRU SAT SEP 27 &nbsp;·&nbsp; VENUES CITYWIDE &nbsp;·&nbsp; MANY FREE &amp; FREE WITH RSVP</div>
+            <div class="card-body">
+              Climate Week NYC — timed to the United Nations General Assembly, which also brings heads of state to Midtown this week — draws policymakers, scientists, and capital allocators to a dense calendar of public talks, panels, and forums across the city. The overlap with the UN General Assembly means genuine decision-makers in the room, not just advocates. If international policy, energy transition, or climate finance intersects with your interests, this is the week the city is actually useful for it — check the schedule at climateweeknyc.org and filter for public/free events.
+            </div>
+            <div class="card-body" style="margin-top:6px;font-size:13px;">
+              <strong>Rainy-day logic:</strong> All indoor, concentrated in Midtown and the UN district. Good pairing: a Climate Week session in the afternoon, dinner downtown after.
+            </div>
           </td>
         </tr>
       </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.filmlinc.org/nyff/tickets-and-passes/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Browse films &amp; tickets →</a>
-        &nbsp;<a href="https://www.filmlinc.org/nyff/nyff64-lineup/" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Full lineup →</a>
-      </div>
+      <a href="https://www.climateweeknyc.org/" class="btn">Browse public events →</a>
     </div>
   </div>
 
-  <!-- Card 5: San Gennaro 100th -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-        <tr>
-          <td valign="top">
-            <div style="font-size:19px;font-weight:700;"><a href="https://sangennaronyc.org" style="color:#14263c;text-decoration:none;">Feast of San Gennaro — 100th Anniversary</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">THROUGH SUN SEP 27 · MULBERRY STREET, LITTLE ITALY · FREE TO WALK</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">New York City's oldest and largest Italian-American street festival — a century old this year — runs along Mulberry Street in Little Italy through September 27. Free to walk, with carnival rides, religious processions, and a dense corridor of vendors selling sausage and peppers, zeppole, and cannoli. Open from 11:30am daily; Friday and Saturday nights go to midnight. A low-stakes, high-color way to spend an afternoon, and this year's centennial edition is a slightly bigger deal than usual. Works in the rain; just plan around the Saturday-Sunday crowds.</div>
-          </td>
-        </tr>
-      </table>
-      <div style="margin-top:14px;">
-        <a href="https://sangennaronyc.org/event-calendar/" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Festival calendar →</a>
-      </div>
-    </div>
+  <!-- NEXT TRIP section -->
+  <div class="section-bg" style="padding-top:26px;padding-bottom:6px;">
+    <div class="section-label-blue">Next trip</div>
   </div>
-
-  <!-- Card 6: Smaller/weirder pick — David Byrne + Fall for Dance -->
-  <div style="background-color:#ffffff;padding:12px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:18px 20px 20px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-        <tr>
-          <td valign="top">
-            <div style="font-size:19px;font-weight:700;"><a href="https://www.nycitycenter.org/fall-for-dance" style="color:#14263c;text-decoration:none;">Fall for Dance Festival — Tickets On Sale Now</a></div>
-            <div style="font-size:12px;color:#8a8578;margin-top:4px;font-weight:600;">LATE SEP–OCT · NEW YORK CITY CENTER · MIDTOWN · ~$20/TICKET</div>
-            <div style="font-size:14px;line-height:1.55;color:#43536a;margin-top:10px;">New York City Center's annual Fall for Dance festival — the one that gets world-class contemporary dance in front of a wider audience at around $20 a ticket — is launching its season soon. This is the festival that sells out before most people notice it's on. The Joyce Theater (in the Chelsea neighborhood) is also opening its fall season this month, with a program including Ronald K. Brown's EVIDENCE company and flamenco from Noche Flamenca. Worth checking joycedance.org now.</div>
-          </td>
-        </tr>
-      </table>
-      <div style="margin-top:14px;">
-        <a href="https://www.nycitycenter.org/fall-for-dance" style="display:inline-block;background-color:#14263c;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">Fall for Dance →</a>
-        &nbsp;<a href="https://www.joycedance.org" style="display:inline-block;background-color:#eef2f6;color:#14263c;font-size:13px;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:6px;">The Joyce Theater →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Next Trip section -->
-  <div style="background-color:#ffffff;padding:26px 28px 6px;">
-    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">Next trip</div>
-  </div>
-
-  <div style="background-color:#ffffff;padding:16px 28px 8px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:16px 20px;">
-      <div style="font-size:14px;line-height:1.55;color:#43536a;">No upcoming trip is listed in the planner. The August 31–September 2 trip to New York is past. Add the next visit to trips.md to unlock this section.</div>
-    </div>
-  </div>
-
-  <!-- Mark Your Calendar -->
-  <div style="background-color:#ffffff;padding:26px 28px 6px;">
-    <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#b3543c;font-weight:700;border-bottom:2px solid #eee5db;padding-bottom:8px;">Mark your calendar</div>
-  </div>
-
-  <div style="background-color:#ffffff;padding:16px 28px 16px;">
-    <div style="border:1px solid #e8e3da;border-radius:12px;padding:16px 20px;">
-
-      <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #f0ebe2;">
-        <div style="font-size:14px;font-weight:700;color:#14263c;">Thu Sep 25, evening — New York Film Festival 64th Opening Night</div>
-        <div style="font-size:13px;color:#43536a;margin-top:4px;line-height:1.5;">Tickets at filmlinc.org now. Opening night (<em>Paper Tiger</em>) and the Friday Godzilla Minus Zero gala will sell out — book now if interested. Rush tickets ($15) appear throughout the festival if you miss the advance sale.</div>
-      </div>
-
-      <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #f0ebe2;">
-        <div style="font-size:14px;font-weight:700;color:#14263c;">Fri Sep 26 — Godzilla Minus Zero World Premiere Gala (New York Film Festival)</div>
-        <div style="font-size:13px;color:#43536a;margin-top:4px;line-height:1.5;">The sequel to the Oscar-winning Godzilla Minus One. Spotlight Gala at Alice Tully Hall, Lincoln Center. Check filmlinc.org for remaining tickets — gala pricing, limited availability.</div>
-      </div>
-
-      <div>
-        <div style="font-size:14px;font-weight:700;color:#14263c;">Oct 23–25 — The New Yorker Festival (tickets now available)</div>
-        <div style="font-size:13px;color:#43536a;margin-top:4px;line-height:1.5;">The New Yorker Festival's annual two-day program of conversations with writers, thinkers, and cultural figures. Tickets go quickly; American Express cardmember presale is typically available. Check newyorker.com/festival now for the lineup and remaining seats.</div>
-      </div>
-
+  <div class="section-bg-tight" style="padding-bottom:20px;">
+    <div style="font-size:14px;color:#43536a;line-height:1.6;">
+      No upcoming trip listed in trips.md — the August 31–September 2 birthday trip has passed. Once the next trip is added to trips.md, this section will fill with picks for those dates.
     </div>
   </div>
 
   <!-- Footer -->
-  <div style="background-color:#ffffff;border-radius:0 0 14px 14px;padding:16px 28px 20px;">
-    <div style="border-top:1px solid #e8e3da;padding-top:14px;font-size:12px;color:#8a8578;text-align:center;">
-      Brief generated September 19, 2026 · <a href="https://mrlerner.github.io/ai/city.html" style="color:#8a8578;">mrlerner.github.io/ai/city.html</a>
-    </div>
-  </div>
+  <div class="footer">Brief generated September 20, 2026 · <a href="https://mrlerner.github.io/ai/city.html" style="color:#9a9590;">mrlerner.github.io/ai/city.html</a></div>
 
 </div>
 </body>
