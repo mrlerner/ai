@@ -533,8 +533,6 @@ function renderReveal() {
   const song = q.song; const r = q.result;
   const chips = q.chords.map((c, i) => chordChip(c, i, r.res[i])).join('');
   const verdict = (r.ok ? 'Yes!' : 'Not quite.') + (q.retry ? ' <span class="muted small">(retry, not scored)</span>' : '');
-  const inv = hasInversions(song);
-  const guessChords = q.slots.every(s => s.rn && s.rn !== '?') ? q.slots.map((s, i) => ({ rn: s.rn, bass: q.bassMode ? s.bass : 'root', beats: q.chords[i].beats })) : null;
   const secsLeft = sessionSecondsLeft();
   const art = song.art ? `<img class="art" src="${h(song.art)}" alt="">` : '';
   const ug = song.ug || `https://www.ultimate-guitar.com/search.php?search_type=title&value=${encodeURIComponent(song.title + ' ' + song.artist)}`;
@@ -544,12 +542,6 @@ function renderReveal() {
     ${nearMissNotes()}
     ${song.note ? `<p class="note">${h(song.note)}</p>` : ''}
     ${(() => { const ex = explain(q.chords, q.key); return `<div class="about"><div class="k">About ${h(ex.name)}</div><p>${h(ex.text)}</p></div>`; })()}
-    <div class="tools">
-      <button class="tool" data-tool="band">▶ Band</button>
-      ${inv ? `<button class="tool" data-tool="root">▶ Bass on roots</button><button class="tool" data-tool="written">▶ Bass as written</button>` : ''}
-      ${guessChords && !r.ok ? `<button class="tool" data-tool="guess">▶ Your guess</button>` : ''}
-      <button class="tool" data-tool="record">▶ Recording</button>
-    </div>
     <div class="song">
       ${art}
       <div class="meta">
@@ -568,15 +560,6 @@ function renderReveal() {
       <button class="ghost" id="btn-retry-q" title="Same song, blank slots (R)">↺ Try again</button>
       ${secsLeft > 0 ? `<button class="primary" id="btn-next">Next ›</button>` : `<button class="ghost" id="btn-next">One more</button><button class="primary" id="btn-finish">Finish</button>`}
     </div>`;
-  $$('.tool', el).forEach(b => b.onclick = () => {
-    const t = b.dataset.tool;
-    if (t === 'band') playSynth({ loops: 1 });
-    if (t === 'bass') playSynth({ loops: 1, chordsOn: false });
-    if (t === 'root') playSynth({ loops: 1, rootPosition: true });
-    if (t === 'written') playSynth({ loops: 1, rootPosition: false });
-    if (t === 'guess') playSynth({ loops: 1, chords: guessChords });
-    if (t === 'record') playQuestion();
-  });
   bindListen(el);
   $$('[data-nudge]', el).forEach(b => b.onclick = () => { state.offsets[song.id] = (state.offsets[song.id] || 0) + (+b.dataset.nudge); save(); renderReveal(); playQuestion(); });
   const next = $('#btn-next'); if (next) next.onclick = nextQuestion;

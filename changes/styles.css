@@ -66,13 +66,13 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 
 /* buttons */
 /* One button style everywhere (same corners as the chord buttons); .primary is the gold call to action. */
-.primary, .ghost, .tool, .listen button {
+.primary, .ghost, .listen button {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 42px; padding: 0 16px;
   background: var(--panel); border: 1px solid var(--line); border-radius: 12px; color: var(--ink);
   font-size: 14px; font-weight: 600; white-space: nowrap; transition: transform .06s, background .12s, border-color .12s;
 }
-.primary:hover:not(:disabled), .ghost:hover:not(:disabled), .tool:hover, .listen button:hover:not(:disabled) { background: var(--panel2); transform: translateY(-1px); }
-.primary:active, .ghost:active, .tool:active, .listen button:active { transform: translateY(1px); }
+.primary:hover:not(:disabled), .ghost:hover:not(:disabled), .listen button:hover:not(:disabled) { background: var(--panel2); transform: translateY(-1px); }
+.primary:active, .ghost:active, .listen button:active { transform: translateY(1px); }
 .primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
 .primary:hover:not(:disabled) { background: var(--accent); filter: brightness(1.05); }
 .primary.big { min-height: 52px; font-size: 18px; padding: 0 26px; }
@@ -161,7 +161,6 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .about { margin-top: 14px; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0 12px 12px 0; }
 .about .k { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin-bottom: 4px; }
 .about p { margin: 0; font-size: 15px; color: var(--ink); line-height: 1.5; }
-.tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .song { display: flex; gap: 14px; align-items: center; margin-top: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; }
 .song .art { width: 72px; height: 72px; border-radius: 8px; object-fit: cover; flex: none; }
 .song .t { font-weight: 700; font-size: 17px; } .song .a { color: var(--ink2); font-size: 14px; }
