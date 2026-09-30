@@ -564,7 +564,6 @@ function renderReveal() {
     </div>
     <div class="actions">
       ${listenButtons()}
-      <span class="muted">${secsLeft > 0 ? `${Math.ceil(secsLeft / 60)} min left` : 'time’s up'}</span>
       <span class="grow"></span>
       <button class="ghost" id="btn-retry-q" title="Same song, blank slots (R)">↺ Try again</button>
       ${secsLeft > 0 ? `<button class="primary" id="btn-next">Next ›</button>` : `<button class="ghost" id="btn-next">One more</button><button class="primary" id="btn-finish">Finish</button>`}
