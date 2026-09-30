@@ -419,6 +419,7 @@ function listenButtons() {
   return `<div class="listen" role="group" aria-label="Listen">
     <button data-listen="key" title="Play a cadence in this key">Hear the key</button>
     <button data-listen="bass" title="The bass line alone on the synth band">Bass line</button>
+    <button data-listen="band" title="The chords and bass line on the synth band">Chords</button>
   </div>`;
 }
 function bindListen(el) {
@@ -426,6 +427,7 @@ function bindListen(el) {
     const t = b.dataset.listen;
     if (t === 'key') { band.ensure(); band.playKey(q.key); spotify.pause(); playback.playing = false; renderPlayButton(); }
     if (t === 'bass') playSynth({ loops: 1, chordsOn: false });
+    if (t === 'band') playSynth({ loops: 1 });
   });
 }
 
