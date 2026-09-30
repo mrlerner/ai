@@ -62,14 +62,20 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .lvl { font-size: 12px; font-weight: 600; color: var(--ink2); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
 .icon { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: var(--ink2); font-size: 16px; }
 .icon:hover { background: var(--panel); color: var(--ink); }
-@media (max-width: 520px) { .lvl { font-size: 11px; padding: 3px 8px; } .week { margin-left: auto; } .right { margin-left: 0; } .actions .primary { flex: 1 0 100%; } .actions .primary#btn-next, .actions .primary#btn-finish { flex: 0 0 auto; } }
+@media (max-width: 520px) { .lvl { font-size: 11px; padding: 3px 8px; } .week { margin-left: auto; } .right { margin-left: 0; } #answer .actions .grow { display: none; } #answer .actions .primary { flex: 1 1 auto; } .actions .primary#btn-next, .actions .primary#btn-finish { flex: 0 0 auto; } }
 
 /* buttons */
-.primary { background: var(--accent); color: var(--accent-ink); font-weight: 700; padding: 10px 18px; border-radius: 999px; box-shadow: 0 6px 18px rgba(242,181,68,.25); transition: transform .08s ease; }
-.primary:hover { transform: translateY(-1px); } .primary:active { transform: translateY(0); }
-.primary.big { font-size: 18px; padding: 14px 26px; }
-.ghost { border: 1px solid var(--line); color: var(--ink2); padding: 8px 14px; border-radius: 999px; font-weight: 500; }
-.ghost:hover { color: var(--ink); border-color: var(--ink3); }
+/* One button style everywhere (same corners as the chord buttons); .primary is the gold call to action. */
+.primary, .ghost, .tool, .listen button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 42px; padding: 0 16px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px; color: var(--ink);
+  font-size: 14px; font-weight: 600; white-space: nowrap; transition: transform .06s, background .12s, border-color .12s;
+}
+.primary:hover:not(:disabled), .ghost:hover:not(:disabled), .tool:hover, .listen button:hover:not(:disabled) { background: var(--panel2); transform: translateY(-1px); }
+.primary:active, .ghost:active, .tool:active, .listen button:active { transform: translateY(1px); }
+.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.primary:hover:not(:disabled) { background: var(--accent); filter: brightness(1.05); }
+.primary.big { min-height: 52px; font-size: 18px; padding: 0 26px; }
 .ghost.danger { color: var(--bad); }
 .link { color: var(--accent); padding: 0; font-weight: 500; }
 .chipbtn { font-size: 12px; font-weight: 600; color: var(--accent); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
@@ -97,7 +103,8 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .timer .bar { height: 100%; background: var(--accent); transition: width 1s linear; }
 .qhead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .qn { font-family: var(--display); font-size: 22px; font-weight: 600; margin-right: 4px; }
-.badge { font-size: 12px; font-weight: 600; border-radius: 999px; padding: 4px 10px; background: var(--panel); border: 1px solid var(--line); color: var(--ink2); }
+.badge { font-size: 14px; font-weight: 500; color: var(--ink2); }
+.badge + .badge::before { content: '·'; margin: 0 8px 0 0; color: var(--ink3); }
 .badge.key { color: var(--ink); }
 .src { font-size: 12px; color: var(--ink3); } .src.spotify { color: var(--live); } .src.synth { color: var(--accent); }
 
@@ -130,6 +137,9 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .pal:active { transform: translateY(1px); }
 .prow.borrowed .pal { font-size: 17px; color: var(--ink2); padding: 9px 8px; min-width: 48px; }
 .actions { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.listen { display: flex; gap: 8px; }
+@media (max-width: 520px) { .listen { flex: 1 0 100%; } .listen button { flex: 1; padding: 0 8px; } }
+.hintline { margin-top: 8px; font-size: 13px; }
 .actions.center { justify-content: center; margin-top: 24px; }
 
 /* reveal */
@@ -152,8 +162,6 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .about .k { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin-bottom: 4px; }
 .about p { margin: 0; font-size: 15px; color: var(--ink); line-height: 1.5; }
 .tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.tool { border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 7px 12px; font-size: 13px; font-weight: 600; color: var(--ink2); }
-.tool:hover { color: var(--ink); border-color: var(--accent); }
 .song { display: flex; gap: 14px; align-items: center; margin-top: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; }
 .song .art { width: 72px; height: 72px; border-radius: 8px; object-fit: cover; flex: none; }
 .song .t { font-weight: 700; font-size: 17px; } .song .a { color: var(--ink2); font-size: 14px; }
@@ -181,7 +189,7 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .sheet select { font: inherit; background: var(--panel2); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; }
 .sp { padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .sp p { width: 100%; margin: 4px 0 0; }
-.ghost.small { padding: 5px 10px; font-size: 13px; }
+.ghost.small { min-height: 34px; padding: 0 12px; font-size: 13px; }
 .devices { width: 100%; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 4px; }
 
 /* toast + confetti */

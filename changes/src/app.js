@@ -250,6 +250,7 @@ function clearSlot() {
   q.slots[i].rn = null; q.slots[i].bass = 'root'; q.active = i;
   renderAnswer();
 }
+
 // Bass hint: mark the slots where the bass is not on the root (counts as a hint, like the band).
 function bassHint() {
   if (!q || q.answered) return;
@@ -388,7 +389,6 @@ function renderQuestion() {
       <span class="qn">Q${session.asked + (q.answered || q.retry ? 0 : 1)}${q.retry ? ' <span class="muted small">again</span>' : ''}</span>
       <span class="badge level" title="This question’s level">L${q.song.level} · ${h(lvl.name)}</span>
       ${state.settings.showKey || q.answered ? `<span class="badge key">Key of ${h(keyDisplay(q.key))}</span>` : `<span class="badge key muted">Key hidden</span>`}
-      <button class="chipbtn" id="btn-key" title="Play a cadence in this key">♪ hear the key</button>
       <span class="grow"></span>
       <span class="src ${playback.source}">${playback.source === 'spotify' ? '● live recording' : playback.source === 'synth' ? '● band' : ''}</span>
     </div>
@@ -403,7 +403,6 @@ function renderQuestion() {
   bindCommon();
   $('#btn-play').onclick = togglePlay;
   $('#pbar').onclick = (e) => { const r = e.currentTarget.getBoundingClientRect(); seekTo((e.clientX - r.left) / r.width); };
-  $('#btn-key').onclick = () => { band.ensure(); band.playKey(q.key); spotify.pause(); playback.playing = false; renderPlayButton(); };
   renderAnswer();
   renderReveal();
 }
@@ -424,6 +423,21 @@ function label(rn) {
   return rn;
 }
 
+// Listening buttons shown in the action row before and after the reveal.
+function listenButtons() {
+  return `<div class="listen" role="group" aria-label="Listen">
+    <button data-listen="key" title="Play a cadence in this key">Hear the key</button>
+    <button data-listen="bass" title="The bass line alone on the synth band">Bass line</button>
+  </div>`;
+}
+function bindListen(el) {
+  $$('[data-listen]', el).forEach(b => b.onclick = () => {
+    const t = b.dataset.listen;
+    if (t === 'key') { band.ensure(); band.playKey(q.key); spotify.pause(); playback.playing = false; renderPlayButton(); }
+    if (t === 'bass') playSynth({ loops: 1, chordsOn: false });
+  });
+}
+
 function renderAnswer() {
   const el = $('#answer'); if (!el || !q) return;
   if (q.answered) { el.innerHTML = ''; return; }
@@ -441,18 +455,18 @@ function renderAnswer() {
     <div class="slots">${slots}</div>
     <div class="palette">${rows}</div>
     <div class="actions">
-      ${q.song.level >= 4 ? `<button class="ghost" id="btn-bhint" title="Show which chords have the bass off the root (counts as a hint, B)" ${q.bassHint ? 'disabled' : ''}>bass hint</button>` : ''}
+      ${listenButtons()}
       <span class="grow"></span>
-      <button class="ghost" id="btn-skip" title="Different song (not scored, S)">skip</button>
-      <button class="ghost" id="btn-giveup">show me</button>
-      <button class="primary" id="btn-check" ${complete ? '' : 'disabled'}>Check</button>
-    </div>`;
+      <button class="ghost" id="btn-skip" title="Different song (not scored, S)">Skip</button>
+      <button class="primary" id="btn-check" title="${complete ? 'Grade your answer (Enter)' : 'Reveal the answer; blank slots count as misses (Enter)'}">Check</button>
+    </div>
+    ${q.song.level >= 4 ? `<div class="hintline">${q.bassHint ? '<span class="muted">bass hint shown</span>' : '<button class="link" id="btn-bhint" title="Mark the chords whose bass is off the root (counts as a hint, B)">bass hint</button>'}</div>` : ''}`;
   $$('.pal', el).forEach(b => b.onclick = () => setSlot(b.dataset.rn));
   $$('.slot', el).forEach(s => s.onclick = () => { q.active = +s.dataset.i; renderAnswer(); });
   const bh = $('#btn-bhint'); if (bh) bh.onclick = bassHint;
-  $('#btn-check').onclick = grade;
-  $('#btn-giveup').onclick = giveUp;
+  $('#btn-check').onclick = giveUp;   // fills any blank slots as misses, then grades
   $('#btn-skip').onclick = skipQuestion;
+  bindListen(el);
 }
 
 // Accept a relative major/minor over the same bass note: a first-inversion major chord (V/3, I/3, IV/3) heard as
@@ -531,11 +545,10 @@ function renderReveal() {
     ${song.note ? `<p class="note">${h(song.note)}</p>` : ''}
     ${(() => { const ex = explain(q.chords, q.key); return `<div class="about"><div class="k">About ${h(ex.name)}</div><p>${h(ex.text)}</p></div>`; })()}
     <div class="tools">
-      <button class="tool" data-tool="band">▶ band</button>
-      <button class="tool" data-tool="bass">▶ bass only</button>
-      ${inv ? `<button class="tool" data-tool="root">▶ bass on roots</button><button class="tool" data-tool="written">▶ bass as written</button>` : ''}
-      ${guessChords && !r.ok ? `<button class="tool" data-tool="guess">▶ your guess</button>` : ''}
-      <button class="tool" data-tool="record">▶ recording</button>
+      <button class="tool" data-tool="band">▶ Band</button>
+      ${inv ? `<button class="tool" data-tool="root">▶ Bass on roots</button><button class="tool" data-tool="written">▶ Bass as written</button>` : ''}
+      ${guessChords && !r.ok ? `<button class="tool" data-tool="guess">▶ Your guess</button>` : ''}
+      <button class="tool" data-tool="record">▶ Recording</button>
     </div>
     <div class="song">
       ${art}
@@ -550,10 +563,11 @@ function renderReveal() {
       </div>
     </div>
     <div class="actions">
+      ${listenButtons()}
       <span class="muted">${secsLeft > 0 ? `${Math.ceil(secsLeft / 60)} min left` : 'time’s up'}</span>
       <span class="grow"></span>
       <button class="ghost" id="btn-retry-q" title="Same song, blank slots (R)">↺ Try again</button>
-      ${secsLeft > 0 ? `<button class="primary" id="btn-next">Next ›</button>` : `<button class="ghost" id="btn-next">one more</button><button class="primary" id="btn-finish">Finish</button>`}
+      ${secsLeft > 0 ? `<button class="primary" id="btn-next">Next ›</button>` : `<button class="ghost" id="btn-next">One more</button><button class="primary" id="btn-finish">Finish</button>`}
     </div>`;
   $$('.tool', el).forEach(b => b.onclick = () => {
     const t = b.dataset.tool;
@@ -564,6 +578,7 @@ function renderReveal() {
     if (t === 'guess') playSynth({ loops: 1, chords: guessChords });
     if (t === 'record') playQuestion();
   });
+  bindListen(el);
   $$('[data-nudge]', el).forEach(b => b.onclick = () => { state.offsets[song.id] = (state.offsets[song.id] || 0) + (+b.dataset.nudge); save(); renderReveal(); playQuestion(); });
   const next = $('#btn-next'); if (next) next.onclick = nextQuestion;
   $('#btn-retry-q').onclick = retryQuestion;
@@ -624,7 +639,7 @@ function openSettings() {
       <div>Spotify: ${spotify.loggedIn ? (spotify.status === 'ready' ? 'connected' : spotify.status === 'error' ? 'error — ' + h(spotify.error || '') : 'logged in') : 'not connected'}</div>
       ${spotify.loggedIn ? `<button class="ghost" id="s-logout">Disconnect</button>` : `<button class="ghost" id="s-login">Connect Spotify</button>`}
       <p class="muted small">Playback needs Spotify Premium. Redirect URI for this page: <code>${h(CONFIG.redirectUri)}</code></p>
-      ${spotify.loggedIn ? `<div class="devices" id="s-devices"><span class="muted small">Play on: ${spotify.mode === 'sdk' ? 'this browser' : h(spotify.deviceName || '—')}</span> <button class="ghost small" id="s-devs">choose device…</button></div>` : ''}
+      ${spotify.loggedIn ? `<div class="devices" id="s-devices"><span class="muted small">Play on: ${spotify.mode === 'sdk' ? 'this browser' : h(spotify.deviceName || '—')}</span> <button class="ghost small" id="s-devs">Choose device…</button></div>` : ''}
     </div>
     <div class="sp">
       <button class="ghost" id="s-export">Export progress</button>
@@ -645,8 +660,8 @@ function openSettings() {
     dv.textContent = 'looking…';
     const devs = await spotify.listDevices();
     const box = $('#s-devices', m);
-    if (!devs.length) { box.innerHTML = `<span class="muted small">No Spotify devices found. Open the Spotify app on your phone, press play on anything, then try again.</span> <button class="ghost small" id="s-devs">retry</button>`; $('#s-devs', m).onclick = dv.onclick; return; }
-    box.innerHTML = `<span class="muted small">Play on:</span> ` + devs.map(d => `<button class="ghost small devopt" data-id="${h(d.id)}">${h(d.name)}${d.is_active ? ' ●' : ''}</button>`).join(' ') + (Spotify.sdkSupported() ? ` <button class="ghost small" id="s-dev-sdk">this browser</button>` : '');
+    if (!devs.length) { box.innerHTML = `<span class="muted small">No Spotify devices found. Open the Spotify app on your phone, press play on anything, then try again.</span> <button class="ghost small" id="s-devs">Retry</button>`; $('#s-devs', m).onclick = dv.onclick; return; }
+    box.innerHTML = `<span class="muted small">Play on:</span> ` + devs.map(d => `<button class="ghost small devopt" data-id="${h(d.id)}">${h(d.name)}${d.is_active ? ' ●' : ''}</button>`).join(' ') + (Spotify.sdkSupported() ? ` <button class="ghost small" id="s-dev-sdk">This browser</button>` : '');
     $$('.devopt', box).forEach(b => b.onclick = async () => { await spotify.useDevice(b.dataset.id); toast(`Playing on ${spotify.deviceName}`); close(); render(); });
     const sdkb = $('#s-dev-sdk', box); if (sdkb) sdkb.onclick = async () => { try { localStorage.removeItem('ct.spotify.device'); } catch {} spotify.ready = false; spotify.mode = null; spotify.status = 'idle'; await spotify.connect(); close(); render(); };
   };
@@ -694,7 +709,7 @@ document.addEventListener('keydown', (e) => {
   const pal = paletteFor()[0];
   if (/^[1-7]$/.test(e.key) && pal[+e.key - 1]) { setSlot(pal[+e.key - 1]); return; }
   if (e.key === 'Backspace') { e.preventDefault(); clearSlot(); return; }
-  if (e.key === 'Enter') { e.preventDefault(); if (q.slots.every(s => s.rn)) grade(); return; }
+  if (e.key === 'Enter') { e.preventDefault(); giveUp(); return; }
   if (e.key === 'b' || e.key === 'B') { bassHint(); }
   if (e.key === 's' || e.key === 'S') { skipQuestion(); }
 });
