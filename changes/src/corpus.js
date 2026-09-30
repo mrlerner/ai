@@ -18849,40 +18849,36 @@ export const SONGS = [
   "title": "City Club",
   "artist": "The Growlers",
   "year": 2016,
-  "key": "G",
+  "key": "B minor",
   "tempo": 100,
   "section": "chorus",
-  "start": 12,
+  "start": 70,
   "dur": 24,
-  "level": 5,
+  "level": 3,
   "chords": [
    {
-    "rn": "I",
+    "rn": "VI",
+    "beats": 2
+   },
+   {
+    "rn": "VII",
+    "beats": 2
+   },
+   {
+    "rn": "III",
     "beats": 4
    },
    {
-    "rn": "II",
-    "beats": 4
+    "rn": "VII",
+    "beats": 2
    },
    {
-    "rn": "V",
-    "beats": 4
-   },
-   {
-    "rn": "II",
-    "beats": 4
-   },
-   {
-    "rn": "I",
-    "beats": 4
-   },
-   {
-    "rn": "II",
-    "beats": 4
+    "rn": "VI",
+    "beats": 6
    }
   ],
   "src": "ug",
-  "note": "Chorus (community chart): G, A, D, A, G, A. Bass line: G, A, D, A, G, A.",
+  "note": "Chorus (community charts + bass tab): G, A, D, A, G in B minor. The verse is a Bm vamp; the chorus lifts to the relative major, D, without ever cadencing on it.",
   "spotify": "spotify:track:6Ig2iLUX11ZNpI7EBCZqyt",
   "art": "https://i.scdn.co/image/ab67616d00001e02bb09cba8a0ce270c134a59e9",
   "ug": "https://tabs.ultimate-guitar.com/tab/the-growlers/city-club-chords-1870862"
