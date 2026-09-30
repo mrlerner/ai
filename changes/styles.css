@@ -104,7 +104,9 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .player { display: grid; grid-template-columns: 64px 1fr; grid-template-rows: auto auto; gap: 6px 14px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); }
 .playbtn { grid-row: 1 / span 2; width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 22px; box-shadow: 0 8px 22px rgba(242,181,68,.3); transition: transform .08s; }
 .playbtn:hover { transform: scale(1.04); }
-.pbar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.pbar { padding: 10px 0; margin: -10px 0; cursor: pointer; }
+.ptrack { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; transition: height .1s; }
+.pbar:hover .ptrack { height: 8px; }
 .pfill { height: 100%; background: linear-gradient(90deg, var(--accent), #ffd98a); transition: width .25s linear; }
 .pmeta { font-size: 14px; color: var(--ink2); }
 

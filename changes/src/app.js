@@ -119,7 +119,7 @@ function stopAll() {
   renderPlayButton();
 }
 
-async function playQuestion() {
+async function playQuestion(frac = 0) {
   if (!q) return;
   band.stop();
   const song = q.song;
@@ -129,7 +129,7 @@ async function playQuestion() {
     try {
       playback.source = 'spotify'; playback.playing = true; renderPlayButton();
       await spotify.playSection(song.spotify, start * 1000, (start + dur) * 1000, {
-        loop: true,
+        loop: true, fromMs: (start + frac * dur) * 1000,
         onProgress: (pos) => { playback.progress = Math.min(1, Math.max(0, (pos / 1000 - start) / dur)); renderProgress(); },
       });
       return;
@@ -138,25 +138,41 @@ async function playQuestion() {
       toast('Spotify could not play this one, using the band instead.');
     }
   }
-  playSynth({ loops: 2 });
+  playSynth({ loops: 2, frac });
 }
 
+let lastSynthOpts = {};
 function playSynth(opts = {}) {
   if (!q) return;
+  lastSynthOpts = { ...opts, frac: 0 };
   band.ensure();
   spotify.pause();
   playback.source = 'synth'; playback.playing = true; renderPlayButton();
   const tempo = q.song.tempo || 100;
   const hl = opts.highlight !== false && q.answered;
+  // measure the arrangement once, then replay it skipping `frac` of the way in
+  const frac = Math.min(0.999, Math.max(0, opts.frac || 0));
+  let offset = 0;
+  if (frac > 0) { const probe = band.play(opts.chords || q.chords, q.key, { tempo, loops: opts.loops ?? 1, chords: false, bass: false, drums: false }); offset = frac * probe.duration; band.stop(); }
   const handle = band.play(opts.chords || q.chords, q.key, {
-    tempo, loops: opts.loops ?? 1, drums: state.settings.drums && (opts.drums ?? true),
+    tempo, offset, loops: opts.loops ?? 1, drums: state.settings.drums && (opts.drums ?? true),
     chords: opts.chordsOn ?? true, bass: opts.bassOn ?? true, rootPosition: opts.rootPosition ?? false,
     onChord: (i) => { if (hl) highlightChord(i); },
     onEnd: () => { playback.playing = false; renderPlayButton(); highlightChord(-1); },
   });
-  const t0 = performance.now(); const total = handle.duration * 1000;
+  const t0 = performance.now() - offset * 1000; const total = handle.duration * 1000;
+  playback.progress = frac; renderProgress();
   clearInterval(progressTimer);
   progressTimer = setInterval(() => { playback.progress = Math.min(1, (performance.now() - t0) / total); renderProgress(); if (playback.progress >= 1) clearInterval(progressTimer); }, 100);
+}
+
+// Click on the progress bar: jump to that point (and start playing if stopped).
+function seekTo(frac) {
+  if (!q) return;
+  frac = Math.min(0.999, Math.max(0, frac));
+  playback.progress = frac; renderProgress();
+  if (playback.source === 'synth' && (playback.playing || q.answered)) playSynth({ ...lastSynthOpts, frac });
+  else playQuestion(frac);
 }
 
 function highlightChord(i) {
@@ -378,7 +394,7 @@ function renderQuestion() {
     </div>
     <section class="player">
       <button class="playbtn" id="btn-play" aria-label="Play / pause"><span class="ico">${playback.playing ? '❚❚' : '▶'}</span></button>
-      <div class="pbar"><div class="pfill" style="width:${Math.round(playback.progress * 100)}%"></div></div>
+      <div class="pbar" id="pbar" role="slider" aria-label="Seek" title="Click to jump"><div class="ptrack"><div class="pfill" style="width:${Math.round(playback.progress * 100)}%"></div></div></div>
       <div class="pmeta">${q.answered ? `<b>${h(song.title)}</b> · ${h(song.artist)}` : `<span class="muted">${h(song.section || 'section')} · ${song.chords.length} chords · ${Math.round(totalBeats(song) / (song.chords[0].beats % 3 === 0 && song.chords[0].beats % 4 !== 0 ? 3 : 4))} bars</span>`}</div>
     </section>
     <section class="answer" id="answer"></section>
@@ -386,6 +402,7 @@ function renderQuestion() {
   </main>`;
   bindCommon();
   $('#btn-play').onclick = togglePlay;
+  $('#pbar').onclick = (e) => { const r = e.currentTarget.getBoundingClientRect(); seekTo((e.clientX - r.left) / r.width); };
   $('#btn-key').onclick = () => { band.ensure(); band.playKey(q.key); spotify.pause(); playback.playing = false; renderPlayButton(); };
   renderAnswer();
   renderReveal();

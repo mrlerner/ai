@@ -143,7 +143,8 @@ export class Band {
    * Play a progression.
    * chords: [{rn, bass?, beats}], key: parsed key, opts:
    *   tempo (bpm), loops (int), chords (bool), bass (bool), drums (bool),
-   *   rootPosition (bool: ignore slash-chord bass), onChord(index, chordInfo), onEnd()
+   *   rootPosition (bool: ignore slash-chord bass), offset (seconds to skip into the arrangement),
+   *   onChord(index, chordInfo), onEnd()
    */
   play(chords, key, opts = {}) {
     this.stop();
@@ -155,7 +156,10 @@ export class Band {
     const useBass = opts.bass ?? true;
     const useDrums = opts.drums ?? true;
     const infos = chords.map(c => chordInfo(c, key));
-    const t0 = ctx.currentTime + 0.12;
+    const offset = Math.max(0, opts.offset || 0);
+    const now = ctx.currentTime + 0.12;            // earliest time anything may sound
+    const t0 = now - offset;                       // virtual start of the arrangement
+    const due = (time) => time >= now - 1e-6;      // events before `now` were skipped by the seek
     const handle = { stopped: false, timeouts: [] };
     this.playing = handle;
 
@@ -167,6 +171,7 @@ export class Band {
         const dur = beats * beat;
         const v = voiceChord(info, { rootPosition: !!opts.rootPosition });
         const tStart = t;
+        if (tStart + dur <= now) { t += dur; return; }   // entirely before the seek point
         // fire the highlight callback on the audio clock
         if (opts.onChord) {
           const delay = Math.max(0, (tStart - ctx.currentTime) * 1000);
@@ -176,26 +181,36 @@ export class Band {
           // hit on beat 1, a softer re-hit halfway through (beat 3 of a 4-beat chord)
           const hits = beats >= 4 && beats % 3 !== 0 ? [0, beats / 2] : beats === 6 ? [0, 3] : [0];
           hits.forEach((h, hi) => {
-            v.chordMidis.forEach((m, k) => this.epiano(m, tStart + h * beat + k * 0.012, (beats - h) * beat * 0.95, hi === 0 ? 0.32 : 0.2));
+            let th = tStart + h * beat;
+            const next = hits[hi + 1];
+            if (!due(th)) {
+              // a hit already in progress at the seek point: sound it now for its remaining length
+              if (next !== undefined && due(tStart + next * beat)) return;
+              th = now;
+            }
+            const len = tStart + beats * beat - th;
+            if (len <= 0.05) return;
+            v.chordMidis.forEach((m, k) => this.epiano(m, th + k * 0.012, len * 0.95, hi === 0 ? 0.32 : 0.2));
           });
         }
         if (useBass) {
           // root on 1, again on 3 with a passing octave pickup on the "and" of 4
-          this.bass(v.bassMidi, tStart, Math.min(dur, 2 * beat) * 0.95, 0.75);
+          if (due(tStart)) this.bass(v.bassMidi, tStart, Math.min(dur, 2 * beat) * 0.95, 0.75);
           if (beats >= 4) {
-            this.bass(v.bassMidi, tStart + 2 * beat, 1.5 * beat, 0.6);
-            this.bass(v.bassMidi + 12, tStart + 3.5 * beat, 0.45 * beat, 0.35);
+            if (due(tStart + 2 * beat)) this.bass(v.bassMidi, tStart + 2 * beat, 1.5 * beat, 0.6);
+            if (due(tStart + 3.5 * beat)) this.bass(v.bassMidi + 12, tStart + 3.5 * beat, 0.45 * beat, 0.35);
           }
           if (beats >= 8) {
-            this.bass(v.bassMidi, tStart + 4 * beat, 2 * beat * 0.95, 0.7);
-            this.bass(v.bassMidi, tStart + 6 * beat, 1.5 * beat, 0.6);
-            this.bass(v.bassMidi + 12, tStart + 7.5 * beat, 0.45 * beat, 0.35);
+            if (due(tStart + 4 * beat)) this.bass(v.bassMidi, tStart + 4 * beat, 2 * beat * 0.95, 0.7);
+            if (due(tStart + 6 * beat)) this.bass(v.bassMidi, tStart + 6 * beat, 1.5 * beat, 0.6);
+            if (due(tStart + 7.5 * beat)) this.bass(v.bassMidi + 12, tStart + 7.5 * beat, 0.45 * beat, 0.35);
           }
         }
         if (useDrums) {
           const triple = beats % 3 === 0 && beats % 4 !== 0; // 3/4 or 6/8 feel
           for (let b = 0; b < beats; b++) {
             const tb = tStart + b * beat;
+            if (!due(tb)) continue;
             if (triple) {
               if (b % 3 === 0) this.kick(tb, 0.65);
               else this.hat(tb, 0.10);

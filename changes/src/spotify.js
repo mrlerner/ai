@@ -213,12 +213,14 @@ export class Spotify {
   }
 
   // Play a track section [startMs, endMs) and loop it until stop().
-  async playSection(uri, startMs, endMs, { loop = true, onProgress } = {}) {
+  // fromMs starts the first pass partway through the section (a seek); later loops start at startMs.
+  async playSection(uri, startMs, endMs, { loop = true, onProgress, fromMs } = {}) {
     if (!this.ready) throw new Error('player not ready');
     this.stopLoop();
-    if (this.mode === 'connect') return this.playSectionConnect(uri, startMs, endMs, { loop, onProgress });
+    const firstMs = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
+    if (this.mode === 'connect') return this.playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs: firstMs });
     await this.player.activateElement?.();
-    await this.api(`/me/player/play?device_id=${this.deviceId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(startMs)) }) });
+    await this.api(`/me/player/play?device_id=${this.deviceId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(firstMs)) }) });
     const section = { uri, startMs, endMs, loop, onProgress };
     this.section = section;
     this.loop = setInterval(async () => {
@@ -234,13 +236,14 @@ export class Spotify {
 
   // Connect mode: one play command per loop cycle and a local clock for the progress bar. No polling,
   // so it stays far under Spotify's request limits (~3 calls a minute while looping).
-  async playSectionConnect(uri, startMs, endMs, { loop, onProgress }) {
+  async playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs }) {
     const section = { uri, startMs, endMs, loop, onProgress };
     this.section = section;
-    const dur = Math.max(1000, endMs - startMs);
+    let nextFrom = fromMs ?? startMs;
     const cycle = async () => {
+      const from = nextFrom; nextFrom = startMs;
       try {
-        await this.api(`/me/player/play?device_id=${this.deviceId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(startMs)) }) });
+        await this.api(`/me/player/play?device_id=${this.deviceId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
       } catch (e) {
         if (e.status === 404) { this.ready = false; this.status = 'error'; this.error = 'That Spotify device went away. Open Spotify, then tap retry.'; this.onStatus(); }
         throw e;
@@ -248,7 +251,7 @@ export class Spotify {
       const t0 = Date.now();
       this.stopLoop();
       this.loop = setInterval(async () => {
-        const pos = startMs + (Date.now() - t0);
+        const pos = from + (Date.now() - t0);
         onProgress && onProgress(pos, section);
         if (pos >= endMs) {
           if (loop) { cycle().catch(() => this.stopLoop()); }
