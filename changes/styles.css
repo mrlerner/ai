@@ -83,6 +83,7 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 
 /* home */
 .home .hero { text-align: center; padding: 40px 0 20px; }
+.home .hero h1 { margin-bottom: 24px; }
 .home h1 { font-family: var(--display); font-weight: 600; font-size: clamp(40px, 8vw, 64px); line-height: 1; letter-spacing: -.02em; margin: 0 0 12px; font-variation-settings: 'SOFT' 60, 'opsz' 144; }
 .lede { color: var(--ink2); font-size: 17px; margin: 0 auto 22px; max-width: 46ch; }
 .status { margin-top: 16px; font-size: 14px; color: var(--ink2); }
@@ -94,9 +95,6 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .stat .v.small { font-size: 24px; }
 .stat .of { font-size: 20px; color: var(--ink3); }
 .stat .s { font-size: 13px; color: var(--ink2); }
-.how { margin-top: 24px; }
-.how h2 { font-family: var(--display); font-weight: 600; font-size: 22px; margin: 0 0 6px; }
-.how ol { padding-left: 20px; color: var(--ink2); margin: 0; } .how li { margin: 6px 0; } .how b { color: var(--ink); }
 
 /* play */
 .timer { height: 3px; background: var(--line); border-radius: 2px; margin: 6px 0 14px; overflow: hidden; }

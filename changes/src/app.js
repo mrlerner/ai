@@ -350,7 +350,6 @@ function renderHome() {
   <main class="home">
     <section class="hero">
       <h1>Hear the changes.</h1>
-      <p class="lede">A real song plays. You name the chords. ${state.settings.minutes} minutes, then go play guitar.</p>
       <button class="primary big" id="btn-start">Start today’s session</button>
       <p class="status">${spotifyLine()}</p>
     </section>
@@ -358,14 +357,6 @@ function renderHome() {
       <div class="card stat"><div class="k">This week</div><div class="v">${n}<span class="of">/${goal}</span></div><div class="s">${n >= goal ? 'Goal met. Nice.' : `${goal - n} more to hit your goal`}</div></div>
       <div class="card stat"><div class="k">Level ${state.level}</div><div class="v small">${h(lvl.name)}</div><div class="s">${h(lvl.blurb)}</div></div>
       <div class="card stat"><div class="k">All time</div><div class="v">${acc === null ? '—' : acc + '%'}</div><div class="s">${totalAsked} progressions · ${state.misses.length} to revisit</div></div>
-    </section>
-    <section class="how">
-      <h2>How it works</h2>
-      <ol>
-        <li><b>Listen.</b> A section of a real song loops. The key is shown; tap <i>hear the key</i> for a cadence.</li>
-        <li><b>Name the chords</b> as Roman numerals (I, IV, V, vi…). You never have to name the bass note; from level 4 a <i>bass hint</i> shows which chords have the bass off the root, and the reveal explains it.</li>
-        <li><b>Check.</b> Then use the band to hear the bass alone, or hear your guess against the real thing.</li>
-      </ol>
     </section>
   </main>`;
   bindCommon();
