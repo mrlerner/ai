@@ -29,11 +29,32 @@ export class Spotify {
     this.onStatus = () => {};
     this.loop = null;
     this.premium = null;
-    this.device = null;      // the device the last play command went to
+    this.device = null;      // the device the last play command went to (Connect mode)
+    this.player = null;      // Web Playback SDK player (computers)
+    this.sdkId = null;       // its device id
     this.chain = Promise.resolve();   // play/pause commands run one at a time, in order
     this.log = [];                    // last Spotify calls, for the diagnostics panel
   }
 
+
+  // On computers the page itself is the Spotify player (Web Playback SDK), as it was originally. The SDK does
+  // not run on iOS/iPadOS, so phones send commands to the Spotify app instead (Connect).
+  static sdkSupported() {
+    const ua = navigator.userAgent || '';
+    const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    return !ios && typeof window.MediaSource !== 'undefined';
+  }
+
+  loadSdk() {
+    if (window.Spotify) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      window.onSpotifyWebPlaybackSDKReady = () => resolve();
+      const s = document.createElement('script');
+      s.src = 'https://sdk.scdn.co/spotify-player.js'; s.async = true;
+      s.onerror = () => reject(new Error('Could not load the Spotify player script.'));
+      document.head.appendChild(s);
+    });
+  }
 
   // ---- auth -----------------------------------------------------------------
 
@@ -55,7 +76,7 @@ export class Spotify {
     location.assign(`${AUTH}?${p}`);
   }
 
-  logout() { this.token = null; this.stopLoop(); this.ready = false; this.status = 'idle'; this.onStatus(); }
+  logout() { this.token = null; this.stopLoop(); try { this.player?.disconnect(); } catch { /* ignore */ } this.player = null; this.ready = false; this.status = 'idle'; this.onStatus(); }
 
   // Call on page load: completes the redirect if ?code= is present. Returns true if it handled one.
   async handleRedirect() {
@@ -117,7 +138,7 @@ export class Spotify {
     const last = this.lastDevice;
     return [
       `page: ${location.href}`, `ua: ${navigator.userAgent}`, `status: ${this.status}${this.error ? ' (' + this.error + ')' : ''}`,
-      `premium: ${this.premium}`, `last device: ${last ? last.name : 'none'}`, `devices now:\n  ${devs}`, '', 'recent calls:', ...this.log,
+      `premium: ${this.premium}`, `player: ${this.player ? 'this browser (SDK)' : 'Spotify Connect'}`, `last device: ${last ? last.name : 'none'}`, `devices now:\n  ${devs}`, '', 'recent calls:', ...this.log,
     ].join('\n');
   }
 
@@ -142,11 +163,34 @@ export class Spotify {
       const me = await this.me();
       this.premium = me.product === 'premium';
       if (!this.premium) { this.status = 'error'; this.error = 'Spotify playback needs a Premium account. The synth band will play instead.'; this.onStatus(); return false; }
+      if (Spotify.sdkSupported()) await this.startSdk();   // falls back to Connect if it cannot start
       this.ready = true; this.status = 'ready'; this.error = null; this.onStatus();
       return true;
     } catch (e) {
       this.status = 'error'; this.error = 'Could not reach Spotify.'; this.onStatus();
       return false;
+    }
+  }
+
+  async startSdk() {
+    try {
+      await this.loadSdk();
+      const player = new window.Spotify.Player({ name: 'Chord Ear Trainer', getOAuthToken: cb => this.accessToken().then(cb), volume: 0.9 });
+      const ready = new Promise((resolve, reject) => {
+        player.addListener('ready', ({ device_id }) => { this.sdkId = device_id; resolve(); });
+        player.addListener('not_ready', () => { this.note('sdk not_ready'); });
+        player.addListener('initialization_error', ({ message }) => reject(new Error(message)));
+        player.addListener('authentication_error', ({ message }) => reject(new Error(message)));
+        player.addListener('account_error', ({ message }) => reject(new Error(message)));
+        player.addListener('playback_error', ({ message }) => { this.note('sdk playback_error ' + message); });
+        setTimeout(() => reject(new Error('Spotify player timed out')), 15000);
+      });
+      if (!(await player.connect())) throw new Error('player.connect() failed');
+      await ready;
+      this.player = player; this.note('sdk ready');
+    } catch (e) {
+      this.note('sdk failed: ' + e.message + ' (using Spotify Connect)');
+      this.player = null; this.sdkId = null;
     }
   }
 
@@ -179,6 +223,7 @@ export class Spotify {
     this.stopLoop();
     const section = { uri, startMs, endMs, loop, onProgress };
     this.section = section;
+    if (this.player) return this.playSectionSdk(section, fromMs);
     const live = () => this.section === section;   // false once another section or a pause has replaced this one
     let nextFrom = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
     const cycle = () => this.serial(async () => {
@@ -209,12 +254,30 @@ export class Spotify {
     await cycle();
   }
 
+  // In-page player: start the track here, then follow the SDK's own clock and seek back at the section end.
+  async playSectionSdk(section, fromMs) {
+    const { uri, startMs, endMs, loop, onProgress } = section;
+    const firstMs = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
+    await this.player.activateElement?.();
+    await this.serial(() => this.api(`/me/player/play?device_id=${this.sdkId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(firstMs)) }) }));
+    if (this.section !== section) return;
+    this.loop = setInterval(async () => {
+      const st = await this.player.getCurrentState();
+      if (!st || st.paused) return;
+      onProgress && onProgress(st.position, section);
+      if (st.position >= endMs - 150) {
+        if (loop) await this.player.seek(startMs); else { await this.player.pause(); this.stopLoop(); }
+      }
+    }, 250);
+  }
+
   stopLoop() { if (this.loop) { clearInterval(this.loop); this.loop = null; } }
 
   async pause() {
     this.stopLoop();
     const had = this.section; this.section = null;
     if (!had) return;                     // nothing of ours is playing
+    if (this.player) { try { await this.player.pause(); } catch { /* not playing */ } return; }
     return this.serial(async () => {
       const dev = this.device; if (!dev) return;
       try { await this.api('/me/player/pause?device_id=' + encodeURIComponent(dev.id), { method: 'PUT' }); } catch { /* already paused or gone */ }

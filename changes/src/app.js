@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790815581';
-import { SONGS, LEVELS } from './corpus.js?v=1790815581';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790815581';
-import { Band } from './audio.js?v=1790815581';
-import { Spotify } from './spotify.js?v=1790815581';
-import { explain } from './progressions.js?v=1790815581';
+import { CONFIG } from './config.js?v=1790818572';
+import { SONGS, LEVELS } from './corpus.js?v=1790818572';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790818572';
+import { Band } from './audio.js?v=1790818572';
+import { Spotify } from './spotify.js?v=1790818572';
+import { explain } from './progressions.js?v=1790818572';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -624,7 +624,7 @@ function openSettings() {
       <div>Spotify: ${spotify.loggedIn ? (spotify.status === 'ready' ? 'connected' : spotify.status === 'error' ? 'error — ' + h(spotify.error || '') : 'logged in') : 'not connected'}</div>
       ${spotify.loggedIn ? `<button class="ghost" id="s-logout">Disconnect</button>` : `<button class="ghost" id="s-login">Connect Spotify</button>`}
       <p class="muted small">Playback needs Spotify Premium. Redirect URI for this page: <code>${h(CONFIG.redirectUri)}</code></p>
-      ${spotify.loggedIn ? `<p class="muted small">Plays wherever Spotify is playing. To change that, pick a device in the Spotify app.</p>
+      ${spotify.loggedIn ? `<p class="muted small">${spotify.player ? 'Plays in this browser.' : 'Plays wherever Spotify is playing. To change that, pick a device in the Spotify app.'}</p>
       <details class="diag"><summary class="muted small">Diagnostics</summary><pre id="s-diag">loading…</pre><button class="ghost small" id="s-diag-copy">Copy</button></details>` : ''}
     </div>
     <div class="sp">
