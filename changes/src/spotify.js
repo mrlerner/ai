@@ -126,7 +126,31 @@ export class Spotify {
     });
   }
 
-  get preferredDevice() { try { return localStorage.getItem('ct.spotify.device'); } catch { return null; } }
+  // The device the user picked (or the phone we picked for them), stored as {id, name, type}.
+  // Older versions stored a bare id string.
+  get preferredDevice() {
+    let raw = null; try { raw = localStorage.getItem('ct.spotify.device'); } catch { return null; }
+    if (!raw) return null;
+    try { const o = JSON.parse(raw); if (o && o.id) return o; } catch { /* bare id */ }
+    return { id: raw, name: null, type: null };
+  }
+  savePreferred(dev) { try { localStorage.setItem('ct.spotify.device', JSON.stringify({ id: dev.id, name: dev.name, type: dev.type })); } catch { /* ignore */ } }
+  static onPhone() { return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); }
+
+  // Pick the device to play on. Never fall back to a speaker or TV on our own: those are always online, so a
+  // fallback would send the music to another room whenever the phone's Spotify app is briefly missing.
+  pickDevice(devs) {
+    const pref = this.preferredDevice;
+    if (pref) {
+      // Spotify device ids can change (app reinstall, restart), so fall back to the same name.
+      return devs.find(d => d.id === pref.id) || (pref.name && devs.find(d => d.name === pref.name && (!pref.type || d.type === pref.type))) || null;
+    }
+    const phones = devs.filter(d => d.type === 'Smartphone' || d.type === 'Tablet');
+    const phone = phones.find(d => d.is_active) || phones[0];
+    if (phone) return phone;
+    if (Spotify.onPhone()) return null;               // on a phone, only ever play on a phone
+    return devs.find(d => d.is_active && d.type === 'Computer') || devs.find(d => d.type === 'Computer') || null;
+  }
 
   async connect() {
     if (this.ready) return true;
@@ -184,14 +208,17 @@ export class Spotify {
 
   async connectDevice(reason) {
     const devs = await this.listDevices();
-    const preferred = this.preferredDevice;
-    const dev = devs.find(d => d.id === preferred) || devs.find(d => d.is_active) || devs.find(d => d.type === 'Smartphone') || devs[0];
-    if (preferred && dev && dev.id !== preferred) console.warn('preferred Spotify device not available; using', dev.name);
+    const pref = this.preferredDevice;
+    const dev = this.pickDevice(devs);
     if (!dev) {
       this.status = 'error'; this.mode = 'connect'; this.ready = false;
-      this.error = 'Open the Spotify app on this phone (or any device), press play once, then tap retry.';
+      this.error = pref?.name
+        ? `Can't find ${pref.name} in Spotify. Open the Spotify app on it, then tap retry.`
+        : 'Open the Spotify app on this phone, press play once, then tap retry.';
       this.onStatus(); return false;
     }
+    // remember the phone we found (and refresh a stale id), so a speaker never takes over later
+    if (!pref || pref.id !== dev.id) { if (pref || Spotify.onPhone()) this.savePreferred(dev); }
     this.deviceId = dev.id; this.deviceName = dev.name; this.mode = 'connect';
     this.ready = true; this.status = 'ready'; this.error = null; this.onStatus();
     return true;
@@ -199,7 +226,7 @@ export class Spotify {
 
   async useDevice(id) {
     const dev = this.devices.find(d => d.id === id); if (!dev) return false;
-    try { localStorage.setItem('ct.spotify.device', id); } catch { /* ignore */ }
+    this.savePreferred(dev);
     const p = this.player; this.player = null;            // drop the in-page player first so its events are ignored
     try { p && p.disconnect(); } catch { /* ignore */ }
     this.stopLoop();
@@ -240,13 +267,18 @@ export class Spotify {
     const section = { uri, startMs, endMs, loop, onProgress };
     this.section = section;
     let nextFrom = fromMs ?? startMs;
+    const play = (from) => this.api(`/me/player/play?device_id=${this.deviceId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
     const cycle = async () => {
       const from = nextFrom; nextFrom = startMs;
       try {
-        await this.api(`/me/player/play?device_id=${this.deviceId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
+        await play(from);
       } catch (e) {
-        if (e.status === 404) { this.ready = false; this.status = 'error'; this.error = 'That Spotify device went away. Open Spotify, then tap retry.'; this.onStatus(); }
-        throw e;
+        if (e.status !== 404) throw e;
+        // the device id went stale (the phone's Spotify app restarted): find the same device again, never another one
+        const dev = this.pickDevice(await this.listDevices());
+        if (!dev) { this.ready = false; this.status = 'error'; this.error = `Can't find ${this.deviceName || 'your device'} in Spotify. Open the Spotify app on it, then tap retry.`; this.onStatus(); throw e; }
+        this.deviceId = dev.id; this.deviceName = dev.name; this.savePreferred(dev);
+        await play(from);
       }
       const t0 = Date.now();
       this.stopLoop();
