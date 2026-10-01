@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790814586';
-import { SONGS, LEVELS } from './corpus.js?v=1790814586';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790814586';
-import { Band } from './audio.js?v=1790814586';
-import { Spotify } from './spotify.js?v=1790814586';
-import { explain } from './progressions.js?v=1790814586';
+import { CONFIG } from './config.js?v=1790815004';
+import { SONGS, LEVELS } from './corpus.js?v=1790815004';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790815004';
+import { Band } from './audio.js?v=1790815004';
+import { Spotify } from './spotify.js?v=1790815004';
+import { explain } from './progressions.js?v=1790815004';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -45,9 +45,10 @@ const hasInversions = (song) => song.chords.some(c => c.bass && c.bass !== 'root
 const totalBeats = (song) => song.chords.reduce((n, c) => n + (c.beats || 4), 0);
 const barsLabel = (beats) => beats % 4 === 0 ? `${beats / 4} bar${beats > 4 ? 's' : ''}` : beats % 3 === 0 ? `${beats / 3} bar${beats > 3 ? 's' : ''} (3/4)` : beats === 2 ? '½ bar' : `${beats} beats`;
 
-function toast(msg, ms = 2600) {
+function toast(msg, ms = 2600, { html = false } = {}) {
   let t = $('#toast'); if (!t) { t = document.createElement('div'); t.id = 'toast'; document.body.appendChild(t); }
-  t.textContent = msg; t.classList.add('show');
+  if (html) t.innerHTML = msg; else t.textContent = msg;
+  t.classList.toggle('tap', html); t.classList.add('show');
   clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), ms);
 }
 
@@ -136,10 +137,10 @@ async function playQuestion(frac = 0) {
       return;
     } catch (e) {
       if (e.noDevice || e.status === 404) {
-        // The phone's Spotify app is asleep, so Spotify can't be reached from here. Open it at this song.
+        // Spotify can't reach any device (on iPhone, the Spotify app has been put to sleep). Only the user can wake it.
         playback.playing = false; renderPlayButton();
-        if (Spotify.onIOS()) { toast('Opening Spotify. Press play there, then come back.', 4000); location.href = song.spotify; return; }
-        toast(spotify.error, 5000); playSynth({ loops: 2, frac }); return;
+        toast(`${h(spotify.error)} <a href="${h(song.spotify)}">Open Spotify ›</a>`, 8000, { html: true });
+        return;
       }
       console.warn('spotify play failed, falling back to synth', e);
       toast('Spotify could not play this one, using the band instead.', 5000);
