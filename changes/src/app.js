@@ -336,7 +336,7 @@ function header() {
 }
 
 function spotifyLine() {
-  if (spotify.status === 'ready') return `<span class="ok">● Spotify connected${spotify.mode === 'connect' ? ` · playing on ${h(spotify.deviceName || 'a device')}` : ''}</span>`;
+  if (spotify.status === 'ready') return `<span class="ok">● Spotify connected</span>`;
   if (spotify.status === 'connecting') return `<span class="muted">○ Connecting to Spotify…</span>`;
   if (spotify.loggedIn && spotify.status === 'error') return `<span class="warn">△ ${h(spotify.error || 'Spotify unavailable')}</span> <button class="link" id="btn-retry">retry</button>`;
   return `<button class="link" id="btn-login">Connect Spotify</button> <span class="muted">to hear the real recordings (Premium)</span>`;
