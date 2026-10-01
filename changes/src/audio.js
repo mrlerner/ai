@@ -2,7 +2,7 @@
 // Used to establish the key, to replay a progression with the bass isolated,
 // and to A/B a guess against the truth. Everything is scheduled on the audio clock.
 
-import { chordInfo, voiceChord, midiToFreq } from './theory.js';
+import { chordInfo, voiceChord, midiToFreq } from './theory.js?v=1790813890';
 
 export class Band {
   constructor() {
