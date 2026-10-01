@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790814249';
-import { SONGS, LEVELS } from './corpus.js?v=1790814249';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790814249';
-import { Band } from './audio.js?v=1790814249';
-import { Spotify } from './spotify.js?v=1790814249';
-import { explain } from './progressions.js?v=1790814249';
+import { CONFIG } from './config.js?v=1790814586';
+import { SONGS, LEVELS } from './corpus.js?v=1790814586';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790814586';
+import { Band } from './audio.js?v=1790814586';
+import { Spotify } from './spotify.js?v=1790814586';
+import { explain } from './progressions.js?v=1790814586';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -119,7 +119,7 @@ function stopAll() {
   renderPlayButton();
 }
 
-async function playQuestion(frac = 0, deviceId = null) {
+async function playQuestion(frac = 0) {
   if (!q) return;
   band.stop();
   const song = q.song;
@@ -130,7 +130,7 @@ async function playQuestion(frac = 0, deviceId = null) {
     try {
       playback.source = 'spotify'; playback.playing = true; renderPlayButton();
       await spotify.playSection(song.spotify, start * 1000, (start + dur) * 1000, {
-        loop: true, fromMs: (start + frac * dur) * 1000, deviceId,
+        loop: true, fromMs: (start + frac * dur) * 1000,
         onProgress: (pos) => { playback.progress = Math.min(1, Math.max(0, (pos / 1000 - start) / dur)); renderProgress(); },
       });
       return;
@@ -138,7 +138,7 @@ async function playQuestion(frac = 0, deviceId = null) {
       if (e.noDevice || e.status === 404) {
         // The phone's Spotify app is asleep, so Spotify can't be reached from here. Open it at this song.
         playback.playing = false; renderPlayButton();
-        if (Spotify.onIOS()) { toast('Opening Spotify… press play there, then come back.', 4000); location.href = song.spotify; return; }
+        if (Spotify.onIOS()) { toast('Opening Spotify. Press play there, then come back.', 4000); location.href = song.spotify; return; }
         toast(spotify.error, 5000); playSynth({ loops: 2, frac }); return;
       }
       console.warn('spotify play failed, falling back to synth', e);
@@ -621,10 +621,7 @@ function openSettings() {
       <div>Spotify: ${spotify.loggedIn ? (spotify.status === 'ready' ? 'connected' : spotify.status === 'error' ? 'error — ' + h(spotify.error || '') : 'logged in') : 'not connected'}</div>
       ${spotify.loggedIn ? `<button class="ghost" id="s-logout">Disconnect</button>` : `<button class="ghost" id="s-login">Connect Spotify</button>`}
       <p class="muted small">Playback needs Spotify Premium. Redirect URI for this page: <code>${h(CONFIG.redirectUri)}</code></p>
-      ${spotify.loggedIn ? `<div class="devices" id="s-devices"><p class="muted small">${spotify.mode === 'sdk'
-        ? 'Playing in this browser.'
-        : `Plays on whatever device Spotify is already using${spotify.deviceName ? ` (now: ${h(spotify.deviceName)})` : ''}. To change it, pick a device in the Spotify app; this app never switches it.`}</p>
-        ${Spotify.sdkSupported() ? `<label class="row"><input type="checkbox" id="s-browser" ${spotify.useBrowser ? 'checked' : ''}> Play in this browser instead (moves Spotify playback here)</label>` : ''}</div>` : ''}
+      ${spotify.loggedIn ? `<p class="muted small">Plays wherever Spotify is playing. To change that, pick a device in the Spotify app.</p>` : ''}
     </div>
     <div class="sp">
       <button class="ghost" id="s-export">Export progress</button>
@@ -641,7 +638,6 @@ function openSettings() {
   $('#s-drums', m).onchange = (e) => { s.drums = e.target.checked; save(); };
   $('#s-key', m).onchange = (e) => { s.showKey = e.target.checked; save(); render(); };
   const lo = $('#s-logout', m); if (lo) lo.onclick = () => { spotify.logout(); close(); render(); };
-  const sb = $('#s-browser', m); if (sb) sb.onchange = async (e) => { await spotify.useThisBrowser(e.target.checked); close(); render(); };
   const li = $('#s-login', m); if (li) li.onclick = () => spotify.login();
   $('#s-export', m).onclick = () => {
     const blob = new Blob([JSON.stringify(state, null, 1)], { type: 'application/json' });

@@ -1,4 +1,4 @@
-// spotify.js — PKCE login (no secret) + Web Playback SDK so the page itself is a Spotify device.
+// spotify.js — PKCE login (no secret) + Spotify Connect: play/pause commands to whatever device Spotify is using.
 // Requires Spotify Premium for playback. Redirect URI must be registered in the Spotify dashboard.
 
 const SCOPES = 'streaming user-read-email user-read-private user-read-playback-state user-modify-playback-state';
@@ -23,28 +23,17 @@ export class Spotify {
   constructor({ clientId, redirectUri }) {
     this.clientId = clientId;
     this.redirectUri = redirectUri;
-    this.player = null;
-    this.deviceId = null;
-    this.deviceName = null;
-    this.mode = null;        // 'sdk' (this page is the player) | 'connect' (another Spotify device, e.g. the phone app)
     this.ready = false;
     this.status = 'idle'; // idle | connecting | ready | error
     this.error = null;
     this.onStatus = () => {};
     this.loop = null;
     this.premium = null;
-    this.devices = [];
   }
 
   static onIOS() {
     const ua = navigator.userAgent || '';
     return /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  }
-  // The Web Playback SDK does not run on iOS/iPadOS browsers; use Connect there.
-  static sdkSupported() {
-    const ua = navigator.userAgent || '';
-    const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    return !ios && typeof window.MediaSource !== 'undefined';
   }
 
   // ---- auth -----------------------------------------------------------------
@@ -67,7 +56,7 @@ export class Spotify {
     location.assign(`${AUTH}?${p}`);
   }
 
-  logout() { this.token = null; if (this.player) { this.player.disconnect(); this.player = null; } this.status = 'idle'; this.onStatus(); }
+  logout() { this.token = null; this.stopLoop(); this.ready = false; this.status = 'idle'; this.onStatus(); }
 
   // Call on page load: completes the redirect if ?code= is present. Returns true if it handled one.
   async handleRedirect() {
@@ -117,24 +106,10 @@ export class Spotify {
 
   async me() { return this.api('/me'); }
 
-  // ---- player ---------------------------------------------------------------
-
-  loadSdk() {
-    if (window.Spotify) return Promise.resolve();
-    return new Promise((resolve, reject) => {
-      window.onSpotifyWebPlaybackSDKReady = () => resolve();
-      const s = document.createElement('script');
-      s.src = 'https://sdk.scdn.co/spotify-player.js'; s.async = true;
-      s.onerror = () => reject(new Error('Could not load the Spotify player script.'));
-      document.head.appendChild(s);
-    });
-  }
-
-  // By default the app never chooses a Spotify device: every play/pause goes to whatever device Spotify is
-  // already using, so only the user (in the Spotify app) ever changes where music plays. Playing inside this
-  // browser tab (Web Playback SDK) would move Spotify's playback here, so it is an explicit opt-in.
-  get useBrowser() { try { return localStorage.getItem('ct.spotify.browser') === '1' && Spotify.sdkSupported(); } catch { return false; } }
-  set useBrowser(v) { try { v ? localStorage.setItem('ct.spotify.browser', '1') : localStorage.removeItem('ct.spotify.browser'); } catch { /* ignore */ } }
+  // ---- playback ---------------------------------------------------------------
+  // The app never chooses where Spotify plays. Every command goes to Spotify's active device, the one the user
+  // last pressed play on in the Spotify app. Spotify forgets its active device after a while idle and refuses
+  // to play (404), so we quietly note the device id whenever something plays and resume on it in that case.
 
   async connect() {
     if (this.ready) return true;
@@ -149,140 +124,61 @@ export class Spotify {
     try {
       const me = await this.me();
       this.premium = me.product === 'premium';
-      if (!this.premium) { this.status = 'error'; this.error = 'Spotify playback in the browser needs a Premium account. The synth band will play instead.'; this.onStatus(); return false; }
-      try { localStorage.removeItem('ct.spotify.device'); } catch { /* old per-device setting, no longer used */ }
-      if (!this.useBrowser) return this.followSpotify();
-      await this.loadSdk();
-      const player = new window.Spotify.Player({
-        name: 'Chord Ear Trainer',
-        getOAuthToken: cb => this.accessToken().then(cb),
-        volume: 0.9,
-      });
-      this.player = player;
-      const mine = () => this.player === player;   // ignore events from a player we have since discarded
-      const ready = new Promise((resolve, reject) => {
-        player.addListener('ready', ({ device_id }) => { if (mine()) { this.deviceId = device_id; } resolve(); });
-        player.addListener('not_ready', () => { if (mine()) { this.ready = false; this.status = 'connecting'; this.onStatus(); } });
-        player.addListener('initialization_error', ({ message }) => reject(new Error(message)));
-        player.addListener('authentication_error', ({ message }) => reject(new Error(message)));
-        player.addListener('account_error', ({ message }) => reject(new Error(message)));
-        player.addListener('playback_error', ({ message }) => { console.warn('playback_error', message); });
-        player.addListener('player_state_changed', s => { if (mine()) this._onState(s); });
-        setTimeout(() => reject(new Error('Spotify player timed out')), 15000);
-      });
-      const ok = await player.connect();
-      if (!ok) throw new Error('player.connect() failed');
-      await ready;
-      if (!mine()) return this.ready;   // user switched device while we were connecting
-      this.ready = true; this.mode = 'sdk'; this.deviceName = 'this browser'; this.status = 'ready'; this.error = null; this.onStatus();
+      if (!this.premium) { this.status = 'error'; this.error = 'Spotify playback needs a Premium account. The synth band will play instead.'; this.onStatus(); return false; }
+      this.ready = true; this.status = 'ready'; this.error = null; this.onStatus();
       return true;
     } catch (e) {
-      // SDK failed (unsupported browser, DRM blocked, …): follow the Spotify app instead
-      const p = this.player; this.player = null;
-      try { p && p.disconnect(); } catch { /* ignore */ }
-      return this.followSpotify();
+      this.status = 'error'; this.error = 'Could not reach Spotify.'; this.onStatus();
+      return false;
     }
   }
 
-  // ---- Connect mode: follow whatever device Spotify is using ------------------
-  // Name of the device Spotify is currently playing to, for display only (null if none is active).
-  async currentDevice() {
-    try { const st = await this.api('/me/player'); return st?.device || null; } catch { return null; }
-  }
-
-  async followSpotify() {
-    this.deviceId = null; this.mode = 'connect';
-    const dev = await this.currentDevice();
-    this.deviceName = dev?.name || this.lastDevice?.name || null;
-    this.rememberDevice(dev);
-    this.ready = true; this.status = 'ready'; this.error = null; this.onStatus();
-    return true;
-  }
-
-  // The last device we saw Spotify playing on. Spotify forgets its active device after a while idle, and the API
-  // will not say which one was last, so we remember it and resume there.
   get lastDevice() { try { return JSON.parse(localStorage.getItem('ct.spotify.last') || 'null'); } catch { return null; } }
   rememberDevice(d) { if (d?.id) { try { localStorage.setItem('ct.spotify.last', JSON.stringify({ id: d.id, name: d.name })); } catch { /* ignore */ } } }
+  noteDevice() { this.api('/me/player').then(st => this.rememberDevice(st?.device)).catch(() => {}); }
 
-  // Spotify is idle everywhere: find the device it was last playing on (same id, or same name if the id changed).
-  async previousDevice() {
-    const last = this.lastDevice;
-    let devs = [];
-    try { devs = (await this.api('/me/player/devices'))?.devices || []; } catch { /* none */ }
-    if (last) return devs.find(d => d.id === last.id) || devs.find(d => d.name === last.name) || { id: last.id, name: last.name };
-    // never seen one: a phone (then a tablet), never a speaker or TV
-    return devs.find(d => d.type === 'Smartphone') || devs.find(d => d.type === 'Tablet') || null;
+  // Spotify is idle: the id of the device it last played on, if Spotify still lists it (ids change after an app
+  // restart, so fall back to the same name).
+  async resumeDeviceId() {
+    const last = this.lastDevice; if (!last) return null;
+    let devs = []; try { devs = (await this.api('/me/player/devices'))?.devices || []; } catch { /* none */ }
+    return (devs.find(d => d.id === last.id) || devs.find(d => d.name === last.name))?.id || null;
   }
 
-  async listDevices() {
-    try { return (await this.api('/me/player/devices'))?.devices || []; } catch { return []; }
-  }
-
-  noActiveDevice() {
+  idle() {
     this.ready = false; this.status = 'error';
-    this.error = 'Spotify isn’t active on any device. Open the Spotify app, press play on any song, then come back and press play here.';
+    this.error = 'Spotify is asleep. Open Spotify and press play on anything, then come back.';
     this.onStatus();
   }
 
-  async useThisBrowser(on) {
-    this.useBrowser = on;
-    await this.pause();
-    const p = this.player; this.player = null;
-    try { p && p.disconnect(); } catch { /* ignore */ }
-    this.ready = false; this.mode = null; this.status = 'idle';
-    return this.connect();
-  }
 
-  _onState(s) {
-    this.state = s;
-    if (this.onState) this.onState(s);
-  }
-
-  // Play a track section [startMs, endMs) and loop it until stop().
-  // fromMs starts the first pass partway through the section (a seek); later loops start at startMs.
-  async playSection(uri, startMs, endMs, { loop = true, onProgress, fromMs, deviceId } = {}) {
+  // Play a track section [startMs, endMs) and loop it until stop(). fromMs starts the first pass partway in (a seek).
+  async playSection(uri, startMs, endMs, { loop = true, onProgress, fromMs } = {}) {
     if (!this.ready) throw new Error('player not ready');
     this.stopLoop();
     const firstMs = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
-    if (this.mode === 'connect') return this.playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs: firstMs, deviceId });
-    await this.player.activateElement?.();
-    await this.api(`/me/player/play?device_id=${this.deviceId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(firstMs)) }) });
-    const section = { uri, startMs, endMs, loop, onProgress };
-    this.section = section;
-    this.loop = setInterval(async () => {
-      const st = await this.player.getCurrentState();
-      if (!st || st.paused) return;
-      const pos = st.position;
-      onProgress && onProgress(pos, section);
-      if (pos >= endMs - 150) {
-        if (loop) await this.player.seek(startMs); else { await this.player.pause(); this.stopLoop(); }
-      }
-    }, 250);
+    return this.playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs: firstMs });
   }
 
-  // Connect mode: one play command per loop cycle and a local clock for the progress bar. No polling,
+  // One play command per loop cycle and a local clock for the progress bar. No polling,
   // so it stays far under Spotify's request limits (~3 calls a minute while looping).
-  // deviceId: the user picked a device in our "where should Spotify play?" panel; use it for the first play only.
-  async playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs, deviceId }) {
+  async playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs }) {
     const section = { uri, startMs, endMs, loop, onProgress };
     this.section = section;
     let nextFrom = fromMs ?? startMs;
     // no device_id: Spotify plays on the device it is already using
     const play = (from, deviceId) => this.api('/me/player/play' + (deviceId ? '?device_id=' + encodeURIComponent(deviceId) : ''), { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
-    let pick = deviceId;
     const cycle = async () => {
       const from = nextFrom; nextFrom = startMs;
       try {
-        if (pick) { const id = pick; pick = null; await play(from, id); }
-        else await play(from);
+        await play(from);
       } catch (e) {
         if (e.status !== 404) throw e;                 // 404 = NO_ACTIVE_DEVICE: Spotify is idle everywhere
-        const prev = await this.previousDevice();
-        if (!prev) { this.noActiveDevice(); e.noDevice = true; throw e; }
-        try { await play(from, prev.id); } catch (e2) { if (e2.status === 404) { this.noActiveDevice(); e2.noDevice = true; } throw e2; }
-        this.deviceName = prev.name; this.onStatus();
+        const id = await this.resumeDeviceId();
+        if (!id) { this.idle(); e.noDevice = true; throw e; }
+        try { await play(from, id); } catch (e2) { if (e2.status === 404) { this.idle(); e2.noDevice = true; } throw e2; }
       }
-      this.currentDevice().then(d => { if (d) { this.rememberDevice(d); if (d.name !== this.deviceName) { this.deviceName = d.name; this.onStatus(); } } });
+      this.noteDevice();
       const t0 = Date.now();
       this.stopLoop();
       this.loop = setInterval(async () => {
@@ -301,16 +197,11 @@ export class Spotify {
 
   async pause() {
     this.stopLoop();
-    if (this.mode === 'connect') { if (this.ready && this.section) { try { await this.api('/me/player/pause', { method: 'PUT' }); } catch { /* not playing */ } this.section = null; } return; }
-    if (this.player) { try { await this.player.pause(); } catch { /* not playing */ } }
+    if (this.ready && this.section) { try { await this.api('/me/player/pause', { method: 'PUT' }); } catch { /* not playing */ } this.section = null; }
   }
-  async resume() {
-    if (this.mode === 'connect') { if (this.section) return this.playSectionConnect(this.section.uri, this.section.startMs, this.section.endMs, this.section); return; }
-    if (this.player) { await this.player.resume(); if (this.section && !this.loop) this.playSection(this.section.uri, this.section.startMs, this.section.endMs, this.section); }
-  }
-  async restart() { if (this.section) return this.playSection(this.section.uri, this.section.startMs, this.section.endMs, this.section); }
-  async isPaused() { if (this.mode === 'connect') return !this.loop; const s = await this.player?.getCurrentState(); return !s || s.paused; }
-  async setVolume(v) { if (this.player) await this.player.setVolume(v); }
+  async resume() { if (this.section) return this.playSectionConnect(this.section.uri, this.section.startMs, this.section.endMs, this.section); }
+  async restart() { return this.resume(); }
+  async isPaused() { return !this.loop; }
 
   async track(id) { return this.api(`/tracks/${id}`); }
 }
