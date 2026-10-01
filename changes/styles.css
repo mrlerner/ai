@@ -183,9 +183,6 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .sh h2 { font-family: var(--display); font-weight: 600; margin: 0; }
 .sheet label { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
 .sheet label.row { justify-content: flex-start; }
-.devlist { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
-.devlist .devopt { justify-content: space-between; }
-a.ghost { text-decoration: none; }
 .sheet select { font: inherit; background: var(--panel2); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; }
 .sp { padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .sp p { width: 100%; margin: 4px 0 0; }

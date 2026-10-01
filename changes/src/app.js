@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790814125';
-import { SONGS, LEVELS } from './corpus.js?v=1790814125';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790814125';
-import { Band } from './audio.js?v=1790814125';
-import { Spotify } from './spotify.js?v=1790814125';
-import { explain } from './progressions.js?v=1790814125';
+import { CONFIG } from './config.js?v=1790814249';
+import { SONGS, LEVELS } from './corpus.js?v=1790814249';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790814249';
+import { Band } from './audio.js?v=1790814249';
+import { Spotify } from './spotify.js?v=1790814249';
+import { explain } from './progressions.js?v=1790814249';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -135,7 +135,12 @@ async function playQuestion(frac = 0, deviceId = null) {
       });
       return;
     } catch (e) {
-      if (e.noDevice || e.status === 404) { playback.playing = false; renderPlayButton(); return pickSpotifyDevice(frac); }
+      if (e.noDevice || e.status === 404) {
+        // The phone's Spotify app is asleep, so Spotify can't be reached from here. Open it at this song.
+        playback.playing = false; renderPlayButton();
+        if (Spotify.onIOS()) { toast('Opening Spotify… press play there, then come back.', 4000); location.href = song.spotify; return; }
+        toast(spotify.error, 5000); playSynth({ loops: 2, frac }); return;
+      }
       console.warn('spotify play failed, falling back to synth', e);
       toast('Spotify could not play this one, using the band instead.', 5000);
     }
@@ -144,42 +149,6 @@ async function playQuestion(frac = 0, deviceId = null) {
 }
 
 let lastSynthOpts = {};
-// Spotify is idle and we don't know where it last played: let the user choose (we never choose for them).
-async function pickSpotifyDevice(frac = 0) {
-  document.querySelector('.modal.devpick')?.remove();
-  const m = document.createElement('div'); m.className = 'modal devpick';
-  document.body.appendChild(m);
-  const close = () => m.remove();
-  const draw = async () => {
-    m.innerHTML = `<div class="sheet"><div class="sh"><h2>Where should Spotify play?</h2><button class="icon" id="dp-close">✕</button></div><p class="muted">Looking for your Spotify devices…</p></div>`;
-    $('#dp-close', m).onclick = close;
-    const devs = await spotify.listDevices();
-    m.innerHTML = `<div class="sheet">
-      <div class="sh"><h2>Where should Spotify play?</h2><button class="icon" id="dp-close">✕</button></div>
-      <p class="muted small">Spotify isn’t playing anywhere right now, so pick a device. This app remembers it and won’t change it on its own.</p>
-      <div class="devlist">${devs.length ? devs.map(d => `<button class="ghost devopt" data-id="${h(d.id)}">${h(d.name)} <span class="muted small">${h(d.type || '')}</span></button>`).join('')
-        : '<p class="muted">No devices found.</p>'}</div>
-      <p class="muted small">Don’t see your phone? Open Spotify, press play on any song, come back, and refresh.</p>
-      <div class="actions">
-        <a class="ghost" href="${h(q?.song?.spotify || 'spotify:')}" id="dp-open">Open Spotify</a>
-        <button class="ghost" id="dp-refresh">Refresh</button>
-        <span class="grow"></span>
-        <button class="ghost" id="dp-band">Use the band</button>
-      </div>
-    </div>`;
-    $('#dp-close', m).onclick = close;
-    $('#dp-refresh', m).onclick = draw;
-    $('#dp-band', m).onclick = () => { close(); playSynth({ loops: 2 }); };
-    m.onclick = (e) => { if (e.target === m) close(); };
-    $$('.devopt', m).forEach(b => b.onclick = async () => {
-      const dev = devs.find(d => d.id === b.dataset.id);
-      spotify.rememberDevice(dev); spotify.ready = true; spotify.status = 'ready'; spotify.error = null;
-      close(); playQuestion(frac, dev.id);
-    });
-  };
-  draw();
-}
-
 function playSynth(opts = {}) {
   if (!q) return;
   lastSynthOpts = { ...opts, frac: 0 };

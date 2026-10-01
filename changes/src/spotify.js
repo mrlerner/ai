@@ -36,6 +36,10 @@ export class Spotify {
     this.devices = [];
   }
 
+  static onIOS() {
+    const ua = navigator.userAgent || '';
+    return /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  }
   // The Web Playback SDK does not run on iOS/iPadOS browsers; use Connect there.
   static sdkSupported() {
     const ua = navigator.userAgent || '';
@@ -206,9 +210,8 @@ export class Spotify {
     let devs = [];
     try { devs = (await this.api('/me/player/devices'))?.devices || []; } catch { /* none */ }
     if (last) return devs.find(d => d.id === last.id) || devs.find(d => d.name === last.name) || { id: last.id, name: last.name };
-    // never seen one: a lone phone or tablet is the only safe guess (never a speaker or TV)
-    const phones = devs.filter(d => d.type === 'Smartphone' || d.type === 'Tablet');
-    return phones.length === 1 ? phones[0] : null;
+    // never seen one: a phone (then a tablet), never a speaker or TV
+    return devs.find(d => d.type === 'Smartphone') || devs.find(d => d.type === 'Tablet') || null;
   }
 
   async listDevices() {
