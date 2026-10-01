@@ -189,14 +189,31 @@ export class Spotify {
   async followSpotify() {
     this.deviceId = null; this.mode = 'connect';
     const dev = await this.currentDevice();
-    this.deviceName = dev?.name || null;
+    this.deviceName = dev?.name || this.lastDevice?.name || null;
+    this.rememberDevice(dev);
     this.ready = true; this.status = 'ready'; this.error = null; this.onStatus();
     return true;
   }
 
+  // The last device we saw Spotify playing on. Spotify forgets its active device after a while idle, and the API
+  // will not say which one was last, so we remember it and resume there.
+  get lastDevice() { try { return JSON.parse(localStorage.getItem('ct.spotify.last') || 'null'); } catch { return null; } }
+  rememberDevice(d) { if (d?.id) { try { localStorage.setItem('ct.spotify.last', JSON.stringify({ id: d.id, name: d.name })); } catch { /* ignore */ } } }
+
+  // Spotify is idle everywhere: find the device it was last playing on (same id, or same name if the id changed).
+  async previousDevice() {
+    const last = this.lastDevice;
+    let devs = [];
+    try { devs = (await this.api('/me/player/devices'))?.devices || []; } catch { /* none */ }
+    if (last) return devs.find(d => d.id === last.id) || devs.find(d => d.name === last.name) || { id: last.id, name: last.name };
+    // never seen one: a lone phone or tablet is the only safe guess (never a speaker or TV)
+    const phones = devs.filter(d => d.type === 'Smartphone' || d.type === 'Tablet');
+    return phones.length === 1 ? phones[0] : null;
+  }
+
   noActiveDevice() {
     this.ready = false; this.status = 'error';
-    this.error = 'Spotify isn’t playing on any device. Open the Spotify app, press play on any song, then come back and press play here.';
+    this.error = 'Spotify isn’t active on any device. Open the Spotify app, press play on any song, then come back and press play here.';
     this.onStatus();
   }
 
@@ -243,16 +260,19 @@ export class Spotify {
     this.section = section;
     let nextFrom = fromMs ?? startMs;
     // no device_id: Spotify plays on the device it is already using
-    const play = (from) => this.api('/me/player/play', { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
+    const play = (from, deviceId) => this.api('/me/player/play' + (deviceId ? '?device_id=' + encodeURIComponent(deviceId) : ''), { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
     const cycle = async () => {
       const from = nextFrom; nextFrom = startMs;
       try {
         await play(from);
       } catch (e) {
-        if (e.status === 404) this.noActiveDevice();   // NO_ACTIVE_DEVICE
-        throw e;
+        if (e.status !== 404) throw e;                 // 404 = NO_ACTIVE_DEVICE: Spotify is idle everywhere
+        const prev = await this.previousDevice();
+        if (!prev) { this.noActiveDevice(); throw e; }
+        try { await play(from, prev.id); } catch (e2) { if (e2.status === 404) this.noActiveDevice(); throw e2; }
+        this.deviceName = prev.name; this.onStatus();
       }
-      this.currentDevice().then(d => { if (d && d.name !== this.deviceName) { this.deviceName = d.name; this.onStatus(); } });
+      this.currentDevice().then(d => { if (d) { this.rememberDevice(d); if (d.name !== this.deviceName) { this.deviceName = d.name; this.onStatus(); } } });
       const t0 = Date.now();
       this.stopLoop();
       this.loop = setInterval(async () => {
