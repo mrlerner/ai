@@ -125,6 +125,7 @@ async function playQuestion(frac = 0) {
   const song = q.song;
   const start = Math.max(0, (song.start || 0) + (state.offsets[song.id] || 0));
   const dur = song.dur || 24;
+  if (spotify.loggedIn && !spotify.ready && song.spotify) { try { await spotify.connect(); } catch { /* fall through to the band */ } }
   if (spotify.ready && song.spotify) {
     try {
       playback.source = 'spotify'; playback.playing = true; renderPlayButton();
@@ -135,7 +136,7 @@ async function playQuestion(frac = 0) {
       return;
     } catch (e) {
       console.warn('spotify play failed, falling back to synth', e);
-      toast('Spotify could not play this one, using the band instead.');
+      toast(e.status === 404 ? spotify.error : 'Spotify could not play this one, using the band instead.', 5000);
     }
   }
   playSynth({ loops: 2, frac });
@@ -614,7 +615,10 @@ function openSettings() {
       <div>Spotify: ${spotify.loggedIn ? (spotify.status === 'ready' ? 'connected' : spotify.status === 'error' ? 'error — ' + h(spotify.error || '') : 'logged in') : 'not connected'}</div>
       ${spotify.loggedIn ? `<button class="ghost" id="s-logout">Disconnect</button>` : `<button class="ghost" id="s-login">Connect Spotify</button>`}
       <p class="muted small">Playback needs Spotify Premium. Redirect URI for this page: <code>${h(CONFIG.redirectUri)}</code></p>
-      ${spotify.loggedIn ? `<div class="devices" id="s-devices"><span class="muted small">Play on: ${spotify.mode === 'sdk' ? 'this browser' : h(spotify.deviceName || '—')}</span> <button class="ghost small" id="s-devs">Choose device…</button></div>` : ''}
+      ${spotify.loggedIn ? `<div class="devices" id="s-devices"><p class="muted small">${spotify.mode === 'sdk'
+        ? 'Playing in this browser.'
+        : `Plays on whatever device Spotify is already using${spotify.deviceName ? ` (now: ${h(spotify.deviceName)})` : ''}. To change it, pick a device in the Spotify app; this app never switches it.`}</p>
+        ${Spotify.sdkSupported() ? `<label class="row"><input type="checkbox" id="s-browser" ${spotify.useBrowser ? 'checked' : ''}> Play in this browser instead (moves Spotify playback here)</label>` : ''}</div>` : ''}
     </div>
     <div class="sp">
       <button class="ghost" id="s-export">Export progress</button>
@@ -631,15 +635,7 @@ function openSettings() {
   $('#s-drums', m).onchange = (e) => { s.drums = e.target.checked; save(); };
   $('#s-key', m).onchange = (e) => { s.showKey = e.target.checked; save(); render(); };
   const lo = $('#s-logout', m); if (lo) lo.onclick = () => { spotify.logout(); close(); render(); };
-  const dv = $('#s-devs', m); if (dv) dv.onclick = async () => {
-    dv.textContent = 'looking…';
-    const devs = await spotify.listDevices();
-    const box = $('#s-devices', m);
-    if (!devs.length) { box.innerHTML = `<span class="muted small">No Spotify devices found. Open the Spotify app on your phone, press play on anything, then try again.</span> <button class="ghost small" id="s-devs">Retry</button>`; $('#s-devs', m).onclick = dv.onclick; return; }
-    box.innerHTML = `<span class="muted small">Play on:</span> ` + devs.map(d => `<button class="ghost small devopt" data-id="${h(d.id)}">${h(d.name)}${d.is_active ? ' ●' : ''}</button>`).join(' ') + (Spotify.sdkSupported() ? ` <button class="ghost small" id="s-dev-sdk">This browser</button>` : '');
-    $$('.devopt', box).forEach(b => b.onclick = async () => { await spotify.useDevice(b.dataset.id); toast(`Playing on ${spotify.deviceName}`); close(); render(); });
-    const sdkb = $('#s-dev-sdk', box); if (sdkb) sdkb.onclick = async () => { try { localStorage.removeItem('ct.spotify.device'); } catch {} spotify.ready = false; spotify.mode = null; spotify.status = 'idle'; await spotify.connect(); close(); render(); };
-  };
+  const sb = $('#s-browser', m); if (sb) sb.onchange = async (e) => { await spotify.useThisBrowser(e.target.checked); close(); render(); };
   const li = $('#s-login', m); if (li) li.onclick = () => spotify.login();
   $('#s-export', m).onclick = () => {
     const blob = new Blob([JSON.stringify(state, null, 1)], { type: 'application/json' });
