@@ -211,6 +211,10 @@ export class Spotify {
     return phones.length === 1 ? phones[0] : null;
   }
 
+  async listDevices() {
+    try { return (await this.api('/me/player/devices'))?.devices || []; } catch { return []; }
+  }
+
   noActiveDevice() {
     this.ready = false; this.status = 'error';
     this.error = 'Spotify isn’t active on any device. Open the Spotify app, press play on any song, then come back and press play here.';
@@ -233,11 +237,11 @@ export class Spotify {
 
   // Play a track section [startMs, endMs) and loop it until stop().
   // fromMs starts the first pass partway through the section (a seek); later loops start at startMs.
-  async playSection(uri, startMs, endMs, { loop = true, onProgress, fromMs } = {}) {
+  async playSection(uri, startMs, endMs, { loop = true, onProgress, fromMs, deviceId } = {}) {
     if (!this.ready) throw new Error('player not ready');
     this.stopLoop();
     const firstMs = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
-    if (this.mode === 'connect') return this.playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs: firstMs });
+    if (this.mode === 'connect') return this.playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs: firstMs, deviceId });
     await this.player.activateElement?.();
     await this.api(`/me/player/play?device_id=${this.deviceId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(firstMs)) }) });
     const section = { uri, startMs, endMs, loop, onProgress };
@@ -255,21 +259,24 @@ export class Spotify {
 
   // Connect mode: one play command per loop cycle and a local clock for the progress bar. No polling,
   // so it stays far under Spotify's request limits (~3 calls a minute while looping).
-  async playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs }) {
+  // deviceId: the user picked a device in our "where should Spotify play?" panel; use it for the first play only.
+  async playSectionConnect(uri, startMs, endMs, { loop, onProgress, fromMs, deviceId }) {
     const section = { uri, startMs, endMs, loop, onProgress };
     this.section = section;
     let nextFrom = fromMs ?? startMs;
     // no device_id: Spotify plays on the device it is already using
     const play = (from, deviceId) => this.api('/me/player/play' + (deviceId ? '?device_id=' + encodeURIComponent(deviceId) : ''), { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
+    let pick = deviceId;
     const cycle = async () => {
       const from = nextFrom; nextFrom = startMs;
       try {
-        await play(from);
+        if (pick) { const id = pick; pick = null; await play(from, id); }
+        else await play(from);
       } catch (e) {
         if (e.status !== 404) throw e;                 // 404 = NO_ACTIVE_DEVICE: Spotify is idle everywhere
         const prev = await this.previousDevice();
-        if (!prev) { this.noActiveDevice(); throw e; }
-        try { await play(from, prev.id); } catch (e2) { if (e2.status === 404) this.noActiveDevice(); throw e2; }
+        if (!prev) { this.noActiveDevice(); e.noDevice = true; throw e; }
+        try { await play(from, prev.id); } catch (e2) { if (e2.status === 404) { this.noActiveDevice(); e2.noDevice = true; } throw e2; }
         this.deviceName = prev.name; this.onStatus();
       }
       this.currentDevice().then(d => { if (d) { this.rememberDevice(d); if (d.name !== this.deviceName) { this.deviceName = d.name; this.onStatus(); } } });
