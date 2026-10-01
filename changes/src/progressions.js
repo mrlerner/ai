@@ -2,7 +2,7 @@
 // Keyed by mode ("M" major / "m" minor) + the numeral sequence with extensions stripped and
 // consecutive repeats collapsed, e.g. "M:vi-V-I". Unknown patterns fall back to explain().
 
-import { parseRn, chordInfo, pcName } from './theory.js?v=1790815004';
+import { parseRn, chordInfo, pcName } from './theory.js?v=1790815341';
 
 export const PATTERNS = {
   // ---------------------------------------------------------------- two chords

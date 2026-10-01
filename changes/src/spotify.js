@@ -30,6 +30,7 @@ export class Spotify {
     this.loop = null;
     this.premium = null;
     this.device = null;      // the device the last play command went to
+    this.chain = Promise.resolve();   // play/pause commands run one at a time, in order
   }
 
 
@@ -150,15 +151,22 @@ export class Spotify {
   // Play a track section [startMs, endMs) and loop it until stop(). fromMs starts the first pass partway in (a seek).
   // One play command per loop cycle and a local clock for the progress bar: no polling, so it stays far under
   // Spotify's request limits.
+  // Run fn after every earlier play/pause has finished, so a pause for the old song can never land after the
+  // play for the new one (that is what made Skip stop playback).
+  serial(fn) { const run = this.chain.then(fn, fn); this.chain = run.catch(() => {}); return run; }
+
   async playSection(uri, startMs, endMs, { loop = true, onProgress, fromMs } = {}) {
     if (!this.ready) throw new Error('player not ready');
     this.stopLoop();
     const section = { uri, startMs, endMs, loop, onProgress };
     this.section = section;
+    const live = () => this.section === section;   // false once another section or a pause has replaced this one
     let nextFrom = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
-    const cycle = async () => {
+    const cycle = () => this.serial(async () => {
+      if (!live()) return;
       const from = nextFrom; nextFrom = startMs;
       const dev = await this.targetDevice();
+      if (!live()) return;
       if (!dev) { const e = new Error('no device'); e.noDevice = true; this.asleep(); throw e; }
       try {
         await this.api('/me/player/play?device_id=' + encodeURIComponent(dev.id), { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
@@ -167,6 +175,7 @@ export class Spotify {
         throw e;
       }
       this.device = dev; this.rememberDevice(dev); this.status = 'ready'; this.error = null;
+      if (!live()) return;
       const t0 = Date.now();
       this.stopLoop();
       this.loop = setInterval(() => {
@@ -177,7 +186,7 @@ export class Spotify {
           else { this.stopLoop(); this.pause(); }
         }
       }, 250);
-    };
+    });
     await cycle();
   }
 
@@ -185,9 +194,12 @@ export class Spotify {
 
   async pause() {
     this.stopLoop();
-    const dev = this.device; this.section = null;
-    if (!dev) return;
-    try { await this.api('/me/player/pause?device_id=' + encodeURIComponent(dev.id), { method: 'PUT' }); } catch { /* already paused or gone */ }
+    const had = this.section; this.section = null;
+    if (!had) return;                     // nothing of ours is playing
+    return this.serial(async () => {
+      const dev = this.device; if (!dev) return;
+      try { await this.api('/me/player/pause?device_id=' + encodeURIComponent(dev.id), { method: 'PUT' }); } catch { /* already paused or gone */ }
+    });
   }
   async resume() { if (this.section) return this.playSection(this.section.uri, this.section.startMs, this.section.endMs, this.section); }
   async restart() { return this.resume(); }
