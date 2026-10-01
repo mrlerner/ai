@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790815341';
-import { SONGS, LEVELS } from './corpus.js?v=1790815341';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790815341';
-import { Band } from './audio.js?v=1790815341';
-import { Spotify } from './spotify.js?v=1790815341';
-import { explain } from './progressions.js?v=1790815341';
+import { CONFIG } from './config.js?v=1790815581';
+import { SONGS, LEVELS } from './corpus.js?v=1790815581';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790815581';
+import { Band } from './audio.js?v=1790815581';
+import { Spotify } from './spotify.js?v=1790815581';
+import { explain } from './progressions.js?v=1790815581';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -295,7 +295,9 @@ function grade() {
     maybeLevelUp();
     save();
   }
-  stopAll();
+  // Keep the recording looping through the reveal: pausing here let iOS suspend the Spotify app while the
+  // user read, and the next play then found nothing to play on. The band (if that was playing) stops.
+  if (playback.source === 'spotify' && playback.playing) band.stop(); else stopAll();
   render();
   // celebrate a little
   if (ok) confetti();
@@ -622,7 +624,8 @@ function openSettings() {
       <div>Spotify: ${spotify.loggedIn ? (spotify.status === 'ready' ? 'connected' : spotify.status === 'error' ? 'error — ' + h(spotify.error || '') : 'logged in') : 'not connected'}</div>
       ${spotify.loggedIn ? `<button class="ghost" id="s-logout">Disconnect</button>` : `<button class="ghost" id="s-login">Connect Spotify</button>`}
       <p class="muted small">Playback needs Spotify Premium. Redirect URI for this page: <code>${h(CONFIG.redirectUri)}</code></p>
-      ${spotify.loggedIn ? `<p class="muted small">Plays wherever Spotify is playing. To change that, pick a device in the Spotify app.</p>` : ''}
+      ${spotify.loggedIn ? `<p class="muted small">Plays wherever Spotify is playing. To change that, pick a device in the Spotify app.</p>
+      <details class="diag"><summary class="muted small">Diagnostics</summary><pre id="s-diag">loading…</pre><button class="ghost small" id="s-diag-copy">Copy</button></details>` : ''}
     </div>
     <div class="sp">
       <button class="ghost" id="s-export">Export progress</button>
@@ -640,6 +643,11 @@ function openSettings() {
   $('#s-key', m).onchange = (e) => { s.showKey = e.target.checked; save(); render(); };
   const lo = $('#s-logout', m); if (lo) lo.onclick = () => { spotify.logout(); close(); render(); };
   const li = $('#s-login', m); if (li) li.onclick = () => spotify.login();
+  const dg = $('.diag', m); if (dg) {
+    const fill = async () => { const pre = $('#s-diag', m); if (pre) pre.textContent = await spotify.diagnostics(); };
+    dg.ontoggle = () => { if (dg.open) fill(); };
+    $('#s-diag-copy', m).onclick = async () => { try { await navigator.clipboard.writeText($('#s-diag', m).textContent); toast('Copied'); } catch { toast('Select the text and copy it'); } };
+  }
   $('#s-export', m).onclick = () => {
     const blob = new Blob([JSON.stringify(state, null, 1)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `changes-progress-${today()}.json`; a.click();

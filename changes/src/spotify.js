@@ -31,6 +31,7 @@ export class Spotify {
     this.premium = null;
     this.device = null;      // the device the last play command went to
     this.chain = Promise.resolve();   // play/pause commands run one at a time, in order
+    this.log = [];                    // last Spotify calls, for the diagnostics panel
   }
 
 
@@ -91,15 +92,33 @@ export class Spotify {
     return n.access_token;
   }
 
+  note(line) { this.log.push(new Date().toTimeString().slice(0, 8) + ' ' + line); if (this.log.length > 20) this.log.shift(); }
+
   async api(path, opts = {}) {
     const tok = await this.accessToken();
     if (!tok) throw new Error('not logged in');
-    const r = await fetch(API + path, { ...opts, headers: { Authorization: 'Bearer ' + tok, 'Content-Type': 'application/json', ...(opts.headers || {}) } });
-    if (r.status === 204) return null;
+    const label = (opts.method || 'GET') + ' ' + path.replace(/device_id=[^&]*/, 'device_id=…');
+    let r;
+    try { r = await fetch(API + path, { ...opts, headers: { Authorization: 'Bearer ' + tok, 'Content-Type': 'application/json', ...(opts.headers || {}) } }); }
+    catch (e) { this.note(`${label} -> network error ${e.message}`); throw e; }
+    if (r.status === 204) { this.note(`${label} -> 204`); return null; }
     const text = await r.text();
     let data = null; try { data = text ? JSON.parse(text) : null; } catch { data = text; }
-    if (!r.ok) { const e = new Error(data?.error?.message || ('Spotify ' + r.status)); e.status = r.status; e.data = data; throw e; }
+    if (!r.ok) { this.note(`${label} -> ${r.status} ${data?.error?.message || data?.error?.reason || ''}`); const e = new Error(data?.error?.message || ('Spotify ' + r.status)); e.status = r.status; e.data = data; throw e; }
+    if (path === '/me/player/devices') this.note(`${label} -> ${(data?.devices || []).map(d => `${d.name} [${d.type}${d.is_active ? ', active' : ''}]`).join('; ') || 'no devices'}`);
+    else this.note(`${label} -> ${r.status}`);
     return data;
+  }
+
+  // What Spotify reports right now plus the recent call log, for bug reports.
+  async diagnostics() {
+    let devs = 'n/a';
+    try { devs = ((await this.api('/me/player/devices'))?.devices || []).map(d => `${d.name} [${d.type}${d.is_active ? ', ACTIVE' : ''}${d.is_restricted ? ', restricted' : ''}]`).join('\n  ') || 'none'; } catch (e) { devs = 'error ' + e.message; }
+    const last = this.lastDevice;
+    return [
+      `page: ${location.href}`, `ua: ${navigator.userAgent}`, `status: ${this.status}${this.error ? ' (' + this.error + ')' : ''}`,
+      `premium: ${this.premium}`, `last device: ${last ? last.name : 'none'}`, `devices now:\n  ${devs}`, '', 'recent calls:', ...this.log,
+    ].join('\n');
   }
 
   async me() { return this.api('/me'); }
