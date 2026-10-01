@@ -39,6 +39,11 @@ export class Spotify {
 
   // On computers the page itself is the Spotify player (Web Playback SDK), as it was originally. The SDK does
   // not run on iOS/iPadOS, so phones send commands to the Spotify app instead (Connect).
+  static onPhone() {
+    const ua = navigator.userAgent || '';
+    return /iPhone|iPad|iPod|Android/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  }
+
   static sdkSupported() {
     const ua = navigator.userAgent || '';
     const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -175,7 +180,7 @@ export class Spotify {
   async startSdk() {
     try {
       await this.loadSdk();
-      const player = new window.Spotify.Player({ name: 'Chord Ear Trainer', getOAuthToken: cb => this.accessToken().then(cb), volume: 0.9 });
+      const player = new window.Spotify.Player({ name: 'Changes (this browser)', getOAuthToken: cb => this.accessToken().then(cb), volume: 0.9 });
       const ready = new Promise((resolve, reject) => {
         player.addListener('ready', ({ device_id }) => { this.sdkId = device_id; resolve(); });
         player.addListener('not_ready', () => { this.note('sdk not_ready'); });
@@ -197,17 +202,21 @@ export class Spotify {
   get lastDevice() { try { return JSON.parse(localStorage.getItem('ct.spotify.last') || 'null'); } catch { return null; } }
   rememberDevice(d) { if (d?.id) { try { localStorage.setItem('ct.spotify.last', JSON.stringify({ id: d.id, name: d.name })); } catch { /* ignore */ } } }
 
-  // The device to send a command to: Spotify's own active device (the user's choice in the Spotify app). If
-  // Spotify has gone idle and has no active device, the one it last played on. Never anything else.
+  // The device to send a command to. On a phone: this phone, always (never a laptop tab or a speaker). Elsewhere
+  // in Connect mode: Spotify's own active device, or the one it last played on.
   async targetDevice() {
     let devs = []; try { devs = (await this.api('/me/player/devices'))?.devices || []; } catch { /* none */ }
+    if (Spotify.onPhone()) {
+      const phones = devs.filter(d => d.type === 'Smartphone');
+      return phones.find(d => d.is_active) || phones[0] || null;
+    }
     const last = this.lastDevice;
     return devs.find(d => d.is_active) || (last && (devs.find(d => d.id === last.id) || devs.find(d => d.name === last.name))) || null;
   }
 
   asleep() {
     this.status = 'error';
-    this.error = 'Spotify is asleep. Open Spotify and press play on anything, then come back.';
+    this.error = 'Spotify isn’t responding. Open Spotify, press play on anything, then come back.';
     this.onStatus();
   }
 

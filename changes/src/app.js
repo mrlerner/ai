@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790818572';
-import { SONGS, LEVELS } from './corpus.js?v=1790818572';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790818572';
-import { Band } from './audio.js?v=1790818572';
-import { Spotify } from './spotify.js?v=1790818572';
-import { explain } from './progressions.js?v=1790818572';
+import { CONFIG } from './config.js?v=1790819268';
+import { SONGS, LEVELS } from './corpus.js?v=1790819268';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790819268';
+import { Band } from './audio.js?v=1790819268';
+import { Spotify } from './spotify.js?v=1790819268';
+import { explain } from './progressions.js?v=1790819268';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -31,6 +31,22 @@ const app = document.getElementById('app');
 // session
 let session = null; // {startedAt, asked, correct, seen:[], lastSong, endedAt}
 let q = null;       // current question
+// Safari may reload the page after a switch to the Spotify app; keep the session and current question so it resumes.
+function saveSession() {
+  try {
+    if (session && !session.endedAt && q) sessionStorage.setItem('ct.session', JSON.stringify({ session, songId: q.song.id, retry: !!q.retry, slots: q.slots, answered: q.answered, result: q.result }));
+    else sessionStorage.removeItem('ct.session');
+  } catch { /* ignore */ }
+}
+function restoreSession() {
+  try {
+    const raw = sessionStorage.getItem('ct.session'); if (!raw) return false;
+    const d = JSON.parse(raw); const song = songById(d.songId); if (!song || !d.session) return false;
+    session = d.session; q = makeQuestion(song); q.retry = d.retry; q.slots = d.slots; q.answered = d.answered; q.result = d.result;
+    return true;
+  } catch { return false; }
+}
+let wake = null;    // set while we have sent the user to the Spotify app to wake it
 let playback = { source: 'none', playing: false, progress: 0 }; // 'spotify' | 'synth'
 let progressTimer = null;
 
@@ -134,11 +150,19 @@ async function playQuestion(frac = 0) {
         loop: true, fromMs: (start + frac * dur) * 1000,
         onProgress: (pos) => { playback.progress = Math.min(1, Math.max(0, (pos / 1000 - start) / dur)); renderProgress(); },
       });
+      wake = null;
       return;
     } catch (e) {
       if (e.noDevice || e.status === 404) {
-        // Spotify can't reach any device (on iPhone, the Spotify app has been put to sleep). Only the user can wake it.
+        // Spotify can't reach this phone: the Spotify app has been put to sleep by iOS. Only opening it wakes it.
         playback.playing = false; renderPlayButton();
+        if (Spotify.onPhone() && wake !== song.id) {
+          // first time for this song: switch to Spotify at the song; on return we resume automatically
+          wake = song.id; saveSession();
+          toast('Waking Spotify. Press play there, then come back.', 3000);
+          setTimeout(() => { location.href = song.spotify; }, 400);
+          return;
+        }
         toast(`${h(spotify.error)} <a href="${h(song.spotify)}">Open Spotify ›</a>`, 8000, { html: true });
         return;
       }
@@ -205,36 +229,40 @@ function sessionSecondsLeft() {
   return Math.max(0, total - Math.round((Date.now() - session.startedAt) / 1000));
 }
 
-function nextQuestion() {
-  stopAll();
-  const song = pickSong();
-  q = makeQuestion(song);
-  session.seen.push(song.id);
-  state.recent = [...state.recent, song.id].slice(-12); save();
+// Switch songs without pausing in between: the new play replaces the old one, so there is no gap and (on a
+// phone) the Spotify app never goes quiet long enough for iOS to put it to sleep.
+function switchTo(song, { retry = false } = {}) {
+  band.stop(); clearInterval(progressTimer); progressTimer = null;
+  if (playback.source !== 'spotify' || !playback.playing) stopAll();
+  q = makeQuestion(song); q.retry = retry;
+  saveSession();
   render();
   playQuestion();
+}
+
+function nextQuestion() {
+  const song = pickSong();
+  session.seen.push(song.id);
+  state.recent = [...state.recent, song.id].slice(-12); save();
+  switchTo(song);
 }
 
 // Same song again with blank slots. Practice only: it does not count toward stats, misses or level-ups.
 function retryQuestion() {
   if (!q) return;
-  stopAll();
-  const song = q.song;
-  q = makeQuestion(song);
-  q.retry = true;
-  render();
-  playQuestion();
+  switchTo(q.song, { retry: true });
 }
 
 function endSession() {
   stopAll();
+  wake = null;
   const rec = { date: today(), asked: session.asked, correct: session.correct, seconds: Math.round((Date.now() - session.startedAt) / 1000) };
   // merge into today's record if there already is one
   const existing = state.sessions.find(s => s.date === rec.date);
   if (existing) { existing.asked += rec.asked; existing.correct += rec.correct; existing.seconds += rec.seconds; }
   else state.sessions.push(rec);
   save();
-  session.endedAt = Date.now();
+  session.endedAt = Date.now(); saveSession();
   render();
 }
 
@@ -298,6 +326,7 @@ function grade() {
   // Keep the recording looping through the reveal: pausing here let iOS suspend the Spotify app while the
   // user read, and the next play then found nothing to play on. The band (if that was playing) stops.
   if (playback.source === 'spotify' && playback.playing) band.stop(); else stopAll();
+  saveSession();
   render();
   // celebrate a little
   if (ok) confetti();
@@ -604,7 +633,7 @@ function renderSummary() {
   </main>`;
   bindCommon();
   $('#btn-more').onclick = () => { session.endedAt = null; session.startedAt = Date.now() - (state.settings.minutes * 60 - 30) * 1000; nextQuestion(); };
-  $('#btn-home').onclick = () => { session = null; q = null; render(); };
+  $('#btn-home').onclick = () => { session = null; q = null; saveSession(); render(); };
 }
 
 // ---------------------------------------------------------------- settings ----
@@ -652,7 +681,7 @@ function openSettings() {
     const blob = new Blob([JSON.stringify(state, null, 1)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `changes-progress-${today()}.json`; a.click();
   };
-  $('#s-reset', m).onclick = () => { if (confirm('Reset all progress? This cannot be undone.')) { state = defaults(); save(); close(); session = null; render(); } };
+  $('#s-reset', m).onclick = () => { if (confirm('Reset all progress? This cannot be undone.')) { state = defaults(); save(); close(); session = null; saveSession(); render(); } };
 }
 
 function openLevelPicker() {
@@ -714,7 +743,14 @@ function confetti() {
   spotify.onStatus = () => { const el = $('.status'); if (el) el.innerHTML = spotifyLine(), bindCommon(); };
   const handled = await spotify.handleRedirect();
   if (spotify.error) toast(spotify.error, 5000);
+  const resumed = restoreSession();
   render();
+  if (resumed && spotify.loggedIn && !q.answered) { wake = q.song.id; playQuestion(); }   // back from the Spotify app after a reload
+  // back from the Spotify app without a reload: pick up where we were
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible' || !q || !wake) return;
+    if (!playback.playing) playQuestion();
+  });
   if (spotify.loggedIn) spotify.connect().then(() => { if (!session) render(); });
   if (handled && spotify.loggedIn) toast('Spotify connected.');
   // keep the session clock honest
