@@ -196,7 +196,7 @@ export class Spotify {
 
   noActiveDevice() {
     this.ready = false; this.status = 'error';
-    this.error = 'Spotify isn’t playing on any device. Open the Spotify app, press play on anything, then tap retry.';
+    this.error = 'Spotify isn’t playing on any device. Open the Spotify app, press play on any song, then come back and press play here.';
     this.onStatus();
   }
 
