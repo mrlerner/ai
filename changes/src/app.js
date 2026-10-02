@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790956241';
-import { SONGS, LEVELS } from './corpus.js?v=1790956241';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790956241';
-import { Band } from './audio.js?v=1790956241';
-import { Spotify } from './spotify.js?v=1790956241';
-import { explain } from './progressions.js?v=1790956241';
+import { CONFIG } from './config.js?v=1790956714';
+import { SONGS, LEVELS } from './corpus.js?v=1790956714';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790956714';
+import { Band } from './audio.js?v=1790956714';
+import { Spotify } from './spotify.js?v=1790956714';
+import { explain } from './progressions.js?v=1790956714';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -171,6 +171,28 @@ async function playQuestion(frac = 0) {
     }
   }
   playSynth({ loops: 2, frac });
+}
+
+// Back from the Spotify app after waking it: the user pressed play there, so the song is already going. Follow
+// it rather than sending a new play command (which made the music jump on return); only play if it is not.
+async function resumeAfterWake() {
+  if (!q) return;
+  const song = q.song;
+  playback.playing = true; renderPlayButton();   // guard against a second visibilitychange while we look
+  if (spotify.loggedIn && !spotify.ready) { try { await spotify.connect(); } catch { /* fall through */ } }
+  const start = Math.max(0, (song.start || 0) + (state.offsets[song.id] || 0));
+  const dur = song.dur || 24;
+  let adopted = false;
+  if (spotify.ready && song.spotify) {
+    try {
+      adopted = await spotify.adopt(song.spotify, start * 1000, (start + dur) * 1000, {
+        onProgress: (pos) => { playback.progress = Math.min(1, Math.max(0, (pos / 1000 - start) / dur)); renderProgress(); },
+      });
+    } catch { adopted = false; }
+  }
+  if (adopted) { playback.source = 'spotify'; playback.playing = true; wake = null; renderPlayButton(); return; }
+  playback.playing = false;
+  playQuestion();
 }
 
 let lastSynthOpts = {};
@@ -747,11 +769,11 @@ function confetti() {
   if (spotify.error) toast(spotify.error, 5000);
   const resumed = restoreSession();
   render();
-  if (resumed && spotify.loggedIn && !q.answered) { wake = q.song.id; playQuestion(); }   // back from the Spotify app after a reload
+  if (resumed && spotify.loggedIn && !q.answered) { wake = q.song.id; resumeAfterWake(); }   // back from the Spotify app after a reload
   // back from the Spotify app without a reload: pick up where we were
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState !== 'visible' || !q || !wake) return;
-    if (!playback.playing) playQuestion();
+    if (!playback.playing) resumeAfterWake();
   });
   if (spotify.loggedIn) spotify.connect().then(() => { if (!session) render(); });
   if (handled && spotify.loggedIn) toast('Spotify connected.');

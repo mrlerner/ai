@@ -237,14 +237,26 @@ export class Spotify {
   async playSection(uri, startMs, endMs, { loop = true, onProgress, fromMs } = {}) {
     if (!this.ready) throw new Error('player not ready');
     this.stopLoop();
-    const section = { uri, startMs, endMs, loop, onProgress, nudged: false, seenPlaying: false, playedAt: 0 };
-    this.section = section;
+    const section = this.newSection(uri, startMs, endMs, { loop, onProgress });
     if (this.player) return this.playSectionSdk(section, fromMs);
+    section.nextFrom = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
+    await this.cycle(section);
+  }
+
+  newSection(uri, startMs, endMs, { loop = true, onProgress } = {}) {
+    const section = { uri, startMs, endMs, loop, onProgress, nudged: false, seenPlaying: false, playedAt: 0, nextFrom: startMs };
+    section.restart = () => this.cycle(section).catch(() => this.stopLoop());
+    this.section = section;
+    return section;
+  }
+
+  // One play command for the section (first pass from section.nextFrom, later passes from startMs).
+  cycle(section) {
     const live = () => this.section === section;   // false once another section or a pause has replaced this one
-    let nextFrom = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
-    const cycle = () => this.serial(async () => {
+    const { uri, startMs } = section;
+    return this.serial(async () => {
       if (!live()) return;
-      const from = nextFrom; nextFrom = startMs;
+      const from = section.nextFrom; section.nextFrom = startMs;
       this.pending = section;
       try {
         const dev = await this.targetDevice();
@@ -263,8 +275,26 @@ export class Spotify {
         this.startMonitor(1500);   // check soon that it really started
       } finally { if (this.pending === section) this.pending = null; }
     });
-    section.restart = () => cycle().catch(() => this.stopLoop());
-    await cycle();
+  }
+
+  // Spotify is (probably) already playing this song, e.g. the user just pressed play in the Spotify app after we
+  // woke it. Follow that playback without sending a command, so the music does not jump: adopt it when it is
+  // inside the section or within `leadMs` before it (the loop then starts at the section end as usual).
+  // Returns false when Spotify is not playing this song, or is too far from the section; the caller then plays.
+  async adopt(uri, startMs, endMs, { onProgress, leadMs = 20000 } = {}) {
+    if (!this.ready || this.player) return false;
+    const st = await this.state();
+    if (!st?.is_playing || st.item?.uri !== uri) return false;
+    const pos = st.progress_ms || 0;
+    if (pos < startMs - leadMs || pos >= endMs - 1000) return false;
+    const section = this.newSection(uri, startMs, endMs, { loop: true, onProgress });
+    section.seenPlaying = true; section.playedAt = Date.now();
+    if (st.device?.id) { this.device = { id: st.device.id, name: st.device.name }; this.rememberDevice(this.device); }
+    this.note(`player: following Spotify at ${Math.round(pos / 1000)}s (section ${Math.round(startMs / 1000)}–${Math.round(endMs / 1000)}s)`);
+    this.status = 'ready'; this.error = null;
+    this.runClock(section, pos);
+    this.startMonitor();
+    return true;
   }
 
   // Local clock for the progress bar; at the section end, issue the next play command (once).
