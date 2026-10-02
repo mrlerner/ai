@@ -34,6 +34,10 @@ export class Spotify {
     this.sdkId = null;       // its device id
     this.chain = Promise.resolve();   // play/pause commands run one at a time, in order
     this.log = [];                    // last Spotify calls, for the diagnostics panel
+    this.onPlaying = () => {};        // (bool) Spotify started/stopped playing our section outside our own commands
+    this.pending = null;              // section whose play command is in flight
+    this.monitorTimer = null;
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && this.section && !this.player) this.tick().catch(() => {}); });
   }
 
 
@@ -81,7 +85,7 @@ export class Spotify {
     location.assign(`${AUTH}?${p}`);
   }
 
-  logout() { this.token = null; this.stopLoop(); try { this.player?.disconnect(); } catch { /* ignore */ } this.player = null; this.ready = false; this.status = 'idle'; this.onStatus(); }
+  logout() { this.token = null; this.stopLoop(); this.stopMonitor(); try { this.player?.disconnect(); } catch { /* ignore */ } this.player = null; this.ready = false; this.status = 'idle'; this.onStatus(); }
 
   // Call on page load: completes the redirect if ?code= is present. Returns true if it handled one.
   async handleRedirect() {
@@ -131,6 +135,7 @@ export class Spotify {
     const text = await r.text();
     let data = null; try { data = text ? JSON.parse(text) : null; } catch { data = text; }
     if (!r.ok) { this.note(`${label} -> ${r.status} ${data?.error?.message || data?.error?.reason || ''}`); const e = new Error(data?.error?.message || ('Spotify ' + r.status)); e.status = r.status; e.data = data; throw e; }
+    if (path === '/me/player' && !opts.method) return data;
     if (path === '/me/player/devices') this.note(`${label} -> ${(data?.devices || []).map(d => `${d.name} [${d.type}${d.is_active ? ', active' : ''}]`).join('; ') || 'no devices'}`);
     else this.note(`${label} -> ${r.status}`);
     return data;
@@ -221,8 +226,10 @@ export class Spotify {
   }
 
   // Play a track section [startMs, endMs) and loop it until stop(). fromMs starts the first pass partway in (a seek).
-  // One play command per loop cycle and a local clock for the progress bar: no polling, so it stays far under
-  // Spotify's request limits.
+  // One play command per loop cycle and a local clock for the progress bar. A light monitor (GET /me/player
+  // every few seconds while the page is visible) keeps us honest about what Spotify is really doing: if the
+  // phone loaded the track but did not start it, we nudge it once with a plain resume; if Spotify is paused or
+  // playing from the Spotify app, the play button follows (onPlaying) and the clock re-syncs.
   // Run fn after every earlier play/pause has finished, so a pause for the old song can never land after the
   // play for the new one (that is what made Skip stop playback).
   serial(fn) { const run = this.chain.then(fn, fn); this.chain = run.catch(() => {}); return run; }
@@ -230,7 +237,7 @@ export class Spotify {
   async playSection(uri, startMs, endMs, { loop = true, onProgress, fromMs } = {}) {
     if (!this.ready) throw new Error('player not ready');
     this.stopLoop();
-    const section = { uri, startMs, endMs, loop, onProgress };
+    const section = { uri, startMs, endMs, loop, onProgress, nudged: false, seenPlaying: false, playedAt: 0 };
     this.section = section;
     if (this.player) return this.playSectionSdk(section, fromMs);
     const live = () => this.section === section;   // false once another section or a pause has replaced this one
@@ -238,29 +245,89 @@ export class Spotify {
     const cycle = () => this.serial(async () => {
       if (!live()) return;
       const from = nextFrom; nextFrom = startMs;
-      const dev = await this.targetDevice();
-      if (!live()) return;
-      if (!dev) { const e = new Error('no device'); e.noDevice = true; this.asleep(); throw e; }
+      this.pending = section;
       try {
-        await this.api('/me/player/play?device_id=' + encodeURIComponent(dev.id), { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
-      } catch (e) {
-        if (e.status === 404) { e.noDevice = true; this.asleep(); }
-        throw e;
-      }
-      this.device = dev; this.rememberDevice(dev); this.status = 'ready'; this.error = null;
-      if (!live()) return;
-      const t0 = Date.now();
-      this.stopLoop();
-      this.loop = setInterval(() => {
-        const pos = from + (Date.now() - t0);
-        onProgress && onProgress(pos, section);
-        if (pos >= endMs) {
-          if (loop) { cycle().catch(() => this.stopLoop()); }
-          else { this.stopLoop(); this.pause(); }
+        const dev = await this.targetDevice();
+        if (!live()) return;
+        if (!dev) { const e = new Error('no device'); e.noDevice = true; this.asleep(); throw e; }
+        try {
+          await this.api('/me/player/play?device_id=' + encodeURIComponent(dev.id), { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(from)) }) });
+        } catch (e) {
+          if (e.status === 404) { e.noDevice = true; this.asleep(); }
+          throw e;
         }
-      }, 250);
+        this.device = dev; this.rememberDevice(dev); this.status = 'ready'; this.error = null;
+        if (!live()) return;
+        section.nudged = false; section.seenPlaying = false; section.playedAt = Date.now();
+        this.runClock(section, from);
+        this.startMonitor(1500);   // check soon that it really started
+      } finally { if (this.pending === section) this.pending = null; }
     });
+    section.restart = () => cycle().catch(() => this.stopLoop());
     await cycle();
+  }
+
+  // Local clock for the progress bar; at the section end, issue the next play command (once).
+  runClock(section, from) {
+    const { endMs, loop, onProgress } = section;
+    this.stopLoop();
+    const t0 = Date.now();
+    section.clock = { from, t0 };
+    this.loop = setInterval(() => {
+      const c = section.clock; const pos = c.from + (Date.now() - c.t0);
+      onProgress && onProgress(pos, section);
+      if (pos >= endMs) {
+        this.stopLoop();   // stop ticking first: one restart per section end, not one per tick while it is in flight
+        if (loop) section.restart(); else this.pause();
+      }
+    }, 250);
+  }
+
+  // Current playback as Spotify reports it, or null when nothing is active.
+  async state() {
+    try { return await this.api('/me/player'); } catch { return null; }
+  }
+
+  startMonitor(firstMs = 3000) {
+    this.stopMonitor();
+    const tick = () => { this.tick().catch(() => {}); };
+    this.monitorTimer = setTimeout(() => { tick(); this.monitorTimer = setInterval(tick, 3000); }, firstMs);
+  }
+  stopMonitor() { if (this.monitorTimer) { clearTimeout(this.monitorTimer); clearInterval(this.monitorTimer); this.monitorTimer = null; } }
+
+  async tick() {
+    const sec = this.section;
+    if (!sec || this.player || this.pending || document.hidden || this.ticking) return;
+    this.ticking = true;
+    try {
+      const st = await this.state();
+      if (this.section !== sec || this.pending) return;
+      const ours = st?.item?.uri === sec.uri;
+      if (st?.is_playing && ours) {
+        const pos = st.progress_ms || 0;
+        sec.seenPlaying = true;
+        if (pos >= sec.endMs || pos < sec.startMs - 2000) {      // playing our song but outside the section
+          if (!this.loop) { this.note('player: outside section, restarting'); sec.restart(); }
+        } else if (!this.loop) {                                 // started from the Spotify app: follow it
+          this.note(`player: playing at ${Math.round(pos / 1000)}s, following`);
+          this.runClock(sec, pos); this.onPlaying(true);
+        } else if (sec.clock) {                                  // keep the bar on Spotify's clock
+          sec.clock = { from: pos, t0: Date.now() };
+        }
+        return;
+      }
+      if (ours && !sec.nudged && !sec.seenPlaying && Date.now() - sec.playedAt < 15000) {
+        // Our play command loaded the track but it never started (a backgrounded phone does this): one plain
+        // resume. A pause after it has been heard playing is the user's, and the play button just follows it.
+        sec.nudged = true;
+        this.note('player: loaded but paused, resuming');
+        const dev = this.device;
+        await this.serial(() => dev ? this.api('/me/player/play?device_id=' + encodeURIComponent(dev.id), { method: 'PUT' }).catch(() => {}) : null);
+        return;
+      }
+      if (this.loop) { this.note(`player: ${st ? (ours ? 'paused' : 'playing something else') : 'nothing active'}`); this.stopLoop(); }
+      this.onPlaying(false);
+    } finally { this.ticking = false; }
   }
 
   // In-page player: start the track here, then follow the SDK's own clock and seek back at the section end.
@@ -283,7 +350,7 @@ export class Spotify {
   stopLoop() { if (this.loop) { clearInterval(this.loop); this.loop = null; } }
 
   async pause() {
-    this.stopLoop();
+    this.stopLoop(); this.stopMonitor();
     const had = this.section; this.section = null;
     if (!had) return;                     // nothing of ours is playing
     if (this.player) { try { await this.player.pause(); } catch { /* not playing */ } return; }

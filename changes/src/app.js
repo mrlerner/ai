@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790819268';
-import { SONGS, LEVELS } from './corpus.js?v=1790819268';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790819268';
-import { Band } from './audio.js?v=1790819268';
-import { Spotify } from './spotify.js?v=1790819268';
-import { explain } from './progressions.js?v=1790819268';
+import { CONFIG } from './config.js?v=1790956163';
+import { SONGS, LEVELS } from './corpus.js?v=1790956163';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790956163';
+import { Band } from './audio.js?v=1790956163';
+import { Spotify } from './spotify.js?v=1790956163';
+import { explain } from './progressions.js?v=1790956163';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -215,7 +215,7 @@ function togglePlay() {
   if (!q) return;
   if (playback.playing) { stopAll(); return; }
   if (playback.source === 'synth' && q.answered) playSynth({ loops: 1 });
-  else playQuestion();
+  else playQuestion(playback.source === 'spotify' && playback.progress < 0.97 ? playback.progress : 0);   // pick up where it paused
 }
 
 // ---------------------------------------------------------------- session ----
@@ -741,6 +741,8 @@ function confetti() {
 // ---------------------------------------------------------------- boot ----
 (async function boot() {
   spotify.onStatus = () => { const el = $('.status'); if (el) el.innerHTML = spotifyLine(), bindCommon(); };
+  // Spotify itself started or stopped (paused in the Spotify app, phone didn't start the track...): keep the play button honest
+  spotify.onPlaying = (p) => { if (playback.source !== 'spotify' || playback.playing === p) return; playback.playing = p; renderPlayButton(); };
   const handled = await spotify.handleRedirect();
   if (spotify.error) toast(spotify.error, 5000);
   const resumed = restoreSession();
