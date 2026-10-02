@@ -50,20 +50,11 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .top { display: flex; align-items: center; gap: 12px; padding: 14px 0 6px; }
 .brand { display: flex; align-items: center; gap: 8px; font-family: var(--display); font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
 .brand .logo { color: var(--accent); }
-.week { display: flex; gap: 4px; margin-left: 6px; }
-.dot { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: 9px; font-weight: 600; color: var(--ink3); }
-.dot.done { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.dot.today:not(.done) { border-color: var(--accent); color: var(--accent); }
 .right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 .levels { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-.lvlopt { text-align: left; display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel2); }
-.lvlopt span { font-size: 13px; color: var(--ink2); }
-.lvlopt.on { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(242,181,68,.25); }
-.lvlopt:hover { border-color: var(--ink3); }
-.lvl { font-size: 12px; font-weight: 600; color: var(--ink2); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
 .icon { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: var(--ink2); font-size: 16px; }
 .icon:hover { background: var(--panel); color: var(--ink); }
-@media (max-width: 520px) { .lvl { font-size: 11px; padding: 3px 8px; } .top { flex-wrap: wrap; row-gap: 8px; } .week { order: 3; flex-basis: 100%; margin-left: 0; } .right { margin-left: auto; } #answer .actions .grow { display: none; } #answer .actions .primary { flex: 1 1 auto; } .actions .primary#btn-next, .actions .primary#btn-finish { flex: 0 0 auto; } }
+@media (max-width: 520px) { .top { flex-wrap: wrap; row-gap: 8px; } .right { margin-left: auto; } #answer .actions .grow, #reveal .actions .grow { display: none; } #answer .actions > button, #reveal .actions > button { flex: 1 1 0; padding-left: 8px; padding-right: 8px; } }
 
 /* buttons */
 /* One button style everywhere (same corners as the chord buttons); .primary is the gold call to action. */

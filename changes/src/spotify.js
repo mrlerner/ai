@@ -35,6 +35,7 @@ export class Spotify {
     this.chain = Promise.resolve();   // play/pause commands run one at a time, in order
     this.log = [];                    // last Spotify calls, for the diagnostics panel
     this.onPlaying = () => {};        // (bool) Spotify started/stopped playing our section outside our own commands
+    this.onAutoplayBlocked = () => {}; // the browser refused to start audio without a tap (iOS): ask for one
     this.pending = null;              // section whose play command is in flight
     this.monitorTimer = null;
     document.addEventListener('visibilitychange', () => { if (!document.hidden && this.section && !this.player) this.tick().catch(() => {}); });
@@ -48,10 +49,15 @@ export class Spotify {
     return /iPhone|iPad|iPod|Android/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   }
 
-  static sdkSupported() {
-    const ua = navigator.userAgent || '';
-    const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    return !ios && typeof window.MediaSource !== 'undefined';
+  // Spotify documents the SDK as supported in Safari and Chrome on iOS as well as on desktop; the one iOS rule is
+  // that audio must be started from a tap (see unlock()). If the SDK cannot start we fall back to Connect.
+  static sdkSupported() { return true; }
+
+  // iOS (Safari and Chrome, both WebKit) only lets a page start audio from inside a user gesture. Call this
+  // synchronously in tap handlers that lead to playback; it unlocks the SDK's media element for the session.
+  unlock() {
+    if (!this.player) return;
+    try { const r = this.player.activateElement?.(); if (r?.catch) r.catch(() => {}); } catch { /* ignore */ }
   }
 
   loadSdk() {
@@ -193,6 +199,14 @@ export class Spotify {
         player.addListener('authentication_error', ({ message }) => reject(new Error(message)));
         player.addListener('account_error', ({ message }) => reject(new Error(message)));
         player.addListener('playback_error', ({ message }) => { this.note('sdk playback_error ' + message); });
+        player.addListener('autoplay_failed', () => { this.note('sdk autoplay_failed (needs a tap)'); this.onAutoplayBlocked(); });
+        player.addListener('player_state_changed', (st) => {
+          const sec = this.section; if (!sec || !this.player) return;
+          const uri = st?.track_window?.current_track?.uri;
+          if (!st || uri !== sec.uri) return;
+          if (st.paused && Date.now() - (sec.playedAt || 0) < 4500) return;   // still starting; playSectionSdk is checking
+          this.onPlaying(!st.paused);
+        });
         setTimeout(() => reject(new Error('Spotify player timed out')), 15000);
       });
       if (!(await player.connect())) throw new Error('player.connect() failed');
@@ -364,9 +378,24 @@ export class Spotify {
   async playSectionSdk(section, fromMs) {
     const { uri, startMs, endMs, loop, onProgress } = section;
     const firstMs = Math.min(endMs - 200, Math.max(startMs, fromMs ?? startMs));
-    await this.player.activateElement?.();
-    await this.serial(() => this.api(`/me/player/play?device_id=${this.sdkId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(firstMs)) }) }));
+    this.unlock(); section.playedAt = Date.now();
+    try {
+      await this.serial(() => this.api(`/me/player/play?device_id=${this.sdkId}`, { method: 'PUT', body: JSON.stringify({ uris: [uri], position_ms: Math.max(0, Math.round(firstMs)) }) }));
+    } catch (e) {
+      if (e.status === 404 || e.status === 502) { this.note('sdk device not reachable, switching to Connect'); return this.dropSdk(section, fromMs); }
+      throw e;
+    }
     if (this.section !== section) return;
+    // Did it actually start? iOS refuses audio that was not started by a tap: the track loads but stays paused.
+    let st = null;
+    for (let i = 0; i < 14 && this.section === section; i++) {
+      await new Promise(r => setTimeout(r, 300));
+      st = await this.player.getCurrentState();
+      if (st && !st.paused && st.track_window?.current_track?.uri === uri) break;
+    }
+    if (this.section !== section) return;
+    if (!st) { this.note('sdk never reported state, switching to Connect'); return this.dropSdk(section, fromMs); }
+    if (st.paused) { this.note('sdk loaded but paused (autoplay blocked)'); this.onAutoplayBlocked(); }
     this.loop = setInterval(async () => {
       const st = await this.player.getCurrentState();
       if (!st || st.paused) return;
@@ -375,6 +404,13 @@ export class Spotify {
         if (loop) await this.player.seek(startMs); else { await this.player.pause(); this.stopLoop(); }
       }
     }, 250);
+  }
+
+  // Give up on the in-page player for this session and play the same section through Spotify Connect instead.
+  async dropSdk(section, fromMs) {
+    try { this.player?.disconnect(); } catch { /* ignore */ }
+    this.player = null; this.sdkId = null; this.onStatus();
+    return this.playSection(section.uri, section.startMs, section.endMs, { loop: section.loop, onProgress: section.onProgress, fromMs });
   }
 
   stopLoop() { if (this.loop) { clearInterval(this.loop); this.loop = null; } }

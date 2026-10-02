@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790956714';
-import { SONGS, LEVELS } from './corpus.js?v=1790956714';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790956714';
-import { Band } from './audio.js?v=1790956714';
-import { Spotify } from './spotify.js?v=1790956714';
-import { explain } from './progressions.js?v=1790956714';
+import { CONFIG } from './config.js?v=1790957596';
+import { SONGS, LEVELS } from './corpus.js?v=1790957596';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790957596';
+import { Band } from './audio.js?v=1790957596';
+import { Spotify } from './spotify.js?v=1790957596';
+import { explain } from './progressions.js?v=1790957596';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';
@@ -68,7 +68,7 @@ function toast(msg, ms = 2600, { html = false } = {}) {
   clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), ms);
 }
 
-// week dots: Monday..Sunday of the current week
+// Monday..Sunday of the current week (used for the weekly session count)
 function weekDots() {
   const now = new Date(); const day = (now.getDay() + 6) % 7; // Mon=0
   const monday = new Date(now); monday.setDate(now.getDate() - day);
@@ -138,6 +138,7 @@ function stopAll() {
 
 async function playQuestion(frac = 0) {
   if (!q) return;
+  spotify.unlock();   // synchronously, while we are still inside the tap (iOS will not start audio otherwise)
   band.stop();
   const song = q.song;
   const start = Math.max(0, (song.start || 0) + (state.offsets[song.id] || 0));
@@ -383,14 +384,10 @@ function render() {
 }
 
 function header() {
-  const dots = weekDots().map(d => `<span class="dot ${d.done ? 'done' : ''} ${d.today ? 'today' : ''}" title="${d.d}">${d.label}</span>`).join('');
-  const lvl = LEVELS[state.level - 1];
   return `<header class="top">
     <div class="brand"><span class="logo">♫</span><span class="name">${CONFIG.appName}</span></div>
-    <div class="week" title="${weekCount()} of ${state.settings.weeklyGoal} sessions this week">${dots}</div>
     <div class="right">
-      <button class="lvl" id="btn-level" title="Your level: ${h(lvl.blurb)} Click to change.">L${state.level} · ${h(lvl.name)} ▾</button>
-      <button class="icon" id="btn-settings" aria-label="Settings">⚙</button>
+      <button class="icon" id="btn-settings" aria-label="Settings" title="Settings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </div>
   </header>`;
 }
@@ -422,7 +419,7 @@ function renderHome() {
   </main>`;
   bindCommon();
   $('#btn-start').onclick = async () => {
-    band.ensure();
+    band.ensure(); spotify.unlock();
     // give Spotify a moment to come up, but never make the button feel dead
     await Promise.race([spotify.connect(), new Promise(r => setTimeout(r, 3500))]);
     startSession();
@@ -706,22 +703,9 @@ function openSettings() {
   $('#s-reset', m).onclick = () => { if (confirm('Reset all progress? This cannot be undone.')) { state = defaults(); save(); close(); session = null; saveSession(); render(); } };
 }
 
-function openLevelPicker() {
-  const m = document.createElement('div'); m.className = 'modal';
-  m.innerHTML = `<div class="sheet">
-    <div class="sh"><h2>Your level</h2><button class="icon" id="btn-close">✕</button></div>
-    <p class="muted small">Each session ramps: two questions one level down, two at your level, then one level up. Pick where the middle sits.</p>
-    <div class="levels">${LEVELS.map(l => `<button class="lvlopt ${l.n === state.level ? 'on' : ''}" data-n="${l.n}"><b>L${l.n} · ${h(l.name)}</b><span>${h(l.blurb)}</span></button>`).join('')}</div>
-  </div>`;
-  document.body.appendChild(m);
-  const close = () => m.remove();
-  $('#btn-close', m).onclick = close; m.onclick = (e) => { if (e.target === m) close(); };
-  $$('.lvlopt', m).forEach(b => b.onclick = () => { state.level = +b.dataset.n; save(); close(); render(); toast(`Level ${state.level}: ${LEVELS[state.level - 1].name}`); });
-}
 
 function bindCommon() {
   const s = $('#btn-settings'); if (s) s.onclick = openSettings;
-  const lv = $('#btn-level'); if (lv) lv.onclick = openLevelPicker;
   const l = $('#btn-login'); if (l) l.onclick = () => spotify.login();
   const r = $('#btn-retry'); if (r) r.onclick = async () => { spotify.status = 'idle'; await spotify.connect(); render(); };
 }
@@ -764,6 +748,7 @@ function confetti() {
 (async function boot() {
   spotify.onStatus = () => { const el = $('.status'); if (el) el.innerHTML = spotifyLine(), bindCommon(); };
   // Spotify itself started or stopped (paused in the Spotify app, phone didn't start the track...): keep the play button honest
+  spotify.onAutoplayBlocked = () => { if (playback.source !== 'spotify') return; playback.playing = false; renderPlayButton(); toast('Tap ▶ to start the music.', 4000); };
   spotify.onPlaying = (p) => { if (playback.source !== 'spotify' || playback.playing === p) return; playback.playing = p; renderPlayButton(); };
   const handled = await spotify.handleRedirect();
   if (spotify.error) toast(spotify.error, 5000);
