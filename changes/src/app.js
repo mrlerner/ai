@@ -1,10 +1,10 @@
 // app.js — session flow, question/answer UI, progress, and the glue between Spotify and the synth band.
-import { CONFIG } from './config.js?v=1790956163';
-import { SONGS, LEVELS } from './corpus.js?v=1790956163';
-import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790956163';
-import { Band } from './audio.js?v=1790956163';
-import { Spotify } from './spotify.js?v=1790956163';
-import { explain } from './progressions.js?v=1790956163';
+import { CONFIG } from './config.js?v=1790956241';
+import { SONGS, LEVELS } from './corpus.js?v=1790956241';
+import { parseKey, chordInfo, PALETTES, sameChord, rnDisplay, keyDisplay, pcName } from './theory.js?v=1790956241';
+import { Band } from './audio.js?v=1790956241';
+import { Spotify } from './spotify.js?v=1790956241';
+import { explain } from './progressions.js?v=1790956241';
 
 // ---------------------------------------------------------------- state ----
 const LS_KEY = 'ct.state.v1';

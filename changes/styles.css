@@ -44,6 +44,7 @@ code { font-size: .85em; background: var(--panel2); padding: 1px 5px; border-rad
 .ok { color: var(--live); } .warn { color: var(--half); }
 
 #app { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
+.ver { text-align: center; font-size: 11px; color: var(--ink2); opacity: .6; padding: 0 16px calc(16px + env(safe-area-inset-bottom)); font-variant-numeric: tabular-nums; }
 
 /* header */
 .top { display: flex; align-items: center; gap: 12px; padding: 14px 0 6px; }
