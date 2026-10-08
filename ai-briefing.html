@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineering — October 08, 2026</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: #1a1a1a;
+            background: #fff;
+            margin: 0;
+            padding: 48px 24px;
+            line-height: 1.7;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 48px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.3px;
+        }
+        .date {
+            font-size: 15px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Market */
+        .market {
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .market p {
+            margin: 0;
+        }
+        .market .label {
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .market .market-line {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Weather */
+        .weather {
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .weather p {
+            margin: 0;
+        }
+        .weather .label {
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .weather .forecast {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        .weather .summary {
+            font-style: italic;
+            color: #666;
+            margin-top: 8px;
+            font-size: 16px;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin: 0 0 20px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* Items */
+        .item {
+            margin-bottom: 20px;
+        }
+        .item-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 0 0 4px 0;
+        }
+        .item-title a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        .item-title a:hover {
+            text-decoration: underline;
+        }
+        .item-meta {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.5;
+        }
+        .item-meta a {
+            color: #888;
+            text-decoration: none;
+        }
+        .item-meta a:hover {
+            text-decoration: underline;
+        }
+        .item-also {
+            font-size: 14px;
+            color: #888;
+            margin-top: 4px;
+        }
+        .item-also a {
+            color: #555;
+        }
+        .item-summary {
+            font-size: 16px;
+            color: #444;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+
+        /* Table of Contents */
+        .toc {
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .toc .label {
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            margin: 0 0 12px 0;
+        }
+        .toc-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .toc-list li {
+            line-height: 2;
+            font-size: 16px;
+        }
+        .toc-list a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        .toc-list a:hover {
+            text-decoration: underline;
+        }
+        .toc-count {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Must read */
+        .must-read {
+            margin-bottom: 40px;
+            padding: 20px 0 4px 20px;
+            border-left: 3px solid #1a1a1a;
+        }
+        .must-read .label {
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #1a1a1a;
+            margin: 0 0 16px 0;
+        }
+        .must-read .why {
+            font-size: 16px;
+            color: #444;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 13px;
+            color: #999;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 32px 16px;
+                font-size: 17px;
+            }
+            h1 { font-size: 24px; }
+        }
+
+        @media print {
+            body { padding: 0; font-size: 11pt; }
+            .container { max-width: 100%; }
+            a { color: #1a1a1a; }
+            .toc, footer { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header id="top">
+            <h1>AI Engineering</h1>
+            <div class="date">October 08, 2026</div>
+        </header>
+
+        
+        <div class="must-read" id="must-read">
+            <p class="label">Must read</p>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/claudeai/status/2107894039626277339" target="_blank">Introducing Claude Haiku 5.5: the cheapest, fastest, and most capable small model we’ve ever released. On average, it costs around 75% less to run than Claude Haiku 4.5.</a></p>
+                <div class="item-meta">@claudeai · 43,160 likes · 14h ago</div>
+                <div class="why">Anthropic shipped Claude Haiku 5.5, a frontier-cheap small model at ~75% lower cost, which resets pricing math for anyone building on LLMs.</div>
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://github.com/openai/math/blob/main/history.md" target="_blank">OpenAI Withdraws 3 Math Papers</a></p>
+                <div class="item-meta">335 points · 319 comments · 8h ago · <a href="https://news.ycombinator.com/item?id=50003107" target="_blank" style="">discussion</a></div>
+                <div class="why">OpenAI retracting three math papers casts doubt on its headline claim of solving dozens of open math problems.</div>
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.theverge.com/tech/1007113/microsoft-windows-copilot-ai-control-search-hybrid-intelligence" target="_blank">Microsoft is giving Copilot more control over Windows and your files</a></p>
+                <div class="item-meta">The Verge AI · 14h ago</div>
+                <div class="why">Microsoft is giving Copilot access to local files and OS-level actions, pushing agents into the default Windows workflow.</div>
+            </div>
+            
+        </div>
+        
+
+        
+        <nav class="toc">
+            <p class="label">Contents</p>
+            <ul class="toc-list">
+                
+                <li><a href="#top-stories">Top stories</a> <span class="toc-count">5 stories</span></li>
+                
+                
+                <li><a href="#ai-labs">AI Labs</a> <span class="toc-count">6 announcements</span></li>
+                
+                <li><a href="#releases">Releases</a> <span class="toc-count">1 releases</span></li>
+                
+                <li><a href="#news">News</a> <span class="toc-count">6 headlines</span></li>
+                
+                <li><a href="#podcasts">Podcasts</a> <span class="toc-count">5 episodes</span></li>
+                
+                <li><a href="#hacker-news">Hacker News</a> <span class="toc-count">8 posts</span></li>
+                
+                <li><a href="#reddit">Reddit</a> <span class="toc-count">4 posts</span></li>
+                
+                <li><a href="#blogs-newsletters">Blogs &amp; Newsletters</a> <span class="toc-count">3 posts</span></li>
+                
+                <li><a href="#x-bluesky">X &amp; Bluesky</a> <span class="toc-count">4 posts</span></li>
+                
+            </ul>
+        </nav>
+        
+
+        
+
+        
+
+        
+        <div class="section" id="top-stories">
+            <h2>Top stories</h2>
+
+            
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/claudeai/status/2107894039626277339" target="_blank">Introducing Claude Haiku 5.5: the cheapest, fastest, and most capable small model we’ve ever released. On average, it costs around 75% less to run than Claude Haiku 4.5.</a></p>
+                <div class="item-meta">@claudeai · 43,160 likes · 14h ago</div>
+                
+                <div class="item-also">Also: <a href="https://x.com/claudeai/status/2107894039626277339/video/1" target="_blank" style="">@claudeai</a>, <a href="https://www.latent.space/p/ainews-claude-haiku-55-better-than" target="_blank" style="">Latent Space</a>, <a href="https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/" target="_blank" style="">Simon Willison</a></div>
+            </div>
+            
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x0n4pt/last_week_some_of_south_koreas_biggest_banks_were/" target="_blank">Last week some of South Korea&#39;s biggest banks were hit by a cyberattack. We now know the entire hack may have been done by a single person. He used a combined stack of an open-source AI penetration tool named ARTEX, DeepSeek v4.1-Flash, GLM-5.3, Grok 4.6, and Claude Code (CrowdStrike)</a></p>
+                <div class="item-meta">r/LocalLLaMA · just now</div>
+                
+                <div class="item-summary">CrowdStrike report: https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/ From: Andrew Curran on 𝕏: https://x.com/AndrewCurran_/status/2108108695876092323 Jukan ✈️OCP 2026 on 𝕏: https://x.com/jukan05/status/2108110513033093369 &amp;#32;  &amp;#32; /u/Nunki08</div>
+                
+                <div class="item-also">Also: <a href="https://x.com/AndrewCurran_/status/2108108695876092323" target="_blank" style="">@AndrewCurran_</a>, <a href="https://x.com/choblin29/status/2108068020602249472" target="_blank" style="">@choblin29</a></div>
+            </div>
+            
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.theverge.com/tech/1007904/google-gemini-ai-agent-enterprise" target="_blank">Google is launching a one-stop Gemini agent for your work tasks</a></p>
+                <div class="item-meta">The Verge AI · just now</div>
+                
+                <div class="item-summary">Google is launching a &#34;universal&#34; Gemini AI agent that can work across apps and devices in the background. The tool, announced as part of the Gemini at Work event on Thursday, will be available within the Gemini Enterprise app, allowing users to chat with the Gemini agent and assign it tasks from...</div>
+                
+                <div class="item-also">Also: <a href="https://www.reddit.com/r/ClaudeAI/comments/1x0j9g9/psa_anthropics_october_7_update_is_actually_good/" target="_blank" style="">r/ClaudeAI</a></div>
+            </div>
+            
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.theverge.com/podcast/1007408/meta-muse-openai-dots-ai-agent-race-privacy-free" target="_blank">Can you trust Meta’s Muse or OpenAI’s Dots to run your life?</a></p>
+                <div class="item-meta">The Verge AI · just now</div>
+                
+                <div class="item-summary">My Decoder guest today is Hayden Field, The Verge’s senior AI reporter, and we’re discussing the new wave of consumer-friendly AI agents. If you’ve been paying attention to this space, you know AI enthusiasts have been using agents for a minute now — homebrew OpenClaw setups led to a surge in Mac...</div>
+                
+                <div class="item-also">Also: <a href="https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP6813236420.mp3" target="_blank" style="">Decoder</a></div>
+            </div>
+            
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.cognitiverevolution.ai/software-that-never-breaks-outsystems-ceo-woodson-martin-on-building-enterprise-grade-apps-at-ai-speed/" target="_blank">Software That Never Breaks: OutSystems CEO Woodson Martin on Building Enterprise-Grade Apps at ...</a></p>
+                <div class="item-meta">Cognitive Revolution · 15h ago</div>
+                
+                <div class="item-summary">OutSystems CEO Woodson Martin joins Nathan to discuss how enterprise software can evolve at AI speed without breaking critical operations. Martin explains how an intermediate layer of abstract modeling allows AI agents to build reliably through deterministic code generation, ensuring role-based…</div>
+                
+                <div class="item-also">Also: <a href="https://a16z.simplecast.com/episodes/building-the-cloud-for-an-agentic-world-aws-ceo-matt-garman-d18BWOHC" target="_blank" style="">The a16z Show</a></div>
+            </div>
+            
+        </div>
+        
+
+        
+        <div class="section" id="ai-labs">
+            <h2>AI Labs</h2>
+
+            
+            <div class="item">
+                <p class="item-title"><a href="https://openai.com/index/disrupting-ai-enabled-false-front-operations" target="_blank">Disrupting AI-enabled “false front” operations</a></p>
+                <div class="item-meta">OpenAI · 8h ago</div>
+                
+                <div class="item-summary">OpenAI disrupted two AI-enabled influence operations that used false-front journalists and a think tank to spread geopolitical messaging.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/OpenAI/status/2107909792945832070" target="_blank">We&#39;re sharing progress on ChatGPT for Teens, our ChatGPT experience for people under 18, alongside a preview of College Planner, new study tools, and support for college advisers and teen voices. ChatGPT for Teens applies automatically to accounts identified as belonging to</a></p>
+                <div class="item-meta">@OpenAI · 2,961 likes · 13h ago</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/GoogleDeepMind/status/2107834249680499136" target="_blank">SynthID Detector is now available to everyone. 🌐 Check whether online content was generated using @GoogleAI, or with tools from our industry partners – including @OpenAI, @NVIDIA, Kakao and coming soon, @Apple. Try it out →</a></p>
+                <div class="item-meta">@GoogleDeepMind · 1,351 likes · 18h ago</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/OpenAIDevs/status/2107927072165548276" target="_blank">Build richer, more interactive plugins for ChatGPT. With plugin extensions, you can launch plugins from the sidebar, support @ mentions, and add file viewers. See how in this walkthrough with @coreyching:</a></p>
+                <div class="item-meta">@OpenAIDevs · 1,040 likes · 12h ago</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://huggingface.co/blog/nvidia/nemotron-ioi-and-imo-2026" target="_blank">One Model Family, Two Gold-Level Results: Fine-Tuning Nemotron for IOI and IMO</a></p>
+                <div class="item-meta">Hugging Face · 19h ago</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/openai/status/2107894999119774148" target="_blank">With Intelligent UI, GPT‑6 can now compose responses using text, visuals, and interactive elements, choosing how they fit together based on your question. Responses can include graphics and charts to help explain an idea, along with tappable buttons, forms, and interactive</a></p>
+                <div class="item-meta">@openai · 2,231 likes · 14h ago</div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="section" id="releases">
+            <h2>Releases</h2>
+
+            
+            <div class="item">
+                <p class="item-title"><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.294" target="_blank">Claude Code v2.1.294 (+1 more release)</a></p>
+                <div class="item-meta">Claude Code · 3h ago</div>
+                
+                <div class="item-summary">Added Claude Haiku 5.5 (claude-haiku-5-5), now the default Haiku model on the Anthropic API — 1M context, $0.10/$0.50 per Mtok ($0.50/$2.50 for prompts over… • Added agentType to the subagentStatusLine payload, so scripts can tell custom subagent types apart • Added isDeferred to $.tool.register for mods: false lists the tool&#39;s schema in the prompt from the start instead of behind tool search</div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="section" id="news">
+            <h2>News</h2>
+
+            
+            <div class="item">
+                <p class="item-title"><a href="https://techcrunch.com/2026/10/08/goodfire-says-its-new-inside-out-monitors-catch-rogue-ai-agents-at-a-fraction-of-the-cost/" target="_blank">Goodfire says its new ‘inside-out’ monitors catch rogue AI agents at a fraction of the cost</a></p>
+                <div class="item-meta">TechCrunch AI · just now</div>
+                
+                <div class="item-summary">Goodfire just launched what it says is a cheaper way to keep AI agents in check: instead of paying a second AI to read everything an agent does, its monitors peek inside the model while it works and only call in backup when something looks fishy.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/" target="_blank">Nous Research confirms it hit $1.5B valuation, launches AI agents for business users</a></p>
+                <div class="item-meta">TechCrunch AI · 11h ago</div>
+                
+                <div class="item-summary">The developer of Hermes Agent raised a $90 million Series B.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://techcrunch.com/2026/10/08/naturas-smart-ring-puts-ai-agents-on-your-finger/" target="_blank">Natura’s $99 smart ring puts AI agents on your finger</a></p>
+                <div class="item-meta">TechCrunch AI · just now</div>
+                
+                <div class="item-summary">Natura’s $99 Interface smart ring lets you summon AI agents with the press of a finger to complete tasks, capture thoughts, and control devices — while doubling as a health tracker.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://techcrunch.com/2026/10/08/cal-ais-19-year-old-founder-just-raised-10m-for-his-new-ai-startup/" target="_blank">Cal AI’s 19-year-old founder just raised $10M for his new AI startup</a></p>
+                <div class="item-meta">TechCrunch AI · just now</div>
+                
+                <div class="item-summary">Zach Yadegari, the teen co-founder of popular Cal AI calorie tracking app, has launched a new personal AI agent startup that competes with Instinct, Muse, and Bee.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://techcrunch.com/2026/10/07/microsoft-releases-new-nvidia-chip-ai-pcs-with-revamped-windows-11/" target="_blank">Microsoft releases new Nvidia-chip AI PCs with revamped Windows 11</a></p>
+                <div class="item-meta">TechCrunch AI · 12h ago</div>
+                
+                <div class="item-summary">Microsoft revealed the specs and price for its Surface Laptop Ultra, AI PCs that run on Nvidia chips that are designed to run AI models and agents.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.theverge.com/tech/1007113/microsoft-windows-copilot-ai-control-search-hybrid-intelligence" target="_blank">Microsoft is giving Copilot more control over Windows and your files</a></p>
+                <div class="item-meta">The Verge AI · 14h ago</div>
+                
+                <div class="item-summary">At today&#39;s Windows and Surface event, Microsoft showed off an upgrade to its Copilot AI system that will give it access to local files on your PC and the ability to take actions across the OS. It&#39;s part of an idea Microsoft is calling &#34;Hybrid Intelligence,&#34; where apps and tools rely on a mix of […]</div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="section" id="podcasts">
+            <h2>Podcasts</h2>
+
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.cognitiverevolution.ai/ai-am-a-level-we-shouldn-t-pass-notes-from-the-curve-tokens-vs-salaries-is-saas-cooked/" target="_blank">AI:AM: A Level We Shouldn&#39;t Pass? Notes from The Curve + Tokens vs. Salaries &amp; Is SaaS Cooked?</a></p>
+                <div class="item-meta">Cognitive Revolution · just now</div>
+                
+                <div class="item-summary">Nathan Labenz reports back from The Curve conference, sharing off-the-record insights from frontier lab leaders on shortened timelines and whether humanity is approaching an intelligence threshold it should not cross. The episode also features discussions with Positron CTO Thomas Sohmers on…</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://pdst.fm/e/tracking.swap.fm/track/t7yC0rGPUqahTF4et8YD/pscrb.fm/rss/p/traffic.megaphone.fm/AMPP6714635435.mp3" target="_blank">Can AI Keep Growing Exponentially? Let’s Ask SemiAnalysis — With Dylan Patel and Jordan Nanos</a></p>
+                <div class="item-meta">Big Technology · 15h ago</div>
+                
+                <div class="item-summary">Dylan Patel is founder and CEO of SemiAnalysis,  Jordan Nanos is a member of its technical staff. Patel and Nanos join Big Technology to discuss whether AI’s massive infrastructure buildout can justify the trillions of dollars being spent on compute.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://a16z.simplecast.com/episodes/how-valon-rebuilt-a-13-trillion-industry-from-scratch-0mcVWvYe" target="_blank">How Valon Rebuilt a $13 Trillion Industry From Scratch</a></p>
+                <div class="item-meta">The a16z Show · 22h ago</div>
+                
+                <div class="item-summary">a16z General Partner Angela Strange sits down with Valon’s Andrew Wang and Linda Du to unpack what it takes to rebuild the infrastructure underneath a $13 trillion mortgage market that still relies heavily on systems designed before the internet. Linda and Andrew explain why Valon chose the hardest…</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://80000hours.org/podcast/episodes/ajeya-cotra-accidentally-teaching-ai-to-deceive-us/?utm_campaign=podcast__ajeya-cotra&amp;utm_source=80000+Hours+Podcast&amp;utm_medium=podcast" target="_blank">In 2023 Ajeya Cotra already knew what was coming (classic episode)</a></p>
+                <div class="item-meta">80,000 Hours · just now</div>
+                
+                <div class="item-summary">We&#39;re rereleasing some of older episodes that seem more relevant than ever with new rogue AI incidents now seemingly announced every day. Ajeya was one of three independent investigators into the Hugging Face attacks, but she had already seen how we would go on to accidentally train models to cheat…</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.nytimes.com/2026/10/06/opinion/ezra-klein-podcast-david-robinson.html" target="_blank">‘This Is Nuts.’ An OpenAI Insider Explains Why He Quit.</a></p>
+                <div class="item-meta">The Ezra Klein Show · 23h ago</div>
+                
+                <div class="item-summary">Last week, David Robinson resigned from OpenAI. He’d been in charge of writing the safety reports for new models and came to believe that OpenAI and the broader artificial intelligence industry lack the safety culture necessary to protect the world from what they’re building.</div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="section" id="hacker-news">
+            <h2>Hacker News</h2>
+
+            
+            <div class="item">
+                <p class="item-title"><a href="https://github.com/openai/math/blob/main/history.md" target="_blank">OpenAI Withdraws 3 Math Papers</a></p>
+                <div class="item-meta">335 points · 319 comments · 8h ago · <a href="https://news.ycombinator.com/item?id=50003107" target="_blank" style="">discussion</a></div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://github.com/pingdotgg/ts-rust" target="_blank">Port of the TypeScript compiler, checker and lsp to Rust, by LLM</a></p>
+                <div class="item-meta">97 points · 189 comments · 15h ago · <a href="https://news.ycombinator.com/item?id=50000676" target="_blank" style="">discussion</a></div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://fiveminutesforward.com/post/2026-10-04-telegraph-test/" target="_blank">Write Like It&#39;s 1866: LLMs Relearn Telegraphese</a></p>
+                <div class="item-meta">92 points · 58 comments · 1d ago · <a href="https://news.ycombinator.com/item?id=49991580" target="_blank" style="">discussion</a></div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://twitter.com/danintheory/status/2108065033070789090" target="_blank">OpenAI withdraws three mathematical results</a></p>
+                <div class="item-meta">91 points · 92 comments · 9h ago · <a href="https://news.ycombinator.com/item?id=50002650" target="_blank" style="">discussion</a></div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.reddit.com/r/ClaudeAI/s/mbe5IY2LF9" target="_blank">I think I found a planet nobody knew existed. I used Claude Code to find it</a></p>
+                <div class="item-meta">65 points · 19 comments · 9h ago · <a href="https://news.ycombinator.com/item?id=50002665" target="_blank" style="">discussion</a></div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://agent.reviews/" target="_blank">Show HN: Agent.reviews – Where AI agents read and write reviews on tools</a></p>
+                <div class="item-meta">64 points · 47 comments · 23h ago · <a href="https://news.ycombinator.com/item?id=49995539" target="_blank" style="">discussion</a></div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.ahmath.org/statements" target="_blank">AHM Statement on OpenAI&#39;s October 6 Release of Mathematical Documents</a></p>
+                <div class="item-meta">43 points · 39 comments · 7h ago · <a href="https://news.ycombinator.com/item?id=50003677" target="_blank" style="">discussion</a></div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://github.com/SamsungLabs/LittleBit" target="_blank">Sub-1-Bit LLM Compression via Latent Factorization</a></p>
+                <div class="item-meta">33 points · 3 comments · 3h ago · <a href="https://news.ycombinator.com/item?id=50005608" target="_blank" style="">discussion</a></div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="section" id="reddit">
+            <h2>Reddit</h2>
+
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.reddit.com/r/ClaudeAI/comments/1x02i4a/how_to_save_hundreds_of_with_claude_in_places_you/" target="_blank">How to save hundreds of $$$ with Claude in places you didn&#39;t even imagine</a></p>
+                <div class="item-meta">r/ClaudeAI · 15h ago</div>
+                
+                <div class="item-summary">I am an extreme pro AI believer. I used Claude in cases where it didn&#39;t even make sense.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/" target="_blank">jevman: AI decision models play Pac-Man</a></p>
+                <div class="item-meta">r/LocalLLaMA · just now</div>
+                
+                <div class="item-summary">The other week I posted about Jev vs. Kev compared and since then, OpenAI released the decisions endpoint, Cloudflare released Clef and many here asked about Laya as well.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.reddit.com/r/OpenAI/comments/1x0o0y6/openai_applied_for_15_new_toplevel_domains/" target="_blank">OpenAI applied for 15 new top-level domains, including .gpt, .chatgpt and .agi</a></p>
+                <div class="item-meta">r/OpenAI · just now</div>
+                
+                <div class="item-summary">ICANN published all applications for new top-level domains on October 7, the first round since 2012. OpenAI applied for 15 of them: .openai, .chatgpt, .gpt, .agi, .asi, .agent, .mcp, .codex, .model, .skill, .evals, .voice, .deploy, .oai, .daybreak A few details from the data: .gpt is filed as a bran</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x0ms0m/running_an_llmdriven_town_with_800_persistent/" target="_blank">Running an LLM-driven town with 800+ persistent agents: concurrency, context caching, and inference costs</a></p>
+                <div class="item-meta">r/LocalLLaMA · just now</div>
+                
+                <div class="item-summary">I spent the past year independently building Slow Vale, an LLM-driven life simulation. The Chinese server now has 800+ AI residents sharing one continuously running city.</div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="section" id="blogs-newsletters">
+            <h2>Blogs &amp; Newsletters</h2>
+
+            
+            <div class="item">
+                <p class="item-title"><a href="https://simonwillison.net/2026/Oct/7/ben-affleck/" target="_blank">Quoting Ben Affleck</a></p>
+                <div class="item-meta">Simon Willison · 9h ago</div>
+                
+                <div class="item-summary">I&#39;ve always been kind of into computers since I was young. And then when film started to move from analog film to digital, I became more interested in that aspect of it.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.latent.space/p/ainews-quasi-riemann-hypothesis-openai" target="_blank">[AINews] Quasi-Riemann-Hypothesis: OpenAI publishes 722 math papers solving 90 of the top 500 open math problems; “the most significant moment” in &gt;100 years of mathematics</a></p>
+                <div class="item-meta">Latent Space · 1d ago</div>
+                
+                <div class="item-summary">Our head hurts.</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://www.bensbites.com/p/text-is-so-2023" target="_blank">Text is so 2023</a></p>
+                <div class="item-meta">Ben&#39;s Bites · just now</div>
+                
+                <div class="item-summary">Everyone wants an AI wife...not like that</div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="section" id="x-bluesky">
+            <h2>X &amp; Bluesky</h2>
+
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/robinebers/status/2107903434309677513" target="_blank">lol this is insane claude now gives you hundreds of dollars per month extra you can just create an API key, put it into Vercel AI gateway, and save every month i like the new claude</a></p>
+                <div class="item-meta">@robinebers · 2,918 likes · 13h ago</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/jukan05/status/2108110513033093369" target="_blank">This hacker is truly legendary. A complete amateur. 1. He left directory listing enabled on his own server, so researchers could figure out who he was with barely any effort. 2. They found files like CLAUDE.md and went through his Claude Code sessions. 3. There were questions</a></p>
+                <div class="item-meta">@jukan05 · 7,225 likes · 9m ago</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/marouane53/status/2107729092749689304" target="_blank">Before Claude Code and Codex</a></p>
+                <div class="item-meta">@marouane53 · 1,060 likes · 1d ago</div>
+                
+            </div>
+            
+            <div class="item">
+                <p class="item-title"><a href="https://x.com/rampatra_/status/2107572200912101509" target="_blank">I can’t believe my company got accepted and I got €550 per month worth of Claude Code. That’s 5 Pro accounts for free for one year. This is so cool. My indie friends, just click apply.</a></p>
+                <div class="item-meta">@rampatra_ · 2,398 likes · 1d ago</div>
+                
+            </div>
+            
+        </div>
+        
+
+        <footer>
+            <a href="#top">↑ Back to top</a><br>
+            Generated October 08, 2026 at 09:30
+        </footer>
+    </div>
+</body>
+</html>
