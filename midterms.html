@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Midterm Giving Shortlist</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one narrow reading column; each lens is a numbered-free section with three ranked cards; a reference odds table at the end. */
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --fg: #1c1f2a;
+  --muted: #5f6472;
+  --line: #dcdad3;
+  --accent: #27508f;
+  --accent-soft: #e6ecf7;
+  --dem: #2f5fb3;
+  --rep: #b4402f;
+  --warn: #9a6a00;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171e; --surface: #1d2029; --fg: #ecebe6; --muted: #a2a6b2; --line: #2f3340;
+    --accent: #8fb0ea; --accent-soft: #232c3f; --dem: #7fa4e6; --rep: #e27b68; --warn: #e0b24a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15171e; --surface: #1d2029; --fg: #ecebe6; --muted: #a2a6b2; --line: #2f3340;
+  --accent: #8fb0ea; --accent-soft: #232c3f; --dem: #7fa4e6; --rep: #e27b68; --warn: #e0b24a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 48px 80px; padding-inline: 20px; }
+header h1 { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 6vw, 52px); line-height: 1.05; margin: 0 0 12px; text-wrap: balance; letter-spacing: -0.01em; }
+header p.lede { font-size: 18px; color: var(--muted); margin: 0; max-width: 60ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 20px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.meta b { color: var(--fg); font-weight: 600; }
+
+nav.toc { margin: 36px 0 8px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; }
+nav.toc a { color: var(--accent); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { text-decoration: underline; outline: none; }
+
+
+section.lens { margin-top: 56px; }
+section.lens h2 { font-family: var(--display); font-weight: 700; font-size: 30px; line-height: 1.15; margin: 0 0 6px; text-wrap: balance; }
+section.lens .why { color: var(--muted); margin: 0 0 20px; max-width: 62ch; }
+.cards { display: grid; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; display: grid; grid-template-columns: 32px 1fr; gap: 4px 14px; min-width: 0; }
+.card .rank { font-family: var(--display); font-size: 26px; font-weight: 500; color: var(--accent); line-height: 1; grid-row: span 3; padding-top: 2px; }
+.card .name { font-weight: 600; font-size: 17px; margin: 0; }
+.card .race { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin: 0; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+.card .reason { margin: 6px 0 0; font-size: 15px; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; text-transform: none; }
+.pill.d { background: var(--dem); color: #fff; }
+.pill.odds { background: var(--accent-soft); color: var(--fg); font-variant-numeric: tabular-nums; }
+.pill.warn { background: transparent; color: var(--warn); border: 1px solid var(--warn); }
+
+section.timing h2 { font-family: var(--display); font-size: 30px; margin: 0 0 6px; }
+section.timing ul { padding-left: 20px; margin: 0; }
+section.timing li { margin-bottom: 8px; }
+.dates { margin-top: 18px; width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+.dates th, .dates td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.dates th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+
+.tablewrap { overflow-x: auto; margin-top: 18px; }
+table.odds { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; min-width: 560px; }
+table.odds th, table.odds td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.odds th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+table.odds td.num { text-align: right; }
+table.odds th.num { text-align: right; }
+.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; min-width: 90px; margin-top: 6px; }
+.bar i { display: block; height: 100%; background: var(--dem); }
+
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+footer a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 480px) { .card { grid-template-columns: 26px 1fr; } .card .rank { font-size: 22px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Midterm Giving Shortlist</h1>
+  <p class="lede">The same slate of Senate races, ranked three ways. Pick the lens that matches why you're giving.</p>
+  <div class="meta">
+    <span>Election day <b>Tue, Nov 3, 2026</b></span>
+    <span>Days left <b>20</b></span>
+    <span>Odds <b>Kalshi + Polymarket avg, Oct 9–13</b></span>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#excitement">Excitement</a>
+  <a href="#ev">Expected value</a>
+  <a href="#control">Senate control</a>
+  <a href="#timing">Does money still matter?</a>
+  <a href="#odds">Odds table</a>
+</nav>
+
+
+<section class="lens" id="excitement">
+  <h2>Top 3 by excitement</h2>
+  <p class="why">The races you'll actually stay up for on election night, regardless of what your dollar does.</p>
+  <div class="cards">
+    <div class="card"><div class="rank">1</div>
+      <p class="name">James Talarico</p>
+      <p class="race">Texas Senate vs. Ken Paxton <span class="pill d">D</span> <span class="pill odds">63% to win</span></p>
+      <p class="reason">No Democrat has won statewide in Texas since 1994. Paxton was impeached, Trump-endorsed, and is now within two points in most October polls. Talarico has more cash than any Democrat in the country, so your check is symbolic, but it's the race of the cycle.</p>
+    </div>
+    <div class="card"><div class="rank">2</div>
+      <p class="name">Adam Hamilton</p>
+      <p class="race">Kansas Senate vs. Roger Marshall <span class="pill d">D</span> <span class="pill odds">37% to win</span></p>
+      <p class="reason">Deep-red Kansas becoming a Senate battleground with a pastor as the Democratic nominee. If it flips, it's the story of the night.</p>
+    </div>
+    <div class="card"><div class="rank">3</div>
+      <p class="name">Troy Jackson</p>
+      <p class="race">Maine Senate vs. Susan Collins <span class="pill d">D</span> <span class="pill odds">56–60% to win</span></p>
+      <p class="reason">Collins has survived every cycle since 1996. Retiring a five-term incumbent is its own kind of drama.</p>
+    </div>
+  </div>
+</section>
+<section class="lens" id="ev">
+  <h2>Top 3 by expected value</h2>
+  <p class="why">Where a marginal dollar is most likely to change the outcome: a race near 50/50, a candidate being outspent, and a cheap media market.</p>
+  <div class="cards">
+    <div class="card"><div class="rank">1</div>
+      <p class="name">Adam Hamilton</p>
+      <p class="race">Kansas Senate vs. Roger Marshall <span class="pill d">D</span> <span class="pill odds">37% to win</span></p>
+      <p class="reason">Moved from 17% to 37% in five weeks. Republican outside groups have reserved nearly 10× his ad spending and the national GOP is redirecting North Carolina money here. Wichita and Topeka are cheap markets.</p>
+    </div>
+    <div class="card"><div class="rank">2</div>
+      <p class="name">Josh Turek</p>
+      <p class="race">Iowa Senate vs. Ashley Hinson <span class="pill d">D</span> <span class="pill odds">44% to win</span></p>
+      <p class="reason">The closest Senate race on the board by market odds. Open seat, rated toss-up by Cook, Des Moines is an inexpensive market.</p>
+    </div>
+    <div class="card"><div class="rank">3</div>
+      <p class="name">Troy Jackson</p>
+      <p class="race">Maine Senate vs. Susan Collins <span class="pill d">D</span> <span class="pill odds">56–60% to win</span></p>
+      <p class="reason">A real pickup within a few points. Kalshi and Polymarket disagree most on this race, which usually signals genuine uncertainty rather than a settled outcome.</p>
+    </div>
+  </div>
+</section>
+<section class="lens" id="control">
+  <h2>Top 3 by Senate control</h2>
+  <p class="why">Democrats need a net gain of four seats. North Carolina, Ohio, and Maine are the three likeliest pickups. These are the races that decide whether there's a fourth.</p>
+  <div class="cards">
+    <div class="card"><div class="rank">1</div>
+      <p class="name">Josh Turek</p>
+      <p class="race">Iowa Senate vs. Ashley Hinson <span class="pill d">D</span> <span class="pill odds">44% to win</span></p>
+      <p class="reason">The most plausible fourth seat that isn't already priced as a favorite.</p>
+    </div>
+    <div class="card"><div class="rank">2</div>
+      <p class="name">Adam Hamilton</p>
+      <p class="race">Kansas Senate vs. Roger Marshall <span class="pill d">D</span> <span class="pill odds">37% to win</span></p>
+      <p class="reason">The backup fourth seat. If Iowa falls short, this is the next door.</p>
+    </div>
+    <div class="card"><div class="rank">3</div>
+      <p class="name">Mary Peltola</p>
+      <p class="race">Alaska Senate vs. Dan Sullivan <span class="pill d">D</span> <span class="pill odds">72–76% to win</span></p>
+      <p class="reason">Markets favor her, but Alaska polls overstated Peltola in 2024 and she lost. Protecting this seat matters as much as flipping a new one.</p>
+    </div>
+  </div>
+</section>
+<section class="lens timing" id="timing">
+  <h2>Does money still matter 20 days out?</h2>
+  <p class="why">Yes, but the window closes around October 25, and what the money buys has changed.</p>
+  <ul>
+    <li><b>TV is mostly booked.</b> The big reservations went in weeks ago. Candidate committees still get the federally required lowest unit rate in the final 60 days, so a dollar to a campaign buys more airtime than a dollar to a super PAC. Give to the candidate directly, not to a PAC or a bundled slate.</li>
+    <li><b>Late money funds digital and turnout.</b> Digital ads place same-day. Paid canvassers, texting, and mail to low-propensity voters are what move a one-point race. That favors Kansas and Iowa, where margins are thin.</li>
+    <li><b>Early voting is already open in most of your target states.</b> Once a large share of ballots are in, persuasion money is wasted and only turnout money counts.</li>
+    <li><b>Federal limit is $3,500 per candidate for the general election.</b> State limits for governor vary.</li>
+  </ul>
+  <table class="dates">
+    <thead><tr><th>State</th><th>Early / advance voting opens</th><th>Practical cutoff for giving</th></tr></thead>
+    <tbody>
+      <tr><td>Kansas</td><td>Oct 14 (open now)</td><td>Oct 25</td></tr>
+      <tr><td>Iowa</td><td>Oct 14 (open now)</td><td>Oct 25</td></tr>
+      <tr><td>Texas</td><td>Oct 19</td><td>Oct 25</td></tr>
+      <tr><td>Alaska</td><td>Oct 19</td><td>Oct 25</td></tr>
+      <tr><td>Maine</td><td>Absentee open now</td><td>Oct 25</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="lens" id="odds">
+  <h2>Reference: odds and ratings</h2>
+  <p class="why">Every percentage on this page is the Democrat's chance to win as priced by the prediction markets: the average of Kalshi and Polymarket contract prices, snapshots from October 9–13. These are not poll numbers. Polls in Kansas and Iowa are closer to even than the markets imply.</p>
+  <div class="tablewrap">
+  <table class="odds">
+    <thead><tr><th>Race</th><th>Democrat</th><th>Republican</th><th class="num">D odds</th><th>Rating</th></tr></thead>
+    <tbody>
+      <tr><td>Kansas Senate</td><td>Adam Hamilton</td><td>Roger Marshall</td><td class="num">37%<div class="bar"><i style="width:37%"></i></div></td><td>Toss-up (Cook, Oct 6)</td></tr>
+      <tr><td>Iowa Senate</td><td>Josh Turek</td><td>Ashley Hinson</td><td class="num">44%<div class="bar"><i style="width:44%"></i></div></td><td>Toss-up</td></tr>
+      <tr><td>Maine Senate</td><td>Troy Jackson</td><td>Susan Collins</td><td class="num">58%<div class="bar"><i style="width:58%"></i></div></td><td>Lean D</td></tr>
+      <tr><td>Texas Senate</td><td>James Talarico</td><td>Ken Paxton</td><td class="num">63%<div class="bar"><i style="width:63%"></i></div></td><td>Lean D</td></tr>
+      <tr><td>Ohio Senate</td><td>Sherrod Brown</td><td>Jon Husted</td><td class="num">64%<div class="bar"><i style="width:64%"></i></div></td><td>Lean D</td></tr>
+      <tr><td>Alaska Senate</td><td>Mary Peltola</td><td>Dan Sullivan</td><td class="num">74%<div class="bar"><i style="width:74%"></i></div></td><td>Toss-up (Cook) / Lean D (Sabato)</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+<footer>
+  Odds from <a href="https://kalshi.com/category/elections">Kalshi</a> and <a href="https://polymarket.us/midterms">Polymarket</a>; ratings from <a href="https://www.cookpolitical.com/ratings">Cook Political Report</a> and Sabato's Crystal Ball; polling from Marist, NYT/Siena, Emerson, and AARP/Alaska Survey Research. Numbers move daily. Compiled October 14, 2026.
+</footer>
+
+</div>
+</body>
+</html>
