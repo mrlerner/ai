@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Denver vs. Seattle Homelessness</title>
+<style>
+  /* Layout: one 960px editorial column; stat strips and two-up chart panels inside it. Denver = orange (--s2), Seattle = blue (--s1), everywhere. */
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --card: #ffffff;
+    --card-alt: #f8f8f6;
+    --border: #e3e2dc;
+    --grid: #ececea;
+    --text: #1a1a1a;
+    --muted: #5f5e5a;
+    --light: #8d8c86;
+    --accent: #6d28a8;
+    --accent-soft: #efe6f8;
+    --red: #9e2a2a;
+    --red-soft: #f8dede;
+    --amber: #8a6d00;
+    --amber-soft: #fff1c9;
+    --green: #2d7a4f;
+    --green-soft: #d9efe2;
+    --blue: #1e5a9e;
+    --blue-soft: #dbe9f8;
+    --s1: #2a78d6;   /* Seattle */
+    --s2: #eb6834;   /* Denver */
+    --s3: #1baf7a;
+    --s1-soft: rgba(42,120,214,0.10);
+    --s2-soft: rgba(235,104,52,0.10);
+    --dim: #c9c8c1;
+    --dim-fill: #e6e5df;
+    --tip-bg: #1a1a1a;
+    --tip-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+      --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+      --accent: #b48fe8; --accent-soft: #2a1f3a;
+      --red: #f08a8a; --red-soft: #3a1f1f; --amber: #e2c25a; --amber-soft: #382f12;
+      --green: #7fcf9f; --green-soft: #17301f; --blue: #8cb8f0; --blue-soft: #16283d;
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+      --s1-soft: rgba(57,135,229,0.14); --s2-soft: rgba(217,89,38,0.14);
+      --dim: #4a4a47; --dim-fill: #2c2c2a; --tip-bg: #f2f2ef; --tip-fg: #161616;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+    --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+    --accent: #b48fe8; --accent-soft: #2a1f3a;
+    --red: #f08a8a; --red-soft: #3a1f1f; --amber: #e2c25a; --amber-soft: #382f12;
+    --green: #7fcf9f; --green-soft: #17301f; --blue: #8cb8f0; --blue-soft: #16283d;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --s1-soft: rgba(57,135,229,0.14); --s2-soft: rgba(217,89,38,0.14);
+    --dim: #4a4a47; --dim-fill: #2c2c2a; --tip-bg: #f2f2ef; --tip-fg: #161616;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background: var(--bg); }
+  body { background:var(--bg); color:var(--text); font-family:Georgia,'Times New Roman',serif; line-height:1.7; }
+  .sans { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  .container { max-width:960px; margin:0 auto; padding-block:32px 64px; padding-left:max(24px, env(safe-area-inset-left, 0px)); padding-right:max(24px, env(safe-area-inset-right, 0px)); }
+  a { color: var(--blue); }
+
+  h1 { font-size:34px; font-weight:700; letter-spacing:-0.5px; line-height:1.2; margin-bottom:10px; border-bottom:3px double var(--border); padding-bottom:14px; text-wrap:balance; }
+  .subtitle { color:var(--muted); font-size:14px; margin-bottom:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  .lede { font-size:18px; line-height:1.6; color:var(--text); margin:18px 0 12px; max-width:760px; }
+  .lede em { color: var(--accent); font-style: italic; }
+
+  .section { margin-top:48px; }
+  .section-title { font-size:15px; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  .section-intro { font-size:16.5px; color:var(--muted); margin-bottom:16px; max-width:760px; }
+  .headline { font-size:26px; font-weight:700; line-height:1.25; letter-spacing:-0.3px; margin-bottom:16px; max-width:820px; text-wrap:balance; }
+  .section-intro b, .card p b, .callout p b { color:var(--text); font-weight:600; }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:16px 18px; min-width:0; }
+  .card h3 { font-size:16.5px; font-weight:700; margin-bottom:8px; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; line-height:1.35; text-wrap:balance; }
+  .card p, .card li { font-size:16px; color:var(--muted); line-height:1.65; }
+  .card p + p { margin-top:8px; }
+  .card ul { padding-left:18px; }
+  .card li { margin-bottom:5px; }
+  .hl { color:var(--text); font-weight:600; }
+  .city-den h3::before, .city-sea h3::before { content:""; display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:8px; vertical-align:1px; }
+  .city-den h3::before { background:var(--s2); }
+  .city-sea h3::before { background:var(--s1); }
+
+  .tag { display:inline-block; padding:3px 9px; border-radius:10px; font-size:12.5px; font-weight:600; margin:0 4px 0 0; text-transform:uppercase; letter-spacing:0.3px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; vertical-align:middle; }
+  .tag-danger { background:var(--red-soft); color:var(--red); }
+  .tag-warn { background:var(--amber-soft); color:var(--amber); }
+  .tag-good { background:var(--green-soft); color:var(--green); }
+  .tag-info { background:var(--blue-soft); color:var(--blue); }
+  .tag-accent { background:var(--accent-soft); color:var(--accent); }
+
+  /* Hero figures */
+  .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:12px; margin:18px 0 6px; }
+  .hero .h { border-left:3px solid var(--accent); padding:4px 0 4px 14px; min-width:0; }
+  .hero .h.den { border-left-color: var(--s2); }
+  .hero .h.sea { border-left-color: var(--s1); }
+  .hero .h .v { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:44px; font-weight:600; line-height:1; letter-spacing:-1px; }
+  .hero .h .v small { font-size:18px; font-weight:500; color:var(--muted); letter-spacing:0; }
+  .hero .h .l { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:13.5px; color:var(--muted); margin-top:6px; line-height:1.45; }
+  .hero .h .l b { color:var(--text); font-weight:600; }
+
+  /* Stat tiles */
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:12px; margin-bottom:16px; }
+  .kpi { border:1px solid var(--border); border-radius:6px; padding:14px 16px; background:var(--card); min-width:0; }
+  .kpi .k { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:12px; color:var(--light); text-transform:uppercase; letter-spacing:.5px; display:flex; align-items:center; gap:6px; }
+  .kpi .v { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:32px; font-weight:600; line-height:1.15; letter-spacing:-0.5px; margin-top:2px; }
+  .kpi .v small { font-size:15px; font-weight:500; color:var(--muted); letter-spacing:0; }
+  .kpi .l { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:14.5px; color:var(--muted); margin-top:4px; line-height:1.4; }
+  .kpi .d { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:14px; font-weight:600; margin-top:4px; }
+  .kpi .d.good { color:var(--green); } .kpi .d.bad { color:var(--red); } .kpi .d.flat { color:var(--muted); }
+
+  /* Charts */
+  .chart-card { border:1px solid var(--border); border-radius:6px; padding:16px 18px 12px; background:var(--card); margin-bottom:16px; min-width:0; }
+  .chart-card h3 { font-size:16.5px; font-weight:700; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:2px; text-wrap:balance; }
+  .chart-card .scrollhint { display:none; font-size:14px; color:var(--light); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:8px; }
+  .chart-card .sub { font-size:15.5px; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:10px; }
+  .chart-wrap { overflow-x:auto; }
+  svg.chart { width:100%; height:auto; display:block; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  svg.chart text { fill: var(--muted); font-size:14px; }
+  svg.chart .axis-label { fill: var(--light); font-size:13px; }
+  svg.chart .grid { stroke: var(--grid); stroke-width:1; }
+  svg.chart .baseline { stroke: var(--border); stroke-width:1; }
+  svg.chart .ink { fill: var(--text); }
+  svg.chart .val { fill: var(--text); font-size:13.5px; font-weight:600; }
+  svg.chart .s1 { fill: var(--s1); }
+  svg.chart .s2 { fill: var(--s2); }
+  svg.chart .dim { fill: var(--dim); }
+  svg.chart .ring { stroke: var(--card); stroke-width:2; }
+  svg.chart .ln { fill:none; stroke-width:2; stroke-linejoin:round; stroke-linecap:round; }
+  svg.chart .ln.s1 { stroke: var(--s1); } svg.chart .ln.s2 { stroke: var(--s2); }
+  svg.chart .ln.dash { stroke-dasharray:4 5; opacity:.85; }
+  svg.chart .ln.gap { stroke-dasharray:2 4; opacity:.5; }
+  svg.chart .area.s1 { fill: var(--s1-soft); } svg.chart .area.s2 { fill: var(--s2-soft); }
+  svg.chart .guide { stroke: var(--light); stroke-width:1; stroke-dasharray:3 4; }
+  svg.chart .hit { fill: transparent; cursor: default; }
+  svg.chart .hatch { fill: url(#hatch-s1); }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:13px; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin:6px 0 4px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .sw { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  .sw.dot { border-radius:50%; }
+  .sw.line { width:18px; height:0; border-top:2px solid; border-radius:0; }
+  .sw.line.dash { border-top-style:dashed; }
+  .sw.sea { background:var(--s1); border-color:var(--s1); } .sw.den { background:var(--s2); border-color:var(--s2); }
+  .sw.line.sea, .sw.line.den { background:transparent; }
+  .chart-note { font-size:14.5px; color:var(--light); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-top:8px; line-height:1.5; }
+  details.tbl { margin-top:8px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; overflow-x:auto; }
+  details.tbl summary { cursor:pointer; font-size:14.5px; color:var(--blue); }
+  details.tbl table { width:100%; border-collapse:collapse; margin-top:8px; font-size:14.5px; }
+  details.tbl th, details.tbl td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--border); font-variant-numeric: tabular-nums; vertical-align:top; }
+  details.tbl th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.4px; }
+  details.tbl td.n { text-align:right; }
+  .tooltip { position:fixed; pointer-events:none; background:var(--tip-bg); color:var(--tip-fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:12.5px; line-height:1.45; padding:8px 10px; border-radius:6px; max-width:280px; opacity:0; transition:opacity .12s; z-index:10; }
+  .tooltip b { font-weight:600; }
+  .tooltip.show { opacity:1; }
+  .two { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr)); gap:16px; margin-bottom:16px; }
+  .two .chart-card { margin-bottom:0; }
+
+  /* Who-counts explainer */
+  .segs { display:grid; gap:14px; }
+  .seg { min-width:0; }
+  .seg .lab { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:14px; color:var(--muted); margin-bottom:6px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .seg .lab b { color:var(--text); }
+  .seg .bar { display:flex; height:26px; gap:2px; border-radius:4px; overflow:hidden; }
+  .seg .bar div { height:100%; min-width:2px; }
+  .seg .bar .sh { background:var(--dim-fill); }
+  .seg .bar .un { background:var(--dim); }
+  .seg .bar .ch.den { background:var(--s2); } .seg .bar .ch.sea { background:var(--s1); }
+  .seg .keys { display:flex; gap:14px; flex-wrap:wrap; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:13px; color:var(--muted); margin-top:6px; }
+  .seg .keys span { display:inline-flex; align-items:center; gap:6px; }
+
+  /* Callout */
+  .callout { border-left:4px solid var(--accent); background:var(--card-alt); border-radius:6px; padding:14px 18px; margin:16px 0; }
+  .callout h3 { font-size:17px; font-weight:700; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; margin-bottom:6px; text-wrap:balance; }
+  .callout p { font-size:16px; color:var(--muted); line-height:1.6; }
+  .callout p + p { margin-top:8px; }
+
+  /* Policy timeline: two tracks */
+  .tl { display:grid; grid-template-columns:64px 1fr 1fr; gap:0; border:1px solid var(--border); border-radius:6px; overflow:hidden; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+  .tl > div { padding:10px 12px; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.5; color:var(--muted); min-width:0; }
+  .tl .yr { font-weight:700; color:var(--text); background:var(--card-alt); }
+  .tl .hd { background:var(--card-alt); font-weight:700; color:var(--text); font-size:13px; text-transform:uppercase; letter-spacing:.5px; }
+  .tl .hd.sea { border-top:3px solid var(--s1); } .tl .hd.den { border-top:3px solid var(--s2); }
+  .tl b { color:var(--text); font-weight:600; }
+  .tl .ev + .ev { margin-top:6px; }
+  @media (max-width:640px) { .tl { grid-template-columns:52px 1fr 1fr; } .tl > div { font-size:13.5px; padding:8px 8px; } }
+
+  /* Quotes */
+  .vs { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px; }
+  .vs .topic { grid-column:1 / -1; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); padding-top:4px; }
+  .q { border:1px solid var(--border); border-radius:6px; padding:14px 16px 12px; background:var(--card); min-width:0; display:flex; flex-direction:column; }
+  .q.sea { border-top:3px solid var(--s1); } .q.den { border-top:3px solid var(--s2); }
+  .q .city { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:11.5px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--light); margin-bottom:6px; }
+  .q blockquote { font-size:17px; line-height:1.55; color:var(--text); flex:1; }
+  .q blockquote::before { content:"\201C"; color:var(--light); }
+  .q blockquote::after { content:"\201D"; color:var(--light); }
+  .q .who { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:13.5px; color:var(--muted); margin-top:10px; line-height:1.45; }
+  .q .who b { color:var(--text); font-weight:600; }
+  .q .who a { color:var(--light); text-decoration:none; border-bottom:1px dotted var(--light); }
+  .q .ctx { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:13.5px; color:var(--light); margin-top:6px; font-style:italic; line-height:1.45; }
+  @media (max-width:640px) { .vs { grid-template-columns:1fr; } }
+
+  /* Sources */
+  .sources { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:14.5px; color:var(--muted); }
+  .sources li { margin-bottom:6px; line-height:1.5; }
+  .sources ol { padding-left:22px; }
+  .sources a { word-break:break-word; }
+
+  @media (max-width:640px) {
+    .container { padding-block:20px 48px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+    h1 { font-size:27px; }
+    .hero .h .v { font-size:36px; }
+    .chart-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--border); border-radius:6px; }
+    .chart-wrap svg.chart { min-width:600px; }
+    .chart-card .scrollhint { display:block; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tooltip { transition:none; } }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<div class="tooltip" id="tip" role="status" aria-live="polite"></div>
+<div class="container">
+
+<h1>Denver vs. Seattle Homelessness</h1>
+<div class="subtitle">Inspired by <a href="https://www.nytimes.com/2026/10/13/opinion/homelessness-unhoused-denver-shelters.html">this New York Times article</a>.</div>
+
+<p class="lede"><em>The key insight:</em> homeless people will move into a room with a door they can lock. Denver offered these rooms and enforced a camping ban, and street homelessness fell by two-thirds.</p>
+
+<!-- ============ THE DATA STORY ============ -->
+<div class="section">
+  <h2 class="headline">Since 2022, Denver has added about 940 shelter rooms with a door. Seattle and King County added none until this year.</h2>
+  <div class="chart-card">
+    <div class="legend"><span><i class="sw line den"></i>Denver (city and county)</span><span><i class="sw line sea"></i>Seattle and King County</span></div>
+    <div class="scrollhint">Swipe the chart sideways to see all of it →</div><div class="chart-wrap"><svg class="chart" id="added" viewBox="0 0 920 330" role="img" aria-label="Net lockable shelter rooms added since January 2022, Denver vs Seattle"></svg></div>
+    <details class="tbl"><summary>Details</summary><table id="added-table"></table><p class="chart-note">Net shelter rooms with a door added since January 2022: hotel rooms, tiny homes and pallet units a person can lock, net of closures. Denver's figures are the city's own site list (the city and county of Denver are one government). Seattle and King County's are from HUD's annual Housing Inventory Count for the county: emergency-shelter tiny-house villages, hotel rooms and modular units, counted as adult beds plus family units, excluding congregate shelters, permanent housing, motel vouchers and the county's asylum-seeker hotel. HUD's 2026 inventory is not out, so the two 2026 points add the known 2025–26 openings to the 2025 figure and are estimates. The line is net: Denver's gross additions were 1,032 hotel rooms and 252 micro-community units, but about 330 COVID-era hotel rooms in the January 2022 baseline closed during 2023, so the peak reads 943. The fall from 943 to 544 is three closures as federal pandemic money ran out: the Radisson lease ended in March 2025 (220 rooms), the Comfort Inn lease in March 2026 (136), and Monroe Village closed in July 2026 (43). Baseline January 2022: Denver about 330 COVID-era hotel rooms and tiny homes; Seattle and King County 864 units. "Now" is October 2026. Site-by-site detail is in the shelter section below.</p></details>
+  </div>
+
+  <h2 class="headline">Since 2022, Denver has cut street homelessness by 61%. Seattle and King County's has risen 54%.</h2>
+
+  <div class="chart-card">
+    <div class="legend"><span><i class="sw line den"></i>Denver (city and county)</span><span><i class="sw line sea"></i>Seattle and King County</span></div>
+    <div class="scrollhint">Swipe the chart sideways to see all of it →</div><div class="chart-wrap"><svg class="chart" id="index" viewBox="0 0 920 330" role="img" aria-label="Unsheltered count indexed to 2022, Denver vs King County, 2022 to 2026"></svg></div>
+    <details class="tbl"><summary>Details</summary><table id="index-table"></table><p class="chart-note">People sleeping outside on the night of each January count, indexed so that 2022 = 100. Denver (a consolidated city and county) counts every year. Seattle's count is run for all of King County every other year and is the only series Seattle has; the city's own figure moved the same way, from 3,738 (2020) to 4,585 (2024). Denver's 2025 and 2026 count nights were below freezing, which flatters its line; the year-round measures below confirm both directions.</p></details>
+  </div>
+
+
+  <h2 class="headline">Since 2022, encampment complaints have fallen 40% in Denver and doubled in Seattle.</h2>
+  <div class="chart-card">
+    <div class="legend"><span><i class="sw den"></i>Denver (city and county)</span><span><i class="sw sea"></i>Seattle (city limits; King County has no countywide app)</span></div>
+    <div class="scrollhint">Swipe the chart sideways to see all of it →</div><div class="chart-wrap"><svg class="chart" id="summer" viewBox="0 0 920 330" role="img" aria-label="Resident encampment reports, July to September, Denver vs Seattle, 2022 to 2026"></svg></div>
+    <details class="tbl"><summary>Details</summary><p class="chart-note">Resident reports of encampments, July through September of each year: Denver's 311 and PocketGov requests; Seattle's Find It, Fix It, 311 and web-form requests. Same three months, same kind of complaint, two cities of about the same size. Denver's 2026 rise coincides with a new reporting form introduced in September 2025 and remains 40% below 2022. A 2025 Seattle memo credits part of that year's jump to publicity for the app. Full monthly series and sources are below.</p><p class="chart-note" style="margin-top:14px"><b>Full monthly series behind this chart:</b></p>
+  <div class="two">
+    <div class="chart-card">
+      <h3>Denver: encampment reports from residents, per month</h3>
+      <div class="sub">Encampment requests through PocketGov and 311. Reports fell by two thirds from 2022 to 2025. Same scale as Seattle's chart.</div>
+      <div class="legend"><span><i class="sw line den"></i>Reports per month</span></div>
+      <div class="scrollhint">Swipe the chart sideways →</div><div class="chart-wrap"><svg class="chart" id="den-fifi" viewBox="0 0 460 260" role="img" aria-label="Denver 311 encampment service requests per month, January 2022 to September 2026"></svg></div>
+      <details class="tbl"><summary>Details</summary><table id="den-fifi-table"></table><p class="chart-note">Deduplicated by the Urban Institute (reports within a block and three days of each other count once): unique encampments fell from 3,002 in Q3 2023 to 1,633 in Q2 2025, and camps of 10+ tents from 359 to 31. The 2026 uptick coincides with a new "Encampment / Street Engagement" reporting form introduced in September 2025.</p></details>
+    </div>
+    <div class="chart-card">
+      <h3>Seattle: encampment reports from residents, per month</h3>
+      <div class="sub">"Unauthorized Encampment" requests through Find It, Fix It, 311 and the web form. Reports have doubled since 2023 and set a record in September 2026.</div>
+      <div class="legend"><span><i class="sw line sea"></i>Reports per month</span></div>
+      <div class="scrollhint">Swipe the chart sideways →</div><div class="chart-wrap"><svg class="chart" id="sea-fifi" viewBox="0 0 460 260" role="img" aria-label="Seattle unauthorized encampment service requests per month, June 2022 to September 2026"></svg></div>
+      <details class="tbl"><summary>Details</summary><table id="fifi-table"></table><p class="chart-note">A report is not a tent: one tent on a busy trail draws more reports than twenty on a hidden slope, and a 2025 city memo credits part of that year's rise to publicity for the app. Both cities' series are the same unit (one resident request), and the two cities are about the same size.</p></details>
+    </div>
+  </div>
+</details>
+  </div>
+</div>
+
+<!-- ============ ROOMS WITH A DOOR ============ -->
+<div class="section">
+  <h2 class="headline">Denver bought three hotels and built five villages in sixteen months. Seattle's villages close as fast as they open.</h2>
+  <div class="card-grid">
+    <div class="card city-den">
+      <h3>Denver: 10 sites opened in 16 months (1,284 units), 3 closed since (399)</h3>
+      <p><span class="hl">Hotels bought:</span> the Aspen (ex-DoubleTree, 289 rooms, $43M), Stone Creek (ex-Best Western, 182), Tamarac family shelter (ex-Embassy Suites, 205 rooms). <span class="hl">Hotels leased:</span> Radisson (220, closed March 2025), Comfort Inn (136, closed March 2026).</p>
+      <p><span class="hl">Micro-communities:</span> Stay Inn (54 pallet units), La Paz (60), Elati Village (44), Steele Village (40), Monroe Village (43, packed up July 2026).</p>
+      <p>Total program cost at least $178M per the city auditor, much of it one-time federal money that has now run out. The 2026 budget cut $12.4M in shelter.</p>
+    </div>
+    <div class="card city-sea">
+      <h3>Seattle: 8 villages opened since 2023 (281 units), 5 closed (about 200)</h3>
+      <p><span class="hl">Tiny-house villages</span> run by LIHI and Nickelsville have been the backbone since 2016: about 16 villages and 636 units in 2024 per the city. But Othello, Lake Union, Friendship Heights and Eagle Village closed in 2023–25 as leases ended, roughly cancelling new openings.</p>
+      <p><span class="hl">Hotels:</span> 221 rooms at King's Inn and the Executive Pacific lasted ten months in 2021. JustCARE's Civic Hotel lease ended in 2024. The one lasting hotel shelter is DESC's Mary Pilgrim Inn (~80).</p>
+      <p>Mayor Wilson promised 1,000 new beds a year in 2026, opened 187 by mid-September (Bayside 73, Olympic Hills 45, Belmont 31, Brighton 14, a youth site 24), and revised the goal to 960 over two years against a $175M deficit. The regional authority pulled a $3M grant for a 60-unit village in February.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ENFORCEMENT ============ -->
+<div class="section">
+  <h2 class="headline">Seattle has 1.2 police officers per 1,000 residents to Denver's 2.1.</h2>
+  <div class="two">
+    <div class="chart-card">
+      <h3>Police officers per 1,000 residents</h3>
+      <div class="chart-wrap"><svg class="chart" id="officers" viewBox="0 0 460 260" role="img" aria-label="Police officers per 1,000 residents, Denver vs Seattle, 2026"></svg></div>
+      <details class="tbl"><summary>Details</summary><p class="chart-note">Seattle: 927 officers available for duty in August 2026 (the police department's "deployable" count, which excludes recruits in training and people on leave), against about 790,000 residents. Counting everyone on the payroll including recruits, Seattle is at about 1.5. Denver: 1,565 officers on the payroll in September 2026, the only figure it publishes, against about 741,000 residents. Seattle fielded 1,281 deployable officers in 2019, so it has lost more than a quarter of its working force; Denver has been flat at about 1,550.</p></details>
+    </div>
+    <div class="chart-card">
+      <h3>Camp sweeps per 100 people sleeping outside</h3>
+      <div class="chart-wrap"><svg class="chart" id="sweeprate" viewBox="0 0 460 260" role="img" aria-label="Encampment sweeps per 100 unsheltered people, Seattle vs Denver"></svg></div>
+      <details class="tbl"><summary>Details</summary><p class="chart-note">Seattle: 2,504 encampment removals in 2024 (city logs obtained by public records) for 4,585 people counted unsheltered that January, about 55 per 100. Most were same-day "obstruction" removals with no shelter offer required; of 1,884 referrals made during 2024 removals, 903 became a shelter stay. Denver: about 116 posted cleanups in 2022 (58 in the first half, per the city auditor) for 1,313 unsheltered, about 9 per 100, hatched because the full-year figure is an estimate. 2022 is the last year Denver's unit was consistent; from late 2023 it closed camps only once it had a room for everyone on the list, then kept the block closed.</p></details>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card city-den">
+      <h3>Denver has an enforcement ladder</h3>
+      <p>Every contact with someone camping climbs the same rungs, and each rung comes with an offer of a room.</p>
+      <ul>
+        <li><span class="hl">Rung 1, the offer:</span> a police officer and a social worker arrive together. The city's position is that a room is available; by its account no one has turned one down.</li>
+        <li><span class="hl">Rung 2, verbal warning:</span> camping here is illegal under the 2012 ban; pack up. In 2023 police logged 297 such contacts.</li>
+        <li><span class="hl">Rung 3, written warning:</span> three were issued in 2023.</li>
+        <li><span class="hl">Rung 4, ticket or arrest:</span> 14 camping tickets in all of 2023, 4 in early 2024. Trespass enforcement, the real teeth, roughly doubled.</li>
+        <li><span class="hl">Then the block stays closed:</span> 18 camps resolved with everyone placed, 350+ blocks closed to camping, and outreach returns whenever a tent reappears.</li>
+      </ul>
+      <p>The threat is rarely used because it rarely has to be. The NYT's ride-along ended with a bus ticket, not a citation.</p>
+    </div>
+    <div class="card city-sea">
+      <h3>Seattle has one rung: the sweep</h3>
+      <p>There is no camping ban, so there is nothing to warn about and no ticket to write. The only tool is removal, and removal leads nowhere.</p>
+      <ul>
+        <li><span class="hl">No offer to make:</span> about 85% of removals are filed as "obstructions," which require no notice and no shelter offer. When an offer is made it is usually a mat in a congregate hall from "a handful" of beds offered again and again.</li>
+        <li><span class="hl">No consequence for staying:</span> the city attorney does not prosecute camping, and a 2023 court ruling found the obstruction rule unconstitutional (stayed on appeal).</li>
+        <li><span class="hl">So people come back:</span> a UW study of Seattle's largest clearances found a displaced person was 14 times more likely to vanish from services than to enter shelter, and a year later was a median 717 meters from the cleared site.</li>
+        <li><span class="hl">So the same camps are swept again:</span> 2,504 removals in 2024, about seven a day, and 2,017 tents cleared in the first five months of 2026, more than any year before.</li>
+      </ul>
+      <p>With 1.2 officers per 1,000 residents and no ladder to climb, Seattle spends its enforcement on repetition.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ QUOTES ============ -->
+<div class="section">
+  <h2 class="headline">The difference is willpower.</h2>
+
+  <div class="vs">
+    <div class="topic">On whether to clear a camp at all</div>
+    <div class="q sea"><div class="city">Seattle</div><blockquote>I am not as mayor going to forcibly remove people out of one public space and shift the issue to another public space.</blockquote><div class="who"><b>M. Lorena González</b>, Council President and mayoral nominee · Sept 23, 2021 · <a href="https://www.seattletimes.com/seattle-news/homeless/gonzalez-reveals-homelessness-plan-for-mayoral-run/">Seattle Times</a></div><div class="ctx">A week later, in debate: "As mayor, my goal is to end homelessness, not hide it." She lost to Harrell 59–41.</div></div>
+    <div class="q den"><div class="city">Denver</div><blockquote>The most dangerous thing we can do for your neighborhood, and for the city and county of Denver, is keep doing what we've been doing the last five years, that is keep 2,000 people in unsanctioned, unstaffed, unsupervised, unsafe encampments all around the city.</blockquote><div class="who"><b>Mike Johnston</b>, Mayor · Dec 2023, to a hostile neighborhood meeting about a hotel shelter · <a href="https://www.npr.org/transcripts/1218766530">NPR</a></div></div>
+
+    <div class="topic">On tiny homes and hotel rooms</div>
+    <div class="q sea"><div class="city">Seattle</div><blockquote>Outside is not inside. I think we need to begin to move away from tiny home villages, and we need to be creating solutions for people where they are housed.</blockquote><div class="who"><b>Marc Dones</b>, CEO, King County Regional Homelessness Authority · June 14, 2021 · <a href="https://www.kuow.org/stories/what-king-countys-first-regional-homelessness-authority-wants-to-do-differently">KUOW</a></div><div class="ctx">Their 2023 five-year plan proposed no new tiny-home funding. On a village sitting empty: "If I really wanted to get rid of them, I would have just defunded them on, like, day three."</div></div>
+    <div class="q den"><div class="city">Denver</div><blockquote>They have a door that they can lock. They have air conditioner in the summer, heaters in the winter. … No one should have to call a tent their home.</blockquote><div class="who"><b>Cole Chandler</b>, senior advisor for homelessness · Sept 4, 2025 · <a href="https://www.denver7.com/news/front-range/denver/all-in-mile-high-initiative-reduced-large-homeless-encampments-by-98-third-party-evaluation-shows">Denver7</a></div><div class="ctx">Johnston, on the Aspen hotel, said he wants shelters to feel like real homes: "a room of one's own." He says no one has turned down a room.</div></div>
+
+    <div class="topic">On the end goal</div>
+    <div class="q sea"><div class="city">Seattle</div><blockquote>One of the big reasons I ran is that we have to stop just moving people from place to place, and we need to create more places inside for people to go. And so it never feels good when I know that encampment removals are happening and we're not able to offer shelter and services in a meaningful way.</blockquote><div class="who"><b>Katie Wilson</b>, Mayor · June 12, 2026 · <a href="https://www.kuow.org/stories/is-seattle-sweeping-more-homeless-camps-for-the-world-cup">KUOW</a></div><div class="ctx">Said while her administration was removing tents faster than Harrell's had. Six months in, she told PubliCola that halting sweeps until shelter exists would cause a "backlash" and "we would lose the ability to actually do our shelter work."</div></div>
+    <div class="q den"><div class="city">Denver</div><blockquote>There is not a single encampment left in all of central Denver. … It feels like a different world here in Denver than it did just five months ago.</blockquote><div class="who"><b>Mike Johnston</b>, Mayor · Jan 16, 2024 · <a href="https://www.foxnews.com/media/ecstatic-denver-mayor-says-city-transformed-push-house-homeless-but-critics-say-job-isnt-done">Fox News</a></div><div class="ctx">Asked in 2026 whether a city Denver's size can eliminate street homelessness: "I genuinely believe we can do it."</div></div>
+
+    <div class="topic">On accountability</div>
+    <div class="q sea"><div class="city">Seattle</div><blockquote>We won an end of funding for inhumane and ineffective sweeps of homeless encampments. … We recognize there are other ways that the mayor could do sweeps, and we will need to continue organizing to completely end them.</blockquote><div class="who"><b>Kshama Sawant</b>, Councilmember · Aug 10, 2020 · <a href="https://council.seattle.gov/2020/08/10/councilmember-sawant-city-council-democrats-have-approved-a-budget-that-carries-out-austerity-fails-to-defund-police-our-movement-needs-to-build-even-stronger">Seattle City Council</a></div><div class="ctx">Councilmember Mosqueda, opposing the Cal Anderson Park clearance that December: parks "should be usable by all; and we must balance access to this public health resource with the public health crisis."</div></div>
+    <div class="q den"><div class="city">Denver</div><blockquote>Your job is to keep everyone safe. That means I love every single kid in the building. And if there's one kid who's making other kids in the building feel unsafe, my job is to either help him change his behavior or hold him accountable for it.</blockquote><div class="who"><b>Mike Johnston</b>, Mayor, a former school principal · Oct 13, 2026 · <a href="https://www.nytimes.com/2026/10/13/opinion/homelessness-unhoused-denver-shelters.html">New York Times</a></div><div class="ctx">In his first week, July 2023: "If you tell people with no place to go to pack up and leave, they'll just come back." Sweeps would continue, but "respectful, dignified and thorough."</div></div>
+
+    <div class="topic">On the other city</div>
+    <div class="q sea"><div class="city">Seattle</div><blockquote>Unfortunately, with less than a week before this critical election, my opponent is signaling she'll roll back progress by allowing tents to return to our parks and leaving people to suffer outdoors without shelter or services. We can't go back to where we were in 2020 and 2021.</blockquote><div class="who"><b>Bruce Harrell</b>, Mayor, campaigning against Wilson · Oct 30, 2025 · <a href="https://www.theurbanist.org/in-last-stand-harrell-intensifies-negative-attacks-on-wilson/">The Urbanist</a></div><div class="ctx">At a forum, asked whether homeless people should be allowed to stay in tents in parks, Harrell said no; Wilson declined to answer yes or no.</div></div>
+    <div class="q den"><div class="city">Denver</div><blockquote>Many Americans have given into the belief that homelessness is an unsolvable problem … many of the cities that are growing and are in high demand, like the Denvers, or the San Franciscos, or the Austins, or Seattles, are the places where we see this struggle.</blockquote><div class="who"><b>Mike Johnston</b>, Mayor · July 2025 · <a href="https://www.lincolninst.edu/podcasts/land-matters/denver-mike-johnston-confronts-success-citys-popularity-has-made-it-pricey/">Lincoln Institute, Land Matters podcast</a></div><div class="ctx">On the prior approach: the previous administration "took 2 or 3 years to fight, to put one tiny home village of about 40 units into one neighborhood… We brought on a thousand units, and over six months I did 60 town halls."</div></div>
+
+    <div class="topic">The dissent, in both cities</div>
+    <div class="q sea"><div class="city">Seattle</div><blockquote>You're incentivized to classify things as obstructions, as immediate hazards because you don't have the shelter to offer.</blockquote><div class="who"><b>Lisa Herbold</b>, Councilmember · Feb 26, 2020 · <a href="https://komonews.com/news/local/seattles-navigation-team-is-questioned-future-now-in-doubt">KOMO</a></div><div class="ctx">Which is what the logs later showed: 82% of removals in 2022 and 99% in 2023 were filed as obstructions.</div></div>
+    <div class="q den"><div class="city">Denver</div><blockquote>Other cities should not follow what Denver is doing. What Denver has done is use an image of getting people into these hotel sites and use that image of sweeping these large encampments to justify massive increases in policing and enforcement, pushing people out of sight and away.</blockquote><div class="who"><b>Terese Howard</b>, Housekeys Action Network Denver · Oct 13, 2026 · <a href="https://www.westword.com/news/denver-national-media-praise-homelessness-response-40948218/">Westword</a></div><div class="ctx">Urban Institute's Samantha Batko, the independent evaluator: "What they're doing is working," with the caveat that whether these were the best use of the money "remains to be seen."</div></div>
+  </div>
+</div>
+
+<!-- ============ APPENDIX ============ -->
+<div class="section">
+  <details class="tbl"><summary>Appendix</summary>
+  <h3 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:17px;font-weight:700;margin:16px 0 10px">Why a homeless person in Seattle is 2.5 times as likely to be outside as one in Denver</h3>
+  <div class="kpis">
+    <div class="kpi"><div class="k">Homeless people per 1,000 residents, 2024</div><div class="v">12.8 <small>vs</small> 8.8</div><div class="l">Seattle vs. Denver. Seattle has about <b>1.45×</b> more homelessness per resident. This is the housing-market part of the gap.</div></div>
+    <div class="kpi"><div class="k">Share of homeless people who are unsheltered, 2024</div><div class="v">49% <small>vs</small> 19%</div><div class="l">Seattle vs. Denver. The same homeless person is <b>2.5×</b> more likely to be outside in Seattle. This is the bigger part.</div></div>
+    <div class="kpi"><div class="k">How the 3.6× gap splits</div><div class="v">¼ <small>+</small> ¾</div><div class="l">Roughly a quarter is more homelessness; three quarters is the unsheltered share. So the explanations that matter most are about shelter, weather, and what a sweep comes with.</div></div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card"><h3>1. Seattle's shelters are full every night. Denver's can flex. <span class="tag tag-good">Strong evidence</span></h3>
+      <p>King County has about one emergency bed for every three homeless people, shelters run above 93% full, and an average of 3% of Seattle's ~5,000 beds were free on a given night in 2024. The beds offered during a sweep are, in one reporter's words, "a handful, and they offer those beds again and again." Seattle's sheltered count is capped by beds, not demand.</p>
+      <p>Denver's count area reported 4,943 overflow beds in 2024 against King County's 188. In the January 2026 cold snap Denver had room for about 700 people in cold-weather shelters and more than 600 came. When Denver closes a camp, there is somewhere to put everyone.</p>
+      <details class="tbl"><summary>Details</summary><p class="chart-note">Beds per homeless person in the count area: King County 0.36; Metro Denver 1.18 (2024), 0.77 (2025). City level, 2024: Seattle Metro 5,003 beds for 9,440 people (0.53); Denver sheltered 5,266 of 6,539 (at least 0.81).</p></details></div>
+    <div class="card"><h3>2. Denver counts on freezing nights. Seattle counts in the mild. <span class="tag tag-good">Strong evidence</span></h3>
+      <p>Denver's count night was −6°F in 2026 and below freezing in 2025, with cold-weather shelters open. Seattle's January is around 42°F and its survey runs over two weeks. In a national study of 25,000 homeless adults, 35% were unsheltered where January averages below 25°F versus 66% where it averages 45°F or more.</p>
+      <p>This cuts in Denver's favor on the one night that gets measured, but it only works because Denver has the beds to open. Denver's 2024 count, used for the 3.6× figure, was a warm night.</p></div>
+    <div class="card"><h3>3. The two counts are different instruments. This shrinks the gap, not closes it. <span class="tag tag-warn">Moderate</span></h3>
+      <p>King County's sampling method, used since 2022, finds people a 4 a.m. street tally misses. UW's own estimate is that it added about 13% over what the old method would have shown in 2022. Denver's volunteer tally is widely considered a serious undercount; a former head of the count agency once called it "a gross undercount, probably by half."</p>
+      <p>Adjusting both (Seattle down ~13%, Denver up 25–50%) takes the 2024 ratio from 3.6× to roughly 2.1–2.5×. A real gap remains. Vehicle residents, often raised as a Seattle quirk, are about 27% of King County's unsheltered; even with none of them, Seattle's non-vehicle unsheltered would be 2.6× Denver's total.</p></div>
+    <div class="card"><h3>4. After a Seattle sweep, people vanish. After a Denver resolution, the block stays closed. <span class="tag tag-warn">Moderate</span></h3>
+      <p>A University of Washington study of Seattle's twelve largest clearances found that a person displaced by a sweep was 14 times more likely to disappear from the service system than to enter shelter, and that a year later the median person was still within 717 meters of the cleared site. In 2024 only 48% of the city's 1,884 sweep "referrals" turned into a shelter stay.</p>
+      <p>Denver resolves a camp only once it has a room for everyone on the by-name list, then keeps the block closed under its 2012 camping ban and re-contacts anyone who returns. Washington also had no drug-possession crime from the 2021 Blake ruling until July 2023; 41% of King County's unsheltered reported a substance-use disorder in 2026, against 17% of the sheltered. That effect is plausible but unmeasured.</p></div>
+  </div>
+  <div class="callout">
+    <h3>Bottom line</h3>
+    <p>Seattle has about 1.45 times Denver's homelessness per resident, a housing story. But three quarters of its unsheltered gap comes from a much higher share of homeless people sleeping outside, and that share is set by three things that reinforce each other: a shelter system with no slack, mild winters that never force the question, and sweeps that move people a few hundred meters instead of into a room. Measurement differences shrink the gap to perhaps 2 to 2.5 times. They do not erase it.</p>
+  </div>
+  <h3 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:17px;font-weight:700;margin:24px 0 10px">What the numbers cannot tell you</h3>
+  <div class="card-grid">
+    <div class="card"><h3>The counts are not the same instrument</h3><p>Denver's count is a volunteer street census every January. Seattle's is a slice of a countywide count that since 2022 is a statistical estimate from a sample survey, done every other year, and the city slice is published only some years. The 2024 county total was revised upward twice after release. Treat the Seattle line as a trend, not a census.</p></div>
+    <div class="card"><h3>Chronic-unsheltered is inferred</h3><p>Neither city publishes a count of chronically homeless people sleeping outside within city limits. Both figures here apply the chronic share reported for the wider count area (Metro Denver, King County) to the city's unsheltered count. They are marked as estimates on the charts.</p></div>
+    <div class="card"><h3>Weather and migrants</h3><p>Denver's 2026 count fell on a freezing night with emergency shelters open. HUD's 2024 count for Metro Denver included about 4,300 migrants in city-funded hotels, which is why HUD's total that year is far above the local report; this page uses the local figures.</p></div>
+    <div class="card"><h3>"Sweep" means different things</h3><p>Seattle logs each same-day removal of an obstruction as one event. Denver's countable events were 7-day-posted cleanups through 2022 and multi-day "resolutions" that placed a whole camp into hotel rooms in 2023–24; the city keeps no central log, its auditor has twice said so, and routine move-alongs are untracked in both cities. Denver's sweep chart is mostly estimates for that reason; its enforcement lives in the warnings-to-tickets ladder and the rising trespass numbers.</p></div>
+    <div class="card"><h3>Money</h3><p>Denver's program cost at least $178M, heavily from expired federal pandemic funds, and is now shrinking. Seattle spends more on shelter overall (about 5,000 city-funded beds, 2,850 of them units) but most of it is congregate. The question the data cannot settle is whether Denver can hold its gains on a city budget.</p></div>
+    <div class="card"><h3>What is missing</h3><p>Seattle-city breakdown of the 2022 and 2026 counts (2026 due late 2026); Seattle removal logs after June 2025; any Denver sweep count for 2024–26; Denver police enforcement counts for 2025–26; Seattle's own tent tallies after September 2024. Each would sharpen a chart above.</p></div>
+  </div>
+  <h3 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:17px;font-weight:700;margin:24px 0 10px">Sources</h3>
+  <div class="sources">
+    <ol>
+      <li>German Lopez, "We Know How to Fix Homelessness. Look at Denver." NYT Opinion, Oct 13, 2026. <a href="https://www.nytimes.com/2026/10/13/opinion/homelessness-unhoused-denver-shelters.html">nytimes.com</a></li>
+      <li>Urban Institute, <i>Evaluation of Denver's All In Mile High Initiative: 2025 Interim Report</i>, Dec 2025 (encampment counts, site table, costs). <a href="https://www.urban.org/sites/default/files/2025-12/EvaluationofDenversAllInMileHighInitiative.pdf">urban.org</a>; Batko et al., Urban Wire, Aug 26, 2025. <a href="https://www.urban.org/urban-wire/denvers-progress-reducing-unsheltered-homelessness-and-encampments-offers-promising-path">urban.org</a></li>
+      <li>Metro Denver Homeless Initiative, point-in-time reports 2019–2026 and the 2026 press release. <a href="https://www.mdhi.org/pit">mdhi.org/pit</a>; <a href="https://www.mdhi.org/blog/press-release-metro-denver-homeless-initiative-releases-2026-point-in-time-count-data">2026 release</a>; Denver7 on the 2026 city breakdown. <a href="https://www.denver7.com/news/local-news/denver-records-decrease-in-overall-homelessness-for-first-time-in-9-years-city-reports">denver7.com</a></li>
+      <li>King County Regional Homelessness Authority, 2026 PIT Executive Report and 2026 FAQ; revised 2024 comprehensive report (chronic unsheltered 6,406; Seattle Metro subregion 4,585). <a href="https://kcrha.org/wp-content/uploads/2026/06/KCRHA_Point-in-Time-Count-2026_Executive-Report.pdf">2026 report</a>; <a href="https://kcrha.org/wp-content/uploads/2026/04/Revised-Point-in-Time-Count-2024-King-County-final.pdf">2024 revised</a>; Count Us In 2020. <a href="https://kcrha.org/wp-content/uploads/2022/05/Count-Us-In-2020-Final_7.29.2020-1.pdf">2020 report</a></li>
+      <li>HUD CoC population and subpopulation reports (chronic unsheltered) and Housing Inventory Counts, CO-503 and WA-500, 2019–2025. <a href="https://files.hudexchange.info/reports/published/CoC_PopSub_CoC_WA-500-2024_WA_2024.pdf">hudexchange.info</a></li>
+      <li>Seattle Unified Care Team quarterly data posts (verified tents and RVs). <a href="https://harrell.seattle.gov/2024/12/03/one-seattle-homelessness-action-plan-posts-q3-2024-data-updates/">harrell.seattle.gov</a></li>
+      <li>Guy Oron / Real Change, Seattle sweeps logs compiled from public records, 2008–June 2025. <a href="https://github.com/guy-oron/seattle-sweeps-data">github.com/guy-oron/seattle-sweeps-data</a>; KUOW on 2026 removals. <a href="https://www.kuow.org/stories/is-seattle-sweeping-more-homeless-camps-for-the-world-cup">kuow.org</a>; Bolts on the 2025 race. <a href="https://boltsmag.org/seattle-mayoral-race-tensions-over-homelessness-harrell-wilson/">boltsmag.org</a></li>
+      <li>Seattle Police staffing: Mayor's office table, Jan 7, 2025; SPD Q1 2026 staffing report. <a href="https://harrell.seattle.gov/2025/01/07/mayor-harrell-celebrates-progress-on-police-recruitment/">harrell.seattle.gov</a>. Denver Police: Office of the Independent Monitor annual reports 2021 and 2024. <a href="https://www.denvergov.org/files/assets/public/v/4/independent-monitor/documents/2024annualreport_oim.pdf">denvergov.org</a></li>
+      <li>Denver enforcement data: Denver Gazette, June 13, 2024 (DPD "homeless-related" violations). <a href="https://denvergazette.com/news/homelessness/denver-homeless-crimes-increased-enforcement/article_1a733aa8-29a7-11ef-9efb-87df292ed6ad.html">denvergazette.com</a>; Housekeys Action Network records request, June 2024. <a href="https://housekeysactionnetwork.com/2024/06/04/police-records-show-significant-increase-in-ant-houseless-law-enforcement-in-2024/">housekeysactionnetwork.com</a>; Denver Auditor, All In Mile High audit, Mar 2026. <a href="https://www.denvergov.org/files/assets/public/v/5/auditor/documents/audit-services/audit-reports/2026/all-in-mile-high_march-2026.pdf">denvergov.org</a></li>
+      <li>Seattle shelter sites: LIHI village pages <a href="https://www.lihihousing.org/villages">lihihousing.org</a>; Real Change, Mar 7, 2025 (HSD: 16 villages, 636 units). <a href="https://www.realchangenews.org/news/2025/03/07/seattle-canceled-tiny-house-village-after-backlash-neighbors">realchangenews.org</a>; ProPublica on the Civic Hotel. <a href="https://www.propublica.org/article/seattle-homeless-shelter-vacancies-civic-hotel">propublica.org</a>; PubliCola on Wilson's shelter plan, Mar 4, 2026. <a href="https://publicola.com/2026/03/04/wilson-announces-first-steps-toward-1000-shelter-beds-simpler-leases-larger-tiny-house-villages/">publicola.com</a></li>
+      <li>Denver shelter closures: Westword, July 2026 (Monroe Village). <a href="https://www.westword.com/news/denver-first-tiny-home-community-closure-future-40914759/">westword.com</a>; Westword, Oct 13, 2026 (critics). <a href="https://www.westword.com/news/denver-national-media-praise-homelessness-response-40948218/">westword.com</a></li>
+      <li>Quotes: links on each card. Additional: Wilson six-month interview, PubliCola, July 9, 2026. <a href="https://publicola.com/2026/07/09/mayor-katie-wilson-at-six-months-in-incredibly-proud-of-what-were-accomplishing/">publicola.com</a>; Dones on the sidewalk strategy, PubliCola, July 5, 2022. <a href="https://publicola.com/2022/07/05/new-details-emerge-about-harrell-administrations-encampment-removal-plans/">publicola.com</a>; Johnston's first town hall, Westword, July 2023. <a href="https://www.westword.com/news/denver-mayor-mike-johnston-reveals-emergency-plans-for-housing-homeless-17415683">westword.com</a></li>
+      <li>Seattle encampment reports: City of Seattle Customer Service Requests open dataset (Find It, Fix It, 311 and web form), "Unauthorized Encampment" type, monthly counts queried Oct 16, 2026. <a href="https://data.seattle.gov/City-Administration/Customer-Service-Requests/5ngg-rpne">data.seattle.gov</a>; visualized by Dave Peck at <a href="https://unsheltered.davepeck.org/">unsheltered.davepeck.org</a>.</li>
+      <li>Denver encampment reports: Denver Open Data Catalog, 311 Service Requests (yearly files 2020–2025 and the rolling 2026 service), case types "DPD - Homeless Encampment," "Encampment Reporting," "911 ENCAMPMENT" and "Encampment / Street Engagement," monthly counts compiled Oct 16, 2026. <a href="https://www.denvergov.org/opendata">denvergov.org/opendata</a>; cross-checked against Westword, Oct 31, 2024. <a href="https://www.westword.com/news/reported-denver-homeless-encampments-down-nearly-50-percent-22365242/">westword.com</a></li>
+      <li>Denver sweep counts: Denverite, July 2, 2021 (122 sweep days). <a href="https://denverite.com/2021/07/02/data-on-denvers-homeless-sweeps-show-theyre-cyclical-and-growing/">denverite.com</a>; Denver Auditor, Homeless Encampments audit, April 2023 (58 cleanups H1 2022). <a href="https://www.denvergov.org/files/assets/public/v/2/auditor/documents/audit-services/audit-reports/2023/homeless-encampments-april-2023-final.pdf">denvergov.org</a>; Colorado Sun on the CU Anschutz study (300 cleanups). <a href="https://coloradosun.com/2024/10/16/homeless-encampments-crime/">coloradosun.com</a>; Westword, Dec 2023 (ten resolutions). <a href="https://www.westword.com/news/ten-sweeps-got-denver-mayor-mike-johnston-to-his-2023-house1000-goal-18689087/">westword.com</a>; Colorado Sun, Aug 14, 2024 (17 encampments, 350 blocks). <a href="https://coloradosun.com/2024/08/14/homelessness-count/">coloradosun.com</a></li>
+      <li>Why the gap: HUD Housing Inventory Counts 2024–2025 (overflow and seasonal beds); KCRHA 2024 report Table 3 and 2026 report (beds per person, utilization); ProPublica/KUOW on shelter vacancy (above); Denverite on the Jan 2026 cold snap. <a href="https://denverite.com/2026/01/27/denver-cold-weather-shelter-usage/">denverite.com</a>; Montgomery et al., "Homelessness, Unsheltered Status, and Risk Factors," 2016. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5230839/">pmc.ncbi.nlm.nih.gov</a>; Almquist et al., UW respondent-driven sampling methods paper, Am. J. Epidemiology 2025. <a href="https://academic.oup.com/aje/article/194/6/1524/7749332">academic.oup.com</a>; Morande et al., UW/REACH study of Seattle clearances, 2026 preprint. <a href="https://arxiv.org/html/2608.04076v1">arxiv.org</a>; PubliCola on 2024 referrals. <a href="https://publicola.com/2025/02/26/shelter-referrals-are-still-a-poor-metric-for-progress-on-homelessness-burien-sues-minimum-wage-campaign/">publicola.com</a>; Westword on the Denver undercount debate. <a href="https://www.westword.com/news/denver-says-homelessness-down-some-disagree-40891780/">westword.com</a>; Colorado Sun on Denver vacancy. <a href="https://coloradosun.com/2026/01/21/apartments-in-metro-denver-reach-highest-vacancy-rate-in-16-years-pushing-down-rents-again/">coloradosun.com</a>; Kidder Mathews Seattle multifamily Q2 2026. <a href="https://kidder.com/market-reports/seattle-multifamily-market-report/">kidder.com</a>; Governing on Denver's model. <a href="https://www.governing.com/urban/denver-cut-street-homelessness-nearly-in-half">governing.com</a>; Walter Hatch, Post Alley, Sept 2026. <a href="https://www.postalley.org/2026/09/10/seattles-homelessness-is-a-complex-problem-heres-how-to-solve-it/">postalley.org</a></li>
+      <li>Populations: Census Bureau Vintage 2025 city estimates (Denver 740,613; Seattle 784,777 for 2025).</li>
+    </ol>
+  </div>
+  </details>
+</div>
+
+</div>
+
+<script>
+(function(){
+  const tip = document.getElementById('tip');
+  function showTip(html, ev){ tip.innerHTML = html; tip.classList.add('show'); moveTip(ev); }
+  function moveTip(ev){ const x = ev.clientX, y = ev.clientY; const w = tip.offsetWidth, h = tip.offsetHeight; let left = x + 14, top = y + 14; if (left + w > window.innerWidth - 8) left = x - w - 14; if (top + h > window.innerHeight - 8) top = y - h - 14; tip.style.left = left + 'px'; tip.style.top = top + 'px'; }
+  function hideTip(){ tip.classList.remove('show'); }
+  function bind(el, html){ el.addEventListener('mouseenter', e=>showTip(html,e)); el.addEventListener('mousemove', moveTip); el.addEventListener('mouseleave', hideTip); el.setAttribute('tabindex','0'); el.addEventListener('focus', e=>{ const r = el.getBoundingClientRect(); showTip(html, {clientX:r.left+r.width/2, clientY:r.top}); }); el.addEventListener('blur', hideTip); }
+  const NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent){ const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; }
+  function txt(parent, x, y, s, attrs){ const t = el('text', Object.assign({x, y}, attrs||{}), parent); t.textContent = s; return t; }
+  const num = (n) => Math.round(n).toLocaleString('en-US');
+  const f1 = (n) => (Math.round(n*10)/10).toFixed(1);
+  function hatchDef(svg){ const d = el('defs',{},svg); for (const s of ['s1','s2']){ const p = el('pattern',{id:'hatch-'+s, width:6, height:6, patternUnits:'userSpaceOnUse', patternTransform:'rotate(135)'},d); el('rect',{x:0,y:0,width:2.2,height:6,style:'fill:var(--'+s+')'},p); } }
+
+  /* ------- generic line chart ------- */
+  // opts: {svg, W, H, L, R, T, B, xs:[years], ymax, ticks:[...], yfmt, series:[{cls:'s1', dash:bool, name, vals:{year:val}, est:{year:true}, labelLast:bool}], dots:[{x,y,cls,label,tipHtml}], note}
+  function lineChart(o){
+    const svg = document.getElementById(o.svg); const W=o.W, H=o.H, L=o.L||54, R=o.R||24, T=o.T||22, B=o.B||40;
+    const xs = o.xs; const x = (yr) => L + (yr - xs[0]) / (xs[xs.length-1]-xs[0]) * (W-L-R);
+    const ymin = o.ymin || 0;
+    const y = (v) => T + (o.ymax - v)/(o.ymax - ymin) * (H-T-B);
+    (o.ticks||[]).forEach(t=>{ el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),class:'grid'},svg); txt(svg, L-8, y(t)+4, o.yfmt?o.yfmt(t):num(t), {'text-anchor':'end', class:'axis-label'}); });
+    el('line',{x1:L,x2:W-R,y1:y(o.baseline!==undefined?o.baseline:0),y2:y(o.baseline!==undefined?o.baseline:0),class:'baseline'},svg);
+    xs.forEach(yr=>{ if (o.xskip && o.xskip.includes(yr)) return; txt(svg, x(yr), H-B+22, o.xlabel?o.xlabel(yr):String(yr), {'text-anchor':'middle', class:'axis-label'}); });
+    o.series.forEach(s=>{
+      const pts = xs.filter(yr=>s.vals[yr]!==undefined).map(yr=>[yr, s.vals[yr]]);
+      // draw segments; gaps across missing years drawn as faint dotted connectors
+      for (let i=1;i<pts.length;i++){
+        const a=pts[i-1], b=pts[i]; const gap = (b[0]-a[0])>1 && !s.nogap;
+        const cls = 'ln '+s.cls+(s.dash?' dash':'')+(gap?' gap':'');
+        el('line',{x1:x(a[0]),y1:y(a[1]),x2:x(b[0]),y2:y(b[1]),class:cls},svg);
+      }
+      pts.forEach(([yr,v])=>{
+        const isEst = s.est && s.est[yr];
+        const c = el('circle',{cx:x(yr),cy:y(v),r:isEst?4:4.5,class:(isEst?'':s.cls)+' ring', style:isEst?'fill:var(--card);stroke:var(--'+s.cls+');stroke-width:2':''},svg);
+        const hit = el('circle',{cx:x(yr),cy:y(v),r:14,class:'hit'},svg);
+        bind(hit, `<b>${s.name}, ${yr}</b><br>${o.yfmt?o.yfmt(v):num(v)}${isEst?' (estimate)':''}${s.notes&&s.notes[yr]?'<br>'+s.notes[yr]:''}`);
+      });
+      if (s.labelLast && pts.length){ const [yr,v]=pts[pts.length-1]; txt(svg, x(yr)+(s.lblDx||8), y(v)+(s.lblDy||4), (s.lblFmt||o.yfmt||num)(v), {class:'val', 'text-anchor': s.lblAnchor||'start'}); }
+      if (s.labelFirst && pts.length){ const [yr,v]=pts[0]; txt(svg, x(yr)+(s.lblFDx||-8), y(v)+(s.lblFDy||4), (s.lblFmt||o.yfmt||num)(v), {class:'val','text-anchor':s.lblFAnchor||'end'}); }
+      if (s.labelAt){ s.labelAt.forEach(([yr,dx,dy,anchor])=>{ const v=s.vals[yr]; if(v===undefined) return; txt(svg, x(yr)+dx, y(v)+dy, (s.lblFmt||o.yfmt||num)(v), {class:'val','text-anchor':anchor||'middle'}); }); }
+    });
+    (o.vlines||[]).forEach(v=>{ el('line',{x1:x(v.x),x2:x(v.x),y1:T,y2:H-B,class:'guide'},svg); const tx = v.anchor==='end' ? x(v.x)-6 : x(v.x)+6; const ta = v.anchor||'start'; const ty = T+12+(v.dy||0); if (v.text) txt(svg, tx, ty, v.text, {class:'axis-label', 'text-anchor':ta, style:'font-style:italic'}); if (v.text2) txt(svg, tx, ty+16, v.text2, {class:'axis-label', 'text-anchor':ta, style:'font-style:italic'}); });
+    (o.dots||[]).forEach(d=>{ el('circle',{cx:x(d.x),cy:y(d.y),r:5,class:d.cls+' ring'},svg); const h=el('circle',{cx:x(d.x),cy:y(d.y),r:14,class:'hit'},svg); bind(h,d.tip); if (d.label) txt(svg, x(d.x)+(d.dx||8), y(d.y)+(d.dy||4), d.label, {class:'val','text-anchor':d.anchor||'start'}); });
+    (o.annot||[]).forEach(a=>{ txt(svg, x(a.x)+(a.dx||0), (a.y!==undefined?y(a.y):T)+(a.dy||0), a.text, {class:'axis-label','text-anchor':a.anchor||'middle', style:'font-style:italic'}); });
+    return {x,y};
+  }
+
+  /* ------- grouped columns ------- */
+  function columns(o){
+    const svg = document.getElementById(o.svg); const W=o.W,H=o.H,L=o.L||54,R=o.R||16,T=o.T||22,B=o.B||40;
+    const n = o.cats.length; const slot = (W-L-R)/n; const bw = Math.min(o.bw||22, (slot-10)/o.series.length);
+    const y = (v) => T + (1 - v/o.ymax) * (H-T-B);
+    (o.ticks||[]).forEach(t=>{ el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),class:'grid'},svg); txt(svg, L-8, y(t)+4, num(t), {'text-anchor':'end', class:'axis-label'}); });
+    el('line',{x1:L,x2:W-R,y1:y(0),y2:y(0),class:'baseline'},svg);
+    o.cats.forEach((c,i)=>{
+      const cx = L + slot*(i+0.5);
+      txt(svg, cx, H-B+22, c.label||String(c), {'text-anchor':'middle', class:'axis-label'});
+      const k = o.series.length; const total = k*bw + (k-1)*2; let x0 = cx - total/2;
+      o.series.forEach((s,j)=>{
+        const v = s.vals[i]; const bx = x0 + j*(bw+2);
+        if (v===undefined || v===null){ txt(svg, bx+bw/2, y(0)-6, '–', {'text-anchor':'middle', class:'axis-label'}); return; }
+        const h = y(0)-y(v); const r = Math.min(4, h);
+        const partial = s.partial && s.partial[i];
+        const path = `M${bx},${y(0)} v${-(h-r)} a${r},${r} 0 0 1 ${r},${-r} h${bw-2*r} a${r},${r} 0 0 1 ${r},${r} v${h-r} z`;
+        const p = el('path',{d:path, class: partial ? '' : s.cls, style: partial ? 'fill:url(#hatch-'+s.cls+')' : ''},svg);
+        if (partial) el('path',{d:path, style:'fill:none;stroke:var(--'+s.cls+');stroke-width:1'},svg);
+        const hit = el('rect',{x:bx-2,y:T,width:bw+4,height:H-T-B,class:'hit'},svg);
+        bind(hit, `<b>${s.name}, ${c.label||c}</b><br>${num(v)}${s.unit?' '+s.unit:''}${s.notes&&s.notes[i]?'<br>'+s.notes[i]:''}`);
+        if (s.label && (!s.labelIdx || s.labelIdx.includes(i))) txt(svg, bx+bw/2, y(v)-6, (s.lblFmt||num)(v), {'text-anchor':'middle', class:'val'});
+      });
+    });
+    (o.annot||[]).forEach(a=>{ txt(svg, a.x, a.y, a.text, {class:'axis-label','text-anchor':a.anchor||'middle', style:'font-style:italic'}); });
+  }
+
+  /* ------- data ------- */
+  const popDen = {2019:727, 2020:715.5, 2022:713, 2023:716, 2024:741.6, 2025:740.6, 2026:740.6};
+  const popSea = {2019:753, 2020:737, 2021:734, 2022:749, 2023:755, 2024:773, 2025:785, 2026:790};
+  const popKC = {2019:2253, 2020:2270, 2022:2270, 2024:2340, 2026:2370};
+  const denUn = {2019:554, 2020:996, 2022:1313, 2023:1423, 2024:1273, 2025:785, 2026:518};
+  const denTot = {2019:3943, 2020:4171, 2022:4794, 2023:5818, 2024:6539, 2025:7327, 2026:6411};
+  const kcUn = {2019:5228, 2020:5578, 2022:7685, 2024:9810, 2026:11829};
+  const kcTot = {2019:11199, 2020:11751, 2022:13368, 2024:16868, 2026:18365};
+  const seaUn = {2019:3558, 2020:3738, 2024:4585};
+  const seaTot = {2019:7797, 2020:8166, 2024:9440};
+  // King County chronic-unsheltered share of unsheltered, applied to the Seattle city count
+  const kcShare = {2019:900/5228, 2020:1975/5578, 2024:6406/9810};
+  const seaChr = {}; for (const yr in seaUn) seaChr[yr] = Math.round(seaUn[yr]*kcShare[yr]);
+  // Metro Denver CoC (HUD) chronic-unsheltered share of unsheltered, applied to the city count
+  const metroShare = {2019:332/946, 2020:946/1561, 2022:1428/2078, 2023:1427/2763, 2024:1641/2919, 2025:1228/2149, 2026:1228/2149};
+  const denChr = {}; for (const yr in denUn) denChr[yr] = Math.round(denUn[yr]*metroShare[yr]);
+  const kcChr = {2019:900, 2020:1975, 2022:2954, 2024:6406, 2026:4495};
+
+  /* segment bars */
+  function seg(id, total, sh, chr, cls){ const un = total - sh; const notchr = un - chr; const box = document.getElementById(id); const mk=(c,v)=>{ const d=document.createElement('div'); d.className=c; d.style.width=(v/total*100)+'%'; d.title=num(v); box.appendChild(d); }; mk('sh',sh); mk('un',notchr); mk('ch '+cls,chr); }
+
+
+
+  /* Denver 311 encampment reports (Denver Open Data 311 Service Requests; case types DPD - Homeless Encampment, Encampment Reporting, 911 ENCAMPMENT, Encampment / Street Engagement; pulled Oct 16 2026) */
+  const denFifi = [['2021-03',909],['2021-04',1297],['2021-05',1659],['2021-06',3550],['2021-07',1990],['2021-08',2095],['2021-09',2746],['2021-10',2072],['2021-11',1812],['2021-12',2035],
+    ['2022-01',1667],['2022-02',1491],['2022-03',1748],['2022-04',2247],['2022-05',2670],['2022-06',3102],['2022-07',2959],['2022-08',2537],['2022-09',2429],['2022-10',2420],['2022-11',1695],['2022-12',1512],
+    ['2023-01',1477],['2023-02',1509],['2023-03',3415],['2023-04',2106],['2023-05',2105],['2023-06',2142],['2023-07',2071],['2023-08',2113],['2023-09',2038],['2023-10',1938],['2023-11',1453],['2023-12',1125],
+    ['2024-01',929],['2024-02',812],['2024-03',909],['2024-04',1023],['2024-05',1194],['2024-06',1088],['2024-07',1316],['2024-08',1232],['2024-09',1223],['2024-10',1058],['2024-11',700],['2024-12',851],
+    ['2025-01',529],['2025-02',466],['2025-03',767],['2025-04',762],['2025-05',727],['2025-06',895],['2025-07',1088],['2025-08',1080],['2025-09',1063],['2025-10',989],['2025-11',848],['2025-12',687],
+    ['2026-01',625],['2026-02',1150],['2026-03',1466],['2026-04',1629],['2026-05',1474],['2026-06',1561],['2026-07',1545],['2026-08',1596],['2026-09',1638]];
+  monthly({svg:'den-fifi', W:460, H:260, L:54, R:16, y0:2022, ymEnd:'2026-09', ymax:10000, ticks:[0,2500,5000,7500,10000], yfmt:v=>v>=1000?(v/1000)+'K':String(v),
+    series:[{cls:'s2', name:'Denver encampment reports', data:denFifi.filter(d=>d[0]>='2022-01'), labelLast:true, labelMax:true}],
+    annot:[{x:'2023-08', y:14, text:'Mike Johnston becomes mayor, Jul 2023', anchor:'start'}]});
+  (function(){ const yrs={}; denFifi.forEach(([ym,n])=>{ const y=ym.slice(0,4); yrs[y]=yrs[y]||{n:0,m:0}; yrs[y].n+=n; yrs[y].m++; }); const tb=document.getElementById('den-fifi-table'); tb.innerHTML='<tr><th>Year</th><th>Reports</th><th>Months</th><th>Per month</th></tr>'+Object.keys(yrs).map(y=>`<tr><td>${y}${y==='2021'?' (from March, when 311 began taking encampment calls)':''}</td><td class="n">${num(yrs[y].n)}</td><td class="n">${yrs[y].m}</td><td class="n">${num(yrs[y].n/yrs[y].m)}</td></tr>`).join(''); })();
+
+  /* ------- monthly line chart (x = 'YYYY-MM') ------- */
+  function monthly(o){
+    const svg=document.getElementById(o.svg); const W=o.W,H=o.H,L=o.L||54,R=o.R||16,T=o.T||22,B=o.B||40;
+    const idx=(ym)=>{ const [y,m]=ym.split('-').map(Number); return (y-o.y0)*12+(m-1); };
+    const n=idx(o.ymEnd)+1; const x=(ym)=>L+idx(ym)/(n-1)*(W-L-R); const y=(v)=>T+(1-v/o.ymax)*(H-T-B);
+    (o.ticks||[]).forEach(t=>{ el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),class:'grid'},svg); txt(svg,L-8,y(t)+4,o.yfmt?o.yfmt(t):num(t),{'text-anchor':'end',class:'axis-label'}); });
+    el('line',{x1:L,x2:W-R,y1:y(0),y2:y(0),class:'baseline'},svg);
+    for (let yr=o.y0; yr<=Number(o.ymEnd.slice(0,4)); yr++){ const ym=yr+'-01'; if (idx(ym)<0||idx(ym)>=n) continue; el('line',{x1:x(ym),x2:x(ym),y1:y(0),y2:y(0)+5,class:'baseline'},svg); txt(svg,x(ym),H-B+22,String(yr),{'text-anchor':'start',class:'axis-label'}); }
+    o.series.forEach(s=>{
+      const pts=s.data.filter(d=>idx(d[0])>=0&&idx(d[0])<n);
+      el('path',{d:'M'+pts.map(d=>x(d[0]).toFixed(1)+','+y(d[1]).toFixed(1)).join('L')+'L'+x(pts[pts.length-1][0]).toFixed(1)+','+y(0)+'L'+x(pts[0][0]).toFixed(1)+','+y(0)+'Z',class:'area '+s.cls},svg);
+      el('path',{d:'M'+pts.map(d=>x(d[0]).toFixed(1)+','+y(d[1]).toFixed(1)).join('L'),class:'ln '+s.cls},svg);
+      const slot=(W-L-R)/(n-1);
+      pts.forEach(d=>{ const h=el('rect',{x:x(d[0])-slot/2,y:T,width:slot,height:H-T-B,class:'hit'},svg); const mon=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][Number(d[0].slice(5))-1]; bind(h,`<b>${s.name}, ${mon} ${d[0].slice(0,4)}</b><br>${num(d[1])}`); });
+      const last=pts[pts.length-1]; el('circle',{cx:x(last[0]),cy:y(last[1]),r:4.5,class:s.cls+' ring'},svg);
+      if (s.labelLast) txt(svg,x(last[0])-8,y(last[1])-10,num(last[1]),{class:'val','text-anchor':'end'});
+      if (s.labelMax){ const mx=pts.reduce((a,b)=>b[1]>a[1]?b:a); if (mx!==last) txt(svg,x(mx[0]),y(mx[1])-8,num(mx[1]),{class:'val','text-anchor':'middle'}); }
+    });
+    (o.annot||[]).forEach(a=>{ txt(svg,x(a.x),a.y,a.text,{class:'axis-label','text-anchor':a.anchor||'middle',style:'font-style:italic'}); });
+  }
+
+  /* Each city against itself: unsheltered indexed to 2022 = 100 (Denver city; King County for Seattle) */
+  (function(){
+    const xs=[2022,2023,2024,2025,2026];
+    const pct=v=>Math.round(v)+' ('+(v>=100?'+':'\u2212')+Math.round(Math.abs(v-100))+'%)';
+    const dI={}; for (const yr of xs) if (denUn[yr]!==undefined) dI[yr]=denUn[yr]/denUn[2022]*100;
+    const kI={}; for (const yr of xs) if (kcUn[yr]!==undefined) kI[yr]=kcUn[yr]/kcUn[2022]*100;
+    lineChart({svg:'index', W:920, H:330, L:54, R:150, ymax:175, ticks:[0,25,50,75,100,125,150,175], baseline:100, yfmt:v=>String(Math.round(v)), xs,
+      series:[
+        {cls:'s1', name:'Seattle and King County, 2022 = 100', vals:kI, nogap:true, labelLast:true, lblFmt:pct, notes:{2022:'7,685 unsheltered', 2024:'9,810 unsheltered', 2026:'11,829 unsheltered'}},
+        {cls:'s2', name:'Denver (city and county), 2022 = 100', vals:dI, labelLast:true, lblFmt:pct, labelAt:[[2023,0,-12]], notes:{2022:'1,313 unsheltered', 2023:'1,423 unsheltered; Mike Johnston becomes mayor in July', 2024:'1,273 unsheltered', 2025:'785 unsheltered', 2026:'518 unsheltered'}}
+      ],
+      vlines:[{x:2023.5, text:'July 2023: Mike Johnston becomes mayor of Denver;', text2:'five hotels bought or leased by December'}],
+      dots:[{x:2023.5, y:dI[2023]+(dI[2024]-dI[2023])*0.5, cls:'s2', tip:'<b>July 2023</b><br>Mike Johnston takes office as mayor of Denver, declares a homelessness emergency, and sets a goal of 1,000 people indoors by December 31. The first hotels open in September.'}]});
+    const tb=document.getElementById('index-table');
+    tb.innerHTML='<tr><th>Year</th><th>Denver unsheltered</th><th>Index</th><th>King County unsheltered</th><th>Index</th></tr>'+xs.map(yr=>`<tr><td>${yr}</td><td class="n">${denUn[yr]!==undefined?num(denUn[yr]):'\u2013'}</td><td class="n">${dI[yr]!==undefined?Math.round(dI[yr]):'\u2013'}</td><td class="n">${kcUn[yr]!==undefined?num(kcUn[yr]):'\u2013'}</td><td class="n">${kI[yr]!==undefined?Math.round(kI[yr]):'\u2013'}</td></tr>`).join('');
+  })();
+
+  /* Net lockable rooms added since Jan 2022 */
+  (function(){
+    const xs=[2022,2023,2024,2025,2026,2026.8];
+    const denR={2022:330,2023:375,2024:1140,2025:1273,2026:1053,2026.8:874};
+    const seaR={2022:864,2023:864,2024:863,2025:798,2026:835,2026.8:1000}; // HUD HIC WA-500 private-room ES units (adult beds + family units) 2022-25; 2026 points estimated from known openings
+    const dA={}, sA={}; for (const k of xs){ dA[k]=denR[k]-denR[2022]; sA[k]=seaR[k]-seaR[2022]; }
+    const sgn=v=>(v<0?'−':'')+num(Math.abs(v));
+    lineChart({svg:'added', W:920, H:330, L:60, R:110, ymin:-300, ymax:1000, ticks:[-300,0,250,500,750,1000], yfmt:sgn, xs, xlabel:yr=>yr===2026.8?'Now':String(yr),
+      series:[
+        {cls:'s2', name:'Denver (city and county) rooms added since Jan 2022', vals:dA, nogap:true, labelLast:true, lblFmt:sgn, labelAt:[[2025,0,-12]], notes:{2023:'COVID hotels winding down','2024':'Five hotels and Stay Inn opened Sept–Dec 2023','2025':'Four micro-communities added; peak','2026':'Radisson lease ended','2026.8':'Comfort Inn and Monroe Village closed in budget cuts'}},
+        {cls:'s1', name:'Seattle and King County rooms added since Jan 2022', vals:sA, nogap:true, labelLast:true, lblFmt:sgn, notes:{2022:'864 units: 16 tiny-house villages, JustCARE and CoLEAD hotel rooms, Mary Pilgrim Inn','2023':'864 units: Southend, Riverton Park and Miracle villages open; JustCARE hotels consolidate','2024':'863 units: Maple Leaf, Salmon Bay, Henderson, Raven open; Othello and Lake Union close','2025':'798 units: Civic Hotel lease ends, Friendship Heights and Eagle Village gone; Camp Second Chance and Interbay expand','2026':'Estimate: Rosie\'s reopened July 2025; HUD\'s 2026 inventory is not yet published','2026.8':'Estimate: Olympic Hills 45, Belmont 31, Brighton 14, Bayside 75 opened in 2026; closures unknown'}}
+      ],
+      vlines:[{x:2023.8, anchor:'end', dy:26, text:'Sept–Dec 2023: new mayor Mike Johnston buys', text2:'or leases five hotels in 14 weeks'}],
+      dots:[{x:2023.8, y:dA[2023]+(dA[2024]-dA[2023])*0.8, cls:'s2', tip:'<b>September to December 2023</b><br>Stone Creek (182 rooms) opens Sept 28, the Aspen (289) Dec 7, the Radisson (220) Dec 15, Tamarac (205) Dec 28, Comfort Inn (136) Dec 30, plus the Stay Inn micro-community (54): 1,086 units gross. The line rises less because about 330 COVID-era hotel rooms in the 2022 baseline closed in 2023.'}]});
+    const tb=document.getElementById('added-table');
+    tb.innerHTML='<tr><th>January of</th><th>Denver units</th><th>Net since 2022</th><th>Seattle units</th><th>Net since 2022</th></tr>'+xs.map(k=>`<tr><td>${k===2026.8?'Oct 2026':k}</td><td class="n">${num(denR[k])}</td><td class="n">${sgn(dA[k])}</td><td class="n">${num(seaR[k])}</td><td class="n">${sgn(sA[k])}</td></tr>`).join('');
+  })();
+
+  /* Summer-quarter (Jul-Sep) resident encampment reports, both cities */
+  columns({svg:'summer', W:920, H:330, L:64, R:16, ymax:30000, ticks:[0,10000,20000,30000], bw:30,
+    cats:[{label:'Summer 2022'},{label:'Summer 2023'},{label:'Summer 2024'},{label:'Summer 2025'},{label:'Summer 2026'}],
+    series:[{cls:'s2', name:'Denver reports', vals:[7925,6222,3771,3231,4779], label:true, notes:['Pre-Johnston','Mike Johnston becomes mayor, July 2023','Resolutions complete; 350+ blocks closed','−59% vs 2022','New reporting form since Sept 2025; still −40% vs 2022']},
+            {cls:'s1', name:'Seattle reports', vals:[12541,12945,15285,25064,25142], label:true, notes:['Harrell year one','2,205 removals this year','2,504 removals this year','+100% vs 2022','Wilson year one; September 2026 is the record month']}],
+    annot:[{x:64+(920-64-16)/5*2.5, y:14, text:'Denver halves while Seattle doubles'}]});
+
+  /* Seattle Find It Fix It encampment reports (data.seattle.gov 5ngg-rpne, pulled Oct 16 2026) */
+  const seaFifi = [['2022-06',343], ['2022-07',4000], ['2022-08',4386], ['2022-09',4155], ['2022-10',3688], ['2022-11',2116], ['2022-12',2125], ['2023-01',2743], ['2023-02',2878], ['2023-03',3239], ['2023-04',3298], ['2023-05',3377], ['2023-06',3681], ['2023-07',3973], ['2023-08',4524], ['2023-09',4448], ['2023-10',3969], ['2023-11',2852], ['2023-12',2554], ['2024-01',2810], ['2024-02',2809], ['2024-03',3538], ['2024-04',3384], ['2024-05',3762], ['2024-06',4065], ['2024-07',4924], ['2024-08',4947], ['2024-09',5414], ['2024-10',5183], ['2024-11',3392], ['2024-12',3478], ['2025-01',4198], ['2025-02',4317], ['2025-03',5877], ['2025-04',5677], ['2025-05',6855], ['2025-06',6615], ['2025-07',7770], ['2025-08',8962], ['2025-09',8332], ['2025-10',7317], ['2025-11',5728], ['2025-12',5142], ['2026-01',5358], ['2026-02',4835], ['2026-03',5474], ['2026-04',5887], ['2026-05',6774], ['2026-06',7400], ['2026-07',7021], ['2026-08',8663], ['2026-09',9458]];
+  monthly({svg:'sea-fifi', W:460, H:260, L:54, R:16, y0:2022, ymEnd:'2026-09', ymax:10000, ticks:[0,2500,5000,7500,10000], yfmt:v=>v>=1000?(v/1000)+'K':String(v),
+    series:[{cls:'s1', name:'Seattle encampment reports', data:seaFifi.slice(1), labelLast:true}],
+    annot:[{x:'2022-08', y:14, text:'data begins Jun 2022', anchor:'start'}]});
+  (function(){ const yrs={}; seaFifi.forEach(([ym,n])=>{ const y=ym.slice(0,4); yrs[y]=yrs[y]||{n:0,m:0}; yrs[y].n+=n; yrs[y].m++; }); const tb=document.getElementById('fifi-table'); tb.innerHTML='<tr><th>Year</th><th>Reports</th><th>Months</th><th>Per month</th></tr>'+Object.keys(yrs).map(y=>`<tr><td>${y}</td><td class="n">${num(yrs[y].n)}</td><td class="n">${yrs[y].m}</td><td class="n">${num(yrs[y].n/yrs[y].m)}</td></tr>`).join(''); })();
+
+
+
+  /* officers and sweep-rate bar pairs */
+  function pairBars(o){
+    const svg=document.getElementById(o.svg); const W=o.W,H=o.H,L=o.L||54,R=o.R||20,T=o.T||22,B=o.B||44;
+    const n=o.items.length, slot=(W-L-R)/n, bw=Math.min(72, slot*0.5);
+    const y=(v)=>T+(1-v/o.ymax)*(H-T-B);
+    (o.ticks||[]).forEach(t=>{ el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),class:'grid'},svg); txt(svg,L-8,y(t)+4,o.fmt?o.fmt(t):num(t),{'text-anchor':'end',class:'axis-label'}); });
+    el('line',{x1:L,x2:W-R,y1:y(0),y2:y(0),class:'baseline'},svg);
+    o.items.forEach((it,i)=>{
+      const cx=L+slot*(i+0.5), bx=cx-bw/2, h=y(0)-y(it.val), r=Math.min(4,h);
+      const path=`M${bx},${y(0)} v${-(h-r)} a${r},${r} 0 0 1 ${r},${-r} h${bw-2*r} a${r},${r} 0 0 1 ${r},${r} v${h-r} z`;
+      el('path',{d:path, class: it.partial?'':it.cls, style: it.partial?'fill:url(#hatch-'+it.cls+')':''},svg);
+      if (it.partial) el('path',{d:path, style:'fill:none;stroke:var(--'+it.cls+');stroke-width:1'},svg);
+      txt(svg,cx,y(it.val)-8,(o.fmt?o.fmt(it.val):num(it.val))+(it.partial?' (est.)':''),{'text-anchor':'middle',class:'val'});
+      txt(svg,cx,H-B+20,it.label,{'text-anchor':'middle',class:'ink',style:'font-weight:600'});
+      if (it.sub) txt(svg,cx,H-B+36,it.sub,{'text-anchor':'middle',class:'axis-label'});
+      const hit=el('rect',{x:bx-10,y:T,width:bw+20,height:H-T-B,class:'hit'},svg); bind(hit,it.tip);
+    });
+  }
+  pairBars({svg:'officers', W:460, H:260, ymax:2.5, ticks:[0,0.5,1,1.5,2,2.5], fmt:f1,
+    items:[{label:'Denver', sub:'Sept 2026', val:1565/740.6, cls:'s2', tip:'<b>Denver</b><br>1,565 officers on the payroll, 740,600 residents'},
+           {label:'Seattle', sub:'Aug 2026', val:927/790, cls:'s1', tip:'<b>Seattle</b><br>927 officers available for duty, about 790,000 residents'}]});
+  hatchDef(document.getElementById('sweeprate'));
+  pairBars({svg:'sweeprate', W:460, H:260, ymax:60, ticks:[0,20,40,60],
+    items:[{label:'Denver', sub:'2022', val:9, cls:'s2', partial:true, tip:'<b>Denver, 2022</b><br>About 116 posted cleanups for 1,313 people unsheltered. Estimate: 58 cleanups were logged in the first half of the year.'},
+           {label:'Seattle', sub:'2024', val:55, cls:'s1', tip:'<b>Seattle, 2024</b><br>2,504 encampment removals for 4,585 people unsheltered'}]});
+})();
+</script>
+</body>
+</html>
