@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where to Hunt 2026</title>
+<style>
+:root {
+  --paper: #f6f5f0; --card: #efede4; --ink: #24281f; --ink-2: #5b5f52; --ink-3: #8a8d7f;
+  --rule: #d8d6c8; --pine: #2e5e43; --pine-soft: #e3e8df; --blaze: #c24a14; --blaze-soft: #f3e2d6;
+  --c-wenaha: #1d9a6c; --c-umtanum: #eb6834; --c-alta: #2a78d6;
+  --tip-bg: #ffffff; --tip-shadow: 0 4px 14px rgba(0,0,0,.14);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #191b17; --card: #21241f; --ink: #eae8dd; --ink-2: #a9ac9c; --ink-3: #7c7f71;
+    --rule: #383b32; --pine: #7fae92; --pine-soft: #253328; --blaze: #e0794a; --blaze-soft: #37281e;
+    --c-wenaha: #2aa26f; --c-umtanum: #dd7140; --c-alta: #3987e5;
+    --tip-bg: #2a2d27; --tip-shadow: 0 4px 14px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #191b17; --card: #21241f; --ink: #eae8dd; --ink-2: #a9ac9c; --ink-3: #7c7f71;
+  --rule: #383b32; --pine: #7fae92; --pine-soft: #253328; --blaze: #e0794a; --blaze-soft: #37281e;
+  --c-wenaha: #2aa26f; --c-umtanum: #dd7140; --c-alta: #3987e5;
+  --tip-bg: #2a2d27; --tip-shadow: 0 4px 14px rgba(0,0,0,.5);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 48px 16px 80px; }
+.eyebrow { font-size: 12px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: var(--pine); margin: 0 0 6px; }
+h1, h2, h3 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 5vw, 42px); line-height: 1.15; font-weight: 600; }
+h2 { font-size: 25px; font-weight: 600; margin: 0 0 4px; }
+h3 { font-size: 18px; font-weight: 600; margin: 0 0 8px; }
+p { margin: 0 0 14px; max-width: 70ch; }
+.lede { font-size: 17px; color: var(--ink-2); max-width: 64ch; margin-top: 14px; }
+a { color: var(--pine); }
+header.masthead { padding-bottom: 28px; border-bottom: 2px solid var(--ink); }
+.stamp { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 18px; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.stamp span strong { color: var(--ink); font-weight: 600; }
+section { padding: 40px 0 8px; border-bottom: 1px solid var(--rule); }
+section:last-of-type { border-bottom: 0; }
+.sec-head { margin-bottom: 18px; }
+.sec-sub { color: var(--ink-2); font-size: 15px; max-width: 70ch; }
+small, .fine { font-size: 13px; color: var(--ink-3); }
+
+/* verdict cards */
+.ranks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 18px 0 8px; }
+.rank { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 18px 14px; position: relative; border-top: 4px solid var(--rc); }
+.rank .medal { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--rc); }
+.rank h3 { margin: 4px 0 2px; }
+.rank .where { font-size: 13px; color: var(--ink-3); margin-bottom: 10px; }
+.rank p { font-size: 14px; color: var(--ink-2); margin-bottom: 8px; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; margin: 10px 0 4px; }
+.kpi .n { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 24px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 11.5px; color: var(--ink-3); letter-spacing: .03em; text-transform: uppercase; }
+
+/* charts */
+.chart-card { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; margin: 16px 0; }
+.chart-card h3 { margin-bottom: 2px; }
+.chart-card .sub { font-size: 13.5px; color: var(--ink-2); margin: 0 0 12px; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); margin: 2px 0 10px; }
+.legend .sw { display: inline-block; width: 13px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: 3px; }
+.plot { position: relative; }
+.plot svg { display: block; width: 100%; height: auto; }
+.tip { position: absolute; pointer-events: none; background: var(--tip-bg); border: 1px solid var(--rule); border-radius: 8px; box-shadow: var(--tip-shadow); padding: 8px 10px; font-size: 12.5px; line-height: 1.5; opacity: 0; transition: opacity .08s; white-space: nowrap; z-index: 3; }
+.tip .yr { font-weight: 650; margin-bottom: 2px; }
+.tip .row { display: flex; align-items: center; gap: 6px; }
+.tip .dot { width: 8px; height: 8px; border-radius: 50%; }
+.tip .v { margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 600; padding-left: 10px; }
+
+/* table */
+table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 12px 0 6px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); font-weight: 650; }
+td.num, th.num { text-align: right; }
+tr.hl td { background: var(--pine-soft); }
+.chip { display: inline-block; font-size: 11.5px; font-weight: 650; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--rule); color: var(--ink-2); white-space: nowrap; }
+.chip.best { background: var(--pine-soft); color: var(--pine); border-color: transparent; }
+.chip.worst { background: var(--blaze-soft); color: var(--blaze); border-color: transparent; }
+.gmu-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: 0; }
+
+/* callouts */
+.note { background: var(--card); border-left: 4px solid var(--pine); border-radius: 0 10px 10px 0; padding: 14px 16px; margin: 16px 0; font-size: 14.5px; }
+.note.warn { border-left-color: var(--blaze); }
+.checklist { list-style: none; padding: 0; margin: 10px 0 16px; max-width: 72ch; }
+.checklist li { padding: 10px 0 10px 30px; position: relative; border-bottom: 1px dashed var(--rule); font-size: 15px; }
+.checklist li::before { content: "→"; position: absolute; left: 4px; color: var(--pine); font-weight: 700; }
+.cols2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px 28px; }
+ul { padding-left: 20px; margin: 0 0 14px; }
+li { margin-bottom: 6px; }
+footer { margin-top: 40px; font-size: 13px; color: var(--ink-3); }
+footer a { color: var(--ink-3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Decision brief · Modern firearm deer · Oct 17–27, 2026</p>
+  <h1>Where to Hunt: Opening Week 2026</h1>
+  <p class="lede">Three candidate areas, compared on the two things that matter to you — crowding first, then hunter success — using WDFW's official harvest statistics (1997–2025) pulled from the Hunt Planner database, plus the answer to the timberland-permit question.</p>
+  <div class="stamp">
+    <span><strong>Prepared</strong> Fri Oct 16, 2026</span>
+    <span><strong>Departure</strong> Sun Oct 18</span>
+    <span><strong>Season</strong> Modern firearm, Oct 17–27</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <h2>The verdict</h2>
+    <p class="sec-sub">Ranked by your stated priorities: lack of crowding first, hunter success second. All stats are the 2021–2025 five-season averages for the <em>general modern-firearm deer season</em> in each GMU.</p>
+  </div>
+
+  <div class="ranks">
+    <div class="rank" style="--rc: var(--c-wenaha)">
+      <div class="medal">No. 1 · Least crowded</div>
+      <h3>GMU 169 — Wenaha</h3>
+      <div class="where">Blue Mountains · your pin 46.0248, −117.5458</div>
+      <div class="kpis">
+        <div class="kpi"><div class="n">0.8</div><div class="l">hunters / mi²</div></div>
+        <div class="kpi"><div class="n">8.3%</div><div class="l">5-yr success</div></div>
+        <div class="kpi"><div class="n">134</div><div class="l">rifle hunters</div></div>
+        <div class="kpi"><div class="n">161 mi²</div><div class="l">unit size</div></div>
+      </div>
+      <p>A different league of solitude: roughly a third the hunter density of the other two, and only ~134 rifle hunters in the whole unit. The catch: it's nearly all Wenaha–Tucannon Wilderness — steep, roadless, foot-or-horse country — and success swings wildly year to year (3%–17%) because the harvest is tiny. Both mule deer <em>and</em> whitetail are 3-point minimum here.</p>
+    </div>
+
+    <div class="rank" style="--rc: var(--c-alta)">
+      <div class="medal">No. 2 · Best odds — the smart-money pick</div>
+      <h3>GMU 242 — Alta</h3>
+      <div class="where">Methow / your old spot · 48.2194, −120.1905</div>
+      <div class="kpis">
+        <div class="kpi"><div class="n">1.8</div><div class="l">hunters / mi²</div></div>
+        <div class="kpi"><div class="n">13.4%</div><div class="l">5-yr success</div></div>
+        <div class="kpi"><div class="n">775</div><div class="l">rifle hunters</div></div>
+        <div class="kpi"><div class="n">433 mi²</div><div class="l">unit size</div></div>
+      </div>
+      <p>Your proven ground is the data's favorite: success runs ~60% higher than the other two, it takes ~31 hunter-days per deer killed here vs ~50 in both others, and crowding is middling — and falling (hunters are down ~30% since 2021). Bonus: whitetail is <strong>any buck</strong> here; mule deer 3-pt min.</p>
+    </div>
+
+    <div class="rank" style="--rc: var(--c-umtanum)">
+      <div class="medal">No. 3 · Skip it</div>
+      <h3>GMU 342 — Umtanum</h3>
+      <div class="where">Wenas / L.T. Murray · your pin 46.9216, −120.8490</div>
+      <div class="kpis">
+        <div class="kpi"><div class="n">2.3</div><div class="l">hunters / mi²</div></div>
+        <div class="kpi"><div class="n">8.0%</div><div class="l">5-yr success</div></div>
+        <div class="kpi"><div class="n">663</div><div class="l">rifle hunters</div></div>
+        <div class="kpi"><div class="n">291 mi²</div><div class="l">unit size</div></div>
+      </div>
+      <p>Worst on <em>both</em> of your criteria: the most hunters per square mile of the three (easy road access from Yakima and Ellensburg packs it on opening weekend) and the lowest, flattest success rate — it hasn't cracked 10% in a decade. Mule deer only, 3-pt min.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>How to read the ranking.</strong> On your weighting (crowding first), Wenaha wins — but its solitude is priced in effort: it's a wilderness hunt, and opening-week rifle hunters there average one deer per ~50 hunter-days. If you want the best chance of punching a tag on a short trip over country you already know, Alta is the rational pick; its "crowds" are also concentrated along the Methow valley roads, and thin out fast uphill. Either is defensible. Umtanum isn't — it loses on both axes.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>Success over time</h2>
+    <p class="sec-sub">General-season modern firearm, all deer species combined. Hover for exact values.</p>
+  </div>
+
+  <div class="chart-card">
+    <h3>Hunter success rate</h3>
+    <p class="sub">Percent of rifle hunters who killed a deer, 2015–2025</p>
+    <div class="legend" id="leg1"></div>
+    <div class="plot" id="chart-succ"></div>
+  </div>
+
+  <div class="chart-card">
+    <h3>Crowding</h3>
+    <p class="sub">Hunter-days per square mile over the season, 2015–2025 — lower is lonelier</p>
+    <div class="legend" id="leg2"></div>
+    <div class="plot" id="chart-crowd"></div>
+  </div>
+
+  <h3 style="margin-top:22px">Five-season scorecard (2021–2025 averages)</h3>
+  <table>
+    <thead>
+      <tr><th>GMU</th><th class="num">Success</th><th class="num">Hunters / mi²</th><th class="num">Hunter-days / mi²</th><th class="num">Days per deer killed</th><th class="num">Deer / season</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="gmu-dot" style="background:var(--c-wenaha)"></span>169 Wenaha</td><td class="num">8.3% <span class="chip">volatile</span></td><td class="num">0.83 <span class="chip best">best</span></td><td class="num">3.5 <span class="chip best">best</span></td><td class="num">50</td><td class="num">11</td></tr>
+      <tr class="hl"><td><span class="gmu-dot" style="background:var(--c-alta)"></span>242 Alta</td><td class="num">13.4% <span class="chip best">best</span></td><td class="num">1.79</td><td class="num">7.5</td><td class="num">31 <span class="chip best">best</span></td><td class="num">105</td></tr>
+      <tr><td><span class="gmu-dot" style="background:var(--c-umtanum)"></span>342 Umtanum</td><td class="num">8.0% <span class="chip worst">worst</span></td><td class="num">2.28 <span class="chip worst">worst</span></td><td class="num">9.1 <span class="chip worst">worst</span></td><td class="num">50</td><td class="num">53</td></tr>
+    </tbody>
+  </table>
+  <p class="fine">Unit areas computed from WDFW GMU boundary geometry: 169 ≈ 161 mi², 242 ≈ 433 mi², 342 ≈ 291 mi². "Days per deer" = total hunter-days ÷ total harvest, 2021–2025. The 2025 row of every chart is last fall's season, reported by WDFW in 2026.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>The timberland question</h2>
+    <p class="sec-sub">Short answer: there's no timberland permit to buy near any of these three spots — and happily, you don't need one.</p>
+  </div>
+
+  <p><strong>None of the three areas has industrial timberland with a hunting-permit program.</strong> Washington's pay-to-hunt timberland is almost entirely elsewhere: Weyerhaeuser's permit areas (Vail, Pe Ell, Aberdeen — sold online at recreation.weyerhaeuser.com) are all in western Washington; Manulife/Hancock's new fee program covers Stevens, Spokane and Pend Oreille counties in the far northeast; Green Diamond and Rayonier are west-side; Western Pacific Timber's Klickitat County land has been closed to the public since 2023. These programs sell quota-limited <em>annual</em> permits (Aug 1–Jul 31 year, on sale May–July, ~$200–$400) and popular areas sell out months before rifle season — so "buy online Friday, hunt Sunday" generally isn't how they work even where they exist.</p>
+
+  <p><strong>What your three areas actually are:</strong></p>
+  <ul>
+    <li><strong>GMU 169 (Wenaha):</strong> essentially all public — Umatilla National Forest, mostly inside the Wenaha–Tucannon Wilderness. Nothing to buy; just hunt the forest.</li>
+    <li><strong>GMU 342 (Wenas):</strong> your pin sits in the big WDFW-managed block (Wenas Wildlife Area / L.T. Murray country, ~105k acres). Public hunting, no permit — the old Boise Cascade timber rights inside Wenas were bought back by WDFW in 2008. You only need a <strong>Discover Pass or Vehicle Access Pass to park</strong> — and a Vehicle Access Pass already comes with your WA hunting license. (Discover Pass is $35/yr, sold instantly online at discoverpass.wa.gov, if you need one.)</li>
+    <li><strong>GMU 242 (Alta):</strong> mostly Okanogan–Wenatchee National Forest plus DNR/BLM/WDFW tracts; the private land is ranch ground along the Methow bottoms (knock-on-doors, not permits).</li>
+  </ul>
+
+  <p>Also checked: WDFW's free <a href="https://privatelands.wdfw.wa.gov/private_lands">Private Lands Hunting Access program</a> (Feel Free to Hunt / Register to Hunt / Hunt by Reservation) has <strong>no properties enrolled in GMU 169, 242, or 342</strong>. The nearest listings are farm and wind-farm ground around Dayton (outside 169) and the Wild Horse Wind Facility in GMU 329.</p>
+
+  <div class="note warn">
+    <strong>Before Sunday:</strong> nothing to buy except licenses/tags you already have. Make sure the Vehicle Access Pass is in the truck (or grab a Discover Pass online), check fire/road closures for the forest you pick, and remember it's 3-point minimum on mule deer in all three units.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>Regulations snapshot — Oct 17–27, 2026</h2>
+    <p class="sec-sub">General modern-firearm deer season, from WAC 220-415-020. Verify against the 2026 pamphlet before you shoot.</p>
+  </div>
+  <div class="cols2">
+    <ul class="checklist">
+      <li><strong>Season:</strong> Oct 17–27 in all three GMUs (11 days).</li>
+      <li><strong>GMU 169:</strong> mule deer 3-pt min · whitetail 3-pt min.</li>
+      <li><strong>GMU 242:</strong> mule deer 3-pt min · whitetail <strong>any buck</strong>.</li>
+    </ul>
+    <ul class="checklist">
+      <li><strong>GMU 342:</strong> mule deer 3-pt min (effectively a mule-deer unit).</li>
+      <li><strong>Antlerless:</strong> not allowed on the general tag in any of the three.</li>
+      <li><strong>Points:</strong> count on one antler; eye guards ≥1" count.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>Sources &amp; caveats</h2>
+  </div>
+  <ul class="fine" style="max-width:76ch">
+    <li>Harvest, hunter, and success data: WDFW Hunt Planner harvest database (geodataservices.wdfw.wa.gov, BigGame table), general-season modern-firearm deer rows, license years 2015–2025, queried Oct 16, 2026. GMU identification by point-in-polygon against WDFW GMU boundaries for your three coordinates.</li>
+    <li>Season dates and antler rules: <a href="https://lawfilesext.leg.wa.gov/Law/WAC/WAC%20220%20%20TITLE/WAC%20220%20-415%20%20CHAPTER/WAC%20220%20-415%20-020.htm">WAC 220-415-020</a> (2026 deer seasons).</li>
+    <li>Land ownership &amp; access: <a href="https://wdfw.wa.gov/places-to-go/wildlife-areas/wenas-wildlife-area">WDFW Wenas Wildlife Area</a>, <a href="https://privatelands.wdfw.wa.gov/private_lands">WDFW Private Lands</a>, Weyerhaeuser/Manulife/Green Diamond/Rayonier program pages, GoHunt unit profiles.</li>
+    <li>Caveats: success rates are self-reported via mandatory harvest reports and include some estimation by WDFW; GMU 342's pin sits near the 340/342/346 boundary corrected in 2017 — boundary shown by WDFW's current service puts your pin in 342. Weyerhaeuser/Manulife live permit availability couldn't be confirmed online (JS storefronts), but neither sells anything near these units anyway. Crowding is hunters per unit area — actual opening-morning density concentrates near roads and trailheads.</li>
+  </ul>
+  <footer>Prepared for Matt · data pulled Oct 16, 2026 · companion to Matt's Annual Hunting Plan</footer>
+</section>
+
+</div>
+
+<script>
+const DATA = {
+  years: [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+  series: [
+    { key:"169 Wenaha",  cssVar:"--c-wenaha",
+      succ:[18,21,3,6.6,9.4,4.4,3.4,6.6,16.8,11.2,3.4],
+      days:[869,810,703,856,564,743,638,479,559,602,566], area:161 },
+    { key:"342 Umtanum", cssVar:"--c-umtanum",
+      succ:[10,9,5,6.8,9.4,6.4,6.6,9.2,6.8,9.2,8.4],
+      days:[2967,3379,3015,2635,2450,2303,2898,2464,2227,3035,2590], area:291 },
+    { key:"242 Alta",    cssVar:"--c-alta",
+      succ:[25,23,12,12.4,18,15,15.4,13.2,12,13.6,13],
+      days:[3593,3954,3852,3136,3009,3648,3641,3590,3207,2983,2911], area:433 }
+  ]
+};
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+function legend(el, series){
+  el.innerHTML = series.map(s=>`<span><span class="sw" style="background:var(${s.cssVar})"></span>GMU ${s.key}</span>`).join("");
+}
+
+function lineChart(mountId, series, valueFn, opts){
+  const mount = document.getElementById(mountId);
+  const W=860, H=330, M={t:14,r:118,b:30,l:40};
+  const iw=W-M.l-M.r, ih=H-M.t-M.b;
+  const yrs = DATA.years;
+  const vals = series.map(s=>yrs.map((_,i)=>valueFn(s,i)));
+  const ymax = Math.ceil(Math.max(...vals.flat())/opts.step)*opts.step;
+  const x=i=>M.l+iw*i/(yrs.length-1), y=v=>M.t+ih*(1-v/ymax);
+  const ns="http://www.w3.org/2000/svg";
+  const svg=document.createElementNS(ns,"svg");
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  svg.setAttribute("role","img");
+  svg.setAttribute("aria-label",opts.label);
+  let g="";
+  for(let v=0; v<=ymax; v+=opts.step){
+    g+=`<line x1="${M.l}" x2="${W-M.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)" stroke-width="1"/>`;
+    g+=`<text x="${M.l-8}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="var(--ink-3)">${v}${opts.unit}</text>`;
+  }
+  yrs.forEach((yr,i)=>{ if(i%2===0) g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle" font-size="11" fill="var(--ink-3)">${yr}</text>`; });
+  series.forEach((s,si)=>{
+    const pts=vals[si].map((v,i)=>`${x(i)},${y(v)}`).join(" ");
+    g+=`<polyline points="${pts}" fill="none" stroke="var(${s.cssVar})" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    const last=vals[si][vals[si].length-1];
+    g+=`<circle cx="${x(yrs.length-1)}" cy="${y(last)}" r="3.5" fill="var(${s.cssVar})" stroke="var(--card)" stroke-width="2"/>`;
+    g+=`<text x="${W-M.r+10}" y="${y(last)+4+ (opts.nudge?.[si]||0)}" font-size="12" font-weight="600" fill="var(--ink-2)">${s.key} <tspan font-weight="700" fill="var(--ink)">${fmt(last)}${opts.unit}</tspan></text>`;
+  });
+  // crosshair layer
+  g+=`<line id="${mountId}-x" x1="0" x2="0" y1="${M.t}" y2="${H-M.b}" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>`;
+  series.forEach((s,si)=>{ g+=`<circle id="${mountId}-d${si}" r="4.5" fill="var(${s.cssVar})" stroke="var(--card)" stroke-width="2" opacity="0"/>`; });
+  g+=`<rect x="${M.l}" y="${M.t}" width="${iw}" height="${ih}" fill="transparent"/>`;
+  svg.innerHTML=g;
+  mount.appendChild(svg);
+  const tip=document.createElement("div"); tip.className="tip"; mount.appendChild(tip);
+  const xline=svg.querySelector(`#${CSS.escape(mountId+"-x")}`);
+  function move(ev){
+    const r=svg.getBoundingClientRect();
+    const px=(ev.clientX-r.left)*W/r.width;
+    let i=Math.round((px-M.l)/(iw/(yrs.length-1)));
+    i=Math.max(0,Math.min(yrs.length-1,i));
+    xline.setAttribute("x1",x(i)); xline.setAttribute("x2",x(i)); xline.setAttribute("opacity",.6);
+    let rows="";
+    series.forEach((s,si)=>{
+      const d=svg.querySelector(`#${CSS.escape(mountId+"-d"+si)}`);
+      d.setAttribute("cx",x(i)); d.setAttribute("cy",y(vals[si][i])); d.setAttribute("opacity",1);
+      rows+=`<div class="row"><span class="dot" style="background:var(${s.cssVar})"></span>${s.key}<span class="v">${fmt(vals[si][i])}${opts.unit}</span></div>`;
+    });
+    tip.innerHTML=`<div class="yr">${yrs[i]}</div>${rows}`;
+    tip.style.opacity=1;
+    const tx=x(i)*r.width/W, flip=tx>r.width*0.62;
+    tip.style.left=flip?"":(tx+14)+"px"; tip.style.right=flip?(r.width-tx+14)+"px":"";
+    tip.style.top=Math.max(0,(ev.clientY-r.top)-40)+"px";
+  }
+  function out(){ tip.style.opacity=0; xline.setAttribute("opacity",0);
+    series.forEach((_,si)=>svg.querySelector(`#${CSS.escape(mountId+"-d"+si)}`).setAttribute("opacity",0)); }
+  svg.addEventListener("mousemove",move); svg.addEventListener("mouseleave",out);
+  svg.addEventListener("touchstart",e=>{move(e.touches[0]);},{passive:true});
+  svg.addEventListener("touchmove",e=>{move(e.touches[0]);},{passive:true});
+}
+const fmt=v=>v%1?v.toFixed(1):v;
+
+legend(document.getElementById("leg1"), DATA.series);
+legend(document.getElementById("leg2"), DATA.series);
+lineChart("chart-succ", DATA.series, (s,i)=>s.succ[i], {step:5, unit:"%", label:"Hunter success rate by year", nudge:[0,0,0]});
+lineChart("chart-crowd", DATA.series, (s,i)=>+(s.days[i]/s.area).toFixed(1), {step:2, unit:"", label:"Hunter-days per square mile by year", nudge:[0,6,-6]});
+</script>
+</body>
+</html>
