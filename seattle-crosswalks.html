@@ -79,7 +79,8 @@ a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
 .mapcol { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
 .map { position: relative; width: 100%; aspect-ratio: var(--ar); max-width: 100%; border-radius: 12px; overflow: hidden;
   border: 1px solid var(--line); background: #e8e4dc; }
-.map img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; filter: saturate(.55) contrast(.95); }
+.map > img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.map img { filter: saturate(.55) contrast(.95); }
 .map svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .pin, .chk { position: absolute; transform: translate(-50%, -50%); }
 .chk { width: 19px; height: 19px; border-radius: 50%; background: var(--ok); border: 2px solid #fff; display: grid; place-items: center; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
@@ -217,6 +218,10 @@ button.mark { justify-self: start; }
 label.inline { font-size: 14px; display: inline-flex; gap: 8px; align-items: center; }
 label.inline input { width: 90px; font: 400 14px var(--f-body); padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
 .votebox { border: 2px solid var(--sign); border-radius: 12px; padding: 14px; }
+.votebox .sub { font-size: 13.5px; color: var(--muted); } .votebox .sub.err { color: var(--need); }
+#vote-form input { font-size: 16px; padding: 10px 12px; border-radius: 10px; }
+#vote-form .cta-btn { flex: 0 0 auto; min-height: 46px; }
+.votebox #vote-msg { margin-top: 6px; }
 .vcount { font-size: 15px; } .vcount b { font: 800 30px var(--f-display); color: var(--sign); }
 .goal { height: 10px; border-radius: 5px; background: var(--line); margin: 8px 0 6px; overflow: hidden; }
 .goal i { display: block; height: 100%; background: var(--sign); }
@@ -413,7 +418,9 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
     </section>
     <section id="how-risk">
       <h3>How we rate risk</h3>
-      <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. <b>Highest risk</b> is 90–100, <b>Very risky</b> 70–89, <b>Somewhat risky</b> 50–69 and <b>Lower risk</b> below 50. The score comes from city data. <b>Crashes count most:</b> pedestrian crashes since 2016 at the corner or on the blocks next to it, weighted by how serious they were and how recent. Then <b>crossing conditions:</b> how many lanes people cross, how busy the street is, how far it is to the nearest marked crosswalk, and whether schools, transit or parks bring people across.</p>
+      <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. <b>Highest risk</b> is 90–100, <b>Very risky</b> 70–89, <b>Somewhat risky</b> 50–69 and <b>Lower risk</b> below 50.</p>
+      <p>The score is <b>how many pedestrian crashes to expect at the corner each year</b>, so it counts both how dangerous the crossing is and how many people are there to be hurt. A wide, busy road with nobody walking scores lower than one where people cross all day. We estimate it the way traffic engineers do when crashes are rare, following the federal Highway Safety Manual. First, a model predicts crashes from <b>how much traffic passes</b> (SDOT's 2024 counts), <b>how many people come to the area</b> (jobs within a quarter mile from the Census, and nearby schools, transit, parks and shops), and <b>how many lanes people cross</b>. Its weights come from Seattle's own pedestrian crashes since 2016 at the corner or on the blocks next to it. Then each corner's own crash record is blended in. One crash is often bad luck, so it moves a corner a little; a corner with crash after crash moves a lot.</p>
+      <p>We checked it the honest way: built only from crashes before 2021, it picked out the corners where pedestrians were hit afterward better than SDOT's priority score, a plain crash count, or our earlier score. The 10% of corners it rated riskiest had about half of all pedestrian crashes since 2021. Posted speed, residents nearby and distance to the nearest crosswalk didn't improve those predictions, so they're shown on each corner but not scored.</p>
       <p>It's an estimate, not a measurement. The city doesn't count pedestrians at most corners, and crash records only include crashes reported to police, so a corner with no crashes on record can still be dangerous. Counting people who cross, and adding notes about near-misses, helps fill that gap. Votes show what neighbors want most; they don't change the Risk Score.</p>
     </section>
     <section>
@@ -426,7 +433,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
     </section>
     <section>
       <h3>Data</h3>
-      <p>Priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders. Pedestrian crashes come from SDOT's collision records. Neighborhood boundaries come from Seattle's Neighborhood Map Atlas. Votes, flag kits and neighbor activity are sample data.</p>
+      <p>Priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders. Pedestrian crashes come from SDOT's collision records, traffic from SDOT's 2024 arterial traffic counts, and jobs from the Census's LEHD Origin-Destination Employment Statistics. Neighborhood boundaries come from Seattle's Neighborhood Map Atlas. Votes, flag kits and neighbor activity are sample data.</p>
     </section>
   </main>
 
@@ -440,7 +447,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793219887";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793220603";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -467,20 +474,28 @@ const signsOrdered = c => !!state["ys:" + c.s];
 // Status of each thing neighbors can do at a corner, for the summary at the top of its page: [status, color, next step].
 const flagStatus = c => state["fu:" + c.s] ? ["Up ✓", "ok", "Keep them stocked"] : ordered(c) ? ["Ordered", "diy", "Mark them up once installed"] : ["Needed", "need", "Order a flag kit"];
 const signStatus = c => state["su:" + c.s] ? ["Up ✓", "ok", "Facing traffic both ways"] : signsOrdered(c) ? ["Ordered", "diy", "Mark them up once placed"] : ["Needed", "need", "Order 4 for nearby yards"];
-// Rankings: risk (crashes + crossing conditions) orders the lists; votes have their own "most wanted" rank.
+// Rankings: risk (expected pedestrian crashes a year, from the build's model) orders the lists; votes have their own
+// "most wanted" rank.
 const byRisk = (a, b) => b.rk - a.rk || b.t - a.t;
 const ft = m => `${(Math.round(m / 0.3048 / 50) * 50).toLocaleString()} ft`;
+const cars = c => `about ${fmt(Math.round(c.adt / 1000) * 1000)} cars a day`;
+const jobsNear = c => `${fmt(Math.round(c.jobs / 100) * 100)} jobs within a quarter mile`;
+// The model's drivers first (crashes, lanes, traffic, people), then how far it is to a crosswalk.
 function riskReasons(c) {
   const out = [];
-  const [n, ser, fat, recent] = c.cx;
+  const [n, ser, fat] = c.cx;
   if (n) out.push(`${n} pedestrian crash${n > 1 ? "es" : ""} since 2016${fat ? `, ${fat} fatal` : ser ? `, ${ser} serious` : ""}`);
   if (c.ln >= 4) out.push(`${c.ln} lanes to cross`);
-  else if (c.ac === 1) out.push("busy main street");
-  if (c.gap == null) out.push("no marked crosswalk on either street");
-  else if (c.gap >= 800) out.push("no marked crosswalk within half a mile");
-  else if (c.gap >= 150) out.push(`nearest marked crosswalk ${ft(c.gap)} away`);
+  if (c.adt >= 15000) out.push(cars(c));
+  else if (c.ac === 1 && c.ln < 4) out.push("busy main street");
+  if (c.jobs >= 1500) out.push(jobsNear(c));
   if (out.length < 3 && c.sch >= 3) out.push("near schools");
   if (out.length < 3 && c.tr >= 3) out.push("busy transit stop nearby");
+  if (out.length < 3) {
+    if (c.gap == null) out.push("no marked crosswalk on either street");
+    else if (c.gap >= 800) out.push("no marked crosswalk within half a mile");
+    else if (c.gap >= 150) out.push(`nearest marked crosswalk ${ft(c.gap)} away`);
+  }
   return out;
 }
 const riskLine = c => riskReasons(c).slice(0, 2).join(" · ");
@@ -591,7 +606,10 @@ window.initGoogleMap = function () {
   host.className = "gmap";
   $("map").prepend(host);
   gmap = new g.Map(host, { center: { lat: 47.615, lng: -122.335 }, zoom: 11, gestureHandling: gestureMode(), clickableIcons: false,
-    mapTypeControl: false, streetViewControl: false, fullscreenControl: false });
+    mapTypeControl: false, streetViewControl: false, fullscreenControl: false,
+    // Plain +/− buttons with a mouse, in place of Google's newer pan/zoom popup; touch screens pinch instead.
+    // Top right, since the neighborhood chip along the bottom would cover them on narrower maps.
+    cameraControl: false, zoomControl: matchMedia("(pointer: fine)").matches, zoomControlOptions: { position: g.ControlPosition.RIGHT_TOP } });
   class Layer extends g.OverlayView {
     onAdd() { this.pane = this.getPanes().overlayMouseTarget; markerEls.forEach(({ el }) => this.pane.appendChild(el)); }
     draw() {
@@ -1075,7 +1093,7 @@ function renderCornerPage(c) {
     ["sec-kit", "Crosswalk flags", ...flagStatus(c)],
     ["sec-signs", "Yard signs", ...signStatus(c)],
     ["sec-city", "Ask the city", ...(nDone === steps.length ? ["All done ✓", "ok", "Send a follow-up in a month"] : nDone ? [`${nDone} of ${steps.length} done`, "diy", steps[firstOpen].t] : ["Not started", "need", "Email SDOT, 2 minutes"])],
-    ["sec-vote", "Neighbors", `${votesOf(c)} on board`, voted ? "ok" : "", voted ? "You're one of them ✓" : "Add your vote and note"],
+    ["sec-neighbors", "Neighbors", `${votesOf(c)} on board`, "", "Ask 5 to email the city"],
   ];
   el.innerHTML = `
     <header class="cp-head">
@@ -1083,18 +1101,23 @@ function renderCornerPage(c) {
       <h1 class="cp-title">${titleCase(c.w)}</h1>
       <p class="cp-meta">Risk Score <b>${riskScoreText(c)}</b> · SDOT <b class="${scheduledHere ? "plan" : "need"}">${scheduledHere ? "Scheduled" : "Unscheduled"}</b> · <a href="#sec-sdot" data-jump-to="sec-sdot">Why</a></p>
       ${schedAlert(c)}
+      <div class="votebox" id="sec-vote">
+        <div class="vcount"><b>${votesOf(c)}</b> neighbors want a crosswalk here</div>
+        <div class="goal"><i style="width:${Math.min(100, Math.round(100 * votesOf(c) / goal))}%"></i></div>
+        <div class="sub">${votesOf(c) >= goal ? "Goal reached." : `${goal - votesOf(c)} more to reach ${goal}.`} #${c.voteRank} most wanted in ${esc(h.name)}. The most-wanted corners go into the neighborhood's letter to SDOT and the council.</div>
+        ${voted ? `<div class="share"><span class="saved">You voted ✓ We'll email you when anything changes here.</span> <button class="act small" type="button" id="unvote">Undo vote</button></div>`
+          : `<form class="share follow" id="vote-form" novalidate>
+          <label for="vote-email" class="vh">Your email</label>
+          <input type="email" id="vote-email" placeholder="you@example.com" autocomplete="email" value="${esc(state.email || "")}">
+          <button class="cta-btn vote" type="submit">Add your vote</button>
+        </form>
+        <div class="sub" id="vote-msg">Your email counts your vote once and gets you updates on this corner. It's never shown.</div>`}
+        <div id="note-area"></div>
+      </div>
       <div class="tiles todo">${todo.map(([id, label, status, cls, next]) => `
         <a class="tile" href="#${id}" data-jump-to="${id}"><span>${label}</span><b class="${cls}">${status}</b><small>${next} ›</small></a>`).join("")}
       </div>
-      <div class="share">
-        <button class="act small" type="button" id="share">Share</button>
-        <form class="follow" id="follow" novalidate>
-          <label for="follow-email" class="vh">Email for updates</label>
-          <input type="email" id="follow-email" placeholder="you@example.com" autocomplete="email">
-          <button class="act small" type="submit">Get updates</button>
-        </form>
-        <span class="saved" id="share-msg"></span>
-      </div>
+      <div class="share"><button class="act small" type="button" id="share">Share</button></div>
     </header>
 
     <section class="cp-sec" id="sec-kit">
@@ -1169,20 +1192,11 @@ function renderCornerPage(c) {
       </div>
     </section>
 
-    <section class="cp-sec" id="sec-vote">
+    <section class="cp-sec" id="sec-neighbors">
       <div class="sec-n">4</div>
       <div class="sec-body">
-        <h2>Get 5 neighbors to send a note</h2>
-        <p class="lead">Notes from several neighbors carry more weight than one. The top five corners in ${esc(h.name)} go into the neighborhood's letter to SDOT and the council, with neighbors' notes on who crosses here and why.</p>
-        <div class="votebox">
-          <div class="vcount"><b>${votesOf(c)}</b> neighbors have voted</div>
-          <div class="goal"><i style="width:${Math.min(100, Math.round(100 * votesOf(c) / goal))}%"></i></div>
-          <div class="sub">${votesOf(c) >= goal ? "Goal reached." : `${goal - votesOf(c)} more to reach ${goal}.`} #${c.voteRank} most wanted in ${esc(h.name)}.</div>
-          <button class="cta-btn vote wide" type="button" id="vote">${voted ? "Voted ✓ (tap to undo)" : "Add your vote and note"}</button>
-          <div id="note-area"></div>
-        </div>
-        <h3>Ask your neighbors</h3>
-        <p class="lead">Send this to neighbors, a school parent list, or your community council. It links to this page, where they can vote and add their own note.</p>
+        <h2>Get 5 neighbors to contact the city</h2>
+        <p class="lead">One email is easy for SDOT to set aside. Five from the same block show a neighborhood asking. Send this to five neighbors, a school parent list, or your community council. It links to this page, where the email to SDOT is already written.</p>
         ${copyBlock("m3", neighborText(c))}
         <div class="flyer" id="flyer">
           <h3>Or print a flyer</h3>
@@ -1206,9 +1220,9 @@ function renderCornerPage(c) {
           <p class="sub">Riskier than ${c.rs}% of the ${fmt(D.city_total)} corners on SDOT's priority list. Here's why:</p>
           <ul class="factors">
             <li><b>Crashes:</b> ${c.cx[0] ? `${c.cx[0]} pedestrian crash${c.cx[0] > 1 ? "es" : ""} at this corner or on the blocks next to it since 2016${c.cx[2] ? `, ${c.cx[2]} fatal` : ""}${c.cx[1] ? `, ${c.cx[1]} with serious injuries` : ""}${c.cx[3] ? ` (${c.cx[3]} since 2021)` : ""}.` : "No pedestrian crashes on record since 2016. That doesn't mean it's safe: many crashes and near-misses never get a police report."}</li>
-            <li><b>Street:</b> ${c.ln ? `${c.ln} travel lane${c.ln > 1 ? "s" : ""}` : "Travel lanes not recorded"}${c.ac === 1 ? " on a main arterial" : c.ac === 2 ? " on a minor arterial" : c.ac === 3 ? " on a collector street" : ""}.</li>
+            <li><b>Street:</b> ${c.ln ? `${c.ln} travel lane${c.ln > 1 ? "s" : ""}` : "Travel lanes not recorded"}${c.ac === 1 ? " on a main arterial" : c.ac === 2 ? " on a minor arterial" : c.ac === 3 ? " on a collector street" : ""}${c.adt ? `, ${cars(c)}` : ""}.</li>
             <li><b>Nearest marked crosswalk:</b> ${c.gap == null ? "none on either street" : c.gap >= 800 ? "more than half a mile away" : `about ${ft(c.gap)} away`}.</li>
-            <li><b>Who crosses:</b> ${[c.sch >= 2 ? "near schools" : "", c.tr >= 2 ? "near busy transit" : "", c.pk >= 2 ? "near a park" : "", c.lu >= 2 ? "on a busy block" : ""].filter(Boolean).join(", ") || "a mostly residential area"}.</li>
+            <li><b>Who crosses:</b> ${[c.sch >= 2 ? "near schools" : "", c.tr >= 2 ? "near busy transit" : "", c.pk >= 2 ? "near a park" : "", c.lu >= 2 ? "on a busy block" : ""].filter(Boolean).join(", ") || "a mostly residential area"}; ${jobsNear(c)}.</li>
           </ul>
         </div>
         <div class="sdot-grid">
@@ -1245,8 +1259,13 @@ function renderCornerPage(c) {
   el.querySelectorAll("a[data-jump-to]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); smooth($(a.dataset.jumpTo)); }));
   el.querySelectorAll("button[data-copy]").forEach(b => b.addEventListener("click", () => copyText($(b.dataset.copy).value, b)));
   $("share").onclick = () => shareCorner(c);
-  $("follow").addEventListener("submit", e => { e.preventDefault(); const v = $("follow-email").value.trim();
-    $("share-msg").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "You'll get an email when anything changes at this corner." : "Enter an email address to get updates."; });
+  // Voting takes an email: it counts the vote once and signs the voter up for this corner's updates.
+  const voteForm = $("vote-form");
+  if (voteForm) voteForm.addEventListener("submit", e => { e.preventDefault(); const v = $("vote-email").value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) { $("vote-msg").textContent = "Enter your email address to add your vote."; $("vote-msg").classList.add("err"); return; }
+    state.email = v; state["v:" + c.s] = true; save(); rankAll(); renderCornerPage(c); showNoteForm(c); });
+  const unvote = $("unvote");
+  if (unvote) unvote.onclick = () => { delete state["v:" + c.s]; delete state["c:" + c.s]; save(); rankAll(); renderCornerPage(c); };
   const total = () => KIT_PRICE + ($("add-signs").checked ? SIGNS_PRICE : 0) + ($("add-flags").checked ? FLAGS_PRICE : 0);
   ["add-signs", "add-flags"].forEach(id => $(id).addEventListener("change", () => { const b = $("order"); if (b) b.textContent = `Order kit · ${money(total())}`; }));
   const order = $("order"); if (order) order.onclick = () => showOrderForm(c, total());
@@ -1261,8 +1280,6 @@ function renderCornerPage(c) {
     const k = `s:${c.s}:${b.dataset.step}`; if (state[k]) delete state[k]; else state[k] = true;
     save(); renderCornerPage(c); $("sec-city").scrollIntoView({ block: "start" });
   }));
-  $("vote").onclick = () => { const was = !!state["v:" + c.s]; state["v:" + c.s] = !was; if (was) delete state["c:" + c.s];
-    save(); rankAll(); renderCornerPage(c); if (!was) showNoteForm(c); };
   $("print-flyer").onclick = () => { const f = $("flyer-frame"); try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { window.open(FLYER_URL + "#" + c.s, "_blank"); } };
   fitFlyer();
 }
