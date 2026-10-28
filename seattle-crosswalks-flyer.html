@@ -98,7 +98,7 @@ function render(D) {
       <div>Data: SDOT Seattle Transportation Plan priority crossings and Marked Crosswalks.</div>
     </div>`;
 }
-fetch("seattle-crosswalks-data.json?v=1793205203").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
+fetch("seattle-crosswalks-data.json?v=1793206185").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
 </script>
 </body>
 </html>

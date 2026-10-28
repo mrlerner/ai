@@ -329,6 +329,16 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 .pin.city { width: 28px; height: 28px; font-size: 12.5px; border-width: 2px; }
 @media (max-width: 600px) { .pin.city { width: 24px; height: 24px; font-size: 11px; } .dot { width: 8px; height: 8px; } }
 .preview { border: 2px solid var(--need); }
+.dot.faint { width: 9px; height: 9px; opacity: .45; background: #8b928d; }
+.legend .hint { color: var(--muted); font-style: italic; }
+.map-chip { position: absolute; z-index: 5; left: 50%; bottom: 34px; transform: translateX(-50%); display: flex; gap: 10px; align-items: baseline;
+  background: #fff; color: #1d2320; text-decoration: none; border-radius: 999px; padding: 9px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.3);
+  font: 600 14px var(--f-display); white-space: nowrap; max-width: calc(100% - 24px); }
+.map-chip b { font-weight: 800; font-size: 15px; }
+.map-chip span { color: #5d6660; font-size: 13px; }
+.map-chip em { font-style: normal; color: #1f5f3a; font-weight: 800; }
+.map-chip:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
+@media (max-width: 420px) { .map-chip span { display: none; } }
 .flyer-view { background: #e8e6e1; border-radius: 10px; padding: 16px; }
 .flyer-sheet { position: relative; width: 100%; aspect-ratio: 8.5 / 11; max-width: 100%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.25); overflow: hidden; }
 .flyer-sheet iframe { position: absolute; left: 0; top: 0; width: 816px; height: 1056px; border: 0; transform-origin: 0 0; }
@@ -363,7 +373,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793205203";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793206185";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -428,7 +438,12 @@ const streetViewEmbed = c => MAPS_EMBED_KEY && !MAPS_EMBED_KEY.startsWith("__")
 const pageUrl = c => location.href.split("#")[0] + "#c-" + c.s;
 
 // ---------- map ----------
-let gmap = null, layer = null, outlines = [], mapReady = false, wantMap = null;
+// The map shows either the whole city (dots, top 25 numbered) or one "focus" neighborhood in detail:
+// its boundary, its corners numbered in neighborhood rank order, its crosswalks, and faded dots for corners next door.
+// Focus follows the map's center once you zoom in; the page itself only changes when you tap the chip or a pin.
+let gmap = null, layer = null, focusPoly = null, mapReady = false, chip = null;
+let mapFocus = null, keepView = false, suppressIdle = false;
+const DETAIL_ZOOM = 14, OVERVIEW_ZOOM = 12;
 const check = `<svg viewBox="0 0 10 10"><path d="M2 5.3l2 2 4-4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 let markerEls = [];
 
@@ -457,6 +472,7 @@ window.initGoogleMap = function () {
   }
   layer = new Layer();
   layer.setMap(gmap);
+  focusPoly = new g.Polygon({ strokeColor: "#1f5f3a", strokeOpacity: 0.95, strokeWeight: 3, fillColor: "#1f5f3a", fillOpacity: 0.07, clickable: false });
   const toggle = document.createElement("button");
   toggle.type = "button"; toggle.className = "map-toggle"; toggle.textContent = "Expand map";
   toggle.addEventListener("click", () => {
@@ -467,19 +483,120 @@ window.initGoogleMap = function () {
     toggle.textContent = open ? "Done" : "Expand map";
   });
   $("map").appendChild(toggle);
+  chip = document.createElement("a");
+  chip.className = "map-chip"; chip.hidden = true;
+  chip.addEventListener("click", () => { keepView = true; });
+  $("map").appendChild(chip);
+  gmap.addListener("idle", onIdle);
   mapReady = true;
-  if (wantMap) applyMap(wantMap);
+  if (D && view !== "corner") { renderLayer(); fitView(); }
 };
-function setMap(spec) { wantMap = spec; if (mapReady) applyMap(spec); }
-function applyMap({ els, bounds, rings }) {
-  const g = google.maps;
-  outlines.forEach(o => o.setMap(null));
-  outlines = (rings || []).map(r => new g.Polyline({ map: gmap, path: r.map(([lng, lat]) => ({ lat, lng })), strokeOpacity: 0, clickable: false,
-    icons: [{ icon: { path: "M 0,-1 0,1", strokeOpacity: 0.9, strokeColor: "#1f5f3a", scale: 2.5 }, offset: "0", repeat: "11px" }] }));
-  layer.setEls(els);
-  if (bounds === "city") { gmap.setCenter({ lat: 47.615, lng: -122.335 }); gmap.setZoom(matchMedia("(max-width: 600px)").matches ? 10.6 : 11); return; }
-  const b = new g.LatLngBounds({ lat: bounds[1], lng: bounds[0] }, { lat: bounds[3], lng: bounds[2] });
-  gmap.fitBounds(b, 8);
+
+function inRing([x, y], ring) {
+  let hit = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [x1, y1] = ring[i], [x2, y2] = ring[j];
+    if ((y1 > y) !== (y2 > y) && x < (x2 - x1) * (y - y1) / (y2 - y1) + x1) hit = !hit;
+  }
+  return hit;
+}
+function hoodAt(lng, lat) {
+  return HOODS.find(h => lng >= h.bbox[0] && lng <= h.bbox[2] && lat >= h.bbox[1] && lat <= h.bbox[3] && h.rings.some(r => inRing([lng, lat], r))) || null;
+}
+
+function onIdle() {
+  if (suppressIdle) { suppressIdle = false; renderLayer(); return; }
+  if (!D || view === "corner") return;
+  const z = gmap.getZoom(), c = gmap.getCenter();
+  let f;
+  if (view === "city") f = z >= DETAIL_ZOOM ? hoodAt(c.lng(), c.lat()) : null;
+  else f = z < OVERVIEW_ZOOM ? null : (hoodAt(c.lng(), c.lat()) || (mapFocus != null ? HOODS[mapFocus] : curHood));
+  const idx = f ? f.idx : null;
+  if (idx !== mapFocus || idx != null) { mapFocus = idx; renderLayer(); }
+}
+
+function fitView() {
+  if (!mapReady) return;
+  suppressIdle = true;
+  if (view === "hood") {
+    const b = curHood.bbox;
+    gmap.fitBounds(new google.maps.LatLngBounds({ lat: b[1], lng: b[0] }, { lat: b[3], lng: b[2] }), 8);
+  } else {
+    gmap.setCenter({ lat: 47.615, lng: -122.335 });
+    gmap.setZoom(matchMedia("(max-width: 600px)").matches ? 10.6 : 11);
+  }
+}
+
+function pinButton(c, label, cls, onClick) {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = cls; b.textContent = label; b.dataset.s = c.s;
+  b.addEventListener("click", onClick);
+  return { el: b, lat: c.lat, lng: c.lng };
+}
+
+function renderLayer() {
+  if (!mapReady || !D) return;
+  if (mapFocus == null) {
+    focusPoly.setMap(null);
+    const top = cityTop(25), topSet = new Set(top.map(c => c.s));
+    const els = CORNERS.filter(c => !topSet.has(c.s)).map(c => {
+      const r = pinButton(c, "", "dot" + (isPlanned(c) ? " planned" : ""), () => goCorner(c, true));
+      r.el.title = `${titleCase(c.w)} · ${HOODS[c.h].name}`; r.el.setAttribute("aria-label", r.el.title);
+      return r;
+    }).concat([...top].reverse().map(c => {
+      const r = pinButton(c, c.cityPrio, "pin city" + (isPlanned(c) ? " planned" : "") + (flagged(c) ? " diy" : ""), () => goCorner(c, true));
+      r.el.setAttribute("aria-label", `Priority ${c.cityPrio} in Seattle: ${titleCase(c.w)}`);
+      return r;
+    }));
+    layer.setEls(els);
+    setLegend("city");
+  } else {
+    const h = HOODS[mapFocus];
+    focusPoly.setPaths(h.rings.map(r => r.map(([lng, lat]) => ({ lat, lng }))));
+    focusPoly.setMap(gmap);
+    const vb = gmap.getBounds();
+    const ne = vb ? vb.getNorthEast() : null, sw = vb ? vb.getSouthWest() : null;
+    const padLng = ne ? (ne.lng() - sw.lng()) * 0.5 : 0, padLat = ne ? (ne.lat() - sw.lat()) * 0.5 : 0;
+    const inView = (lng, lat) => !vb || (lng >= sw.lng() - padLng && lng <= ne.lng() + padLng && lat >= sw.lat() - padLat && lat <= ne.lat() + padLat);
+    const here = view === "hood" && curHood === h;
+    const faint = CORNERS.filter(c => c.h !== h.idx && inView(c.lng, c.lat)).map(c => {
+      const r = pinButton(c, "", "dot faint", () => gmap.panTo({ lat: c.lat, lng: c.lng }));
+      r.el.title = `${titleCase(c.w)} · ${HOODS[c.h].name}`; r.el.setAttribute("aria-label", `${r.el.title}. Move the map here`);
+      return r;
+    });
+    const checks = D.marked.filter(m => m[3] === h.idx && inView(m[0], m[1])).map(m => {
+      const d = document.createElement("button");
+      d.type = "button"; d.className = "chk" + (m[2] === 0 ? " planned" : "");
+      d.title = `${markedStatus(m)}: ${markedName(m)}`; d.setAttribute("aria-label", d.title); d.innerHTML = check;
+      d.addEventListener("click", () => { if (view === "hood" && curHood === h) showCrosswalk(m); else { keepView = true; location.hash = "n-" + h.id; } });
+      return { el: d, lat: m[1], lng: m[0] };
+    });
+    const pins = [...h.corners].sort((a, b) => b.prio - a.prio).map(c => {
+      const r = pinButton(c, c.prio, "pin", () => { if (view === "hood" && curHood === h) select(c); else goCorner(c, true); });
+      c.pinEl = r.el;
+      return r;
+    });
+    layer.setEls(faint.concat(checks, pins));
+    renderPins();
+    setLegend("hood");
+  }
+  updateChip();
+}
+
+function updateChip() {
+  if (!chip) return;
+  const h = mapFocus != null ? HOODS[mapFocus] : null;
+  const show = h && !(view === "hood" && curHood === h);
+  chip.hidden = !show;
+  if (show) {
+    chip.href = "#n-" + h.id;
+    chip.innerHTML = `<b>${esc(h.name)}</b><span>${h.corners.length} corner${h.corners.length === 1 ? "" : "s"}</span><em>Open neighborhood ›</em>`;
+  }
+}
+function setLegend(kind) {
+  $("legend").innerHTML = kind === "city"
+    ? `<span><i style="background:var(--need)"></i>Needs a crosswalk (top 25 numbered)</span><span><i style="background:var(--plan)"></i>Crosswalk planned by the city</span><span class="hint">Zoom in to see a neighborhood up close</span>`
+    : `<span><i style="background:var(--need)"></i>Needs a crosswalk (number = rank in the neighborhood)</span><span><i style="background:var(--plan)"></i>Scheduled by the city</span><span><i style="background:var(--ok)"></i>Marked crosswalk (tap for the year built)</span><span><i style="background:var(--diy);border-radius:2px"></i>Neighbor flags in place</span>`;
 }
 function panTo(c) { if (gmap) gmap.panTo({ lat: c.lat, lng: c.lng }); }
 
@@ -520,26 +637,13 @@ function viewCity() {
     ["ok", fmt(D.marked.filter(m => m[2] === 1).length), "marked crosswalks already in place", "city"],
     ["diy", fmt(CORNERS.filter(flagged).length), "covered by neighbor flags", "flags"],
   ]);
-  $("legend").innerHTML = `<span><i style="background:var(--need)"></i>Needs a crosswalk (top 25 numbered)</span><span><i style="background:var(--plan)"></i>Crosswalk planned by the city</span>`;
   renderSide();
-  const top = new Set(cityTop(25).map(c => c.s));
-  const els = CORNERS.filter(c => !top.has(c.s)).map(c => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "dot" + (isPlanned(c) ? " planned" : "");
-    b.setAttribute("aria-label", `${titleCase(c.w)}, ${HOODS[c.h].name}`); b.title = `${titleCase(c.w)} · ${HOODS[c.h].name}`;
-    b.addEventListener("click", () => goCorner(c));
-    return { el: b, lat: c.lat, lng: c.lng };
-  }).concat(cityTop(25).reverse().map(c => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "pin city" + (isPlanned(c) ? " planned" : "") + (flagged(c) ? " diy" : "");
-    b.textContent = c.cityPrio; b.setAttribute("aria-label", `Priority ${c.cityPrio} in Seattle: ${titleCase(c.w)}`);
-    b.addEventListener("click", () => goCorner(c));
-    return { el: b, lat: c.lat, lng: c.lng };
-  }));
-  setMap({ els, bounds: "city", rings: [] });
+  mapFocus = null;
+  if (mapReady) { if (keepView) renderLayer(); else { renderLayer(); fitView(); } }
+  keepView = false;
 }
 const cityTop = n => [...CORNERS].sort((a, b) => a.cityPrio - b.cityPrio).slice(0, n);
-function goCorner(c) { pendingSelect = c.s; location.hash = "n-" + HOODS[c.h].id; }
+function goCorner(c, fromMap) { pendingSelect = c.s; if (fromMap) keepView = true; location.hash = "n-" + HOODS[c.h].id; }
 
 function renderCitySide() {
   const q = hoodQuery.trim().toLowerCase();
@@ -600,25 +704,13 @@ function viewHood(h) {
   setChrome({ sub: `${h.name} · Seattle`, title: `${h.name} Crosswalk Watch`, crumbs: [["Seattle", "#"], [h.name, "#n-" + h.id]],
     intro: `Where ${esc(h.name)} most needs crosswalks, what the city is doing about it, and which corners neighbors are covering in the meantime. <strong>Vote for the corners that matter to you, or request a flag kit for one and keep its crosswalk flags stocked until the city builds it.</strong>` });
   renderHoodStats();
-  $("legend").innerHTML = `<span><i style="background:var(--need)"></i>Needs a crosswalk (number = priority)</span><span><i style="background:var(--plan)"></i>Scheduled by the city</span><span><i style="background:var(--ok)"></i>Marked crosswalk (tap for the year built)</span><span><i style="background:var(--diy);border-radius:2px"></i>Neighbor flags in place</span>`;
   renderSide();
-  const hm = D.marked.filter(m => m[3] === h.idx);
-  const els = hm.map(m => {
-    const d = document.createElement("button");
-    d.type = "button"; d.className = "chk" + (m[2] === 0 ? " planned" : "");
-    d.title = `${markedStatus(m)}: ${markedName(m)}`; d.setAttribute("aria-label", d.title); d.innerHTML = check;
-    d.addEventListener("click", () => showCrosswalk(m));
-    return { el: d, lat: m[1], lng: m[0] };
-  }).concat([...h.corners].sort((a, b) => b.prio - a.prio).map(c => {
-    const b = document.createElement("button");
-    b.type = "button"; b.dataset.s = c.s;
-    b.addEventListener("click", () => select(c));
-    c.pinEl = b;
-    return { el: b, lat: c.lat, lng: c.lng };
-  }));
-  renderPins();
-  setMap({ els, bounds: h.bbox, rings: h.rings });
-  if (selected && !changed) panTo(selected);
+  mapFocus = h.idx;
+  if (mapReady) {
+    renderLayer();
+    if (!keepView) { if (changed) fitView(); else if (selected) panTo(selected); }
+  }
+  keepView = false;
 }
 function renderHoodStats() {
   const h = curHood;
@@ -630,8 +722,9 @@ function renderHoodStats() {
   ]);
 }
 function renderPins() {
-  if (!curHood) return;
-  curHood.corners.forEach(c => {
+  const h = mapFocus != null ? HOODS[mapFocus] : curHood;
+  if (!h) return;
+  h.corners.forEach(c => {
     const b = c.pinEl; if (!b) return;
     b.textContent = c.prio;
     b.className = "pin" + (isPlanned(c) ? " planned" : "") + (flagged(c) ? " diy" : "") + (selected === c ? " on" : "");
@@ -1030,6 +1123,7 @@ fetch(DATA_URL).then(r => r.json()).then(data => {
   rankAll();
   window.addEventListener("hashchange", route);
   route();
+  if (mapReady && view !== "corner" && !markerEls.length) { renderLayer(); fitView(); }
 }).catch(() => { $("side").innerHTML = `<section class="panel"><p>The crosswalk data couldn't load. Refresh the page to try again.</p></section>`; });
 </script>
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI&callback=initGoogleMap&loading=async&v=weekly"></script>
