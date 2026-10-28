@@ -62,7 +62,7 @@ h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
 .proto b { color: var(--example); }
 .sv { margin-top: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16 / 10; max-width: 100%; background: var(--bg); }
 .sv iframe { width: 100%; height: 100%; border: 0; display: block; }
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
 a.stat { text-decoration: none; color: inherit; display: block; }
 a.stat:hover { border-color: var(--muted); }
 a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
@@ -72,7 +72,7 @@ a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
 .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
 .stat b { display: block; font: 800 26px/1.1 var(--f-display); font-variant-numeric: tabular-nums; }
 .stat span { font-size: 13px; color: var(--muted); }
-.stat.need b { color: var(--need); } .stat.plan b { color: var(--plan); } .stat.diy b { color: var(--diy); } .stat.ok b { color: var(--ok); }
+.stat.need b { color: var(--need); } .stat.plan b { color: var(--plan); } .stat.ok b { color: var(--ok); }
 .ex { display: inline-block; font: 600 10.5px/1 var(--f-data); letter-spacing: .06em; text-transform: uppercase;
   color: var(--example); background: var(--example-soft); border-radius: 4px; padding: 3px 5px; vertical-align: 2px; }
 .main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; align-items: start; }
@@ -87,8 +87,6 @@ a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
 .pin { width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid #fff; background: var(--need); color: #fff;
   font: 800 16px/1 var(--f-display); display: grid; place-items: center; cursor: pointer; padding: 0;
   box-shadow: 0 1px 3px rgba(0,0,0,.35); font-variant-numeric: tabular-nums; z-index: 2; }
-.pin.diy::after { content: ""; position: absolute; right: -8px; top: -11px; width: 13px; height: 10px; background: var(--diy);
-  clip-path: polygon(0 0, 100% 50%, 0 100%); border-left: 2px solid #fff; }
 .pin:focus-visible, .pin.on { outline: 3px solid var(--ink); outline-offset: 2px; z-index: 3; }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 10px; font-size: 13px; color: var(--muted); }
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
@@ -302,7 +300,7 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 @media (max-width: 900px) {
   .main { grid-template-columns: minmax(0, 1fr); }
   .mapcol { position: static; }
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .intro { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
 @media (max-width: 460px) {
@@ -392,15 +390,15 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
   <details class="howrisk" id="how-risk">
     <summary>How we rate risk</summary>
-    <p>Each corner on SDOT's list gets a risk rating from city data. <b>Crashes count most:</b> pedestrian crashes since 2016 at the corner or on the blocks next to it, weighted by how serious they were and how recent. Then <b>crossing conditions:</b> how many lanes people cross, how busy the street is, how far it is to the nearest marked crosswalk, and whether schools, transit or parks bring people across.</p>
-    <p>It's an estimate, not a measurement. The city doesn't count pedestrians at most corners, and crash records only include crashes reported to police, so a corner with no crashes on record can still be dangerous. Counting people who cross, and adding notes about near-misses, helps fill that gap. Votes show what neighbors want most; they don't change risk ratings.</p>
+    <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. The score comes from city data. <b>Crashes count most:</b> pedestrian crashes since 2016 at the corner or on the blocks next to it, weighted by how serious they were and how recent. Then <b>crossing conditions:</b> how many lanes people cross, how busy the street is, how far it is to the nearest marked crosswalk, and whether schools, transit or parks bring people across.</p>
+    <p>It's an estimate, not a measurement. The city doesn't count pedestrians at most corners, and crash records only include crashes reported to police, so a corner with no crashes on record can still be dangerous. Counting people who cross, and adding notes about near-misses, helps fill that gap. Votes show what neighbors want most; they don't change the Risk Score.</p>
   </details>
   <p class="sources">Data: priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders. Pedestrian crashes come from SDOT's collision records. Votes, flag kits and neighbor activity are sample data.</p>
 </div>
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793214063";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793215354";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -421,8 +419,7 @@ const save = () => { try { localStorage.setItem("cw-seattle", JSON.stringify(sta
 
 let D, HOODS, CORNERS, BY_SLUG, HOOD_BY_ID;
 const votesOf = c => c.v + (state["v:" + c.s] ? 1 : 0);
-const diyOf = c => state["a:" + c.s] ? "adopted" : (c.d || null);
-const flagged = c => { const d = diyOf(c); return d === "flags" || d === "adopted"; };
+const ordered = c => !!state["a:" + c.s];
 // Rankings: risk (crashes + crossing conditions) orders the lists; votes have their own "most wanted" rank.
 const byRisk = (a, b) => b.rk - a.rk || b.t - a.t;
 const ft = m => `${(Math.round(m / 0.3048 / 50) * 50).toLocaleString()} ft`;
@@ -440,6 +437,8 @@ function riskReasons(c) {
   return out;
 }
 const riskLine = c => riskReasons(c).slice(0, 2).join(" · ");
+// Risk Score (0-100, citywide percentile from the build), then the top reasons.
+const riskScoreLine = c => `<b>${c.rs}</b>${riskLine(c) ? " · " + riskLine(c) : ""}`;
 // Scheduled = SDOT has a work order open (or just finished) for a crosswalk at the corner. A corner that is only
 // "in SDOT's plans" with no work order counts as not scheduled.
 const isScheduled = c => !!c.pl && c.pl[1] !== "waiting";
@@ -487,12 +486,13 @@ function waitLabel(c) {
 }
 const bar = (label, v, max) => `<div class="bar">${label} ${v}/${max}<div><i style="width:${Math.round(100 * Math.min(v, max) / max)}%"></i></div></div>`;
 const bars = c => `${bar("School", c.sch, 3)}${bar("Park", c.pk, 3)}${bar("Transit", c.tr, 3)}${bar("Land use", c.lu, 3)}${bar("Safety", c.sf, 16)}${bar("Equity", c.eq, 12)}`;
-// SDOT score with an info button that opens a short explainer underneath.
-const sdotScore = (c, id) => `<div class="score-line"><b>${c.t}</b> of 37 <button class="info-btn" type="button" aria-expanded="false" aria-controls="${id}" aria-label="What is the SDOT score?">i</button></div>
+// SDOT priority (SDOT's own score, called "priority" so it isn't confused with our Risk Score) with an info button
+// that opens a short explainer underneath.
+const sdotScore = (c, id) => `<div class="score-line">SDOT priority <b>${c.t}</b> of 37 <button class="info-btn" type="button" aria-expanded="false" aria-controls="${id}" aria-label="What is SDOT priority?">i</button></div>
   <div class="info-pop" id="${id}" hidden>SDOT scores every corner on its list of places that need a better crossing. Points come from three things:
     <b>places people walk to</b> nearby (schools, parks, transit and busy blocks, up to 3 points each), <b>safety</b> (how dangerous the street is to cross, up to 16) and
     <b>equity</b> (up to 12 for neighborhoods SDOT's equity index flags as underserved). The highest score in Seattle is 37. A higher score means SDOT sees a bigger need,
-    but it's separate from our risk ranking, which counts crashes most.</div>
+    but it's separate from our Risk Score, which counts crashes most.</div>
   <div class="bars">${bars(c)}</div>`;
 const streetView = c => `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${c.lat.toFixed(6)},${c.lng.toFixed(6)}`;
 const streetViewEmbed = c => MAPS_EMBED_KEY && !MAPS_EMBED_KEY.startsWith("__")
@@ -640,7 +640,7 @@ function renderLayer() {
       r.el.title = `${titleCase(c.w)} · ${HOODS[c.h].name}`; r.el.setAttribute("aria-label", r.el.title);
       return r;
     }).concat([...top].reverse().map(c => {
-      const r = pinButton(c, c.cityPrio, "pin city" + (flagged(c) ? " diy" : ""), () => goCorner(c, true));
+      const r = pinButton(c, c.cityPrio, "pin city", () => goCorner(c, true));
       r.el.setAttribute("aria-label", `#${c.cityPrio} highest risk in Seattle: ${titleCase(c.w)}`);
       return r;
     }));
@@ -693,12 +693,12 @@ function updateChip() {
 function setLegend(kind) {
   $("legend").innerHTML = kind === "city"
     ? `<span><i style="background:var(--need)"></i>Needs a crosswalk (numbers: Seattle's 25 most dangerous)</span><span class="hint">Zoom in to see your neighborhood</span>`
-    : `<span><i style="background:var(--need)"></i>Needs a crosswalk (1 = most dangerous here)</span><span><i style="background:var(--ok)"></i>Crosswalk already there</span><span><i style="background:var(--diy);border-radius:2px"></i>Neighbors put up flags</span>`;
+    : `<span><i style="background:var(--need)"></i>Needs a crosswalk</span><span><i style="background:var(--ok)"></i>Crosswalk already there</span>`;
 }
 function panTo(c) { if (gmap) gmap.panTo({ lat: c.lat, lng: c.lng }); }
 
 // ---------- views ----------
-let view = null, curHood = null, selected = null, pendingSelect = null, pendingSection = null, listFilter = "all", hoodQuery = "";
+let view = null, curHood = null, selected = null, pendingSelect = null, pendingSection = null, hoodQuery = "";
 
 function setChrome({ sub, intro, crumbs, title }) {
   $("sign-sub").textContent = sub;
@@ -715,8 +715,7 @@ function statTiles(items) {
   $("stats").querySelectorAll("a.stat").forEach(a => a.addEventListener("click", e => { e.preventDefault(); statAction(a.dataset.act); }));
 }
 function statAction(act) {
-  if (act === "flags") { listFilter = "flags"; renderSide(); smooth($("rank-list")); }
-  else if (act === "corners") { listFilter = "all"; renderSide(); smooth($("rank-list")); }
+  if (act === "corners") smooth($("rank-list"));
   else if (act === "city") smooth($("city-panel"));
   else if (act === "hoods") smooth($("hood-panel"));
 }
@@ -726,13 +725,12 @@ function viewCity() {
   view = "city"; curHood = null; selected = null;
   $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = "";
   setChrome({ sub: "Seattle", title: "Seattle Crosswalk Watch", crumbs: [["Seattle", "#"]],
-    intro: `Where Seattle most needs crosswalks, what the city is building, and which corners neighbors are covering in the meantime. <strong>Find your neighborhood, vote for the corners that matter to you, and request a flag kit until the city builds them.</strong>` });
+    intro: `Where Seattle most needs crosswalks and what the city is building. <strong>Find your neighborhood, vote for the corners that matter to you, and request a flag kit until the city builds them.</strong>` });
   const sched = D.marked.filter(scheduled).length;
   statTiles([
     ["need", fmt(CORNERS.length), "corners that need a crosswalk", "corners"],
     ["plan", fmt(sched), "new crosswalks scheduled by the city", "city"],
     ["ok", fmt(D.marked.filter(m => m[2] === 1).length), "marked crosswalks already in place", "city"],
-    ["diy", fmt(CORNERS.filter(flagged).length), "crossings with neighbor flags", "flags"],
   ]);
   renderSide();
   mapFocus = null;
@@ -746,7 +744,7 @@ function renderCitySide() {
   const q = hoodQuery.trim().toLowerCase();
   const hoods = HOODS.filter(h => h.corners.length && (!q || h.name.toLowerCase().includes(q) || h.district.toLowerCase().includes(q)))
     .sort((a, b) => b.corners.length - a.corners.length || a.name.localeCompare(b.name));
-  const top = listFilter === "flags" ? [...CORNERS].filter(flagged).sort((a, b) => a.cityPrio - b.cityPrio) : cityTop(25);
+  const top = cityTop(25);
   const hoodSched = h => D.marked.filter(m => m[3] === h.idx && scheduled(m)).length;
   $("side").innerHTML = `
     <section class="panel" id="hood-panel">
@@ -760,7 +758,7 @@ function renderCitySide() {
       ${!hoodQuery ? `<button class="act small more-rows" type="button" id="all-hoods">Show all neighborhoods</button>` : ""}
     </section>
     <section class="panel" id="rank-list">
-      <h3 class="ph">${listFilter === "flags" ? "Crossings with neighbor flags" : "Highest-risk crossings in Seattle"} <span>${listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show highest risk</button>` : `<a class="link" href="#how-risk">How we rate risk</a>`}</span></h3>
+      <h3 class="ph">Highest-risk crossings in Seattle <span><a class="link" href="#how-risk">How we rate risk</a></span></h3>
       <div class="rows-list">${top.map(c => `
         <button class="rowbtn" type="button" data-s="${c.s}"><span class="num">${c.cityPrio}</span>
           <span><span class="name">${titleCase(c.w)}</span><span class="meta"><span>${esc(HOODS[c.h].name)}</span><span>${riskLine(c)}</span></span></span></button>`).join("")}</div>
@@ -773,7 +771,6 @@ function renderCitySide() {
   qEl.addEventListener("input", () => { hoodQuery = qEl.value; renderCitySide(); const n = $("hood-q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); });
   const all = $("all-hoods"); if (all) all.onclick = () => { $("hood-rows").innerHTML = HOODS.filter(h => h.corners.length).sort((a, b) => a.name.localeCompare(b.name)).map(h => `
         <a class="rowbtn hood" href="#n-${h.id}"><span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span></span></span><span>›</span></a>`).join(""); all.remove(); };
-  const sa = $("show-all"); if (sa) sa.onclick = () => { listFilter = "all"; renderCitySide(); };
   $("side").querySelectorAll("button.rowbtn[data-s]").forEach(b => b.addEventListener("click", () => goCorner(BY_SLUG[b.dataset.s])));
 }
 
@@ -797,9 +794,8 @@ function viewHood(h) {
   if (pendingSelect && BY_SLUG[pendingSelect] && HOODS[BY_SLUG[pendingSelect].h] === h) selected = BY_SLUG[pendingSelect];
   else if (changed || !selected || HOODS[selected.h] !== h) selected = [...h.corners].sort((a, b) => a.prio - b.prio)[0] || null;
   pendingSelect = null;
-  if (changed) listFilter = "all";
   setChrome({ sub: `${h.name} · Seattle`, title: `${h.name} Crosswalk Watch`, crumbs: [["Seattle", "#"], [h.name, "#n-" + h.id]],
-    intro: `Where ${esc(h.name)} most needs crosswalks, what the city is doing about it, and which corners neighbors are covering in the meantime. <strong>Vote for the corners that matter to you, or request a flag kit for one and keep its crosswalk flags stocked until the city builds it.</strong>` });
+    intro: `Where ${esc(h.name)} most needs crosswalks and what the city is doing about it. <strong>Vote for the corners that matter to you, or request a flag kit for one and keep its crosswalk flags stocked until the city builds it.</strong>` });
   renderHoodStats();
   renderSide();
   mapFocus = h.idx;
@@ -815,7 +811,6 @@ function renderHoodStats() {
     ["need", h.corners.length, "corners that need a crosswalk", "corners"],
     ["plan", D.marked.filter(m => m[3] === h.idx && scheduled(m)).length, "new crosswalks scheduled by the city", "city"],
     ["ok", D.marked.filter(m => m[3] === h.idx && m[2] === 1).length, "marked crosswalks already in place", "city"],
-    ["diy", h.corners.filter(flagged).length, "crossings with neighbor flags", "flags"],
   ]);
 }
 function renderPins() {
@@ -824,27 +819,18 @@ function renderPins() {
   h.corners.forEach(c => {
     const b = c.pinEl; if (!b) return;
     b.textContent = c.prio;
-    b.className = "pin" + (flagged(c) ? " diy" : "") + (selected === c ? " on" : "");
+    b.className = "pin" + (selected === c ? " on" : "");
     b.setAttribute("aria-label", `#${c.prio} highest risk: ${titleCase(c.w)}`);
   });
 }
-function cityStatus(c) {
-  if (isScheduled(c)) { const pl = plannedLine(c); return `<span class="chip plan">${pl.text}</span><div class="sub">${esc(pl.project)}</div>`; }
-  const note = planNote(c) ? `<div class="sub">${planNote(c)}</div>` : "";
-  if (c.rq) return `<span class="chip need">Requested by neighbors</span>${note}`;
-  return `<span class="chip need">On SDOT's priority list · not scheduled</span>${note}`;
-}
-function diyStatus(c) {
-  const d = diyOf(c);
-  if (d === "flags") return `<span class="chip ok">Flags in place</span>`;
-  if (d === "kit") return `<span class="chip diy">Flag kit ordered</span>`;
-  if (d === "adopted") return `<span class="chip ok">Your flag kit is on the way</span>`;
-  return `<span class="chip diy">No flags yet · request a kit</span>`;
+function sdotStatus(c) {
+  const sub = isScheduled(c) ? esc(plannedLine(c).project) : planNote(c);
+  return `<span class="chip ${isScheduled(c) ? "plan" : "need"}">${isScheduled(c) ? "Scheduled" : "Unscheduled"}</span>${sub ? `<div class="sub">${sub}</div>` : ""}`;
 }
 
 function renderHoodSide() {
   const h = curHood, c = selected;
-  const sorted = [...h.corners].sort((a, b) => a.prio - b.prio).filter(x => listFilter !== "flags" || flagged(x));
+  const sorted = [...h.corners].sort((a, b) => a.prio - b.prio);
   const hm = D.marked.filter(m => m[3] === h.idx);
   const built = hm.filter(m => m[4]).map(m => m[4]);
   const feed = hoodFeed(h);
@@ -854,25 +840,23 @@ function renderHoodSide() {
       <h2><a class="name-link" href="#c-${c.s}">${titleCase(c.w)}<span aria-hidden="true"> ›</span></a></h2>
       ${schedAlert(c)}
       <div class="cta">
-        <a class="cta-btn flag${diyOf(c) === "adopted" ? " done" : ""}" href="#c-${c.s}" data-section="kit">${diyOf(c) === "adopted" ? "Flag kit ordered ✓" : flagged(c) ? "Help keep the flags stocked" : "Get crossing flag kit"}</a>
+        <a class="cta-btn flag${ordered(c) ? " done" : ""}" href="#c-${c.s}" data-section="kit">${ordered(c) ? "Flag kit ordered ✓" : "Get crossing flag kit"}</a>
         <a class="cta-btn vote${state["v:" + c.s] ? " done" : ""}" href="#c-${c.s}" data-section="vote">${state["v:" + c.s] ? "Voted ✓" : "Vote for this corner"}</a>
       </div>
       <a class="more-link" href="#c-${c.s}" data-section="city">How to get the city to build it ›</a>
       <div class="rows">
-        <div class="row"><span>Risk</span><div>${riskLine(c) || "Lower risk on record"}</div></div>
-        <div class="row"><span>City</span><div>${cityStatus(c)}</div></div>
-        <div class="row"><span>Neighbors</span><div>${diyStatus(c)}</div></div>
+        <div class="row"><span>Risk Score</span><div>${riskScoreLine(c)}</div></div>
         <div class="row"><span>Votes</span><div><b>${votesOf(c)}</b> neighbors · #${c.voteRank} most wanted</div></div>
-        <div class="row"><span>SDOT score</span><div>${sdotScore(c, "info-" + c.s)}</div></div>
+        <div class="row"><span>SDOT status</span><div>${sdotStatus(c)}${sdotScore(c, "info-" + c.s)}</div></div>
       </div>
     </section>` : `<section class="panel"><p class="sub">SDOT's priority list has no corners in ${esc(h.name)}. Pick another neighborhood from the <a href="#">Seattle page</a>.</p></section>`}
     <section class="panel list" id="rank-list">
-      <h3><span class="lt">${listFilter === "flags" ? "Crossings with neighbor flags" : `Highest-risk crossings in ${esc(h.name)}`}</span> <span>${listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show all ${h.corners.length}</button>` : `<a class="link" href="#how-risk">How we rate risk</a>`}</span></h3>
+      <h3><span class="lt">Highest-risk crossings in ${esc(h.name)}</span> <span><a class="link" href="#how-risk">How we rate risk</a></span></h3>
       <div>${sorted.map(x => `
         <button class="item${selected === x ? " on" : ""}" type="button" data-s="${x.s}">
           <span class="num">${x.prio}</span>
           <span><span class="name">${titleCase(x.w)}</span>
-            <span class="meta"><span>${riskLine(x) || "Lower risk on record"}</span>${flagged(x) ? "<span>Neighbor flags</span>" : ""}</span></span>
+            <span class="meta"><span>${riskLine(x) || "Lower risk on record"}</span></span></span>
           <span class="votes">${votesOf(x)}<small>votes</small></span>
         </button>`).join("") || `<p class="sub" style="padding:10px 18px">No corners match.</p>`}</div>
     </section>
@@ -884,7 +868,6 @@ function renderHoodSide() {
     ${feed.length ? `<section class="panel feed"><h3>Recent activity</h3><ul>${feed.map(([t, k, who, what]) => `<li><time>${t}</time><span><span class="who ${k}">${esc(who)}</span> ${what}</span></li>`).join("")}</ul></section>` : ""}`;
   $("side").querySelectorAll("a[data-section]").forEach(a => a.addEventListener("click", () => { pendingSection = a.dataset.section; }));
   $("side").querySelectorAll("button.item").forEach(b => b.addEventListener("click", () => select(BY_SLUG[b.dataset.s])));
-  const sa = $("show-all"); if (sa) sa.onclick = () => { listFilter = "all"; renderHoodSide(); };
 }
 function hoodFeed(h) {
   const out = [];
@@ -892,7 +875,6 @@ function hoodFeed(h) {
   D.marked.filter(m => m[3] === h.idx && m[2] === 0 && m[7]).forEach(m => { const k = (m[5] >= 0 ? D.projects[m[5]] : "") + "|" + m[7]; byProj[k] = (byProj[k] || 0) + 1; });
   Object.entries(byProj).slice(0, 3).forEach(([k, n]) => { const [proj, when] = k.split("|"); out.push([when.replace(/ \d{4}$/, ""), "city", "SDOT", `added ${n} planned crosswalk${n > 1 ? "s" : ""}${proj ? ` (${esc(proj)})` : ""}.`]); });
   const top = [...h.corners].sort((a, b) => a.prio - b.prio);
-  const fl = top.find(flagged); if (fl) out.unshift(["Today", "n", "A neighbor", `restocked flags at ${titleCase(fl.w)}.`]);
   if (top[0]) out.splice(1, 0, ["Today", "n", `${3 + (top[0].v % 9)} neighbors`, `voted for ${titleCase(top[0].w)}.`]);
   const rq = top.find(x => x.rq); if (rq) out.push(["Mon", "n", "A neighbor", `emailed SDOT about ${titleCase(rq.w)}.`]);
   return out.slice(0, 6);
@@ -966,11 +948,9 @@ function viewCorner(c) {
 }
 function renderCornerPage(c) {
   const el = $("corner-page"), h = HOODS[c.h];
-  const voted = !!state["v:" + c.s], ordered = diyOf(c) === "adopted", d = diyOf(c);
+  const voted = !!state["v:" + c.s], kitOrdered = ordered(c);
   const notes = notesFor(c); if (state["c:" + c.s]) notes.unshift(state["c:" + c.s]);
   const pl = plannedLine(c);
-  const cityLine = isScheduled(c) ? pl.text : c.rq ? `Requested · waiting ${c.rq} days` : "On SDOT's priority list · not yet requested";
-  const diyLine = d === "flags" ? "Flags in place" : d === "adopted" ? "Your kit is on the way" : d === "kit" ? "Flag kit ordered" : "No flags yet";
   const goal = 100;
   const steps = [
     { t: "Email SDOT", h: "Ask SDOT's pedestrian program for a marked crosswalk. This draft already includes the facts SDOT looks at.", body: emailStep("m1", emailText(c), "Open in your email") },
@@ -990,12 +970,12 @@ function renderCornerPage(c) {
       <h1 class="cp-title">${titleCase(c.w)}</h1>
       ${schedAlert(c)}
       <div class="tiles">
-        <div class="tile"><span>City</span><b class="${scheduledHere ? "plan" : "need"}">${cityLine}</b></div>
-        <div class="tile"><span>Neighbors</span><b class="${flagged(c) ? "ok" : "diy"}">${diyLine}</b></div>
+        <div class="tile"><span>Risk Score</span><b>${c.rs}</b></div>
         <div class="tile"><span>Votes</span><b>${votesOf(c)} neighbors</b></div>
+        <div class="tile"><span>SDOT status</span><b class="${scheduledHere ? "plan" : "need"}">${scheduledHere ? "Scheduled" : "Unscheduled"} · priority ${c.t} of 37</b></div>
       </div>
       <div class="cta">
-        <a class="cta-btn flag" href="#c-${c.s}" data-jump="kit">${ordered ? "Flag kit ordered ✓" : flagged(c) ? "Help keep the flags stocked" : "Get crossing flag kit"}</a>
+        <a class="cta-btn flag" href="#c-${c.s}" data-jump="kit">${kitOrdered ? "Flag kit ordered ✓" : "Get crossing flag kit"}</a>
         <a class="cta-btn vote" href="#c-${c.s}" data-jump="vote">${voted ? "Voted ✓" : "Vote for this corner"}</a>
       </div>
       <div class="share">
@@ -1012,7 +992,7 @@ function renderCornerPage(c) {
     <section class="cp-sec" id="sec-kit">
       <div class="sec-n">1</div>
       <div class="sec-body">
-        <h2>${flagged(c) ? "Keep the crosswalk flags stocked" : "Put up crosswalk flags this week"}</h2>
+        <h2>Put up crosswalk flags this week</h2>
         <p class="lead">Washington law already treats every corner as a crosswalk, so drivers must stop for people crossing here. Flags make people easy to see while the city decides on paint.</p>
         <div class="product">
           <div class="product-img"><img src="seattle-crosswalks-kit.jpg" alt="Steel crosswalk flag box with a QR sign, five reflective orange flags, hose clamps and mounting brackets" loading="lazy"></div>
@@ -1027,7 +1007,7 @@ function renderCornerPage(c) {
             </ul>
             <label class="check" for="add-signs"><input type="checkbox" id="add-signs"> <span>Add 4 reflective yard signs for neighbors' yards <a href="#sec-signs" data-jump-to="sec-signs">(see the sign)</a> <b>+${money(SIGNS_PRICE)}</b></span></label>
             <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 5 spare flags <b>+${money(FLAGS_PRICE)}</b></label>
-            ${ordered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn flag wide" type="button" id="order">Order kit · ${money(KIT_PRICE)}</button>`}
+            ${kitOrdered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn flag wide" type="button" id="order">Order kit · ${money(KIT_PRICE)}</button>`}
           </div>
         </div>
         <div id="order-form"></div>
@@ -1099,7 +1079,8 @@ function renderCornerPage(c) {
       <div class="sec-body">
         <h2>Risk and SDOT status</h2>
         <div class="riskbox">
-          <div class="wait-label">Why it's #${c.prio} in ${esc(h.name)}</div>
+          <div class="wait-label">Risk Score ${c.rs} · #${c.prio} in ${esc(h.name)}</div>
+          <p class="sub">Riskier than ${c.rs}% of the ${fmt(D.city_total)} corners on SDOT's priority list. Here's why:</p>
           <ul class="factors">
             <li><b>Crashes:</b> ${c.cx[0] ? `${c.cx[0]} pedestrian crash${c.cx[0] > 1 ? "es" : ""} at this corner or on the blocks next to it since 2016${c.cx[2] ? `, ${c.cx[2]} fatal` : ""}${c.cx[1] ? `, ${c.cx[1]} with serious injuries` : ""}${c.cx[3] ? ` (${c.cx[3]} since 2021)` : ""}.` : "No pedestrian crashes on record since 2016. That doesn't mean it's safe: many crashes and near-misses never get a police report."}</li>
             <li><b>Street:</b> ${c.ln ? `${c.ln} travel lane${c.ln > 1 ? "s" : ""}` : "Travel lanes not recorded"}${c.ac === 1 ? " on a main arterial" : c.ac === 2 ? " on a minor arterial" : c.ac === 3 ? " on a collector street" : ""}.</li>
@@ -1109,8 +1090,8 @@ function renderCornerPage(c) {
         </div>
         <div class="sdot-grid">
           <div class="tile"><span>Scheduled?</span><b class="${scheduledHere ? "plan" : "need"}">${scheduledHere ? "Yes · in an active SDOT project" : pl ? "Not scheduled · in SDOT's plans since " + (c.pl[2] || "an earlier year") : "Not scheduled"}</b></div>
-          <div class="tile"><span>SDOT rank in ${esc(h.name)}</span><b>#${c.hr} of ${h.corners.length}</b></div>
-          <div class="tile"><span>SDOT rank in Seattle</span><b>#${fmt(c.cr)} of ${fmt(D.city_total)}</b></div>
+          <div class="tile"><span>SDOT priority rank in ${esc(h.name)}</span><b>#${c.hr} of ${h.corners.length}</b></div>
+          <div class="tile"><span>SDOT priority rank in Seattle</span><b>#${fmt(c.cr)} of ${fmt(D.city_total)}</b></div>
         </div>
         ${scheduledHere ? `<div class="estimate plan"><div class="big">Expected next</div><p>SDOT has crosswalks planned here as part of ${esc(pl.project)}. ${c.pl[1] === "finishing" ? "Its work order is marked complete, so painting could come any time." : `Work began ${c.pl[2]}.`}</p></div>` : `
         <div class="estimate">
@@ -1122,9 +1103,9 @@ function renderCornerPage(c) {
             <div><b>${Math.round(c.m[2] * 100)}%</b><span>within 10 years</span></div>
             <div><b>${c.m[4]} of ${c.m[5]}</b><span>similar corners got one since 2024</span></div>
           </div>
-          <p>Estimate from SDOT's own records. Since April 2024, SDOT planned or built a crosswalk at ${c.m[4]} of the ${c.m[5]} priority corners citywide that score ${c.m[6]} like this one, about ${(c.m[0] * 100).toFixed(1)}% a year. Neighbors pushing is how a corner jumps that line, and the flags cover the wait.</p>
+          <p>Estimate from SDOT's own records. Since April 2024, SDOT planned or built a crosswalk at ${c.m[4]} of the ${c.m[5]} priority corners citywide with SDOT priority ${c.m[6]} like this one, about ${(c.m[0] * 100).toFixed(1)}% a year. Neighbors pushing is how a corner jumps that line, and the flags cover the wait.</p>
         </div>`}
-        <h3>SDOT score</h3>
+        <h3>SDOT priority</h3>
         ${sdotScore(c, "info-cp-" + c.s)}
       </div>
     </section>
