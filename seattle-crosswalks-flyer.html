@@ -88,7 +88,7 @@ function render(D) {
   // The QR code opens the corner page at the pre-written email to SDOT.
   const url = `${site}#c-${c.s}/city`;
   const qr = qrcode(0, "M"); qr.addData(url); qr.make();
-  const scheduled = c.pl && c.pl[1] !== "waiting";
+  const scheduled = (c.pl && c.pl[1] !== "waiting") || !!c.sw;
   const m = c.m[3], recent = c.cx[3];
   const wait = scheduled ? ["Scheduled", "SDOT has a work order open. Emails help keep it from slipping.", "plan"]
     : m <= 2 ? ["About a year", "estimated wait for the city to build one at its current pace"]
@@ -131,7 +131,7 @@ function render(D) {
       <div>Risk Score: pedestrian crashes, lanes of traffic and distance to the nearest crosswalk.<br>Data: SDOT priority crossings, Marked Crosswalks and collision records.</div>
     </div>`;
 }
-fetch("seattle-crosswalks-data.json?v=1793220603").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
+fetch("seattle-crosswalks-data.json?v=1793220663").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
 </script>
 </body>
 </html>
