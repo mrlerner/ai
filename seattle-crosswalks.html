@@ -310,7 +310,7 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .side h3.ph { font-size: 16px; margin: 0 0 10px; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
 .side h3.ph span { font: 400 12.5px var(--f-body); color: var(--muted); }
 .rows-list { display: grid; }
-.rowbtn { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 2px; border: 0; border-bottom: 1px solid var(--line);
+.rowbtn { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 2px; border: 0; border-bottom: 1px solid var(--line);
   background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; width: 100%; }
 .rowbtn:last-child { border-bottom: 0; }
 a.rowbtn { text-decoration: none; color: inherit; }
@@ -319,7 +319,8 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 .rowbtn:focus-visible { outline: 3px solid var(--plan); outline-offset: -3px; }
 .rowbtn .name { font-weight: 600; font-size: 14px; }
 .rowbtn .meta { font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; }
-.hood-num { font: 800 15px var(--f-display); color: var(--need); text-align: center; }
+.hood-num { font: 800 17px/1 var(--f-display); color: var(--need); text-align: center; font-variant-numeric: tabular-nums; }
+.hood-num small { display: block; font: 600 10px var(--f-body); color: var(--muted); margin-top: 2px; }
 .search { width: 100%; font: 400 15px var(--f-body); padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); margin-bottom: 8px; }
 .more-rows { margin-top: 8px; }
 .dot { position: absolute; transform: translate(-50%, -50%); width: 10px; height: 10px; border-radius: 50%; background: var(--need); border: 1px solid #fff;
@@ -373,7 +374,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793206786";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793206875";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -658,12 +659,12 @@ function renderCitySide() {
   const hoodSched = h => D.marked.filter(m => m[3] === h.idx && scheduled(m)).length;
   $("side").innerHTML = `
     <section class="panel" id="hood-panel">
-      <h3 class="ph">Find your neighborhood <span>${HOODS.filter(h => h.corners.length).length} neighborhoods</span></h3>
+      <h3 class="ph">Find your neighborhood <span>Corners that need a crosswalk</span></h3>
       <label class="vh" for="hood-q">Search neighborhoods</label>
       <input class="search" id="hood-q" type="search" placeholder="Search, like Wallingford or Rainier Beach" value="${esc(hoodQuery)}" autocomplete="off">
       <div class="rows-list" id="hood-rows">${hoods.slice(0, hoodQuery ? 40 : 8).map(h => `
-        <a class="rowbtn" href="#n-${h.id}"><span class="hood-num">${h.corners.length}</span>
-          <span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span><span>${h.corners.length} corners need a crosswalk</span>${hoodSched(h) ? `<span>${hoodSched(h)} scheduled</span>` : ""}</span></span><span>›</span></a>`).join("") || `<p class="sub">No neighborhood matches "${esc(hoodQuery)}".</p>`}
+        <a class="rowbtn" href="#n-${h.id}"><span class="hood-num">${h.corners.length}<small>corner${h.corners.length === 1 ? "" : "s"}</small></span>
+          <span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span>${hoodSched(h) ? `<span>${hoodSched(h)} crosswalks scheduled</span>` : ""}</span></span><span>›</span></a>`).join("") || `<p class="sub">No neighborhood matches "${esc(hoodQuery)}".</p>`}
       </div>
       ${!hoodQuery ? `<button class="act small more-rows" type="button" id="all-hoods">Show all neighborhoods</button>` : ""}
     </section>
@@ -681,7 +682,7 @@ function renderCitySide() {
   const qEl = $("hood-q");
   qEl.addEventListener("input", () => { hoodQuery = qEl.value; renderCitySide(); const n = $("hood-q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); });
   const all = $("all-hoods"); if (all) all.onclick = () => { $("hood-rows").innerHTML = HOODS.filter(h => h.corners.length).sort((a, b) => a.name.localeCompare(b.name)).map(h => `
-        <a class="rowbtn" href="#n-${h.id}"><span class="hood-num">${h.corners.length}</span><span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span></span></span><span>›</span></a>`).join(""); all.remove(); };
+        <a class="rowbtn" href="#n-${h.id}"><span class="hood-num">${h.corners.length}<small>corner${h.corners.length === 1 ? "" : "s"}</small></span><span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span></span></span><span>›</span></a>`).join(""); all.remove(); };
   const sa = $("show-all"); if (sa) sa.onclick = () => { listFilter = "all"; renderCitySide(); };
   $("side").querySelectorAll("button.rowbtn[data-s]").forEach(b => b.addEventListener("click", () => goCorner(BY_SLUG[b.dataset.s])));
 }
