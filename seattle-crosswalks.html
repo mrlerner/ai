@@ -409,7 +409,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
     <h2>How it works</h2>
     <section>
       <h3>Using the map</h3>
-      <p>Pinch or use two fingers to zoom and pan. Zoomed out, the map shows every corner in Seattle that needs a crosswalk, with the city's 25 riskiest numbered. Zoom in on a neighborhood and tap the chip at the bottom to open its page, where its corners are numbered by risk and existing crosswalks show in green. Tap any numbered pin to open that corner.</p>
+      <p>Pinch or use two fingers to zoom and pan. Zoomed out, the map shows every corner in Seattle that needs a crosswalk, with the city's 10 riskiest numbered. Zoom in on a neighborhood and tap the chip at the bottom to open its page, where its corners are numbered by risk and existing crosswalks show in green. Tap any numbered pin to open that corner.</p>
     </section>
     <section id="how-risk">
       <h3>How we rate risk</h3>
@@ -440,7 +440,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793219695";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793219887";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -568,7 +568,7 @@ const pageUrl = c => location.href.split("#")[0] + "#c-" + c.s;
 const yardSign = cls => `<img class="${cls}" src="seattle-crosswalks-yard-sign.webp" width="1254" height="1254" loading="lazy" alt="Yard sign: a person walking with an orange flag above the words Neighbor Crossing, on bright yellow">`;
 
 // ---------- map ----------
-// The map shows either the whole city (dots, top 25 numbered) or one "focus" neighborhood in detail:
+// The map shows either the whole city (dots, top 10 numbered) or one "focus" neighborhood in detail:
 // its boundary, its corners numbered in neighborhood rank order, its crosswalks, and faded dots for corners next door.
 // Focus follows the map's center once you zoom in; the page itself only changes when you tap the chip or a pin.
 let gmap = null, layer = null, focusPoly = null, mapReady = false, chip = null;
@@ -680,11 +680,28 @@ function fitView() {
   }
 }
 
+// Markers swallow map events, so a double-click on one would open it instead of zooming. Hold a single click briefly;
+// a second click zooms in one level around the marker, like double-clicking the map does.
+function mapTap(el, lat, lng, onClick) {
+  let timer = null;
+  el.addEventListener("click", e => {
+    clearTimeout(timer);
+    if (e.detail > 1) { zoomAround(lat, lng); return; }
+    timer = setTimeout(onClick, e.detail === 1 ? 250 : 0);
+  });
+  google.maps.OverlayView.preventMapHitsFrom(el);
+}
+function zoomAround(lat, lng) {
+  const proj = layer.getProjection();
+  if (!proj) return;
+  const p = proj.fromLatLngToDivPixel(new google.maps.LatLng(lat, lng)), m = proj.fromLatLngToDivPixel(gmap.getCenter());
+  gmap.setCenter(proj.fromDivPixelToLatLng(new google.maps.Point((p.x + m.x) / 2, (p.y + m.y) / 2)));
+  gmap.setZoom(gmap.getZoom() + 1);
+}
 function pinButton(c, label, cls, onClick) {
   const b = document.createElement("button");
   b.type = "button"; b.className = cls; b.textContent = label; b.dataset.s = c.s;
-  b.addEventListener("click", onClick);
-  google.maps.OverlayView.preventMapHitsFrom(b);
+  mapTap(b, c.lat, c.lng, onClick);
   return { el: b, lat: c.lat, lng: c.lng };
 }
 
@@ -692,7 +709,7 @@ function renderLayer() {
   if (!mapReady || !D) return;
   if (mapFocus == null) {
     focusPoly.setMap(null);
-    const top = cityTop(25), topSet = new Set(top.map(c => c.s));
+    const top = cityTop(TOP_N), topSet = new Set(top.map(c => c.s));
     const els = CORNERS.filter(c => !topSet.has(c.s)).map(c => {
       const r = pinButton(c, "", "dot", () => goCorner(c, true));
       r.el.title = `${titleCase(c.w)} · ${HOODS[c.h].name}`; r.el.setAttribute("aria-label", r.el.title);
@@ -722,8 +739,7 @@ function renderLayer() {
       const d = document.createElement("button");
       d.type = "button"; d.className = "chk";
       d.title = `${markedStatus(m)}: ${markedName(m)}`; d.setAttribute("aria-label", d.title); d.innerHTML = check;
-      d.addEventListener("click", () => { if (view === "hood" && curHood === h) showCrosswalk(m); else { keepView = true; location.hash = "n-" + h.id; } });
-      google.maps.OverlayView.preventMapHitsFrom(d);
+      mapTap(d, m[1], m[0], () => { if (view === "hood" && curHood === h) showCrosswalk(m); else { keepView = true; location.hash = "n-" + h.id; } });
       return { el: d, lat: m[1], lng: m[0] };
     });
     const pins = [...h.corners].sort((a, b) => b.prio - a.prio).map(c => {
@@ -750,7 +766,7 @@ function updateChip() {
 }
 function setLegend(kind) {
   $("legend").innerHTML = kind === "city"
-    ? `<span><i style="background:var(--need)"></i>Needs a crosswalk (numbers: Seattle's 25 most dangerous)</span><span class="hint">Zoom in to see your neighborhood</span>`
+    ? `<span><i style="background:var(--need)"></i>Needs a crosswalk (numbers: Seattle's ${TOP_N} most dangerous)</span><span class="hint">Zoom in to see your neighborhood</span>`
     : `<span><i style="background:var(--need)"></i>Needs a crosswalk</span><span><i style="background:var(--ok)"></i>Existing crosswalk</span>`;
 }
 function panTo(c) { if (gmap) gmap.panTo({ lat: c.lat, lng: c.lng }); }
@@ -794,15 +810,17 @@ function viewCity() {
   keepView = false;
 }
 const cityTop = n => [...CORNERS].sort((a, b) => a.cityPrio - b.cityPrio).slice(0, n);
-// Neighborhood pages number and list only the riskiest corners; the rest are small dots on the map.
-const HOOD_TOP = 10;
-function goCorner(c, fromMap) { pendingSelect = c.s; if (fromMap) keepView = true; location.hash = "n-" + HOODS[c.h].id; }
+// The city and neighborhood pages number and list only the riskiest corners; the rest are small dots on the map.
+const TOP_N = 10;
+// A tap on the map keeps the view once you're zoomed in; from farther out, the map zooms to the corner's neighborhood
+// (otherwise its full-size numbered pins would pile up at city zoom).
+function goCorner(c, fromMap) { pendingSelect = c.s; if (fromMap && gmap && gmap.getZoom() >= detailZoom()) keepView = true; location.hash = "n-" + HOODS[c.h].id; }
 
 function renderCitySide() {
   const q = hoodQuery.trim().toLowerCase();
   const hoods = HOODS.filter(h => h.corners.length && (!q || h.name.toLowerCase().includes(q) || h.district.toLowerCase().includes(q)))
     .sort((a, b) => b.corners.length - a.corners.length || a.name.localeCompare(b.name));
-  const top = cityTop(25);
+  const top = cityTop(TOP_N);
   const hoodSched = h => h.corners.filter(isScheduled).length;
   $("side").innerHTML = `
     <section class="panel" id="hood-panel">
@@ -820,7 +838,8 @@ function renderCitySide() {
       <div class="rows-list">${top.map(c => `
         <button class="rowbtn" type="button" data-s="${c.s}"><span class="num">${c.cityPrio}</span>
           <span><span class="name">${titleCase(c.w)}</span><span class="meta">${isScheduled(c) ? `<span class="chip plan">Scheduled</span>` : ""}<span>${esc(HOODS[c.h].name)}</span><span>${riskLine(c)}</span></span></span></button>`).join("")}</div>
-    </section>`;
+    </section>
+    ${feedPanel(null)}`;
   const qEl = $("hood-q");
   qEl.addEventListener("input", () => { hoodQuery = qEl.value; renderCitySide(); const n = $("hood-q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); });
   const all = $("all-hoods"); if (all) all.onclick = () => { $("hood-rows").innerHTML = HOODS.filter(h => h.corners.length).sort((a, b) => a.name.localeCompare(b.name)).map(h => `
@@ -856,7 +875,7 @@ function renderPins() {
   if (!h) return;
   h.corners.forEach(c => {
     const b = c.pinEl; if (!b) return;
-    const numbered = c.prio <= HOOD_TOP || selected === c;
+    const numbered = c.prio <= TOP_N || selected === c;
     b.textContent = numbered ? c.prio : "";
     b.className = numbered ? "pin" + (selected === c ? " on" : "") : "dot";
     b.setAttribute("aria-label", `#${c.prio} highest risk: ${titleCase(c.w)}`);
@@ -870,7 +889,6 @@ function sdotStatus(c) {
 function renderHoodSide() {
   const h = curHood, c = selected;
   const sorted = [...h.corners].sort((a, b) => a.prio - b.prio);
-  const feed = hoodFeed(h);
   $("side").innerHTML = `
     ${c ? `<section class="panel detail" id="detail" aria-live="polite">
       <div class="eyebrow">#${c.prio} highest risk in ${esc(h.name)}</div>
@@ -888,7 +906,7 @@ function renderHoodSide() {
     </section>` : `<section class="panel"><p class="sub">SDOT's priority list has no corners in ${esc(h.name)}. Pick another neighborhood from the <a href="#">Seattle page</a>.</p></section>`}
     <section class="panel list" id="rank-list">
       <h3><span class="lt">Highest-risk crossings in ${esc(h.name)}</span> <span><a class="link" href="#how-risk">How we rate risk</a></span></h3>
-      <div>${sorted.slice(0, HOOD_TOP).map(x => `
+      <div>${sorted.slice(0, TOP_N).map(x => `
         <button class="item${selected === x ? " on" : ""}" type="button" data-s="${x.s}">
           <span class="num">${x.prio}</span>
           <span><span class="name">${titleCase(x.w)}</span>
@@ -896,20 +914,26 @@ function renderHoodSide() {
           <span class="votes">${votesOf(x)}<small>votes</small></span>
         </button>`).join("") || `<p class="sub" style="padding:10px 18px">No corners match.</p>`}</div>
     </section>
-    ${feed.length ? `<section class="panel feed"><h3>Recent activity in ${esc(h.name)}</h3><ul>${feed.map(([, t, k, who, what]) =>
-      `<li class="${k}"><time>${t}</time><span><span class="who">${esc(who)}</span> ${what}</span></li>`).join("")}</ul>
-      <p class="feed-note"><span class="ex">Sample</span> Neighbor activity is sample data until accounts launch. Your own steps and SDOT's updates are real.</p></section>` : ""}`;
+    ${feedPanel(h)}`;
   $("side").querySelectorAll("button.item").forEach(b => b.addEventListener("click", () => select(BY_SLUG[b.dataset.s])));
   $("side").querySelectorAll(".feed [data-mi]").forEach(b => b.addEventListener("click", () => {
     const m = D.marked[b.dataset.mi]; if (gmap) gmap.panTo({ lat: m[1], lng: m[0] }); showCrosswalk(m); }));
 }
-// The neighborhood's activity, newest first: the visitor's own steps (saved in this browser), sample neighbor activity
-// and SDOT's real updates. Rows are [hours ago, time label, kind, who, what]. The sample rows are reseeded daily so the
-// feed changes between visits, and lean toward the corners at the top of the list.
+// Activity for a neighborhood, or all of Seattle when h is null, newest first: the visitor's own steps (saved in this
+// browser), sample neighbor activity and SDOT's real updates. Rows are [hours ago, time label, kind, who, what]. The
+// sample rows are reseeded daily so the feed changes between visits, and lean toward the corners at the top of the list.
 const ago = hrs => hrs < 1 ? `${Math.max(2, Math.floor(hrs * 60))} min ago` : hrs < 24 ? `${Math.floor(hrs)}h ago` : hrs < 48 ? "Yesterday" : `${Math.floor(hrs / 24)} days ago`;
-function hoodFeed(h) {
-  const top = [...h.corners].sort((a, b) => a.prio - b.prio), out = [];
+function feedPanel(h) {
+  const feed = activityFeed(h);
+  return feed.length ? `<section class="panel feed"><h3>Recent activity in ${h ? esc(h.name) : "Seattle"}</h3><ul>${feed.map(([, t, k, who, what]) =>
+      `<li class="${k}"><time>${t}</time><span><span class="who">${esc(who)}</span> ${what}</span></li>`).join("")}</ul>
+      <p class="feed-note"><span class="ex">Sample</span> Neighbor activity is sample data until accounts launch. Your own steps and SDOT's updates are real.</p></section>` : "";
+}
+function activityFeed(h) {
+  const top = h ? [...h.corners].sort((a, b) => a.prio - b.prio) : [...CORNERS].sort((a, b) => a.cityPrio - b.cityPrio), out = [];
   const link = c => `<a href="#c-${c.s}">${titleCase(c.w)}</a>`;
+  // Citywide, say which neighborhood ("A neighbor in Ballard").
+  const inHood = c => h ? "" : ` in ${HOODS[c.h].name}`;
   top.forEach(c => {
     const note = state["c:" + c.s], k = state["k:" + c.s];
     if (state["v:" + c.s]) out.push([-1, "", "you", "You", `voted for ${link(c)}${note ? `: <q>${esc(note)}</q>` : "."}`]);
@@ -917,30 +941,34 @@ function hoodFeed(h) {
     if (signsOrdered(c)) out.push([-1, "", "you", "You", state["su:" + c.s] ? `put yard signs up at ${link(c)}.` : `ordered yard signs for ${link(c)}.`]);
   });
   const day = Math.floor(Date.now() / 864e5), quoted = new Set();
-  top.slice(0, 12).map((c, i) => {
-    const r = hash(c.s + day), u = (r % 1000) / 1000, hrs = (0.3 + 160 * u * u) * (1 + i / 4);
+  // Citywide, the top corner in each of 20 neighborhoods: the riskiest corners cluster on a few streets.
+  const seen = new Set(), pool = h ? top.slice(0, 12) : top.filter(c => !seen.has(c.h) && seen.add(c.h)).slice(0, 20);
+  pool.map((c, i) => {
+    const r = hash(c.s + day), u = (r % 1000) / 1000, hrs = (0.3 + 160 * u * u) * (1 + i / (h ? 4 : 8)), a = "A neighbor" + inHood(c);
     const t = "vvnfaeuy"[(r >>> 10) % 8], j = (r >>> 20) % 3, note = notesFor(c)[j];
     // Same note and age as on the corner page ("Neighbor · 2 days ago").
-    if (t === "n" && !quoted.has(note)) { quoted.add(note); return [24 * [2, 5, 9][j] + u * 20, "n", "A neighbor", `voted for ${link(c)}: <q>${esc(note)}</q>`]; }
-    if (t === "f") return [hrs, "n", "A neighbor", `ordered crossing flags for ${link(c)}.`];
-    if (t === "a") return [hrs, "n", "A neighbor", `adopted ${link(c)} and will keep its flags stocked.`];
-    if (t === "e" && c.rq) return [hrs, "n", "A neighbor", `emailed SDOT about ${link(c)}.`];
-    if (t === "u") return [hrs, "n", "Neighbors", `put crossing flags up at ${link(c)}.`];
-    if (t === "y") return [hrs, "n", "A neighbor", `put a yard sign up at ${link(c)}.`];
+    if (t === "n" && !quoted.has(note)) { quoted.add(note); return [24 * [2, 5, 9][j] + u * 20, "n", a, `voted for ${link(c)}: <q>${esc(note)}</q>`]; }
+    if (t === "f") return [hrs, "n", a, `ordered crossing flags for ${link(c)}.`];
+    if (t === "a") return [hrs, "n", a, `adopted ${link(c)} and will keep its flags stocked.`];
+    if (t === "e" && c.rq) return [hrs, "n", a, `emailed SDOT about ${link(c)}.`];
+    if (t === "u") return [hrs, "n", "Neighbors" + inHood(c), `put crossing flags up at ${link(c)}.`];
+    if (t === "y") return [hrs, "n", a, `put a yard sign up at ${link(c)}.`];
     const n = Math.min(c.v, 2 + (r >>> 4) % 5);
-    return [hrs, "n", `${n} neighbor${n > 1 ? "s" : ""}`, `voted for ${link(c)}.`];
+    return [hrs, "n", `${n} neighbor${n > 1 ? "s" : ""}${inHood(c)}`, `voted for ${link(c)}.`];
   }).sort((a, b) => a[0] - b[0]).slice(0, 6).forEach(([hrs, ...rest]) => out.push([hrs, ago(hrs), ...rest]));
   // SDOT: work started in the past year (one row per project), then crosswalks painted this year or last.
-  const now = new Date(), hm = D.marked.filter(m => m[3] === h.idx);
-  const btn = (m, text) => `<button class="link" type="button" data-mi="${D.marked.indexOf(m)}">${esc(text)}</button>`;
+  // On a neighborhood page SDOT rows open the crosswalk on the map; citywide they go to its neighborhood.
+  const now = new Date(), hm = h ? D.marked.filter(m => m[3] === h.idx) : D.marked;
+  const btn = (m, text) => h ? `<button class="link" type="button" data-mi="${D.marked.indexOf(m)}">${esc(text)}</button>`
+    : `<a href="#n-${HOODS[m[3]].id}">${esc(text)}</a>`, where = m => h ? "" : ` in ${esc(HOODS[m[3]].name)}`;
   const started = {};
   hm.filter(m => scheduled(m) && monthDate(m[7]) && now - monthDate(m[7]) < 365.25 * 864e5)
     .forEach(m => { const k = m[5] >= 0 ? D.projects[m[5]] : markedName(m); (started[k] = started[k] || []).push(m); });
   Object.entries(started).map(([proj, ms]) => [(now - monthDate(ms[0][7])) / 36e5, ms[0][7], "city", "SDOT",
-    `started work on ${ms.length > 1 ? ms.length + " crosswalks" : "a crosswalk"}: ${btn(ms[0], proj)}.`])
+    `started work on ${ms.length > 1 ? ms.length + " crosswalks" : "a crosswalk"}${where(ms[0])}: ${btn(ms[0], proj)}.`])
     .sort((a, b) => a[0] - b[0]).slice(0, 2).forEach(r => out.push(r));
   hm.filter(m => m[2] === 1 && m[4] >= now.getFullYear() - 1).sort((a, b) => b[4] - a[4]).slice(0, 2)
-    .forEach(m => out.push([(now - new Date(m[4], 6, 1)) / 36e5, String(m[4]), "city", "SDOT", `painted a new crosswalk on ${btn(m, markedName(m))}.`]));
+    .forEach(m => out.push([(now - new Date(m[4], 6, 1)) / 36e5, String(m[4]), "city", "SDOT", `painted a new crosswalk${where(m)}: ${btn(m, markedName(m))}.`]));
   return out.sort((a, b) => a[0] - b[0]).slice(0, 10);
 }
 function showCrosswalk(m) {
