@@ -462,7 +462,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793224284";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793224337";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -953,7 +953,7 @@ function renderHoodSide() {
       </div>
       <div class="rows">
         <div class="row"><span>Risk Score</span><div>${riskScoreLine(c)}</div></div>
-        <div class="row"><span>Votes</span><div><b>${votesOf(c)}</b> neighbors · #${c.voteRank} most wanted</div></div>
+        <div class="row"><span>Votes</span><div><b>${votesOf(c)}</b> ${votesOf(c) === 1 ? "neighbor wants" : "neighbors want"} this</div></div>
         <div class="row"><span>SDOT status</span><div>${sdotStatus(c)}${sdotScore(c, "info-" + c.s)}</div></div>
       </div>
       ${streetViewEmbed(c)}
