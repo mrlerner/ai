@@ -128,6 +128,84 @@ button.act.primary { background: var(--need); border-color: var(--need); color: 
 .cta-btn:active { transform: translateY(1px); box-shadow: none; }
 .cta-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 .detail .sub { margin-top: 10px; }
+a.sign { text-decoration: none; }
+a.cta-btn { display: block; text-align: center; text-decoration: none; }
+.cta-btn.wide { width: 100%; flex: none; margin-top: 12px; }
+.name-link { color: inherit; text-decoration: none; }
+.name-link:hover { text-decoration: underline; }
+.more-link { display: inline-block; margin-top: 8px; font: 600 14px var(--f-display); color: var(--sign); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Corner details page: one readable column, sections numbered in priority order. */
+#corner-page { max-width: 860px; margin: 0 auto; display: grid; gap: 18px; }
+.back { font: 600 14px var(--f-display); color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--ink); }
+.cp-head { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.cp-head .eyebrow { font: 600 12px/1 var(--f-data); color: var(--need); letter-spacing: .06em; text-transform: uppercase; }
+.cp-title { font-size: clamp(28px, 5vw, 40px); line-height: 1.1; margin: 8px 0 14px; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.tile { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 2px; }
+.tile span { font: 600 11px var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.tile b { font-size: 14px; } .tile b.need { color: var(--need); } .tile b.plan { color: var(--plan); } .tile b.ok { color: var(--ok); } .tile b.diy { color: var(--diy); }
+.share { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+.follow { display: flex; gap: 6px; flex: 1 1 260px; }
+.follow input { flex: 1; min-width: 0; font: 400 14px var(--f-body); padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.act.small, button.act.small { padding: 8px 12px; font-size: 13px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); border-radius: 8px; cursor: pointer; font-family: var(--f-display); font-weight: 600; }
+.saved { font-size: 13px; color: var(--ok); }
+#corner-page .sv { margin-top: 0; aspect-ratio: 16 / 9; }
+.cp-sec { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; scroll-margin-top: 12px; }
+.cp-sec.why { grid-template-columns: minmax(0, 1fr); }
+.sec-n { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--panel); font: 800 20px/40px var(--f-display); text-align: center; }
+.sec-body h2 { font-size: 22px; margin-bottom: 4px; }
+.sec-body h3 { font-size: 16px; margin: 18px 0 6px; }
+.lead { margin: 0 0 12px; color: var(--muted); max-width: 62ch; }
+.product { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px; border: 2px solid var(--diy); border-radius: 12px; padding: 14px; }
+.product-img svg { width: 100%; height: auto; display: block; }
+.p-name { font: 800 19px var(--f-display); }
+.p-price { font: 800 22px var(--f-display); color: var(--diy); margin: 2px 0 6px; }
+.p-price span { font: 400 13px var(--f-body); color: var(--muted); }
+.product ul, .more, .mini { margin: 0 0 8px; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; }
+.product .check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; margin-top: 6px; }
+.product .check input { margin-top: 4px; }
+.ordered { margin-top: 12px; font-weight: 600; color: var(--ok); }
+.kit.confirm { border: 2px solid var(--ok); border-radius: 10px; padding: 14px; margin-top: 12px; }
+.radio { border: 0; padding: 0; margin: 0; display: grid; gap: 4px; }
+.radio legend { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.steps li { border: 1px solid var(--line); border-radius: 10px; }
+.steps li.now { border: 2px solid var(--diy); }
+.steps summary { list-style: none; display: flex; gap: 12px; align-items: center; padding: 12px 14px; cursor: pointer; }
+.steps summary::-webkit-details-marker { display: none; }
+.sn { flex: none; width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--line); font: 800 15px/26px var(--f-display); text-align: center; }
+.steps li.now .sn { background: var(--diy); border-color: var(--diy); color: #fff; }
+.steps li.done .sn { background: var(--ok); border-color: var(--ok); color: #fff; }
+.st { font: 600 16px var(--f-display); }
+.st em { font: 700 11px var(--f-data); font-style: normal; text-transform: uppercase; letter-spacing: .06em; color: #fff; background: var(--diy); border-radius: 4px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
+.steps li.done .st { color: var(--muted); }
+.sd { padding: 0 14px 14px 56px; display: grid; gap: 8px; }
+.sd p { margin: 0; font-size: 14px; }
+.mailline { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+.copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: start; }
+.copy textarea { font: 400 13px/1.45 var(--f-data); padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; max-width: 100%; }
+.sd a.act { justify-self: start; }
+label.inline { font-size: 14px; display: inline-flex; gap: 8px; align-items: center; }
+label.inline input { width: 90px; font: 400 14px var(--f-body); padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.votebox { border: 2px solid var(--sign); border-radius: 12px; padding: 14px; }
+.vcount { font-size: 15px; } .vcount b { font: 800 30px var(--f-display); color: var(--sign); }
+.goal { height: 10px; border-radius: 5px; background: var(--line); margin: 8px 0 6px; overflow: hidden; }
+.goal i { display: block; height: 100%; background: var(--sign); }
+.notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.notes li { font-size: 14px; border-left: 3px solid var(--line); padding-left: 10px; }
+.notes li span { display: block; font-size: 12px; color: var(--muted); }
+.opt { font-weight: 400; color: var(--muted); }
+@media (max-width: 600px) {
+  .product { grid-template-columns: minmax(0, 1fr); }
+  .product-img { max-width: 220px; }
+  .cp-sec { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+  .sec-n { width: 34px; height: 34px; font-size: 17px; line-height: 34px; }
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  .sd { padding-left: 14px; }
+  .copy { grid-template-columns: minmax(0, 1fr); }
+}
 a.act { font: 600 14px/1 var(--f-display); border-radius: 8px; padding: 10px 14px; border: 1.5px solid var(--line); color: var(--ink); text-decoration: none; }
 a.act:hover { border-color: var(--ink); }
 a.act:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
@@ -206,11 +284,12 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 <div class="wrap">
   <header class="intro">
-    <div class="sign"><small>Wallingford · Seattle</small><h1>Crosswalk Watch</h1></div>
-    <p>Where Wallingford most needs crosswalks, what the city is doing about it, and which corners neighbors are covering in the meantime. <strong>Vote for the corners that matter to you, or request a flag kit for one and keep its crosswalk flags stocked until the city builds it.</strong></p>
+    <a class="sign" href="#"><small>Wallingford · Seattle</small><h1>Crosswalk Watch</h1></a>
+    <p id="intro-text">Where Wallingford most needs crosswalks, what the city is doing about it, and which corners neighbors are covering in the meantime. <strong>Vote for the corners that matter to you, or request a flag kit for one and keep its crosswalk flags stocked until the city builds it.</strong></p>
   </header>
 
 
+  <div id="home">
   <section class="stats" aria-label="Summary">
     <a class="stat need" href="#corners" data-filter="all"><b id="s-need">20</b><span>corners that need a crosswalk</span></a>
     <a class="stat plan" href="#city"><b id="s-plan">0</b><span>new crosswalks scheduled by the city</span></a>
@@ -251,6 +330,8 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   </div>
 
   <p class="sources">Real data: priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan); green and amber crosswalks come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> dataset, including ones marked "planned". Votes, flag kits and neighbor activity are sample data. Distances are approximate, measured to the nearest marked crosswalk on either street.</p>
+  </div>
+  <main id="corner-page" hidden></main>
 </div>
 
 <script>
@@ -305,6 +386,8 @@ const diyOf = p => state["a:" + p.where] ? "adopted" : (p.ex.diy || null);
 const priorityScore = p => p.total * 2 + votesOf(p) / 4;
 
 let selected = null;
+let view = "home";
+let pendingSection = null;
 let listFilter = "all";
 document.querySelectorAll("a.stat[data-filter]").forEach(a => a.addEventListener("click", () => { listFilter = a.dataset.filter; renderList(); }));
 
@@ -487,13 +570,13 @@ function renderDetail() {
   const adopted = !!state["a:" + p.where];
   el.innerHTML = `
     <div class="eyebrow">Priority ${p.prio} of ${pins.length}</div>
-    <h2>${p.name}</h2>
+    <h2><a class="name-link" href="#${cornerHash(p)}">${p.name}<span aria-hidden="true"> ›</span></a></h2>
     <div class="cta">
-      ${p.planned ? "" : `<button class="cta-btn kit${adopted ? " done" : ""}" id="b-kit" type="button">${adopted ? "Flag kit requested ✓" : "Request a flag kit"}</button>`}
-      <button class="cta-btn vote${voted ? " done" : ""}" id="b-vote" type="button">${voted ? "Voted ✓" : "Vote for this corner"}</button>
+      <a class="cta-btn kit${adopted ? " done" : ""}" href="#${cornerHash(p)}" data-section="kit">${adopted ? "Flag kit ordered ✓" : "Get a flag kit"}</a>
+      <a class="cta-btn vote${voted ? " done" : ""}" href="#${cornerHash(p)}" data-section="vote">${voted ? "Voted ✓" : "Vote for this corner"}</a>
     </div>
+    <a class="more-link" href="#${cornerHash(p)}" data-section="city">How to get the city to build it ›</a>
     <div class="toast" id="toast"></div>
-    <div id="kit"></div>
     <div class="sub">${p.gap_m_to_marked_xwalk ? `About ${p.gap_m_to_marked_xwalk} m to the nearest marked crosswalk` : "No marked crosswalk nearby on either street"} · SDOT score ${p.total} of 37</div>
     <div class="rows">
       <div class="row"><span>City</span><div>${cityStatus(p)}${timeline(p)}</div></div>
@@ -506,18 +589,7 @@ function renderDetail() {
     </div>
     ${streetViewEmbed(p)}
     <div class="actions"><a class="act" href="${streetView(p)}" target="_blank" rel="noopener">Open Street View full screen ↗</a></div>`;
-  document.getElementById("b-vote").onclick = () => {
-    state["v:" + p.where] = !voted;
-    if (voted) delete state["c:" + p.where];
-    save();
-    refresh(voted ? "Vote removed." : "");
-    if (!voted) showComment(p);
-  };
-  const kitBtn = document.getElementById("b-kit");
-  if (kitBtn) kitBtn.onclick = () => adopted ? showKitDone(p) : showKitForm(p);
-  if (voted && state["c:" + p.where]) {
-    document.getElementById("toast").textContent = `Your note: "${state["c:" + p.where]}"`;
-  }
+  el.querySelectorAll("a[data-section]").forEach(a => a.addEventListener("click", () => { pendingSection = a.dataset.section; }));
 }
 
 function showComment(p) {
@@ -633,8 +705,8 @@ function renderStats() {
 }
 
 function refresh(msg) {
-  rankPins(); renderPins(); renderList(); renderStats(); renderDetail();
-  if (msg) document.getElementById("toast").textContent = msg;
+  rankPins(); renderPins(); renderList(); renderStats();
+  if (view === "home") { renderDetail(); if (msg) document.getElementById("toast").textContent = msg; }
 }
 function select(p, reveal = true) {
   selected = p; refresh();
@@ -649,6 +721,349 @@ function revealDetail() {
 }
 let booted = false;
 
+// ---------- Corner details page ----------
+const cornerHash = p => "c-" + p.where.toLowerCase().replace(/ and /g, "-").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const pageUrl = p => location.href.split("#")[0] + "#" + cornerHash(p);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const NOTES = [
+  "Cars come over the rise fast and don't see you until you're already in the street.",
+  "My kids cross here every morning on the way to school.",
+  "Nowhere good to cross for blocks, so people just dart across.",
+  "Hard to see around the parked cars at the corner.",
+  "It's dark here by 5 pm. I've had two close calls this fall.",
+  "Lots of strollers and dog walkers cross here to get to the park.",
+  "Drivers stop for me maybe half the time.",
+];
+const notesFor = p => { let h = 0; for (const c of p.where) h = (h * 31 + c.charCodeAt(0)) >>> 0; return [0, 1, 2].map(i => NOTES[(h + i * 3) % NOTES.length]); };
+const KIT_PRICE = 34, SIGNS_PRICE = 18, FLAGS_PRICE = 12;
+
+function emailText(p) {
+  const gap = p.gap_m_to_marked_xwalk ? `about ${p.gap_m_to_marked_xwalk} meters away` : "not on either street nearby";
+  const lines = [
+    "Hello SDOT Pedestrian Program,", "",
+    `I'm requesting a marked crosswalk at ${p.name} in Wallingford.`, "",
+    `- This intersection is on SDOT's Enhanced Street Crossings priority list (score ${p.total} of 37).`,
+    `- The nearest marked crosswalk is ${gap}.`,
+  ];
+  if (p.school >= 3) lines.push("- It's near public schools, and students cross here.");
+  if (p.park >= 2) lines.push("- People cross here to reach a nearby park.");
+  lines.push(`- ${votesOf(p)} neighbors support a crosswalk here.`, "",
+    "Could SDOT evaluate this location? I'd also appreciate knowing the timeline.", "",
+    "Thank you,", "[Your name]", "[Your street or nearest cross streets]");
+  return { to: "walkandbike@seattle.gov", subject: `Crosswalk request: ${p.name}`, body: lines.join("\n") };
+}
+function neighborText(p) {
+  return `I'm asking neighbors to support a crosswalk at ${p.name}. It takes 2 minutes: vote and send the city a short note here: ${pageUrl(p)}`;
+}
+function daylightText(p) {
+  return { to: "684-Road@seattle.gov", subject: `Daylighting request: ${p.name}`,
+    body: `Hello SDOT,\n\nCars often park within 20 feet of the corner at ${p.name}, which blocks drivers' view of people waiting to cross. Could SDOT add daylighting here (no-parking signs or paint at the corner)?\n\nThank you,\n[Your name]` };
+}
+function followText(p) {
+  return { to: "walkandbike@seattle.gov", subject: `Following up: crosswalk request for ${p.name}`,
+    body: `Hello SDOT,\n\nI'm following up on a crosswalk request for ${p.name} in Wallingford. Has the location been evaluated, and is there a timeline?\n\nThank you,\n[Your name]` };
+}
+function councilText(p) {
+  return { to: "", subject: `Crosswalk at ${p.name}`,
+    body: `Hello Councilmember,\n\nNeighbors asked SDOT for a marked crosswalk at ${p.name} in Wallingford several weeks ago and haven't heard back. It's on SDOT's own priority list for new crossings. Could your office ask SDOT where this request stands?\n\nThank you,\n[Your name]\n[Your address]` };
+}
+const mailto = m => `mailto:${m.to}?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body)}`;
+
+function copyBlock(id, text) {
+  return `<div class="copy"><textarea id="${id}" readonly rows="${Math.min(12, text.split("\n").length + 1)}">${esc(text)}</textarea>
+    <button class="act small" type="button" data-copy="${id}">Copy</button></div>`;
+}
+function emailStep(id, m, label) {
+  return `<div class="mailline"><span>To: <b>${esc(m.to || "your council member")}</b></span><span>Subject: ${esc(m.subject)}</span></div>
+    ${copyBlock(id, m.body)}
+    ${m.to ? `<a class="act" href="${mailto(m)}">${label} ↗</a>` : ""}`;
+}
+
+function stepState(p) {
+  // Which step this corner is on. Corners already requested are waiting on the city.
+  if (p.planned) return 99;
+  if (p.ex.requested) return p.ex.requested >= 42 ? 6 : p.ex.requested >= 21 ? 5 : 2;
+  return 1;
+}
+
+function renderCornerPage(p) {
+  const el = document.getElementById("corner-page");
+  const voted = !!state["v:" + p.where];
+  const ordered = !!state["a:" + p.where];
+  const d = diyOf(p);
+  const step = stepState(p);
+  const notes = notesFor(p);
+  if (state["c:" + p.where]) notes.unshift(state["c:" + p.where]);
+  const cityLine = p.planned ? "Scheduled by SDOT · finishing up"
+    : p.ex.requested ? `Requested · waiting ${p.ex.requested} days` : "On SDOT's priority list · not yet requested";
+  const diyLine = d === "flags" ? "Flags in place" : d === "adopted" ? "Your kit is on the way" : d === "kit" ? "Flag kit ordered" : "No flags yet";
+  const goal = 100;
+  const steps = [
+    { t: "Send the city a request", h: "Email SDOT's pedestrian program. Use this draft; it already includes the facts SDOT looks at.", body: emailStep("m1", emailText(p), "Open in your email") },
+    { t: "Get 5 neighbors to send their own note", h: "A few separate notes from neighbors carry more weight than one. Share this text with neighbors, the school parent list, or the Wallingford Community Council.", body: copyBlock("m2", neighborText(p)) },
+    { t: "Ask for daylighting at the corner", h: "Parked cars near the corner hide people about to cross. SDOT paints and signs \"no parking\" zones at corners, and resident requests are one of its priorities.", body: emailStep("m3", daylightText(p), "Open in your email") },
+    { t: "Count people crossing one morning", h: "SDOT has turned down crosswalks on N 40th St for low counts before. Count people crossing for one hour, 7:30–8:30 am, and send the number with your request. Flag scans count too.", body: `<label class="inline" for="cnt">People counted <input type="number" id="cnt" min="0" max="999" placeholder="0"></label> <button class="act small" type="button" id="cnt-save">Add count</button> <span class="saved" id="cnt-msg"></span>` },
+    { t: "Follow up at day 21", h: "If you haven't heard back in three weeks, send a short, polite follow-up.", body: emailStep("m5", followText(p), "Open in your email") },
+    { t: "Ask your council member at day 42", h: "If there's still no answer, ask your district council member's office to check with SDOT.", body: `<a class="act" href="https://www.seattle.gov/council/meet-the-council/find-your-district-and-councilmembers" target="_blank" rel="noopener">Find your council member ↗</a>${copyBlock("m6", councilText(p).body)}` },
+    { t: "Apply for neighborhood funding", h: "If SDOT says no, a community-backed application to the Neighborhood Street Fund is how the Bagley Ave crosswalk on N 40th St got built in 2017.", body: `<a class="act" href="https://www.seattle.gov/nsf" target="_blank" rel="noopener">Neighborhood Street Fund ↗</a>` },
+  ];
+  el.innerHTML = `
+    <a class="back" href="#corners">‹ All Wallingford corners</a>
+    <header class="cp-head">
+      <div class="eyebrow">Priority ${p.prio} of ${pins.length} · Wallingford</div>
+      <h1 class="cp-title">${p.name}</h1>
+      <div class="tiles">
+        <div class="tile"><span>City</span><b class="${p.planned ? "plan" : "need"}">${cityLine}</b></div>
+        <div class="tile"><span>Neighbors</span><b class="${d && d !== "kit" ? "ok" : "diy"}">${diyLine}</b></div>
+        <div class="tile"><span>Votes</span><b>${votesOf(p)} neighbors</b></div>
+      </div>
+      <div class="cta">
+        <a class="cta-btn kit" href="#${cornerHash(p)}" data-jump="kit">${ordered ? "Flag kit ordered ✓" : "Get a flag kit"}</a>
+        <a class="cta-btn vote" href="#${cornerHash(p)}" data-jump="vote">${voted ? "Voted ✓" : "Vote for this corner"}</a>
+      </div>
+      <div class="share">
+        <button class="act small" type="button" id="share">Copy link to this corner</button>
+        <form class="follow" id="follow" novalidate>
+          <label for="follow-email" class="vh">Email for updates</label>
+          <input type="email" id="follow-email" placeholder="you@example.com" autocomplete="email">
+          <button class="act small" type="submit">Get updates</button>
+        </form>
+        <span class="saved" id="share-msg"></span>
+      </div>
+    </header>
+    ${streetViewEmbed(p) || `<a class="act" href="${streetView(p)}" target="_blank" rel="noopener">Look around in Street View ↗</a>`}
+
+    <section class="cp-sec" id="sec-kit">
+      <div class="sec-n">1</div>
+      <div class="sec-body">
+        <h2>Put up crosswalk flags this week</h2>
+        <p class="lead">Washington law already treats every corner as a crosswalk, so drivers must stop for people crossing here. Flags make people easy to see while the city decides on paint.</p>
+        <div class="product">
+          <div class="product-img" aria-hidden="true">
+            <svg viewBox="0 0 160 140"><rect x="0" y="0" width="160" height="140" rx="12" fill="var(--bg)"/>
+              <rect x="34" y="18" width="5" height="112" rx="2" fill="#8b928d"/>
+              <rect x="22" y="70" width="30" height="34" rx="4" fill="#2f3a34"/>
+              <rect x="26" y="66" width="22" height="6" rx="2" fill="#444f49"/>
+              <g><rect x="28" y="30" width="3" height="44" fill="#d9d2c3"/><path d="M31 30 h26 v20 h-26z" fill="#ff7a1a"/></g>
+              <g><rect x="38" y="36" width="3" height="38" fill="#d9d2c3"/><path d="M41 36 h24 v18 h-24z" fill="#ff8f33"/></g>
+              <rect x="88" y="34" width="54" height="72" rx="6" fill="#fff" stroke="#c9cfc9"/>
+              <text x="115" y="50" font-size="7" font-family="Overpass, sans-serif" font-weight="800" text-anchor="middle" fill="#1f5f3a">TAKE A FLAG</text>
+              <text x="115" y="59" font-size="6" font-family="Overpass, sans-serif" text-anchor="middle" fill="#1d2320">cross, leave it</text>
+              <g fill="#1d2320"><rect x="101" y="66" width="8" height="8"/><rect x="121" y="66" width="8" height="8"/><rect x="101" y="86" width="8" height="8"/><rect x="112" y="77" width="4" height="4"/><rect x="118" y="83" width="4" height="4"/><rect x="124" y="89" width="5" height="5"/><rect x="112" y="68" width="3" height="3"/><rect x="104" y="79" width="3" height="3"/></g>
+            </svg>
+          </div>
+          <div class="product-info">
+            <div class="p-name">Crosswalk Watch Flag Kit</div>
+            <div class="p-price">$${KIT_PRICE} <span>· free pickup in Wallingford or $6 delivery</span></div>
+            <ul>
+              <li>2 weatherproof flag holders with zip ties, one for each side of the street</li>
+              <li>12 fluorescent orange flags, 12 × 12 in (Seattle asks for at least 10 × 10)</li>
+              <li>2 signs: "Take a flag, cross, leave it on the other side," each with this corner's QR code</li>
+              <li>Install guide and a card for counting people who cross</li>
+            </ul>
+            <label class="check" for="add-signs"><input type="checkbox" id="add-signs" checked> Add 4 yard signs for neighbors: "WA law: stop for people at every corner" <b>+$${SIGNS_PRICE}</b></label>
+            <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 12 spare flags <b>+$${FLAGS_PRICE}</b></label>
+            ${ordered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn kit wide" type="button" id="order">Order kit · $${KIT_PRICE + SIGNS_PRICE}</button>`}
+          </div>
+        </div>
+        <div id="order-form"></div>
+        <h3>How the QR code works</h3>
+        <ol class="mini">
+          <li><b>Scan once to activate.</b> The kit links itself to ${p.name}.</li>
+          <li><b>Every scan counts a crossing.</b> Counts go into the neighborhood's request to SDOT.</li>
+          <li><b>Running low?</b> Tap "Low on flags" after a scan and the corner's adopter gets a reminder.</li>
+        </ol>
+        <h3>More you can do this week</h3>
+        <ul class="more">
+          <li><b>Yard signs</b> facing the corner remind drivers to stop.</li>
+          <li><b>Light the corner.</b> If you live on it, aim a porch or motion light at the curb ramp.</li>
+          <li><b>Report cars parked within 20 feet</b> of the corner in the <a href="https://www.seattle.gov/customer-service-bureau/find-it-fix-it-mobile-app" target="_blank" rel="noopener">Find It, Fix It app</a>.</li>
+          <li><b>Trim bushes</b> that block the view of people waiting to cross.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cp-sec" id="sec-city">
+      <div class="sec-n">2</div>
+      <div class="sec-body">
+        <h2>Get the city to build it</h2>
+        <p class="lead">${p.planned ? "SDOT has this corner in a current project. Keep the flags up until the crosswalk is painted." : p.ex.requested ? `Neighbors sent the request ${p.ex.requested} days ago. Here's what's next.` : "Seven steps, most of them a two-minute email. Start with step 1."}</p>
+        <ol class="steps">
+          ${steps.map((s, i) => {
+            const n = i + 1;
+            const cls = step === 99 || n < step ? "done" : n === step ? "now" : "";
+            return `<li class="${cls}"><details ${n === step ? "open" : ""}><summary><span class="sn">${cls === "done" ? "✓" : n}</span><span class="st">${s.t}${cls === "now" ? ' <em>Next</em>' : ""}</span></summary>
+              <div class="sd"><p>${s.h}</p>${s.body}</div></details></li>`;
+          }).join("")}
+        </ol>
+      </div>
+    </section>
+
+    <section class="cp-sec" id="sec-vote">
+      <div class="sec-n">3</div>
+      <div class="sec-body">
+        <h2>Vote for this corner</h2>
+        <p class="lead">The top five corners go into the neighborhood's letter to SDOT and the council. Votes and notes show the city who crosses here and why.</p>
+        <div class="votebox">
+          <div class="vcount"><b>${votesOf(p)}</b> neighbors have voted</div>
+          <div class="goal"><i style="width:${Math.min(100, Math.round(100 * votesOf(p) / goal))}%"></i></div>
+          <div class="sub">${votesOf(p) >= goal ? "Goal reached." : `${goal - votesOf(p)} more to reach ${goal}.`} Ranked #${p.prio} in Wallingford.</div>
+          <button class="cta-btn vote wide" type="button" id="vote">${voted ? "Voted ✓ (tap to undo)" : "Vote for this corner"}</button>
+          <div id="note-area"></div>
+        </div>
+        <h3>What neighbors say</h3>
+        <ul class="notes">${notes.map((n, i) => `<li>"${esc(n)}"<span>${i === 0 && state["c:" + p.where] ? "You, just now" : `Neighbor · ${[2, 5, 9][i % 3]} days ago`}</span></li>`).join("")}</ul>
+      </div>
+    </section>
+
+    <section class="cp-sec why">
+      <div class="sec-body">
+        <h3>Why this corner is on SDOT's list</h3>
+        <div class="sub">${p.gap_m_to_marked_xwalk ? `About ${p.gap_m_to_marked_xwalk} m to the nearest marked crosswalk` : "No marked crosswalk nearby on either street"} · SDOT score ${p.total} of 37</div>
+        <div class="bars">
+          ${bar("School", p.school, 3)}${bar("Park", p.park, 3)}${bar("Transit", p.transit, 3)}
+          ${bar("Land use", p.proximity - p.school - p.park - p.transit, 3)}${bar("Safety", p.safety, 16)}${bar("Crashes", p.ped_crashes_5yr, 6)}
+        </div>
+      </div>
+    </section>
+    <a class="back" href="#corners">‹ All Wallingford corners</a>`;
+
+  // Wiring
+  el.querySelectorAll("a[data-jump]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); jump(a.dataset.jump); }));
+  el.querySelectorAll("button[data-copy]").forEach(b => b.addEventListener("click", () => copyText(document.getElementById(b.dataset.copy).value, b)));
+  document.getElementById("share").onclick = e => copyText(pageUrl(p), e.currentTarget);
+  document.getElementById("follow").addEventListener("submit", e => {
+    e.preventDefault();
+    const v = document.getElementById("follow-email").value.trim();
+    document.getElementById("share-msg").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "You'll get an email when anything changes at this corner." : "Enter an email address to get updates.";
+  });
+  const total = () => KIT_PRICE + (document.getElementById("add-signs").checked ? SIGNS_PRICE : 0) + (document.getElementById("add-flags").checked ? FLAGS_PRICE : 0);
+  ["add-signs", "add-flags"].forEach(id => document.getElementById(id).addEventListener("change", () => { const b = document.getElementById("order"); if (b) b.textContent = `Order kit · $${total()}`; }));
+  const order = document.getElementById("order");
+  if (order) order.onclick = () => showOrderForm(p, total());
+  const cnt = document.getElementById("cnt-save");
+  cnt.onclick = () => { const v = +document.getElementById("cnt").value; document.getElementById("cnt-msg").textContent = v > 0 ? `Added: ${v} people. Thanks.` : "Enter how many people you counted."; };
+  document.getElementById("vote").onclick = () => {
+    const was = !!state["v:" + p.where];
+    state["v:" + p.where] = !was;
+    if (was) delete state["c:" + p.where];
+    save(); rankPins(); renderCornerPage(p);
+    if (!was) showNoteForm(p);
+  };
+}
+
+function showOrderForm(p, total) {
+  const el = document.getElementById("order-form");
+  el.innerHTML = `
+    <form class="kit" id="kit-form" novalidate>
+      <h3>Order for ${p.name} · $${total}</h3>
+      <div class="two">
+        <label for="kit-name">Your name<input type="text" id="kit-name" autocomplete="name"></label>
+        <label for="kit-email">Email<input type="email" id="kit-email" autocomplete="email"></label>
+      </div>
+      <fieldset class="radio"><legend>Get your kit</legend>
+        <label class="check" for="pick-up"><input type="radio" name="get" id="pick-up" checked> Free pickup in Wallingford</label>
+        <label class="check" for="deliver"><input type="radio" name="get" id="deliver"> Deliver to my door (+$6)</label>
+      </fieldset>
+      <label class="check" for="kit-adopt"><input type="checkbox" id="kit-adopt" checked> I'll look after this corner: check the flags every two weeks. We'll send a reminder.</label>
+      <label class="check" for="kit-party"><input type="checkbox" id="kit-party" checked> Help me plan a 30-minute install party with neighbors.</label>
+      <div class="err" id="kit-err"></div>
+      <button class="cta-btn kit wide" type="submit">Place order</button>
+    </form>`;
+  const form = document.getElementById("kit-form");
+  form.addEventListener("input", () => { document.getElementById("kit-err").textContent = ""; });
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.getElementById("kit-name").value.trim();
+    const email = document.getElementById("kit-email").value.trim();
+    if (!name) { document.getElementById("kit-err").textContent = "Add your name so neighbors know who's organizing."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { document.getElementById("kit-err").textContent = "Add an email address for your order confirmation."; return; }
+    state["a:" + p.where] = true;
+    state["k:" + p.where] = { party: document.getElementById("kit-party").checked, adopt: document.getElementById("kit-adopt").checked };
+    save(); rankPins(); renderCornerPage(p);
+    const k = state["k:" + p.where];
+    document.getElementById("order-form").innerHTML = `
+      <div class="kit confirm">
+        <h3>Order CW-${1040 + p.prio} placed</h3>
+        <div class="next">
+          <div><b>In 3–5 days:</b> your kit is ready, and we'll email you the pickup or delivery details.</div>
+          <div><b>Install:</b> zip-tie one holder to a sign pole on each side of the street, within 5 feet of where people cross. Don't cover any signs.${k.party ? " We'll send a flyer to invite neighbors." : ""}</div>
+          <div><b>Activate:</b> scan the QR code on each sign once. It links the flags to this page.</div>
+          <div><b>Then:</b> ${k.adopt ? "a restock reminder every two weeks. " : ""}Start step 1 below to send the city your request.</div>
+        </div>
+      </div>`;
+    document.getElementById("order-form").scrollIntoView({ block: "start" });
+  });
+  document.getElementById("kit-name").focus();
+}
+
+function showNoteForm(p) {
+  const el = document.getElementById("note-area");
+  el.innerHTML = `
+    <form class="kit" id="c-form" novalidate>
+      <h3>Vote counted. Want to say why?</h3>
+      <label for="c-text">What happens at this corner? <span class="opt">Optional</span>
+        <textarea id="c-text" rows="3" maxlength="400" placeholder="A car didn't stop while my kid was crossing last Tuesday morning."></textarea>
+      </label>
+      <div class="sub">Near-misses, who crosses here, and what time of day are the most useful. Notes go into the request to SDOT without your name.</div>
+      <div class="actions" style="margin-top:0">
+        <button class="act primary" type="submit">Add note</button>
+        <button class="act" type="button" id="c-skip">Skip</button>
+      </div>
+    </form>`;
+  document.getElementById("c-skip").onclick = () => { el.innerHTML = ""; };
+  document.getElementById("c-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const text = document.getElementById("c-text").value.trim();
+    if (text) { state["c:" + p.where] = text; save(); }
+    renderCornerPage(p);
+    document.getElementById("sec-vote").scrollIntoView({ block: "start" });
+  });
+  document.getElementById("c-text").focus({ preventScroll: true });
+}
+
+function copyText(text, btn) {
+  const done = () => { const old = btn.textContent; btn.textContent = "Copied ✓"; setTimeout(() => { btn.textContent = old; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text, done));
+  else fallbackCopy(text, done);
+}
+function fallbackCopy(text, done) {
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.style.position = "absolute"; ta.style.left = "-9999px";
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand("copy"); done(); } catch (e) {}
+  ta.remove();
+}
+function jump(section) {
+  const target = document.getElementById("sec-" + section);
+  if (!target) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+}
+
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  const p = h.startsWith("c-") ? pins.find(x => cornerHash(x) === h) : null;
+  const home = document.getElementById("home"), page = document.getElementById("corner-page");
+  if (p) {
+    view = "corner";
+    home.hidden = true; page.hidden = false; document.getElementById("intro-text").hidden = true;
+    document.getElementById("detail").innerHTML = "";
+    renderCornerPage(p);
+    document.title = `${p.name} · Wallingford Crosswalk Watch`;
+    if (pendingSection) { const s = pendingSection; pendingSection = null; requestAnimationFrame(() => jump(s)); }
+    else window.scrollTo(0, 0);
+    return;
+  }
+  const wasCorner = view === "corner";
+  view = "home";
+  page.hidden = true; home.hidden = false; page.innerHTML = ""; document.getElementById("intro-text").hidden = false;
+  document.title = "Wallingford Crosswalk Watch";
+  if (wasCorner || !selected) refresh();
+  if (h === "corners" || h === "city") requestAnimationFrame(() => document.getElementById(h).scrollIntoView({ block: "start" }));
+  else if (wasCorner) window.scrollTo(0, 0);
+}
+
 document.getElementById("feed").innerHTML = FEED.map(([t, k, who, what]) =>
   `<li><time>${t}</time><span><span class="who ${k}">${who}</span> ${what}</span></li>`).join("");
 
@@ -656,6 +1071,8 @@ rankPins();
 renderProgress();
 select(pins.find(p => p.prio === 1), false);
 booted = true;
+window.addEventListener("hashchange", route);
+route();
 </script>
 
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI&callback=initGoogleMap&loading=async&v=weekly"></script>
