@@ -458,7 +458,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793223482";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793223755";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -865,6 +865,9 @@ function viewCity() {
 const cityTop = n => [...CORNERS].sort((a, b) => a.cityPrio - b.cityPrio).slice(0, n);
 // The city and neighborhood pages number and list only the riskiest corners; the rest are small dots on the map.
 const TOP_N = 10;
+// A neighborhood lists and numbers all of its risky corners (the ones its headline tile counts), at least TOP_N and
+// at most 15 so the list doesn't run long.
+const hoodTopN = h => Math.min(15, Math.max(TOP_N, h.corners.filter(c => c.rs >= TILE_MIN.hood[0]).length));
 // A tap on the map keeps the view once you're zoomed in; from farther out, the map zooms to the corner's neighborhood
 // (otherwise its full-size numbered pins would pile up at city zoom).
 function goCorner(c, fromMap) { pendingSelect = c.s; if (fromMap && gmap && gmap.getZoom() >= detailZoom()) keepView = true; location.hash = "n-" + HOODS[c.h].id; }
@@ -926,9 +929,10 @@ function renderHoodStats() {
 function renderPins() {
   const h = mapFocus != null ? HOODS[mapFocus] : curHood;
   if (!h) return;
+  const n = hoodTopN(h);
   h.corners.forEach(c => {
     const b = c.pinEl; if (!b) return;
-    const numbered = c.prio <= TOP_N || selected === c;
+    const numbered = c.prio <= n || selected === c;
     b.textContent = numbered ? c.prio : "";
     b.className = numbered ? "pin" + (selected === c ? " on" : "") : "dot";
     b.setAttribute("aria-label", `#${c.prio} highest risk: ${titleCase(c.w)}`);
@@ -959,7 +963,7 @@ function renderHoodSide() {
     </section>` : `<section class="panel"><p class="sub">SDOT's priority list has no corners in ${esc(h.name)}. Pick another neighborhood from the <a href="#">Seattle page</a>.</p></section>`}
     <section class="panel list" id="rank-list">
       <h3><span class="lt">Highest-risk crossings in ${esc(h.name)}</span> <span><a class="link" href="#how-risk">How we rate risk</a></span></h3>
-      <div>${sorted.slice(0, TOP_N).map(x => `
+      <div>${sorted.slice(0, hoodTopN(h)).map(x => `
         <button class="item${selected === x ? " on" : ""}" type="button" data-s="${x.s}">
           <span class="num">${x.prio}</span>
           <span><span class="name">${titleCase(x.w)}</span>
