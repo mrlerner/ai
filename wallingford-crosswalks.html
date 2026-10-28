@@ -63,6 +63,12 @@ h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
 .sv { margin-top: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16 / 10; max-width: 100%; background: var(--bg); }
 .sv iframe { width: 100%; height: 100%; border: 0; display: block; }
 .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
+a.stat { text-decoration: none; color: inherit; display: block; }
+a.stat:hover { border-color: var(--muted); }
+a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
+#corners, #city { scroll-margin-top: 12px; }
+.list h3 .lt { font: inherit; color: inherit; }
+.list h3 button.link { font: 600 12.5px var(--f-body); color: var(--need); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
 .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
 .stat b { display: block; font: 800 26px/1.1 var(--f-display); font-variant-numeric: tabular-nums; }
 .stat span { font-size: 13px; color: var(--muted); }
@@ -112,6 +118,16 @@ h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
 button.act { font: 600 14px/1 var(--f-display); border-radius: 8px; padding: 10px 14px; cursor: pointer; border: 1.5px solid var(--ink);
   background: transparent; color: var(--ink); }
 button.act.primary { background: var(--need); border-color: var(--need); color: #fff; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+.cta-btn { flex: 1 1 200px; font: 800 17px/1.1 var(--f-display); letter-spacing: .01em; color: #fff; border: 0; border-radius: 10px;
+  padding: 16px 18px; cursor: pointer; box-shadow: 0 2px 0 rgba(0,0,0,.18); }
+.cta-btn.kit { background: var(--diy); }
+.cta-btn.vote { background: var(--sign); }
+.cta-btn.done { filter: saturate(.55); }
+.cta-btn:hover { filter: brightness(1.06); }
+.cta-btn:active { transform: translateY(1px); box-shadow: none; }
+.cta-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.detail .sub { margin-top: 10px; }
 a.act { font: 600 14px/1 var(--f-display); border-radius: 8px; padding: 10px 14px; border: 1.5px solid var(--line); color: var(--ink); text-decoration: none; }
 a.act:hover { border-color: var(--ink); }
 a.act:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
@@ -191,16 +207,15 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 <div class="wrap">
   <header class="intro">
     <div class="sign"><small>Wallingford · Seattle</small><h1>Crosswalk Watch</h1></div>
-    <p>Where Wallingford most needs a safe crossing, what the city is doing about it, and which corners neighbors are covering in the meantime. <strong>Vote for the corners that matter to you, or adopt one and keep its crossing flags stocked until the city builds it.</strong></p>
+    <p>Where Wallingford most needs crosswalks, what the city is doing about it, and which corners neighbors are covering in the meantime. <strong>Vote for the corners that matter to you, or request a flag kit for one and keep its crosswalk flags stocked until the city builds it.</strong></p>
   </header>
 
-  <p class="proto"><b>Prototype.</b> Corners, scores, crosswalks and city schedules are real Seattle data. Votes, flag kits, requests and neighbor activity are examples showing how the site would work. Buttons don't send anything yet.</p>
 
   <section class="stats" aria-label="Summary">
-    <div class="stat need"><b id="s-need">20</b><span>corners that need a crossing</span></div>
-    <div class="stat plan"><b id="s-plan">0</b><span>new crosswalks scheduled by the city</span></div>
-    <div class="stat ok"><b id="s-ok">0</b><span>marked crosswalks already in place</span></div>
-    <div class="stat diy"><b id="s-diy">0</b><span>covered by neighbor flags <span class="ex">Example</span></span></div>
+    <a class="stat need" href="#corners" data-filter="all"><b id="s-need">20</b><span>corners that need a crosswalk</span></a>
+    <a class="stat plan" href="#city"><b id="s-plan">0</b><span>new crosswalks scheduled by the city</span></a>
+    <a class="stat ok" href="#city"><b id="s-ok">0</b><span>marked crosswalks already in place</span></a>
+    <a class="stat diy" href="#corners" data-filter="flags"><b id="s-diy">0</b><span>covered by neighbor flags</span></a>
   </section>
 
   <div class="main">
@@ -210,7 +225,7 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
         <svg class="outline-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><g id="outline"></g></svg>
       </div>
       <div class="legend">
-        <span><i style="background:var(--need)"></i>Needs a crossing (number = priority)</span>
+        <span><i style="background:var(--need)"></i>Needs a crosswalk (number = priority)</span>
         <span><i style="background:var(--plan)"></i>Scheduled by the city</span>
         <span><i style="background:var(--ok)"></i>Marked crosswalk (tap for the year built)</span>
         <span><i style="background:var(--diy);border-radius:2px"></i>Neighbor flags in place</span>
@@ -220,22 +235,22 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
     <div>
       <section class="panel detail" id="detail" aria-live="polite"></section>
-      <section class="panel progress">
+      <section class="panel progress" id="city">
         <h3>What the city is building</h3>
         <ul id="progress"></ul>
       </section>
-      <section class="panel list">
-        <h3>Corners ranked by priority <span>Neighbor votes + SDOT's own score</span></h3>
+      <section class="panel list" id="corners">
+        <h3><span class="lt" id="list-title">Corners ranked by priority</span> <span id="list-note">Neighbor votes + SDOT's own score</span></h3>
         <div id="list"></div>
       </section>
       <section class="panel feed">
-        <h3>This week on the corners <span class="ex">Example</span></h3>
+        <h3>This week on the corners</h3>
         <ul id="feed"></ul>
       </section>
     </div>
   </div>
 
-  <p class="sources">Real data: priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan); green and amber crosswalks come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> dataset, including ones marked "planned". Votes, neighbor flags, requests and the activity feed are <strong>example data</strong> showing how the site would work. Distances are approximate, measured to the nearest marked crosswalk on either street.</p>
+  <p class="sources">Real data: priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan); green and amber crosswalks come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> dataset, including ones marked "planned". Votes, flag kits and neighbor activity are sample data. Distances are approximate, measured to the nearest marked crosswalk on either street.</p>
 </div>
 
 <script>
@@ -290,6 +305,8 @@ const diyOf = p => state["a:" + p.where] ? "adopted" : (p.ex.diy || null);
 const priorityScore = p => p.total * 2 + votesOf(p) / 4;
 
 let selected = null;
+let listFilter = "all";
+document.querySelectorAll("a.stat[data-filter]").forEach(a => a.addEventListener("click", () => { listFilter = a.dataset.filter; renderList(); }));
 
 function rankPins() {
   [...pins].sort((a, b) => priorityScore(b) - priorityScore(a) || b.total - a.total)
@@ -347,7 +364,7 @@ function showCrosswalk(m) {
     <div class="rows">
       <div class="row"><span>Status</span><div><span class="chip ${planned ? "plan" : "ok"}">${markedStatus(m)}</span></div></div>
       ${planned && m.project ? `<div class="row"><span>SDOT project</span><div>${m.project}</div></div>` : ""}
-      ${m.school ? `<div class="row"><span>School</span><div>Marked as a school crossing</div></div>` : ""}
+      ${m.school ? `<div class="row"><span>School</span><div>Marked as a school crosswalk</div></div>` : ""}
     </div>
     <div class="actions"><a class="act" href="${streetView(m)}" target="_blank" rel="noopener">Look around in Street View ↗</a><button class="act" type="button" id="b-back">Back to the corners that need one</button></div>
     ${streetViewEmbed(m)}`;
@@ -407,13 +424,14 @@ window.initGoogleMap = function () {
     host.className = "gmap";
     mapEl.classList.add("live");
     mapEl.prepend(host);
+    const bounds = new g.LatLngBounds();
+    DATA.outline_ll.forEach(r => r.forEach(([lng, lat]) => bounds.extend({ lat, lng })));
     const map = new g.Map(host, {
+      center: bounds.getCenter(), zoom: 14,
       gestureHandling: "cooperative", clickableIcons: false, mapTypeControl: false,
       streetViewControl: false, fullscreenControl: false, styles: MAP_STYLE,
     });
-    const bounds = new g.LatLngBounds();
-    DATA.outline_ll.forEach(r => r.forEach(([lng, lat]) => bounds.extend({ lat, lng })));
-    map.fitBounds(bounds, 6);
+    g.event.addListenerOnce(map, "idle", () => map.fitBounds(bounds, 6));
     DATA.outline_ll.forEach(r => new g.Polyline({
       map, path: r.map(([lng, lat]) => ({ lat, lng })), strokeOpacity: 0, clickable: false,
       icons: [{ icon: { path: "M 0,-1 0,1", strokeOpacity: 0.9, strokeColor: "#1f5f3a", scale: 2.5 }, offset: "0", repeat: "11px" }],
@@ -442,13 +460,13 @@ window.initGoogleMap = function () {
 
 function cityStatus(p) {
   if (p.planned) return `<span class="chip plan">Scheduled · finishing up</span>`;
-  if (p.ex.requested) return `<span class="chip need">Requested by neighbors</span> <span class="ex">Example</span>`;
+  if (p.ex.requested) return `<span class="chip need">Requested by neighbors</span>`;
   return `<span class="chip need">On SDOT's priority list · not scheduled</span>`;
 }
 function diyStatus(p) {
   const d = diyOf(p);
-  if (d === "flags") return `<span class="chip ok">Flags in place</span> <span class="ex">Example</span><div class="sub">Adopted by ${p.ex.adopter} · restocked ${p.ex.restock} days ago</div>`;
-  if (d === "kit") return `<span class="chip diy">Kit ordered · install Saturday</span> <span class="ex">Example</span>`;
+  if (d === "flags") return `<span class="chip ok">Flags in place</span><div class="sub">Adopted by ${p.ex.adopter} · restocked ${p.ex.restock} days ago</div>`;
+  if (d === "kit") return `<span class="chip diy">Kit ordered · install Saturday</span>`;
   if (d === "adopted") return `<span class="chip ok">Flag kit requested by you</span><div class="sub">You're this corner's adopter. Next: pick an install day and invite neighbors.</div>`;
   return `<span class="chip diy">No flags yet · request a kit</span>`;
 }
@@ -470,24 +488,24 @@ function renderDetail() {
   el.innerHTML = `
     <div class="eyebrow">Priority ${p.prio} of ${pins.length}</div>
     <h2>${p.name}</h2>
+    <div class="cta">
+      ${p.planned ? "" : `<button class="cta-btn kit${adopted ? " done" : ""}" id="b-kit" type="button">${adopted ? "Flag kit requested ✓" : "Request a flag kit"}</button>`}
+      <button class="cta-btn vote${voted ? " done" : ""}" id="b-vote" type="button">${voted ? "Voted ✓" : "Vote for this corner"}</button>
+    </div>
+    <div class="toast" id="toast"></div>
+    <div id="kit"></div>
     <div class="sub">${p.gap_m_to_marked_xwalk ? `About ${p.gap_m_to_marked_xwalk} m to the nearest marked crosswalk` : "No marked crosswalk nearby on either street"} · SDOT score ${p.total} of 37</div>
     <div class="rows">
       <div class="row"><span>City</span><div>${cityStatus(p)}${timeline(p)}</div></div>
       <div class="row"><span>Neighbors</span><div>${diyStatus(p)}</div></div>
-      <div class="row"><span>Votes</span><div><b>${votesOf(p)}</b> neighbors <span class="ex">Example</span></div></div>
+      <div class="row"><span>Votes</span><div><b>${votesOf(p)}</b> neighbors</div></div>
       <div class="row"><span>Why SDOT lists it</span><div><div class="bars">
         ${bar("School", p.school, 3)}${bar("Park", p.park, 3)}${bar("Transit", p.transit, 3)}
         ${bar("Land use", p.proximity - p.school - p.park - p.transit, 3)}${bar("Safety", p.safety, 16)}${bar("Crashes", p.ped_crashes_5yr, 6)}
       </div></div></div>
     </div>
-    <div class="actions">
-      ${p.planned ? "" : `<button class="act primary" id="b-kit" type="button">${adopted ? "Flag kit requested ✓" : "Request a flag kit"}</button>`}
-      <button class="act${p.planned ? " primary" : ""}" id="b-vote" type="button">${voted ? "Voted ✓" : "Vote for this corner"}</button>
-      <a class="act" href="${streetView(p)}" target="_blank" rel="noopener">Look around in Street View ↗</a>
-    </div>
-    <div class="toast" id="toast"></div>
     ${streetViewEmbed(p)}
-    <div id="kit"></div>`;
+    <div class="actions"><a class="act" href="${streetView(p)}" target="_blank" rel="noopener">Open Street View full screen ↗</a></div>`;
   document.getElementById("b-vote").onclick = () => {
     state["v:" + p.where] = !voted;
     if (voted) delete state["c:" + p.where];
@@ -534,10 +552,10 @@ function showKitForm(p) {
       <h3>Flag kit for ${p.name}</h3>
       <div>Everything one corner needs, free:
         <ul>
-          <li>2 flag holders and 12 bright orange crossing flags, one set for each side of the street</li>
+          <li>2 flag holders and 12 bright orange crosswalk flags, one set for each side of the street</li>
           <li>A sign with a QR code: "Take a flag, cross, leave it on the other side"</li>
           <li>Yard signs for nearby neighbors: "WA law: stop for people at every corner"</li>
-          <li>A crossing-count card and a 5-minute sight-line checklist</li>
+          <li>A card for counting people who cross, and a 5-minute sight-line checklist</li>
           <li>Flyers to invite neighbors to the install</li>
         </ul>
       </div>
@@ -572,17 +590,22 @@ function showKitDone(p) {
     <div class="kit">
       <h3>Kit requested for ${p.name}</h3>
       <div class="next">
-        <div><b>This week:</b> pick up your kit from a neighborhood volunteer, or have it dropped off. <span class="ex">Example</span></div>
-        <div><b>Install day:</b> ${k.party ? "we'll send a flyer and a sign-up link for an install party at the corner." : "set the holders within 5 feet of the crossing, zip-tied to the sign pole."}</div>
+        <div><b>This week:</b> pick up your kit from a neighborhood volunteer, or have it dropped off.</div>
+        <div><b>Install day:</b> ${k.party ? "we'll send a flyer and a sign-up link for an install party at the corner." : "set the holders within 5 feet of the crosswalk, zip-tied to the sign pole."}</div>
         <div><b>Yard signs:</b> ${k.signs} sign${k.signs === 1 ? "" : "s"} for neighbors facing the corner.</div>
-        <div><b>After that:</b> ${k.adopt ? "a restock reminder every two weeks. Each QR scan counts as a crossing, which goes into the request to SDOT." : "anyone can adopt the corner later from this page."}</div>
+        <div><b>After that:</b> ${k.adopt ? "a restock reminder every two weeks. Each QR scan counts one person crossing, which goes into the request to SDOT." : "anyone can adopt the corner later from this page."}</div>
       </div>
     </div>`;
 }
 
 function renderList() {
   const list = document.getElementById("list");
-  const sorted = [...pins].sort((a, b) => a.prio - b.prio);
+  const flagged = p => diyOf(p) && diyOf(p) !== "kit";
+  const sorted = [...pins].sort((a, b) => a.prio - b.prio).filter(p => listFilter !== "flags" || flagged(p));
+  document.getElementById("list-title").textContent = listFilter === "flags" ? "Corners covered by neighbor flags" : "Corners ranked by priority";
+  document.getElementById("list-note").innerHTML = listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show all ${pins.length}</button>` : "Neighbor votes + SDOT's own score";
+  const showAll = document.getElementById("show-all");
+  if (showAll) showAll.onclick = () => { listFilter = "all"; renderList(); };
   list.innerHTML = sorted.map(p => `
     <button class="item${selected === p ? " on" : ""}" type="button" data-w="${p.where}">
       <span class="num${p.planned ? " planned" : ""}">${p.prio}</span>
