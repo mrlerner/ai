@@ -418,7 +418,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
       <h3>Which corners we list</h3>
       <p>Our corners come from SDOT's long-range plan, the <b>Seattle Transportation Plan</b>, adopted in 2024. Its pedestrian section maps every intersection that has <b>no marked crosswalk, all-way stop or traffic signal</b> and is <b>at least 600 feet</b> (about two blocks) from one that does. Almost all are on arterials, the busier streets. SDOT lists 1,466. We leave out about 40 where every street is a highway, ramp, tunnel or bridge deck, since nobody crosses there on foot. Seattle has about 15,500 intersections, so roughly 1 in 11 is on the list.</p>
       <p>The list is a map of gaps, not a schedule. SDOT says it will use it to choose streets to study and to find chances to add crossings during other projects, and that some corners on it won't get one. One new crosswalk often closes the gap for the corners on either side of it, too.</p>
-      <p>The numbers at the top of the Seattle page count the <b>high-risk</b> corners, with a Risk Score of 70 or more. A neighborhood page counts its <b>risky</b> corners, with a Risk Score of 50 or more, since most neighborhoods have only a few corners above 70. The map and lists show every corner on the list.</p>
+      <p>The numbers at the top of the Seattle page count the <b>high-risk</b> corners, with a Risk Score of 70 or more. A neighborhood page counts every corner it has on the list. The map shows every corner on the list.</p>
     </section>
     <section id="how-risk">
       <h3>How we rate risk</h3>
@@ -462,7 +462,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793223913";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793224155";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -837,20 +837,17 @@ function statAction(act) {
   else if (act === "hoods") smooth($("hood-panel"));
   else if (act === "sched") {
     // On a neighborhood page, each tap selects the next scheduled corner; otherwise it jumps to the list.
-    const s = view === "hood" ? tileCorners(curHood.corners, TILE_MIN.hood[0]).filter(isScheduled).sort((a, b) => a.prio - b.prio) : [];
+    const s = view === "hood" ? curHood.corners.filter(isScheduled).sort((a, b) => a.prio - b.prio) : [];
     if (s.length) select(s[(s.indexOf(selected) + 1) % s.length]); else smooth($("rank-list"));
   }
 }
-// The headline tiles: the corners at or above a Risk Score cutoff and how many of them SDOT has a crosswalk or signal
-// scheduled for. Seattle counts high-risk corners (70+, Very risky and up); a neighborhood counts risky ones (50+,
-// anything but Lower risk), since 70+ leaves most neighborhoods with only a handful. A neighborhood with none over
-// the cutoff counts all of its corners instead.
-const TILE_MIN = { city: [70, "high-risk"], hood: [50, "risky"] };
-const tileCorners = (corners, min) => { const hit = corners.filter(c => c.rs >= min); return hit.length ? hit : corners; };
-function needTiles(corners, [min, word]) {
-  const list = tileCorners(corners, min), cut = list !== corners;
+// The headline tiles: corners that need a crosswalk and how many of them SDOT has a crosswalk or signal scheduled for.
+// Seattle counts its high-risk corners (Risk Score 70+, Very risky and up); a neighborhood counts every corner it has
+// on SDOT's list.
+const isHighRisk = c => c.rs >= 70;
+function needTiles(list, label) {
   const n = list.filter(isScheduled).length;
-  return [["need", fmt(list.length), `${cut ? word + " " : ""}corner${list.length === 1 ? " that needs" : "s that need"} a crosswalk`, "corners"],
+  return [["need", fmt(list.length), label, "corners"],
           ["plan", fmt(n), `of them ${n === 1 ? "is" : "are"} scheduled to be built by SDOT`, "sched"]];
 }
 
@@ -860,7 +857,7 @@ function viewCity() {
   $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true; $("about-page").hidden = true;
   setChrome({ sub: "Seattle", title: "Seattle Crosswalk Watch", crumbs: [["Seattle", "#"]],
     intro: `Where Seattle needs crosswalks.<br><strong>Find your neighborhood and vote for the ones you want.<br>Request crossing flags until they're built.</strong>` });
-  statTiles(needTiles(CORNERS, TILE_MIN.city));
+  statTiles(needTiles(CORNERS.filter(isHighRisk), "high-risk corners that need a crosswalk"));
   renderSide();
   mapFocus = null;
   if (mapReady) { if (keepView) renderLayer(); else { renderLayer(); fitView(); } }
@@ -869,9 +866,9 @@ function viewCity() {
 const cityTop = n => [...CORNERS].sort((a, b) => a.cityPrio - b.cityPrio).slice(0, n);
 // The city and neighborhood pages number and list only the riskiest corners; the rest are small dots on the map.
 const TOP_N = 10;
-// A neighborhood lists and numbers all of its risky corners (the ones its headline tile counts), at least TOP_N and
-// at most 15 so the list doesn't run long.
-const hoodTopN = h => Math.min(15, Math.max(TOP_N, h.corners.filter(c => c.rs >= TILE_MIN.hood[0]).length));
+// A neighborhood lists and numbers all of its risky corners (Risk Score 50+, anything but Lower risk), at least TOP_N
+// and at most 15 so the list doesn't run long.
+const hoodTopN = h => Math.min(15, Math.max(TOP_N, h.corners.filter(c => c.rs >= 50).length));
 // A tap on the map keeps the view once you're zoomed in; from farther out, the map zooms to the corner's neighborhood
 // (otherwise its full-size numbered pins would pile up at city zoom).
 function goCorner(c, fromMap) { pendingSelect = c.s; if (fromMap && gmap && gmap.getZoom() >= detailZoom()) keepView = true; location.hash = "n-" + HOODS[c.h].id; }
@@ -928,7 +925,7 @@ function viewHood(h) {
 }
 function renderHoodStats() {
   const h = curHood;
-  statTiles(needTiles(h.corners, TILE_MIN.hood));
+  statTiles(needTiles(h.corners, h.corners.length === 1 ? "corner needs a crosswalk" : "corners need crosswalks"));
 }
 function renderPins() {
   const h = mapFocus != null ? HOODS[mapFocus] : curHood;
