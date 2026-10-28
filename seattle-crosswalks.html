@@ -373,7 +373,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793206361";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793206786";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -443,7 +443,9 @@ const pageUrl = c => location.href.split("#")[0] + "#c-" + c.s;
 // Focus follows the map's center once you zoom in; the page itself only changes when you tap the chip or a pin.
 let gmap = null, layer = null, focusPoly = null, mapReady = false, chip = null;
 let mapFocus = null, keepView = false, suppressIdle = false;
-const DETAIL_ZOOM = 14, OVERVIEW_ZOOM = 12;
+// Switch to one neighborhood after about one pinch in from the starting view (phones start at 10.6, desktop at 11).
+const detailZoom = () => matchMedia("(max-width: 600px)").matches ? 11.8 : 12.5;
+const OVERVIEW_ZOOM = 11;
 const check = `<svg viewBox="0 0 10 10"><path d="M2 5.3l2 2 4-4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 let markerEls = [];
 
@@ -512,7 +514,7 @@ function onIdle() {
   if (!D || view === "corner") return;
   const z = gmap.getZoom(), c = gmap.getCenter();
   let f;
-  if (view === "city") f = z >= DETAIL_ZOOM ? hoodAt(c.lng(), c.lat()) : null;
+  if (view === "city") f = z >= detailZoom() ? hoodAt(c.lng(), c.lat()) : null;
   else f = z < OVERVIEW_ZOOM ? null : (hoodAt(c.lng(), c.lat()) || (mapFocus != null ? HOODS[mapFocus] : curHood));
   const idx = f ? f.idx : null;
   if (idx !== mapFocus || idx != null) { mapFocus = idx; renderLayer(); }
