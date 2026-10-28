@@ -359,9 +359,14 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 .riskbox { border: 2px solid var(--line); border-radius: 12px; padding: 14px; margin: 8px 0 14px; }
 .riskbox .wait-label { margin-bottom: 6px; }
 .factors { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; }
-.howrisk { margin-top: 22px; max-width: 90ch; font-size: 14px; }
-.howrisk summary { font: 700 15px var(--f-display); cursor: pointer; }
-.howrisk p { color: var(--muted); }
+.how { max-width: 72ch; }
+.how h2 { font-size: 26px; margin-bottom: 4px; }
+.how section { margin-top: 22px; scroll-margin-top: 16px; }
+.how h3 { font-size: 17px; margin-bottom: 6px; }
+.how p { margin: 0 0 10px; }
+.how a { color: var(--sign); }
+.site-foot { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--line); font: 600 14px var(--f-display); }
+.site-foot a { color: var(--sign); }
 .link { font: 600 12.5px var(--f-body); color: var(--sign); }
 .dot.faint { width: 9px; height: 9px; opacity: .45; background: #8b928d; }
 .legend .hint { color: var(--muted); font-style: italic; }
@@ -395,24 +400,43 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
       <div class="mapcol">
         <div class="map live" id="map" role="group" aria-label="Map of crosswalks"><div id="map-msg">Loading map…</div></div>
         <div class="legend" id="legend"></div>
-        <div class="attrib">Pinch or use two fingers to zoom and pan. Boundaries from Seattle's Neighborhood Map Atlas.</div>
       </div>
       <div class="side" id="side"></div>
     </div>
   </div>
   <main id="corner-page" hidden></main>
 
-  <details class="howrisk" id="how-risk">
-    <summary>How we rate risk</summary>
-    <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. <b>Highest risk</b> is 90–100, <b>Very risky</b> 70–89, <b>Somewhat risky</b> 50–69 and <b>Lower risk</b> below 50. The score comes from city data. <b>Crashes count most:</b> pedestrian crashes since 2016 at the corner or on the blocks next to it, weighted by how serious they were and how recent. Then <b>crossing conditions:</b> how many lanes people cross, how busy the street is, how far it is to the nearest marked crosswalk, and whether schools, transit or parks bring people across.</p>
-    <p>It's an estimate, not a measurement. The city doesn't count pedestrians at most corners, and crash records only include crashes reported to police, so a corner with no crashes on record can still be dangerous. Counting people who cross, and adding notes about near-misses, helps fill that gap. Votes show what neighbors want most; they don't change the Risk Score.</p>
-  </details>
-  <p class="sources">Data: priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders. Pedestrian crashes come from SDOT's collision records. Votes, flag kits and neighbor activity are sample data.</p>
+  <main id="how-page" class="how" hidden>
+    <h2>How it works</h2>
+    <section>
+      <h3>Using the map</h3>
+      <p>Pinch or use two fingers to zoom and pan. Zoomed out, the map shows every corner in Seattle that needs a crosswalk, with the city's 25 riskiest numbered. Zoom in on a neighborhood and tap the chip at the bottom to open its page, where its corners are numbered by risk and existing crosswalks show in green. Tap any numbered pin to open that corner.</p>
+    </section>
+    <section id="how-risk">
+      <h3>How we rate risk</h3>
+      <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. <b>Highest risk</b> is 90–100, <b>Very risky</b> 70–89, <b>Somewhat risky</b> 50–69 and <b>Lower risk</b> below 50. The score comes from city data. <b>Crashes count most:</b> pedestrian crashes since 2016 at the corner or on the blocks next to it, weighted by how serious they were and how recent. Then <b>crossing conditions:</b> how many lanes people cross, how busy the street is, how far it is to the nearest marked crosswalk, and whether schools, transit or parks bring people across.</p>
+      <p>It's an estimate, not a measurement. The city doesn't count pedestrians at most corners, and crash records only include crashes reported to police, so a corner with no crashes on record can still be dangerous. Counting people who cross, and adding notes about near-misses, helps fill that gap. Votes show what neighbors want most; they don't change the Risk Score.</p>
+    </section>
+    <section>
+      <h3>SDOT priority</h3>
+      <p>SDOT gives every corner on its list its own score, which we call <b>SDOT priority</b> so it isn't confused with the Risk Score. Points come from places people walk to nearby (schools, parks, transit and busy blocks, up to 3 points each), safety (how dangerous the street is to cross, up to 16) and equity (up to 12 for neighborhoods SDOT's equity index flags as underserved). The highest score in Seattle is 37.</p>
+    </section>
+    <section>
+      <h3>Scheduled crosswalks</h3>
+      <p>A corner is <b>scheduled</b> once SDOT opens a work order for a crosswalk there. SDOT paints crosswalks in the dry months, about April to September, usually a few months or more after opening the work order. Some take a year or longer.</p>
+    </section>
+    <section>
+      <h3>Data</h3>
+      <p>Priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders. Pedestrian crashes come from SDOT's collision records. Neighborhood boundaries come from Seattle's Neighborhood Map Atlas. Votes, flag kits and neighbor activity are sample data.</p>
+    </section>
+  </main>
+
+  <footer class="site-foot"><a href="#how">How it works</a></footer>
 </div>
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793218060";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793218591";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -599,7 +623,7 @@ window.initGoogleMap = function () {
   let zoomTimer = null;
   gmap.addListener("zoom_changed", () => { clearTimeout(zoomTimer); zoomTimer = setTimeout(() => { if (!suppressIdle) onIdle(); }, 400); });
   mapReady = true;
-  if (D && view !== "corner") { renderLayer(); fitView(); }
+  if (D && !offMap()) { renderLayer(); fitView(); }
 };
 
 function inRing([x, y], ring) {
@@ -616,7 +640,7 @@ function hoodAt(lng, lat) {
 
 function onIdle() {
   if (suppressIdle) { suppressIdle = false; renderLayer(); return; }
-  if (!D || view === "corner") return;
+  if (!D || offMap()) return;
   const z = gmap.getZoom(), c = gmap.getCenter();
   let f;
   if (view === "city") f = z >= detailZoom() ? hoodAt(c.lng(), c.lat()) : null;
@@ -629,7 +653,7 @@ function onIdle() {
 let fitPending = false;
 new ResizeObserver(() => {
   const el = $("map");
-  if (fitPending && el.clientWidth > 0 && el.clientHeight > 0 && view !== "corner") { fitPending = false; fitView(); }
+  if (fitPending && el.clientWidth > 0 && el.clientHeight > 0 && !offMap()) { fitPending = false; fitView(); }
 }).observe($("map"));
 function fitView() {
   if (!mapReady) return;
@@ -715,12 +739,14 @@ function updateChip() {
 function setLegend(kind) {
   $("legend").innerHTML = kind === "city"
     ? `<span><i style="background:var(--need)"></i>Needs a crosswalk (numbers: Seattle's 25 most dangerous)</span><span class="hint">Zoom in to see your neighborhood</span>`
-    : `<span><i style="background:var(--need)"></i>Needs a crosswalk</span><span><i style="background:var(--ok)"></i>Crosswalk already there</span>`;
+    : `<span><i style="background:var(--need)"></i>Needs a crosswalk</span><span><i style="background:var(--ok)"></i>Existing crosswalk</span>`;
 }
 function panTo(c) { if (gmap) gmap.panTo({ lat: c.lat, lng: c.lng }); }
 
 // ---------- views ----------
 let view = null, curHood = null, selected = null, pendingSelect = null, pendingSection = null, hoodQuery = "";
+// Corner and How it works pages hide the map.
+const offMap = () => view === "corner" || view === "how";
 
 function setChrome({ sub, intro, crumbs, title }) {
   $("sign-sub").textContent = sub;
@@ -747,7 +773,7 @@ function statAction(act) {
 // City view
 function viewCity() {
   view = "city"; curHood = null; selected = null;
-  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = "";
+  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true;
   setChrome({ sub: "Seattle", title: "Seattle Crosswalk Watch", crumbs: [["Seattle", "#"]],
     intro: `Where Seattle most needs crosswalks and what the city is building. <strong>Find your neighborhood, vote for the corners that matter to you, and request a flag kit until the city builds them.</strong>` });
   const sched = D.marked.filter(scheduled).length;
@@ -825,7 +851,7 @@ function locRows(ms) {
 function viewHood(h) {
   const changed = view !== "hood" || curHood !== h;
   view = "hood"; curHood = h;
-  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = "";
+  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true;
   if (pendingSelect && BY_SLUG[pendingSelect] && HOODS[BY_SLUG[pendingSelect].h] === h) selected = BY_SLUG[pendingSelect];
   else if (changed || !selected || HOODS[selected.h] !== h) selected = [...h.corners].sort((a, b) => a.prio - b.prio)[0] || null;
   pendingSelect = null;
@@ -970,13 +996,20 @@ const emailStep = (id, m, label) => `<div class="mailline"><span>To: <b>${esc(m.
 
 function viewCorner(c) {
   view = "corner"; curHood = HOODS[c.h]; selected = c;
-  $("explore").hidden = true; $("corner-page").hidden = false;
+  $("explore").hidden = true; $("corner-page").hidden = false; $("how-page").hidden = true;
   setChrome({ sub: `${curHood.name} · Seattle`, title: `${titleCase(c.w)} · ${curHood.name} Crosswalk Watch`, intro: "",
     crumbs: [["Seattle", "#"], [curHood.name, "#n-" + curHood.id], [titleCase(c.w), "#c-" + c.s]] });
   renderCornerPage(c);
   // Jump, don't animate: the page was just drawn, and a long smooth scroll can stop short while content above loads.
   if (pendingSection) { const s = pendingSection; pendingSection = null; requestAnimationFrame(() => $("sec-" + s)?.scrollIntoView({ block: "start" })); }
   else window.scrollTo(0, 0);
+}
+// How it works: data notes and map tips, kept off the main pages.
+function viewHow(sec) {
+  view = "how"; curHood = null; selected = null;
+  $("explore").hidden = true; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = false;
+  setChrome({ sub: "Seattle", title: "How it works · Seattle Crosswalk Watch", intro: "", crumbs: [["Seattle", "#"], ["How it works", "#how"]] });
+  requestAnimationFrame(() => sec ? $(sec).scrollIntoView({ block: "start" }) : window.scrollTo(0, 0));
 }
 function renderCornerPage(c) {
   const el = $("corner-page"), h = HOODS[c.h];
@@ -1305,16 +1338,13 @@ function copyText(text, btn) {
 // ---------- routing ----------
 function route() {
   const h = decodeURIComponent(location.hash.slice(1));
-  if (h === "how-risk") {
-    // Open the explainer in place; stay on whatever view is showing.
-    const d = $("how-risk"); d.open = true; smooth(d);
-    if (view) return;
-  }
+  // "how" is the How it works page; "how-risk" opens it at the risk section.
+  if (h === "how" || h === "how-risk") return viewHow(h === "how-risk" ? "how-risk" : null);
   // "c-<slug>/city" opens a corner page at one of its sections (the flyer's QR code lands on the email to SDOT).
   const [slug, sec] = h.slice(2).split("/");
   if (h.startsWith("c-") && BY_SLUG[slug]) { if (sec) pendingSection = sec; return viewCorner(BY_SLUG[slug]); }
-  if (h.startsWith("n-") && HOOD_BY_ID[h.slice(2)]) { const wasCorner = view === "corner"; viewHood(HOOD_BY_ID[h.slice(2)]); if (wasCorner || !pendingSelect) window.scrollTo(0, 0); return; }
-  const wasCorner = view === "corner";
+  if (h.startsWith("n-") && HOOD_BY_ID[h.slice(2)]) { const wasCorner = view === "corner" || view === "how"; viewHood(HOOD_BY_ID[h.slice(2)]); if (wasCorner || !pendingSelect) window.scrollTo(0, 0); return; }
+  const wasCorner = view === "corner" || view === "how";
   viewCity();
   if (wasCorner) window.scrollTo(0, 0);
 }
@@ -1329,7 +1359,7 @@ fetch(DATA_URL).then(r => r.json()).then(data => {
   rankAll();
   window.addEventListener("hashchange", route);
   route();
-  if (mapReady && view !== "corner" && !markerEls.length) { renderLayer(); fitView(); }
+  if (mapReady && !offMap() && !markerEls.length) { renderLayer(); fitView(); }
 }).catch(() => { $("side").innerHTML = `<section class="panel"><p>The crosswalk data couldn't load. Refresh the page to try again.</p></section>`; });
 </script>
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI&callback=initGoogleMap&loading=async&v=weekly"></script>
