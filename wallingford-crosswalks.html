@@ -157,6 +157,8 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .kit h3 { font-size: 17px; }
 .kit ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: 13.5px; }
 .kit label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+.kit textarea { font: 400 14px/1.45 var(--f-body); padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg); color: var(--ink); max-width: 100%; resize: vertical; }
 .kit input[type=text], .kit input[type=email], .kit input[type=number] { font: 400 14px var(--f-body); padding: 8px 10px; border: 1px solid var(--line);
   border-radius: 6px; background: var(--bg); color: var(--ink); max-width: 100%; }
 .kit .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 400; }
@@ -481,16 +483,48 @@ function renderDetail() {
     <div class="actions">
       ${p.planned ? "" : `<button class="act primary" id="b-kit" type="button">${adopted ? "Flag kit requested ✓" : "Request a flag kit"}</button>`}
       <button class="act${p.planned ? " primary" : ""}" id="b-vote" type="button">${voted ? "Voted ✓" : "Vote for this corner"}</button>
-      <button class="act" id="b-miss" type="button">Report a near-miss</button>
       <a class="act" href="${streetView(p)}" target="_blank" rel="noopener">Look around in Street View ↗</a>
     </div>
     <div class="toast" id="toast"></div>
     ${streetViewEmbed(p)}
     <div id="kit"></div>`;
-  document.getElementById("b-vote").onclick = () => { state["v:" + p.where] = !voted; save(); refresh(voted ? "Vote removed." : "Vote counted. This corner moves up as neighbors vote."); };
+  document.getElementById("b-vote").onclick = () => {
+    state["v:" + p.where] = !voted;
+    if (voted) delete state["c:" + p.where];
+    save();
+    refresh(voted ? "Vote removed." : "");
+    if (!voted) showComment(p);
+  };
   const kitBtn = document.getElementById("b-kit");
   if (kitBtn) kitBtn.onclick = () => adopted ? showKitDone(p) : showKitForm(p);
-  document.getElementById("b-miss").onclick = () => { document.getElementById("toast").textContent = "Near-miss logged. Reports like this fill the gap in the city's crash data."; };
+  if (voted && state["c:" + p.where]) {
+    document.getElementById("toast").textContent = `Your note: "${state["c:" + p.where]}"`;
+  }
+}
+
+function showComment(p) {
+  const el = document.getElementById("kit");
+  el.innerHTML = `
+    <form class="kit" id="c-form" novalidate>
+      <h3>Vote counted. Want to say why?</h3>
+      <label for="c-text">What happens at this corner? <span style="font-weight:400;color:var(--muted)">Optional</span>
+        <textarea id="c-text" rows="3" maxlength="400" placeholder="A car didn't stop while my kid was crossing to Hamilton last Tuesday morning."></textarea>
+      </label>
+      <div class="sub">Near-misses, who crosses here, and what time of day are the most useful. Notes go into the neighborhood's request to SDOT, without your name.</div>
+      <div class="actions" style="margin-top:0">
+        <button class="act primary" type="submit" id="c-submit">Add note</button>
+        <button class="act" type="button" id="c-skip">Skip</button>
+      </div>
+    </form>`;
+  document.getElementById("c-skip").onclick = () => { el.innerHTML = ""; document.getElementById("toast").textContent = "Vote counted. This corner moves up as neighbors vote."; };
+  document.getElementById("c-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const text = document.getElementById("c-text").value.trim();
+    if (text) { state["c:" + p.where] = text; save(); }
+    el.innerHTML = "";
+    document.getElementById("toast").textContent = text ? "Thanks. Your vote and note are in." : "Vote counted. This corner moves up as neighbors vote.";
+  });
+  document.getElementById("c-text").focus();
 }
 
 function showKitForm(p) {
