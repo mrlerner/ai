@@ -158,8 +158,8 @@ a.cta-btn { display: block; text-align: center; text-decoration: none; }
 .sec-body h2 { font-size: 22px; margin-bottom: 4px; }
 .sec-body h3 { font-size: 16px; margin: 18px 0 6px; }
 .lead { margin: 0 0 12px; color: var(--muted); max-width: 62ch; }
-.product { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px; border: 2px solid var(--diy); border-radius: 12px; padding: 14px; }
-.product-img svg { width: 100%; height: auto; display: block; }
+.product { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px; border: 2px solid var(--diy); border-radius: 12px; padding: 14px; }
+.product-img img { width: 100%; height: auto; display: block; border-radius: 10px; background: #fff; }
 .p-name { font: 800 19px var(--f-display); }
 .p-price { font: 800 22px var(--f-display); color: var(--diy); margin: 2px 0 6px; }
 .p-price span { font: 400 13px var(--f-body); color: var(--muted); }
@@ -199,7 +199,7 @@ label.inline input { width: 90px; font: 400 14px var(--f-body); padding: 6px 8px
 .opt { font-weight: 400; color: var(--muted); }
 @media (max-width: 600px) {
   .product { grid-template-columns: minmax(0, 1fr); }
-  .product-img { max-width: 220px; }
+  .product-img { max-width: 320px; }
   .cp-sec { grid-template-columns: minmax(0, 1fr); padding: 16px; }
   .sec-n { width: 34px; height: 34px; font-size: 17px; line-height: 34px; }
   .tiles { grid-template-columns: minmax(0, 1fr); }
@@ -735,7 +735,7 @@ const NOTES = [
   "Drivers stop for me maybe half the time.",
 ];
 const notesFor = p => { let h = 0; for (const c of p.where) h = (h * 31 + c.charCodeAt(0)) >>> 0; return [0, 1, 2].map(i => NOTES[(h + i * 3) % NOTES.length]); };
-const KIT_PRICE = 34, SIGNS_PRICE = 18, FLAGS_PRICE = 12;
+const KIT_PRICE = 49, SIGNS_PRICE = 18, FLAGS_PRICE = 12;
 
 function emailText(p) {
   const gap = p.gap_m_to_marked_xwalk ? `about ${p.gap_m_to_marked_xwalk} meters away` : "not on either street nearby";
@@ -839,30 +839,18 @@ function renderCornerPage(p) {
         <h2>Put up crosswalk flags this week</h2>
         <p class="lead">Washington law already treats every corner as a crosswalk, so drivers must stop for people crossing here. Flags make people easy to see while the city decides on paint.</p>
         <div class="product">
-          <div class="product-img" aria-hidden="true">
-            <svg viewBox="0 0 160 140"><rect x="0" y="0" width="160" height="140" rx="12" fill="var(--bg)"/>
-              <rect x="34" y="18" width="5" height="112" rx="2" fill="#8b928d"/>
-              <rect x="22" y="70" width="30" height="34" rx="4" fill="#2f3a34"/>
-              <rect x="26" y="66" width="22" height="6" rx="2" fill="#444f49"/>
-              <g><rect x="28" y="30" width="3" height="44" fill="#d9d2c3"/><path d="M31 30 h26 v20 h-26z" fill="#ff7a1a"/></g>
-              <g><rect x="38" y="36" width="3" height="38" fill="#d9d2c3"/><path d="M41 36 h24 v18 h-24z" fill="#ff8f33"/></g>
-              <rect x="88" y="34" width="54" height="72" rx="6" fill="#fff" stroke="#c9cfc9"/>
-              <text x="115" y="50" font-size="7" font-family="Overpass, sans-serif" font-weight="800" text-anchor="middle" fill="#1f5f3a">TAKE A FLAG</text>
-              <text x="115" y="59" font-size="6" font-family="Overpass, sans-serif" text-anchor="middle" fill="#1d2320">cross, leave it</text>
-              <g fill="#1d2320"><rect x="101" y="66" width="8" height="8"/><rect x="121" y="66" width="8" height="8"/><rect x="101" y="86" width="8" height="8"/><rect x="112" y="77" width="4" height="4"/><rect x="118" y="83" width="4" height="4"/><rect x="124" y="89" width="5" height="5"/><rect x="112" y="68" width="3" height="3"/><rect x="104" y="79" width="3" height="3"/></g>
-            </svg>
-          </div>
+          <div class="product-img"><img src="wallingford-crosswalks-kit.jpg" alt="Steel crosswalk flag box with a QR sign, five reflective orange flags, hose clamps and mounting brackets" loading="lazy"></div>
           <div class="product-info">
             <div class="p-name">Crosswalk Watch Flag Kit</div>
             <div class="p-price">$${KIT_PRICE} <span>· free pickup in Wallingford or $6 delivery</span></div>
             <ul>
-              <li>2 weatherproof flag holders with zip ties, one for each side of the street</li>
-              <li>12 fluorescent orange flags, 12 × 12 in (Seattle asks for at least 10 × 10)</li>
-              <li>2 signs: "Take a flag, cross, leave it on the other side," each with this corner's QR code</li>
+              <li>2 steel flag boxes, one for each side of the street, each with a "Take · Cross · Return" sign and this corner's QR code</li>
+              <li>10 fluorescent orange flags with reflective stripes, 12 × 12 in (Seattle asks for at least 10 × 10)</li>
+              <li>Stainless hose clamps and brackets that fit any sign pole. No drilling, and they come off cleanly.</li>
               <li>Install guide and a card for counting people who cross</li>
             </ul>
             <label class="check" for="add-signs"><input type="checkbox" id="add-signs" checked> Add 4 yard signs for neighbors: "WA law: stop for people at every corner" <b>+$${SIGNS_PRICE}</b></label>
-            <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 12 spare flags <b>+$${FLAGS_PRICE}</b></label>
+            <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 5 spare flags <b>+$${FLAGS_PRICE}</b></label>
             ${ordered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn kit wide" type="button" id="order">Order kit · $${KIT_PRICE + SIGNS_PRICE}</button>`}
           </div>
         </div>
@@ -987,8 +975,8 @@ function showOrderForm(p, total) {
         <h3>Order CW-${1040 + p.prio} placed</h3>
         <div class="next">
           <div><b>In 3–5 days:</b> your kit is ready, and we'll email you the pickup or delivery details.</div>
-          <div><b>Install:</b> zip-tie one holder to a sign pole on each side of the street, within 5 feet of where people cross. Don't cover any signs.${k.party ? " We'll send a flyer to invite neighbors." : ""}</div>
-          <div><b>Activate:</b> scan the QR code on each sign once. It links the flags to this page.</div>
+          <div><b>Install:</b> clamp one flag box to a sign pole on each side of the street, within 5 feet of where people cross. Don't cover any signs.${k.party ? " We'll send a flyer to invite neighbors." : ""}</div>
+          <div><b>Activate:</b> scan the QR code on each box once. It links the flags to this page.</div>
           <div><b>Then:</b> ${k.adopt ? "a restock reminder every two weeks. " : ""}Start step 1 below to send the city your request.</div>
         </div>
       </div>`;
