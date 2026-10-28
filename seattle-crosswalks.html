@@ -373,7 +373,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793206185";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793206361";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -488,6 +488,9 @@ window.initGoogleMap = function () {
   chip.addEventListener("click", () => { keepView = true; });
   $("map").appendChild(chip);
   gmap.addListener("idle", onIdle);
+  // Backup for "idle", which doesn't always fire after a zoom (for example in a background tab).
+  let zoomTimer = null;
+  gmap.addListener("zoom_changed", () => { clearTimeout(zoomTimer); zoomTimer = setTimeout(() => { if (!suppressIdle) onIdle(); }, 400); });
   mapReady = true;
   if (D && view !== "corner") { renderLayer(); fitView(); }
 };
