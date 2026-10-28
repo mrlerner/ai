@@ -194,7 +194,6 @@ button.mark { justify-self: start; }
 .product-img img { width: 100%; height: auto; display: block; border-radius: 10px; background: #fff; }
 .p-name { font: 800 19px var(--f-display); }
 .p-price { font: 800 22px var(--f-display); color: var(--diy); margin: 2px 0 6px; }
-.p-price span { font: 400 15px var(--f-body); color: var(--muted); }
 .product ul, .more, .mini { margin: 0 0 8px; padding-left: 18px; display: grid; gap: 4px; font-size: 16px; }
 .product .check { display: flex; gap: 8px; align-items: flex-start; font-size: 16px; margin-top: 6px; }
 .product .check input { margin-top: 4px; }
@@ -464,7 +463,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793224700";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793225679";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -1172,7 +1171,7 @@ function renderCornerPage(c) {
           <div class="product-img"><img src="seattle-crosswalks-kit.jpg" alt="Steel crosswalk flag box with a QR sign, five reflective orange flags, hose clamps and mounting brackets" loading="lazy"></div>
           <div class="product-info">
             <div class="p-name">Crosswalk Watch Flag Kit</div>
-            <div class="p-price">${money(KIT_PRICE)} <span>· free pickup in ${esc(h.name)} or $6 delivery</span></div>
+            <div class="p-price">${money(KIT_PRICE)}</div>
             <ul>
               <li>2 steel flag boxes, one for each side of the street, each with a "Take · Cross · Return" sign and this corner's QR code</li>
               <li>10 fluorescent orange flags with reflective stripes, 12 × 12 in (Seattle asks for at least 10 × 10)</li>
@@ -1204,7 +1203,6 @@ function renderCornerPage(c) {
         <div class="actions">${signsOrdered(c) ? `<span class="ordered">Yard signs ordered ✓</span> <button class="act small" type="button" data-up="su">${state["su:" + c.s] ? "Signs are up ✓ (tap to undo)" : "Mark signs as up"}</button>`
           : kitOrdered ? `<button class="act" type="button" id="order-signs">Add 4 yard signs to your order · +${money(SIGNS_PRICE)}</button>`
           : `<button class="cta-btn flag" type="button" id="order-signs-only">Order 4 yard signs · ${money(SIGNS_PRICE)}</button>`}</div>
-        <div id="signs-form"></div>
         <h3>More you can do</h3>
         <ul class="more">
           <li><b>Trim bushes</b> that block the view of people waiting to cross.</li>
@@ -1305,8 +1303,7 @@ function renderCornerPage(c) {
     state.email = v; state["v:" + c.s] = true; save(); rankAll(); renderCornerPage(c); showNoteForm(c); });
   const unvote = $("unvote");
   if (unvote) unvote.onclick = () => { delete state["v:" + c.s]; delete state["c:" + c.s]; save(); rankAll(); renderCornerPage(c); };
-  // The Order kit button does nothing for now: ordering will happen on a separate site.
-  const signsOnly = $("order-signs-only"); if (signsOnly) signsOnly.onclick = () => showSignsForm(c);
+  // The Order kit and Order yard signs buttons do nothing for now: ordering will happen on a separate site.
   const orderSigns = $("order-signs"); if (orderSigns) orderSigns.onclick = () => { state["ys:" + c.s] = true; save(); renderCornerPage(c); $("sec-signs").scrollIntoView({ block: "start" }); };
   el.querySelectorAll("button[data-up]").forEach(b => b.addEventListener("click", () => {
     const k = b.dataset.up + ":" + c.s; if (state[k]) delete state[k]; else state[k] = true;
@@ -1366,37 +1363,6 @@ function showOrderForm(c, total) {
     $("order-form").scrollIntoView({ block: "start" });
   });
   $("kit-name").focus();
-}
-function showSignsForm(c) {
-  $("signs-form").innerHTML = `
-    <form class="kit" id="signs-order" novalidate>
-      <h3>4 yard signs for ${titleCase(c.w)} · ${money(SIGNS_PRICE)}</h3>
-      <div class="two">
-        <label for="ys-name">Your name<input type="text" id="ys-name" autocomplete="name"></label>
-        <label for="ys-email">Email<input type="email" id="ys-email" autocomplete="email"></label>
-      </div>
-      <fieldset class="radio"><legend>Get your signs</legend>
-        <label class="check" for="ys-pick-up"><input type="radio" name="ys-get" id="ys-pick-up" checked> Free pickup in ${esc(HOODS[c.h].name)}</label>
-        <label class="check" for="ys-deliver"><input type="radio" name="ys-get" id="ys-deliver"> Deliver to my door (+$6)</label>
-      </fieldset>
-      <div class="err" id="ys-err"></div>
-      <button class="cta-btn flag wide" type="submit">Place order</button>
-    </form>`;
-  const form = $("signs-order");
-  form.addEventListener("input", () => { $("ys-err").textContent = ""; });
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    const name = $("ys-name").value.trim(), email = $("ys-email").value.trim();
-    if (!name) { $("ys-err").textContent = "Add your name for the order."; return; }
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $("ys-err").textContent = "Add an email address for your order confirmation."; return; }
-    state["ys:" + c.s] = true;
-    save(); renderCornerPage(c);
-    $("signs-form").innerHTML = `<div class="kit confirm"><h3>Yard signs ordered</h3><div class="next">
-      <div><b>In 3–5 days:</b> your signs are ready, and we'll email you the pickup or delivery details.</div>
-      <div><b>Place them:</b> in yards 50–100 feet before the corner, one facing each direction of traffic. Ask neighbors first.</div></div></div>`;
-    $("signs-form").scrollIntoView({ block: "start" });
-  });
-  $("ys-name").focus();
 }
 function showNoteForm(c) {
   $("note-area").innerHTML = `
