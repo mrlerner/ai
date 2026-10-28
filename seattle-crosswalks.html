@@ -393,7 +393,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793211113";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793211277";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -560,8 +560,15 @@ function onIdle() {
   if (idx !== mapFocus || idx != null) { mapFocus = idx; renderLayer(); }
 }
 
+// If the map had no size when it was fitted (hidden tab or panel), fit again once it does.
+let fitPending = false;
+new ResizeObserver(() => {
+  const el = $("map");
+  if (fitPending && el.clientWidth > 0 && el.clientHeight > 0 && view !== "corner") { fitPending = false; fitView(); }
+}).observe($("map"));
 function fitView() {
   if (!mapReady) return;
+  if (!$("map").clientWidth || !$("map").clientHeight) { fitPending = true; return; }
   suppressIdle = true;
   if (view === "hood") {
     const b = curHood.bbox;
