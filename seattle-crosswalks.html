@@ -464,7 +464,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793224506";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793224700";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -476,7 +476,7 @@ const titleCase = s => s.toLowerCase().replace(/\b(ne|n|nw|se|sw|s|e|w)\b/g, m =
 const fmt = n => n.toLocaleString("en-US");
 const hash = s => { let h = 0; for (const ch of s) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return h; };
 const money = n => "$" + n.toFixed(2);
-const KIT_PRICE = 34.99, SIGNS_PRICE = 17.99, FLAGS_PRICE = 11.99;
+const KIT_PRICE = 34.99, SIGNS_PRICE = 17.99;
 const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const smooth = el => el && el.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
 
@@ -567,7 +567,6 @@ function plannedLine(c) {
   const proj = pi != null && pi >= 0 ? D.projects[pi] : "an SDOT project";
   return { project: proj, text: stt === "in_progress" ? "Scheduled · work underway" : stt === "finishing" ? "Scheduled · finishing up" : "Planned · not yet scheduled" };
 }
-const planNote = c => c.pl && !isScheduled(c) ? `In SDOT's plans since ${c.pl[2] || "an earlier year"}, no work order yet` : "";
 // Rare enough to call out at the top of the corner page.
 function schedAlert(c) {
   if (!isScheduled(c)) return "";
@@ -586,14 +585,17 @@ function waitLabel(c) {
   if (m <= 2) return "About a year";
   if (m <= 10) return `About ${Math.round(m)} years`;
   if (m <= 20) return "10+ years";
-  return "Unlikely at today's pace";
+  return "Unlikely unless neighbors push for it";
 }
+// The odds behind waitLabel in plain numbers: m[1] is the chance SDOT plans or builds a crosswalk within 5 years at a
+// corner with this SDOT priority, 3–13% at today's pace.
+const oddsLine = c => `At SDOT's current pace, about 1 in ${Math.round(1 / c.m[1])} corners with an SDOT priority like this one's gets a crosswalk planned or built within 5 years.`;
 const bar = (label, v, max) => `<div class="bar"><span>${label}</span> <b>${v}/${max}</b><div><i style="width:${Math.round(100 * Math.min(v, max) / max)}%"></i></div></div>`;
 const bars = c => `${bar("School", c.sch, 3)}${bar("Park", c.pk, 3)}${bar("Transit", c.tr, 3)}${bar("Land use", c.lu, 3)}${bar("Safety", c.sf, 16)}${bar("Equity", c.eq, 12)}`;
 // SDOT priority (SDOT's own score, called "priority" so it isn't confused with our Risk Score) with an info button
 // that opens a short explainer underneath.
-const sdotScore = (c, id) => `<div class="score-line">SDOT priority <b>${c.t}</b> of 37 <button class="info-btn" type="button" aria-expanded="false" aria-controls="${id}" aria-label="What is SDOT priority?">i</button></div>
-  <div class="info-pop" id="${id}" hidden>SDOT scores every corner on its list of places that need a better crossing. Points come from three things:
+const sdotScore = (c, id, lead = "") => `<div class="score-line">SDOT priority <b>${c.t}</b> of 37 <button class="info-btn" type="button" aria-expanded="false" aria-controls="${id}" aria-label="What is SDOT priority?">i</button></div>
+  <div class="info-pop" id="${id}" hidden>${lead ? lead + " " : ""}SDOT scores every corner on its list of places that need a better crossing. Points come from three things:
     <b>places people walk to</b> nearby (schools, parks, transit and busy blocks, up to 3 points each), <b>safety</b> (how dangerous the street is to cross, up to 16) and
     <b>equity</b> (up to 12 for neighborhoods SDOT's equity index flags as underserved). The highest score in Seattle is 37. A higher score means SDOT sees a bigger need,
     but it's separate from our Risk Score, which counts crashes most.</div>
@@ -938,7 +940,9 @@ function renderPins() {
   });
 }
 function sdotStatus(c) {
-  const sub = xwScheduled(c) ? esc(plannedLine(c).project) : c.sw ? `${schedWhat(c)} · work order opened ${c.sw[1]}` : planNote(c);
+  if (!isScheduled(c)) return c.pl ? `<div><b>In SDOT's plans</b></div><div class="sub">Since ${c.pl[2] || "an earlier year"}, no work order yet</div>`
+    : `<div><b>${waitLabel(c)}</b></div>`;
+  const sub = xwScheduled(c) ? esc(plannedLine(c).project) : `${schedWhat(c)} · work order opened ${c.sw[1]}`;
   return `${isScheduled(c) ? `<span class="chip plan">Scheduled</span>` : ""}${sub ? `<div class="sub">${sub}</div>` : ""}`;
 }
 
@@ -956,7 +960,7 @@ function renderHoodSide() {
       <div class="rows">
         <div class="row"><span>Risk Score</span><div>${riskScoreLine(c)}</div></div>
         <div class="row"><span>Votes</span><div><b>${votesOf(c)}</b> ${votesOf(c) === 1 ? "neighbor wants" : "neighbors want"} this</div></div>
-        <div class="row"><span>SDOT status</span><div>${sdotStatus(c)}${sdotScore(c, "info-" + c.s)}</div></div>
+        <div class="row"><span>SDOT status</span><div>${sdotStatus(c)}${sdotScore(c, "info-" + c.s, isScheduled(c) || c.pl ? "" : oddsLine(c))}</div></div>
       </div>
       ${streetViewEmbed(c)}
     </section>` : `<section class="panel"><p class="sub">SDOT's priority list has no corners in ${esc(h.name)}. Pick another neighborhood from the <a href="#">Seattle page</a>.</p></section>`}
@@ -1175,8 +1179,6 @@ function renderCornerPage(c) {
               <li>Stainless hose clamps and brackets that fit any sign pole. No drilling, and they come off cleanly.</li>
               <li>Install guide and a card for counting people who cross</li>
             </ul>
-            <label class="check" for="add-signs"><input type="checkbox" id="add-signs"> <span>Add 4 reflective yard signs for neighbors' yards <a href="#sec-signs" data-jump-to="sec-signs">(see the sign)</a> <b>+${money(SIGNS_PRICE)}</b></span></label>
-            <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 5 spare flags <b>+${money(FLAGS_PRICE)}</b></label>
             ${kitOrdered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>
             <button class="act small" type="button" data-up="fu">${state["fu:" + c.s] ? "Flags are up ✓ (tap to undo)" : "Mark flags as up"}</button>` : `<button class="cta-btn flag wide" type="button" id="order">Order kit · ${money(KIT_PRICE)}</button>`}
           </div>
@@ -1269,7 +1271,7 @@ function renderCornerPage(c) {
         ${xwScheduled(c) ? `<div class="estimate plan"><div class="wait-label">Expected</div><div class="big">${paintEstimate(c.pl[2])?.label || "Scheduled"}</div><p>${paintWhy(c)}</p></div>`
           : scheduledHere ? `<div class="estimate plan"><div class="wait-label">Scheduled</div><div class="big">${schedWhat(c)}</div><p>SDOT opened a work order ${signalWorkText(c)} here in ${c.sw[1]}. The work order doesn't give a completion date, so it's worth asking SDOT for one.</p></div>` : `
         <div class="estimate">
-          <div class="wait-label">Estimated wait</div>
+          <div class="wait-label">${c.m[3] > 20 ? "Will SDOT build it?" : "Estimated wait"}</div>
           <div class="big need">${waitLabel(c)}</div>
           <h3 class="why-h">Why</h3>
           <div class="odds">
@@ -1303,8 +1305,6 @@ function renderCornerPage(c) {
     state.email = v; state["v:" + c.s] = true; save(); rankAll(); renderCornerPage(c); showNoteForm(c); });
   const unvote = $("unvote");
   if (unvote) unvote.onclick = () => { delete state["v:" + c.s]; delete state["c:" + c.s]; save(); rankAll(); renderCornerPage(c); };
-  const total = () => KIT_PRICE + ($("add-signs").checked ? SIGNS_PRICE : 0) + ($("add-flags").checked ? FLAGS_PRICE : 0);
-  ["add-signs", "add-flags"].forEach(id => $(id).addEventListener("change", () => { const b = $("order"); if (b) b.textContent = `Order kit · ${money(total())}`; }));
   // The Order kit button does nothing for now: ordering will happen on a separate site.
   const signsOnly = $("order-signs-only"); if (signsOnly) signsOnly.onclick = () => showSignsForm(c);
   const orderSigns = $("order-signs"); if (orderSigns) orderSigns.onclick = () => { state["ys:" + c.s] = true; save(); renderCornerPage(c); $("sec-signs").scrollIntoView({ block: "start" }); };
@@ -1356,7 +1356,6 @@ function showOrderForm(c, total) {
     if (!name) { $("kit-err").textContent = "Add your name so neighbors know who's organizing."; return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $("kit-err").textContent = "Add an email address for your order confirmation."; return; }
     state["a:" + c.s] = true; state["k:" + c.s] = { party: $("kit-party").checked, adopt: $("kit-adopt").checked };
-    if ($("add-signs").checked) state["ys:" + c.s] = true;
     save(); renderCornerPage(c);
     const k = state["k:" + c.s];
     $("order-form").innerHTML = `<div class="kit confirm"><h3>Order CW-${1000 + c.cityPrio} placed</h3><div class="next">
