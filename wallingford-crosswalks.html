@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Where Wallingford most needs crosswalks, what the city is building, and which corners neighbors are covering with DIY flag kits.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Wallingford Crosswalk Watch</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&family=Public+Sans:wght@400;500;600&family=Overpass+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: street-sign header, map left (sticky on desktop), ranked corner list right; stacks on phones. */
+:root {
+  --bg: #f4f5f1;
+  --panel: #ffffff;
+  --ink: #1d2320;
+  --muted: #5d6660;
+  --line: #d9ddd6;
+  --need: #c8261d;
+  --need-soft: #fbe6e3;
+  --ok: #1f7a43;
+  --ok-soft: #e1f1e6;
+  --plan: #b26a00;
+  --plan-soft: #fbefd9;
+  --diy: #e8590c;
+  --sign: #1f5f3a;
+  --sign-ink: #ffffff;
+  --example: #6b5bb0;
+  --example-soft: #ece9f8;
+  --f-display: "Overpass", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-data: "Overpass Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151917; --panel: #1e2421; --ink: #e9ece7; --muted: #a3ada6; --line: #333b36;
+    --need: #ff6b5e; --need-soft: #3a1d1a; --ok: #5cc98a; --ok-soft: #173123;
+    --plan: #f0a93b; --plan-soft: #3a2c12; --diy: #ff8a4c; --sign: #2b7a4d; --sign-ink: #ffffff;
+    --example: #b3a6ff; --example-soft: #2a2545; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151917; --panel: #1e2421; --ink: #e9ece7; --muted: #a3ada6; --line: #333b36;
+  --need: #ff6b5e; --need-soft: #3a1d1a; --ok: #5cc98a; --ok-soft: #173123;
+  --plan: #f0a93b; --plan-soft: #3a2c12; --diy: #ff8a4c; --sign: #2b7a4d; --sign-ink: #ffffff;
+  --example: #b3a6ff; --example-soft: #2a2545; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--f-body); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 20px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+.sign { display: inline-flex; flex-direction: column; gap: 2px; background: var(--sign); color: var(--sign-ink);
+  border: 3px solid var(--sign-ink); outline: 3px solid var(--sign); border-radius: 8px; padding: 10px 16px 8px; }
+.sign h1 { font-size: clamp(26px, 4.4vw, 40px); font-weight: 800; letter-spacing: .01em; line-height: 1.05; }
+.sign small { font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
+.intro { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 24px; align-items: center; margin-bottom: 20px; }
+.intro p { margin: 0; max-width: 62ch; color: var(--muted); }
+.intro p strong { color: var(--ink); }
+.proto { margin: 0 0 14px; font-size: 13.5px; color: var(--ink); background: var(--example-soft); border-radius: 8px; padding: 8px 12px; }
+.proto b { color: var(--example); }
+.sv { margin-top: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16 / 10; max-width: 100%; background: var(--bg); }
+.sv iframe { width: 100%; height: 100%; border: 0; display: block; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.stat b { display: block; font: 800 26px/1.1 var(--f-display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); }
+.stat.need b { color: var(--need); } .stat.plan b { color: var(--plan); } .stat.diy b { color: var(--diy); } .stat.ok b { color: var(--ok); }
+.ex { display: inline-block; font: 600 10.5px/1 var(--f-data); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--example); background: var(--example-soft); border-radius: 4px; padding: 3px 5px; vertical-align: 2px; }
+.main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.mapcol { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.map { position: relative; width: 100%; aspect-ratio: var(--ar); max-width: 100%; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--line); background: #e8e4dc; }
+.map img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; filter: saturate(.55) contrast(.95); }
+.map svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.pin, .chk { position: absolute; transform: translate(-50%, -50%); }
+.chk { width: 13px; height: 13px; border-radius: 50%; background: var(--ok); border: 1.5px solid #fff; display: grid; place-items: center; }
+.chk svg { position: static; width: 8px; height: 8px; }
+.chk.planned { background: var(--plan); }
+.pin { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; background: var(--need); color: #fff;
+  font: 800 13px/1 var(--f-display); display: grid; place-items: center; cursor: pointer; padding: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.35); font-variant-numeric: tabular-nums; z-index: 2; }
+.pin.planned { background: var(--plan); }
+.pin.diy::after { content: ""; position: absolute; right: -7px; top: -9px; width: 10px; height: 8px; background: var(--diy);
+  clip-path: polygon(0 0, 100% 50%, 0 100%); border-left: 2px solid #fff; }
+.pin:focus-visible, .pin.on { outline: 3px solid var(--ink); outline-offset: 2px; z-index: 3; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
+.attrib { font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+.detail { padding: 16px 18px; margin-bottom: 16px; }
+.detail .eyebrow { font: 600 12px/1 var(--f-data); color: var(--need); letter-spacing: .06em; text-transform: uppercase; }
+.detail h2 { font-size: 24px; margin: 6px 0 2px; }
+.detail .sub { color: var(--muted); font-size: 13.5px; }
+.rows { display: grid; gap: 12px; margin-top: 14px; }
+.row { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 10px; align-items: start; }
+.row > span:first-child { font: 600 12px/1.5 var(--f-display); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-top: 2px; }
+.chip { display: inline-block; font-weight: 600; font-size: 13px; border-radius: 999px; padding: 2px 10px; }
+.chip.need { background: var(--need-soft); color: var(--need); } .chip.plan { background: var(--plan-soft); color: var(--plan); }
+.chip.ok { background: var(--ok-soft); color: var(--ok); } .chip.diy { background: var(--need-soft); color: var(--diy); }
+.bars { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 6px; }
+.bar { font-size: 11px; color: var(--muted); }
+.bar div { height: 6px; border-radius: 3px; background: var(--line); margin-top: 3px; overflow: hidden; }
+.bar div i { display: block; height: 100%; background: var(--sign); }
+.timeline { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.step { font-size: 12.5px; border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; color: var(--muted); }
+.step.done { border-color: var(--ok); color: var(--ok); }
+.step.now { border-color: var(--plan); color: var(--plan); font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+button.act { font: 600 14px/1 var(--f-display); border-radius: 8px; padding: 10px 14px; cursor: pointer; border: 1.5px solid var(--ink);
+  background: transparent; color: var(--ink); }
+button.act.primary { background: var(--need); border-color: var(--need); color: #fff; }
+a.act { font: 600 14px/1 var(--f-display); border-radius: 8px; padding: 10px 14px; border: 1.5px solid var(--line); color: var(--ink); text-decoration: none; }
+a.act:hover { border-color: var(--ink); }
+a.act:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
+button.act:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
+.toast { min-height: 20px; font-size: 13px; color: var(--ok); margin-top: 8px; }
+.list { overflow: hidden; }
+.list h3 { font-size: 15px; padding: 14px 18px 10px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.list h3 span { font: 400 12.5px var(--f-body); color: var(--muted); }
+.item { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 18px;
+  border-bottom: 1px solid var(--line); cursor: pointer; background: transparent; width: 100%; text-align: left; color: inherit; font: inherit; border-left: 0; border-right: 0; border-top: 0; }
+.item:last-child { border-bottom: 0; }
+.item:hover, .item.on { background: var(--need-soft); }
+.item:focus-visible { outline: 3px solid var(--plan); outline-offset: -3px; }
+.num { width: 26px; height: 26px; border-radius: 50%; background: var(--need); color: #fff; font: 800 12.5px/26px var(--f-display); text-align: center; font-variant-numeric: tabular-nums; }
+.num.planned { background: var(--plan); }
+.item .name { font-weight: 600; font-size: 14px; }
+.item .meta { font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.votes { font: 600 13px var(--f-data); color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+.votes small { display: block; font: 400 11px var(--f-body); color: var(--muted); }
+.feed { padding: 14px 18px; margin-top: 16px; }
+.feed h3 { font-size: 15px; margin-bottom: 8px; }
+.feed ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.feed li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; font-size: 13.5px; }
+.feed time { font: 400 12px var(--f-data); color: var(--muted); padding-top: 2px; }
+.feed .who { font-weight: 600; }
+.feed .who.city { color: var(--plan); } .feed .who.n { color: var(--ok); }
+button.chk { cursor: pointer; padding: 0; }
+/* Bigger invisible tap targets for fingers, without changing how markers look. */
+.chk::before { content: ""; position: absolute; inset: -7px; }
+.pin::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; }
+button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.progress { padding: 14px 18px; margin-bottom: 16px; }
+.progress h3 { font-size: 15px; margin-bottom: 8px; }
+.progress ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.progress li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 13.5px; }
+.progress li b.n { font: 800 20px/1.1 var(--f-display); color: var(--plan); text-align: right; font-variant-numeric: tabular-nums; }
+.progress li .st { display: block; color: var(--muted); font-size: 12.5px; }
+.kit { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 12px; }
+.kit h3 { font-size: 17px; }
+.kit ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: 13.5px; }
+.kit label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+.kit input[type=text], .kit input[type=email], .kit input[type=number] { font: 400 14px var(--f-body); padding: 8px 10px; border: 1px solid var(--line);
+  border-radius: 6px; background: var(--bg); color: var(--ink); max-width: 100%; }
+.kit .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 400; }
+.kit .check input { margin-top: 3px; }
+.kit .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.kit .err { color: var(--need); font-size: 13px; min-height: 18px; }
+.kit .next { display: grid; gap: 6px; font-size: 13.5px; }
+.kit .next div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+@media (max-width: 460px) { .kit .two { grid-template-columns: minmax(0, 1fr); } }
+.sources { font-size: 12.5px; color: var(--muted); margin-top: 22px; max-width: 90ch; }
+.sources a { color: inherit; }
+@media (max-width: 900px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .mapcol { position: static; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}
+@media (max-width: 460px) {
+  .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .bars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pin { width: 22px; height: 22px; font-size: 11px; }
+  .chk { width: 10px; height: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) { .pin { transition: transform .15s; } .pin:hover { transform: translate(-50%, -50%) scale(1.12); } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="intro">
+    <div class="sign"><small>Wallingford · Seattle</small><h1>Crosswalk Watch</h1></div>
+    <p>Where Wallingford most needs a safe crossing, what the city is doing about it, and which corners neighbors are covering in the meantime. <strong>Vote for the corners that matter to you, or adopt one and keep its crossing flags stocked until the city builds it.</strong></p>
+  </header>
+
+  <p class="proto"><b>Prototype.</b> Corners, scores, crosswalks and city schedules are real Seattle data. Votes, flag kits, requests and neighbor activity are examples showing how the site would work. Buttons don't send anything yet.</p>
+
+  <section class="stats" aria-label="Summary">
+    <div class="stat need"><b id="s-need">20</b><span>corners that need a crossing</span></div>
+    <div class="stat plan"><b id="s-plan">0</b><span>new crosswalks scheduled by the city</span></div>
+    <div class="stat ok"><b id="s-ok">0</b><span>marked crosswalks already in place</span></div>
+    <div class="stat diy"><b id="s-diy">0</b><span>covered by neighbor flags <span class="ex">Example</span></span></div>
+  </section>
+
+  <div class="main">
+    <div class="mapcol">
+      <div class="map" id="map" role="group" aria-label="Map of Wallingford crosswalks">
+        <img src="wallingford-crosswalks-map.png" alt="Street map of Wallingford, Seattle">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><g id="outline"></g></svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--need)"></i>Needs a crossing (number = priority)</span>
+        <span><i style="background:var(--plan)"></i>Scheduled by the city</span>
+        <span><i style="background:var(--ok)"></i>Marked crosswalk (tap for the year built)</span>
+        <span><i style="background:var(--diy);border-radius:2px"></i>Neighbor flags in place</span>
+      </div>
+      <div class="attrib">Map © OpenStreetMap contributors. Boundary from Seattle's Neighborhood Map Atlas.</div>
+    </div>
+
+    <div>
+      <section class="panel detail" id="detail" aria-live="polite"></section>
+      <section class="panel progress">
+        <h3>What the city is building</h3>
+        <ul id="progress"></ul>
+      </section>
+      <section class="panel list">
+        <h3>Corners ranked by priority <span>Neighbor votes + SDOT's own score</span></h3>
+        <div id="list"></div>
+      </section>
+      <section class="panel feed">
+        <h3>This week on the corners <span class="ex">Example</span></h3>
+        <ul id="feed"></ul>
+      </section>
+    </div>
+  </div>
+
+  <p class="sources">Real data: priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan); green and amber crosswalks come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> dataset, including ones marked "planned". Votes, neighbor flags, requests and the activity feed are <strong>example data</strong> showing how the site would work. Distances are approximate, measured to the nearest marked crosswalk on either street.</p>
+</div>
+
+<script>
+const DATA = {"size":[740,1130],"pins":[{"where":"LATONA AVE NE AND NE 47TH ST","lng":-122.325080437302,"lat":47.6631631722238,"total":15,"proximity":7,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":1,"park":1,"gap_m_to_marked_xwalk":194,"rank":1,"x":79.599,"y":36.633},{"where":"THACKERAY PL NE AND NE 47TH ST","lng":-122.326152109418,"lat":47.6631686272284,"total":15,"proximity":7,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":1,"park":1,"gap_m_to_marked_xwalk":194,"rank":2,"x":76.224,"y":36.616},{"where":"GREEN LAKE WAY N AND MIDVALE AVE N","lng":-122.34375644958001,"lat":47.6633020623637,"total":14,"proximity":9,"ped_crashes_5yr":0,"safety":5,"school":2,"transit":2,"park":2,"gap_m_to_marked_xwalk":193,"rank":3,"x":20.791,"y":36.208},{"where":"GREEN LAKE WAY N AND N 48TH ST","lng":-122.343199462181,"lat":47.6635783067535,"total":12,"proximity":7,"ped_crashes_5yr":0,"safety":5,"school":2,"transit":0,"park":2,"gap_m_to_marked_xwalk":238,"rank":4,"x":22.544,"y":35.362},{"where":"LATONA AVE NE AND NE 59TH ST","lng":-122.325520250918,"lat":47.6715496402346,"total":11,"proximity":5,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":1,"park":1,"gap_m_to_marked_xwalk":333,"rank":5,"x":78.214,"y":10.953},{"where":"LATONA AVE NE AND NE 58TH ST","lng":-122.325531037245,"lat":47.6708372614376,"total":11,"proximity":5,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":1,"park":1,"gap_m_to_marked_xwalk":254,"rank":6,"x":78.18,"y":13.135},{"where":"KIRKWOOD PL N AND N 57TH ST","lng":-122.332479865294,"lat":47.67014612772459,"total":9,"proximity":9,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":3,"park":3,"gap_m_to_marked_xwalk":null,"rank":7,"x":56.299,"y":15.251},{"where":"WALLINGFORD AVE N AND N 37TH ST","lng":-122.336307375456,"lat":47.6519788691671,"total":8,"proximity":8,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":3,"park":1,"gap_m_to_marked_xwalk":302,"rank":8,"x":44.247,"y":70.874},{"where":"WALLINGFORD AVE N AND N 38TH ST","lng":-122.33629447757001,"lat":47.6531466661044,"total":8,"proximity":8,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":3,"park":1,"gap_m_to_marked_xwalk":269,"rank":9,"x":44.287,"y":67.299},{"where":"KIRKWOOD PL N AND MERIDIAN AVE N","lng":-122.333562560423,"lat":47.6718192517142,"total":8,"proximity":8,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":3,"park":2,"gap_m_to_marked_xwalk":243,"rank":10,"x":52.89,"y":10.128},{"where":"ASHWORTH AVE N AND N 40TH ST","lng":-122.339886314332,"lat":47.6556678842759,"total":8,"proximity":8,"ped_crashes_5yr":0,"safety":0,"school":3,"transit":0,"park":2,"gap_m_to_marked_xwalk":175,"rank":11,"x":32.977,"y":59.581},{"where":"WALLINGFORD AVE N AND N 36TH ST","lng":-122.33632369012801,"lat":47.6505015666039,"total":8,"proximity":8,"ped_crashes_5yr":0,"safety":0,"school":1,"transit":3,"park":2,"gap_m_to_marked_xwalk":138,"rank":12,"x":44.195,"y":75.396},{"where":"KIRKWOOD PL N AND N 56TH ST","lng":-122.331733848476,"lat":47.6690096009677,"total":8,"proximity":8,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":3,"park":2,"gap_m_to_marked_xwalk":null,"rank":13,"x":58.648,"y":18.732},{"where":"KEYSTONE PL N AND N 55TH ST","lng":-122.33298873732001,"lat":47.6686798476007,"total":8,"proximity":8,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":3,"park":2,"gap_m_to_marked_xwalk":null,"rank":14,"x":54.697,"y":19.741},{"where":"KIRKWOOD PL N AND N 59TH ST","lng":-122.33343773552602,"lat":47.6716051463976,"total":8,"proximity":8,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":3,"park":2,"gap_m_to_marked_xwalk":null,"rank":15,"x":53.283,"y":10.783},{"where":"CORLISS AVE N AND N NORTHLAKE WAY","lng":-122.33132877492,"lat":47.6499053001021,"total":6,"proximity":6,"ped_crashes_5yr":0,"safety":0,"school":1,"transit":0,"park":2,"gap_m_to_marked_xwalk":255,"rank":16,"x":59.924,"y":77.221},{"where":"EASTERN AVE N AND N PACIFIC ST","lng":-122.32909197884501,"lat":47.6524792850433,"total":5,"proximity":5,"ped_crashes_5yr":1,"safety":0,"school":2,"transit":0,"park":1,"gap_m_to_marked_xwalk":299,"rank":17,"x":66.967,"y":69.342},{"where":"1ST AVE NE AND NE PACIFIC ST","lng":-122.327904195559,"lat":47.6536925086697,"total":5,"proximity":5,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":0,"park":1,"gap_m_to_marked_xwalk":205,"rank":18,"x":70.707,"y":65.628},{"where":"SUNNYSIDE AVE N AND N NORTHLAKE WAY","lng":-122.33086559950901,"lat":47.65048823874729,"total":5,"proximity":5,"ped_crashes_5yr":0,"safety":0,"school":1,"transit":0,"park":2,"gap_m_to_marked_xwalk":182,"rank":19,"x":61.382,"y":75.437},{"where":"N 37TH ST AND N PACIFIC ST","lng":-122.32976648033001,"lat":47.6519425538927,"total":4,"proximity":4,"ped_crashes_5yr":0,"safety":0,"school":2,"transit":0,"park":1,"gap_m_to_marked_xwalk":220,"rank":20,"x":64.843,"y":70.985}],"marked":[{"lng":-122.342625192198,"lat":47.6485174712833,"status":"INSVC","on":"N 34TH ST","x1":"STONE WAY N","x2":"N NORTHLAKE PL","control":"SIGNAL","school":false,"x":24.353,"y":81.469,"built":null},{"lng":-122.33859438189401,"lat":47.6592470822915,"status":"INSVC","on":"WOODLAWN AVE N","x1":"N 43RD ST","x2":"N 44TH ST","control":" ","school":true,"x":37.045,"y":48.623,"built":2019},{"lng":-122.33364733706101,"lat":47.668604093620495,"status":"PLANNED","on":"MERIDIAN AVE N","x1":"N 54TH ST","x2":"N 55TH ST","control":" ","school":false,"x":52.623,"y":19.973,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.33881411083101,"lat":47.649207795700896,"status":"INSVC","on":"N 35TH ST","x1":"CARR PL N","x2":"WOODLAWN AVE N","control":" ","school":false,"x":36.353,"y":79.356,"built":2017},{"lng":-122.333719957054,"lat":47.661293454326504,"status":"INSVC","on":"MERIDIAN AVE N","x1":"N 44TH ST","x2":"N 45TH ST","control":" ","school":false,"x":52.394,"y":42.358,"built":null},{"lng":-122.336228645264,"lat":47.6491951213185,"status":"INSVC","on":"N 35TH ST","x1":"WALLINGFORD AVE N","x2":"BURKE AVE N","control":" ","school":false,"x":44.495,"y":79.395,"built":null},{"lng":-122.33620837353101,"lat":47.6591385103393,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 42ND ST","x2":"N 43RD ST","control":" ","school":true,"x":44.558,"y":48.955,"built":2014},{"lng":-122.325606963522,"lat":47.665055937107,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 50TH W ST","x2":"NE 51ST ST","control":" ","school":false,"x":77.941,"y":30.838,"built":null},{"lng":-122.324977077101,"lat":47.6649839847677,"status":"INSVC","on":"NE 50TH ST","x1":"LATONA E AVE NE","x2":"4TH AVE NE","control":"SIGNAL","school":false,"x":79.924,"y":31.058,"built":null},{"lng":-122.325106538864,"lat":47.6614235352644,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 45TH ST","x2":"NE 47TH ST","control":" ","school":false,"x":79.517,"y":41.96,"built":null},{"lng":-122.32519699968701,"lat":47.6613445306139,"status":"INSVC","on":"NE 45TH ST","x1":"THACKERAY PL NE","x2":"LATONA AVE NE","control":" ","school":false,"x":79.232,"y":42.201,"built":null},{"lng":-122.325562821084,"lat":47.667900025346796,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 54TH ST","x2":"NE 55TH ST","control":" ","school":true,"x":78.08,"y":22.129,"built":2012},{"lng":-122.34197114104401,"lat":47.6613853314841,"status":"INSVC","on":"N 45TH ST","x1":"STONE WAY N","x2":"INTERLAKE AVE N","control":"SIGNAL","school":false,"x":26.412,"y":42.077,"built":null},{"lng":-122.336255750205,"lat":47.655744450176,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 40TH ST","x2":"N 41ST ST","control":" ","school":false,"x":44.409,"y":59.346,"built":null},{"lng":-122.34319942686501,"lat":47.6614404293259,"status":"INSVC","on":"N MIDVALE PL","x1":"MIDVALE AVE N","x2":"N 45TH ST","control":" ","school":false,"x":22.544,"y":41.908,"built":null},{"lng":-122.337434123259,"lat":47.6568774934107,"status":"INSVC","on":"DENSMORE AVE N","x1":"N 41ST ST","x2":"N 42ND ST","control":" ","school":true,"x":40.699,"y":55.878,"built":2011},{"lng":-122.33516862978601,"lat":47.646883858549494,"status":"INSVC","on":"BURKE AVE N","x1":"N NORTHLAKE WAY","x2":"N 34TH ST","control":"STOPSIGN","school":false,"x":47.832,"y":86.47,"built":null},{"lng":-122.33641407348802,"lat":47.664235495415,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 48TH ST","x2":"N 49TH ST","control":" ","school":true,"x":43.911,"y":33.35,"built":null},{"lng":-122.336127542986,"lat":47.6556480472316,"status":"INSVC","on":"N 40TH ST","x1":"WALLINGFORD AVE N","x2":"BURKE AVE N","control":" ","school":false,"x":44.813,"y":59.641,"built":null},{"lng":-122.337547591722,"lat":47.65565536680359,"status":"INSVC","on":"N 40TH ST","x1":"WOODLAWN AVE N","x2":"DENSMORE AVE N","control":" ","school":true,"x":40.341,"y":59.619,"built":null},{"lng":-122.338644595347,"lat":47.6480573720067,"status":"INSVC","on":"N 34TH ST","x1":"WOODLAWN AVE N","x2":"DENSMORE AVE N","control":"FLSH-BCN","school":false,"x":36.887,"y":82.878,"built":null},{"lng":-122.325737475348,"lat":47.6649883397144,"status":"INSVC","on":"NE 50TH ST","x1":"THACKERAY PL NE","x2":"LATONA W AVE NE","control":" ","school":true,"x":77.53,"y":31.045,"built":null},{"lng":-122.33624018066101,"lat":47.65687138615049,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 41ST ST","x2":"N 42ND ST","control":" ","school":true,"x":44.458,"y":55.896,"built":null},{"lng":-122.342257918098,"lat":47.6591531516453,"status":"INSVC","on":"STONE WAY N","x1":"N MENFORD PL","x2":"N 43RD ST","control":" ","school":false,"x":25.509,"y":48.911,"built":2012},{"lng":-122.322863590384,"lat":47.6648767292893,"status":"INSVC","on":"5TH AVE NE","x1":"50TH ST ON RP","x2":"NE 50TH ST","control":" ","school":false,"x":86.58,"y":31.387,"built":null},{"lng":-122.33643800593401,"lat":47.6642928695264,"status":"INSVC","on":"N 49TH ST","x1":"DENSMORE AVE N","x2":"WALLINGFORD AVE N","control":"STOPSIGN","school":true,"x":43.835,"y":33.174,"built":2014},{"lng":-122.32408861724102,"lat":47.6577579122285,"status":"INSVC","on":"4TH AVE NE","x1":"NE 42ND E ST","x2":"NE 43RD ST","control":" ","school":true,"x":82.722,"y":53.182,"built":null},{"lng":-122.34627805338701,"lat":47.661917083575005,"status":"INSVC","on":"GREEN LAKE WAY N","x1":"N 45TH ST","x2":"N 46TH ST","control":"SIGNAL","school":false,"x":12.85,"y":40.448,"built":null},{"lng":-122.326792646477,"lat":47.657634296895196,"status":"INSVC","on":"2ND AVE NE","x1":"NE 40TH ST","x2":"NE 42ND E ST","control":" ","school":true,"x":74.207,"y":53.561,"built":null},{"lng":-122.332412517898,"lat":47.6492263658256,"status":"INSVC","on":"N PACIFIC ST","x1":"N 35TH ST","x2":"N 36TH ST","control":" ","school":false,"x":56.511,"y":79.299,"built":null},{"lng":-122.338627399443,"lat":47.6568835813493,"status":"INSVC","on":"WOODLAWN AVE N","x1":"N 41ST ST","x2":"N 42ND ST","control":" ","school":true,"x":36.941,"y":55.859,"built":2019},{"lng":-122.342682493024,"lat":47.6504486992593,"status":"PLANNED","on":"STONE WAY N","x1":"N 35TH ST","x2":"N 36TH ST","control":" ","school":false,"x":24.172,"y":75.558,"project":"Stone Way N Crossing Improvements","sched":{"state":"in_progress","since":"May 2026"}},{"lng":-122.32300486522301,"lat":47.6613335890353,"status":"INSVC","on":"NE 45TH ST","x1":"4TH AVE NE","x2":"5TH AVE NE","control":" ","school":false,"x":86.135,"y":42.235,"built":null},{"lng":-122.32443592950301,"lat":47.6576860064836,"status":"INSVC","on":"NE 42ND ST","x1":"4TH W AVE NE","x2":"4TH E AVE NE","control":"STOPSIGN","school":true,"x":81.628,"y":53.402,"built":null},{"lng":-122.33005325894001,"lat":47.6613686027263,"status":"INSVC","on":"N 45TH ST","x1":"SUNNYSIDE AVE N","x2":"EASTERN AVE N","control":" ","school":false,"x":63.94,"y":42.128,"built":null},{"lng":-122.323579463585,"lat":47.6554118516937,"status":"INSVC","on":"NE PACIFIC ST","x1":"4TH AVE NE","x2":"NE 40TH ST","control":" ","school":false,"x":84.325,"y":60.365,"built":null},{"lng":-122.342255039273,"lat":47.65921055988869,"status":"INSVC","on":"STONE WAY N","x1":"N 43RD ST","x2":"N 44TH ST","control":" ","school":false,"x":25.518,"y":48.735,"built":2012},{"lng":-122.33755518168101,"lat":47.6469529667812,"status":"INSVC","on":"DENSMORE AVE N","x1":"N NORTHLAKE WAY","x2":"N 34TH ST","control":"STOPSIGN","school":false,"x":40.318,"y":86.258,"built":null},{"lng":-122.326268231415,"lat":47.6613498481847,"status":"INSVC","on":"NE 45TH ST","x1":"2ND AVE NE","x2":"THACKERAY PL NE","control":" ","school":false,"x":75.859,"y":42.185,"built":null},{"lng":-122.33635187275901,"lat":47.6479629605956,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"DEAD END","x2":"N 34TH ST","control":"SIGNAL","school":false,"x":44.107,"y":83.167,"built":null},{"lng":-122.33645143518102,"lat":47.649196215539796,"status":"INSVC","on":"N 35TH ST","x1":"DENSMORE AVE N","x2":"WALLINGFORD AVE N","control":" ","school":false,"x":43.793,"y":79.392,"built":null},{"lng":-122.342550540343,"lat":47.6493926586654,"status":"INSVC","on":"N 35TH ST","x1":"STONE WAY N","x2":"INTERLAKE AVE N","control":"SIGNAL","school":false,"x":24.588,"y":78.79,"built":null},{"lng":-122.342184905611,"lat":47.6606011328198,"status":"PLANNED","on":"STONE WAY N","x1":"N 44TH ST","x2":"N ALLEN PL","control":" ","school":true,"x":25.739,"y":44.477,"project":"Stone Way N Crossing Improvements","sched":{"state":"in_progress","since":"May 2026"}},{"lng":-122.333741473813,"lat":47.6620670293886,"status":"PLANNED","on":"MERIDIAN AVE N","x1":"N 45TH ST","x2":"N 46TH S ST","control":" ","school":false,"x":52.326,"y":39.989,"project":"Meridian Ave N between N 45th St and N 50th St","sched":{"state":"in_progress","since":"Jun 2026"}},{"lng":-122.33635003649601,"lat":47.648124532993194,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 34TH ST","x2":"N 35TH ST","control":" ","school":false,"x":44.112,"y":82.672,"built":null},{"lng":-122.336233361115,"lat":47.6480444583104,"status":"INSVC","on":"N 34TH ST","x1":"WALLINGFORD AVE N","x2":"BURKE AVE N","control":"SIGNAL","school":false,"x":44.48,"y":82.917,"built":null},{"lng":-122.340601049647,"lat":47.665035637202095,"status":"INSVC","on":"N 50TH ST","x1":"STONE AVE N","x2":"GREEN LAKE WAY N","control":"SIGNAL","school":false,"x":30.726,"y":30.9,"built":null},{"lng":-122.342150735114,"lat":47.6612787302753,"status":"INSVC","on":"STONE WAY N","x1":"N ALLEN PL","x2":"N 45TH ST","control":"SIGNAL","school":false,"x":25.847,"y":42.403,"built":null},{"lng":-122.32295817638601,"lat":47.6612018529674,"status":"INSVC","on":"5TH AVE NE","x1":"NE 44TH ST","x2":"NE 45TH ST","control":"SIGNAL","school":false,"x":86.282,"y":42.638,"built":null},{"lng":-122.336304798048,"lat":47.665035067206695,"status":"INSVC","on":"N 50TH ST","x1":"WALLINGFORD AVE N","x2":"BURKE AVE N","control":" ","school":false,"x":44.255,"y":30.902,"built":null},{"lng":-122.34225909689401,"lat":47.6554147832301,"status":"INSVC","on":"N 40TH ST","x1":"STONE WAY N","x2":"INTERLAKE AVE N","control":"SIGNAL","school":false,"x":25.505,"y":60.356,"built":null},{"lng":-122.338611651542,"lat":47.6580517174755,"status":"INSVC","on":"WOODLAWN AVE N","x1":"N 42ND ST","x2":"N 43RD ST","control":" ","school":true,"x":36.991,"y":52.283,"built":null},{"lng":-122.32826553259702,"lat":47.6679321768921,"status":"INSVC","on":"1ST AVE NE","x1":"NE 54TH ST","x2":"NE 55TH ST","control":" ","school":true,"x":69.569,"y":22.031,"built":2012},{"lng":-122.324617706823,"lat":47.65768707812369,"status":"PLANNED","on":"NE 42ND ST","x1":"LATONA E AVE NE","x2":"4TH W AVE NE","control":"STOPSIGN","school":true,"x":81.056,"y":53.399,"project":null,"sched":{"state":"waiting","since":"Jun 2024","year":2024}},{"lng":-122.34064276843601,"lat":47.6636443074282,"status":"INSVC","on":"INTERLAKE AVE N","x1":"N 48TH ST","x2":"N 49TH ST","control":" ","school":true,"x":30.595,"y":35.16,"built":null},{"lng":-122.32510905671201,"lat":47.6612537400667,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 44TH ST","x2":"NE 45TH ST","control":" ","school":false,"x":79.509,"y":42.479,"built":null},{"lng":-122.32512356253301,"lat":47.66026539705501,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 44TH ST","x2":"NE 45TH ST","control":" ","school":false,"x":79.463,"y":45.505,"built":null},{"lng":-122.32619631749901,"lat":47.660160234251,"status":"INSVC","on":"THACKERAY PL NE","x1":"NE 43RD ST","x2":"NE 44TH ST","control":" ","school":false,"x":76.085,"y":45.827,"built":null},{"lng":-122.338494136476,"lat":47.6591643248899,"status":"INSVC","on":"N 43RD ST","x1":"WOODLAWN AVE N","x2":"DENSMORE AVE N","control":" ","school":true,"x":37.361,"y":48.876,"built":2019},{"lng":-122.33283900224201,"lat":47.6686794369859,"status":"PLANNED","on":"N 56TH ST","x1":"KEYSTONE PL N","x2":"KIRKWOOD PL N","control":" ","school":false,"x":55.168,"y":19.743,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.33625824516301,"lat":47.6555638830279,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 39TH ST","x2":"N 40TH ST","control":" ","school":false,"x":44.401,"y":59.899,"built":null},{"lng":-122.326729486023,"lat":47.655542350511595,"status":"INSVC","on":"NE 40TH ST","x1":"2ND AVE NE","x2":"NE 40 UPPER ST","control":" ","school":true,"x":74.406,"y":59.965,"built":null},{"lng":-122.33369944779001,"lat":47.6672878398582,"status":"INSVC","on":"MERIDIAN AVE N","x1":"N 53RD ST","x2":"N 54TH ST","control":" ","school":true,"x":52.459,"y":24.004,"built":2012},{"lng":-122.342675118795,"lat":47.6506019422965,"status":"PLANNED","on":"STONE WAY N","x1":"N 36TH ST","x2":"N 38TH ST","control":" ","school":false,"x":24.195,"y":75.089,"project":"Stone Way N Crossing Improvements","sched":{"state":"in_progress","since":"May 2026"}},{"lng":-122.33373067753101,"lat":47.663634855087395,"status":"PLANNED","on":"MERIDIAN AVE N","x1":"N 48TH ST","x2":"N 49TH ST","control":" ","school":false,"x":52.36,"y":35.189,"project":"Meridian Ave N between N 45th St and N 50th St","sched":{"state":"in_progress","since":"Jun 2026"}},{"lng":-122.324533621951,"lat":47.6576126027115,"status":"INSVC","on":"4TH AVE NE","x1":"NE 40 UPPER ST","x2":"NE 42ND W ST","control":"STOPSIGN","school":true,"x":81.321,"y":53.627,"built":null},{"lng":-122.336417646037,"lat":47.663645384588094,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 48TH ST","x2":"N 49TH ST","control":" ","school":true,"x":43.899,"y":35.157,"built":null},{"lng":-122.34026577263201,"lat":47.648163268248,"status":"INSVC","on":"N 34TH ST","x1":"N NORTHLAKE PL","x2":"CARR PL N","control":" ","school":false,"x":31.782,"y":82.554,"built":null},{"lng":-122.335256430084,"lat":47.648039213576006,"status":"INSVC","on":"N 34TH ST","x1":"WALLINGFORD AVE N","x2":"BURKE AVE N","control":" ","school":false,"x":47.556,"y":82.933,"built":2018},{"lng":-122.33751980183601,"lat":47.6568232196805,"status":"INSVC","on":"N 41ST ST","x1":"WOODLAWN AVE N","x2":"DENSMORE AVE N","control":" ","school":true,"x":40.429,"y":56.044,"built":2011},{"lng":-122.32813214967801,"lat":47.66936469934049,"status":"INSVC","on":"NE 56TH ST","x1":"1ST AVE NE","x2":"LATONA AVE NE","control":" ","school":true,"x":69.989,"y":17.644,"built":null},{"lng":-122.336378439262,"lat":47.6556493410654,"status":"INSVC","on":"N 40TH ST","x1":"DENSMORE AVE N","x2":"WALLINGFORD AVE N","control":" ","school":false,"x":44.023,"y":59.638,"built":null},{"lng":-122.33642886857201,"lat":47.6614728224549,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 45TH ST","x2":"N 46TH ST","control":"SIGNAL","school":false,"x":43.864,"y":41.809,"built":null},{"lng":-122.32300819239201,"lat":47.6649756868038,"status":"INSVC","on":"NE 50TH ST","x1":"4TH AVE NE","x2":"5TH AVE NE","control":" ","school":false,"x":86.124,"y":31.084,"built":null},{"lng":-122.32605722864001,"lat":47.6613487992988,"status":"INSVC","on":"NE 45TH ST","x1":"THACKERAY PL NE","x2":"LATONA AVE NE","control":" ","school":false,"x":76.523,"y":42.188,"built":null},{"lng":-122.341603487472,"lat":47.6628528138886,"status":"INSVC","on":"STONE WAY N","x1":"N 46TH ST","x2":"N 47TH ST","control":" ","school":false,"x":27.57,"y":37.583,"built":2014},{"lng":-122.32570273507402,"lat":47.654888911521,"status":"INSVC","on":"NE PACIFIC ST","x1":"2ND AVE NE","x2":"LATONA AVE NE","control":" ","school":true,"x":77.639,"y":61.965,"built":null},{"lng":-122.33371811115201,"lat":47.66510688364709,"status":"INSVC","on":"MERIDIAN AVE N","x1":"N 50TH ST","x2":"N 51ST ST","control":" ","school":false,"x":52.4,"y":30.682,"built":null},{"lng":-122.332743120649,"lat":47.6555862940401,"status":"INSVC","on":"N 40TH ST","x1":"MERIDIAN AVE N","x2":"BAGLEY AVE N","control":"RFB-BCN","school":false,"x":55.47,"y":59.831,"built":2017},{"lng":-122.33381585928402,"lat":47.6686840460642,"status":"PLANNED","on":"N 55TH ST","x1":"CANFIELD PL N","x2":"MERIDIAN AVE N","control":" ","school":false,"x":52.092,"y":19.728,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.322862718302,"lat":47.6650630427068,"status":"INSVC","on":"5TH AVE NE","x1":"NE 50TH ST","x2":"NE 51ST ST","control":" ","school":false,"x":86.582,"y":30.816,"built":null},{"lng":-122.324482973699,"lat":47.655527892069,"status":"INSVC","on":"NE 40TH ST","x1":"4TH AVE NE","x2":"NE PACIFIC ST","control":" ","school":true,"x":81.48,"y":60.009,"built":null},{"lng":-122.33926590230901,"lat":47.6613858334933,"status":"INSVC","on":"N 45TH ST","x1":"INTERLAKE AVE N","x2":"WOODLAWN W AVE N","control":" ","school":true,"x":34.931,"y":42.075,"built":null},{"lng":-122.339972360869,"lat":47.6664696970241,"status":"INSVC","on":"GREEN LAKE WAY N","x1":"N 52ND ST","x2":"N 53RD ST","control":" ","school":false,"x":32.706,"y":26.509,"built":2013},{"lng":-122.333544418039,"lat":47.668682827327096,"status":"PLANNED","on":"N 55TH ST","x1":"MERIDIAN AVE N","x2":"KEYSTONE PL N","control":" ","school":false,"x":52.947,"y":19.732,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.337525450826,"lat":47.661387059983795,"status":"INSVC","on":"N 45TH ST","x1":"DENSMORE W AVE N","x2":"DENSMORE E AVE N","control":"SIGNAL","school":false,"x":40.411,"y":42.071,"built":null},{"lng":-122.32567515792101,"lat":47.6686287251629,"status":"INSVC","on":"NE 55TH ST","x1":"1ST AVE NE","x2":"LATONA AVE NE","control":" ","school":true,"x":77.726,"y":19.898,"built":2017},{"lng":-122.32618023872301,"lat":47.6612617163323,"status":"INSVC","on":"THACKERAY PL NE","x1":"NE 44TH ST","x2":"NE 45TH ST","control":" ","school":false,"x":76.136,"y":42.455,"built":null},{"lng":-122.328228593453,"lat":47.6686472210893,"status":"INSVC","on":"NE 55TH ST","x1":"1ST AVE NE","x2":"LATONA AVE NE","control":" ","school":true,"x":69.686,"y":19.841,"built":2012},{"lng":-122.337301482765,"lat":47.6591580099163,"status":"INSVC","on":"N 43RD ST","x1":"DENSMORE AVE N","x2":"WALLINGFORD AVE N","control":" ","school":false,"x":41.116,"y":48.896,"built":null},{"lng":-122.3336004754,"lat":47.6613860078807,"status":"INSVC","on":"N 45TH ST","x1":"MERIDIAN AVE N","x2":"BAGLEY AVE N","control":" ","school":false,"x":52.77,"y":42.074,"built":null},{"lng":-122.336409560445,"lat":47.6650924059414,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 50TH ST","x2":"N 51ST ST","control":" ","school":false,"x":43.925,"y":30.726,"built":null},{"lng":-122.323477458441,"lat":47.657625552450796,"status":"INSVC","on":"5TH AVE NE","x1":"NE 40 UPPER ST","x2":"NE 42ND W ST","control":"STOPSIGN","school":true,"x":84.647,"y":53.587,"built":2011},{"lng":-122.32579791332701,"lat":47.6548654323622,"status":"INSVC","on":"NE PACIFIC ST","x1":"2ND AVE NE","x2":"LATONA AVE NE","control":" ","school":true,"x":77.34,"y":62.037,"built":null},{"lng":-122.333592906245,"lat":47.6650349940101,"status":"INSVC","on":"N 50TH ST","x1":"MERIDIAN AVE N","x2":"KEYSTONE WR PL N","control":" ","school":false,"x":52.794,"y":30.902,"built":null},{"lng":-122.345918365565,"lat":47.6621269963146,"status":"INSVC","on":"N 46TH ST","x1":"GREEN LAKE WAY N","x2":"WOODLAND PARK AVE N","control":"SIGNAL","school":false,"x":13.983,"y":39.806,"built":null},{"lng":-122.34012250614701,"lat":47.6650344558184,"status":"INSVC","on":"N 50TH ST","x1":"GREEN LAKE WAY N","x2":"WOODLAWN W AVE N","control":" ","school":false,"x":32.233,"y":30.904,"built":null},{"lng":-122.34217788046101,"lat":47.6607404329084,"status":"PLANNED","on":"STONE WAY N","x1":"N ALLEN PL","x2":"N 45TH ST","control":" ","school":true,"x":25.761,"y":44.051,"project":"Stone Way N Crossing Improvements","sched":{"state":"in_progress","since":"May 2026"}},{"lng":-122.324174238277,"lat":47.6576844217972,"status":"INSVC","on":"NE 42ND ST","x1":"4TH W AVE NE","x2":"4TH E AVE NE","control":" ","school":true,"x":82.452,"y":53.407,"built":null},{"lng":-122.333683121914,"lat":47.6687606970431,"status":"PLANNED","on":"KENWOOD PL N","x1":"N 55TH ST","x2":"N 57TH ST","control":" ","school":false,"x":52.51,"y":19.494,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.32295171151101,"lat":47.661445539009,"status":"INSVC","on":"5TH AVE NE","x1":"NE 45TH ST","x2":"45TH ST OFF RP","control":"SIGNAL","school":false,"x":86.302,"y":41.892,"built":null},{"lng":-122.32570287402702,"lat":47.6548724889266,"status":"INSVC","on":"LATONA AVE NE","x1":"NE NORTHLAKE WAY","x2":"NE PACIFIC ST","control":" ","school":true,"x":77.639,"y":62.016,"built":2012},{"lng":-122.33381585521,"lat":47.665035707690194,"status":"INSVC","on":"N 50TH ST","x1":"BURKE AVE N","x2":"MERIDIAN AVE N","control":" ","school":false,"x":52.092,"y":30.9,"built":null},{"lng":-122.325859384877,"lat":47.6555369150674,"status":"INSVC","on":"NE 40TH ST","x1":"NE 40 UPPER ST","x2":"LATONA AVE NE","control":" ","school":false,"x":77.146,"y":59.982,"built":null},{"lng":-122.32446344660602,"lat":47.65577102759279,"status":"INSVC","on":"NE 40 UPPER ST","x1":"4TH AVE NE","x2":"5TH AVE NE","control":" ","school":true,"x":81.542,"y":59.265,"built":null},{"lng":-122.328268985665,"lat":47.6686201552839,"status":"INSVC","on":"1ST AVE NE","x1":"NE 54TH ST","x2":"NE 55TH ST","control":" ","school":true,"x":69.559,"y":19.924,"built":2012},{"lng":-122.333724478017,"lat":47.66436012592929,"status":"PLANNED","on":"MERIDIAN AVE N","x1":"N 49TH ST","x2":"N 50TH ST","control":" ","school":false,"x":52.38,"y":32.968,"project":"Meridian Ave N between N 45th St and N 50th St","sched":{"state":"in_progress","since":"Jun 2026"}},{"lng":-122.33807411730501,"lat":47.64689715405039,"status":"INSVC","on":"BURKE GILMAN TRL","x1":"STONE WAY N","x2":"N NORTHLAKE PL","control":" ","school":false,"x":38.683,"y":86.429,"built":null},{"lng":-122.32619467198,"lat":47.6602724960774,"status":"INSVC","on":"THACKERAY PL NE","x1":"NE 44TH ST","x2":"NE 45TH ST","control":" ","school":false,"x":76.09,"y":45.484,"built":null},{"lng":-122.32932529861401,"lat":47.65175202132669,"status":"INSVC","on":"N NORTHLAKE WAY","x1":"N 36TH ST","x2":"EASTERN AVE N","control":" ","school":false,"x":66.232,"y":71.568,"built":null},{"lng":-122.32515991046,"lat":47.6577695551418,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 42ND E ST","x2":"NE 43RD ST","control":" ","school":true,"x":79.349,"y":53.147,"built":null},{"lng":-122.345820267643,"lat":47.6622643108414,"status":"INSVC","on":"GREEN LAKE WAY N","x1":"N 46TH ST","x2":"WOODLAND PARK AVE N","control":"SIGNAL","school":false,"x":14.292,"y":39.385,"built":null},{"lng":-122.336511194544,"lat":47.665035039709394,"status":"INSVC","on":"N 50TH ST","x1":"DENSMORE AVE N","x2":"WALLINGFORD AVE N","control":" ","school":false,"x":43.605,"y":30.902,"built":null},{"lng":-122.32338791120401,"lat":47.657679846541896,"status":"PLANNED","on":"NE 42ND ST","x1":"5TH W AVE NE","x2":"5TH E AVE NE","control":"STOPSIGN","school":true,"x":84.929,"y":53.421,"project":null,"sched":{"state":"waiting","since":"Jun 2024","year":2024}},{"lng":-122.333925922444,"lat":47.6469330751003,"status":"INSVC","on":"MERIDIAN AVE N","x1":"N NORTHLAKE WAY","x2":"N 34TH ST","control":"STOPSIGN","school":false,"x":51.746,"y":86.319,"built":null},{"lng":-122.322528087093,"lat":47.654515959797294,"status":"INSVC","on":"NE NORTHLAKE WAY","x1":"6TH AVE NE","x2":"NE NORTHLAKE PL","control":"STOPSIGN","school":false,"x":87.636,"y":63.107,"built":null},{"lng":-122.34244151781802,"lat":47.6613862736437,"status":"INSVC","on":"N 45TH ST","x1":"N MIDVALE PL","x2":"STONE WAY N","control":"SIGNAL","school":false,"x":24.931,"y":42.074,"built":null},{"lng":-122.333795819162,"lat":47.646884316801,"status":"INSVC","on":"N NORTHLAKE WAY","x1":"MERIDIAN AVE N","x2":"CORLISS AVE N","control":" ","school":false,"x":52.155,"y":86.468,"built":null},{"lng":-122.337372461815,"lat":47.6613021162352,"status":"INSVC","on":"DENSMORE AVE N","x1":"N 44TH ST","x2":"N 45TH E ST","control":" ","school":false,"x":40.893,"y":42.331,"built":null},{"lng":-122.333721022641,"lat":47.6614794918905,"status":"INSVC","on":"MERIDIAN AVE N","x1":"N 45TH ST","x2":"N 46TH S ST","control":" ","school":false,"x":52.391,"y":41.788,"built":null},{"lng":-122.33385974281501,"lat":47.661386503130004,"status":"INSVC","on":"N 45TH ST","x1":"BURKE AVE N","x2":"MERIDIAN AVE N","control":" ","school":false,"x":51.954,"y":42.073,"built":null},{"lng":-122.33178150052301,"lat":47.669082198758396,"status":"PLANNED","on":"KIRKWOOD PL N","x1":"N 56TH ST","x2":"N 57TH ST","control":" ","school":false,"x":58.498,"y":18.509,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.32566827457401,"lat":47.6678870634393,"status":"INSVC","on":"NE 54TH ST","x1":"1ST AVE NE","x2":"LATONA AVE NE","control":"STOPSIGN","school":true,"x":77.748,"y":22.169,"built":2017},{"lng":-122.325125204887,"lat":47.6601531797143,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 43RD ST","x2":"NE 44TH ST","control":" ","school":false,"x":79.458,"y":45.849,"built":null},{"lng":-122.346979929607,"lat":47.6620705668629,"status":"INSVC","on":"N 46TH ST","x1":"N PHINNEY WAY","x2":"GREEN LAKE WAY N","control":"SIGNAL","school":false,"x":10.64,"y":39.979,"built":null},{"lng":-122.336159970038,"lat":47.6568162721132,"status":"INSVC","on":"N 41ST ST","x1":"WALLINGFORD AVE N","x2":"BURKE AVE N","control":"STOPSIGN","school":true,"x":44.711,"y":56.065,"built":null},{"lng":-122.32556544125501,"lat":47.6685567824851,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 54TH ST","x2":"NE 55TH ST","control":" ","school":true,"x":78.072,"y":20.118,"built":null},{"lng":-122.333731543335,"lat":47.6635335884482,"status":"PLANNED","on":"MERIDIAN AVE N","x1":"N 47TH ST","x2":"N 48TH ST","control":" ","school":false,"x":52.358,"y":35.499,"project":"Meridian Ave N between N 45th St and N 50th St","sched":{"state":"in_progress","since":"Jun 2026"}},{"lng":-122.33252006757301,"lat":47.6555826249397,"status":"INSVC","on":"N 40TH ST","x1":"BAGLEY AVE N","x2":"CORLISS AVE N","control":"RFB-BCN","school":false,"x":56.172,"y":59.842,"built":2017},{"lng":-122.342141768944,"lat":47.6614754107222,"status":"INSVC","on":"STONE WAY N","x1":"N 45TH ST","x2":"N 46TH ST","control":" ","school":false,"x":25.875,"y":41.801,"built":null},{"lng":-122.33372557724601,"lat":47.6642315309186,"status":"PLANNED","on":"MERIDIAN AVE N","x1":"N 48TH ST","x2":"N 49TH ST","control":" ","school":false,"x":52.376,"y":33.362,"project":"Meridian Ave N between N 45th St and N 50th St","sched":{"state":"in_progress","since":"Jun 2026"}},{"lng":-122.336468236414,"lat":47.648045718106005,"status":"INSVC","on":"N 34TH ST","x1":"DENSMORE AVE N","x2":"WALLINGFORD AVE N","control":" ","school":false,"x":43.74,"y":82.913,"built":null},{"lng":-122.34062418637401,"lat":47.6648352142487,"status":"INSVC","on":"GREEN LAKE WAY N","x1":"N 49TH ST","x2":"N 50TH ST","control":" ","school":false,"x":30.654,"y":31.514,"built":null},{"lng":-122.342780557105,"lat":47.6484370473326,"status":"INSVC","on":"STONE WAY N","x1":"N NORTHLAKE WAY","x2":"N 34TH ST","control":"SIGNAL","school":false,"x":23.863,"y":81.716,"built":null},{"lng":-122.336182915097,"lat":47.6612858082062,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 44TH ST","x2":"N 45TH ST","control":"SIGNAL","school":false,"x":44.639,"y":42.381,"built":null},{"lng":-122.331629809906,"lat":47.6504124504881,"status":"INSVC","on":"N PACIFIC ST","x1":"N 35TH ST","x2":"N 36TH ST","control":" ","school":false,"x":58.976,"y":75.669,"built":null},{"lng":-122.32356136881401,"lat":47.6576808635806,"status":"INSVC","on":"NE 42ND ST","x1":"4TH E AVE NE","x2":"5TH W AVE NE","control":"STOPSIGN","school":true,"x":84.382,"y":53.418,"built":2011},{"lng":-122.34116488731101,"lat":47.6635909547347,"status":"INSVC","on":"STONE WAY N","x1":"N 48TH ST","x2":"N 49TH ST","control":"RFB-BCN","school":true,"x":28.951,"y":35.323,"built":2014},{"lng":-122.33643365210101,"lat":47.6617572610069,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 45TH ST","x2":"N 46TH ST","control":" ","school":false,"x":43.849,"y":40.938,"built":null},{"lng":-122.33641050211801,"lat":47.6649336974903,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 49TH ST","x2":"N 50TH ST","control":"SIGNAL","school":false,"x":43.922,"y":31.212,"built":null},{"lng":-122.324990490095,"lat":47.66134349864159,"status":"INSVC","on":"NE 45TH ST","x1":"LATONA AVE NE","x2":"4TH AVE NE","control":" ","school":false,"x":79.882,"y":42.205,"built":null},{"lng":-122.32271144191101,"lat":47.6546201053494,"status":"INSVC","on":"6TH AVE NE","x1":"NE NORTHLAKE WAY","x2":"NE 40TH ST","control":"STOPSIGN","school":false,"x":87.059,"y":62.788,"built":null},{"lng":-122.336207382729,"lat":47.659206918321196,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 43RD ST","x2":"N 44TH ST","control":" ","school":false,"x":44.562,"y":48.746,"built":2016},{"lng":-122.335990831016,"lat":47.6613857142538,"status":"INSVC","on":"N 45TH ST","x1":"WALLINGFORD AVE N","x2":"BURKE AVE N","control":"SIGNAL","school":false,"x":45.243,"y":42.075,"built":null},{"lng":-122.33854723418301,"lat":47.656828455198294,"status":"INSVC","on":"N 41ST ST","x1":"WOODLAWN AVE N","x2":"DENSMORE AVE N","control":" ","school":true,"x":37.194,"y":56.028,"built":2019},{"lng":-122.331829809473,"lat":47.668980447116695,"status":"PLANNED","on":"N 56TH ST","x1":"KEYSTONE PL N","x2":"KIRKWOOD PL N","control":" ","school":false,"x":58.346,"y":18.821,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.33633892075801,"lat":47.6491271725029,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 34TH ST","x2":"N 35TH ST","control":" ","school":false,"x":44.147,"y":79.603,"built":null},{"lng":-122.33371956749801,"lat":47.6649345183574,"status":"INSVC","on":"MERIDIAN AVE N","x1":"N 49TH ST","x2":"N 50TH ST","control":" ","school":false,"x":52.395,"y":31.21,"built":null},{"lng":-122.32617778686802,"lat":47.6614288575301,"status":"INSVC","on":"THACKERAY PL NE","x1":"NE 45TH ST","x2":"NE 47TH ST","control":" ","school":false,"x":76.144,"y":41.943,"built":null},{"lng":-122.340679997036,"lat":47.6600423974311,"status":"INSVC","on":"INTERLAKE AVE N","x1":"N 44TH ST","x2":"N ALLEN PL","control":" ","school":true,"x":30.478,"y":46.188,"built":2013},{"lng":-122.33633740285102,"lat":47.6492641026156,"status":"INSVC","on":"WALLINGFORD AVE N","x1":"N 35TH ST","x2":"N 36TH ST","control":" ","school":false,"x":44.152,"y":79.184,"built":null},{"lng":-122.336516953012,"lat":47.66138596349789,"status":"INSVC","on":"N 45TH ST","x1":"DENSMORE E AVE N","x2":"WALLINGFORD AVE N","control":"SIGNAL","school":false,"x":43.587,"y":42.075,"built":null},{"lng":-122.324477640088,"lat":47.653829532839595,"status":"INSVC","on":"NE NORTHLAKE WAY","x1":"4TH AVE NE","x2":"5TH AVE NE","control":" ","school":false,"x":81.497,"y":65.209,"built":null},{"lng":-122.336356227565,"lat":47.646878794555604,"status":"INSVC","on":"N NORTHLAKE WAY","x1":"DENSMORE AVE N","x2":"BURKE AVE N","control":" ","school":false,"x":44.093,"y":86.485,"built":null},{"lng":-122.331682894172,"lat":47.6689319453253,"status":"PLANNED","on":"KIRKWOOD PL N","x1":"N 54TH ST","x2":"N 56TH ST","control":" ","school":false,"x":58.809,"y":18.969,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.32505530611401,"lat":47.6649050366131,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 47TH ST","x2":"NE 50TH E ST","control":" ","school":false,"x":79.678,"y":31.3,"built":null},{"lng":-122.326227257377,"lat":47.6649913675724,"status":"INSVC","on":"NE 50TH ST","x1":"2ND AVE NE","x2":"THACKERAY PL NE","control":" ","school":false,"x":75.988,"y":31.036,"built":null},{"lng":-122.32566307549502,"lat":47.657627426237,"status":"INSVC","on":"LATONA AVE NE","x1":"NE 40 UPPER ST","x2":"NE 42ND W ST","control":" ","school":true,"x":77.764,"y":53.582,"built":null},{"lng":-122.331633969592,"lat":47.6690399453622,"status":"PLANNED","on":"N 56TH ST","x1":"KIRKWOOD PL N","x2":"KENSINGTON PL N","control":" ","school":false,"x":58.963,"y":18.639,"project":"N 55th/66th St Crossings","sched":{"state":"finishing","since":"Aug 2026"}},{"lng":-122.340361008732,"lat":47.6647962812231,"status":"INSVC","on":"STONE WAY N","x1":"N 49TH ST","x2":"N 50TH ST","control":"SIGNAL","school":false,"x":31.482,"y":31.633,"built":null},{"lng":-122.33044907927001,"lat":47.6650166196352,"status":"INSVC","on":"N 50TH ST","x1":"SUNNYSIDE AVE N","x2":"EASTERN AVE N","control":" ","school":false,"x":62.694,"y":30.958,"built":null},{"lng":-122.33650732065,"lat":47.6635798348153,"status":"INSVC","on":"N 48TH ST","x1":"DENSMORE AVE N","x2":"WALLINGFORD AVE N","control":"STOPSIGN","school":true,"x":43.617,"y":35.357,"built":null},{"lng":-122.33729838369001,"lat":47.6613869949811,"status":"INSVC","on":"N 45TH ST","x1":"DENSMORE E AVE N","x2":"WALLINGFORD AVE N","control":" ","school":false,"x":41.126,"y":42.071,"built":null},{"lng":-122.340073550552,"lat":47.6683969644949,"status":"INSVC","on":"GREEN LAKE WAY N","x1":"N 54TH ST","x2":"N CLOGSTON WAY","control":" ","school":false,"x":32.387,"y":20.607,"built":null},{"lng":-122.334861533574,"lat":47.661385962465495,"status":"INSVC","on":"N 45TH ST","x1":"BURKE AVE N","x2":"MERIDIAN AVE N","control":" ","school":false,"x":48.799,"y":42.075,"built":null}],"outline":[[[9.608,30.993],[12.309,31.018],[13.001,30.998],[13.224,30.998],[13.332,30.974],[13.432,30.935],[13.513,30.882],[16.585,30.977],[18.385,31.014],[22.484,30.976],[24.124,30.94],[31.204,30.879],[31.981,30.894],[32.305,28.774],[32.342,26.704],[32.345,24.619],[32.359,22.085],[32.376,20.449],[32.383,20.371],[32.391,20.292],[32.399,20.213],[32.41,20.135],[32.42,20.057],[32.431,19.978],[32.443,19.9],[32.456,19.822],[32.47,19.743],[32.485,19.665],[32.501,19.587],[32.517,19.509],[32.536,19.431],[32.551,18.152],[32.56,17.55],[32.562,17.415],[32.564,17.321],[32.577,16.473],[32.586,16.016],[32.59,15.075],[35.611,15.109],[38.245,15.126],[38.981,15.116],[38.992,13.922],[41.499,11.877],[42.053,13.47],[43.022,13.089],[43.147,13.04],[43.248,12.999],[43.351,12.958],[43.452,12.916],[43.551,12.874],[43.652,12.832],[43.752,12.789],[43.851,12.746],[43.949,12.702],[44.046,12.657],[44.144,12.613],[44.242,12.568],[44.34,12.522],[44.436,12.476],[44.532,12.43],[44.626,12.383],[44.721,12.335],[44.815,12.288],[44.91,12.24],[45.003,12.191],[45.095,12.142],[45.188,12.092],[45.279,12.043],[45.371,11.993],[45.462,11.942],[45.553,11.891],[45.642,11.839],[45.73,11.787],[45.82,11.735],[45.908,11.682],[52.892,6.182],[52.903,8.609],[53.49,8.576],[57.685,8.642],[66.593,8.728],[81.106,8.803],[86.228,8.837],[90.558,8.859],[90.491,9.084],[89.863,11.959],[89.517,14.714],[89.437,17.322],[89.4,18.884],[89.374,19.989],[89.401,22.647],[89.349,25.296],[89.338,27.997],[89.326,30.697],[89.317,33.405],[89.253,36.14],[89.063,38.885],[88.85,41.585],[88.412,47.112],[88.073,52.295],[87.914,57.441],[87.835,62.671],[87.745,65.615],[87.405,65.64],[86.979,65.698],[86.795,65.736],[85.896,65.906],[85.574,65.955],[85.295,66.001],[85.002,66.05],[84.757,66.083],[84.556,66.094],[84.321,66.138],[84.152,66.165],[83.991,66.209],[83.725,66.297],[83.466,66.38],[83.199,66.436],[82.977,66.491],[82.751,66.536],[82.589,66.567],[82.398,66.583],[82.219,66.564],[81.922,66.472],[81.754,66.415],[81.561,66.375],[81.413,66.343],[81.272,66.309],[81.156,66.292],[80.789,66.404],[80.779,66.498],[80.672,66.541],[80.327,66.555],[79.764,66.532],[79.343,66.546],[79.142,66.545],[78.944,66.549],[78.826,66.552],[78.647,66.559],[78.468,66.563],[78.309,66.575],[78.179,66.609],[77.865,66.678],[77.732,66.734],[77.599,66.782],[77.352,66.849],[77.155,66.874],[77.037,66.884],[76.929,66.909],[76.707,66.965],[76.59,67.0],[76.456,67.015],[76.334,67.008],[76.186,66.973],[75.923,66.929],[75.754,66.917],[75.31,66.95],[75.161,66.975],[75.005,67.0],[74.789,67.03],[74.652,67.05],[74.439,67.078],[74.281,67.125],[74.154,67.183],[73.873,67.379],[73.739,67.502],[73.593,67.65],[73.457,67.794],[73.33,67.936],[73.152,68.064],[72.999,68.193],[72.936,68.34],[72.734,68.506],[72.579,68.685],[72.463,68.85],[72.537,68.975],[72.442,69.14],[72.292,69.343],[72.135,69.547],[71.982,69.763],[71.423,70.331],[71.224,70.502],[71.025,70.574],[70.837,70.582],[70.636,70.723],[70.463,70.898],[70.337,71.085],[70.187,71.298],[70.045,71.462],[69.783,71.678],[69.571,71.841],[69.425,72.006],[69.291,72.218],[69.197,72.378],[68.991,72.566],[68.823,72.719],[68.699,72.847],[68.502,72.86],[68.425,72.764],[68.464,72.441],[68.358,72.335],[68.082,72.263],[67.79,72.244],[67.506,72.254],[67.269,72.326],[67.157,72.436],[67.022,72.525],[66.851,72.58],[66.713,72.539],[66.554,72.583],[66.295,72.682],[66.052,72.775],[65.832,72.88],[65.749,72.998],[65.82,73.148],[65.901,73.275],[65.92,73.474],[65.595,73.516],[65.521,73.597],[65.611,73.747],[65.662,73.825],[65.154,73.937],[64.827,74.002],[64.576,74.058],[64.427,74.091],[64.288,74.142],[64.122,74.25],[63.877,74.42],[63.665,74.579],[63.446,74.727],[63.246,74.881],[63.078,75.021],[62.903,75.162],[62.728,75.305],[62.554,75.462],[62.404,75.579],[62.226,75.829],[62.243,75.98],[62.221,76.09],[62.087,76.204],[61.911,76.282],[61.765,76.334],[61.742,76.43],[61.831,76.619],[61.922,76.784],[61.98,76.897],[62.025,77.015],[62.035,77.133],[62.084,77.277],[62.178,77.424],[62.248,77.545],[62.223,77.651],[62.161,77.74],[62.152,77.855],[62.185,77.991],[62.269,78.135],[62.331,78.283],[62.254,78.398],[62.055,78.467],[61.833,78.529],[61.631,78.594],[61.554,78.702],[61.431,78.746],[61.234,78.796],[60.993,78.858],[60.838,78.89],[60.472,78.947],[60.275,78.868],[60.182,78.758],[60.074,78.782],[59.95,78.78],[59.784,78.811],[59.599,78.91],[59.531,78.988],[59.479,79.075],[59.456,79.149],[59.392,79.265],[59.312,79.453],[59.263,79.539],[59.198,79.607],[59.143,79.679],[59.097,79.759],[59.074,79.839],[59.048,80.058],[59.084,80.197],[59.203,80.414],[59.266,80.515],[59.344,80.659],[59.488,80.888],[59.676,81.186],[59.787,81.36],[59.86,81.464],[60.008,81.618],[60.068,81.697],[60.128,81.769],[60.234,81.913],[60.324,82.046],[60.395,82.158],[60.449,82.256],[60.542,82.394],[60.634,82.569],[60.598,82.649],[60.374,82.841],[60.205,82.972],[60.002,83.139],[59.918,83.194],[59.613,83.388],[59.362,83.531],[59.219,83.644],[59.128,83.721],[59.019,83.806],[58.938,83.867],[58.797,83.985],[58.713,84.054],[58.513,84.195],[58.42,84.282],[58.323,84.369],[58.173,84.478],[58.07,84.565],[57.974,84.647],[57.839,84.74],[57.595,84.912],[57.459,84.97],[57.312,84.942],[57.163,85.106],[56.973,85.276],[56.766,85.484],[56.551,85.678],[56.483,85.742],[56.371,85.861],[56.203,86.021],[56.029,86.184],[55.929,86.257],[55.869,86.179],[55.721,86.03],[55.578,86.039],[55.365,86.079],[55.191,86.147],[55.078,86.198],[54.928,86.33],[54.884,86.434],[54.849,86.548],[54.838,86.633],[54.836,86.772],[54.876,86.918],[54.947,87.061],[54.984,87.135],[55.052,87.26],[55.225,87.506],[55.261,87.648],[55.287,87.75],[55.349,87.899],[55.406,88.097],[55.429,88.238],[55.467,88.342],[55.511,88.535],[55.541,88.66],[55.552,88.824],[55.515,88.977],[55.457,89.168],[55.412,89.402],[55.397,89.518],[55.356,89.645],[55.333,89.752],[55.298,89.847],[55.268,89.919],[55.183,90.162],[55.149,90.319],[55.098,90.529],[55.081,90.602],[55.066,90.76],[55.049,90.838],[54.985,91.036],[54.904,91.226],[54.8,91.473],[54.691,91.662],[54.602,91.813],[54.479,92.051],[54.408,92.168],[54.36,92.251],[54.277,92.373],[54.065,92.636],[53.915,92.763],[53.67,92.908],[53.522,92.966],[53.392,93.005],[53.11,93.067],[52.925,93.093],[52.671,93.126],[52.403,93.15],[52.279,93.163],[52.12,93.198],[51.962,93.257],[51.79,93.366],[51.632,93.553],[51.565,93.658],[51.447,93.647],[51.34,93.699],[51.243,93.784],[51.338,93.85],[51.25,93.904],[50.739,93.908],[50.426,93.908],[50.062,93.908],[49.707,93.907],[49.33,93.905],[48.963,93.901],[48.254,93.896],[47.908,93.892],[47.576,93.89],[47.202,93.884],[46.867,93.883],[46.515,93.879],[46.266,93.878],[45.969,93.877],[45.79,93.862],[45.784,93.787],[45.779,93.711],[45.779,93.607],[45.698,93.551],[45.534,93.526],[45.188,93.482],[44.992,93.447],[44.738,93.393],[44.445,93.313],[44.3,93.26],[44.202,93.212],[44.021,93.147],[43.774,93.091],[43.642,93.061],[43.255,92.947],[43.086,92.836],[43.02,92.774],[42.86,92.656],[42.674,92.616],[42.503,92.575],[42.396,92.509],[42.255,92.401],[42.126,92.254],[42.026,92.201],[41.868,92.158],[41.633,92.087],[41.484,92.021],[41.34,91.903],[41.277,91.839],[41.034,91.724],[40.987,91.648],[40.932,91.512],[40.974,91.432],[40.945,91.302],[40.936,91.224],[40.934,91.151],[40.868,91.064],[40.718,90.975],[40.522,90.841],[40.285,90.691],[40.128,90.569],[40.039,90.482],[40.132,90.385],[39.92,90.243],[39.753,90.107],[39.525,89.957],[39.385,89.855],[39.251,89.759],[39.325,89.666],[39.233,89.591],[39.167,89.51],[39.137,89.387],[39.036,89.191],[38.89,89.031],[38.799,88.962],[38.662,88.877],[38.538,88.878],[38.43,88.917],[38.28,88.894],[38.131,88.839],[37.956,88.753],[37.747,88.613],[37.63,88.541],[37.539,88.493],[37.393,88.394],[37.204,88.274],[37.144,88.21],[37.082,88.143],[36.945,88.059],[36.77,87.981],[36.66,87.916],[36.513,87.821],[36.315,87.717],[36.193,87.704],[36.03,87.809],[35.912,87.901],[35.833,87.954],[35.667,88.055],[35.474,88.095],[35.301,87.99],[35.363,87.926],[35.441,87.873],[35.576,87.767],[35.766,87.633],[35.87,87.559],[35.928,87.494],[35.817,87.403],[35.534,87.215],[35.383,87.089],[35.167,86.936],[35.073,86.986],[34.845,87.157],[34.705,87.268],[34.605,87.359],[34.483,87.442],[34.341,87.489],[34.175,87.411],[34.056,87.357],[33.968,87.306],[33.889,87.243],[33.756,87.172],[33.652,87.113],[33.548,87.041],[33.417,86.933],[33.402,86.85],[33.514,86.756],[33.597,86.64],[33.496,86.578],[33.415,86.638],[33.333,86.7],[33.115,86.883],[32.972,87.009],[32.894,87.067],[32.797,87.131],[32.678,87.212],[32.584,87.285],[32.434,87.381],[32.283,87.479],[32.158,87.563],[32.023,87.648],[31.859,87.715],[31.726,87.633],[31.625,87.577],[31.524,87.52],[31.621,87.454],[31.717,87.356],[31.849,87.26],[31.93,87.205],[32.024,87.148],[32.118,87.083],[32.215,87.012],[32.337,86.935],[32.444,86.856],[32.543,86.773],[32.665,86.667],[32.774,86.581],[32.902,86.493],[33.012,86.415],[33.14,86.333],[33.256,86.243],[33.365,86.162],[33.458,86.077],[33.555,86.009],[33.671,85.925],[33.768,85.846],[33.849,85.787],[33.935,85.679],[33.909,85.557],[33.849,85.453],[33.737,85.341],[33.674,85.277],[33.534,85.183],[33.372,85.098],[33.258,85.03],[33.134,84.957],[33.015,84.907],[32.844,84.853],[32.719,84.844],[32.589,84.861],[32.452,84.894],[32.282,84.96],[32.112,85.062],[31.965,85.177],[31.878,85.242],[31.741,85.363],[31.63,85.482],[31.588,85.575],[31.526,85.645],[31.448,85.708],[31.354,85.781],[31.273,85.84],[31.093,85.927],[31.009,85.987],[30.925,86.066],[30.813,86.05],[30.606,86.018],[30.625,85.845],[30.626,85.678],[30.594,85.472],[30.339,85.477],[30.314,85.708],[30.309,85.862],[30.302,85.956],[30.292,86.038],[30.151,86.021],[29.997,86.009],[29.792,85.982],[29.503,85.952],[29.323,85.916],[29.151,85.906],[29.034,85.849],[29.038,85.652],[29.039,85.466],[29.04,85.293],[29.043,85.077],[29.066,84.982],[29.464,84.966],[29.461,84.842],[29.295,84.838],[29.052,84.833],[28.774,84.84],[28.693,84.904],[28.552,84.902],[28.29,84.898],[28.039,84.842],[28.04,84.644],[28.042,84.493],[28.041,84.36],[28.035,84.284],[27.9,84.239],[27.761,84.174],[27.716,84.083],[27.663,84.005],[27.484,83.792],[27.354,83.7],[27.214,83.637],[27.025,83.604],[26.724,83.589],[26.519,83.568],[26.409,83.507],[26.274,83.587],[26.067,83.619],[25.872,83.619],[25.684,83.621],[25.441,83.61],[25.343,83.54],[25.33,83.424],[25.337,83.343],[25.292,83.237],[25.156,83.166],[25.056,83.122],[24.885,83.081],[24.516,83.023],[24.125,82.981],[23.885,82.961],[23.751,82.959],[23.841,82.069],[24.009,79.376],[24.102,76.915],[24.195,74.469],[24.439,70.067],[24.702,65.664],[24.907,61.399],[25.113,57.134],[25.318,52.868],[25.523,48.603],[25.73,44.337],[25.837,42.103],[20.349,42.095],[14.592,42.063],[9.51,42.066],[9.537,39.598],[9.577,35.65],[9.602,31.988],[9.608,30.993]]]};
+
+const EXAMPLE = {
+  "LATONA AVE NE AND NE 47TH ST":        { votes: 64, diy: "flags", adopter: "a neighbor on the block", restock: 2, requested: 62 },
+  "THACKERAY PL NE AND NE 47TH ST":      { votes: 38 },
+  "GREEN LAKE WAY N AND MIDVALE AVE N":  { votes: 71, diy: "flags", adopter: "two families nearby", restock: 5, requested: 38 },
+  "GREEN LAKE WAY N AND N 48TH ST":      { votes: 52, requested: 21 },
+  "LATONA AVE NE AND NE 59TH ST":        { votes: 22 },
+  "LATONA AVE NE AND NE 58TH ST":        { votes: 19 },
+  "KIRKWOOD PL N AND N 57TH ST":         { votes: 15 },
+  "WALLINGFORD AVE N AND N 37TH ST":     { votes: 33 },
+  "WALLINGFORD AVE N AND N 38TH ST":     { votes: 27 },
+  "KIRKWOOD PL N AND MERIDIAN AVE N":    { votes: 12 },
+  "ASHWORTH AVE N AND N 40TH ST":        { votes: 58, diy: "kit", requested: 12 },
+  "WALLINGFORD AVE N AND N 36TH ST":     { votes: 24 },
+  "KIRKWOOD PL N AND N 56TH ST":         { votes: 9 },
+  "KEYSTONE PL N AND N 55TH ST":         { votes: 11 },
+  "KIRKWOOD PL N AND N 59TH ST":         { votes: 8 },
+  "CORLISS AVE N AND N NORTHLAKE WAY":   { votes: 30, diy: "flags", adopter: "Gas Works Park regulars", restock: 9 },
+  "EASTERN AVE N AND N PACIFIC ST":      { votes: 26 },
+  "1ST AVE NE AND NE PACIFIC ST":        { votes: 14 },
+  "SUNNYSIDE AVE N AND N NORTHLAKE WAY": { votes: 21 },
+  "N 37TH ST AND N PACIFIC ST":          { votes: 10 },
+};
+const PLANNED_NEAR = ["KIRKWOOD PL N AND N 56TH ST", "KEYSTONE PL N AND N 55TH ST"];
+const FEED = [
+  ["Today", "n", "A neighbor", "restocked flags at Green Lake Way and Midvale."],
+  ["Today", "n", "11 neighbors", "voted for 40th and Ashworth."],
+  ["Mon", "n", "Two neighbors", "counted 46 people crossing at 40th and Ashworth, 7:30–8:30 am."],
+  ["Oct 15", "city", "SDOT", "added 9 planned crosswalks in Tangletown (N 55th/66th St Crossings)."],
+  ["Oct 7", "city", "SDOT", "added 5 planned crosswalks on Meridian Ave N between N 45th and N 50th."],
+  ["Sat", "n", "A neighbor", "requested a flag kit for 40th and Ashworth. Install party Saturday 10 am."],
+];
+
+const titleCase = s => s.toLowerCase().replace(/\b(ne|n|nw)\b/g, m => m.toUpperCase())
+  .replace(/\b([a-z])/g, c => c.toUpperCase()).replace(/\bAnd\b/g, "and")
+  .replace(/(\d+)(St|Nd|Rd|Th)\b/g, (m, n, s) => n + s.toLowerCase());
+
+let state = {};
+try { state = JSON.parse(localStorage.getItem("cw-state") || "{}"); } catch (e) { state = {}; }
+const save = () => { try { localStorage.setItem("cw-state", JSON.stringify(state)); } catch (e) {} };
+
+const pins = DATA.pins.map(p => {
+  const ex = EXAMPLE[p.where] || { votes: 0 };
+  return { ...p, ex, name: titleCase(p.where), planned: PLANNED_NEAR.includes(p.where) };
+});
+const votesOf = p => p.ex.votes + (state["v:" + p.where] ? 1 : 0);
+const diyOf = p => state["a:" + p.where] ? "adopted" : (p.ex.diy || null);
+const priorityScore = p => p.total * 2 + votesOf(p) / 4;
+
+let selected = null;
+
+function rankPins() {
+  [...pins].sort((a, b) => priorityScore(b) - priorityScore(a) || b.total - a.total)
+    .forEach((p, i) => { p.prio = i + 1; });
+}
+
+const mapEl = document.getElementById("map");
+mapEl.style.setProperty("--ar", DATA.size[0] + " / " + DATA.size[1]);
+
+document.getElementById("outline").innerHTML = DATA.outline.map(r =>
+  `<polygon points="${r.map(p => p.join(",")).join(" ")}" fill="none" stroke="var(--sign)" stroke-width="0.55" stroke-dasharray="1.4 0.9" vector-effect="non-scaling-stroke" style="stroke-width:2.5px"></polygon>`).join("");
+
+const check = `<svg viewBox="0 0 10 10"><path d="M2 5.3l2 2 4-4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+// Paste a Google Maps Embed API key (restricted to mrlerner.github.io) to show an interactive 360° view in the page.
+const MAPS_EMBED_KEY = "__MAPS_KEY__";
+const streetView = p => `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${p.lat.toFixed(6)},${p.lng.toFixed(6)}`;
+const streetViewEmbed = p => MAPS_EMBED_KEY && !MAPS_EMBED_KEY.startsWith("__")
+  ? `<div class="sv"><iframe title="Street View of this corner" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/streetview?key=${MAPS_EMBED_KEY}&location=${p.lat.toFixed(6)},${p.lng.toFixed(6)}&fov=90&radius=40"></iframe></div>`
+  : "";
+
+function crossingName(m) {
+  const on = titleCase(m.on), a = titleCase(m.x1 || ""), b = titleCase(m.x2 || "");
+  return a && b ? `${on}, between ${a} and ${b}` : on;
+}
+function markedStatus(m) {
+  if (m.status === "INSVC") return m.built ? `Built ${m.built}` : "In place";
+  const s = m.sched || {};
+  if (s.state === "in_progress") return `Scheduled · work began ${s.since}`;
+  if (s.state === "finishing") return "Scheduled · finishing up";
+  return `Planned since ${s.since || "an earlier year"} · not yet scheduled`;
+}
+DATA.marked.forEach(m => {
+  const d = document.createElement("button");
+  d.type = "button";
+  d.className = "chk" + (m.status === "PLANNED" ? " planned" : "");
+  d.style.left = m.x + "%"; d.style.top = m.y + "%";
+  d.dataset.x = m.x; d.dataset.y = m.y;
+  d.title = `${markedStatus(m)}: ${crossingName(m)}`;
+  d.setAttribute("aria-label", d.title);
+  d.innerHTML = check;
+  d.addEventListener("click", () => showCrosswalk(m));
+  mapEl.appendChild(d);
+});
+
+function showCrosswalk(m) {
+  selected = null; renderPins(); renderList();
+  const planned = m.status === "PLANNED";
+  document.getElementById("detail").innerHTML = `
+    <div class="eyebrow" style="color:var(${planned ? "--plan" : "--ok"})">${planned ? "Coming from the city" : "Marked crosswalk"}</div>
+    <h2>${crossingName(m)}</h2>
+    <div class="rows">
+      <div class="row"><span>Status</span><div><span class="chip ${planned ? "plan" : "ok"}">${markedStatus(m)}</span></div></div>
+      ${planned && m.project ? `<div class="row"><span>SDOT project</span><div>${m.project}</div></div>` : ""}
+      ${m.school ? `<div class="row"><span>School</span><div>Marked as a school crossing</div></div>` : ""}
+    </div>
+    <div class="actions"><a class="act" href="${streetView(m)}" target="_blank" rel="noopener">Look around in Street View ↗</a><button class="act" type="button" id="b-back">Back to the corners that need one</button></div>
+    ${streetViewEmbed(m)}`;
+  revealDetail();
+  document.getElementById("b-back").onclick = () => select(pins.find(p => p.prio === 1));
+}
+
+function renderProgress() {
+  const planned = DATA.marked.filter(m => m.status === "PLANNED");
+  const groups = {};
+  planned.forEach(m => {
+    const key = m.project || "Waiting on SDOT";
+    (groups[key] = groups[key] || []).push(m);
+  });
+  const rows = Object.entries(groups).sort((a, b) => b[1].length - a[1].length).map(([name, ms]) => {
+    const st = markedStatus(ms[0]).replace(/^Scheduled · /, "");
+    const where = name === "Waiting on SDOT" ? [...new Set(ms.map(m => titleCase(m.on)))].join(", ") : "";
+    return `<li><b class="n">${ms.length}</b><span>${name === "Waiting on SDOT" ? "Planned but not yet scheduled" : name}${where ? ` (${where})` : ""}<span class="st">${st}</span></span></li>`;
+  });
+  const built = DATA.marked.filter(m => m.built);
+  const latest = Math.max(...built.map(m => m.built));
+  rows.push(`<li><b class="n" style="color:var(--ok)">${DATA.marked.filter(m => m.status === "INSVC").length}</b><span>Crosswalks already in place<span class="st">Most recent with a recorded build date: ${latest}</span></span></li>`);
+  document.getElementById("progress").innerHTML = rows.join("");
+}
+
+const pinEls = {};
+pins.forEach(p => {
+  const b = document.createElement("button");
+  b.className = "pin";
+  b.style.left = p.x + "%"; b.style.top = p.y + "%";
+  b.dataset.x = p.x; b.dataset.y = p.y;
+  b.addEventListener("click", () => select(p));
+  mapEl.appendChild(b);
+  pinEls[p.where] = b;
+});
+
+function cityStatus(p) {
+  if (p.planned) return `<span class="chip plan">Scheduled · finishing up</span>`;
+  if (p.ex.requested) return `<span class="chip need">Requested by neighbors</span> <span class="ex">Example</span>`;
+  return `<span class="chip need">On SDOT's priority list · not scheduled</span>`;
+}
+function diyStatus(p) {
+  const d = diyOf(p);
+  if (d === "flags") return `<span class="chip ok">Flags in place</span> <span class="ex">Example</span><div class="sub">Adopted by ${p.ex.adopter} · restocked ${p.ex.restock} days ago</div>`;
+  if (d === "kit") return `<span class="chip diy">Kit ordered · install Saturday</span> <span class="ex">Example</span>`;
+  if (d === "adopted") return `<span class="chip ok">Flag kit requested by you</span><div class="sub">You're this corner's adopter. Next: pick an install day and invite neighbors.</div>`;
+  return `<span class="chip diy">No flags yet · request a kit</span>`;
+}
+function timeline(p) {
+  const steps = p.planned
+    ? [["On SDOT's list", "done"], ["Planned by SDOT", "now"], ["Built", ""]]
+    : p.ex.requested
+      ? [["On SDOT's list", "done"], ["Neighbors requested", "done"], [`Waiting · day ${p.ex.requested}`, "now"], ["Follow-up at day 21, then council at day 42", ""], ["Built", ""]]
+      : [["On SDOT's list", "done"], ["Neighbors vote", "now"], ["Request sent", ""], ["Built", ""]];
+  return `<div class="timeline">${steps.map(([t, c]) => `<span class="step ${c}">${t}</span>`).join("")}</div>`;
+}
+const bar = (label, v, max) => `<div class="bar">${label} ${v}/${max}<div><i style="width:${Math.round(100 * v / max)}%"></i></div></div>`;
+
+function renderDetail() {
+  const p = selected;
+  const el = document.getElementById("detail");
+  const voted = !!state["v:" + p.where];
+  const adopted = !!state["a:" + p.where];
+  el.innerHTML = `
+    <div class="eyebrow">Priority ${p.prio} of ${pins.length}</div>
+    <h2>${p.name}</h2>
+    <div class="sub">${p.gap_m_to_marked_xwalk ? `About ${p.gap_m_to_marked_xwalk} m to the nearest marked crosswalk` : "No marked crosswalk nearby on either street"} · SDOT score ${p.total} of 37</div>
+    <div class="rows">
+      <div class="row"><span>City</span><div>${cityStatus(p)}${timeline(p)}</div></div>
+      <div class="row"><span>Neighbors</span><div>${diyStatus(p)}</div></div>
+      <div class="row"><span>Votes</span><div><b>${votesOf(p)}</b> neighbors <span class="ex">Example</span></div></div>
+      <div class="row"><span>Why SDOT lists it</span><div><div class="bars">
+        ${bar("School", p.school, 3)}${bar("Park", p.park, 3)}${bar("Transit", p.transit, 3)}
+        ${bar("Land use", p.proximity - p.school - p.park - p.transit, 3)}${bar("Safety", p.safety, 16)}${bar("Crashes", p.ped_crashes_5yr, 6)}
+      </div></div></div>
+    </div>
+    <div class="actions">
+      ${p.planned ? "" : `<button class="act primary" id="b-kit" type="button">${adopted ? "Flag kit requested ✓" : "Request a flag kit"}</button>`}
+      <button class="act${p.planned ? " primary" : ""}" id="b-vote" type="button">${voted ? "Voted ✓" : "Vote for this corner"}</button>
+      <button class="act" id="b-miss" type="button">Report a near-miss</button>
+      <a class="act" href="${streetView(p)}" target="_blank" rel="noopener">Look around in Street View ↗</a>
+    </div>
+    <div class="toast" id="toast"></div>
+    ${streetViewEmbed(p)}
+    <div id="kit"></div>`;
+  document.getElementById("b-vote").onclick = () => { state["v:" + p.where] = !voted; save(); refresh(voted ? "Vote removed." : "Vote counted. This corner moves up as neighbors vote."); };
+  const kitBtn = document.getElementById("b-kit");
+  if (kitBtn) kitBtn.onclick = () => adopted ? showKitDone(p) : showKitForm(p);
+  document.getElementById("b-miss").onclick = () => { document.getElementById("toast").textContent = "Near-miss logged. Reports like this fill the gap in the city's crash data."; };
+}
+
+function showKitForm(p) {
+  const el = document.getElementById("kit");
+  el.innerHTML = `
+    <form class="kit" id="kit-form" novalidate>
+      <h3>Flag kit for ${p.name}</h3>
+      <div>Everything one corner needs, free:
+        <ul>
+          <li>2 flag holders and 12 bright orange crossing flags, one set for each side of the street</li>
+          <li>A sign with a QR code: "Take a flag, cross, leave it on the other side"</li>
+          <li>Yard signs for nearby neighbors: "WA law: stop for people at every corner"</li>
+          <li>A crossing-count card and a 5-minute sight-line checklist</li>
+          <li>Flyers to invite neighbors to the install</li>
+        </ul>
+      </div>
+      <div class="two">
+        <label for="kit-name">Your name<input type="text" id="kit-name" autocomplete="name"></label>
+        <label for="kit-email">Email<input type="email" id="kit-email" autocomplete="email"></label>
+      </div>
+      <label for="kit-signs">Yard signs for neighbors on this corner<input type="number" id="kit-signs" min="0" max="12" value="4"></label>
+      <label class="check" for="kit-adopt"><input type="checkbox" id="kit-adopt" checked> I'll adopt this corner: check the flags every two weeks and restock when they run low. We'll send a reminder.</label>
+      <label class="check" for="kit-party"><input type="checkbox" id="kit-party" checked> Help me plan an install party and invite the neighbors.</label>
+      <div class="err" id="kit-err"></div>
+      <div class="actions" style="margin-top:0"><button class="act primary" type="submit" id="kit-submit">Request the kit</button></div>
+    </form>`;
+  const form = document.getElementById("kit-form");
+  form.addEventListener("input", () => { document.getElementById("kit-err").textContent = ""; });
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.getElementById("kit-name").value.trim();
+    const email = document.getElementById("kit-email").value.trim();
+    if (!name) { document.getElementById("kit-err").textContent = "Add your name so neighbors know who's organizing."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { document.getElementById("kit-err").textContent = "Add an email address so we can send pickup details."; return; }
+    state["a:" + p.where] = true;
+    state["k:" + p.where] = { signs: +document.getElementById("kit-signs").value || 0, adopt: document.getElementById("kit-adopt").checked, party: document.getElementById("kit-party").checked };
+    save(); refresh(); showKitDone(p);
+  });
+  document.getElementById("kit-name").focus();
+}
+
+function showKitDone(p) {
+  const k = state["k:" + p.where] || { signs: 4, adopt: true, party: true };
+  document.getElementById("kit").innerHTML = `
+    <div class="kit">
+      <h3>Kit requested for ${p.name}</h3>
+      <div class="next">
+        <div><b>This week:</b> pick up your kit from a neighborhood volunteer, or have it dropped off. <span class="ex">Example</span></div>
+        <div><b>Install day:</b> ${k.party ? "we'll send a flyer and a sign-up link for an install party at the corner." : "set the holders within 5 feet of the crossing, zip-tied to the sign pole."}</div>
+        <div><b>Yard signs:</b> ${k.signs} sign${k.signs === 1 ? "" : "s"} for neighbors facing the corner.</div>
+        <div><b>After that:</b> ${k.adopt ? "a restock reminder every two weeks. Each QR scan counts as a crossing, which goes into the request to SDOT." : "anyone can adopt the corner later from this page."}</div>
+      </div>
+    </div>`;
+}
+
+function renderList() {
+  const list = document.getElementById("list");
+  const sorted = [...pins].sort((a, b) => a.prio - b.prio);
+  list.innerHTML = sorted.map(p => `
+    <button class="item${selected === p ? " on" : ""}" type="button" data-w="${p.where}">
+      <span class="num${p.planned ? " planned" : ""}">${p.prio}</span>
+      <span><span class="name">${p.name}</span>
+        <span class="meta"><span>SDOT ${p.total}/37</span><span>${p.planned ? "In SDOT's plans" : p.ex.requested ? "Requested" : "Not yet requested"}</span><span>${{ flags: "Neighbor flags", adopted: "Kit requested by you", kit: "Flag kit ordered" }[diyOf(p)] || "No flags yet"}</span></span></span>
+      <span class="votes">${votesOf(p)}<small>votes</small></span>
+    </button>`).join("");
+  list.querySelectorAll(".item").forEach(b => b.addEventListener("click", () => select(pins.find(p => p.where === b.dataset.w))));
+}
+
+function renderPins() {
+  pins.forEach(p => {
+    const b = pinEls[p.where];
+    b.textContent = p.prio;
+    b.className = "pin" + (p.planned ? " planned" : "") + (diyOf(p) && diyOf(p) !== "kit" ? " diy" : "") + (selected === p ? " on" : "");
+    b.setAttribute("aria-label", `Priority ${p.prio}: ${p.name}`);
+  });
+}
+
+function renderStats() {
+  document.getElementById("s-need").textContent = pins.length;
+  document.getElementById("s-plan").textContent = DATA.marked.filter(m => m.status === "PLANNED" && m.sched && m.sched.state !== "waiting").length;
+  document.getElementById("s-diy").textContent = pins.filter(p => diyOf(p) && diyOf(p) !== "kit").length;
+  document.getElementById("s-ok").textContent = DATA.marked.filter(m => m.status === "INSVC").length;
+}
+
+function refresh(msg) {
+  rankPins(); renderPins(); renderList(); renderStats(); renderDetail();
+  if (msg) document.getElementById("toast").textContent = msg;
+}
+function select(p, reveal = true) { selected = p; refresh(); if (reveal) revealDetail(); }
+// On phones the detail card sits below the map, so bring it into view after a tap.
+function revealDetail() {
+  if (!booted || !matchMedia("(max-width: 900px)").matches) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.getElementById("detail").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+}
+let booted = false;
+
+document.getElementById("feed").innerHTML = FEED.map(([t, k, who, what]) =>
+  `<li><time>${t}</time><span><span class="who ${k}">${who}</span> ${what}</span></li>`).join("");
+
+rankPins();
+renderProgress();
+select(pins.find(p => p.prio === 1), false);
+booted = true;
+</script>
+
+</body>
+</html>
