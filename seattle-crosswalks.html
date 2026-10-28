@@ -119,9 +119,10 @@ button.act { font: 600 14px/1 var(--f-display); border-radius: 8px; padding: 10p
   background: transparent; color: var(--ink); }
 button.act.primary { background: var(--need); border-color: var(--need); color: #fff; }
 .cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
-.cta-btn { flex: 1 1 200px; font: 800 17px/1.1 var(--f-display); letter-spacing: .01em; color: #fff; border: 0; border-radius: 10px;
-  padding: 16px 18px; cursor: pointer; box-shadow: 0 2px 0 rgba(0,0,0,.18); }
-.cta-btn.kit { background: var(--diy); }
+.cta-btn { flex: 1 1 220px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; min-height: 54px;
+  font: 800 17px/1.1 var(--f-display); letter-spacing: .01em; color: #fff; border: 0; border-radius: 10px; text-align: center;
+  padding: 10px 18px; cursor: pointer; box-shadow: 0 2px 0 rgba(0,0,0,.18); }
+.cta-btn.flag { background: var(--diy); }
 .cta-btn.vote { background: var(--sign); }
 .cta-btn.done { filter: saturate(.55); }
 .cta-btn:hover { filter: brightness(1.06); }
@@ -129,7 +130,7 @@ button.act.primary { background: var(--need); border-color: var(--need); color: 
 .cta-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 .detail .sub { margin-top: 10px; }
 a.sign { text-decoration: none; }
-a.cta-btn { display: block; text-align: center; text-decoration: none; }
+a.cta-btn { text-decoration: none; }
 .cta-btn.wide { width: 100%; flex: none; margin-top: 12px; }
 .name-link { color: inherit; text-decoration: none; }
 .name-link:hover { text-decoration: underline; }
@@ -182,6 +183,9 @@ button.mark { justify-self: start; }
 .product .check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; margin-top: 6px; }
 .product .check input { margin-top: 4px; }
 .ordered { margin-top: 12px; font-weight: 600; color: var(--ok); }
+.yard { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 16px; align-items: start; }
+.yard-sign { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+#sec-signs { scroll-margin-top: 12px; }
 .kit.confirm { border: 2px solid var(--ok); border-radius: 10px; padding: 14px; margin-top: 12px; }
 .radio { border: 0; padding: 0; margin: 0; display: grid; gap: 4px; }
 .radio legend { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
@@ -215,6 +219,8 @@ label.inline input { width: 90px; font: 400 14px var(--f-body); padding: 6px 8px
 @media (max-width: 600px) {
   .product { grid-template-columns: minmax(0, 1fr); }
   .product-img { max-width: 320px; }
+  .yard { grid-template-columns: minmax(0, 1fr); }
+  .yard-sign { max-width: 320px; }
   .cp-sec { grid-template-columns: minmax(0, 1fr); padding: 16px; }
   .sec-n { width: 34px; height: 34px; font-size: 17px; line-height: 34px; }
   .tiles, .sdot-grid { grid-template-columns: minmax(0, 1fr); }
@@ -393,7 +399,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793211277";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793212050";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -470,12 +476,25 @@ function waitLabel(c) {
 }
 const bar = (label, v, max) => `<div class="bar">${label} ${v}/${max}<div><i style="width:${Math.round(100 * Math.min(v, max) / max)}%"></i></div></div>`;
 const bars = c => `${bar("School", c.sch, 3)}${bar("Park", c.pk, 3)}${bar("Transit", c.tr, 3)}${bar("Land use", c.lu, 3)}${bar("Safety", c.sf, 16)}${bar("Crashes", c.pc, 6)}`;
-const gapText = c => c.gap ? `About ${c.gap} m to the nearest marked crosswalk` : "No marked crosswalk nearby on either street";
 const streetView = c => `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${c.lat.toFixed(6)},${c.lng.toFixed(6)}`;
 const streetViewEmbed = c => MAPS_EMBED_KEY && !MAPS_EMBED_KEY.startsWith("__")
   ? `<div class="sv"><iframe title="Street View of this corner" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
       src="https://www.google.com/maps/embed/v1/streetview?key=${MAPS_EMBED_KEY}&location=${c.lat.toFixed(6)},${c.lng.toFixed(6)}&fov=90&radius=40"></iframe></div>` : "";
 const pageUrl = c => location.href.split("#")[0] + "#c-" + c.s;
+// Yard sign, 24 × 18 in. Fluorescent yellow-green with black text, the color drivers already read as "people walking here".
+// A rectangle with words, so it doesn't imitate an official traffic sign.
+const yardSign = cls => `<svg class="${cls}" viewBox="0 0 240 180" role="img" aria-label="Yard sign: Stop for people crossing. Every corner is a crosswalk. It's the law in WA.">
+  <rect width="240" height="180" rx="6" fill="#d4f20f"/><rect x="5" y="5" width="230" height="170" rx="4" fill="none" stroke="#111" stroke-width="4"/>
+  <circle cx="52" cy="40" r="11" fill="#111"/>
+  <g fill="none" stroke="#111" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 58 L44 96"/><path d="M44 96 L30 132"/><path d="M44 96 L58 112 L64 136"/><path d="M49 64 L34 84"/><path d="M49 64 L66 80"/></g>
+  <g fill="#111" font-family="Overpass, Arial, sans-serif" font-weight="900">
+    <text x="88" y="66" font-size="58" textLength="138" lengthAdjust="spacingAndGlyphs">STOP</text>
+    <text x="88" y="96" font-size="25" textLength="138" lengthAdjust="spacingAndGlyphs">FOR PEOPLE</text>
+    <text x="88" y="124" font-size="25" textLength="138" lengthAdjust="spacingAndGlyphs">CROSSING</text></g>
+  <rect x="14" y="142" width="212" height="24" rx="3" fill="#111"/>
+  <text x="120" y="159" fill="#d4f20f" font-family="Overpass, Arial, sans-serif" font-weight="800" font-size="12" text-anchor="middle" textLength="196" lengthAdjust="spacingAndGlyphs">EVERY CORNER IS A CROSSWALK · WA LAW</text>
+</svg>`;
 
 // ---------- map ----------
 // The map shows either the whole city (dots, top 25 numbered) or one "focus" neighborhood in detail:
@@ -530,6 +549,12 @@ window.initGoogleMap = function () {
   chip.addEventListener("click", () => { keepView = true; });
   $("map").appendChild(chip);
   gmap.addListener("idle", onIdle);
+  // On a neighborhood, tapping the map outside it (not on a pin) goes back to the Seattle view.
+  gmap.addListener("click", e => {
+    if (view !== "hood" || !e.latLng) return;
+    const lng = e.latLng.lng(), lat = e.latLng.lat();
+    if (!curHood.rings.some(r => inRing([lng, lat], r))) location.hash = "";
+  });
   // Backup for "idle", which doesn't always fire after a zoom (for example in a background tab).
   let zoomTimer = null;
   gmap.addListener("zoom_changed", () => { clearTimeout(zoomTimer); zoomTimer = setTimeout(() => { if (!suppressIdle) onIdle(); }, 400); });
@@ -583,6 +608,7 @@ function pinButton(c, label, cls, onClick) {
   const b = document.createElement("button");
   b.type = "button"; b.className = cls; b.textContent = label; b.dataset.s = c.s;
   b.addEventListener("click", onClick);
+  google.maps.OverlayView.preventMapHitsFrom(b);
   return { el: b, lat: c.lat, lng: c.lng };
 }
 
@@ -612,8 +638,8 @@ function renderLayer() {
     const inView = (lng, lat) => !vb || (lng >= sw.lng() - padLng && lng <= ne.lng() + padLng && lat >= sw.lat() - padLat && lat <= ne.lat() + padLat);
     const here = view === "hood" && curHood === h;
     const faint = CORNERS.filter(c => c.h !== h.idx && inView(c.lng, c.lat)).map(c => {
-      const r = pinButton(c, "", "dot faint", () => gmap.panTo({ lat: c.lat, lng: c.lng }));
-      r.el.title = `${titleCase(c.w)} · ${HOODS[c.h].name}`; r.el.setAttribute("aria-label", `${r.el.title}. Move the map here`);
+      const r = pinButton(c, "", "dot faint", () => goCorner(c, true));
+      r.el.title = `${titleCase(c.w)} · ${HOODS[c.h].name}`; r.el.setAttribute("aria-label", r.el.title);
       return r;
     });
     const checks = D.marked.filter(m => m[3] === h.idx && inView(m[0], m[1])).map(m => {
@@ -621,6 +647,7 @@ function renderLayer() {
       d.type = "button"; d.className = "chk" + (m[2] === 0 ? " planned" : "");
       d.title = `${markedStatus(m)}: ${markedName(m)}`; d.setAttribute("aria-label", d.title); d.innerHTML = check;
       d.addEventListener("click", () => { if (view === "hood" && curHood === h) showCrosswalk(m); else { keepView = true; location.hash = "n-" + h.id; } });
+      google.maps.OverlayView.preventMapHitsFrom(d);
       return { el: d, lat: m[1], lng: m[0] };
     });
     const pins = [...h.corners].sort((a, b) => b.prio - a.prio).map(c => {
@@ -687,7 +714,7 @@ function viewCity() {
     ["need", fmt(CORNERS.length), "corners that need a crosswalk", "corners"],
     ["plan", fmt(sched), "new crosswalks scheduled by the city", "city"],
     ["ok", fmt(D.marked.filter(m => m[2] === 1).length), "marked crosswalks already in place", "city"],
-    ["diy", fmt(CORNERS.filter(flagged).length), "covered by neighbor flags", "flags"],
+    ["diy", fmt(CORNERS.filter(flagged).length), "crossings with neighbor flags", "flags"],
   ]);
   renderSide();
   mapFocus = null;
@@ -715,7 +742,7 @@ function renderCitySide() {
       ${!hoodQuery ? `<button class="act small more-rows" type="button" id="all-hoods">Show all neighborhoods</button>` : ""}
     </section>
     <section class="panel" id="rank-list">
-      <h3 class="ph">${listFilter === "flags" ? "Corners covered by neighbor flags" : "Highest-risk crossings in Seattle"} <span>${listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show highest risk</button>` : `<a class="link" href="#how-risk">How we rate risk</a>`}</span></h3>
+      <h3 class="ph">${listFilter === "flags" ? "Crossings with neighbor flags" : "Highest-risk crossings in Seattle"} <span>${listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show highest risk</button>` : `<a class="link" href="#how-risk">How we rate risk</a>`}</span></h3>
       <div class="rows-list">${top.map(c => `
         <button class="rowbtn" type="button" data-s="${c.s}"><span class="num${isPlanned(c) ? " planned" : ""}">${c.cityPrio}</span>
           <span><span class="name">${titleCase(c.w)}</span><span class="meta"><span>${esc(HOODS[c.h].name)}</span><span>${riskLine(c)}</span></span></span>
@@ -770,7 +797,7 @@ function renderHoodStats() {
     ["need", h.corners.length, "corners that need a crosswalk", "corners"],
     ["plan", D.marked.filter(m => m[3] === h.idx && scheduled(m)).length, "new crosswalks scheduled by the city", "city"],
     ["ok", D.marked.filter(m => m[3] === h.idx && m[2] === 1).length, "marked crosswalks already in place", "city"],
-    ["diy", h.corners.filter(flagged).length, "covered by neighbor flags", "flags"],
+    ["diy", h.corners.filter(flagged).length, "crossings with neighbor flags", "flags"],
   ]);
 }
 function renderPins() {
@@ -808,7 +835,7 @@ function renderHoodSide() {
       <div class="eyebrow">#${c.prio} highest risk in ${esc(h.name)} <span class="tier ${tierCls(c)}">${c.rt} risk citywide</span></div>
       <h2><a class="name-link" href="#c-${c.s}">${titleCase(c.w)}<span aria-hidden="true"> ›</span></a></h2>
       <div class="cta">
-        <a class="cta-btn kit${diyOf(c) === "adopted" ? " done" : ""}" href="#c-${c.s}" data-section="kit">${diyOf(c) === "adopted" ? "Flag kit ordered ✓" : flagged(c) ? "Help keep the flags stocked" : "Get a flag kit"}</a>
+        <a class="cta-btn flag${diyOf(c) === "adopted" ? " done" : ""}" href="#c-${c.s}" data-section="kit">${diyOf(c) === "adopted" ? "Flag kit ordered ✓" : flagged(c) ? "Help keep the flags stocked" : "Get crossing flag kit"}</a>
         <a class="cta-btn vote${state["v:" + c.s] ? " done" : ""}" href="#c-${c.s}" data-section="vote">${state["v:" + c.s] ? "Voted ✓" : "Vote for this corner"}</a>
       </div>
       <a class="more-link" href="#c-${c.s}" data-section="city">How to get the city to build it ›</a>
@@ -817,16 +844,11 @@ function renderHoodSide() {
         <div class="row"><span>City</span><div>${cityStatus(c)}</div></div>
         <div class="row"><span>Neighbors</span><div>${diyStatus(c)}</div></div>
         <div class="row"><span>Votes</span><div><b>${votesOf(c)}</b> neighbors · #${c.voteRank} most wanted</div></div>
-        <div class="row"><span>Why SDOT lists it</span><div><div class="bars">${bars(c)}</div></div></div>
+        <div class="row"><span>SDOT score</span><div><b>${c.t}</b> of 37<div class="bars">${bars(c)}</div></div></div>
       </div>
     </section>` : `<section class="panel"><p class="sub">SDOT's priority list has no corners in ${esc(h.name)}. Pick another neighborhood from the <a href="#">Seattle page</a>.</p></section>`}
-    <section class="panel progress" id="city-panel">
-      <h3>What the city is building</h3>
-      <ul>${projectRows(hm.filter(m => m[2] === 0), false)}
-        <li><b class="n" style="color:var(--ok)">${hm.filter(m => m[2] === 1).length}</b><span>Crosswalks already in place${built.length ? `<span class="st">Most recent with a recorded build date: ${Math.max(...built)}</span>` : ""}</span></li></ul>
-    </section>
     <section class="panel list" id="rank-list">
-      <h3><span class="lt">${listFilter === "flags" ? "Corners covered by neighbor flags" : `Highest-risk crossings in ${esc(h.name)}`}</span> <span>${listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show all ${h.corners.length}</button>` : `<a class="link" href="#how-risk">How we rate risk</a>`}</span></h3>
+      <h3><span class="lt">${listFilter === "flags" ? "Crossings with neighbor flags" : `Highest-risk crossings in ${esc(h.name)}`}</span> <span>${listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show all ${h.corners.length}</button>` : `<a class="link" href="#how-risk">How we rate risk</a>`}</span></h3>
       <div>${sorted.map(x => `
         <button class="item${selected === x ? " on" : ""}" type="button" data-s="${x.s}">
           <span class="num${isPlanned(x) ? " planned" : ""}">${x.prio}</span>
@@ -834,6 +856,11 @@ function renderHoodSide() {
             <span class="meta"><span class="tier ${tierCls(x)}">${x.rt}</span><span>${riskLine(x) || "Lower risk on record"}</span>${isPlanned(x) ? "<span>In SDOT's plans</span>" : ""}${flagged(x) ? "<span>Neighbor flags</span>" : ""}</span></span>
           <span class="votes">${votesOf(x)}<small>votes</small></span>
         </button>`).join("") || `<p class="sub" style="padding:10px 18px">No corners match.</p>`}</div>
+    </section>
+    <section class="panel progress" id="city-panel">
+      <h3>What the city is building</h3>
+      <ul>${projectRows(hm.filter(m => m[2] === 0), false)}
+        <li><b class="n" style="color:var(--ok)">${hm.filter(m => m[2] === 1).length}</b><span>Crosswalks already in place${built.length ? `<span class="st">Most recent with a recorded build date: ${Math.max(...built)}</span>` : ""}</span></li></ul>
     </section>
     ${feed.length ? `<section class="panel feed"><h3>Recent activity</h3><ul>${feed.map(([t, k, who, what]) => `<li><time>${t}</time><span><span class="who ${k}">${esc(who)}</span> ${what}</span></li>`).join("")}</ul></section>` : ""}`;
   $("side").querySelectorAll("a[data-section]").forEach(a => a.addEventListener("click", () => { pendingSection = a.dataset.section; }));
@@ -890,7 +917,7 @@ function emailText(c) {
   const h = HOODS[c.h];
   const lines = ["Hello SDOT Pedestrian Program,", "", `I'm requesting a marked crosswalk at ${titleCase(c.w)} in ${h.name}.`, "",
     `- This intersection is on SDOT's Enhanced Street Crossings priority list (score ${c.t} of 37, #${fmt(c.cr)} of ${fmt(D.city_total)} citywide).`,
-    `- The nearest marked crosswalk is ${c.gap ? `about ${c.gap} meters away` : "not on either street nearby"}.`];
+    `- The nearest marked crosswalk is ${c.gap ? `about ${ft(c.gap)} away` : "not on either street nearby"}.`];
   if (c.sch >= 3) lines.push("- It's near public schools, and students cross here.");
   if (c.pk >= 2) lines.push("- People cross here to reach a nearby park.");
   if (c.cx[0]) lines.push(`- SDOT's collision records show ${c.cx[0]} pedestrian crash${c.cx[0] > 1 ? "es" : ""} at or next to this corner since 2016${c.cx[2] ? `, including ${c.cx[2]} fatal` : ""}.`);
@@ -948,11 +975,11 @@ function renderCornerPage(c) {
         <div class="tile"><span>Votes</span><b>${votesOf(c)} neighbors</b></div>
       </div>
       <div class="cta">
-        <a class="cta-btn kit" href="#c-${c.s}" data-jump="kit">${ordered ? "Flag kit ordered ✓" : flagged(c) ? "Help keep the flags stocked" : "Get a flag kit"}</a>
+        <a class="cta-btn flag" href="#c-${c.s}" data-jump="kit">${ordered ? "Flag kit ordered ✓" : flagged(c) ? "Help keep the flags stocked" : "Get crossing flag kit"}</a>
         <a class="cta-btn vote" href="#c-${c.s}" data-jump="vote">${voted ? "Voted ✓" : "Vote for this corner"}</a>
       </div>
       <div class="share">
-        <button class="act small" type="button" id="share">Copy link to this corner</button>
+        <button class="act small" type="button" id="share">Share</button>
         <form class="follow" id="follow" novalidate>
           <label for="follow-email" class="vh">Email for updates</label>
           <input type="email" id="follow-email" placeholder="you@example.com" autocomplete="email">
@@ -978,9 +1005,9 @@ function renderCornerPage(c) {
               <li>Stainless hose clamps and brackets that fit any sign pole. No drilling, and they come off cleanly.</li>
               <li>Install guide and a card for counting people who cross</li>
             </ul>
-            <label class="check" for="add-signs"><input type="checkbox" id="add-signs" checked> Add 4 yard signs for neighbors: "WA law: stop for people at every corner" <b>+${money(SIGNS_PRICE)}</b></label>
+            <label class="check" for="add-signs"><input type="checkbox" id="add-signs"> <span>Add 4 reflective yard signs for neighbors' yards <a href="#sec-signs" data-jump-to="sec-signs">(see the sign)</a> <b>+${money(SIGNS_PRICE)}</b></span></label>
             <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 5 spare flags <b>+${money(FLAGS_PRICE)}</b></label>
-            ${ordered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn kit wide" type="button" id="order">Order kit · ${money(KIT_PRICE + SIGNS_PRICE)}</button>`}
+            ${ordered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn flag wide" type="button" id="order">Order kit · ${money(KIT_PRICE)}</button>`}
           </div>
         </div>
         <div id="order-form"></div>
@@ -990,9 +1017,18 @@ function renderCornerPage(c) {
           <li><b>Every scan counts a crossing.</b> Counts go into the neighborhood's request to SDOT.</li>
           <li><b>Running low?</b> Tap "Low on flags" after a scan and the corner's adopter gets a reminder.</li>
         </ol>
+        <h3 id="sec-signs">Yard signs</h3>
+        <div class="yard">
+          ${yardSign("yard-sign")}
+          <ul class="mini">
+            <li><b>Says what drivers should do.</b> Washington law says drivers must <i>stop</i> for people crossing at any corner, so the sign says "Stop," not "Yield" or "Pedestrian crossing."</li>
+            <li><b>Bright and reflective.</b> Fluorescent yellow-green, the color of school and pedestrian signs, on reflective sheeting so it shows up in headlights after dark.</li>
+            <li><b>Big type, few words.</b> 24 × 18 in, readable from about 150 feet at 25 mph. Printed on both sides with a wire stake.</li>
+            <li><b>Where to put it:</b> in a yard 50–100 feet before the corner, facing oncoming cars, one for each direction. Keep it low and back from the curb so it doesn't hide anyone waiting to cross.</li>
+          </ul>
+        </div>
         <h3>More you can do this week</h3>
         <ul class="more">
-          <li><b>Yard signs</b> facing the corner remind drivers to stop.</li>
           <li><b>Light the corner.</b> If you live on it, aim a porch or motion light at the curb ramp.</li>
           <li><b>Report cars parked within 20 feet</b> of the corner in the <a href="https://www.seattle.gov/customer-service-bureau/find-it-fix-it-mobile-app" target="_blank" rel="noopener">Find It, Fix It app</a>.</li>
           <li><b>Trim bushes</b> that block the view of people waiting to cross.</li>
@@ -1069,8 +1105,8 @@ function renderCornerPage(c) {
           </div>
           <p>Estimate from SDOT's own records. Since April 2024, SDOT planned or built a crosswalk at ${c.m[4]} of the ${c.m[5]} priority corners citywide that score ${c.m[6]} like this one, about ${(c.m[0] * 100).toFixed(1)}% a year. Neighbors pushing is how a corner jumps that line, and the flags cover the wait.</p>
         </div>`}
-        <h3>Why this corner is on SDOT's list</h3>
-        <div class="sub">${gapText(c)} · SDOT score ${c.t} of 37</div>
+        <h3>SDOT score: ${c.t} of 37</h3>
+        <div class="sub">Why this corner is on SDOT's list: the points it gets for each factor.</div>
         <div class="bars">${bars(c)}</div>
       </div>
     </section>
@@ -1085,8 +1121,9 @@ function renderCornerPage(c) {
     <a class="back" href="#n-${h.id}">‹ All ${esc(h.name)} corners</a>`;
 
   el.querySelectorAll("a[data-jump]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); smooth($("sec-" + a.dataset.jump)); }));
+  el.querySelectorAll("a[data-jump-to]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); smooth($(a.dataset.jumpTo)); }));
   el.querySelectorAll("button[data-copy]").forEach(b => b.addEventListener("click", () => copyText($(b.dataset.copy).value, b)));
-  $("share").onclick = e => copyText(pageUrl(c), e.currentTarget);
+  $("share").onclick = () => shareCorner(c);
   $("follow").addEventListener("submit", e => { e.preventDefault(); const v = $("follow-email").value.trim();
     $("share-msg").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "You'll get an email when anything changes at this corner." : "Enter an email address to get updates."; });
   const total = () => KIT_PRICE + ($("add-signs").checked ? SIGNS_PRICE : 0) + ($("add-flags").checked ? FLAGS_PRICE : 0);
@@ -1124,7 +1161,7 @@ function showOrderForm(c, total) {
       <label class="check" for="kit-adopt"><input type="checkbox" id="kit-adopt" checked> I'll look after this corner: check the flags every two weeks. We'll send a reminder.</label>
       <label class="check" for="kit-party"><input type="checkbox" id="kit-party" checked> Help me plan a 30-minute install party with neighbors.</label>
       <div class="err" id="kit-err"></div>
-      <button class="cta-btn kit wide" type="submit">Place order</button>
+      <button class="cta-btn flag wide" type="submit">Place order</button>
     </form>`;
   const form = $("kit-form");
   form.addEventListener("input", () => { $("kit-err").textContent = ""; });
@@ -1158,6 +1195,15 @@ function showNoteForm(c) {
   $("c-form").addEventListener("submit", e => { e.preventDefault(); const t = $("c-text").value.trim(); if (t) { state["c:" + c.s] = t; save(); }
     renderCornerPage(c); $("sec-vote").scrollIntoView({ block: "start" }); });
   $("c-text").focus({ preventScroll: true });
+}
+// Phones and tablets get the system share sheet; computers get an email draft, since desktop share menus are hit or miss.
+function shareCorner(c) {
+  const text = `I'm asking neighbors to support a crosswalk at ${titleCase(c.w)}. It takes 2 minutes to vote and send the city a short note.`;
+  if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+    navigator.share({ title: `Crosswalk at ${titleCase(c.w)}`, text, url: pageUrl(c) }).catch(() => {});
+    return;
+  }
+  location.href = mailto({ to: "", subject: `Can you help get a crosswalk at ${titleCase(c.w)}?`, body: `Hi,\n\n${text}\n\n${pageUrl(c)}\n\nThanks!` });
 }
 function copyText(text, btn) {
   const done = () => { const old = btn.textContent; btn.textContent = "Copied ✓"; setTimeout(() => { btn.textContent = old; }, 1600); };

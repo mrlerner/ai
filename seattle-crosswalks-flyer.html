@@ -32,10 +32,6 @@ h1 em { font-style: normal; color: #c8261d; }
 .n.a { background: #1f5f3a; } .n.b { background: #c8261d; } .n.c { background: #e8590c; }
 .step h3 { font: 800 21px/1.15 Overpass, Arial; margin: 2px 0 3px; }
 .step p { margin: 0; font-size: 14.5px; line-height: 1.45; color: #3c4540; }
-.kit { display: grid; grid-template-columns: 1.25in 1fr; gap: 10px; align-items: center; border: 2px solid #e8590c; border-radius: 10px; padding: 8px 10px; margin-left: 66px; }
-.kit img { width: 1.25in; height: 1.25in; object-fit: contain; }
-.kit p { margin: 0; font-size: 13.5px; line-height: 1.35; }
-.kit b { font: 800 16px Overpass, Arial; display: block; }
 .qr { border: 3px solid #1d2320; border-radius: 14px; padding: 14px; text-align: center; }
 .qr .scan { font: 900 26px/1.05 Overpass, Arial; margin-bottom: 8px; }
 .qr svg { width: 100%; height: auto; display: block; }
@@ -62,7 +58,7 @@ function render(D) {
   const qr = qrcode(0, "M"); qr.addData(url); qr.make();
   const scheduled = c.pl && c.pl[1] !== "waiting";
   const m = c.m[3];
-  const wait = scheduled ? ["Scheduled", "SDOT has a crosswalk planned here. Help keep the flags up until it's painted.", "plan"]
+  const wait = scheduled ? ["Scheduled", "SDOT has a crosswalk planned here. Neighbors can help keep it on track.", "plan"]
     : m <= 2 ? ["~1 year", "estimated wait for the city to build one", ""] : m <= 10 ? [`~${Math.round(m)} years`, "estimated wait for the city to build one", ""]
     : m <= 20 ? ["10+ years", "estimated wait for the city to build one", ""] : ["Unlikely", "that the city builds one soon at its current pace", ""];
   const gapFt = c.gap ? `${(Math.round(c.gap / 0.3048 / 10) * 10).toLocaleString()} ft` : "None";
@@ -84,13 +80,12 @@ function render(D) {
         <h2>Neighbors can change that. It takes 5 minutes.</h2>
         <div class="step"><div class="n a">1</div><div><h3>Vote for this corner</h3><p>Add a note about what happens here: near-misses, who crosses, what time of day. The top corners go into the neighborhood's letter to SDOT.</p></div></div>
         <div class="step"><div class="n b">2</div><div><h3>Send the city a 2-minute email</h3><p>Emails to SDOT and to your council member are already written, with this corner's facts. Just add your name and press send.</p></div></div>
-        <div class="step"><div class="n c">3</div><div><h3>Help put up crosswalk flags</h3><p>Order a flag kit for this corner, or volunteer to keep the flags stocked until the city paints a crosswalk.</p></div></div>
-        <div class="kit"><img src="seattle-crosswalks-kit.jpg" alt=""><p><b>Crosswalk Watch Flag Kit</b>Two steel flag boxes with QR signs, 10 reflective flags, and clamps that fit any sign pole. No drilling.</p></div>
+        <div class="step"><div class="n c">3</div><div><h3>Pass it on</h3><p>Tell a neighbor who crosses here. Separate notes from several neighbors carry more weight than one.</p></div></div>
       </div>
       <div class="qr">
         <div class="scan">Scan to take action</div>
         ${qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true })}
-        <p>Vote, send the emails, or order flags for this corner.</p>
+        <p>Vote and send the emails for this corner.</p>
       </div>
     </div>
     <div class="foot">
@@ -98,7 +93,7 @@ function render(D) {
       <div>Data: SDOT Seattle Transportation Plan priority crossings and Marked Crosswalks.</div>
     </div>`;
 }
-fetch("seattle-crosswalks-data.json?v=1793211277").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
+fetch("seattle-crosswalks-data.json?v=1793212050").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
 </script>
 </body>
 </html>
