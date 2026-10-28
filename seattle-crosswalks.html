@@ -143,6 +143,15 @@ a.cta-btn { text-decoration: none; }
 .tile { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 2px; }
 .tile span { font: 600 11px var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .tile b { font-size: 14px; } .tile b.need { color: var(--need); } .tile b.plan { color: var(--plan); } .tile b.ok { color: var(--ok); } .tile b.diy { color: var(--diy); }
+.cp-meta { margin: -6px 0 12px; font-size: 14px; color: var(--muted); }
+.cp-meta b { color: var(--ink); } .cp-meta b.need { color: var(--need); } .cp-meta b.plan { color: var(--plan); }
+.cp-meta a { color: inherit; font-weight: 600; }
+.tiles.todo { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 12px; }
+.todo .tile { color: inherit; text-decoration: none; }
+.todo .tile b { font: 800 18px/1.15 var(--f-display); }
+.todo .tile small { font-size: 12.5px; color: var(--muted); }
+.todo .tile:hover { border-color: var(--ink); } .todo .tile:hover small { color: var(--ink); }
+.todo .tile:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
 .share { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
 .follow { display: flex; gap: 6px; flex: 1 1 260px; }
 .follow input { flex: 1; min-width: 0; font: 400 14px var(--f-body); padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
@@ -184,7 +193,6 @@ button.mark { justify-self: start; }
 .ordered { margin-top: 12px; font-weight: 600; color: var(--ok); }
 .yard { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 16px; align-items: start; }
 .yard-sign { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
-#sec-signs { scroll-margin-top: 12px; }
 .kit.confirm { border: 2px solid var(--ok); border-radius: 10px; padding: 14px; margin-top: 12px; }
 .radio { border: 0; padding: 0; margin: 0; display: grid; gap: 4px; }
 .radio legend { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
@@ -223,6 +231,7 @@ label.inline input { width: 90px; font: 400 14px var(--f-body); padding: 6px 8px
   .cp-sec { grid-template-columns: minmax(0, 1fr); padding: 16px; }
   .sec-n { width: 34px; height: 34px; font-size: 17px; line-height: 34px; }
   .tiles, .sdot-grid { grid-template-columns: minmax(0, 1fr); }
+  .tiles.todo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .odds b { font-size: 24px; }
   .sd { padding-left: 14px; }
   .copy { grid-template-columns: minmax(0, 1fr); }
@@ -403,7 +412,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793217318";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793218029";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -425,6 +434,10 @@ const save = () => { try { localStorage.setItem("cw-seattle", JSON.stringify(sta
 let D, HOODS, CORNERS, BY_SLUG, HOOD_BY_ID;
 const votesOf = c => c.v + (state["v:" + c.s] ? 1 : 0);
 const ordered = c => !!state["a:" + c.s];
+const signsOrdered = c => !!state["ys:" + c.s];
+// Status of each thing neighbors can do at a corner, for the summary at the top of its page: [status, color, next step].
+const flagStatus = c => state["fu:" + c.s] ? ["Up ✓", "ok", "Keep them stocked"] : ordered(c) ? ["Ordered", "diy", "Mark them up once installed"] : ["Needed", "need", "Order a flag kit"];
+const signStatus = c => state["su:" + c.s] ? ["Up ✓", "ok", "Facing traffic both ways"] : signsOrdered(c) ? ["Ordered", "diy", "Mark them up once placed"] : ["Needed", "need", "Order 4 for nearby yards"];
 // Rankings: risk (crashes + crossing conditions) orders the lists; votes have their own "most wanted" rank.
 const byRisk = (a, b) => b.rk - a.rk || b.t - a.t;
 const ft = m => `${(Math.round(m / 0.3048 / 50) * 50).toLocaleString()} ft`;
@@ -520,20 +533,8 @@ const streetViewEmbed = c => MAPS_EMBED_KEY && !MAPS_EMBED_KEY.startsWith("__")
   ? `<div class="sv"><iframe title="Street View of this corner" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
       src="https://www.google.com/maps/embed/v1/streetview?key=${MAPS_EMBED_KEY}&location=${c.lat.toFixed(6)},${c.lng.toFixed(6)}&fov=90&radius=40"></iframe></div>` : "";
 const pageUrl = c => location.href.split("#")[0] + "#c-" + c.s;
-// Yard sign, 24 × 18 in. Fluorescent yellow-green with black text, the color drivers already read as "people walking here".
-// A rectangle with words, so it doesn't imitate an official traffic sign.
-const yardSign = cls => `<svg class="${cls}" viewBox="0 0 240 180" role="img" aria-label="Yard sign: Stop for people crossing. Every corner is a crosswalk. It's the law in WA.">
-  <rect width="240" height="180" rx="6" fill="#d4f20f"/><rect x="5" y="5" width="230" height="170" rx="4" fill="none" stroke="#111" stroke-width="4"/>
-  <circle cx="52" cy="40" r="11" fill="#111"/>
-  <g fill="none" stroke="#111" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M50 58 L44 96"/><path d="M44 96 L30 132"/><path d="M44 96 L58 112 L64 136"/><path d="M49 64 L34 84"/><path d="M49 64 L66 80"/></g>
-  <g fill="#111" font-family="Overpass, Arial, sans-serif" font-weight="900">
-    <text x="88" y="66" font-size="58" textLength="138" lengthAdjust="spacingAndGlyphs">STOP</text>
-    <text x="88" y="96" font-size="25" textLength="138" lengthAdjust="spacingAndGlyphs">FOR PEOPLE</text>
-    <text x="88" y="124" font-size="25" textLength="138" lengthAdjust="spacingAndGlyphs">CROSSING</text></g>
-  <rect x="14" y="142" width="212" height="24" rx="3" fill="#111"/>
-  <text x="120" y="159" fill="#d4f20f" font-family="Overpass, Arial, sans-serif" font-weight="800" font-size="12" text-anchor="middle" textLength="196" lengthAdjust="spacingAndGlyphs">EVERY CORNER IS A CROSSWALK · WA LAW</text>
-</svg>`;
+// Yard sign: "Neighbor Crossing" on bright yellow, with a walker carrying an orange flag like the ones in the kit.
+const yardSign = cls => `<img class="${cls}" src="seattle-crosswalks-yard-sign.webp" width="1254" height="1254" loading="lazy" alt="Yard sign: a person walking with an orange flag above the words Neighbor Crossing, on bright yellow">`;
 
 // ---------- map ----------
 // The map shows either the whole city (dots, top 25 numbered) or one "focus" neighborhood in detail:
@@ -727,6 +728,8 @@ function setChrome({ sub, intro, crumbs, title }) {
   $("intro-text").hidden = !intro;
   $("crumbs").innerHTML = crumbs.map((c, i) => i < crumbs.length - 1 ? `<a href="${c[1]}">${esc(c[0])}</a><span class="sep">›</span>` : `<span>${esc(c[0])}</span>`).join(" ");
   $("crumbs").hidden = crumbs.length < 2;
+  // The sign is a one-step-up shortcut: corner → neighborhood → city.
+  document.querySelector(".sign").href = crumbs.length > 1 ? crumbs[crumbs.length - 2][1] : "#";
   document.title = title;
 }
 
@@ -870,14 +873,15 @@ function renderHoodSide() {
       <div class="eyebrow">#${c.prio} highest risk in ${esc(h.name)}</div>
       <h2><a class="name-link" href="#c-${c.s}">${titleCase(c.w)}<span aria-hidden="true"> ›</span></a></h2>
       <div class="cta">
-        <a class="cta-btn vote${state["v:" + c.s] ? " done" : ""}" href="#c-${c.s}" data-section="vote">${state["v:" + c.s] ? "Voted ✓" : "Get this crosswalk built"}</a>
-        <a class="cta-btn flag secondary${ordered(c) ? " done" : ""}" href="#c-${c.s}" data-section="kit">${ordered(c) ? "Flag kit ordered ✓" : "Get crossing flags"}</a>
+        <a class="cta-btn vote${state["v:" + c.s] ? " done" : ""}" href="#c-${c.s}">${state["v:" + c.s] ? "Voted ✓" : "Get this crosswalk built"}</a>
+        <a class="cta-btn flag secondary${ordered(c) ? " done" : ""}" href="#c-${c.s}">${ordered(c) ? "Flag kit ordered ✓" : "Get crossing flags"}</a>
       </div>
       <div class="rows">
         <div class="row"><span>Risk Score</span><div>${riskScoreLine(c)}</div></div>
         <div class="row"><span>Votes</span><div><b>${votesOf(c)}</b> neighbors · #${c.voteRank} most wanted</div></div>
         <div class="row"><span>SDOT status</span><div>${sdotStatus(c)}${sdotScore(c, "info-" + c.s)}</div></div>
       </div>
+      ${streetViewEmbed(c)}
     </section>` : `<section class="panel"><p class="sub">SDOT's priority list has no corners in ${esc(h.name)}. Pick another neighborhood from the <a href="#">Seattle page</a>.</p></section>`}
     <section class="panel list" id="rank-list">
       <h3><span class="lt">Highest-risk crossings in ${esc(h.name)}</span> <span><a class="link" href="#how-risk">How we rate risk</a></span></h3>
@@ -894,7 +898,6 @@ function renderHoodSide() {
       <ul>${projectRows(hm.filter(m => m[2] === 0), false)}</ul>
     </section>
     ${feed.length ? `<section class="panel feed"><h3>Recent activity</h3><ul>${feed.map(([t, k, who, what]) => `<li><time>${t}</time><span><span class="who ${k}">${esc(who)}</span> ${what}</span></li>`).join("")}</ul></section>` : ""}`;
-  $("side").querySelectorAll("a[data-section]").forEach(a => a.addEventListener("click", () => { pendingSection = a.dataset.section; }));
   $("side").querySelectorAll("button.item, .locs button.link").forEach(b => b.addEventListener("click", () => select(BY_SLUG[b.dataset.s])));
 }
 function hoodFeed(h) {
@@ -991,16 +994,23 @@ function renderCornerPage(c) {
   ];
   const isDone = i => !!state[`s:${c.s}:${i}`];
   const firstOpen = steps.findIndex((s, i) => !isDone(i));
+  const nDone = steps.filter((s, i) => isDone(i)).length;
   const scheduledHere = isScheduled(c);
+  // The top of the page sums up what neighbors can do here and where each one stands; each tile jumps to its section.
+  const todo = [
+    ["sec-kit", "Crosswalk flags", ...flagStatus(c)],
+    ["sec-signs", "Yard signs", ...signStatus(c)],
+    ["sec-city", "Ask the city", ...(nDone === steps.length ? ["All done ✓", "ok", "Send a follow-up in a month"] : nDone ? [`${nDone} of ${steps.length} done`, "diy", steps[firstOpen].t] : ["Not started", "need", "Email SDOT, 2 minutes"])],
+    ["sec-vote", "Neighbors", `${votesOf(c)} on board`, voted ? "ok" : "", voted ? "You're one of them ✓" : "Add your vote and note"],
+  ];
   el.innerHTML = `
     <header class="cp-head">
       <div class="eyebrow">#${c.prio} highest risk in ${esc(h.name)} · #${fmt(c.cityPrio)} in Seattle</div>
       <h1 class="cp-title">${titleCase(c.w)}</h1>
+      <p class="cp-meta">Risk Score <b>${riskScoreText(c)}</b> · SDOT <b class="${scheduledHere ? "plan" : "need"}">${scheduledHere ? "Scheduled" : "Unscheduled"}</b> · <a href="#sec-sdot" data-jump-to="sec-sdot">Why</a></p>
       ${schedAlert(c)}
-      <div class="tiles">
-        <div class="tile"><span>Risk Score</span><b>${riskScoreText(c)}</b></div>
-        <div class="tile"><span>Votes</span><b>${votesOf(c)} neighbors</b></div>
-        <div class="tile"><span>SDOT status</span><b class="${scheduledHere ? "plan" : "need"}">${scheduledHere ? "Scheduled" : "Unscheduled"} · priority ${c.t} of 37</b></div>
+      <div class="tiles todo">${todo.map(([id, label, status, cls, next]) => `
+        <a class="tile" href="#${id}" data-jump-to="${id}"><span>${label}</span><b class="${cls}">${status}</b><small>${next} ›</small></a>`).join("")}
       </div>
       <div class="share">
         <button class="act small" type="button" id="share">Share</button>
@@ -1031,7 +1041,8 @@ function renderCornerPage(c) {
             </ul>
             <label class="check" for="add-signs"><input type="checkbox" id="add-signs"> <span>Add 4 reflective yard signs for neighbors' yards <a href="#sec-signs" data-jump-to="sec-signs">(see the sign)</a> <b>+${money(SIGNS_PRICE)}</b></span></label>
             <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 5 spare flags <b>+${money(FLAGS_PRICE)}</b></label>
-            ${kitOrdered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn flag wide" type="button" id="order">Order kit · ${money(KIT_PRICE)}</button>`}
+            ${kitOrdered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>
+            <button class="act small" type="button" data-up="fu">${state["fu:" + c.s] ? "Flags are up ✓ (tap to undo)" : "Mark flags as up"}</button>` : `<button class="cta-btn flag wide" type="button" id="order">Order kit · ${money(KIT_PRICE)}</button>`}
           </div>
         </div>
         <div id="order-form"></div>
@@ -1041,30 +1052,41 @@ function renderCornerPage(c) {
           <li><b>Every scan counts a crossing.</b> Counts go into the neighborhood's request to SDOT.</li>
           <li><b>Running low?</b> Tap "Low on flags" after a scan and the corner's adopter gets a reminder.</li>
         </ol>
-        <h3 id="sec-signs">Yard signs</h3>
+      </div>
+    </section>
+
+    <section class="cp-sec" id="sec-signs">
+      <div class="sec-n">2</div>
+      <div class="sec-body">
+        <h2>Put up yard signs</h2>
+        <p class="lead">Yard signs warn drivers before they reach the corner. They go in yards up the street, so this is a good job for a neighbor who doesn't live right on the corner.</p>
         <div class="yard">
           ${yardSign("yard-sign")}
           <ul class="mini">
-            <li><b>Says what drivers should do.</b> Washington law says drivers must <i>stop</i> for people crossing at any corner, so the sign says "Stop," not "Yield" or "Pedestrian crossing."</li>
-            <li><b>Bright and reflective.</b> Fluorescent yellow-green, the color of school and pedestrian signs, on reflective sheeting so it shows up in headlights after dark.</li>
-            <li><b>Big type, few words.</b> 24 × 18 in, readable from about 150 feet at 25 mph. Printed on both sides with a wire stake.</li>
+            <li><b>Matches the flags.</b> The walker carries the same orange flag as the flag boxes, so drivers connect the sign with people crossing at the corner.</li>
+            <li><b>Bright and reflective.</b> Bright yellow, the color drivers already read as "people walking here," on reflective sheeting so it shows up in headlights after dark.</li>
+            <li><b>Big type, two words.</b> Easy to read from down the block. Printed on both sides with a wire stake.</li>
             <li><b>Where to put it:</b> in a yard 50–100 feet before the corner, facing oncoming cars, one for each direction. Keep it low and back from the curb so it doesn't hide anyone waiting to cross.</li>
           </ul>
         </div>
+        <div class="actions">${signsOrdered(c) ? `<span class="ordered">Yard signs ordered ✓</span> <button class="act small" type="button" data-up="su">${state["su:" + c.s] ? "Signs are up ✓ (tap to undo)" : "Mark signs as up"}</button>`
+          : kitOrdered ? `<button class="act" type="button" id="order-signs">Add 4 yard signs to your order · +${money(SIGNS_PRICE)}</button>`
+          : `<button class="cta-btn flag" type="button" id="order-signs-only">Order 4 yard signs · ${money(SIGNS_PRICE)}</button>`}</div>
+        <div id="signs-form"></div>
         <h3>More you can do</h3>
         <ul class="more">
-          <li><b>Light the corner.</b> If you live on it, aim a porch or motion light at the curb ramp.</li>
-          <li><b>Report cars parked within 20 feet</b> of the corner in the <a href="https://www.seattle.gov/customer-service-bureau/find-it-fix-it-mobile-app" target="_blank" rel="noopener">Find It, Fix It app</a>.</li>
           <li><b>Trim bushes</b> that block the view of people waiting to cross.</li>
+          <li><b>Report cars parked within 20 feet</b> of the corner in the <a href="https://www.seattle.gov/customer-service-bureau/find-it-fix-it-mobile-app" target="_blank" rel="noopener">Find It, Fix It app</a>.</li>
+          <li><b>Report a streetlight that's out</b> near the corner, in the same app.</li>
         </ul>
       </div>
     </section>
 
     <section class="cp-sec" id="sec-city">
-      <div class="sec-n">2</div>
+      <div class="sec-n">3</div>
       <div class="sec-body">
         <h2>Ask the city to build it</h2>
-        <p class="lead">${scheduledHere ? "SDOT has this corner in a current project. These steps help keep it on track." : "Do these in any order, and as many as you can. Most are a two-minute email with the draft written for you."} ${steps.filter((s, i) => isDone(i)).length} of ${steps.length} done.</p>
+        <p class="lead">${scheduledHere ? "SDOT has this corner in a current project. These steps help keep it on track." : "Do these in any order, and as many as you can. Most are a two-minute email with the draft written for you."} ${nDone} of ${steps.length} done.</p>
         <ol class="steps">
           ${steps.map((s, i) => { const n = i + 1, done = isDone(i), now = i === firstOpen;
             return `<li class="${done ? "done" : now ? "now" : ""}"><details ${now ? "open" : ""}><summary><span class="sn">${done ? "✓" : n}</span><span class="st">${s.t}${now ? ' <em>Start here</em>' : ""}</span></summary>
@@ -1074,7 +1096,7 @@ function renderCornerPage(c) {
     </section>
 
     <section class="cp-sec" id="sec-vote">
-      <div class="sec-n">3</div>
+      <div class="sec-n">4</div>
       <div class="sec-body">
         <h2>Get 5 neighbors to send a note</h2>
         <p class="lead">Notes from several neighbors carry more weight than one. The top five corners in ${esc(h.name)} go into the neighborhood's letter to SDOT and the council, with neighbors' notes on who crosses here and why.</p>
@@ -1154,6 +1176,12 @@ function renderCornerPage(c) {
   const total = () => KIT_PRICE + ($("add-signs").checked ? SIGNS_PRICE : 0) + ($("add-flags").checked ? FLAGS_PRICE : 0);
   ["add-signs", "add-flags"].forEach(id => $(id).addEventListener("change", () => { const b = $("order"); if (b) b.textContent = `Order kit · ${money(total())}`; }));
   const order = $("order"); if (order) order.onclick = () => showOrderForm(c, total());
+  const signsOnly = $("order-signs-only"); if (signsOnly) signsOnly.onclick = () => showSignsForm(c);
+  const orderSigns = $("order-signs"); if (orderSigns) orderSigns.onclick = () => { state["ys:" + c.s] = true; save(); renderCornerPage(c); $("sec-signs").scrollIntoView({ block: "start" }); };
+  el.querySelectorAll("button[data-up]").forEach(b => b.addEventListener("click", () => {
+    const k = b.dataset.up + ":" + c.s; if (state[k]) delete state[k]; else state[k] = true;
+    save(); renderCornerPage(c); $(b.dataset.up === "fu" ? "sec-kit" : "sec-signs").scrollIntoView({ block: "start" });
+  }));
   $("cnt-save").onclick = () => { const v = +$("cnt").value; $("cnt-msg").textContent = v > 0 ? `Added: ${v} people. Thanks.` : "Enter how many people you counted."; };
   el.querySelectorAll("button.mark").forEach(b => b.addEventListener("click", () => {
     const k = `s:${c.s}:${b.dataset.step}`; if (state[k]) delete state[k]; else state[k] = true;
@@ -1201,16 +1229,48 @@ function showOrderForm(c, total) {
     if (!name) { $("kit-err").textContent = "Add your name so neighbors know who's organizing."; return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $("kit-err").textContent = "Add an email address for your order confirmation."; return; }
     state["a:" + c.s] = true; state["k:" + c.s] = { party: $("kit-party").checked, adopt: $("kit-adopt").checked };
+    if ($("add-signs").checked) state["ys:" + c.s] = true;
     save(); renderCornerPage(c);
     const k = state["k:" + c.s];
     $("order-form").innerHTML = `<div class="kit confirm"><h3>Order CW-${1000 + c.cityPrio} placed</h3><div class="next">
       <div><b>In 3–5 days:</b> your kit is ready, and we'll email you the pickup or delivery details.</div>
       <div><b>Install:</b> clamp one flag box to a sign pole on each side of the street, within 5 feet of where people cross. Don't cover any signs.${k.party ? " We'll send a flyer to invite neighbors." : ""}</div>
       <div><b>Activate:</b> scan the QR code on each box once. It links the flags to this page.</div>
-      <div><b>Then:</b> ${k.adopt ? "a restock reminder every two weeks. " : ""}Step 2 below asks the city to build it.</div></div></div>`;
+      <div><b>Then:</b> ${k.adopt ? "a restock reminder every two weeks. " : ""}Step 3 below asks the city to build it.</div></div></div>`;
     $("order-form").scrollIntoView({ block: "start" });
   });
   $("kit-name").focus();
+}
+function showSignsForm(c) {
+  $("signs-form").innerHTML = `
+    <form class="kit" id="signs-order" novalidate>
+      <h3>4 yard signs for ${titleCase(c.w)} · ${money(SIGNS_PRICE)}</h3>
+      <div class="two">
+        <label for="ys-name">Your name<input type="text" id="ys-name" autocomplete="name"></label>
+        <label for="ys-email">Email<input type="email" id="ys-email" autocomplete="email"></label>
+      </div>
+      <fieldset class="radio"><legend>Get your signs</legend>
+        <label class="check" for="ys-pick-up"><input type="radio" name="ys-get" id="ys-pick-up" checked> Free pickup in ${esc(HOODS[c.h].name)}</label>
+        <label class="check" for="ys-deliver"><input type="radio" name="ys-get" id="ys-deliver"> Deliver to my door (+$6)</label>
+      </fieldset>
+      <div class="err" id="ys-err"></div>
+      <button class="cta-btn flag wide" type="submit">Place order</button>
+    </form>`;
+  const form = $("signs-order");
+  form.addEventListener("input", () => { $("ys-err").textContent = ""; });
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("ys-name").value.trim(), email = $("ys-email").value.trim();
+    if (!name) { $("ys-err").textContent = "Add your name for the order."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $("ys-err").textContent = "Add an email address for your order confirmation."; return; }
+    state["ys:" + c.s] = true;
+    save(); renderCornerPage(c);
+    $("signs-form").innerHTML = `<div class="kit confirm"><h3>Yard signs ordered</h3><div class="next">
+      <div><b>In 3–5 days:</b> your signs are ready, and we'll email you the pickup or delivery details.</div>
+      <div><b>Place them:</b> in yards 50–100 feet before the corner, one facing each direction of traffic. Ask neighbors first.</div></div></div>`;
+    $("signs-form").scrollIntoView({ block: "start" });
+  });
+  $("ys-name").focus();
 }
 function showNoteForm(c) {
   $("note-area").innerHTML = `
