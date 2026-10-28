@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seattle Crosswalk Watch</title>
+<meta name="description" content="Where Seattle most needs crosswalks, what the city is building, and how neighbors can get crosswalks built faster.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800;900&family=Public+Sans:wght@400;500;600;700&family=Overpass+Mono:wght@400;600&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: street-sign header, map left (sticky on desktop), ranked corner list right; stacks on phones. */
+:root {
+  --bg: #f4f5f1;
+  --panel: #ffffff;
+  --ink: #1d2320;
+  --muted: #5d6660;
+  --line: #d9ddd6;
+  --need: #c8261d;
+  --need-soft: #fbe6e3;
+  --ok: #1f7a43;
+  --ok-soft: #e1f1e6;
+  --plan: #b26a00;
+  --plan-soft: #fbefd9;
+  --diy: #e8590c;
+  --sign: #1f5f3a;
+  --sign-ink: #ffffff;
+  --example: #6b5bb0;
+  --example-soft: #ece9f8;
+  --f-display: "Overpass", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-data: "Overpass Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151917; --panel: #1e2421; --ink: #e9ece7; --muted: #a3ada6; --line: #333b36;
+    --need: #ff6b5e; --need-soft: #3a1d1a; --ok: #5cc98a; --ok-soft: #173123;
+    --plan: #f0a93b; --plan-soft: #3a2c12; --diy: #ff8a4c; --sign: #2b7a4d; --sign-ink: #ffffff;
+    --example: #b3a6ff; --example-soft: #2a2545; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151917; --panel: #1e2421; --ink: #e9ece7; --muted: #a3ada6; --line: #333b36;
+  --need: #ff6b5e; --need-soft: #3a1d1a; --ok: #5cc98a; --ok-soft: #173123;
+  --plan: #f0a93b; --plan-soft: #3a2c12; --diy: #ff8a4c; --sign: #2b7a4d; --sign-ink: #ffffff;
+  --example: #b3a6ff; --example-soft: #2a2545; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--f-body); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 20px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+.sign { display: inline-flex; flex-direction: column; gap: 2px; background: var(--sign); color: var(--sign-ink);
+  border: 3px solid var(--sign-ink); outline: 3px solid var(--sign); border-radius: 8px; padding: 10px 16px 8px; }
+.sign h1 { font-size: clamp(26px, 4.4vw, 40px); font-weight: 800; letter-spacing: .01em; line-height: 1.05; }
+.sign small { font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
+.intro { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 24px; align-items: center; margin-bottom: 20px; }
+.intro p { margin: 0; max-width: 62ch; color: var(--muted); }
+.intro p strong { color: var(--ink); }
+.proto { margin: 0 0 14px; font-size: 13.5px; color: var(--ink); background: var(--example-soft); border-radius: 8px; padding: 8px 12px; }
+.proto b { color: var(--example); }
+.sv { margin-top: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16 / 10; max-width: 100%; background: var(--bg); }
+.sv iframe { width: 100%; height: 100%; border: 0; display: block; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
+a.stat { text-decoration: none; color: inherit; display: block; }
+a.stat:hover { border-color: var(--muted); }
+a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
+#corners, #city { scroll-margin-top: 12px; }
+.list h3 .lt { font: inherit; color: inherit; }
+.list h3 button.link { font: 600 12.5px var(--f-body); color: var(--need); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.stat b { display: block; font: 800 26px/1.1 var(--f-display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); }
+.stat.need b { color: var(--need); } .stat.plan b { color: var(--plan); } .stat.diy b { color: var(--diy); } .stat.ok b { color: var(--ok); }
+.ex { display: inline-block; font: 600 10.5px/1 var(--f-data); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--example); background: var(--example-soft); border-radius: 4px; padding: 3px 5px; vertical-align: 2px; }
+.main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.mapcol { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.map { position: relative; width: 100%; aspect-ratio: var(--ar); max-width: 100%; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--line); background: #e8e4dc; }
+.map img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; filter: saturate(.55) contrast(.95); }
+.map svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.pin, .chk { position: absolute; transform: translate(-50%, -50%); }
+.chk { width: 19px; height: 19px; border-radius: 50%; background: var(--ok); border: 2px solid #fff; display: grid; place-items: center; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.chk svg { position: static; width: 11px; height: 11px; }
+.chk.planned { background: var(--plan); }
+.pin { width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid #fff; background: var(--need); color: #fff;
+  font: 800 16px/1 var(--f-display); display: grid; place-items: center; cursor: pointer; padding: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.35); font-variant-numeric: tabular-nums; z-index: 2; }
+.pin.planned { background: var(--plan); }
+.pin.diy::after { content: ""; position: absolute; right: -8px; top: -11px; width: 13px; height: 10px; background: var(--diy);
+  clip-path: polygon(0 0, 100% 50%, 0 100%); border-left: 2px solid #fff; }
+.pin:focus-visible, .pin.on { outline: 3px solid var(--ink); outline-offset: 2px; z-index: 3; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
+.attrib { font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+.detail { padding: 16px 18px; margin-bottom: 16px; }
+.detail .eyebrow { font: 600 12px/1 var(--f-data); color: var(--need); letter-spacing: .06em; text-transform: uppercase; }
+.detail h2 { font-size: 24px; margin: 6px 0 2px; }
+.detail .sub { color: var(--muted); font-size: 13.5px; }
+.rows { display: grid; gap: 12px; margin-top: 14px; }
+.row { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 10px; align-items: start; }
+.row > span:first-child { font: 600 12px/1.5 var(--f-display); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-top: 2px; }
+.chip { display: inline-block; font-weight: 600; font-size: 13px; border-radius: 999px; padding: 2px 10px; }
+.chip.need { background: var(--need-soft); color: var(--need); } .chip.plan { background: var(--plan-soft); color: var(--plan); }
+.chip.ok { background: var(--ok-soft); color: var(--ok); } .chip.diy { background: var(--need-soft); color: var(--diy); }
+.bars { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 6px; }
+.bar { font-size: 11px; color: var(--muted); }
+.bar div { height: 6px; border-radius: 3px; background: var(--line); margin-top: 3px; overflow: hidden; }
+.bar div i { display: block; height: 100%; background: var(--sign); }
+.timeline { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.step { font-size: 12.5px; border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; color: var(--muted); }
+.step.done { border-color: var(--ok); color: var(--ok); }
+.step.now { border-color: var(--plan); color: var(--plan); font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+button.act { font: 600 14px/1 var(--f-display); border-radius: 8px; padding: 10px 14px; cursor: pointer; border: 1.5px solid var(--ink);
+  background: transparent; color: var(--ink); }
+button.act.primary { background: var(--need); border-color: var(--need); color: #fff; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+.cta-btn { flex: 1 1 200px; font: 800 17px/1.1 var(--f-display); letter-spacing: .01em; color: #fff; border: 0; border-radius: 10px;
+  padding: 16px 18px; cursor: pointer; box-shadow: 0 2px 0 rgba(0,0,0,.18); }
+.cta-btn.kit { background: var(--diy); }
+.cta-btn.vote { background: var(--sign); }
+.cta-btn.done { filter: saturate(.55); }
+.cta-btn:hover { filter: brightness(1.06); }
+.cta-btn:active { transform: translateY(1px); box-shadow: none; }
+.cta-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.detail .sub { margin-top: 10px; }
+a.sign { text-decoration: none; }
+a.cta-btn { display: block; text-align: center; text-decoration: none; }
+.cta-btn.wide { width: 100%; flex: none; margin-top: 12px; }
+.name-link { color: inherit; text-decoration: none; }
+.name-link:hover { text-decoration: underline; }
+.more-link { display: inline-block; margin-top: 8px; font: 600 14px var(--f-display); color: var(--sign); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Corner details page: one readable column, sections numbered in priority order. */
+#corner-page { max-width: 860px; margin: 0 auto; display: grid; gap: 18px; }
+.back { font: 600 14px var(--f-display); color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--ink); }
+.cp-head { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.cp-head .eyebrow { font: 600 12px/1 var(--f-data); color: var(--need); letter-spacing: .06em; text-transform: uppercase; }
+.cp-title { font-size: clamp(28px, 5vw, 40px); line-height: 1.1; margin: 8px 0 14px; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.tile { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 2px; }
+.tile span { font: 600 11px var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.tile b { font-size: 14px; } .tile b.need { color: var(--need); } .tile b.plan { color: var(--plan); } .tile b.ok { color: var(--ok); } .tile b.diy { color: var(--diy); }
+.share { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+.follow { display: flex; gap: 6px; flex: 1 1 260px; }
+.follow input { flex: 1; min-width: 0; font: 400 14px var(--f-body); padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.act.small, button.act.small { padding: 8px 12px; font-size: 13px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); border-radius: 8px; cursor: pointer; font-family: var(--f-display); font-weight: 600; }
+.saved { font-size: 13px; color: var(--ok); }
+#corner-page .sv { margin-top: 0; aspect-ratio: 16 / 9; }
+.cp-sec { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; scroll-margin-top: 12px; }
+.cp-sec.why { grid-template-columns: minmax(0, 1fr); }
+.sdot-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 8px 0 12px; }
+.estimate { border: 2px solid var(--need); border-radius: 12px; padding: 14px; }
+.estimate.plan { border-color: var(--plan); }
+.estimate .big { font: 800 20px var(--f-display); color: var(--plan); }
+.estimate .big.need { font-size: 30px; line-height: 1.1; color: var(--need); margin-bottom: 4px; }
+.wait-label { font: 600 12px var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.why-h { margin: 12px 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.flyer { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 4px; }
+.flyer p { margin: 0 0 10px; font-size: 14px; color: var(--muted); }
+.flyer-pdf { display: block; width: 100%; aspect-ratio: 8.5 / 11; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.estimate p { margin: 10px 0 0; font-size: 14px; color: var(--muted); max-width: 64ch; }
+.odds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.odds b { display: block; font: 800 28px/1.1 var(--f-display); color: var(--need); font-variant-numeric: tabular-nums; }
+.odds span { font-size: 12.5px; color: var(--muted); }
+button.mark { justify-self: start; }
+.sec-n { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--panel); font: 800 20px/40px var(--f-display); text-align: center; }
+.sec-body h2 { font-size: 22px; margin-bottom: 4px; }
+.sec-body h3 { font-size: 16px; margin: 18px 0 6px; }
+.lead { margin: 0 0 12px; color: var(--muted); max-width: 62ch; }
+.product { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px; border: 2px solid var(--diy); border-radius: 12px; padding: 14px; }
+.product-img img { width: 100%; height: auto; display: block; border-radius: 10px; background: #fff; }
+.p-name { font: 800 19px var(--f-display); }
+.p-price { font: 800 22px var(--f-display); color: var(--diy); margin: 2px 0 6px; }
+.p-price span { font: 400 13px var(--f-body); color: var(--muted); }
+.product ul, .more, .mini { margin: 0 0 8px; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; }
+.product .check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; margin-top: 6px; }
+.product .check input { margin-top: 4px; }
+.ordered { margin-top: 12px; font-weight: 600; color: var(--ok); }
+.kit.confirm { border: 2px solid var(--ok); border-radius: 10px; padding: 14px; margin-top: 12px; }
+.radio { border: 0; padding: 0; margin: 0; display: grid; gap: 4px; }
+.radio legend { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.steps li { border: 1px solid var(--line); border-radius: 10px; }
+.steps li.now { border: 2px solid var(--diy); }
+.steps summary { list-style: none; display: flex; gap: 12px; align-items: center; padding: 12px 14px; cursor: pointer; }
+.steps summary::-webkit-details-marker { display: none; }
+.sn { flex: none; width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--line); font: 800 15px/26px var(--f-display); text-align: center; }
+.steps li.now .sn { background: var(--diy); border-color: var(--diy); color: #fff; }
+.steps li.done .sn { background: var(--ok); border-color: var(--ok); color: #fff; }
+.st { font: 600 16px var(--f-display); }
+.st em { font: 700 11px var(--f-data); font-style: normal; text-transform: uppercase; letter-spacing: .06em; color: #fff; background: var(--diy); border-radius: 4px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
+.steps li.done .st { color: var(--muted); }
+.sd { padding: 0 14px 14px 56px; display: grid; gap: 8px; }
+.sd p { margin: 0; font-size: 14px; }
+.mailline { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+.copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: start; }
+.copy textarea { font: 400 13px/1.45 var(--f-data); padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; max-width: 100%; }
+.sd a.act { justify-self: start; }
+label.inline { font-size: 14px; display: inline-flex; gap: 8px; align-items: center; }
+label.inline input { width: 90px; font: 400 14px var(--f-body); padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.votebox { border: 2px solid var(--sign); border-radius: 12px; padding: 14px; }
+.vcount { font-size: 15px; } .vcount b { font: 800 30px var(--f-display); color: var(--sign); }
+.goal { height: 10px; border-radius: 5px; background: var(--line); margin: 8px 0 6px; overflow: hidden; }
+.goal i { display: block; height: 100%; background: var(--sign); }
+.notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.notes li { font-size: 14px; border-left: 3px solid var(--line); padding-left: 10px; }
+.notes li span { display: block; font-size: 12px; color: var(--muted); }
+.opt { font-weight: 400; color: var(--muted); }
+@media (max-width: 600px) {
+  .product { grid-template-columns: minmax(0, 1fr); }
+  .product-img { max-width: 320px; }
+  .cp-sec { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+  .sec-n { width: 34px; height: 34px; font-size: 17px; line-height: 34px; }
+  .tiles, .sdot-grid { grid-template-columns: minmax(0, 1fr); }
+  .odds b { font-size: 24px; }
+  .sd { padding-left: 14px; }
+  .copy { grid-template-columns: minmax(0, 1fr); }
+}
+a.act { font: 600 14px/1 var(--f-display); border-radius: 8px; padding: 10px 14px; border: 1.5px solid var(--line); color: var(--ink); text-decoration: none; }
+a.act:hover { border-color: var(--ink); }
+a.act:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
+button.act:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
+.toast { min-height: 20px; font-size: 13px; color: var(--ok); margin-top: 8px; }
+.list { overflow: hidden; }
+.list h3 { font-size: 15px; padding: 14px 18px 10px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.list h3 span { font: 400 12.5px var(--f-body); color: var(--muted); }
+.item { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 18px;
+  border-bottom: 1px solid var(--line); cursor: pointer; background: transparent; width: 100%; text-align: left; color: inherit; font: inherit; border-left: 0; border-right: 0; border-top: 0; }
+.item:last-child { border-bottom: 0; }
+.item:hover, .item.on { background: var(--need-soft); }
+.item:focus-visible { outline: 3px solid var(--plan); outline-offset: -3px; }
+.num { width: 26px; height: 26px; border-radius: 50%; background: var(--need); color: #fff; font: 800 12.5px/26px var(--f-display); text-align: center; font-variant-numeric: tabular-nums; }
+.num.planned { background: var(--plan); }
+.item .name { font-weight: 600; font-size: 14px; }
+.item .meta { font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.votes { font: 600 13px var(--f-data); color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+.votes small { display: block; font: 400 11px var(--f-body); color: var(--muted); }
+.feed { padding: 14px 18px; margin-top: 16px; }
+.feed h3 { font-size: 15px; margin-bottom: 8px; }
+.feed ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.feed li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; font-size: 13.5px; }
+.feed time { font: 400 12px var(--f-data); color: var(--muted); padding-top: 2px; }
+.feed .who { font-weight: 600; }
+.feed .who.city { color: var(--plan); } .feed .who.n { color: var(--ok); }
+.map.live { aspect-ratio: auto; height: min(82vh, 900px); }
+.map.live > img, .map.live > .outline-svg { display: none; }
+.gmap { position: absolute; inset: 0; }
+.map-toggle { position: absolute; z-index: 5; top: 10px; left: 10px; font: 700 14px var(--f-display); color: #1d2320; background: #fff;
+  border: 0; border-radius: 8px; padding: 9px 14px; box-shadow: 0 1px 4px rgba(0,0,0,.3); cursor: pointer; }
+.map.live.expanded { position: fixed; inset: 0; z-index: 50; height: auto; border-radius: 0; border: 0; }
+.map.expanded .map-toggle { top: calc(env(safe-area-inset-top, 0px) + 10px); left: calc(env(safe-area-inset-left, 0px) + 10px); }
+html.map-open, html.map-open body { overflow: hidden; }
+@media (max-width: 900px) { .map.live { height: 62vh; } }
+button.chk { cursor: pointer; padding: 0; }
+/* Bigger invisible tap targets for fingers, without changing how markers look. */
+.chk::before { content: ""; position: absolute; inset: -11px; border-radius: 50%; }
+.pin::before { content: ""; position: absolute; inset: -5px; border-radius: 50%; }
+button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.progress { padding: 14px 18px; margin-bottom: 16px; }
+.progress h3 { font-size: 15px; margin-bottom: 8px; }
+.progress ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.progress li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 13.5px; }
+.progress li b.n { font: 800 20px/1.1 var(--f-display); color: var(--plan); text-align: right; font-variant-numeric: tabular-nums; }
+.progress li .st { display: block; color: var(--muted); font-size: 12.5px; }
+.kit { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 12px; }
+.kit h3 { font-size: 17px; }
+.kit ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: 13.5px; }
+.kit label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+.kit textarea { font: 400 14px/1.45 var(--f-body); padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg); color: var(--ink); max-width: 100%; resize: vertical; }
+.kit input[type=text], .kit input[type=email], .kit input[type=number] { font: 400 14px var(--f-body); padding: 8px 10px; border: 1px solid var(--line);
+  border-radius: 6px; background: var(--bg); color: var(--ink); max-width: 100%; }
+.kit .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 400; }
+.kit .check input { margin-top: 3px; }
+.kit .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.kit .err { color: var(--need); font-size: 13px; min-height: 18px; }
+.kit .next { display: grid; gap: 6px; font-size: 13.5px; }
+.kit .next div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+@media (max-width: 460px) { .kit .two { grid-template-columns: minmax(0, 1fr); } }
+.sources { font-size: 12.5px; color: var(--muted); margin-top: 22px; max-width: 90ch; }
+.sources a { color: inherit; }
+@media (max-width: 900px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .mapcol { position: static; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}
+@media (max-width: 460px) {
+  .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .bars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pin { width: 34px; height: 34px; font-size: 15px; }
+  .chk { width: 18px; height: 18px; }
+}
+@media (prefers-reduced-motion: no-preference) { .pin { transition: transform .15s; } .pin:hover { transform: translate(-50%, -50%) scale(1.12); } }
+
+/* Citywide additions */
+.crumbs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 600 14px var(--f-display); color: var(--muted); margin: -6px 0 14px; }
+.crumbs a { color: var(--sign); text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+.crumbs span.sep { color: var(--line); }
+#map-msg { position: absolute; inset: 0; display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); font-size: 14px; }
+.side { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.side .panel { padding: 14px 18px; }
+.side h3.ph { font-size: 16px; margin: 0 0 10px; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.side h3.ph span { font: 400 12.5px var(--f-body); color: var(--muted); }
+.rows-list { display: grid; }
+.rowbtn { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 2px; border: 0; border-bottom: 1px solid var(--line);
+  background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; width: 100%; }
+.rowbtn:last-child { border-bottom: 0; }
+.rowbtn:hover { background: var(--need-soft); }
+.rowbtn:focus-visible { outline: 3px solid var(--plan); outline-offset: -3px; }
+.rowbtn .name { font-weight: 600; font-size: 14px; }
+.rowbtn .meta { font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.hood-num { font: 800 15px var(--f-display); color: var(--need); text-align: center; }
+.search { width: 100%; font: 400 15px var(--f-body); padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); margin-bottom: 8px; }
+.more-rows { margin-top: 8px; }
+.dot { position: absolute; transform: translate(-50%, -50%); width: 12px; height: 12px; border-radius: 50%; background: var(--need); border: 1.5px solid #fff;
+  padding: 0; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.dot.planned { background: var(--plan); }
+.dot::before { content: ""; position: absolute; inset: -9px; border-radius: 50%; }
+.pin.city { width: 34px; height: 34px; font-size: 14px; }
+.preview { border: 2px solid var(--need); }
+.flyer-view { background: #e8e6e1; border-radius: 10px; padding: 16px; }
+.flyer-sheet { position: relative; width: 100%; aspect-ratio: 8.5 / 11; max-width: 100%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.25); overflow: hidden; }
+.flyer-sheet iframe { position: absolute; left: 0; top: 0; width: 816px; height: 1056px; border: 0; transform-origin: 0 0; }
+.flyer-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; font: 600 13px var(--f-display); color: #3c4540; }
+.flyer-bar .file { display: flex; gap: 8px; align-items: center; }
+.flyer-bar .file::before { content: "PDF"; font: 800 10px var(--f-data); color: #fff; background: #c8261d; border-radius: 3px; padding: 2px 5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="intro">
+    <a class="sign" href="#"><small id="sign-sub">Seattle</small><h1>Crosswalk Watch</h1></a>
+    <p id="intro-text"></p>
+  </header>
+  <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+
+  <div id="explore">
+    <section class="stats" id="stats" aria-label="Summary"></section>
+    <div class="main">
+      <div class="mapcol">
+        <div class="map live" id="map" role="group" aria-label="Map of crosswalks"><div id="map-msg">Loading map…</div></div>
+        <div class="legend" id="legend"></div>
+        <div class="attrib">Pinch or use two fingers to zoom and pan. Boundaries from Seattle's Neighborhood Map Atlas.</div>
+      </div>
+      <div class="side" id="side"></div>
+    </div>
+  </div>
+  <main id="corner-page" hidden></main>
+
+  <p class="sources">Data: priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders. Votes, flag kits and neighbor activity are sample data.</p>
+</div>
+
+<script>
+const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793205061";
+const FLYER_URL = "seattle-crosswalks-flyer.html";
+
+// ---------- helpers ----------
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const titleCase = s => s.toLowerCase().replace(/\b(ne|n|nw|se|sw|s|e|w)\b/g, m => m.toUpperCase())
+  .replace(/\b([a-z])/g, c => c.toUpperCase()).replace(/\bAnd\b/g, "and")
+  .replace(/(\d+)(St|Nd|Rd|Th)\b/g, (m, n, s) => n + s.toLowerCase());
+const fmt = n => n.toLocaleString("en-US");
+const money = n => "$" + n.toFixed(2);
+const KIT_PRICE = 34.99, SIGNS_PRICE = 17.99, FLAGS_PRICE = 11.99;
+const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const smooth = el => el && el.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
+
+let state = {};
+try { state = JSON.parse(localStorage.getItem("cw-seattle") || "{}"); } catch (e) { state = {}; }
+const save = () => { try { localStorage.setItem("cw-seattle", JSON.stringify(state)); } catch (e) {} };
+
+let D, HOODS, CORNERS, BY_SLUG, HOOD_BY_ID;
+const votesOf = c => c.v + (state["v:" + c.s] ? 1 : 0);
+const diyOf = c => state["a:" + c.s] ? "adopted" : (c.d || null);
+const flagged = c => { const d = diyOf(c); return d === "flags" || d === "adopted"; };
+const prioScore = c => c.t * 2 + votesOf(c) / 4;
+const isPlanned = c => !!c.pl;
+
+function rankAll() {
+  [...CORNERS].sort((a, b) => prioScore(b) - prioScore(a) || b.t - a.t).forEach((c, i) => { c.cityPrio = i + 1; });
+  HOODS.forEach(h => [...h.corners].sort((a, b) => prioScore(b) - prioScore(a) || b.t - a.t).forEach((c, i) => { c.prio = i + 1; }));
+}
+function markedName(m) {
+  const on = titleCase(m[8]), a = titleCase(m[9] || ""), b = titleCase(m[10] || "");
+  return a && b ? `${on}, between ${a} and ${b}` : on;
+}
+function markedStatus(m) {
+  if (m[2] === 1) return m[4] ? `Built ${m[4]}` : "In place";
+  if (m[6] === "in_progress") return `Scheduled · work began ${m[7]}`;
+  if (m[6] === "finishing") return "Scheduled · finishing up";
+  return `Planned since ${m[7] || "an earlier year"} · not yet scheduled`;
+}
+const scheduled = m => m[2] === 0 && m[6] !== "waiting";
+function plannedLine(c) {
+  if (!c.pl) return null;
+  const [pi, stt] = c.pl;
+  const proj = pi != null && pi >= 0 ? D.projects[pi] : "an SDOT project";
+  return { project: proj, text: stt === "in_progress" ? "Scheduled · work underway" : stt === "finishing" ? "Scheduled · finishing up" : "Planned · not yet scheduled" };
+}
+function waitLabel(c) {
+  if (c.pl && c.pl[1] !== "waiting") return "Scheduled";
+  const m = c.m[3];
+  if (m <= 2) return "About a year";
+  if (m <= 10) return `About ${Math.round(m)} years`;
+  if (m <= 20) return "10+ years";
+  return "Unlikely at today's pace";
+}
+const bar = (label, v, max) => `<div class="bar">${label} ${v}/${max}<div><i style="width:${Math.round(100 * Math.min(v, max) / max)}%"></i></div></div>`;
+const bars = c => `${bar("School", c.sch, 3)}${bar("Park", c.pk, 3)}${bar("Transit", c.tr, 3)}${bar("Land use", c.lu, 3)}${bar("Safety", c.sf, 16)}${bar("Crashes", c.pc, 6)}`;
+const gapText = c => c.gap ? `About ${c.gap} m to the nearest marked crosswalk` : "No marked crosswalk nearby on either street";
+const streetView = c => `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${c.lat.toFixed(6)},${c.lng.toFixed(6)}`;
+const streetViewEmbed = c => MAPS_EMBED_KEY && !MAPS_EMBED_KEY.startsWith("__")
+  ? `<div class="sv"><iframe title="Street View of this corner" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/streetview?key=${MAPS_EMBED_KEY}&location=${c.lat.toFixed(6)},${c.lng.toFixed(6)}&fov=90&radius=40"></iframe></div>` : "";
+const pageUrl = c => location.href.split("#")[0] + "#c-" + c.s;
+
+// ---------- map ----------
+let gmap = null, layer = null, outlines = [], mapReady = false, wantMap = null;
+const check = `<svg viewBox="0 0 10 10"><path d="M2 5.3l2 2 4-4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+let markerEls = [];
+
+window.gm_authFailure = () => { $("map-msg").hidden = false; $("map-msg").textContent = "The map couldn't load. The lists still work."; };
+window.initGoogleMap = function () {
+  const g = google.maps;
+  $("map-msg").hidden = true;
+  const host = document.createElement("div");
+  host.className = "gmap";
+  $("map").prepend(host);
+  gmap = new g.Map(host, { center: { lat: 47.615, lng: -122.335 }, zoom: 11, gestureHandling: "cooperative", clickableIcons: false,
+    mapTypeControl: false, streetViewControl: false, fullscreenControl: false });
+  class Layer extends g.OverlayView {
+    onAdd() { this.pane = this.getPanes().overlayMouseTarget; markerEls.forEach(({ el }) => this.pane.appendChild(el)); }
+    draw() {
+      const proj = this.getProjection();
+      if (!proj) return;
+      markerEls.forEach(({ el, lat, lng }) => { const pt = proj.fromLatLngToDivPixel(new g.LatLng(lat, lng)); el.style.left = pt.x + "px"; el.style.top = pt.y + "px"; });
+    }
+    onRemove() {}
+    setEls(els) {
+      if (this.pane) { markerEls.forEach(({ el }) => el.remove()); }
+      markerEls = els;
+      if (this.pane) { els.forEach(({ el }) => this.pane.appendChild(el)); this.draw(); }
+    }
+  }
+  layer = new Layer();
+  layer.setMap(gmap);
+  const toggle = document.createElement("button");
+  toggle.type = "button"; toggle.className = "map-toggle"; toggle.textContent = "Expand map";
+  toggle.addEventListener("click", () => {
+    const open = !$("map").classList.contains("expanded");
+    $("map").classList.toggle("expanded", open);
+    document.documentElement.classList.toggle("map-open", open);
+    gmap.setOptions({ gestureHandling: open ? "greedy" : "cooperative" });
+    toggle.textContent = open ? "Done" : "Expand map";
+  });
+  $("map").appendChild(toggle);
+  mapReady = true;
+  if (wantMap) applyMap(wantMap);
+};
+function setMap(spec) { wantMap = spec; if (mapReady) applyMap(spec); }
+function applyMap({ els, bounds, rings }) {
+  const g = google.maps;
+  outlines.forEach(o => o.setMap(null));
+  outlines = (rings || []).map(r => new g.Polyline({ map: gmap, path: r.map(([lng, lat]) => ({ lat, lng })), strokeOpacity: 0, clickable: false,
+    icons: [{ icon: { path: "M 0,-1 0,1", strokeOpacity: 0.9, strokeColor: "#1f5f3a", scale: 2.5 }, offset: "0", repeat: "11px" }] }));
+  layer.setEls(els);
+  const b = new g.LatLngBounds({ lat: bounds[1], lng: bounds[0] }, { lat: bounds[3], lng: bounds[2] });
+  gmap.fitBounds(b, 8);
+}
+function panTo(c) { if (gmap) gmap.panTo({ lat: c.lat, lng: c.lng }); }
+
+// ---------- views ----------
+let view = null, curHood = null, selected = null, pendingSelect = null, pendingSection = null, listFilter = "all", hoodQuery = "";
+
+function setChrome({ sub, intro, crumbs, title }) {
+  $("sign-sub").textContent = sub;
+  $("intro-text").innerHTML = intro || "";
+  $("intro-text").hidden = !intro;
+  $("crumbs").innerHTML = crumbs.map((c, i) => i < crumbs.length - 1 ? `<a href="${c[1]}">${esc(c[0])}</a><span class="sep">›</span>` : `<span>${esc(c[0])}</span>`).join(" ");
+  $("crumbs").hidden = crumbs.length < 2;
+  document.title = title;
+}
+
+function statTiles(items) {
+  $("stats").innerHTML = items.map(([cls, n, label, act]) =>
+    `<a class="stat ${cls}" href="#" data-act="${act}"><b>${n}</b><span>${label}</span></a>`).join("");
+  $("stats").querySelectorAll("a.stat").forEach(a => a.addEventListener("click", e => { e.preventDefault(); statAction(a.dataset.act); }));
+}
+function statAction(act) {
+  if (act === "flags") { listFilter = "flags"; renderSide(); smooth($("rank-list")); }
+  else if (act === "corners") { listFilter = "all"; renderSide(); smooth($("rank-list")); }
+  else if (act === "city") smooth($("city-panel"));
+  else if (act === "hoods") smooth($("hood-panel"));
+}
+
+// City view
+function viewCity() {
+  view = "city"; curHood = null; selected = null;
+  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = "";
+  setChrome({ sub: "Seattle", title: "Seattle Crosswalk Watch", crumbs: [["Seattle", "#"]],
+    intro: `Where Seattle most needs crosswalks, what the city is building, and which corners neighbors are covering in the meantime. <strong>Find your neighborhood, vote for the corners that matter to you, and request a flag kit until the city builds them.</strong>` });
+  const sched = D.marked.filter(scheduled).length;
+  statTiles([
+    ["need", fmt(CORNERS.length), "corners that need a crosswalk", "corners"],
+    ["plan", fmt(sched), "new crosswalks scheduled by the city", "city"],
+    ["ok", fmt(D.marked.filter(m => m[2] === 1).length), "marked crosswalks already in place", "city"],
+    ["diy", fmt(CORNERS.filter(flagged).length), "covered by neighbor flags", "flags"],
+  ]);
+  $("legend").innerHTML = `<span><i style="background:var(--need)"></i>Needs a crosswalk (top 25 numbered)</span><span><i style="background:var(--plan)"></i>Crosswalk planned by the city</span>`;
+  renderSide();
+  const top = new Set(cityTop(25).map(c => c.s));
+  const els = CORNERS.filter(c => !top.has(c.s)).map(c => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "dot" + (isPlanned(c) ? " planned" : "");
+    b.setAttribute("aria-label", `${titleCase(c.w)}, ${HOODS[c.h].name}`); b.title = `${titleCase(c.w)} · ${HOODS[c.h].name}`;
+    b.addEventListener("click", () => goCorner(c));
+    return { el: b, lat: c.lat, lng: c.lng };
+  }).concat(cityTop(25).reverse().map(c => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "pin city" + (isPlanned(c) ? " planned" : "") + (flagged(c) ? " diy" : "");
+    b.textContent = c.cityPrio; b.setAttribute("aria-label", `Priority ${c.cityPrio} in Seattle: ${titleCase(c.w)}`);
+    b.addEventListener("click", () => goCorner(c));
+    return { el: b, lat: c.lat, lng: c.lng };
+  }));
+  setMap({ els, bounds: [-122.42, 47.495, -122.245, 47.735], rings: [] });
+}
+const cityTop = n => [...CORNERS].sort((a, b) => a.cityPrio - b.cityPrio).slice(0, n);
+function goCorner(c) { pendingSelect = c.s; location.hash = "n-" + HOODS[c.h].id; }
+
+function renderCitySide() {
+  const q = hoodQuery.trim().toLowerCase();
+  const hoods = HOODS.filter(h => h.corners.length && (!q || h.name.toLowerCase().includes(q) || h.district.toLowerCase().includes(q)))
+    .sort((a, b) => b.corners.length - a.corners.length || a.name.localeCompare(b.name));
+  const top = listFilter === "flags" ? [...CORNERS].filter(flagged).sort((a, b) => a.cityPrio - b.cityPrio) : cityTop(25);
+  const hoodSched = h => D.marked.filter(m => m[3] === h.idx && scheduled(m)).length;
+  $("side").innerHTML = `
+    <section class="panel" id="hood-panel">
+      <h3 class="ph">Find your neighborhood <span>${HOODS.filter(h => h.corners.length).length} neighborhoods</span></h3>
+      <label class="vh" for="hood-q">Search neighborhoods</label>
+      <input class="search" id="hood-q" type="search" placeholder="Wallingford" value="${esc(hoodQuery)}" autocomplete="off">
+      <div class="rows-list" id="hood-rows">${hoods.slice(0, hoodQuery ? 40 : 8).map(h => `
+        <a class="rowbtn" href="#n-${h.id}"><span class="hood-num">${h.corners.length}</span>
+          <span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span><span>${h.corners.length} corners need a crosswalk</span>${hoodSched(h) ? `<span>${hoodSched(h)} scheduled</span>` : ""}</span></span><span>›</span></a>`).join("") || `<p class="sub">No neighborhood matches "${esc(hoodQuery)}".</p>`}
+      </div>
+      ${!hoodQuery ? `<button class="act small more-rows" type="button" id="all-hoods">Show all neighborhoods</button>` : ""}
+    </section>
+    <section class="panel" id="rank-list">
+      <h3 class="ph">${listFilter === "flags" ? "Corners covered by neighbor flags" : "Top 25 corners in Seattle"} <span>${listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show top 25</button>` : "Neighbor votes + SDOT's own score"}</span></h3>
+      <div class="rows-list">${top.map(c => `
+        <button class="rowbtn" type="button" data-s="${c.s}"><span class="num${isPlanned(c) ? " planned" : ""}">${c.cityPrio}</span>
+          <span><span class="name">${titleCase(c.w)}</span><span class="meta"><span>${esc(HOODS[c.h].name)}</span><span>SDOT ${c.t}/37</span><span>${flagged(c) ? "Neighbor flags" : "No flags yet"}</span></span></span>
+          <span class="votes">${votesOf(c)}<small>votes</small></span></button>`).join("")}</div>
+    </section>
+    <section class="panel progress" id="city-panel">
+      <h3>What the city is building</h3>
+      <ul>${projectRows(D.marked.filter(m => m[2] === 0), true)}</ul>
+    </section>`;
+  const qEl = $("hood-q");
+  qEl.addEventListener("input", () => { hoodQuery = qEl.value; renderCitySide(); const n = $("hood-q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); });
+  const all = $("all-hoods"); if (all) all.onclick = () => { $("hood-rows").innerHTML = HOODS.filter(h => h.corners.length).sort((a, b) => a.name.localeCompare(b.name)).map(h => `
+        <a class="rowbtn" href="#n-${h.id}"><span class="hood-num">${h.corners.length}</span><span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span></span></span><span>›</span></a>`).join(""); all.remove(); };
+  const sa = $("show-all"); if (sa) sa.onclick = () => { listFilter = "all"; renderCitySide(); };
+  $("side").querySelectorAll("button.rowbtn[data-s]").forEach(b => b.addEventListener("click", () => goCorner(BY_SLUG[b.dataset.s])));
+}
+
+function projectRows(list, city) {
+  const groups = {};
+  list.forEach(m => { const k = m[5] >= 0 ? D.projects[m[5]] : "Planned but not yet scheduled"; (groups[k] = groups[k] || []).push(m); });
+  const rows = Object.entries(groups).sort((a, b) => b[1].length - a[1].length).slice(0, city ? 12 : 20).map(([name, ms]) => {
+    const st = markedStatus(ms[0]).replace(/^Scheduled · /, "");
+    const where = city ? [...new Set(ms.map(m => HOODS[m[3]].name))].slice(0, 3).join(", ") : "";
+    return `<li><b class="n">${ms.length}</b><span>${esc(name)}${where ? ` <span class="st" style="display:inline">· ${esc(where)}</span>` : ""}<span class="st">${st}</span></span></li>`;
+  });
+  return rows.join("") || `<li><b class="n">0</b><span>No new crosswalks planned here right now<span class="st">That's what the steps on each corner page are for.</span></span></li>`;
+}
+
+// Neighborhood view
+function viewHood(h) {
+  const changed = view !== "hood" || curHood !== h;
+  view = "hood"; curHood = h;
+  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = "";
+  if (pendingSelect && BY_SLUG[pendingSelect] && HOODS[BY_SLUG[pendingSelect].h] === h) selected = BY_SLUG[pendingSelect];
+  else if (changed || !selected || HOODS[selected.h] !== h) selected = [...h.corners].sort((a, b) => a.prio - b.prio)[0] || null;
+  pendingSelect = null;
+  if (changed) listFilter = "all";
+  setChrome({ sub: `${h.name} · Seattle`, title: `${h.name} Crosswalk Watch`, crumbs: [["Seattle", "#"], [h.name, "#n-" + h.id]],
+    intro: `Where ${esc(h.name)} most needs crosswalks, what the city is doing about it, and which corners neighbors are covering in the meantime. <strong>Vote for the corners that matter to you, or request a flag kit for one and keep its crosswalk flags stocked until the city builds it.</strong>` });
+  renderHoodStats();
+  $("legend").innerHTML = `<span><i style="background:var(--need)"></i>Needs a crosswalk (number = priority)</span><span><i style="background:var(--plan)"></i>Scheduled by the city</span><span><i style="background:var(--ok)"></i>Marked crosswalk (tap for the year built)</span><span><i style="background:var(--diy);border-radius:2px"></i>Neighbor flags in place</span>`;
+  renderSide();
+  const hm = D.marked.filter(m => m[3] === h.idx);
+  const els = hm.map(m => {
+    const d = document.createElement("button");
+    d.type = "button"; d.className = "chk" + (m[2] === 0 ? " planned" : "");
+    d.title = `${markedStatus(m)}: ${markedName(m)}`; d.setAttribute("aria-label", d.title); d.innerHTML = check;
+    d.addEventListener("click", () => showCrosswalk(m));
+    return { el: d, lat: m[1], lng: m[0] };
+  }).concat([...h.corners].sort((a, b) => b.prio - a.prio).map(c => {
+    const b = document.createElement("button");
+    b.type = "button"; b.dataset.s = c.s;
+    b.addEventListener("click", () => select(c));
+    c.pinEl = b;
+    return { el: b, lat: c.lat, lng: c.lng };
+  }));
+  renderPins();
+  setMap({ els, bounds: h.bbox, rings: h.rings });
+  if (selected && !changed) panTo(selected);
+}
+function renderHoodStats() {
+  const h = curHood;
+  statTiles([
+    ["need", h.corners.length, "corners that need a crosswalk", "corners"],
+    ["plan", D.marked.filter(m => m[3] === h.idx && scheduled(m)).length, "new crosswalks scheduled by the city", "city"],
+    ["ok", D.marked.filter(m => m[3] === h.idx && m[2] === 1).length, "marked crosswalks already in place", "city"],
+    ["diy", h.corners.filter(flagged).length, "covered by neighbor flags", "flags"],
+  ]);
+}
+function renderPins() {
+  if (!curHood) return;
+  curHood.corners.forEach(c => {
+    const b = c.pinEl; if (!b) return;
+    b.textContent = c.prio;
+    b.className = "pin" + (isPlanned(c) ? " planned" : "") + (flagged(c) ? " diy" : "") + (selected === c ? " on" : "");
+    b.setAttribute("aria-label", `Priority ${c.prio}: ${titleCase(c.w)}`);
+  });
+}
+function cityStatus(c) {
+  const pl = plannedLine(c);
+  if (pl) return `<span class="chip plan">${pl.text}</span><div class="sub">${esc(pl.project)}</div>`;
+  if (c.rq) return `<span class="chip need">Requested by neighbors</span>`;
+  return `<span class="chip need">On SDOT's priority list · not scheduled</span>`;
+}
+function diyStatus(c) {
+  const d = diyOf(c);
+  if (d === "flags") return `<span class="chip ok">Flags in place</span>`;
+  if (d === "kit") return `<span class="chip diy">Flag kit ordered</span>`;
+  if (d === "adopted") return `<span class="chip ok">Your flag kit is on the way</span>`;
+  return `<span class="chip diy">No flags yet · request a kit</span>`;
+}
+
+function renderHoodSide() {
+  const h = curHood, c = selected;
+  const sorted = [...h.corners].sort((a, b) => a.prio - b.prio).filter(x => listFilter !== "flags" || flagged(x));
+  const hm = D.marked.filter(m => m[3] === h.idx);
+  const built = hm.filter(m => m[4]).map(m => m[4]);
+  const feed = hoodFeed(h);
+  $("side").innerHTML = `
+    ${c ? `<section class="panel detail" id="detail" aria-live="polite">
+      <div class="eyebrow">Priority ${c.prio} of ${h.corners.length} in ${esc(h.name)}</div>
+      <h2><a class="name-link" href="#c-${c.s}">${titleCase(c.w)}<span aria-hidden="true"> ›</span></a></h2>
+      <div class="cta">
+        <a class="cta-btn kit${diyOf(c) === "adopted" ? " done" : ""}" href="#c-${c.s}" data-section="kit">${diyOf(c) === "adopted" ? "Flag kit ordered ✓" : flagged(c) ? "Help keep the flags stocked" : "Get a flag kit"}</a>
+        <a class="cta-btn vote${state["v:" + c.s] ? " done" : ""}" href="#c-${c.s}" data-section="vote">${state["v:" + c.s] ? "Voted ✓" : "Vote for this corner"}</a>
+      </div>
+      <a class="more-link" href="#c-${c.s}" data-section="city">How to get the city to build it ›</a>
+      <div class="sub">${gapText(c)} · SDOT score ${c.t} of 37</div>
+      <div class="rows">
+        <div class="row"><span>City</span><div>${cityStatus(c)}</div></div>
+        <div class="row"><span>Neighbors</span><div>${diyStatus(c)}</div></div>
+        <div class="row"><span>Votes</span><div><b>${votesOf(c)}</b> neighbors</div></div>
+        <div class="row"><span>Why SDOT lists it</span><div><div class="bars">${bars(c)}</div></div></div>
+      </div>
+    </section>` : `<section class="panel"><p class="sub">SDOT's priority list has no corners in ${esc(h.name)}. Pick another neighborhood from the <a href="#">Seattle page</a>.</p></section>`}
+    <section class="panel progress" id="city-panel">
+      <h3>What the city is building</h3>
+      <ul>${projectRows(hm.filter(m => m[2] === 0), false)}
+        <li><b class="n" style="color:var(--ok)">${hm.filter(m => m[2] === 1).length}</b><span>Crosswalks already in place${built.length ? `<span class="st">Most recent with a recorded build date: ${Math.max(...built)}</span>` : ""}</span></li></ul>
+    </section>
+    <section class="panel list" id="rank-list">
+      <h3><span class="lt">${listFilter === "flags" ? "Corners covered by neighbor flags" : "Corners ranked by priority"}</span> <span>${listFilter === "flags" ? `<button class="link" type="button" id="show-all">Show all ${h.corners.length}</button>` : "Neighbor votes + SDOT's own score"}</span></h3>
+      <div>${sorted.map(x => `
+        <button class="item${selected === x ? " on" : ""}" type="button" data-s="${x.s}">
+          <span class="num${isPlanned(x) ? " planned" : ""}">${x.prio}</span>
+          <span><span class="name">${titleCase(x.w)}</span>
+            <span class="meta"><span>SDOT ${x.t}/37</span><span>${isPlanned(x) ? "In SDOT's plans" : x.rq ? "Requested" : "Not yet requested"}</span><span>${flagged(x) ? "Neighbor flags" : diyOf(x) === "kit" ? "Flag kit ordered" : "No flags yet"}</span></span></span>
+          <span class="votes">${votesOf(x)}<small>votes</small></span>
+        </button>`).join("") || `<p class="sub" style="padding:10px 18px">No corners match.</p>`}</div>
+    </section>
+    ${feed.length ? `<section class="panel feed"><h3>Recent activity</h3><ul>${feed.map(([t, k, who, what]) => `<li><time>${t}</time><span><span class="who ${k}">${esc(who)}</span> ${what}</span></li>`).join("")}</ul></section>` : ""}`;
+  $("side").querySelectorAll("a[data-section]").forEach(a => a.addEventListener("click", () => { pendingSection = a.dataset.section; }));
+  $("side").querySelectorAll("button.item").forEach(b => b.addEventListener("click", () => select(BY_SLUG[b.dataset.s])));
+  const sa = $("show-all"); if (sa) sa.onclick = () => { listFilter = "all"; renderHoodSide(); };
+}
+function hoodFeed(h) {
+  const out = [];
+  const byProj = {};
+  D.marked.filter(m => m[3] === h.idx && m[2] === 0 && m[7]).forEach(m => { const k = (m[5] >= 0 ? D.projects[m[5]] : "") + "|" + m[7]; byProj[k] = (byProj[k] || 0) + 1; });
+  Object.entries(byProj).slice(0, 3).forEach(([k, n]) => { const [proj, when] = k.split("|"); out.push([when.replace(/ \d{4}$/, ""), "city", "SDOT", `added ${n} planned crosswalk${n > 1 ? "s" : ""}${proj ? ` (${esc(proj)})` : ""}.`]); });
+  const top = [...h.corners].sort((a, b) => a.prio - b.prio);
+  const fl = top.find(flagged); if (fl) out.unshift(["Today", "n", "A neighbor", `restocked flags at ${titleCase(fl.w)}.`]);
+  if (top[0]) out.splice(1, 0, ["Today", "n", `${3 + (top[0].v % 9)} neighbors`, `voted for ${titleCase(top[0].w)}.`]);
+  const rq = top.find(x => x.rq); if (rq) out.push(["Mon", "n", "A neighbor", `emailed SDOT about ${titleCase(rq.w)}.`]);
+  return out.slice(0, 6);
+}
+function showCrosswalk(m) {
+  selected = null; renderPins();
+  const planned = m[2] === 0;
+  const el = $("detail") || (() => { const s = document.createElement("section"); s.className = "panel detail"; s.id = "detail"; $("side").prepend(s); return s; })();
+  el.innerHTML = `
+    <div class="eyebrow" style="color:var(${planned ? "--plan" : "--ok"})">${planned ? "Coming from the city" : "Marked crosswalk"}</div>
+    <h2>${markedName(m)}</h2>
+    <div class="rows">
+      <div class="row"><span>Status</span><div><span class="chip ${planned ? "plan" : "ok"}">${markedStatus(m)}</span></div></div>
+      ${planned && m[5] >= 0 ? `<div class="row"><span>SDOT project</span><div>${esc(D.projects[m[5]])}</div></div>` : ""}
+      ${m[11] ? `<div class="row"><span>School</span><div>Marked as a school crosswalk</div></div>` : ""}
+    </div>
+    <div class="actions"><a class="act" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${m[1].toFixed(6)},${m[0].toFixed(6)}" target="_blank" rel="noopener">Look around in Street View ↗</a>
+      <button class="act" type="button" id="b-back">Back to the corners that need one</button></div>`;
+  $("b-back").onclick = () => select([...curHood.corners].sort((a, b) => a.prio - b.prio)[0]);
+  revealDetail();
+}
+function select(c, reveal = true) {
+  selected = c; renderPins(); renderHoodSide();
+  if (reveal) { panTo(c); revealDetail(); }
+}
+function revealDetail() { if (matchMedia("(max-width: 900px)").matches) smooth($("detail")); }
+function renderSide() { if (view === "city") renderCitySide(); else if (view === "hood") renderHoodSide(); }
+
+// ---------- corner page ----------
+const NOTES = [
+  "Cars come over the rise fast and don't see you until you're already in the street.",
+  "My kids cross here every morning on the way to school.",
+  "Nowhere good to cross for blocks, so people just dart across.",
+  "Hard to see around the parked cars at the corner.",
+  "It's dark here by 5 pm. I've had two close calls this fall.",
+  "Lots of strollers and dog walkers cross here to get to the park.",
+  "Drivers stop for me maybe half the time.",
+];
+const notesFor = c => { let h = 0; for (const ch of c.w) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return [0, 1, 2].map(i => NOTES[(h + i * 3) % NOTES.length]); };
+function emailText(c) {
+  const h = HOODS[c.h];
+  const lines = ["Hello SDOT Pedestrian Program,", "", `I'm requesting a marked crosswalk at ${titleCase(c.w)} in ${h.name}.`, "",
+    `- This intersection is on SDOT's Enhanced Street Crossings priority list (score ${c.t} of 37, #${fmt(c.cr)} of ${fmt(D.city_total)} citywide).`,
+    `- The nearest marked crosswalk is ${c.gap ? `about ${c.gap} meters away` : "not on either street nearby"}.`];
+  if (c.sch >= 3) lines.push("- It's near public schools, and students cross here.");
+  if (c.pk >= 2) lines.push("- People cross here to reach a nearby park.");
+  if (c.pc > 0) lines.push(`- SDOT's data shows pedestrian crashes here in the last five years.`);
+  lines.push(`- ${votesOf(c)} neighbors support a crosswalk here.`, "", "Could SDOT evaluate this location? I'd also appreciate knowing the timeline.", "", "Thank you,", "[Your name]", "[Your street or nearest cross streets]");
+  return { to: "walkandbike@seattle.gov", subject: `Crosswalk request: ${titleCase(c.w)}`, body: lines.join("\n") };
+}
+const neighborText = c => `I'm asking neighbors to support a crosswalk at ${titleCase(c.w)}. It takes 2 minutes: vote and send the city a short note here: ${pageUrl(c)}`;
+const daylightText = c => ({ to: "684-Road@seattle.gov", subject: `Daylighting request: ${titleCase(c.w)}`,
+  body: `Hello SDOT,\n\nCars often park within 20 feet of the corner at ${titleCase(c.w)}, which blocks drivers' view of people waiting to cross. Could SDOT add daylighting here (no-parking signs or paint at the corner)?\n\nThank you,\n[Your name]` });
+const followText = c => ({ to: "walkandbike@seattle.gov", subject: `Following up: crosswalk request for ${titleCase(c.w)}`,
+  body: `Hello SDOT,\n\nI'm following up on the crosswalk request for ${titleCase(c.w)} in ${HOODS[c.h].name}. Has the location been evaluated, and is there a timeline?\n\nThank you,\n[Your name]` });
+const councilText = c => ({ to: "", subject: `Crosswalk at ${titleCase(c.w)}`,
+  body: `Hello Councilmember,\n\nI'm one of the ${HOODS[c.h].name} neighbors asking SDOT for a marked crosswalk at ${titleCase(c.w)}. It's already on SDOT's own priority list for new crossings, and ${votesOf(c)} neighbors support it. Could your office ask SDOT to evaluate this corner and share a timeline?\n\nThank you,\n[Your name]\n[Your address]` });
+const mailto = m => `mailto:${m.to}?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body)}`;
+const copyBlock = (id, text) => `<div class="copy"><textarea id="${id}" readonly rows="${Math.min(12, text.split("\n").length + 1)}">${esc(text)}</textarea><button class="act small" type="button" data-copy="${id}">Copy</button></div>`;
+const emailStep = (id, m, label) => `<div class="mailline"><span>To: <b>${esc(m.to || "your council member")}</b></span><span>Subject: ${esc(m.subject)}</span></div>${copyBlock(id, m.body)}${m.to && label ? `<a class="act" href="${mailto(m)}">${label} ↗</a>` : ""}`;
+
+function viewCorner(c) {
+  view = "corner"; curHood = HOODS[c.h]; selected = c;
+  $("explore").hidden = true; $("corner-page").hidden = false;
+  setChrome({ sub: `${curHood.name} · Seattle`, title: `${titleCase(c.w)} · ${curHood.name} Crosswalk Watch`, intro: "",
+    crumbs: [["Seattle", "#"], [curHood.name, "#n-" + curHood.id], [titleCase(c.w), "#c-" + c.s]] });
+  renderCornerPage(c);
+  if (pendingSection) { const s = pendingSection; pendingSection = null; requestAnimationFrame(() => smooth($("sec-" + s))); }
+  else window.scrollTo(0, 0);
+}
+function renderCornerPage(c) {
+  const el = $("corner-page"), h = HOODS[c.h];
+  const voted = !!state["v:" + c.s], ordered = diyOf(c) === "adopted", d = diyOf(c);
+  const notes = notesFor(c); if (state["c:" + c.s]) notes.unshift(state["c:" + c.s]);
+  const pl = plannedLine(c);
+  const cityLine = pl ? pl.text : c.rq ? `Requested · waiting ${c.rq} days` : "On SDOT's priority list · not yet requested";
+  const diyLine = d === "flags" ? "Flags in place" : d === "adopted" ? "Your kit is on the way" : d === "kit" ? "Flag kit ordered" : "No flags yet";
+  const goal = 100;
+  const steps = [
+    { t: "Email SDOT", h: "Ask SDOT's pedestrian program for a marked crosswalk. This draft already includes the facts SDOT looks at.", body: emailStep("m1", emailText(c), "Open in your email") },
+    { t: "Email your council member", h: "Copy your district council member at the same time. Council offices can ask SDOT for an answer, and you don't need to wait to do it.", body: `<a class="act" href="https://www.seattle.gov/council/meet-the-council/find-your-district-and-councilmembers" target="_blank" rel="noopener">Find your council member's email ↗</a>${emailStep("m2", councilText(c), "")}` },
+    { t: "Get 5 neighbors to send their own note", h: `Separate notes from several neighbors carry more weight than one. Share this with neighbors, a school parent list, or your community council, or print the flyer below.`, body: copyBlock("m3", neighborText(c)) },
+    { t: "Ask SDOT to clear parking at the corner", h: "Cars parked near the corner hide people waiting to cross. SDOT adds no-parking paint and signs at corners (\"daylighting\"), and requests from residents are one of its priorities.", body: emailStep("m4", daylightText(c), "Open in your email") },
+    { t: "Count people crossing for one hour", h: "SDOT has turned down crosswalk requests when too few people were counted crossing. Count for one hour, 7:30–8:30 am, and include the number in your emails. Flag scans add to it.", body: `<label class="inline" for="cnt">People counted <input type="number" id="cnt" min="0" max="999" placeholder="0"></label> <button class="act small" type="button" id="cnt-save">Add count</button> <span class="saved" id="cnt-msg"></span>` },
+    { t: "Send SDOT a follow-up", h: "No reply yet? Send this short, polite follow-up. It keeps the request open.", body: emailStep("m6", followText(c), "Open in your email") },
+    { t: "Apply for neighborhood funding", h: "A community-backed Neighborhood Street Fund application is how the crosswalk at Bagley Ave N and N 40th St in Wallingford got built in 2017. Ask your community council to sponsor it.", body: `<a class="act" href="https://www.seattle.gov/nsf" target="_blank" rel="noopener">Neighborhood Street Fund ↗</a>` },
+  ];
+  const isDone = i => !!state[`s:${c.s}:${i}`];
+  const firstOpen = steps.findIndex((s, i) => !isDone(i));
+  const scheduledHere = pl && c.pl[1] !== "waiting";
+  el.innerHTML = `
+    <header class="cp-head">
+      <div class="eyebrow">Priority ${c.prio} of ${h.corners.length} in ${esc(h.name)} · #${c.cityPrio} in Seattle</div>
+      <h1 class="cp-title">${titleCase(c.w)}</h1>
+      <div class="tiles">
+        <div class="tile"><span>City</span><b class="${pl ? "plan" : "need"}">${cityLine}</b></div>
+        <div class="tile"><span>Neighbors</span><b class="${flagged(c) ? "ok" : "diy"}">${diyLine}</b></div>
+        <div class="tile"><span>Votes</span><b>${votesOf(c)} neighbors</b></div>
+      </div>
+      <div class="cta">
+        <a class="cta-btn kit" href="#c-${c.s}" data-jump="kit">${ordered ? "Flag kit ordered ✓" : flagged(c) ? "Help keep the flags stocked" : "Get a flag kit"}</a>
+        <a class="cta-btn vote" href="#c-${c.s}" data-jump="vote">${voted ? "Voted ✓" : "Vote for this corner"}</a>
+      </div>
+      <div class="share">
+        <button class="act small" type="button" id="share">Copy link to this corner</button>
+        <form class="follow" id="follow" novalidate>
+          <label for="follow-email" class="vh">Email for updates</label>
+          <input type="email" id="follow-email" placeholder="you@example.com" autocomplete="email">
+          <button class="act small" type="submit">Get updates</button>
+        </form>
+        <span class="saved" id="share-msg"></span>
+      </div>
+    </header>
+
+    <section class="cp-sec" id="sec-kit">
+      <div class="sec-n">1</div>
+      <div class="sec-body">
+        <h2>${flagged(c) ? "Keep the crosswalk flags stocked" : "Put up crosswalk flags this week"}</h2>
+        <p class="lead">Washington law already treats every corner as a crosswalk, so drivers must stop for people crossing here. Flags make people easy to see while the city decides on paint.</p>
+        <div class="product">
+          <div class="product-img"><img src="seattle-crosswalks-kit.jpg" alt="Steel crosswalk flag box with a QR sign, five reflective orange flags, hose clamps and mounting brackets" loading="lazy"></div>
+          <div class="product-info">
+            <div class="p-name">Crosswalk Watch Flag Kit</div>
+            <div class="p-price">${money(KIT_PRICE)} <span>· free pickup in ${esc(h.name)} or $6 delivery</span></div>
+            <ul>
+              <li>2 steel flag boxes, one for each side of the street, each with a "Take · Cross · Return" sign and this corner's QR code</li>
+              <li>10 fluorescent orange flags with reflective stripes, 12 × 12 in (Seattle asks for at least 10 × 10)</li>
+              <li>Stainless hose clamps and brackets that fit any sign pole. No drilling, and they come off cleanly.</li>
+              <li>Install guide and a card for counting people who cross</li>
+            </ul>
+            <label class="check" for="add-signs"><input type="checkbox" id="add-signs" checked> Add 4 yard signs for neighbors: "WA law: stop for people at every corner" <b>+${money(SIGNS_PRICE)}</b></label>
+            <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 5 spare flags <b>+${money(FLAGS_PRICE)}</b></label>
+            ${ordered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn kit wide" type="button" id="order">Order kit · ${money(KIT_PRICE + SIGNS_PRICE)}</button>`}
+          </div>
+        </div>
+        <div id="order-form"></div>
+        <h3>How the QR code works</h3>
+        <ol class="mini">
+          <li><b>Scan once to activate.</b> The kit links itself to ${titleCase(c.w)}.</li>
+          <li><b>Every scan counts a crossing.</b> Counts go into the neighborhood's request to SDOT.</li>
+          <li><b>Running low?</b> Tap "Low on flags" after a scan and the corner's adopter gets a reminder.</li>
+        </ol>
+        <h3>More you can do this week</h3>
+        <ul class="more">
+          <li><b>Yard signs</b> facing the corner remind drivers to stop.</li>
+          <li><b>Light the corner.</b> If you live on it, aim a porch or motion light at the curb ramp.</li>
+          <li><b>Report cars parked within 20 feet</b> of the corner in the <a href="https://www.seattle.gov/customer-service-bureau/find-it-fix-it-mobile-app" target="_blank" rel="noopener">Find It, Fix It app</a>.</li>
+          <li><b>Trim bushes</b> that block the view of people waiting to cross.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cp-sec" id="sec-city">
+      <div class="sec-n">2</div>
+      <div class="sec-body">
+        <h2>Get the city to build it</h2>
+        <p class="lead">${scheduledHere ? "SDOT has this corner in a current project. These steps help keep it on track." : "Do these in any order, and as many as you can. Most are a two-minute email with the draft written for you."} ${steps.filter((s, i) => isDone(i)).length} of ${steps.length} done.</p>
+        <ol class="steps">
+          ${steps.map((s, i) => { const n = i + 1, done = isDone(i), now = i === firstOpen;
+            return `<li class="${done ? "done" : now ? "now" : ""}"><details ${now ? "open" : ""}><summary><span class="sn">${done ? "✓" : n}</span><span class="st">${s.t}${now ? ' <em>Start here</em>' : ""}</span></summary>
+              <div class="sd"><p>${s.h}</p>${s.body}<button class="act small mark" type="button" data-step="${i}">${done ? "Mark not done" : "Mark done ✓"}</button></div></details></li>`; }).join("")}
+        </ol>
+        <div class="flyer" id="flyer">
+          <h3>Print a flyer for your neighbors</h3>
+          <p>A one-page flyer for this corner with a QR code to this page. Tape it to a pole near the corner, or drop it on porches nearby.</p>
+          <div class="flyer-view">
+            <div class="flyer-bar"><span class="file">crosswalk-flyer-${c.s}.pdf</span><span>1 page · Letter</span></div>
+            <div class="flyer-sheet" id="flyer-sheet"><iframe id="flyer-frame" title="Flyer for ${titleCase(c.w)}" src="${FLYER_URL}#${c.s}" loading="lazy" tabindex="-1"></iframe></div>
+          </div>
+          <div class="actions"><button class="cta-btn vote" type="button" id="print-flyer">Print flyer</button><a class="act" href="${FLYER_URL}#${c.s}" target="_blank" rel="noopener">Open full size ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cp-sec" id="sec-vote">
+      <div class="sec-n">3</div>
+      <div class="sec-body">
+        <h2>Vote for this corner</h2>
+        <p class="lead">The top five corners in ${esc(h.name)} go into the neighborhood's letter to SDOT and the council. Votes and notes show the city who crosses here and why.</p>
+        <div class="votebox">
+          <div class="vcount"><b>${votesOf(c)}</b> neighbors have voted</div>
+          <div class="goal"><i style="width:${Math.min(100, Math.round(100 * votesOf(c) / goal))}%"></i></div>
+          <div class="sub">${votesOf(c) >= goal ? "Goal reached." : `${goal - votesOf(c)} more to reach ${goal}.`} Ranked #${c.prio} in ${esc(h.name)}.</div>
+          <button class="cta-btn vote wide" type="button" id="vote">${voted ? "Voted ✓ (tap to undo)" : "Vote for this corner"}</button>
+          <div id="note-area"></div>
+        </div>
+        <h3>What neighbors say</h3>
+        <ul class="notes">${notes.map((n, i) => `<li>"${esc(n)}"<span>${i === 0 && state["c:" + c.s] ? "You, just now" : `Neighbor · ${[2, 5, 9][i % 3]} days ago`}</span></li>`).join("")}</ul>
+      </div>
+    </section>
+
+    <section class="cp-sec why" id="sec-sdot">
+      <div class="sec-body">
+        <h2>SDOT status</h2>
+        <div class="sdot-grid">
+          <div class="tile"><span>Scheduled?</span><b class="${scheduledHere ? "plan" : "need"}">${scheduledHere ? "Yes · in an active SDOT project" : pl ? "Planned · not yet scheduled" : "Not scheduled"}</b></div>
+          <div class="tile"><span>SDOT rank in ${esc(h.name)}</span><b>#${c.hr} of ${h.corners.length}</b></div>
+          <div class="tile"><span>SDOT rank in Seattle</span><b>#${fmt(c.cr)} of ${fmt(D.city_total)}</b></div>
+        </div>
+        ${scheduledHere ? `<div class="estimate plan"><div class="big">Expected next</div><p>SDOT has crosswalks planned here as part of ${esc(pl.project)}. ${c.pl[1] === "finishing" ? "Its work order is marked complete, so painting could come any time." : `Work began ${c.pl[2]}.`}</p></div>` : `
+        <div class="estimate">
+          <div class="wait-label">Estimated wait</div>
+          <div class="big need">${waitLabel(c)}</div>
+          <h3 class="why-h">Why</h3>
+          <div class="odds">
+            <div><b>${Math.round(c.m[1] * 100)}%</b><span>chance SDOT acts within 5 years</span></div>
+            <div><b>${Math.round(c.m[2] * 100)}%</b><span>within 10 years</span></div>
+            <div><b>${c.m[4]} of ${c.m[5]}</b><span>similar corners got one since 2024</span></div>
+          </div>
+          <p>Estimate from SDOT's own records. Since April 2024, SDOT planned or built a crosswalk at ${c.m[4]} of the ${c.m[5]} priority corners citywide that score ${c.m[6]} like this one, about ${(c.m[0] * 100).toFixed(1)}% a year. Neighbors pushing is how a corner jumps that line, and the flags cover the wait.</p>
+        </div>`}
+        <h3>Why this corner is on SDOT's list</h3>
+        <div class="sub">${gapText(c)} · SDOT score ${c.t} of 37</div>
+        <div class="bars">${bars(c)}</div>
+      </div>
+    </section>
+
+    <section class="cp-sec why" id="sec-street">
+      <div class="sec-body">
+        <h2>Look around this corner</h2>
+        ${streetViewEmbed(c)}
+        <div class="actions"><a class="act" href="${streetView(c)}" target="_blank" rel="noopener">Open Street View full screen ↗</a></div>
+      </div>
+    </section>
+    <a class="back" href="#n-${h.id}">‹ All ${esc(h.name)} corners</a>`;
+
+  el.querySelectorAll("a[data-jump]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); smooth($("sec-" + a.dataset.jump)); }));
+  el.querySelectorAll("button[data-copy]").forEach(b => b.addEventListener("click", () => copyText($(b.dataset.copy).value, b)));
+  $("share").onclick = e => copyText(pageUrl(c), e.currentTarget);
+  $("follow").addEventListener("submit", e => { e.preventDefault(); const v = $("follow-email").value.trim();
+    $("share-msg").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "You'll get an email when anything changes at this corner." : "Enter an email address to get updates."; });
+  const total = () => KIT_PRICE + ($("add-signs").checked ? SIGNS_PRICE : 0) + ($("add-flags").checked ? FLAGS_PRICE : 0);
+  ["add-signs", "add-flags"].forEach(id => $(id).addEventListener("change", () => { const b = $("order"); if (b) b.textContent = `Order kit · ${money(total())}`; }));
+  const order = $("order"); if (order) order.onclick = () => showOrderForm(c, total());
+  $("cnt-save").onclick = () => { const v = +$("cnt").value; $("cnt-msg").textContent = v > 0 ? `Added: ${v} people. Thanks.` : "Enter how many people you counted."; };
+  el.querySelectorAll("button.mark").forEach(b => b.addEventListener("click", () => {
+    const k = `s:${c.s}:${b.dataset.step}`; if (state[k]) delete state[k]; else state[k] = true;
+    save(); renderCornerPage(c); $("sec-city").scrollIntoView({ block: "start" });
+  }));
+  $("vote").onclick = () => { const was = !!state["v:" + c.s]; state["v:" + c.s] = !was; if (was) delete state["c:" + c.s];
+    save(); rankAll(); renderCornerPage(c); if (!was) showNoteForm(c); };
+  $("print-flyer").onclick = () => { const f = $("flyer-frame"); try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { window.open(FLYER_URL + "#" + c.s, "_blank"); } };
+  fitFlyer();
+}
+function fitFlyer() {
+  const sheet = $("flyer-sheet"), frame = $("flyer-frame");
+  if (!sheet || !frame) return;
+  frame.style.transform = `scale(${sheet.clientWidth / 816})`;
+}
+window.addEventListener("resize", fitFlyer);
+
+function showOrderForm(c, total) {
+  $("order-form").innerHTML = `
+    <form class="kit" id="kit-form" novalidate>
+      <h3>Order for ${titleCase(c.w)} · ${money(total)}</h3>
+      <div class="two">
+        <label for="kit-name">Your name<input type="text" id="kit-name" autocomplete="name"></label>
+        <label for="kit-email">Email<input type="email" id="kit-email" autocomplete="email"></label>
+      </div>
+      <fieldset class="radio"><legend>Get your kit</legend>
+        <label class="check" for="pick-up"><input type="radio" name="get" id="pick-up" checked> Free pickup in ${esc(HOODS[c.h].name)}</label>
+        <label class="check" for="deliver"><input type="radio" name="get" id="deliver"> Deliver to my door (+$6)</label>
+      </fieldset>
+      <label class="check" for="kit-adopt"><input type="checkbox" id="kit-adopt" checked> I'll look after this corner: check the flags every two weeks. We'll send a reminder.</label>
+      <label class="check" for="kit-party"><input type="checkbox" id="kit-party" checked> Help me plan a 30-minute install party with neighbors.</label>
+      <div class="err" id="kit-err"></div>
+      <button class="cta-btn kit wide" type="submit">Place order</button>
+    </form>`;
+  const form = $("kit-form");
+  form.addEventListener("input", () => { $("kit-err").textContent = ""; });
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("kit-name").value.trim(), email = $("kit-email").value.trim();
+    if (!name) { $("kit-err").textContent = "Add your name so neighbors know who's organizing."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $("kit-err").textContent = "Add an email address for your order confirmation."; return; }
+    state["a:" + c.s] = true; state["k:" + c.s] = { party: $("kit-party").checked, adopt: $("kit-adopt").checked };
+    save(); renderCornerPage(c);
+    const k = state["k:" + c.s];
+    $("order-form").innerHTML = `<div class="kit confirm"><h3>Order CW-${1000 + c.cityPrio} placed</h3><div class="next">
+      <div><b>In 3–5 days:</b> your kit is ready, and we'll email you the pickup or delivery details.</div>
+      <div><b>Install:</b> clamp one flag box to a sign pole on each side of the street, within 5 feet of where people cross. Don't cover any signs.${k.party ? " We'll send a flyer to invite neighbors." : ""}</div>
+      <div><b>Activate:</b> scan the QR code on each box once. It links the flags to this page.</div>
+      <div><b>Then:</b> ${k.adopt ? "a restock reminder every two weeks. " : ""}Start step 1 below to send the city your request.</div></div></div>`;
+    $("order-form").scrollIntoView({ block: "start" });
+  });
+  $("kit-name").focus();
+}
+function showNoteForm(c) {
+  $("note-area").innerHTML = `
+    <form class="kit" id="c-form" novalidate>
+      <h3>Vote counted. Want to say why?</h3>
+      <label for="c-text">What happens at this corner? <span class="opt">Optional</span>
+        <textarea id="c-text" rows="3" maxlength="400" placeholder="A car didn't stop while my kid was crossing last Tuesday morning."></textarea></label>
+      <div class="sub">Near-misses, who crosses here, and what time of day are the most useful. Notes go into the request to SDOT without your name.</div>
+      <div class="actions" style="margin-top:0"><button class="act primary" type="submit">Add note</button><button class="act" type="button" id="c-skip">Skip</button></div>
+    </form>`;
+  $("c-skip").onclick = () => { $("note-area").innerHTML = ""; };
+  $("c-form").addEventListener("submit", e => { e.preventDefault(); const t = $("c-text").value.trim(); if (t) { state["c:" + c.s] = t; save(); }
+    renderCornerPage(c); $("sec-vote").scrollIntoView({ block: "start" }); });
+  $("c-text").focus({ preventScroll: true });
+}
+function copyText(text, btn) {
+  const done = () => { const old = btn.textContent; btn.textContent = "Copied ✓"; setTimeout(() => { btn.textContent = old; }, 1600); };
+  const fallback = () => { const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "absolute"; ta.style.left = "-9999px";
+    document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); done(); } catch (e) {} ta.remove(); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+}
+
+// ---------- routing ----------
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h.startsWith("c-") && BY_SLUG[h.slice(2)]) return viewCorner(BY_SLUG[h.slice(2)]);
+  if (h.startsWith("n-") && HOOD_BY_ID[h.slice(2)]) { const wasCorner = view === "corner"; viewHood(HOOD_BY_ID[h.slice(2)]); if (wasCorner || !pendingSelect) window.scrollTo(0, 0); return; }
+  const wasCorner = view === "corner";
+  viewCity();
+  if (wasCorner) window.scrollTo(0, 0);
+}
+
+fetch(DATA_URL).then(r => r.json()).then(data => {
+  D = data;
+  HOODS = D.hoods.map((h, i) => ({ ...h, idx: i, corners: [] }));
+  HOOD_BY_ID = Object.fromEntries(HOODS.map(h => [h.id, h]));
+  CORNERS = D.corners;
+  BY_SLUG = Object.fromEntries(CORNERS.map(c => [c.s, c]));
+  CORNERS.forEach(c => HOODS[c.h].corners.push(c));
+  rankAll();
+  window.addEventListener("hashchange", route);
+  route();
+}).catch(() => { $("side").innerHTML = `<section class="panel"><p>The crosswalk data couldn't load. Refresh the page to try again.</p></section>`; });
+</script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI&callback=initGoogleMap&loading=async&v=weekly"></script>
+</body>
+</html>
