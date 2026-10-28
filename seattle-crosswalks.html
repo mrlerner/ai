@@ -313,6 +313,8 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .rowbtn { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 2px; border: 0; border-bottom: 1px solid var(--line);
   background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; width: 100%; }
 .rowbtn:last-child { border-bottom: 0; }
+a.rowbtn { text-decoration: none; color: inherit; }
+a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 .rowbtn:hover { background: var(--need-soft); }
 .rowbtn:focus-visible { outline: 3px solid var(--plan); outline-offset: -3px; }
 .rowbtn .name { font-weight: 600; font-size: 14px; }
@@ -320,11 +322,12 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .hood-num { font: 800 15px var(--f-display); color: var(--need); text-align: center; }
 .search { width: 100%; font: 400 15px var(--f-body); padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); margin-bottom: 8px; }
 .more-rows { margin-top: 8px; }
-.dot { position: absolute; transform: translate(-50%, -50%); width: 12px; height: 12px; border-radius: 50%; background: var(--need); border: 1.5px solid #fff;
+.dot { position: absolute; transform: translate(-50%, -50%); width: 10px; height: 10px; border-radius: 50%; background: var(--need); border: 1px solid #fff;
   padding: 0; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
 .dot.planned { background: var(--plan); }
 .dot::before { content: ""; position: absolute; inset: -9px; border-radius: 50%; }
-.pin.city { width: 34px; height: 34px; font-size: 14px; }
+.pin.city { width: 28px; height: 28px; font-size: 12.5px; border-width: 2px; }
+@media (max-width: 600px) { .pin.city { width: 24px; height: 24px; font-size: 11px; } .dot { width: 8px; height: 8px; } }
 .preview { border: 2px solid var(--need); }
 .flyer-view { background: #e8e6e1; border-radius: 10px; padding: 16px; }
 .flyer-sheet { position: relative; width: 100%; aspect-ratio: 8.5 / 11; max-width: 100%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.25); overflow: hidden; }
@@ -360,7 +363,7 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793205061";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793205203";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -474,6 +477,7 @@ function applyMap({ els, bounds, rings }) {
   outlines = (rings || []).map(r => new g.Polyline({ map: gmap, path: r.map(([lng, lat]) => ({ lat, lng })), strokeOpacity: 0, clickable: false,
     icons: [{ icon: { path: "M 0,-1 0,1", strokeOpacity: 0.9, strokeColor: "#1f5f3a", scale: 2.5 }, offset: "0", repeat: "11px" }] }));
   layer.setEls(els);
+  if (bounds === "city") { gmap.setCenter({ lat: 47.615, lng: -122.335 }); gmap.setZoom(matchMedia("(max-width: 600px)").matches ? 10.6 : 11); return; }
   const b = new g.LatLngBounds({ lat: bounds[1], lng: bounds[0] }, { lat: bounds[3], lng: bounds[2] });
   gmap.fitBounds(b, 8);
 }
@@ -532,7 +536,7 @@ function viewCity() {
     b.addEventListener("click", () => goCorner(c));
     return { el: b, lat: c.lat, lng: c.lng };
   }));
-  setMap({ els, bounds: [-122.42, 47.495, -122.245, 47.735], rings: [] });
+  setMap({ els, bounds: "city", rings: [] });
 }
 const cityTop = n => [...CORNERS].sort((a, b) => a.cityPrio - b.cityPrio).slice(0, n);
 function goCorner(c) { pendingSelect = c.s; location.hash = "n-" + HOODS[c.h].id; }
@@ -547,7 +551,7 @@ function renderCitySide() {
     <section class="panel" id="hood-panel">
       <h3 class="ph">Find your neighborhood <span>${HOODS.filter(h => h.corners.length).length} neighborhoods</span></h3>
       <label class="vh" for="hood-q">Search neighborhoods</label>
-      <input class="search" id="hood-q" type="search" placeholder="Wallingford" value="${esc(hoodQuery)}" autocomplete="off">
+      <input class="search" id="hood-q" type="search" placeholder="Search, like Wallingford or Rainier Beach" value="${esc(hoodQuery)}" autocomplete="off">
       <div class="rows-list" id="hood-rows">${hoods.slice(0, hoodQuery ? 40 : 8).map(h => `
         <a class="rowbtn" href="#n-${h.id}"><span class="hood-num">${h.corners.length}</span>
           <span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span><span>${h.corners.length} corners need a crosswalk</span>${hoodSched(h) ? `<span>${hoodSched(h)} scheduled</span>` : ""}</span></span><span>›</span></a>`).join("") || `<p class="sub">No neighborhood matches "${esc(hoodQuery)}".</p>`}
