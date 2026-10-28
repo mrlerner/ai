@@ -410,28 +410,41 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
   <main id="how-page" class="how" hidden>
     <h2>How it works</h2>
-    <section>
-      <h3>Using the map</h3>
-      <p>Pinch or use two fingers to zoom and pan. Zoomed out, the map shows every corner in Seattle that needs a crosswalk, with the city's 10 riskiest numbered. Zoom in on a neighborhood and tap the chip at the bottom to open its page, where its corners are numbered by risk and existing crosswalks show in green. Tap any numbered pin to open that corner.</p>
+    <section id="how-corners">
+      <h3>Which corners we list</h3>
+      <p>Our corners come from SDOT's long-range plan, the <b>Seattle Transportation Plan</b>, adopted in 2024. Its pedestrian section maps every intersection that has <b>no marked crosswalk, all-way stop or traffic signal</b> and is <b>at least 600 feet</b> (about two blocks) from one that does. Almost all are on arterials, the busier streets. SDOT lists 1,466. We leave out about 40 where every street is a highway, ramp, tunnel or bridge deck, since nobody crosses there on foot. Seattle has about 15,500 intersections, so roughly 1 in 11 is on the list.</p>
+      <p>The list is a map of gaps, not a schedule. SDOT says it will use it to choose streets to study and to find chances to add crossings during other projects, and that some corners on it won't get one. One new crosswalk often closes the gap for the corners on either side of it, too.</p>
+      <p>The numbers at the top of the Seattle page count the <b>high-risk</b> corners, with a Risk Score of 70 or more. A neighborhood page counts its <b>risky</b> corners, with a Risk Score of 50 or more, since most neighborhoods have only a few corners above 70. The map and lists show every corner on the list.</p>
     </section>
     <section id="how-risk">
       <h3>How we rate risk</h3>
-      <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. <b>Highest risk</b> is 90–100, <b>Very risky</b> 70–89, <b>Somewhat risky</b> 50–69 and <b>Lower risk</b> below 50. We leave out about 40 spots on SDOT's list where every street is a highway, ramp, tunnel or bridge deck, since nobody crosses there on foot.</p>
+      <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. <b>Highest risk</b> is 90–100, <b>Very risky</b> 70–89, <b>Somewhat risky</b> 50–69 and <b>Lower risk</b> below 50.</p>
       <p>The score is <b>how many pedestrian crashes to expect at the corner each year</b>, so it counts both how dangerous the crossing is and how many people are there to be hurt. A wide, busy road with nobody walking scores lower than one where people cross all day. We estimate it the way traffic engineers do when crashes are rare, following the federal Highway Safety Manual. First, a model predicts crashes from <b>how much traffic passes</b> (SDOT's 2024 counts), <b>how many people come to the area</b> (jobs within a quarter mile from the Census, and nearby schools, transit, parks and shops), and <b>how many lanes people cross</b>. Its weights come from Seattle's own pedestrian crashes since 2016 at the corner or on the blocks next to it. Then each corner's own crash record is blended in. One crash is often bad luck, so it moves a corner a little; a corner with crash after crash moves a lot.</p>
       <p>We checked it the honest way: built only from crashes before 2021, it picked out the corners where pedestrians were hit afterward better than SDOT's priority score, a plain crash count, or our earlier score. The 10% of corners it rated riskiest had about half of all pedestrian crashes since 2021. Posted speed, residents nearby and distance to the nearest crosswalk didn't improve those predictions, so they're shown on each corner but not scored.</p>
       <p>It's an estimate, not a measurement. The city doesn't count pedestrians at most corners, and crash records only include crashes reported to police, so a corner with no crashes on record can still be dangerous. Counting people who cross, and adding notes about near-misses, helps fill that gap. Votes show what neighbors want most; they don't change the Risk Score.</p>
     </section>
     <section>
       <h3>SDOT priority</h3>
-      <p>SDOT gives every corner on its list its own score, which we call <b>SDOT priority</b> so it isn't confused with the Risk Score. Points come from places people walk to nearby (schools, parks, transit and busy blocks, up to 3 points each), safety (how dangerous the street is to cross, up to 16) and equity (up to 12 for neighborhoods SDOT's equity index flags as underserved). The highest score in Seattle is 37.</p>
+      <p>SDOT gives every corner on its list its own score, which we call <b>SDOT priority</b> so it isn't confused with the Risk Score. It's out of 40 points, and the highest in Seattle is 37. The points come from three things:</p>
+      <p><b>Places people walk to</b>, up to 12: public schools, parks, transit stops and busy neighborhood centers nearby, up to 3 points each, more the closer they are.<br>
+        <b>Safety</b>, up to 16: points if SDOT's own crash analysis flagged the corner, if it had 3 or more pedestrian crashes in five years, or if people cross 3 or more lanes. About 5 in 6 corners get no safety points, and nearly all the rest get 5 for lanes.<br>
+        <b>Equity</b>, up to 12: by where the neighborhood falls on the City's Race and Social Equity Index, from 0 for the most advantaged two-fifths of the city to 12 for the least.</p>
+    </section>
+    <section>
+      <h3>Why our score is different</h3>
+      <p>The two scores answer different questions. SDOT priority asks where a crossing would serve the most people and the neighborhoods most in need. The Risk Score asks where people walking are most likely to be hit. They agree more often than not, but differ in three ways.</p>
+      <p><b>Traffic.</b> SDOT's score doesn't count how many cars pass. Ours does, using SDOT's 2024 traffic counts.<br>
+        <b>Crashes.</b> SDOT's safety points are yes-or-no flags that most corners don't get, so most of its score comes from destinations and equity. Ours uses every pedestrian crash since 2016, weighed by how much each corner's record can be trusted.<br>
+        <b>Equity.</b> SDOT adds points for underserved neighborhoods, a choice about who should get crossings first. We leave it out so the Risk Score measures danger alone.</p>
+      <p>Tested on crashes after 2020, the Risk Score found more of the corners where people were hit. Both scores are on every corner page.</p>
     </section>
     <section>
       <h3>Scheduled crosswalks</h3>
-      <p>A corner is <b>scheduled</b> once SDOT opens a work order for a crosswalk there. SDOT paints crosswalks in the dry months, about April to September, usually a few months or more after opening the work order. Some take a year or longer.</p>
+      <p>A corner is <b>scheduled</b> once SDOT opens a work order within about 200 feet of it for a crosswalk or, since 2023, for a new traffic signal, a signal project or a pedestrian crossing beacon. SDOT paints crosswalks in the dry months, about April to September, usually a few months or more after opening the work order. Some take a year or longer.</p>
     </section>
     <section>
       <h3>Data</h3>
-      <p>Priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders. Pedestrian crashes come from SDOT's collision records, traffic from SDOT's 2024 arterial traffic counts, and jobs from the Census's LEHD Origin-Destination Employment Statistics. Neighborhood boundaries come from Seattle's Neighborhood Map Atlas. Votes, flag kits and neighbor activity are sample data.</p>
+      <p>Priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders, which also show when SDOT repaints a crosswalk. Pedestrian crashes come from SDOT's collision records, traffic from SDOT's 2024 arterial traffic counts, and jobs from the Census's LEHD Origin-Destination Employment Statistics. Neighborhood boundaries come from Seattle's Neighborhood Map Atlas. Votes, flag kits and neighbor activity are sample data.</p>
     </section>
   </main>
 
@@ -445,7 +458,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793222329";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793223482";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -500,8 +513,6 @@ const riskLine = c => riskReasons(c).slice(0, 2).join(" · ");
 // Risk Score (0-100, citywide percentile from the build) with a Walk Score-style label, then the top reasons.
 const riskLabel = s => s >= 90 ? "Highest risk" : s >= 70 ? "Very risky" : s >= 50 ? "Somewhat risky" : "Lower risk";
 const riskScoreText = c => `${c.rs} out of 100 · ${riskLabel(c.rs)}`;
-// High risk = Very risky or Highest risk. The headline tiles count only these corners.
-const isHighRisk = c => c.rs >= 70;
 const riskScoreLine = c => { const why = riskLine(c);
   return `<div><b>${c.rs}</b> out of 100 · <b>${riskLabel(c.rs)}</b></div>${why ? `<div class="sub risk-why">${why[0].toUpperCase() + why.slice(1)}</div>` : ""}`; };
 // Scheduled = SDOT has a work order open (or just finished) at the corner: for a crosswalk, or (c.sw, opened since 2023)
@@ -822,17 +833,20 @@ function statAction(act) {
   else if (act === "hoods") smooth($("hood-panel"));
   else if (act === "sched") {
     // On a neighborhood page, each tap selects the next scheduled corner; otherwise it jumps to the list.
-    const s = view === "hood" ? tileCorners(curHood.corners).filter(isScheduled).sort((a, b) => a.prio - b.prio) : [];
+    const s = view === "hood" ? tileCorners(curHood.corners, TILE_MIN.hood[0]).filter(isScheduled).sort((a, b) => a.prio - b.prio) : [];
     if (s.length) select(s[(s.indexOf(selected) + 1) % s.length]); else smooth($("rank-list"));
   }
 }
-// The headline tiles: the high-risk corners and how many of them SDOT has a crosswalk or signal scheduled for. A
-// neighborhood with no high-risk corners counts all of its corners instead.
-const tileCorners = corners => { const high = corners.filter(isHighRisk); return high.length ? high : corners; };
-function needTiles(corners) {
-  const list = tileCorners(corners), high = list !== corners;
+// The headline tiles: the corners at or above a Risk Score cutoff and how many of them SDOT has a crosswalk or signal
+// scheduled for. Seattle counts high-risk corners (70+, Very risky and up); a neighborhood counts risky ones (50+,
+// anything but Lower risk), since 70+ leaves most neighborhoods with only a handful. A neighborhood with none over
+// the cutoff counts all of its corners instead.
+const TILE_MIN = { city: [70, "high-risk"], hood: [50, "risky"] };
+const tileCorners = (corners, min) => { const hit = corners.filter(c => c.rs >= min); return hit.length ? hit : corners; };
+function needTiles(corners, [min, word]) {
+  const list = tileCorners(corners, min), cut = list !== corners;
   const n = list.filter(isScheduled).length;
-  return [["need", fmt(list.length), `${high ? "high-risk " : ""}corner${list.length === 1 ? " that needs" : "s that need"} a crosswalk`, "corners"],
+  return [["need", fmt(list.length), `${cut ? word + " " : ""}corner${list.length === 1 ? " that needs" : "s that need"} a crosswalk`, "corners"],
           ["plan", fmt(n), `of them ${n === 1 ? "is" : "are"} scheduled to be built by SDOT`, "sched"]];
 }
 
@@ -841,8 +855,8 @@ function viewCity() {
   view = "city"; curHood = null; selected = null;
   $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true; $("about-page").hidden = true;
   setChrome({ sub: "Seattle", title: "Seattle Crosswalk Watch", crumbs: [["Seattle", "#"]],
-    intro: `Where Seattle most needs crosswalks and what the city is building. <strong>Find your neighborhood, vote for the corners that matter to you, and request a flag kit until the city builds them.</strong>` });
-  statTiles(needTiles(CORNERS));
+    intro: `Where Seattle needs crosswalks.<br><strong>Find your neighborhood and vote for the ones you want.<br>Request crossing flags until they're built.</strong>` });
+  statTiles(needTiles(CORNERS, TILE_MIN.city));
   renderSide();
   mapFocus = null;
   if (mapReady) { if (keepView) renderLayer(); else { renderLayer(); fitView(); } }
@@ -895,7 +909,7 @@ function viewHood(h) {
   else if (changed || !selected || HOODS[selected.h] !== h) selected = [...h.corners].sort((a, b) => a.prio - b.prio)[0] || null;
   pendingSelect = null;
   setChrome({ sub: `${h.name} · Seattle`, title: `${h.name} Crosswalk Watch`, crumbs: [["Seattle", "#"], [h.name, "#n-" + h.id]],
-    intro: `Where ${esc(h.name)} most needs crosswalks and what the city is doing about it. <strong>Vote for the corners that matter to you, or request a flag kit for one and keep its crosswalk flags stocked until the city builds it.</strong>` });
+    intro: `Where ${esc(h.name)} needs crosswalks.<br><strong>Vote for the ones you want.<br>Request crossing flags until they're built.</strong>` });
   renderHoodStats();
   renderSide();
   mapFocus = h.idx;
@@ -907,7 +921,7 @@ function viewHood(h) {
 }
 function renderHoodStats() {
   const h = curHood;
-  statTiles(needTiles(h.corners));
+  statTiles(needTiles(h.corners, TILE_MIN.hood));
 }
 function renderPins() {
   const h = mapFocus != null ? HOODS[mapFocus] : curHood;
@@ -922,7 +936,7 @@ function renderPins() {
 }
 function sdotStatus(c) {
   const sub = xwScheduled(c) ? esc(plannedLine(c).project) : c.sw ? `${schedWhat(c)} · work order opened ${c.sw[1]}` : planNote(c);
-  return `<span class="chip ${isScheduled(c) ? "plan" : "need"}">${isScheduled(c) ? "Scheduled" : "Unscheduled"}</span>${sub ? `<div class="sub">${sub}</div>` : ""}`;
+  return `${isScheduled(c) ? `<span class="chip plan">Scheduled</span>` : ""}${sub ? `<div class="sub">${sub}</div>` : ""}`;
 }
 
 function renderHoodSide() {
@@ -994,7 +1008,8 @@ function activityFeed(h) {
     const n = Math.min(c.v, 2 + (r >>> 4) % 5);
     return [hrs, "n", `${n} neighbor${n > 1 ? "s" : ""}${inHood(c)}`, `voted for ${link(c)}.`];
   }).sort((a, b) => a[0] - b[0]).slice(0, 6).forEach(([hrs, ...rest]) => out.push([hrs, ago(hrs), ...rest]));
-  // SDOT: work started in the past year (one row per project), then crosswalks painted this year or last.
+  // SDOT: work started in the past year (one row per project), crosswalks painted this year or last, and repaints of
+  // existing crosswalks in the past year.
   // On a neighborhood page SDOT rows open the crosswalk on the map; citywide they go to its neighborhood.
   const now = new Date(), hm = h ? D.marked.filter(m => m[3] === h.idx) : D.marked;
   const btn = (m, text) => h ? `<button class="link" type="button" data-mi="${D.marked.indexOf(m)}">${esc(text)}</button>`
@@ -1007,6 +1022,11 @@ function activityFeed(h) {
     .sort((a, b) => a[0] - b[0]).slice(0, 2).forEach(r => out.push(r));
   hm.filter(m => m[2] === 1 && m[4] >= now.getFullYear() - 1).sort((a, b) => b[4] - a[4]).slice(0, 2)
     .forEach(m => out.push([(now - new Date(m[4], 6, 1)) / 36e5, String(m[4]), "city", "SDOT", `painted a new crosswalk${where(m)}: ${btn(m, markedName(m))}.`]));
+  D.repaints.filter(([i]) => !h || D.marked[i][3] === h.idx).slice(0, 2).forEach(([i, added, done]) => {
+    const m = D.marked[i], [y, mo, d] = added.split("-").map(Number), t = new Date(y, mo - 1, d);
+    out.push([(now - t) / 36e5, `${"JanFebMarAprMayJunJulAugSepOctNovDec".substr(3 * (mo - 1), 3)} ${y}`, "city", "SDOT",
+      `${done ? "repainted" : "is set to repaint"} a crosswalk${where(m)}: ${btn(m, markedName(m))}.`]);
+  });
   return out.sort((a, b) => a[0] - b[0]).slice(0, 10);
 }
 function showCrosswalk(m) {
@@ -1059,8 +1079,6 @@ function emailText(c) {
 const neighborText = c => `I'm asking neighbors to help get a crosswalk at ${titleCase(c.w)}. It takes 2 minutes: the email to the city is already written, just add your name and send it here: ${pageUrl(c)}/city`;
 const daylightText = c => ({ to: "684-Road@seattle.gov", subject: `Daylighting request: ${titleCase(c.w)}`,
   body: `Hello SDOT,\n\nCars often park within 20 feet of the corner at ${titleCase(c.w)}, which blocks drivers' view of people waiting to cross. Could SDOT add daylighting here (no-parking signs or paint at the corner)?\n\nThank you,\n[Your name]` });
-const followText = c => ({ to: "walkandbike@seattle.gov", subject: `Following up: crosswalk request for ${titleCase(c.w)}`,
-  body: `Hello SDOT,\n\nI'm following up on the crosswalk request for ${titleCase(c.w)} in ${HOODS[c.h].name}. Has the location been evaluated, and is there a timeline?\n\nThank you,\n[Your name]` });
 // The corner's district council member: [name, email].
 const councilOf = c => D.council[c.cd];
 const councilText = c => ({ to: councilOf(c)[1], subject: `Crosswalk at ${titleCase(c.w)}`,
@@ -1079,7 +1097,7 @@ function viewCorner(c) {
   if (pendingSection) { const s = pendingSection; pendingSection = null; requestAnimationFrame(() => $("sec-" + s)?.scrollIntoView({ block: "start" })); }
   else window.scrollTo(0, 0);
 }
-// How it works: data notes and map tips, kept off the main pages.
+// How it works: where the corners and scores come from, kept off the main pages.
 function viewHow(sec) {
   view = "how"; curHood = null; selected = null;
   $("explore").hidden = true; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = false; $("about-page").hidden = true;
@@ -1101,8 +1119,6 @@ function renderCornerPage(c) {
     { t: "Email SDOT", h: "Ask SDOT's pedestrian program for a marked crosswalk. This draft already includes the facts SDOT looks at.", body: emailStep("m1", emailText(c), "Open in your email") },
     { t: "Email your council member", h: `This corner is in City Council District ${c.cd}, represented by ${councilOf(c)[0]}. Email them at the same time. Council offices can ask SDOT for an answer, and you don't need to wait to do it.`, body: emailStep("m2", councilText(c), "Open in your email") },
     { t: "Ask SDOT to clear parking at the corner", h: "Cars parked near the corner hide people waiting to cross. SDOT adds no-parking paint and signs at corners (\"daylighting\"), and requests from residents are one of its priorities.", body: emailStep("m4", daylightText(c), "Open in your email") },
-    { t: "Send SDOT a follow-up", h: "No reply yet? Send this short, polite follow-up. It keeps the request open.", body: emailStep("m6", followText(c), "Open in your email") },
-    { t: "Apply for neighborhood funding", h: "A community-backed Neighborhood Street Fund application is how the crosswalk at Bagley Ave N and N 40th St in Wallingford got built in 2017. Ask your community council to sponsor it.", body: `<a class="act" href="https://www.seattle.gov/nsf" target="_blank" rel="noopener">Neighborhood Street Fund ↗</a>` },
   ];
   const isDone = i => !!state[`s:${c.s}:${i}`];
   const firstOpen = steps.findIndex((s, i) => !isDone(i));
@@ -1112,7 +1128,7 @@ function renderCornerPage(c) {
   const todo = [
     ["sec-kit", "Crosswalk flags", ...flagStatus(c)],
     ["sec-signs", "Yard signs", ...signStatus(c)],
-    ["sec-city", "Ask the city", ...(nDone === steps.length ? ["All done ✓", "ok", "Send a follow-up in a month"] : nDone ? [`${nDone} of ${steps.length} done`, "diy", steps[firstOpen].t] : ["Not started", "need", "Email SDOT, 2 minutes"])],
+    ["sec-city", "Ask the city", ...(nDone === steps.length ? ["All done ✓", "ok", "Review the steps"] : nDone ? [`${nDone} of ${steps.length} done`, "diy", steps[firstOpen].t] : ["Not started", "need", "Email SDOT, 2 minutes"])],
     ["sec-neighbors", "Neighbors", "Get 5 to email", "", "Print a flyer"],
   ];
   el.innerHTML = `
@@ -1222,9 +1238,9 @@ function renderCornerPage(c) {
       </div>
     </section>
 
-    <section class="cp-sec why" id="sec-sdot">
+    <section class="cp-sec why" id="sec-risk">
       <div class="sec-body">
-        <h2>Risk and SDOT status</h2>
+        <h2>Risk</h2>
         <div class="riskbox">
           <div class="wait-label">Risk Score ${riskScoreText(c)}</div>
           <p class="sub">Riskier than ${c.rs}% of the ${fmt(CORNERS.length)} corners on SDOT's priority list. Here's why:</p>
@@ -1235,6 +1251,13 @@ function renderCornerPage(c) {
             <li><b>Who crosses:</b> ${[c.sch >= 2 ? "near schools" : "", c.tr >= 2 ? "near busy transit" : "", c.pk >= 2 ? "near a park" : "", c.lu >= 2 ? "on a busy block" : ""].filter(Boolean).join(", ") || "a mostly residential area"}; ${jobsNear(c)}.</li>
           </ul>
         </div>
+        <a class="link" href="#how-risk">How we rate risk</a>
+      </div>
+    </section>
+
+    <section class="cp-sec why" id="sec-sdot">
+      <div class="sec-body">
+        <h2>SDOT status</h2>
         <div class="sdot-grid">
           <div class="tile"><span>Scheduled?</span><b class="${scheduledHere ? "plan" : "need"}">${xwScheduled(c) ? "Yes · in an active SDOT project" : scheduledHere ? `Yes · ${schedWhat(c).toLowerCase()}` : pl ? "Not scheduled · in SDOT's plans since " + (c.pl[2] || "an earlier year") : "Not scheduled"}</b></div>
           <div class="tile"><span>SDOT priority rank in ${esc(h.name)}</span><b>#${c.hr} of ${h.corners.length}</b></div>
