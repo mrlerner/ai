@@ -403,7 +403,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793217318";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793217346";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -954,7 +954,7 @@ function emailText(c) {
   lines.push(`- ${votesOf(c)} neighbors support a crosswalk here.`, "", "Could SDOT evaluate this location? I'd also appreciate knowing the timeline.", "", "Thank you,", "[Your name]", "[Your street or nearest cross streets]");
   return { to: "walkandbike@seattle.gov", subject: `Crosswalk request: ${titleCase(c.w)}`, body: lines.join("\n") };
 }
-const neighborText = c => `I'm asking neighbors to help get a crosswalk at ${titleCase(c.w)}. It takes 2 minutes: the email to the city is already written, just add your name and send it here: ${pageUrl(c)}/city`;
+const neighborText = c => `I'm asking neighbors to support a crosswalk at ${titleCase(c.w)}. It takes 2 minutes: vote and send the city a short note here: ${pageUrl(c)}`;
 const daylightText = c => ({ to: "684-Road@seattle.gov", subject: `Daylighting request: ${titleCase(c.w)}`,
   body: `Hello SDOT,\n\nCars often park within 20 feet of the corner at ${titleCase(c.w)}, which blocks drivers' view of people waiting to cross. Could SDOT add daylighting here (no-parking signs or paint at the corner)?\n\nThank you,\n[Your name]` });
 const followText = c => ({ to: "walkandbike@seattle.gov", subject: `Following up: crosswalk request for ${titleCase(c.w)}`,
@@ -971,8 +971,7 @@ function viewCorner(c) {
   setChrome({ sub: `${curHood.name} · Seattle`, title: `${titleCase(c.w)} · ${curHood.name} Crosswalk Watch`, intro: "",
     crumbs: [["Seattle", "#"], [curHood.name, "#n-" + curHood.id], [titleCase(c.w), "#c-" + c.s]] });
   renderCornerPage(c);
-  // Jump, don't animate: the page was just drawn, and a long smooth scroll can stop short while content above loads.
-  if (pendingSection) { const s = pendingSection; pendingSection = null; requestAnimationFrame(() => $("sec-" + s)?.scrollIntoView({ block: "start" })); }
+  if (pendingSection) { const s = pendingSection; pendingSection = null; requestAnimationFrame(() => smooth($("sec-" + s))); }
   else window.scrollTo(0, 0);
 }
 function renderCornerPage(c) {
@@ -984,6 +983,7 @@ function renderCornerPage(c) {
   const steps = [
     { t: "Email SDOT", h: "Ask SDOT's pedestrian program for a marked crosswalk. This draft already includes the facts SDOT looks at.", body: emailStep("m1", emailText(c), "Open in your email") },
     { t: "Email your council member", h: "Copy your district council member at the same time. Council offices can ask SDOT for an answer, and you don't need to wait to do it.", body: `<a class="act" href="https://www.seattle.gov/council/meet-the-council/find-your-district-and-councilmembers" target="_blank" rel="noopener">Find your council member's email ↗</a>${emailStep("m2", councilText(c), "")}` },
+    { t: "Get 5 neighbors to send their own note", h: `Separate notes from several neighbors carry more weight than one. Share this with neighbors, a school parent list, or your community council, or print the flyer below.`, body: copyBlock("m3", neighborText(c)) },
     { t: "Ask SDOT to clear parking at the corner", h: "Cars parked near the corner hide people waiting to cross. SDOT adds no-parking paint and signs at corners (\"daylighting\"), and requests from residents are one of its priorities.", body: emailStep("m4", daylightText(c), "Open in your email") },
     { t: "Count people crossing for one hour", h: "SDOT has turned down crosswalk requests when too few people were counted crossing. Count for one hour, 7:30–8:30 am, and include the number in your emails. Flag scans add to it.", body: `<label class="inline" for="cnt">People counted <input type="number" id="cnt" min="0" max="999" placeholder="0"></label> <button class="act small" type="button" id="cnt-save">Add count</button> <span class="saved" id="cnt-msg"></span>` },
     { t: "Send SDOT a follow-up", h: "No reply yet? Send this short, polite follow-up. It keeps the request open.", body: emailStep("m6", followText(c), "Open in your email") },
@@ -1002,6 +1002,10 @@ function renderCornerPage(c) {
         <div class="tile"><span>Votes</span><b>${votesOf(c)} neighbors</b></div>
         <div class="tile"><span>SDOT status</span><b class="${scheduledHere ? "plan" : "need"}">${scheduledHere ? "Scheduled" : "Unscheduled"} · priority ${c.t} of 37</b></div>
       </div>
+      <div class="cta">
+        <a class="cta-btn vote" href="#c-${c.s}" data-jump="vote">${voted ? "Voted ✓" : "Get this crosswalk built"}</a>
+        <a class="cta-btn flag secondary" href="#c-${c.s}" data-jump="kit">${kitOrdered ? "Flag kit ordered ✓" : "Get crossing flags"}</a>
+      </div>
       <div class="share">
         <button class="act small" type="button" id="share">Share</button>
         <form class="follow" id="follow" novalidate>
@@ -1016,7 +1020,7 @@ function renderCornerPage(c) {
     <section class="cp-sec" id="sec-kit">
       <div class="sec-n">1</div>
       <div class="sec-body">
-        <h2>Put up crosswalk flags</h2>
+        <h2>Put up crosswalk flags this week</h2>
         <p class="lead">Washington law already treats every corner as a crosswalk, so drivers must stop for people crossing here. Flags make people easy to see while the city decides on paint.</p>
         <div class="product">
           <div class="product-img"><img src="seattle-crosswalks-kit.jpg" alt="Steel crosswalk flag box with a QR sign, five reflective orange flags, hose clamps and mounting brackets" loading="lazy"></div>
@@ -1051,7 +1055,7 @@ function renderCornerPage(c) {
             <li><b>Where to put it:</b> in a yard 50–100 feet before the corner, facing oncoming cars, one for each direction. Keep it low and back from the curb so it doesn't hide anyone waiting to cross.</li>
           </ul>
         </div>
-        <h3>More you can do</h3>
+        <h3>More you can do this week</h3>
         <ul class="more">
           <li><b>Light the corner.</b> If you live on it, aim a porch or motion light at the curb ramp.</li>
           <li><b>Report cars parked within 20 feet</b> of the corner in the <a href="https://www.seattle.gov/customer-service-bureau/find-it-fix-it-mobile-app" target="_blank" rel="noopener">Find It, Fix It app</a>.</li>
@@ -1063,39 +1067,36 @@ function renderCornerPage(c) {
     <section class="cp-sec" id="sec-city">
       <div class="sec-n">2</div>
       <div class="sec-body">
-        <h2>Ask the city to build it</h2>
+        <h2>Get the city to build it</h2>
         <p class="lead">${scheduledHere ? "SDOT has this corner in a current project. These steps help keep it on track." : "Do these in any order, and as many as you can. Most are a two-minute email with the draft written for you."} ${steps.filter((s, i) => isDone(i)).length} of ${steps.length} done.</p>
         <ol class="steps">
           ${steps.map((s, i) => { const n = i + 1, done = isDone(i), now = i === firstOpen;
             return `<li class="${done ? "done" : now ? "now" : ""}"><details ${now ? "open" : ""}><summary><span class="sn">${done ? "✓" : n}</span><span class="st">${s.t}${now ? ' <em>Start here</em>' : ""}</span></summary>
               <div class="sd"><p>${s.h}</p>${s.body}<button class="act small mark" type="button" data-step="${i}">${done ? "Mark not done" : "Mark done ✓"}</button></div></details></li>`; }).join("")}
         </ol>
-      </div>
-    </section>
-
-    <section class="cp-sec" id="sec-vote">
-      <div class="sec-n">3</div>
-      <div class="sec-body">
-        <h2>Get 5 neighbors to send a note</h2>
-        <p class="lead">Notes from several neighbors carry more weight than one. The top five corners in ${esc(h.name)} go into the neighborhood's letter to SDOT and the council, with neighbors' notes on who crosses here and why.</p>
-        <div class="votebox">
-          <div class="vcount"><b>${votesOf(c)}</b> neighbors have voted</div>
-          <div class="goal"><i style="width:${Math.min(100, Math.round(100 * votesOf(c) / goal))}%"></i></div>
-          <div class="sub">${votesOf(c) >= goal ? "Goal reached." : `${goal - votesOf(c)} more to reach ${goal}.`} #${c.voteRank} most wanted in ${esc(h.name)}.</div>
-          <button class="cta-btn vote wide" type="button" id="vote">${voted ? "Voted ✓ (tap to undo)" : "Add your vote and note"}</button>
-          <div id="note-area"></div>
-        </div>
-        <h3>Ask your neighbors</h3>
-        <p class="lead">Send this to neighbors, a school parent list, or your community council. It links to this page, where they can vote and add their own note.</p>
-        ${copyBlock("m3", neighborText(c))}
         <div class="flyer" id="flyer">
-          <h3>Or print a flyer</h3>
+          <h3>Print a flyer for your neighbors</h3>
           <p>A one-page flyer for this corner with a QR code to this page. Tape it to a pole near the corner, or drop it on porches nearby.</p>
           <div class="flyer-view">
             <div class="flyer-bar"><span class="file">crosswalk-flyer-${c.s}.pdf</span><span>1 page · Letter</span></div>
             <div class="flyer-sheet" id="flyer-sheet"><iframe id="flyer-frame" title="Flyer for ${titleCase(c.w)}" src="${FLYER_URL}#${c.s}" loading="lazy" tabindex="-1"></iframe></div>
           </div>
           <div class="actions"><button class="cta-btn vote" type="button" id="print-flyer">Print flyer</button><a class="act" href="${FLYER_URL}#${c.s}" target="_blank" rel="noopener">Open full size ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cp-sec" id="sec-vote">
+      <div class="sec-n">3</div>
+      <div class="sec-body">
+        <h2>Vote for this corner</h2>
+        <p class="lead">The top five corners in ${esc(h.name)} go into the neighborhood's letter to SDOT and the council. Votes and notes show the city who crosses here and why.</p>
+        <div class="votebox">
+          <div class="vcount"><b>${votesOf(c)}</b> neighbors have voted</div>
+          <div class="goal"><i style="width:${Math.min(100, Math.round(100 * votesOf(c) / goal))}%"></i></div>
+          <div class="sub">${votesOf(c) >= goal ? "Goal reached." : `${goal - votesOf(c)} more to reach ${goal}.`} #${c.voteRank} most wanted in ${esc(h.name)}.</div>
+          <button class="cta-btn vote wide" type="button" id="vote">${voted ? "Voted ✓ (tap to undo)" : "Vote for this corner"}</button>
+          <div id="note-area"></div>
         </div>
         <h3>What neighbors say</h3>
         <ul class="notes">${notes.map((n, i) => `<li>"${esc(n)}"<span>${i === 0 && state["c:" + c.s] ? "You, just now" : `Neighbor · ${[2, 5, 9][i % 3]} days ago`}</span></li>`).join("")}</ul>
@@ -1146,6 +1147,7 @@ function renderCornerPage(c) {
     </section>
     <a class="back" href="#n-${h.id}">‹ All ${esc(h.name)} corners</a>`;
 
+  el.querySelectorAll("a[data-jump]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); smooth($("sec-" + a.dataset.jump)); }));
   el.querySelectorAll("a[data-jump-to]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); smooth($(a.dataset.jumpTo)); }));
   el.querySelectorAll("button[data-copy]").forEach(b => b.addEventListener("click", () => copyText($(b.dataset.copy).value, b)));
   $("share").onclick = () => shareCorner(c);
@@ -1207,7 +1209,7 @@ function showOrderForm(c, total) {
       <div><b>In 3–5 days:</b> your kit is ready, and we'll email you the pickup or delivery details.</div>
       <div><b>Install:</b> clamp one flag box to a sign pole on each side of the street, within 5 feet of where people cross. Don't cover any signs.${k.party ? " We'll send a flyer to invite neighbors." : ""}</div>
       <div><b>Activate:</b> scan the QR code on each box once. It links the flags to this page.</div>
-      <div><b>Then:</b> ${k.adopt ? "a restock reminder every two weeks. " : ""}Step 2 below asks the city to build it.</div></div></div>`;
+      <div><b>Then:</b> ${k.adopt ? "a restock reminder every two weeks. " : ""}Start step 1 below to send the city your request.</div></div></div>`;
     $("order-form").scrollIntoView({ block: "start" });
   });
   $("kit-name").focus();
@@ -1250,9 +1252,7 @@ function route() {
     const d = $("how-risk"); d.open = true; smooth(d);
     if (view) return;
   }
-  // "c-<slug>/city" opens a corner page at one of its sections (the flyer's QR code lands on the email to SDOT).
-  const [slug, sec] = h.slice(2).split("/");
-  if (h.startsWith("c-") && BY_SLUG[slug]) { if (sec) pendingSection = sec; return viewCorner(BY_SLUG[slug]); }
+  if (h.startsWith("c-") && BY_SLUG[h.slice(2)]) return viewCorner(BY_SLUG[h.slice(2)]);
   if (h.startsWith("n-") && HOOD_BY_ID[h.slice(2)]) { const wasCorner = view === "corner"; viewHood(HOOD_BY_ID[h.slice(2)]); if (wasCorner || !pendingSelect) window.scrollTo(0, 0); return; }
   const wasCorner = view === "corner";
   viewCity();
