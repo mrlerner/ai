@@ -110,6 +110,8 @@ a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
 .meta .chip { font-size: 13px; padding: 0 8px; }
 .bars { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 6px; }
 .bar { font-size: 13px; color: var(--muted); }
+.bar span, .bar b { display: block; white-space: nowrap; }
+.bar b { font-weight: 600; color: var(--ink); }
 .bar div { height: 6px; border-radius: 3px; background: var(--line); margin-top: 3px; overflow: hidden; }
 .bar div i { display: block; height: 100%; background: var(--sign); }
 .timeline { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
@@ -239,6 +241,7 @@ label.inline input { width: 90px; font: 400 16px var(--f-body); padding: 6px 8px
   .yard { grid-template-columns: minmax(0, 1fr); }
   .yard-sign { max-width: 320px; }
   .cp-sec { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+  .bars { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 10px; }
   .sec-n { width: 34px; height: 34px; font-size: 17px; line-height: 34px; }
   .tiles, .sdot-grid { grid-template-columns: minmax(0, 1fr); }
   .tiles.todo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -324,7 +327,6 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 }
 @media (max-width: 460px) {
   .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-  .bars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .pin { width: 34px; height: 34px; font-size: 15px; }
   .chk { width: 18px; height: 18px; }
 }
@@ -462,7 +464,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793224441";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793224506";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -586,7 +588,7 @@ function waitLabel(c) {
   if (m <= 20) return "10+ years";
   return "Unlikely at today's pace";
 }
-const bar = (label, v, max) => `<div class="bar">${label} ${v}/${max}<div><i style="width:${Math.round(100 * Math.min(v, max) / max)}%"></i></div></div>`;
+const bar = (label, v, max) => `<div class="bar"><span>${label}</span> <b>${v}/${max}</b><div><i style="width:${Math.round(100 * Math.min(v, max) / max)}%"></i></div></div>`;
 const bars = c => `${bar("School", c.sch, 3)}${bar("Park", c.pk, 3)}${bar("Transit", c.tr, 3)}${bar("Land use", c.lu, 3)}${bar("Safety", c.sf, 16)}${bar("Equity", c.eq, 12)}`;
 // SDOT priority (SDOT's own score, called "priority" so it isn't confused with our Risk Score) with an info button
 // that opens a short explainer underneath.
