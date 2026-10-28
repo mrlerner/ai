@@ -120,11 +120,12 @@ button.act.primary { background: var(--need); border-color: var(--need); color: 
   padding: 10px 18px; cursor: pointer; box-shadow: 0 2px 0 rgba(0,0,0,.18); }
 .cta-btn.flag { background: var(--diy); }
 .cta-btn.vote { background: var(--sign); }
+.cta-btn.secondary { flex: 1 1 160px; background: transparent; color: var(--diy); box-shadow: inset 0 0 0 2px var(--diy); font-size: 16px; }
 .cta-btn.done { filter: saturate(.55); }
 .cta-btn:hover { filter: brightness(1.06); }
 .cta-btn:active { transform: translateY(1px); box-shadow: none; }
 .cta-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
-.detail .sub { margin-top: 10px; }
+.detail .sub { margin-top: 10px; } .detail .sub.risk-why { margin-top: 2px; }
 a.sign { text-decoration: none; }
 a.cta-btn { text-decoration: none; }
 .cta-btn.wide { width: 100%; flex: none; margin-top: 12px; }
@@ -390,7 +391,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
   <details class="howrisk" id="how-risk">
     <summary>How we rate risk</summary>
-    <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. The score comes from city data. <b>Crashes count most:</b> pedestrian crashes since 2016 at the corner or on the blocks next to it, weighted by how serious they were and how recent. Then <b>crossing conditions:</b> how many lanes people cross, how busy the street is, how far it is to the nearest marked crosswalk, and whether schools, transit or parks bring people across.</p>
+    <p>Each corner on SDOT's list gets a <b>Risk Score from 0 to 100</b>: where it ranks among all of SDOT's priority corners in Seattle. A 72 means riskier than 72% of them. <b>Highest risk</b> is 90–100, <b>Very risky</b> 70–89, <b>Somewhat risky</b> 50–69 and <b>Lower risk</b> below 50. The score comes from city data. <b>Crashes count most:</b> pedestrian crashes since 2016 at the corner or on the blocks next to it, weighted by how serious they were and how recent. Then <b>crossing conditions:</b> how many lanes people cross, how busy the street is, how far it is to the nearest marked crosswalk, and whether schools, transit or parks bring people across.</p>
     <p>It's an estimate, not a measurement. The city doesn't count pedestrians at most corners, and crash records only include crashes reported to police, so a corner with no crashes on record can still be dangerous. Counting people who cross, and adding notes about near-misses, helps fill that gap. Votes show what neighbors want most; they don't change the Risk Score.</p>
   </details>
   <p class="sources">Data: priority corners and scores come from SDOT's <a href="https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Seattle_Transportation_Plan_Pedestrian_Element/FeatureServer/17">Enhanced Street Crossings priority network</a> (Seattle Transportation Plan). Crosswalks, plans and build years come from SDOT's <a href="https://catalog.data.gov/dataset/marked-crosswalks">Marked Crosswalks</a> data and traffic work orders. Pedestrian crashes come from SDOT's collision records. Votes, flag kits and neighbor activity are sample data.</p>
@@ -398,7 +399,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793215354";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793216049";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -437,8 +438,11 @@ function riskReasons(c) {
   return out;
 }
 const riskLine = c => riskReasons(c).slice(0, 2).join(" · ");
-// Risk Score (0-100, citywide percentile from the build), then the top reasons.
-const riskScoreLine = c => `<b>${c.rs}</b>${riskLine(c) ? " · " + riskLine(c) : ""}`;
+// Risk Score (0-100, citywide percentile from the build) with a Walk Score-style label, then the top reasons.
+const riskLabel = s => s >= 90 ? "Highest risk" : s >= 70 ? "Very risky" : s >= 50 ? "Somewhat risky" : "Lower risk";
+const riskScoreText = c => `${c.rs} out of 100 · ${riskLabel(c.rs)}`;
+const riskScoreLine = c => { const why = riskLine(c);
+  return `<div><b>${c.rs}</b> out of 100 · <b>${riskLabel(c.rs)}</b></div>${why ? `<div class="sub risk-why">${why[0].toUpperCase() + why.slice(1)}</div>` : ""}`; };
 // Scheduled = SDOT has a work order open (or just finished) for a crosswalk at the corner. A corner that is only
 // "in SDOT's plans" with no work order counts as not scheduled.
 const isScheduled = c => !!c.pl && c.pl[1] !== "waiting";
@@ -840,8 +844,8 @@ function renderHoodSide() {
       <h2><a class="name-link" href="#c-${c.s}">${titleCase(c.w)}<span aria-hidden="true"> ›</span></a></h2>
       ${schedAlert(c)}
       <div class="cta">
-        <a class="cta-btn flag${ordered(c) ? " done" : ""}" href="#c-${c.s}" data-section="kit">${ordered(c) ? "Flag kit ordered ✓" : "Get crossing flag kit"}</a>
-        <a class="cta-btn vote${state["v:" + c.s] ? " done" : ""}" href="#c-${c.s}" data-section="vote">${state["v:" + c.s] ? "Voted ✓" : "Vote for this corner"}</a>
+        <a class="cta-btn vote${state["v:" + c.s] ? " done" : ""}" href="#c-${c.s}" data-section="vote">${state["v:" + c.s] ? "Voted ✓" : "Get this crosswalk built"}</a>
+        <a class="cta-btn flag secondary${ordered(c) ? " done" : ""}" href="#c-${c.s}" data-section="kit">${ordered(c) ? "Flag kit ordered ✓" : "Get crossing flags"}</a>
       </div>
       <a class="more-link" href="#c-${c.s}" data-section="city">How to get the city to build it ›</a>
       <div class="rows">
@@ -970,13 +974,13 @@ function renderCornerPage(c) {
       <h1 class="cp-title">${titleCase(c.w)}</h1>
       ${schedAlert(c)}
       <div class="tiles">
-        <div class="tile"><span>Risk Score</span><b>${c.rs}</b></div>
+        <div class="tile"><span>Risk Score</span><b>${riskScoreText(c)}</b></div>
         <div class="tile"><span>Votes</span><b>${votesOf(c)} neighbors</b></div>
         <div class="tile"><span>SDOT status</span><b class="${scheduledHere ? "plan" : "need"}">${scheduledHere ? "Scheduled" : "Unscheduled"} · priority ${c.t} of 37</b></div>
       </div>
       <div class="cta">
-        <a class="cta-btn flag" href="#c-${c.s}" data-jump="kit">${kitOrdered ? "Flag kit ordered ✓" : "Get crossing flag kit"}</a>
-        <a class="cta-btn vote" href="#c-${c.s}" data-jump="vote">${voted ? "Voted ✓" : "Vote for this corner"}</a>
+        <a class="cta-btn vote" href="#c-${c.s}" data-jump="vote">${voted ? "Voted ✓" : "Get this crosswalk built"}</a>
+        <a class="cta-btn flag secondary" href="#c-${c.s}" data-jump="kit">${kitOrdered ? "Flag kit ordered ✓" : "Get crossing flags"}</a>
       </div>
       <div class="share">
         <button class="act small" type="button" id="share">Share</button>
@@ -1079,7 +1083,7 @@ function renderCornerPage(c) {
       <div class="sec-body">
         <h2>Risk and SDOT status</h2>
         <div class="riskbox">
-          <div class="wait-label">Risk Score ${c.rs} · #${c.prio} in ${esc(h.name)}</div>
+          <div class="wait-label">Risk Score ${riskScoreText(c)}</div>
           <p class="sub">Riskier than ${c.rs}% of the ${fmt(D.city_total)} corners on SDOT's priority list. Here's why:</p>
           <ul class="factors">
             <li><b>Crashes:</b> ${c.cx[0] ? `${c.cx[0]} pedestrian crash${c.cx[0] > 1 ? "es" : ""} at this corner or on the blocks next to it since 2016${c.cx[2] ? `, ${c.cx[2]} fatal` : ""}${c.cx[1] ? `, ${c.cx[1]} with serious injuries` : ""}${c.cx[3] ? ` (${c.cx[3]} since 2021)` : ""}.` : "No pedestrian crashes on record since 2016. That doesn't mean it's safe: many crashes and near-misses never get a police report."}</li>
