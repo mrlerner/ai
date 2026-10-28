@@ -82,14 +82,14 @@ a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
 .map img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; filter: saturate(.55) contrast(.95); }
 .map svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .pin, .chk { position: absolute; transform: translate(-50%, -50%); }
-.chk { width: 13px; height: 13px; border-radius: 50%; background: var(--ok); border: 1.5px solid #fff; display: grid; place-items: center; }
-.chk svg { position: static; width: 8px; height: 8px; }
+.chk { width: 19px; height: 19px; border-radius: 50%; background: var(--ok); border: 2px solid #fff; display: grid; place-items: center; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.chk svg { position: static; width: 11px; height: 11px; }
 .chk.planned { background: var(--plan); }
-.pin { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; background: var(--need); color: #fff;
-  font: 800 13px/1 var(--f-display); display: grid; place-items: center; cursor: pointer; padding: 0;
+.pin { width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid #fff; background: var(--need); color: #fff;
+  font: 800 16px/1 var(--f-display); display: grid; place-items: center; cursor: pointer; padding: 0;
   box-shadow: 0 1px 3px rgba(0,0,0,.35); font-variant-numeric: tabular-nums; z-index: 2; }
 .pin.planned { background: var(--plan); }
-.pin.diy::after { content: ""; position: absolute; right: -7px; top: -9px; width: 10px; height: 8px; background: var(--diy);
+.pin.diy::after { content: ""; position: absolute; right: -8px; top: -11px; width: 13px; height: 10px; background: var(--diy);
   clip-path: polygon(0 0, 100% 50%, 0 100%); border-left: 2px solid #fff; }
 .pin:focus-visible, .pin.on { outline: 3px solid var(--ink); outline-offset: 2px; z-index: 3; }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 10px; font-size: 13px; color: var(--muted); }
@@ -158,6 +158,12 @@ a.cta-btn { display: block; text-align: center; text-decoration: none; }
 .estimate { border: 2px solid var(--need); border-radius: 12px; padding: 14px; }
 .estimate.plan { border-color: var(--plan); }
 .estimate .big { font: 800 20px var(--f-display); color: var(--plan); }
+.estimate .big.need { font-size: 30px; line-height: 1.1; color: var(--need); margin-bottom: 4px; }
+.wait-label { font: 600 12px var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.why-h { margin: 12px 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.flyer { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 4px; }
+.flyer p { margin: 0 0 10px; font-size: 14px; color: var(--muted); }
+.flyer-pdf { display: block; width: 100%; aspect-ratio: 8.5 / 11; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
 .estimate p { margin: 10px 0 0; font-size: 14px; color: var(--muted); max-width: 64ch; }
 .odds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .odds b { display: block; font: 800 28px/1.1 var(--f-display); color: var(--need); font-variant-numeric: tabular-nums; }
@@ -245,11 +251,16 @@ button.act:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; 
 .map.live { aspect-ratio: auto; height: min(82vh, 900px); }
 .map.live > img, .map.live > .outline-svg { display: none; }
 .gmap { position: absolute; inset: 0; }
-@media (max-width: 900px) { .map.live { height: 70vh; } }
+.map-toggle { position: absolute; z-index: 5; top: 10px; left: 10px; font: 700 14px var(--f-display); color: #1d2320; background: #fff;
+  border: 0; border-radius: 8px; padding: 9px 14px; box-shadow: 0 1px 4px rgba(0,0,0,.3); cursor: pointer; }
+.map.live.expanded { position: fixed; inset: 0; z-index: 50; height: auto; border-radius: 0; border: 0; }
+.map.expanded .map-toggle { top: calc(env(safe-area-inset-top, 0px) + 10px); left: calc(env(safe-area-inset-left, 0px) + 10px); }
+html.map-open, html.map-open body { overflow: hidden; }
+@media (max-width: 900px) { .map.live { height: 62vh; } }
 button.chk { cursor: pointer; padding: 0; }
 /* Bigger invisible tap targets for fingers, without changing how markers look. */
-.chk::before { content: ""; position: absolute; inset: -7px; }
-.pin::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; }
+.chk::before { content: ""; position: absolute; inset: -11px; border-radius: 50%; }
+.pin::before { content: ""; position: absolute; inset: -5px; border-radius: 50%; }
 button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .progress { padding: 14px 18px; margin-bottom: 16px; }
 .progress h3 { font-size: 15px; margin-bottom: 8px; }
@@ -283,8 +294,8 @@ button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 @media (max-width: 460px) {
   .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .bars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pin { width: 22px; height: 22px; font-size: 11px; }
-  .chk { width: 10px; height: 10px; }
+  .pin { width: 34px; height: 34px; font-size: 15px; }
+  .chk { width: 18px; height: 18px; }
 }
 @media (prefers-reduced-motion: no-preference) { .pin { transition: transform .15s; } .pin:hover { transform: translate(-50%, -50%) scale(1.12); } }
 </style>
@@ -496,12 +507,6 @@ pins.forEach(p => {
 });
 
 // Interactive Google map. The static map above stays as the fallback if Google doesn't load.
-const MAP_STYLE = [
-  { featureType: "poi", stylers: [{ visibility: "off" }] },
-  { featureType: "transit", stylers: [{ visibility: "off" }] },
-  { featureType: "road", elementType: "geometry", stylers: [{ saturation: -60 }] },
-  { featureType: "landscape", stylers: [{ saturation: -40 }] },
-];
 function useStaticMap() {
   mapEl.classList.remove("live");
   mapEl.querySelector(".gmap")?.remove();
@@ -522,7 +527,7 @@ window.initGoogleMap = function () {
     const map = new g.Map(host, {
       center: bounds.getCenter(), zoom: 14,
       gestureHandling: "cooperative", clickableIcons: false, mapTypeControl: false,
-      streetViewControl: false, fullscreenControl: false, styles: MAP_STYLE,
+      streetViewControl: false, fullscreenControl: false,
     });
     g.event.addListenerOnce(map, "idle", () => map.fitBounds(bounds, 6));
     DATA.outline_ll.forEach(r => new g.Polyline({
@@ -532,7 +537,7 @@ window.initGoogleMap = function () {
     class MarkerLayer extends g.OverlayView {
       onAdd() {
         const pane = this.getPanes().overlayMouseTarget;
-        markerEls.forEach(({ el }) => { pane.appendChild(el); g.OverlayView.preventMapHitsAndGesturesFrom(el); });
+        markerEls.forEach(({ el }) => pane.appendChild(el));
       }
       draw() {
         const proj = this.getProjection();
@@ -545,6 +550,16 @@ window.initGoogleMap = function () {
     }
     new MarkerLayer().setMap(map);
     window.__gmap = map;
+    const toggle = document.createElement("button");
+    toggle.type = "button"; toggle.className = "map-toggle"; toggle.textContent = "Expand map";
+    toggle.addEventListener("click", () => {
+      const open = !mapEl.classList.contains("expanded");
+      mapEl.classList.toggle("expanded", open);
+      document.documentElement.classList.toggle("map-open", open);
+      map.setOptions({ gestureHandling: open ? "greedy" : "cooperative" });
+      toggle.textContent = open ? "Done" : "Expand map";
+    });
+    mapEl.appendChild(toggle);
     document.getElementById("attrib").textContent = "Pinch or use two fingers to zoom and pan. Boundary from Seattle's Neighborhood Map Atlas.";
   } catch (e) {
     useStaticMap();
@@ -745,7 +760,18 @@ const NOTES = [
   "Drivers stop for me maybe half the time.",
 ];
 const notesFor = p => { let h = 0; for (const c of p.where) h = (h * 31 + c.charCodeAt(0)) >>> 0; return [0, 1, 2].map(i => NOTES[(h + i * 3) % NOTES.length]); };
-const KIT_PRICE = 49, SIGNS_PRICE = 18, FLAGS_PRICE = 12;
+const flyerUrl = p => `wallingford-crosswalks-flyers/${cornerHash(p).slice(2)}.pdf`;
+// Plain-language wait from the model's typical (median) wait in years.
+function waitLabel(p) {
+  if (p.planned) return "Scheduled";
+  const m = p.model.median;
+  if (m <= 2) return "About a year";
+  if (m <= 10) return `About ${Math.round(m)} years`;
+  if (m <= 20) return "10+ years";
+  return "Unlikely at today's pace";
+}
+const KIT_PRICE = 34.99, SIGNS_PRICE = 17.99, FLAGS_PRICE = 11.99;
+const money = n => "$" + n.toFixed(2);
 
 function emailText(p) {
   const gap = p.gap_m_to_marked_xwalk ? `about ${p.gap_m_to_marked_xwalk} meters away` : "not on either street nearby";
@@ -804,7 +830,7 @@ function renderCornerPage(p) {
   const steps = [
     { t: "Email SDOT", h: "Ask SDOT's pedestrian program for a marked crosswalk. This draft already includes the facts SDOT looks at.", body: emailStep("m1", emailText(p), "Open in your email") },
     { t: "Email your council member", h: "Copy your district council member at the same time. Council offices can ask SDOT for an answer, and you don't need to wait to do it.", body: `<a class="act" href="https://www.seattle.gov/council/meet-the-council/find-your-district-and-councilmembers" target="_blank" rel="noopener">Find your council member's email ↗</a>${emailStep("m2", councilText(p), "")}` },
-    { t: "Get 5 neighbors to send their own note", h: "Separate notes from several neighbors carry more weight than one. Share this with neighbors, the school parent list, or the Wallingford Community Council.", body: copyBlock("m3", neighborText(p)) },
+    { t: "Get 5 neighbors to send their own note", h: "Separate notes from several neighbors carry more weight than one. Share this with neighbors, the school parent list, or the Wallingford Community Council, or print the flyer below.", body: copyBlock("m3", neighborText(p)) },
     { t: "Ask SDOT to clear parking at the corner", h: "Cars parked near the corner hide people waiting to cross. SDOT adds no-parking paint and signs at corners (\"daylighting\"), and requests from residents are one of its priorities.", body: emailStep("m4", daylightText(p), "Open in your email") },
     { t: "Count people crossing for one hour", h: "SDOT has turned down crosswalks on N 40th St before because too few people were counted crossing. Count for one hour, 7:30–8:30 am, and include the number in your emails. Flag scans add to it.", body: `<label class="inline" for="cnt">People counted <input type="number" id="cnt" min="0" max="999" placeholder="0"></label> <button class="act small" type="button" id="cnt-save">Add count</button> <span class="saved" id="cnt-msg"></span>` },
     { t: "Send SDOT a follow-up", h: "No reply yet? Send this short, polite follow-up. It keeps the request open.", body: emailStep("m6", followText(p), "Open in your email") },
@@ -836,7 +862,6 @@ function renderCornerPage(p) {
         <span class="saved" id="share-msg"></span>
       </div>
     </header>
-    ${streetViewEmbed(p) || `<a class="act" href="${streetView(p)}" target="_blank" rel="noopener">Look around in Street View ↗</a>`}
 
     <section class="cp-sec" id="sec-kit">
       <div class="sec-n">1</div>
@@ -847,16 +872,16 @@ function renderCornerPage(p) {
           <div class="product-img"><img src="wallingford-crosswalks-kit.jpg" alt="Steel crosswalk flag box with a QR sign, five reflective orange flags, hose clamps and mounting brackets" loading="lazy"></div>
           <div class="product-info">
             <div class="p-name">Crosswalk Watch Flag Kit</div>
-            <div class="p-price">$${KIT_PRICE} <span>· free pickup in Wallingford or $6 delivery</span></div>
+            <div class="p-price">${money(KIT_PRICE)} <span>· free pickup in Wallingford or $6 delivery</span></div>
             <ul>
               <li>2 steel flag boxes, one for each side of the street, each with a "Take · Cross · Return" sign and this corner's QR code</li>
               <li>10 fluorescent orange flags with reflective stripes, 12 × 12 in (Seattle asks for at least 10 × 10)</li>
               <li>Stainless hose clamps and brackets that fit any sign pole. No drilling, and they come off cleanly.</li>
               <li>Install guide and a card for counting people who cross</li>
             </ul>
-            <label class="check" for="add-signs"><input type="checkbox" id="add-signs" checked> Add 4 yard signs for neighbors: "WA law: stop for people at every corner" <b>+$${SIGNS_PRICE}</b></label>
-            <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 5 spare flags <b>+$${FLAGS_PRICE}</b></label>
-            ${ordered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn kit wide" type="button" id="order">Order kit · $${KIT_PRICE + SIGNS_PRICE}</button>`}
+            <label class="check" for="add-signs"><input type="checkbox" id="add-signs" checked> Add 4 yard signs for neighbors: "WA law: stop for people at every corner" <b>+${money(SIGNS_PRICE)}</b></label>
+            <label class="check" for="add-flags"><input type="checkbox" id="add-flags"> Add 5 spare flags <b>+${money(FLAGS_PRICE)}</b></label>
+            ${ordered ? `<div class="ordered">Ordered ✓ Your kit's QR code is linked to this corner.</div>` : `<button class="cta-btn kit wide" type="button" id="order">Order kit · ${money(KIT_PRICE + SIGNS_PRICE)}</button>`}
           </div>
         </div>
         <div id="order-form"></div>
@@ -888,6 +913,14 @@ function renderCornerPage(p) {
               <div class="sd"><p>${s.h}</p>${s.body}<button class="act small mark" type="button" data-step="${i}">${done ? "Mark not done" : "Mark done ✓"}</button></div></details></li>`;
           }).join("")}
         </ol>
+        <div class="flyer" id="flyer">
+          <h3>Print a flyer for your neighbors</h3>
+          <p>A one-page flyer for this corner with a QR code to this page. Tape it to a pole near the corner, or drop it on porches nearby.</p>
+          <object class="flyer-pdf" data="${flyerUrl(p)}#view=FitH" type="application/pdf" aria-label="Flyer for ${p.name}">
+            <a class="act" href="${flyerUrl(p)}" target="_blank" rel="noopener">Open the flyer (PDF) ↗</a>
+          </object>
+          <div class="actions"><a class="cta-btn vote" href="${flyerUrl(p)}" target="_blank" rel="noopener">Open flyer to print</a></div>
+        </div>
       </div>
     </section>
 
@@ -918,10 +951,13 @@ function renderCornerPage(p) {
         </div>
         ${p.planned ? `<div class="estimate plan"><div class="big">Expected next</div><p>SDOT has crosswalks planned here as part of the N 55th/66th St Crossings project. Its work order is marked complete, so painting could come any time.</p></div>` : `
         <div class="estimate">
+          <div class="wait-label">Estimated wait</div>
+          <div class="big need">${waitLabel(p)}</div>
+          <h3 class="why-h">Why</h3>
           <div class="odds">
             <div><b>${Math.round(p.model.p5 * 100)}%</b><span>chance SDOT acts within 5 years</span></div>
             <div><b>${Math.round(p.model.p10 * 100)}%</b><span>within 10 years</span></div>
-            <div><b>${p.model.median >= 50 ? "50+ yrs" : `~${Math.round(p.model.median)} yrs`}</b><span>typical wait at today's pace</span></div>
+            <div><b>${p.model.acted} of ${p.model.of}</b><span>similar corners got one since 2024</span></div>
           </div>
           <p>Estimate from SDOT's own records. Since April 2024, SDOT planned or built a crosswalk at ${p.model.acted} of the ${p.model.of} priority corners that score ${p.model.band} like this one, about ${(p.model.rate * 100).toFixed(1)}% a year. Neighbors pushing is how a corner jumps that line, and the flags cover the wait.</p>
         </div>`}
@@ -931,6 +967,13 @@ function renderCornerPage(p) {
           ${bar("School", p.school, 3)}${bar("Park", p.park, 3)}${bar("Transit", p.transit, 3)}
           ${bar("Land use", p.proximity - p.school - p.park - p.transit, 3)}${bar("Safety", p.safety, 16)}${bar("Crashes", p.ped_crashes_5yr, 6)}
         </div>
+      </div>
+    </section>
+    <section class="cp-sec why" id="sec-street">
+      <div class="sec-body">
+        <h2>Look around this corner</h2>
+        ${streetViewEmbed(p)}
+        <div class="actions"><a class="act" href="${streetView(p)}" target="_blank" rel="noopener">Open Street View full screen ↗</a></div>
       </div>
     </section>
     <a class="back" href="#corners">‹ All Wallingford corners</a>`;
@@ -945,7 +988,7 @@ function renderCornerPage(p) {
     document.getElementById("share-msg").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "You'll get an email when anything changes at this corner." : "Enter an email address to get updates.";
   });
   const total = () => KIT_PRICE + (document.getElementById("add-signs").checked ? SIGNS_PRICE : 0) + (document.getElementById("add-flags").checked ? FLAGS_PRICE : 0);
-  ["add-signs", "add-flags"].forEach(id => document.getElementById(id).addEventListener("change", () => { const b = document.getElementById("order"); if (b) b.textContent = `Order kit · $${total()}`; }));
+  ["add-signs", "add-flags"].forEach(id => document.getElementById(id).addEventListener("change", () => { const b = document.getElementById("order"); if (b) b.textContent = `Order kit · ${money(total())}`; }));
   const order = document.getElementById("order");
   if (order) order.onclick = () => showOrderForm(p, total());
   el.querySelectorAll("button.mark").forEach(b => b.addEventListener("click", () => {
@@ -969,7 +1012,7 @@ function showOrderForm(p, total) {
   const el = document.getElementById("order-form");
   el.innerHTML = `
     <form class="kit" id="kit-form" novalidate>
-      <h3>Order for ${p.name} · $${total}</h3>
+      <h3>Order for ${p.name} · ${money(total)}</h3>
       <div class="two">
         <label for="kit-name">Your name<input type="text" id="kit-name" autocomplete="name"></label>
         <label for="kit-email">Email<input type="email" id="kit-email" autocomplete="email"></label>
