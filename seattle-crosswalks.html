@@ -102,6 +102,7 @@ a.stat:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; }
 .chip { display: inline-block; font-weight: 600; font-size: 13px; border-radius: 999px; padding: 2px 10px; }
 .chip.need { background: var(--need-soft); color: var(--need); } .chip.plan { background: var(--plan-soft); color: var(--plan); }
 .chip.ok { background: var(--ok-soft); color: var(--ok); } .chip.diy { background: var(--need-soft); color: var(--diy); }
+.meta .chip { font-size: 11.5px; padding: 0 8px; }
 .bars { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 6px; }
 .bar { font-size: 11px; color: var(--muted); }
 .bar div { height: 6px; border-radius: 3px; background: var(--line); margin-top: 3px; overflow: hidden; }
@@ -257,10 +258,17 @@ button.act:focus-visible { outline: 3px solid var(--plan); outline-offset: 2px; 
 .feed { padding: 14px 18px; margin-top: 16px; }
 .feed h3 { font-size: 15px; margin-bottom: 8px; }
 .feed ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.feed li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; font-size: 13.5px; }
+.feed li { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 10px; font-size: 13.5px; }
 .feed time { font: 400 12px var(--f-data); color: var(--muted); padding-top: 2px; }
 .feed .who { font-weight: 600; }
-.feed .who.city { color: var(--plan); } .feed .who.n { color: var(--ok); }
+.feed .city .who { color: var(--plan); } .feed .n .who { color: var(--ok); }
+.feed li.you { background: var(--ok-soft); border-radius: 6px; margin: 0 -8px; padding: 4px 8px; }
+.feed li.you time::before { content: "Your step"; }
+.feed a, .feed button.link { color: inherit; font: inherit; font-weight: 600; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
+.feed button.link { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+.feed a:hover, .feed button.link:hover { text-decoration-color: currentColor; }
+.feed q { color: var(--muted); font-style: italic; }
+.feed-note { margin: 12px 0 0; font-size: 12.5px; color: var(--muted); }
 .map.live { aspect-ratio: auto; height: min(82vh, 900px); }
 .map.live > img, .map.live > .outline-svg { display: none; }
 .gmap { position: absolute; inset: 0; }
@@ -275,17 +283,6 @@ button.chk { cursor: pointer; padding: 0; }
 .chk::before { content: ""; position: absolute; inset: -11px; border-radius: 50%; }
 .pin::before { content: ""; position: absolute; inset: -5px; border-radius: 50%; }
 button.chk:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.progress { padding: 14px 18px; margin-bottom: 16px; }
-.progress h3 { font-size: 15px; margin-bottom: 8px; }
-.progress ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.progress li { font-size: 13.5px; }
-.progress li b { font-weight: 600; }
-.progress li .st { display: block; color: var(--muted); font: 400 12.5px/1.45 var(--f-body); }
-.progress .locs { gap: 4px; margin-top: 6px; padding-left: 12px; border-left: 2px solid var(--plan); }
-.progress .locs li { font-size: 13px; }
-.progress .locs .n { color: var(--muted); }
-.progress .locs .ours { margin-top: 2px; font-weight: 600; }
-.progress .locs button.link { display: block; font: 600 13px var(--f-body); color: var(--plan); background: none; border: 0; padding: 2px 0; cursor: pointer; text-align: left; text-decoration: underline; }
 .score-line { display: flex; align-items: center; gap: 6px; }
 .score-line b { font: 800 18px var(--f-display); }
 .info-btn { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--muted); background: transparent; color: var(--muted); padding: 0;
@@ -366,7 +363,9 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 .how p { margin: 0 0 10px; }
 .how a { color: var(--sign); }
 .site-foot { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--line); font: 600 14px var(--f-display); }
+.site-foot { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 .site-foot a { color: var(--sign); }
+.site-foot .copy { margin-left: auto; color: var(--muted); font-weight: 400; }
 .link { font: 600 12.5px var(--f-body); color: var(--sign); }
 .dot.faint { width: 9px; height: 9px; opacity: .45; background: #8b928d; }
 .legend .hint { color: var(--muted); font-style: italic; }
@@ -431,12 +430,17 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
     </section>
   </main>
 
-  <footer class="site-foot"><a href="#how">How it works</a></footer>
+  <main id="about-page" class="how" hidden>
+    <h2>About</h2>
+    <p>Matt wanted a crosswalk near his house so his parents could feel safe crossing the street, especially in a Seattle winter, when it's dark after dinner. He realized it wasn't clear how to get a crosswalk built, how to get crossing flags, or how to organize his neighbors, so he built Seattle Crosswalk Watch.</p>
+  </main>
+
+  <footer class="site-foot"><a href="#how">How it works</a><a href="#about">About</a><span class="copy">© 2026 Front Seat</span></footer>
 </div>
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793218591";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793219695";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -446,6 +450,7 @@ const titleCase = s => s.toLowerCase().replace(/\b(ne|n|nw|se|sw|s|e|w)\b/g, m =
   .replace(/\b([a-z])/g, c => c.toUpperCase()).replace(/\bAnd\b/g, "and")
   .replace(/(\d+)(St|Nd|Rd|Th)\b/g, (m, n, s) => n + s.toLowerCase());
 const fmt = n => n.toLocaleString("en-US");
+const hash = s => { let h = 0; for (const ch of s) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return h; };
 const money = n => "$" + n.toFixed(2);
 const KIT_PRICE = 34.99, SIGNS_PRICE = 17.99, FLAGS_PRICE = 11.99;
 const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -503,10 +508,12 @@ function markedName(m) {
 // (90% of installs with a work order were March–September) and rarely within 2 months of opening the work order, so
 // anything that misses this season's window is next spring or summer. Work orders over a year old are running late:
 // of the ones that old, about half still weren't painted as of Oct 2026.
+const monthDate = s => { const [mon, yr] = (s || "").split(" "), mi = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(mon) / 3;
+  return mi >= 0 && +yr ? new Date(+yr, mi, 1) : null; };
 function paintEstimate(when) {
-  const [mon, yr] = (when || "").split(" "), mi = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(mon) / 3;
-  if (!(mi >= 0 && +yr)) return null;
-  const now = new Date(), opened = new Date(+yr, mi, 1);
+  const opened = monthDate(when);
+  if (!opened) return null;
+  const now = new Date(), yr = opened.getFullYear(), mi = opened.getMonth();
   if (now - opened > 365.25 * 864e5) return { late: true, label: "Running late" };
   const ready = new Date(+yr, mi + 2, 1), t = ready > now ? ready : now, y = t.getFullYear(), m = t.getMonth();
   return { label: m >= 8 ? `Spring or summer ${y + 1}` : m <= 2 ? `Spring or summer ${y}` : m <= 5 ? `Summer ${y}` : `Late summer ${y}` };
@@ -569,6 +576,10 @@ let mapFocus = null, keepView = false, suppressIdle = false;
 // Switch to one neighborhood after about one pinch in from the starting view (phones start at 10.6, desktop at 11).
 const detailZoom = () => matchMedia("(max-width: 600px)").matches ? 11.8 : 12.5;
 const OVERVIEW_ZOOM = 11;
+// Side-by-side layout (>900px, matches base.css): the list scrolls beside the map, so scrolling over the map zooms it.
+// Stacked layout: the map spans the page, so it needs two fingers (or ⌘+scroll) to keep the page scrollable.
+const sideBySide = matchMedia("(min-width: 901px)");
+const gestureMode = () => sideBySide.matches || $("map").classList.contains("expanded") ? "greedy" : "cooperative";
 const check = `<svg viewBox="0 0 10 10"><path d="M2 5.3l2 2 4-4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 let markerEls = [];
 
@@ -579,7 +590,7 @@ window.initGoogleMap = function () {
   const host = document.createElement("div");
   host.className = "gmap";
   $("map").prepend(host);
-  gmap = new g.Map(host, { center: { lat: 47.615, lng: -122.335 }, zoom: 11, gestureHandling: "cooperative", clickableIcons: false,
+  gmap = new g.Map(host, { center: { lat: 47.615, lng: -122.335 }, zoom: 11, gestureHandling: gestureMode(), clickableIcons: false,
     mapTypeControl: false, streetViewControl: false, fullscreenControl: false });
   class Layer extends g.OverlayView {
     onAdd() { this.pane = this.getPanes().overlayMouseTarget; markerEls.forEach(({ el }) => this.pane.appendChild(el)); }
@@ -604,10 +615,11 @@ window.initGoogleMap = function () {
     const open = !$("map").classList.contains("expanded");
     $("map").classList.toggle("expanded", open);
     document.documentElement.classList.toggle("map-open", open);
-    gmap.setOptions({ gestureHandling: open ? "greedy" : "cooperative" });
+    gmap.setOptions({ gestureHandling: gestureMode() });
     toggle.textContent = open ? "Done" : "Expand map";
   });
   $("map").appendChild(toggle);
+  sideBySide.addEventListener("change", () => gmap.setOptions({ gestureHandling: gestureMode() }));
   chip = document.createElement("a");
   chip.className = "map-chip"; chip.hidden = true;
   chip.addEventListener("click", () => { keepView = true; });
@@ -745,8 +757,8 @@ function panTo(c) { if (gmap) gmap.panTo({ lat: c.lat, lng: c.lng }); }
 
 // ---------- views ----------
 let view = null, curHood = null, selected = null, pendingSelect = null, pendingSection = null, hoodQuery = "";
-// Corner and How it works pages hide the map.
-const offMap = () => view === "corner" || view === "how";
+// Corner, How it works and About pages hide the map.
+const offMap = () => view === "corner" || view === "how" || view === "about";
 
 function setChrome({ sub, intro, crumbs, title }) {
   $("sign-sub").textContent = sub;
@@ -766,21 +778,16 @@ function statTiles(items) {
 }
 function statAction(act) {
   if (act === "corners") smooth($("rank-list"));
-  else if (act === "city") smooth($("city-panel"));
   else if (act === "hoods") smooth($("hood-panel"));
 }
 
 // City view
 function viewCity() {
   view = "city"; curHood = null; selected = null;
-  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true;
+  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true; $("about-page").hidden = true;
   setChrome({ sub: "Seattle", title: "Seattle Crosswalk Watch", crumbs: [["Seattle", "#"]],
     intro: `Where Seattle most needs crosswalks and what the city is building. <strong>Find your neighborhood, vote for the corners that matter to you, and request a flag kit until the city builds them.</strong>` });
-  const sched = D.marked.filter(scheduled).length;
-  statTiles([
-    ["need", fmt(CORNERS.length), "corners that need a crosswalk", "corners"],
-    ["plan", fmt(sched), "new crosswalks scheduled by the city", "city"],
-  ]);
+  statTiles([["need", fmt(CORNERS.length), "corners that need a crosswalk", "corners"]]);
   renderSide();
   mapFocus = null;
   if (mapReady) { if (keepView) renderLayer(); else { renderLayer(); fitView(); } }
@@ -796,7 +803,7 @@ function renderCitySide() {
   const hoods = HOODS.filter(h => h.corners.length && (!q || h.name.toLowerCase().includes(q) || h.district.toLowerCase().includes(q)))
     .sort((a, b) => b.corners.length - a.corners.length || a.name.localeCompare(b.name));
   const top = cityTop(25);
-  const hoodSched = h => D.marked.filter(m => m[3] === h.idx && scheduled(m)).length;
+  const hoodSched = h => h.corners.filter(isScheduled).length;
   $("side").innerHTML = `
     <section class="panel" id="hood-panel">
       <h3 class="ph">Find your neighborhood</h3>
@@ -804,7 +811,7 @@ function renderCitySide() {
       <input class="search" id="hood-q" type="search" placeholder="Search, like Wallingford or Rainier Beach" value="${esc(hoodQuery)}" autocomplete="off">
       <div class="rows-list" id="hood-rows">${hoods.slice(0, hoodQuery ? 40 : 8).map(h => `
         <a class="rowbtn hood" href="#n-${h.id}">
-          <span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span>${hoodSched(h) ? `<span>${hoodSched(h)} crosswalks scheduled</span>` : ""}</span></span><span>›</span></a>`).join("") || `<p class="sub">No neighborhood matches "${esc(hoodQuery)}".</p>`}
+          <span><span class="name">${esc(h.name)}</span><span class="meta"><span>${esc(h.district)}</span>${hoodSched(h) ? `<span>${hoodSched(h)} corner${hoodSched(h) > 1 ? "s" : ""} scheduled</span>` : ""}</span></span><span>›</span></a>`).join("") || `<p class="sub">No neighborhood matches "${esc(hoodQuery)}".</p>`}
       </div>
       ${!hoodQuery ? `<button class="act small more-rows" type="button" id="all-hoods">Show all neighborhoods</button>` : ""}
     </section>
@@ -812,11 +819,7 @@ function renderCitySide() {
       <h3 class="ph">Highest-risk crossings in Seattle <span><a class="link" href="#how-risk">How we rate risk</a></span></h3>
       <div class="rows-list">${top.map(c => `
         <button class="rowbtn" type="button" data-s="${c.s}"><span class="num">${c.cityPrio}</span>
-          <span><span class="name">${titleCase(c.w)}</span><span class="meta"><span>${esc(HOODS[c.h].name)}</span><span>${riskLine(c)}</span></span></span></button>`).join("")}</div>
-    </section>
-    <section class="panel progress" id="city-panel">
-      <h3>SDOT progress</h3>
-      <ul>${projectRows(D.marked.filter(m => m[2] === 0), true)}</ul>
+          <span><span class="name">${titleCase(c.w)}</span><span class="meta">${isScheduled(c) ? `<span class="chip plan">Scheduled</span>` : ""}<span>${esc(HOODS[c.h].name)}</span><span>${riskLine(c)}</span></span></span></button>`).join("")}</div>
     </section>`;
   const qEl = $("hood-q");
   qEl.addEventListener("input", () => { hoodQuery = qEl.value; renderCitySide(); const n = $("hood-q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); });
@@ -825,33 +828,11 @@ function renderCitySide() {
   $("side").querySelectorAll("button.rowbtn[data-s]").forEach(b => b.addEventListener("click", () => goCorner(BY_SLUG[b.dataset.s])));
 }
 
-function projectRows(list, city) {
-  const groups = {};
-  list.forEach(m => { const k = m[5] >= 0 ? D.projects[m[5]] : "Planned but not yet scheduled"; (groups[k] = groups[k] || []).push(m); });
-  const rows = Object.entries(groups).sort((a, b) => b[1].length - a[1].length).slice(0, city ? 12 : 20).map(([name, ms]) => {
-    const st = markedStatus(ms[0]).replace(/^Scheduled · /, "").replace(/ · not yet scheduled$/, "");
-    const where = city ? [...new Set(ms.map(m => HOODS[m[3]].name))].slice(0, 3).join(", ") : "";
-    const n = `${ms.length} new crosswalk${ms.length > 1 ? "s" : ""}`;
-    return `<li><b>${esc(name)}</b><span class="st">${[n, where, st].filter(Boolean).map(esc).join(" · ")}</span>${city ? "" : locRows(ms)}</li>`;
-  });
-  return rows.join("") || `<li><b>No new crosswalks planned here right now</b><span class="st">That's what the steps on each corner page are for.</span></li>`;
-}
-// Where each planned crosswalk goes, one line per block (SDOT often logs two crosswalks on the same block), then
-// links to any of our priority corners the project covers (same 60 m match the build uses for "scheduled").
-const metersApart = (lng1, lat1, lng2, lat2) => Math.hypot((lng1 - lng2) * 111320 * Math.cos(lat1 * Math.PI / 180), (lat1 - lat2) * 110540);
-function locRows(ms) {
-  const blocks = {};
-  ms.forEach(m => { const k = markedName(m); blocks[k] = (blocks[k] || 0) + 1; });
-  const ours = curHood.corners.filter(x => ms.some(m => metersApart(x.lng, x.lat, m[0], m[1]) <= 60)).sort((a, b) => a.prio - b.prio);
-  return `<ul class="locs">${Object.entries(blocks).map(([name, n]) => `<li>${esc(name)}${n > 1 ? ` <span class="n">(${n})</span>` : ""}</li>`).join("")}
-    ${ours.length ? `<li class="ours">On our list: ${ours.map(c => `<button class="link" type="button" data-s="${c.s}">#${c.prio} ${titleCase(c.w)} ›</button>`).join(" ")}</li>` : ""}</ul>`;
-}
-
 // Neighborhood view
 function viewHood(h) {
   const changed = view !== "hood" || curHood !== h;
   view = "hood"; curHood = h;
-  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true;
+  $("explore").hidden = false; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true; $("about-page").hidden = true;
   if (pendingSelect && BY_SLUG[pendingSelect] && HOODS[BY_SLUG[pendingSelect].h] === h) selected = BY_SLUG[pendingSelect];
   else if (changed || !selected || HOODS[selected.h] !== h) selected = [...h.corners].sort((a, b) => a.prio - b.prio)[0] || null;
   pendingSelect = null;
@@ -868,10 +849,7 @@ function viewHood(h) {
 }
 function renderHoodStats() {
   const h = curHood;
-  statTiles([
-    ["need", h.corners.length, "corners that need a crosswalk", "corners"],
-    ["plan", D.marked.filter(m => m[3] === h.idx && scheduled(m)).length, "new crosswalks scheduled by the city", "city"],
-  ]);
+  statTiles([["need", h.corners.length, "corners that need a crosswalk", "corners"]]);
 }
 function renderPins() {
   const h = mapFocus != null ? HOODS[mapFocus] : curHood;
@@ -892,7 +870,6 @@ function sdotStatus(c) {
 function renderHoodSide() {
   const h = curHood, c = selected;
   const sorted = [...h.corners].sort((a, b) => a.prio - b.prio);
-  const hm = D.marked.filter(m => m[3] === h.idx);
   const feed = hoodFeed(h);
   $("side").innerHTML = `
     ${c ? `<section class="panel detail" id="detail" aria-live="polite">
@@ -915,26 +892,56 @@ function renderHoodSide() {
         <button class="item${selected === x ? " on" : ""}" type="button" data-s="${x.s}">
           <span class="num">${x.prio}</span>
           <span><span class="name">${titleCase(x.w)}</span>
-            <span class="meta"><span>${riskLine(x) || "Lower risk on record"}</span></span></span>
+            <span class="meta">${isScheduled(x) ? `<span class="chip plan">Scheduled</span>` : ""}<span>${riskLine(x) || "Lower risk on record"}</span></span></span>
           <span class="votes">${votesOf(x)}<small>votes</small></span>
         </button>`).join("") || `<p class="sub" style="padding:10px 18px">No corners match.</p>`}</div>
     </section>
-    <section class="panel progress" id="city-panel">
-      <h3>SDOT progress</h3>
-      <ul>${projectRows(hm.filter(m => m[2] === 0), false)}</ul>
-    </section>
-    ${feed.length ? `<section class="panel feed"><h3>Recent activity</h3><ul>${feed.map(([t, k, who, what]) => `<li><time>${t}</time><span><span class="who ${k}">${esc(who)}</span> ${what}</span></li>`).join("")}</ul></section>` : ""}`;
-  $("side").querySelectorAll("button.item, .locs button.link").forEach(b => b.addEventListener("click", () => select(BY_SLUG[b.dataset.s])));
+    ${feed.length ? `<section class="panel feed"><h3>Recent activity in ${esc(h.name)}</h3><ul>${feed.map(([, t, k, who, what]) =>
+      `<li class="${k}"><time>${t}</time><span><span class="who">${esc(who)}</span> ${what}</span></li>`).join("")}</ul>
+      <p class="feed-note"><span class="ex">Sample</span> Neighbor activity is sample data until accounts launch. Your own steps and SDOT's updates are real.</p></section>` : ""}`;
+  $("side").querySelectorAll("button.item").forEach(b => b.addEventListener("click", () => select(BY_SLUG[b.dataset.s])));
+  $("side").querySelectorAll(".feed [data-mi]").forEach(b => b.addEventListener("click", () => {
+    const m = D.marked[b.dataset.mi]; if (gmap) gmap.panTo({ lat: m[1], lng: m[0] }); showCrosswalk(m); }));
 }
+// The neighborhood's activity, newest first: the visitor's own steps (saved in this browser), sample neighbor activity
+// and SDOT's real updates. Rows are [hours ago, time label, kind, who, what]. The sample rows are reseeded daily so the
+// feed changes between visits, and lean toward the corners at the top of the list.
+const ago = hrs => hrs < 1 ? `${Math.max(2, Math.floor(hrs * 60))} min ago` : hrs < 24 ? `${Math.floor(hrs)}h ago` : hrs < 48 ? "Yesterday" : `${Math.floor(hrs / 24)} days ago`;
 function hoodFeed(h) {
-  const out = [];
-  const byProj = {};
-  D.marked.filter(m => m[3] === h.idx && m[2] === 0 && m[7]).forEach(m => { const k = (m[5] >= 0 ? D.projects[m[5]] : "") + "|" + m[7]; byProj[k] = (byProj[k] || 0) + 1; });
-  Object.entries(byProj).slice(0, 3).forEach(([k, n]) => { const [proj, when] = k.split("|"); out.push([when.replace(/ \d{4}$/, ""), "city", "SDOT", `added ${n} planned crosswalk${n > 1 ? "s" : ""}${proj ? ` (${esc(proj)})` : ""}.`]); });
-  const top = [...h.corners].sort((a, b) => a.prio - b.prio);
-  if (top[0]) out.splice(1, 0, ["Today", "n", `${3 + (top[0].v % 9)} neighbors`, `voted for ${titleCase(top[0].w)}.`]);
-  const rq = top.find(x => x.rq); if (rq) out.push(["Mon", "n", "A neighbor", `emailed SDOT about ${titleCase(rq.w)}.`]);
-  return out.slice(0, 6);
+  const top = [...h.corners].sort((a, b) => a.prio - b.prio), out = [];
+  const link = c => `<a href="#c-${c.s}">${titleCase(c.w)}</a>`;
+  top.forEach(c => {
+    const note = state["c:" + c.s], k = state["k:" + c.s];
+    if (state["v:" + c.s]) out.push([-1, "", "you", "You", `voted for ${link(c)}${note ? `: <q>${esc(note)}</q>` : "."}`]);
+    if (ordered(c)) out.push([-1, "", "you", "You", state["fu:" + c.s] ? `put crossing flags up at ${link(c)}.` : k && k.adopt ? `adopted ${link(c)} and ordered its flags.` : `ordered crossing flags for ${link(c)}.`]);
+    if (signsOrdered(c)) out.push([-1, "", "you", "You", state["su:" + c.s] ? `put yard signs up at ${link(c)}.` : `ordered yard signs for ${link(c)}.`]);
+  });
+  const day = Math.floor(Date.now() / 864e5), quoted = new Set();
+  top.slice(0, 12).map((c, i) => {
+    const r = hash(c.s + day), u = (r % 1000) / 1000, hrs = (0.3 + 160 * u * u) * (1 + i / 4);
+    const t = "vvnfaeuy"[(r >>> 10) % 8], j = (r >>> 20) % 3, note = notesFor(c)[j];
+    // Same note and age as on the corner page ("Neighbor · 2 days ago").
+    if (t === "n" && !quoted.has(note)) { quoted.add(note); return [24 * [2, 5, 9][j] + u * 20, "n", "A neighbor", `voted for ${link(c)}: <q>${esc(note)}</q>`]; }
+    if (t === "f") return [hrs, "n", "A neighbor", `ordered crossing flags for ${link(c)}.`];
+    if (t === "a") return [hrs, "n", "A neighbor", `adopted ${link(c)} and will keep its flags stocked.`];
+    if (t === "e" && c.rq) return [hrs, "n", "A neighbor", `emailed SDOT about ${link(c)}.`];
+    if (t === "u") return [hrs, "n", "Neighbors", `put crossing flags up at ${link(c)}.`];
+    if (t === "y") return [hrs, "n", "A neighbor", `put a yard sign up at ${link(c)}.`];
+    const n = Math.min(c.v, 2 + (r >>> 4) % 5);
+    return [hrs, "n", `${n} neighbor${n > 1 ? "s" : ""}`, `voted for ${link(c)}.`];
+  }).sort((a, b) => a[0] - b[0]).slice(0, 6).forEach(([hrs, ...rest]) => out.push([hrs, ago(hrs), ...rest]));
+  // SDOT: work started in the past year (one row per project), then crosswalks painted this year or last.
+  const now = new Date(), hm = D.marked.filter(m => m[3] === h.idx);
+  const btn = (m, text) => `<button class="link" type="button" data-mi="${D.marked.indexOf(m)}">${esc(text)}</button>`;
+  const started = {};
+  hm.filter(m => scheduled(m) && monthDate(m[7]) && now - monthDate(m[7]) < 365.25 * 864e5)
+    .forEach(m => { const k = m[5] >= 0 ? D.projects[m[5]] : markedName(m); (started[k] = started[k] || []).push(m); });
+  Object.entries(started).map(([proj, ms]) => [(now - monthDate(ms[0][7])) / 36e5, ms[0][7], "city", "SDOT",
+    `started work on ${ms.length > 1 ? ms.length + " crosswalks" : "a crosswalk"}: ${btn(ms[0], proj)}.`])
+    .sort((a, b) => a[0] - b[0]).slice(0, 2).forEach(r => out.push(r));
+  hm.filter(m => m[2] === 1 && m[4] >= now.getFullYear() - 1).sort((a, b) => b[4] - a[4]).slice(0, 2)
+    .forEach(m => out.push([(now - new Date(m[4], 6, 1)) / 36e5, String(m[4]), "city", "SDOT", `painted a new crosswalk on ${btn(m, markedName(m))}.`]));
+  return out.sort((a, b) => a[0] - b[0]).slice(0, 10);
 }
 function showCrosswalk(m) {
   selected = null; renderPins();
@@ -970,7 +977,7 @@ const NOTES = [
   "Lots of strollers and dog walkers cross here to get to the park.",
   "Drivers stop for me maybe half the time.",
 ];
-const notesFor = c => { let h = 0; for (const ch of c.w) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return [0, 1, 2].map(i => NOTES[(h + i * 3) % NOTES.length]); };
+const notesFor = c => { const h = hash(c.w); return [0, 1, 2].map(i => NOTES[(h + i * 3) % NOTES.length]); };
 function emailText(c) {
   const h = HOODS[c.h];
   const lines = ["Hello SDOT Pedestrian Program,", "", `I'm requesting a marked crosswalk at ${titleCase(c.w)} in ${h.name}.`, "",
@@ -996,7 +1003,7 @@ const emailStep = (id, m, label) => `<div class="mailline"><span>To: <b>${esc(m.
 
 function viewCorner(c) {
   view = "corner"; curHood = HOODS[c.h]; selected = c;
-  $("explore").hidden = true; $("corner-page").hidden = false; $("how-page").hidden = true;
+  $("explore").hidden = true; $("corner-page").hidden = false; $("how-page").hidden = true; $("about-page").hidden = true;
   setChrome({ sub: `${curHood.name} · Seattle`, title: `${titleCase(c.w)} · ${curHood.name} Crosswalk Watch`, intro: "",
     crumbs: [["Seattle", "#"], [curHood.name, "#n-" + curHood.id], [titleCase(c.w), "#c-" + c.s]] });
   renderCornerPage(c);
@@ -1007,9 +1014,15 @@ function viewCorner(c) {
 // How it works: data notes and map tips, kept off the main pages.
 function viewHow(sec) {
   view = "how"; curHood = null; selected = null;
-  $("explore").hidden = true; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = false;
+  $("explore").hidden = true; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = false; $("about-page").hidden = true;
   setChrome({ sub: "Seattle", title: "How it works · Seattle Crosswalk Watch", intro: "", crumbs: [["Seattle", "#"], ["How it works", "#how"]] });
   requestAnimationFrame(() => sec ? $(sec).scrollIntoView({ block: "start" }) : window.scrollTo(0, 0));
+}
+function viewAbout() {
+  view = "about"; curHood = null; selected = null;
+  $("explore").hidden = true; $("corner-page").hidden = true; $("corner-page").innerHTML = ""; $("how-page").hidden = true; $("about-page").hidden = false;
+  setChrome({ sub: "Seattle", title: "About · Seattle Crosswalk Watch", intro: "", crumbs: [["Seattle", "#"], ["About", "#about"]] });
+  window.scrollTo(0, 0);
 }
 function renderCornerPage(c) {
   const el = $("corner-page"), h = HOODS[c.h];
@@ -1340,11 +1353,12 @@ function route() {
   const h = decodeURIComponent(location.hash.slice(1));
   // "how" is the How it works page; "how-risk" opens it at the risk section.
   if (h === "how" || h === "how-risk") return viewHow(h === "how-risk" ? "how-risk" : null);
+  if (h === "about") return viewAbout();
   // "c-<slug>/city" opens a corner page at one of its sections (the flyer's QR code lands on the email to SDOT).
   const [slug, sec] = h.slice(2).split("/");
   if (h.startsWith("c-") && BY_SLUG[slug]) { if (sec) pendingSection = sec; return viewCorner(BY_SLUG[slug]); }
-  if (h.startsWith("n-") && HOOD_BY_ID[h.slice(2)]) { const wasCorner = view === "corner" || view === "how"; viewHood(HOOD_BY_ID[h.slice(2)]); if (wasCorner || !pendingSelect) window.scrollTo(0, 0); return; }
-  const wasCorner = view === "corner" || view === "how";
+  if (h.startsWith("n-") && HOOD_BY_ID[h.slice(2)]) { const wasCorner = offMap(); viewHood(HOOD_BY_ID[h.slice(2)]); if (wasCorner || !pendingSelect) window.scrollTo(0, 0); return; }
+  const wasCorner = offMap();
   viewCity();
   if (wasCorner) window.scrollTo(0, 0);
 }
