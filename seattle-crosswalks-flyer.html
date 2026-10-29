@@ -28,7 +28,8 @@ h1 em { font-style: normal; color: #c8261d; }
 .risk.mid { border-color: #c86a00; }
 .score { text-align: center; align-self: center; }
 .score .k { font: 800 13px Overpass, Arial; letter-spacing: .12em; text-transform: uppercase; color: #3c4540; }
-.score .v { font: 900 100px/.92 Overpass, Arial; color: #c8261d; margin-top: 6px; }
+.score .v { font: 900 92px/.92 Overpass, Arial; color: #c8261d; margin-top: 6px; white-space: nowrap; }
+.score .v small { font-size: 46px; }
 .risk.mid .score .v { color: #c86a00; }
 .score .of { font: 700 15px "Public Sans"; color: #3c4540; }
 .score .lbl { display: inline-block; margin-top: 10px; background: #c8261d; color: #fff; border-radius: 99px; padding: 5px 14px 3px; font: 800 17px Overpass, Arial; }
@@ -66,7 +67,13 @@ const titleCase = s => s.toLowerCase().replace(/\b(ne|n|nw|se|sw|s|e|w)\b/g, m =
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const site = new URL("seattle-crosswalks.html", location.href).href;
 
-const riskLabel = s => s >= 90 ? "Highest risk" : s >= 70 ? "Very risky" : s >= 50 ? "Somewhat risky" : "Lower risk";
+// Same rule as the site's risk level (app.html riskLevel): facts anyone can check, no score.
+function riskLevel(c) {
+  const [n, ser, fat] = c.cx, wide = c.ln >= 4;
+  if (ser || fat || n >= 2 || (wide && c.adt >= 15000)) return "Very risky";
+  if (n === 1 || wide || c.adt >= 10000 || (c.sch >= 3 && (c.ac === 1 || c.ac === 2))) return "Risky";
+  return "Moderately risky";
+}
 const ft = m => `${(Math.round(m / 0.3048 / 50) * 50).toLocaleString()} feet`;
 // Plain reasons this corner is dangerous to cross, worst first. Only things that make the case; no citywide rankings.
 function reasons(c) {
@@ -75,6 +82,7 @@ function reasons(c) {
   const road = c.ac === 1 ? "a main arterial" : c.ac === 2 ? "an arterial" : "";
   if (c.ln >= 3) out.push(`<b>${c.ln} lanes of traffic</b> to cross${road ? ` on ${road}` : ""}.`);
   else if (road) out.push(`Traffic on <b>${road}</b>, with nothing telling drivers to stop.`);
+  if (c.adt >= 10000) out.push(`About <b>${(Math.round(c.adt / 1000) * 1000).toLocaleString()} cars a day</b> pass through.`);
   if (c.gap == null) out.push(`<b>No marked crosswalk</b> on either street.`);
   else if (c.gap >= 800) out.push(`<b>No marked crosswalk within half a mile.</b>`);
   else if (c.gap >= 150) out.push(`The nearest marked crosswalk is <b>${ft(c.gap)} away</b>, so people cross here anyway.`);
@@ -89,6 +97,9 @@ function render(D) {
   const c = D.corners.find(x => x.s === slug);
   if (!c) { document.getElementById("page").innerHTML = "<p>Corner not found.</p>"; return; }
   const h = D.hoods[c.h];
+  // Most needed in the neighborhood: SDOT's score, ties sharing a rank.
+  const mine = D.corners.filter(x => x.h === c.h), rank = 1 + mine.filter(x => x.t > c.t).length, tied = mine.some(x => x !== c && x.t === c.t);
+  const level = riskLevel(c);
   // The QR code opens the corner page at the pre-written email to SDOT.
   const url = `${site}#c-${c.s}/city`;
   const qr = qrcode(0, "M"); qr.addData(url); qr.make();
@@ -109,8 +120,8 @@ function render(D) {
     </div>
     <h1>This corner is dangerous to cross.<br><em>It needs a crosswalk.</em></h1>
     <div class="plate">${esc(titleCase(c.w))}</div>
-    <div class="risk${c.rs < 70 ? " mid" : ""}">
-      <div class="score"><div class="k">Risk Score</div><div class="v">${c.rs}</div><div class="of">out of 100</div><div class="lbl">${riskLabel(c.rs)}</div></div>
+    <div class="risk${level !== "Very risky" ? " mid" : ""}">
+      <div class="score"><div class="k">${tied ? "Tied for" : "Most needed"}</div><div class="v"><small>#</small>${rank}</div><div class="of">${tied ? "most needed" : "of " + mine.length} in ${esc(h.name)}</div><div class="lbl">${level}</div></div>
       <div class="why"><h2>Why it's dangerous</h2><ul>${reasons(c).map(r => `<li>${r}</li>`).join("")}</ul></div>
     </div>
     <div class="urgent">
@@ -132,10 +143,10 @@ function render(D) {
     </div>
     <div class="foot">
       <div><b>Posted by a neighbor.</b> Please leave this up for two weeks.<br>No phone? Visit <b>${esc(site.replace(/^https?:\/\//, ""))}</b></div>
-      <div>Risk Score: pedestrian crashes, lanes of traffic and distance to the nearest crosswalk.<br>Data: SDOT priority crossings, Marked Crosswalks and collision records.</div>
+      <div>Most needed: SDOT's own priority score for new crossings (SDOT priority ${c.t} of 37).<br>Risk: pedestrian crashes, lanes and traffic, from SDOT's records.</div>
     </div>`;
 }
-fetch("seattle-crosswalks-data.json?v=1793232508").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
+fetch("seattle-crosswalks-data.json?v=1793284860").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
 </script>
 </body>
 </html>
