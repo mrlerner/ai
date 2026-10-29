@@ -392,10 +392,10 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 .prog .stat b { font-size: 30px; }
 .prog figure { margin: 10px 0 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 16px 12px; }
 .prog figcaption { font-size: 15px; color: var(--muted); margin-top: 10px; }
-.flag { display: inline-block; font: 600 12px/1 var(--f-data); letter-spacing: .06em; text-transform: uppercase; border-radius: 4px;
+.badge { display: inline-block; font: 600 12px/1 var(--f-data); letter-spacing: .06em; text-transform: uppercase; border-radius: 4px;
   padding: 3px 5px; vertical-align: 2px; color: var(--plan); background: var(--plan-soft); white-space: nowrap; }
-.flag.gap { color: var(--need); background: var(--need-soft); }
-.stat .flag { margin-top: 6px; }
+.badge.gap { color: var(--need); background: var(--need-soft); }
+.stat .badge { margin-top: 6px; }
 .bplot { position: relative; height: 220px; margin: 22px 0 0 30px; }
 .bplot .gl { position: absolute; left: 0; right: 0; border-top: 1px solid var(--line); }
 .bplot .gl span { position: absolute; right: calc(100% + 6px); top: -9px; font: 13px var(--f-data); color: var(--muted); }
@@ -527,7 +527,7 @@ a.rowbtn > span:last-child { color: var(--muted); font-size: 18px; }
 
 <script>
 const MAPS_EMBED_KEY = "AIzaSyCnokV1lHkANGki24GUAXYXe-uMh9BQPKI";
-const DATA_URL = "seattle-crosswalks-data.json?v=1793284860";
+const DATA_URL = "seattle-crosswalks-data.json?v=1793285263";
 const FLYER_URL = "seattle-crosswalks-flyer.html";
 
 // ---------- helpers ----------
@@ -1300,7 +1300,7 @@ function renderProgress() {
       <div class="stat ok"><b>${avg(last5, 1)}</b><span>new or upgraded crossings a year, ${y0}–${y1}</span></div>
       <div class="stat"><b>${fmt(repaintAvg)}</b><span>crosswalks repainted a year</span></div>
       <div class="stat"><b>${avg(last5, 3)}</b><span>new traffic signals a year paid for by the levy</span></div>
-      <div class="stat need"><b>~${toAll}</b><span>years to reach every corner on SDOT's list at this pace</span><br><span class="flag">Estimate</span></div>
+      <div class="stat need"><b>~${toAll}</b><span>years to reach every corner on SDOT's list at this pace</span><br><span class="badge">Estimate</span></div>
     </div>
 
     <section>
@@ -1324,7 +1324,7 @@ function renderProgress() {
     </section>
 
     <section>
-      <h3>At this pace <span class="flag">Estimate</span></h3>
+      <h3>At this pace <span class="badge">Estimate</span></h3>
       <p>Since ${since}, SDOT has planned or built a crosswalk at or next to <b>${hits} of the ${fmt(listed)}</b> corners on its priority list, about ${Math.round(perYear)} a year. At that pace, reaching all of them would take about <b>${toAll} years</b>.</p>
       <p>That's a rough guide, not a forecast. It counts crosswalks SDOT has planned but not yet painted, and leaves out corners getting a new signal or beacon instead. One new crosswalk can also close the gap for the corners on either side of it, and SDOT says some corners on its list won't get one at all.</p>
     </section>
@@ -1335,7 +1335,7 @@ function renderProgress() {
     </section>
 
     <section>
-      <h3>What these numbers leave out <span class="flag gap">Data gaps</span></h3>
+      <h3>What these numbers leave out <span class="badge gap">Data gaps</span></h3>
       <ul class="caveats">
         <li><b>Levy projects only.</b> These are the crossings SDOT reports under the transportation levy. Crossings built as part of larger projects, like repaving or bus corridors, may not be counted, so the real total is probably somewhat higher.</li>
         <li><b>New and upgraded are mixed together.</b> SDOT reports one number for both, so we can't say exactly how many brand-new crosswalks it paints each year.</li>

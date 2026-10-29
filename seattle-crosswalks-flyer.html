@@ -146,7 +146,7 @@ function render(D) {
       <div>Most needed: SDOT's own priority score for new crossings (SDOT priority ${c.t} of 37).<br>Risk: pedestrian crashes, lanes and traffic, from SDOT's records.</div>
     </div>`;
 }
-fetch("seattle-crosswalks-data.json?v=1793284860").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
+fetch("seattle-crosswalks-data.json?v=1793285263").then(r => r.json()).then(D => { render(D); window.addEventListener("hashchange", () => render(D)); });
 </script>
 </body>
 </html>
