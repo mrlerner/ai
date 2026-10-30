@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neighborland Analysis</title>
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f2421; --muted: #5d6660; --line: #e2e0d8; --accent: #2f8a3c; --card: #ffffff; --code: #f0efe9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161a17; --fg: #e6e9e5; --muted: #9aa49c; --line: #2c332e; --accent: #6cc47a; --card: #1d221f; --code: #242a26;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161a17; --fg: #e6e9e5; --muted: #9aa49c; --line: #2c332e; --accent: #6cc47a; --card: #1d221f; --code: #242a26;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+main { max-width: 800px; margin: 0 auto; padding: 48px 16px 96px; }
+header .kicker { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
+h1 { font-size: 40px; line-height: 1.15; margin: 8px 0 16px; letter-spacing: -.01em; }
+h2 { font-size: 27px; line-height: 1.25; margin: 56px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 20px; margin: 36px 0 8px; }
+a { color: var(--accent); }
+p, li { max-width: 70ch; }
+li { margin: 6px 0; }
+nav.toc { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 20px; margin: 24px 0; }
+nav.toc b { font-size: 14px; color: var(--muted); }
+nav.toc ol { margin: 6px 0 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+nav.toc li { margin: 2px 0; font-size: 15px; break-inside: avoid; }
+figure { margin: 28px 0; }
+figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+figcaption { color: var(--muted); font-size: 14.5px; line-height: 1.5; margin-top: 8px; }
+.tbl { overflow-x: auto; margin: 16px 0; }
+table { border-collapse: collapse; font-size: 15px; min-width: 100%; }
+th, td { border-bottom: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+th { font-weight: 600; background: var(--code); }
+code { background: var(--code); padding: 1px 5px; border-radius: 4px; font-size: .9em; }
+@media (max-width: 600px) {
+  body { font-size: 16px; } h1 { font-size: 31px; } h2 { font-size: 23px; }
+  nav.toc ol { columns: 1; }
+}
+</style>
+</head>
+<body>
+<main>
+<header><div class="kicker">Crosswalk Watch · Competitive research</div><h1>Neighborland: competitive analysis</h1></header>
+<nav class="toc"><b>Contents</b><ol><li><a href="#the-short-version">The short version</a></li><li><a href="#timeline">Timeline</a></li><li><a href="#founders-and-team">Founders and team</a></li><li><a href="#money">Money</a></li><li><a href="#how-it-looked-and-worked">How it looked and worked</a></li><li><a href="#how-it-got-people">How it got people</a></li><li><a href="#how-it-kept-them">How it kept them</a></li><li><a href="#traffic-and-reach">Traffic and reach</a></li><li><a href="#why-it-worked-and-what-didnt">Why it worked, and what didn't</a></li><li><a href="#what-crosswalk-watch-should-take-from-it">What Crosswalk Watch should take from it</a></li><li><a href="#sources">Sources</a></li></ol></nav>
+<p>Neighborland (neighborland.com) began as a site where neighbors finished the sentence "I want ___ in my neighborhood" and backed each other's ideas with one tap. It became paid engagement software for city agencies, and Nextdoor bought it in 2019. It's the model our earlier competitive research says Crosswalk Watch should follow for engagement. This is the deep dive: what it looked like, who built it, how it got people and kept them, how much traffic it really had, and why it worked.</p>
+<p>Researched October 2026 from the Internet Archive, Neighborland's own Handbook blog, a 2015 Neighborland sales deck, co-founder Candy Chang's site, the SEC and press. Most numbers are the company's own and are marked "company-reported". Screenshots are from the Internet Archive unless the caption says otherwise.</p>
+<h2 id="the-short-version">The short version</h2>
+<p><strong>As a consumer website, Neighborland was small.</strong> About a year in, only a few hundred people in New Orleans were using it. Its Twitter following leveled off around 4,600. Alexa ranked the site outside the top 900,000 in the world, which suggests roughly 10,000 to 30,000 visitors a month. The "3 million people" figure counts everyone who took part in client projects, including in person. It isn't website traffic.</p>
+<p><strong>What worked was the system around the site:</strong></p>
+<ol>
+<li><strong>It started on the street.</strong> People wrote on stickers, giant boards and tear-off flyers at farmers' markets, festivals and bus stops. Volunteers typed the answers in afterward. The website was where the input landed and the conversation continued.</li>
+<li><strong>One simple question with a one-tap answer.</strong> Finishing "I want ___" took ten seconds, and "Me Too" took one tap. Each idea page led with its count: "43 neighbors want…".</li>
+<li><strong>Partners brought their own crowds.</strong> Food truck coalitions, bike groups, a land trust and San Francisco's planning department each pointed their members at a page with one question on it.</li>
+<li><strong>The best results came when someone had promised to listen.</strong> The ideas that got built had an official on the other end: a city bike coordinator, a planning department with a plan due. Neighborland's business became selling that promise to agencies that had a decision coming.</li>
+<li><strong>It followed up.</strong> "Me Too" also subscribed you to updates. Staff posted progress in the thread, and emails went out at key points in a project. Ideas that happened were marked "Made it Happen".</li>
+</ol>
+<p><strong>What didn't work:</strong> wishes with nobody to answer them, a small and unrepresentative audience, participation counts that mostly counted page visitors, and a free consumer product with no revenue model. Nextdoor's purchase was a good exit for a modest business, not a sign of a big one.</p>
+<h2 id="timeline">Timeline</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>When</th>
+<th>What happened</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2010</td>
+<td>Candy Chang's "I Wish This Was ___" stickers go up on vacant storefronts in New Orleans.</td>
+</tr>
+<tr>
+<td>Dec 2010 – Jun 2011</td>
+<td>Prototype, then an alpha in New Orleans backed by Tulane and the Rockefeller Foundation.</td>
+</tr>
+<tr>
+<td>Apr 2012</td>
+<td>$1.2 million seed round from Twitter's founders, True Ventures, Lerer, SV Angel and others. Live in Houston, Boulder and New Orleans.</td>
+</tr>
+<tr>
+<td>Mid-2012</td>
+<td>City by city, with a local partner in each, reaching about 26 cities.</td>
+</tr>
+<tr>
+<td>Dec 2012</td>
+<td>Open to every US city.</td>
+</tr>
+<tr>
+<td>2013–14</td>
+<td>Organizations get "Questions", later "Projects". The pitch becomes "Collaborate with your city."</td>
+</tr>
+<tr>
+<td>2015–16</td>
+<td>Paid software for agencies, from $500 to $1,500+ a month. Major San Francisco Planning work.</td>
+</tr>
+<tr>
+<td>2017–19</td>
+<td>Large plans: Imagine Mesa, Dorothea Dix Park in Raleigh, Southern California's regional transportation plan. Buys IdeaMapr in 2019.</td>
+</tr>
+<tr>
+<td>Late 2019</td>
+<td>Nextdoor buys it (announced April 2020). Dan Parham leads Nextdoor's public agency team.</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>The Neighborland platform shuts down. neighborland.com is now a memorial page.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="founders-and-team">Founders and team</h2>
+<figure><a href="neighborland/13-founders-and-reach-2015.jpg"><img alt="Neighborland's 2015 sales deck: founders, team and investors, and engagement to date" src="neighborland/13-founders-and-reach-2015.jpg" loading="lazy"></a><figcaption>From Neighborland's 2015 sales deck: the founders, a small team plus about 100 local facilitators, and the reach it claimed (company-reported).</figcaption></figure>
+<ul>
+<li><strong>Dan Parham, CEO and head of product.</strong> A designer, earlier creative director at Time Warner and director of user experience at Yahoo. Press cast him as the businessman to Chang's dreamer. He personally led the company's 200 or so partnerships. At Nextdoor he ran the public agency team, about 20 people serving more than 4,000 agencies, including through COVID. Since August 2025 he has been head of state and local government at OpenAI (<a href="https://about.me/danparham" target="_blank" rel="noopener">about.me</a>).</li>
+<li><strong>Tee Parham, CTO.</strong> An engineer who ran a software consultancy in Boulder and led RGeo, an open-source Ruby mapping library. He led a Nextdoor engineering team in Colorado after the deal and is now at Workday.</li>
+<li><strong>Candy Chang, co-founder.</strong> An urban planner, artist and TED Senior Fellow whose sticker project started it all; she later made "Before I Die" walls. By 2016 she was listed as co-founder and advisor. No source says when or why she stepped back; her art career took off at the same time.</li>
+<li><strong>The team stayed tiny.</strong> In 2015 it was the three founders, two engineers, a facilitation lead, a sales lead, and about 100 freelance local facilitators who ran events. Alan Williams, the New Orleans community manager, was its first person on the ground.</li>
+</ul>
+<h2 id="money">Money</h2>
+<ul>
+<li><strong>Grants first.</strong> Tulane's Social Entrepreneurship Program and the Rockefeller Foundation paid for the 2011 New Orleans pilot; no amounts were published.</li>
+<li><strong>One seed round, never another.</strong> The SEC Form D shows $1,195,005 from 7 investors in April 2012 (<a href="https://www.sec.gov/Archives/edgar/data/1548687/000154868712000001/primary_doc.xml" target="_blank" rel="noopener">SEC</a>). The investors were True Ventures, Evan Williams, Biz Stone and Jason Goldman of Obvious Corporation, Lerer Ventures, SV Angel and New Orleans' Voodoo Ventures (<a href="https://techcrunch.com/?p=537420" target="_blank" rel="noopener">TechCrunch</a>). No later round was found.</li>
+<li><strong>No revenue model for the first two years.</strong> In 2011 Parham said cities wouldn't be charged. The plan was to sell developers pages that asked "what do you want at this building?", and maybe sell neighborhood data. In 2012 the company was putting money off, Twitter-style, while paying a community manager in every new city (<a href="https://nextcity.org/urbanist-news/i-wish-this-was...-making-real-what-happens-on-the-internet" target="_blank" rel="noopener">Next City</a>).</li>
+<li><strong>Then it charged organizations by the month</strong> (company-reported):</li>
+</ul>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Monthly price</th>
+<th>DIY</th>
+<th>Basic</th>
+<th>Partner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>November 2016</td>
+<td>$500</td>
+<td>$1,000</td>
+<td>$1,500+</td>
+</tr>
+<tr>
+<td>January 2019</td>
+<td>$1,000</td>
+<td>$2,000</td>
+<td>$2,500+</td>
+</tr>
+</tbody>
+</table></div>
+<p>On top of that came paid services: program design, workshops, facilitator training, moderation and reports. Small towns paid a sliding scale of about $0.03 per resident per month. Residents always used it free, and it never ran ads. Contract sizes and revenue were never published. At the 2019 prices, a couple hundred organizations over eight years suggests a business of a few million dollars a year at most.</p>
+<ul>
+<li><strong>The exit.</strong> Nextdoor bought it in late 2019 to build out its tools for public agencies; terms weren't disclosed (<a href="https://www.govtech.com/biz/nextdoor-acquires-citizen-engagement-platform-neighborland.html" target="_blank" rel="noopener">GovTech</a>). Nextdoor's agency tools are free to agencies. Neighborland kept serving existing partners while its tools were built into Nextdoor, and the platform shut down in 2023.</li>
+</ul>
+<h2 id="how-it-looked-and-worked">How it looked and worked</h2>
+<h3 id="20102012-i-want-___-in-my-neighborhood">2010–2012: "I want ___ in my neighborhood"</h3>
+<p>It started with paper. Candy Chang's stickers, then Neighborland's own, put the question on the building or street it was about.</p>
+<figure><a href="neighborland/01-broad-street-board.jpg"><img alt="A giant &quot;I want ___ on Broad&quot; board covered in handwritten wishes, New Orleans" src="neighborland/01-broad-street-board.jpg" loading="lazy"></a><figcaption>"I want ___ on Broad," a board on Broad Street in New Orleans. Photo by Alan Williams, from <a href="https://www.candychang.com/neighborland/" target="_blank" rel="noopener">candychang.com</a>.</figcaption></figure>
+<figure><a href="neighborland/02-night-market-sticker.jpg"><img alt="A woman at a night market holds an &quot;I want a night market in my neighborhood&quot; sticker" src="neighborland/02-night-market-sticker.jpg" loading="lazy"></a><figcaption>A sticker near San Francisco's City Hall. Online, 525 neighbors backed a night market at UN Plaza, and San Francisco Public Works and the Market Street Association started one (see the UN Plaza project below). From <a href="https://www.candychang.com/neighborland/" target="_blank" rel="noopener">candychang.com</a>.</figcaption></figure>
+<figure><a href="neighborland/03-flyer-and-billboard.jpg"><img alt="A tear-off flyer on a pole asking &quot;What do you want on the LaSalle Corridor?&quot; and a Minneapolis billboard asking people to text in ideas" src="neighborland/03-flyer-and-billboard.jpg" loading="lazy"></a><figcaption>Left: a tear-off flyer on a utility pole for a New Orleans corridor plan, each tab printed with the web address. Right: digital billboards in downtown Minneapolis with a number to text ideas to. From <a href="https://www.candychang.com/neighborland/" target="_blank" rel="noopener">candychang.com</a>.</figcaption></figure>
+<p>The website rolled out city by city. Each new city started with a waitlist: "Enter your email and city and we'll let you know when we arrive."</p>
+<figure><a href="neighborland/04-home-2012.jpg"><img alt="Neighborland homepage, June 2012: &quot;What do you want in your neighborhood?&quot; with a list of cities, launched ones in green" src="neighborland/04-home-2012.jpg" loading="lazy"></a><figcaption>Homepage, June 2012. Green cities were live; grey ones had a waitlist.</figcaption></figure>
+<p>A city page was a list of wishes ranked by support. The count was the headline.</p>
+<figure><a href="neighborland/05-new-orleans-ideas-2011.jpg"><img alt="New Orleans idea list: &quot;396 neighbors want the ability to recycle glass in New Orleans&quot;, &quot;177 neighbors want the street car to go to Poland Avenue&quot;" src="neighborland/05-new-orleans-ideas-2011.jpg" loading="lazy"></a><figcaption>New Orleans ideas, around 2011–12, each led by its supporter count, with "Me Too", new supporters' faces and a "Progress" ribbon. From <a href="https://www.candychang.com/neighborland/" target="_blank" rel="noopener">candychang.com</a>.</figcaption></figure>
+<figure><a href="neighborland/06-idea-page-2012.jpg"><img alt="An idea page: &quot;43 neighbors want a pedestrian- and bike-only environment in Downtown&quot; with Me Too, discussion and supporters" src="neighborland/06-idea-page-2012.jpg" loading="lazy"></a><figcaption>An idea page in Minneapolis, June 2012. Comments can be backed too ("5 neighbors support"), and a staff member suggests who might pay for it. Re-rendered from the archive with the site's stylesheet from five days earlier, since the archive didn't keep that page's own; some avatars are missing.</figcaption></figure>
+<p>The idea most like a Crosswalk Watch corner shows how little support it took when the right official was reading:</p>
+<figure><a href="neighborland/07-houston-crosswalk-idea-2012.jpg"><img alt="An idea page: &quot;8 neighbors want green bike crosswalks in First Ward&quot;, Houston, with a comment that the city's bike coordinator added all-red time at the crossing" src="neighborland/07-houston-crosswalk-idea-2012.jpg" loading="lazy"></a><figcaption>Houston, February 2012. With 8 supporters, the poster reported that the city's bike coordinator saw the post, checked the trail and added 7 seconds of all-red time so cyclists could cross first. Re-rendered as above.</figcaption></figure>
+<h3 id="20132014-everywhere-then-organizations">2013–2014: everywhere, then organizations</h3>
+<p>In December 2012 any US city could sign up. The homepage became the sentence itself, with a resident wearing her sticker.</p>
+<figure><a href="neighborland/08-home-2013.jpg"><img alt="Neighborland homepage, January 2013: &quot;I want ___ in my neighborhood&quot; with a photo of a woman wearing an &quot;I want Bakery&quot; sticker" src="neighborland/08-home-2013.jpg" loading="lazy"></a><figcaption>Homepage, January 2013: "Neighborland is now available everywhere in the U.S." The empty green areas held videos the archive didn't save. The "Work With Us" pitch to organizations already sits at the bottom.</figcaption></figure>
+<p>Open-ended wishes spread thin across hundreds of cities with no one to answer them. So organizations were given "Questions" to put to residents: what do you want at this building, on this corridor, in this plaza? A question gave each campaign a topic, a deadline and an owner who had promised to read the answers.</p>
+<figure><a href="neighborland/15-un-plaza-project.jpg"><img alt="Two UN Plaza pages: the question &quot;How can we make UN Plaza a better place?&quot; with 3,900 participants, and the idea &quot;525 neighbors want a night market at UN Plaza&quot;" src="neighborland/15-un-plaza-project.jpg" loading="lazy"></a><figcaption>A San Francisco project, about 2014. Left: the question page, asked by SF Beautiful with a city grant, showing 3,900 participants. Right: the winning idea, "525 neighbors want a night market at UN Plaza", suggested by a neighborhood group. From <a href="https://www.candychang.com/neighborland/" target="_blank" rel="noopener">candychang.com</a>.</figcaption></figure>
+<h3 id="20152019-software-for-agencies">2015–2019: software for agencies</h3>
+<p>By 2015 the homepage was a sales page.</p>
+<figure><a href="neighborland/14-home-2015.jpg"><img alt="Neighborland homepage, March 2015: &quot;Make your neighborhood better.&quot; and &quot;How does it work? 1. Ask a Question 2. Collect Ideas 3. Vote and Share 4. Take Action&quot;" src="neighborland/14-home-2015.jpg" loading="lazy"></a><figcaption>Homepage, March 2015. "What is Neighborland?" now speaks to organizations, and the four steps start with the organization asking.</figcaption></figure>
+<p>The street toolkit became part of the product. Organizers set up whiteboards and booths where foot traffic already was, and volunteers typed the input in.</p>
+<figure><a href="neighborland/09-street-toolkit.jpg"><img alt="A crowd writing on a blue &quot;What do you want to see in Mountain View?&quot; whiteboard at a farmers' market, and a UN Plaza booth" src="neighborland/09-street-toolkit.jpg" loading="lazy"></a><figcaption>Left: Greenbelt Alliance's whiteboard at a Mountain View farmers' market, 5,000+ residents over three years. Right: the UN Plaza booth. From <a href="https://www.candychang.com/neighborland/" target="_blank" rel="noopener">candychang.com</a>.</figcaption></figure>
+<figure><a href="neighborland/10-sticker-backs-2015.jpg"><img alt="Two &quot;I want ___ in Mountain View&quot; stickers, one showing the printed back: Share your vision, Be heard: elected and appointed officials are listening, Make change happen" src="neighborland/10-sticker-backs-2015.jpg" loading="lazy"></a><figcaption>The sticker's printed back told people where to post their idea and that officials were listening. The deck calls stickers a way to show residents the power of saying what they want in public. In 2014 they cost $0.35 each, 100 minimum. From the 2015 sales deck.</figcaption></figure>
+<figure><a href="neighborland/11-product-2015.jpg"><img alt="Four phone screens: an idea with Me Too, a map of ideas, a project update page, and an email notification" src="neighborland/11-product-2015.jpg" loading="lazy"></a><figcaption>The product in 2015: "Me Too" also subscribes you to updates; facilitators draw maps residents can pin ideas to; organizers post updates and outcomes; and emails go out at key moments. From the 2015 sales deck.</figcaption></figure>
+<figure><a href="neighborland/12-analytics-2015.jpg"><img alt="Google Analytics dashboard for a project: 84,584 sessions, 65,189 users, 208,905 pageviews" src="neighborland/12-analytics-2015.jpg" loading="lazy"></a><figcaption>What agencies paid for: proof of reach. One project's analytics, about November 2014 to July 2015: 65,189 users and 208,905 pageviews. From the 2015 sales deck.</figcaption></figure>
+<figure><a href="neighborland/16-imagine-mesa.jpg"><img alt="Imagine Mesa: &quot;How do you Imagine Mesa at Play?&quot; asked by the City of Mesa, 67,413 participants" src="neighborland/16-imagine-mesa.jpg" loading="lazy"></a><figcaption>Imagine Mesa (Arizona), 2017. The city's own figures were 65,000+ site visits and about 10,000 people who shared, commented or supported. Neighborland counted 67,413 "participants". From <a href="https://www.candychang.com/neighborland/" target="_blank" rel="noopener">candychang.com</a>.</figcaption></figure>
+<figure><a href="neighborland/17-dix-park-2019.jpg"><img alt="Dorothea Dix Park Master Plan page, March 2019: &quot;Master Plan approved by City Council&quot;, 68,326 participants" src="neighborland/17-dix-park-2019.jpg" loading="lazy"></a><figcaption>Raleigh's Dorothea Dix Park, March 2019. The project's last update: the City Council approved the plan. This loop-closing message is what most open wishes never got.</figcaption></figure>
+<figure><a href="neighborland/18-home-2019.jpg"><img alt="Neighborland homepage, July 2019: &quot;Solutions for public engagement&quot;, 3 million people, Citywide" src="neighborland/18-home-2019.jpg" loading="lazy"></a><figcaption>Homepage, July 2019: "Solutions for public engagement", with a Citywide plan for one contract covering every city department.</figcaption></figure>
+<figure><a href="neighborland/19-neighborland-today.jpg"><img alt="neighborland.com today: a memorial page listing the founders, team and investors" src="neighborland/19-neighborland-today.jpg" loading="lazy"></a><figcaption>neighborland.com in October 2026. The memorial page says it operated until 2023 and claims "$700 billion" in impact, meaning the budgets of the plans it worked on.</figcaption></figure>
+<h2 id="how-it-got-people">How it got people</h2>
+<h3 id="residents">Residents</h3>
+<p>There's no breakdown of signups by channel. By the company's own account, people came through these routes, roughly in order of importance:</p>
+<ol>
+<li><strong>In person, where foot traffic already was.</strong> Its 2014 guide to engaging the public offers three tools: stickers, posters and mobile whiteboards. Its advice is to go to farmers' markets and festivals and not expect people to come to you. Print the web address and text-in number on the sticker's back, keep a clipboard for names and emails, and post stickers no higher than 30 inches so kids and wheelchair users can reach them. Afterward, organizers bulk-uploaded the ideas, "me toos" and emails, so offline people counted the same as online ones.</li>
+<li><strong>Partner organizations bringing their members.</strong> Each city launched with partners: community groups, economic development groups or the city. In New Orleans, Bike Easy, Transport for NOLA and the Food Truck Coalition each sponsored a two-month challenge. Memphis launched at a party co-hosted with the nonprofit ioby. In Oakland there were listening sessions at four libraries, with posters left behind.</li>
+<li><strong>Text and tweet to post.</strong> Billboards, bus-stop signs and flyers listed a phone number to text ideas to. A Twitter bot turned any tweet starting "I want ___" into an idea and replied with its link.</li>
+<li><strong>Social sharing by the agency.</strong> For Dix Park, 67% of referrals came from Facebook and 26% from Twitter. In Mesa, the mayor and council shared the project from their own accounts.</li>
+<li><strong>Press as credibility.</strong> TED, Fast Company, NPR, GigaOm, and Business Insider's "20 Most Inspiring Companies of 2012". This helped win investors and agencies more than residents.</li>
+</ol>
+<p>Paid ads barely appear: a 2012 job posting asked for AdWords and Facebook Ads skills, and that's all.</p>
+<h3 id="agencies">Agencies</h3>
+<ul>
+<li><strong>Land and expand in San Francisco.</strong> It started with a 2012 corner beautification in one neighborhood, which led the district supervisor to give $15,000. Then a safer 6th Street with the transit agency in 2013, the Market Street Prototyping Festival in 2014, and formal planning department plans in 2015. By 2016 Neighborland was building features for SF Planning and putting them in the core product. It claimed 117,000 San Francisco participants.</li>
+<li><strong>Riding along with consultants.</strong> It joined project teams led by planning firms (Perkins+Will, Gehl, HNTB, Street Plans and others). Big wins like Turner Field in Atlanta and Dix Park came through those firms.</li>
+<li><strong>Case studies with famous names.</strong> The homepage and deck led with testimonials from Twitter, the Rockefeller Foundation and Greenbelt Alliance, plus partner logos like Google.</li>
+<li><strong>A promise agencies could repeat:</strong> 10 to 100 times the participation of traditional outreach at a tenth of the cost, and every plan it supported approved (company-reported).</li>
+</ul>
+<p>No evidence was found of conference booths, cold sales or RFP-driven growth; Raleigh's Dix Park is the one known RFP win.</p>
+<h2 id="how-it-kept-them">How it kept them</h2>
+<ul>
+<li><strong>One tap to take part, and the count as the headline.</strong> "Me Too" was a like, a vote and a subscription in one. Pages said "396 neighbors want…", so every tap visibly moved the number.</li>
+<li><strong>Comments could be backed too.</strong> A comment could show "5 neighbors support", so even replies were a way to agree.</li>
+<li><strong>A reward for crossing a threshold.</strong> In 2011, an idea with 100 votes got a sketch from the design team and help getting it in front of the right people. Staff also picked popular ideas (a supermarket, the St. Claude streetcar) and worked on them directly.</li>
+<li><strong>Answering "what's next?"</strong> At a June 2011 user-research session, people mostly checked their own ideas and who liked their comments. Their biggest question was "What's next?" That led to the Handbook, a how-to guide for making ideas happen, and to notifications after a "Me Too". On a 2011 streetcar idea a neighbor asked, "What is the current status on this? Anybody care to give an update?"</li>
+<li><strong>Updates in the thread.</strong> Staff posted news, letters and status in the comments of an idea. Later, "Made it Happen" flags and a public Progress page showed the wins.</li>
+<li><strong>Email at key moments.</strong> Residents chose real-time, daily or weekly email. Organizers could message an idea's supporters, and notifications went out when a meeting was coming or the input period closed. Mesa sent more than 30,000 and Dix Park more than 100,000.</li>
+<li><strong>Something to do besides vote.</strong> In 2013–14 every idea page had a "How can you help?" box to add a resource, event, petition or fundraiser.</li>
+<li><strong>Named listeners.</strong> In agency projects, "Partners" were officials who said they read the discussion. The Dix Park page told residents the way to get their attention was to answer questions and get their network to "Me Too".</li>
+</ul>
+<h2 id="traffic-and-reach">Traffic and reach</h2>
+<p><strong>Independent estimates.</strong> These are the only independent numbers; Quantcast, Compete and SimilarWeb have no data:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Measure</th>
+<th>Figure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>About 2015</td>
+<td>Alexa 3-month global rank</td>
+<td>920,186, modeled at about 15,000 unique visitors a month (<a href="https://www.siteworthtraffic.com/report/neighborland.com" target="_blank" rel="noopener">SiteWorthTraffic</a>)</td>
+</tr>
+<tr>
+<td>June 2019</td>
+<td>Alexa global / US rank</td>
+<td>1,327,706 / 261,983; 89% of traffic from the US, 1.8 pages per visit (<a href="https://web.archive.org/web/20190617123940/https://www.alexa.com/siteinfo/neighborland.com" target="_blank" rel="noopener">archive</a>)</td>
+</tr>
+<tr>
+<td>July 2019</td>
+<td>Alexa global rank</td>
+<td>1,513,410 (<a href="https://web.archive.org/web/20190721024823/https://www.alexa.com/siteinfo/neighborland.com" target="_blank" rel="noopener">archive</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Twitter followers (@Neighborland).</strong> Fast growth through 2012, flat after 2016:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>2011</th>
+<th>May 2012</th>
+<th>Dec 2012</th>
+<th>Feb 2014</th>
+<th>Apr 2015</th>
+<th>Oct 2016</th>
+<th>Apr 2018</th>
+<th>Jan 2020</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>88</td>
+<td>806</td>
+<td>1,913</td>
+<td>3,422</td>
+<td>4,019</td>
+<td>4,567</td>
+<td>4,704</td>
+<td>4,634</td>
+</tr>
+</tbody>
+</table></div>
+<p>Facebook likes were 2,138 in November 2012 and 3,632 in May 2015. There was never a native app; it was a mobile website plus text and Twitter input.</p>
+<p><strong>What the company claimed</strong> (company-reported):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Claim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>July 2012</td>
+<td>NPR: only a few hundred residents using it in New Orleans after a year</td>
+</tr>
+<tr>
+<td>February 2014</td>
+<td>More than 350,000 people and 100 organizations</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>500,000 to 750,000 residents and 200+ organizations (two posts disagree)</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>3 million+ people; about 200 projects, about 50 of them for government agencies (GovTech)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>How to read the gap.</strong> The big totals are cumulative and come from a few large projects. Market Street alone claimed 250,000, mostly in-person festival visitors. They count visitors, not people who took part. In Mesa, the city's own numbers were 65,000+ site visits and about 10,000 people who posted, commented or supported. A local blogger estimated only about 1 in 6 visitors did anything. Dix Park reported 10,000 direct participants in 2018 and later claimed 67,000. A fair summary: tens of thousands of people actually posted or supported something in a good year, and most of them came from a few agency projects with big promotional pushes.</p>
+<h2 id="why-it-worked-and-what-didnt">Why it worked, and what didn't</h2>
+<p><strong>Why it worked:</strong></p>
+<ul>
+<li><strong>The question was the product.</strong> "I want ___ in my neighborhood" is easy to answer, works the same on a sticker, a whiteboard, a text or a web form, and says something about the person who answers. Wearing or posting a sticker is public, and that brings in the next person.</li>
+<li><strong>Physical first, digital second.</strong> Most participants started on the street. The site's job was to collect everything in one place, count it and keep talking. That's why it reached people who would never visit a civic website.</li>
+<li><strong>Partners did the acquisition.</strong> Neighborland never built a mass audience of its own. Each campaign borrowed one: a coalition's members, a city's social media accounts, a farmers' market crowd. When it worked, it made those partners look good.</li>
+<li><strong>An owner made it count.</strong> Wins came when someone with power had promised to read it: a bike coordinator, a supervisor, a planning department with a plan to approve. The Houston idea moved with 8 supporters, while a Baltimore request for a new bus route drew 27 and had no one to answer it. Selling that promise to agencies, rather than hoping for it, is what made it a business.</li>
+<li><strong>Counts and updates gave people a reason to come back.</strong> The supporter count as the headline, "Me Too" as a subscription, and staff updates in the thread answered the question users asked most: what's next?</li>
+</ul>
+<p><strong>What didn't work:</strong></p>
+<ul>
+<li><strong>Open wishes with no owner.</strong> Most ideas drew a handful of supporters and went nowhere. Its biggest early push, about 2,500 signatures for the St. Claude streetcar, lost its federal grant. The company later called the effort naive. The line opened in 2016 on city money.</li>
+<li><strong>The audience was narrow.</strong> NPR found early users were mostly white, educated professionals. Some residents dominated agency discussions until the tool started truncating long comments and merging repeats.</li>
+<li><strong>The numbers were inflated.</strong> Counting page visitors as "participants" made the totals hard to trust.</li>
+<li><strong>Campaigns outgrew it.</strong> The New Orleans Food Truck Coalition, one of its best success stories, eventually needed organizing tools Neighborland didn't have.</li>
+<li><strong>No consumer business.</strong> With no ads and nothing charged to residents, the only money was agency contracts, so the product followed the agencies' projects rather than neighbors' everyday wishes.</li>
+</ul>
+<h2 id="what-crosswalk-watch-should-take-from-it">What Crosswalk Watch should take from it</h2>
+<p>Our earlier competitive research already lists the main lessons in order: real votes, a fill-in-the-blank reason, putting the question on the corner, closing the loop, getting someone to promise to read it, working through existing groups, reaching people offline, and deciding who pays. This research adds these, roughly in order of payoff:</p>
+<ol>
+<li><strong>Make the count the headline.</strong> "12 neighbors want a crosswalk at Latona Ave NE &amp; NE 47th St." should be the corner page's title, the share text, the flyer's headline and the subject of the council summary, so each vote visibly moves it.</li>
+<li><strong>Make a vote a subscription, and say so.</strong> Neighborland's "Me Too" was also "keep me updated", which is what kept people around. The vote box should say plainly that voters hear when SDOT's status for the corner changes, and the automatic updates from the data rebuild should go out.</li>
+<li><strong>A tear-off flyer for each corner's pole.</strong> The LaSalle flyer is Crosswalk Watch's corner sign almost exactly: the question at the top, a web address on each tab. Print each corner's question, vote count and QR code, with tabs that have the corner's short link.</li>
+<li><strong>A reward for reaching a threshold.</strong> Neighborland's 2011 rule was 100 votes and the design team sketches your idea and gets it in front of the right people. A Crosswalk Watch version: at N votes in a neighborhood, the corner goes into the council member's monthly summary with a ready-to-send request. Show the progress toward it on the page.</li>
+<li><strong>Input typed in later counts too.</strong> Allow a neighbor captain to enter votes and reasons collected on paper at a farmers' market or PTA meeting, marked as collected in person. That's how Neighborland reached people who weren't online.</li>
+<li><strong>A text-in number.</strong> Billboards and bus-stop signs with a text number brought in people who would never type a URL. "Text LATONA47 to …" on the pole sign is the same idea.</li>
+<li><strong>Show the wins.</strong> Neighborland's Progress page and "Made it Happen" flags were the proof that taking part mattered. A "built" list on the neighborhood and city pages, from SDOT's own records, does that better than Neighborland could, since Crosswalk Watch doesn't have to claim credit to show results.</li>
+<li><strong>Count honestly.</strong> Report voters and confirmed votes, never page visitors. Credibility with SDOT and council offices is the whole strategy, and Neighborland's inflated totals are a warning.</li>
+<li><strong>Win one city, then sell what it needed.</strong> Neighborland's growth went through San Francisco Planning, building what it needed and making that the product. For taking the site to other cities, the equivalent is to get SDOT or a council office to actually use the corner data, then offer that to the next city.</li>
+</ol>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Neighborland's memorial page: <a href="https://neighborland.com/" target="_blank" rel="noopener">neighborland.com</a></li>
+<li>Candy Chang's project page, the source of the street and early product photos: <a href="https://www.candychang.com/neighborland/" target="_blank" rel="noopener">candychang.com/neighborland</a></li>
+<li>Neighborland's 2015 sales deck: <a href="https://emergingplannersmd.wordpress.com/wp-content/uploads/2015/10/neighborland-overview.pdf" target="_blank" rel="noopener">Neighborland overview PDF</a></li>
+<li>Neighborland's Handbook, via the Internet Archive:</li>
+<li><a href="https://web.archive.org/web/20111126042027/http://handbook.neighborland.com/how/" target="_blank" rel="noopener">How it works, 2011</a></li>
+<li><a href="https://web.archive.org/web/20120701001424/http://handbook.neighborland.com/what-we-learned-from-the-hackathon/" target="_blank" rel="noopener">What we learned from the hackathon</a></li>
+<li><a href="https://web.archive.org/web/20140905011410/http://handbook.neighborland.com/how-to-engage-the-public/" target="_blank" rel="noopener">How to engage the public, 2014</a></li>
+<li><a href="https://web.archive.org/web/20140419030328/http://handbook.neighborland.com/how-to-order-stickers/" target="_blank" rel="noopener">How to order stickers, 2014</a></li>
+<li>Annual reports for <a href="https://web.archive.org/web/20160322141225/http://handbook.neighborland.com/2014-year-in-review/" target="_blank" rel="noopener">2014</a>, <a href="https://web.archive.org/web/20160322141159/http://handbook.neighborland.com/2015-annual-report/" target="_blank" rel="noopener">2015</a> and <a href="https://web.archive.org/web/20171002042531/https://handbook.neighborland.com/2016-annual-report-1506b273c79a" target="_blank" rel="noopener">2016</a></li>
+<li><a href="https://web.archive.org/web/20220521124158/https://handbook.neighborland.com/what-is-neighborland-1681fe79352c" target="_blank" rel="noopener">What is Neighborland, 2019</a></li>
+<li><a href="https://web.archive.org/web/20260131100508/https://handbook.neighborland.com/dixpark-69c743174edf" target="_blank" rel="noopener">Dix Park</a> and <a href="https://web.archive.org/web/20221027151303/https://handbook.neighborland.com/imagine-mesa-4bbd22d03323" target="_blank" rel="noopener">Imagine Mesa</a> case studies</li>
+<li>Pricing: archived About pages from <a href="https://web.archive.org/web/20161121130130/https://neighborland.com/about" target="_blank" rel="noopener">2016</a> and <a href="https://web.archive.org/web/20190111233534/https://neighborland.com/about" target="_blank" rel="noopener">2019</a></li>
+<li>Funding: <a href="https://www.sec.gov/Archives/edgar/data/1548687/000154868712000001/primary_doc.xml" target="_blank" rel="noopener">SEC Form D</a>, <a href="https://techcrunch.com/?p=537420" target="_blank" rel="noopener">TechCrunch</a></li>
+<li>Press:</li>
+<li><a href="https://streetfightmag.com/2011/08/03/neighborland-helps-citizens-share-ideas-and-shape-their-community/" target="_blank" rel="noopener">Street Fight, 2011</a></li>
+<li><a href="https://nextcity.org/urbanist-news/i-wish-this-was...-making-real-what-happens-on-the-internet" target="_blank" rel="noopener">Next City, 2012</a></li>
+<li><a href="https://wgbh.org/news/2012-07-02/filling-in-new-orleans-future-one-blank-at-a-time" target="_blank" rel="noopener">NPR via GBH, 2012</a></li>
+<li><a href="https://www.govtech.com/biz/Neighborland-Makes-Public-Engagement-Tool-for-Transportation.html" target="_blank" rel="noopener">GovTech, 2019</a> and <a href="https://www.govtech.com/biz/nextdoor-acquires-citizen-engagement-platform-neighborland.html" target="_blank" rel="noopener">2020</a></li>
+<li>Criticism of the Mesa numbers: <a href="https://mesazona.blogspot.com/2017/11/imagine-mesa-fudging-numbers-to-get-data.html" target="_blank" rel="noopener">MesaZona, 2017</a></li>
+<li>Traffic: archived Alexa pages from <a href="https://web.archive.org/web/20190617123940/https://www.alexa.com/siteinfo/neighborland.com" target="_blank" rel="noopener">June 2019</a> and <a href="https://web.archive.org/web/20190721024823/https://www.alexa.com/siteinfo/neighborland.com" target="_blank" rel="noopener">July 2019</a>; archived twitter.com/Neighborland pages</li>
+</ul>
+</main>
+</body>
+</html>
