@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seattle's Homelessness Budget</title>
+<meta name="description" content="What Seattle spends on homelessness in 2026, where the money comes from (city, county, state, federal), and how to talk about it without double counting.">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f2421; --muted: #5d6660; --line: #e2e0d8; --accent: #2a6fb5; --card: #ffffff; --code: #f0efe9;
+  --track: #ecebe5; --grid: #e1e0d9;
+  --s-seattle: #2a78d6; --s-county: #eb6834; --s-federal: #1baf7a; --s-state: #eda100; --s-bar: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161a17; --fg: #e6e9e5; --muted: #9aa49c; --line: #2c332e; --accent: #7fb2ea; --card: #1d221f; --code: #242a26;
+    --track: #2a302c; --grid: #2c2c2a;
+    --s-seattle: #3987e5; --s-county: #d95926; --s-federal: #199e70; --s-state: #c98500; --s-bar: #3987e5;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161a17; --fg: #e6e9e5; --muted: #9aa49c; --line: #2c332e; --accent: #7fb2ea; --card: #1d221f; --code: #242a26;
+  --track: #2a302c; --grid: #2c2c2a;
+  --s-seattle: #3987e5; --s-county: #d95926; --s-federal: #199e70; --s-state: #c98500; --s-bar: #3987e5;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+main { max-width: 820px; margin: 0 auto; padding: 48px 16px 96px; }
+.kicker { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
+h1 { font-size: 44px; line-height: 1.1; margin: 8px 0 14px; letter-spacing: -.015em; }
+.lede { font-size: 21px; line-height: 1.45; max-width: 36em; margin: 0 0 8px; }
+.meta { color: var(--muted); font-size: 15px; }
+h2 { font-size: 27px; line-height: 1.25; margin: 56px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 19px; margin: 28px 0 6px; }
+a { color: var(--accent); }
+p, li { max-width: 70ch; }
+li { margin: 6px 0; }
+nav.toc { margin: 24px 0 8px; font-size: 15px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.note { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+.callout { background: var(--code); border-radius: 10px; padding: 14px 18px; margin: 18px 0; }
+.callout p { margin: 6px 0; }
+
+/* Stat tiles */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 28px 0 8px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.stat .n { font-size: 32px; font-weight: 700; line-height: 1.1; letter-spacing: -.01em; }
+.stat .l { font-size: 14px; color: var(--muted); line-height: 1.4; margin-top: 6px; }
+
+/* Layers */
+.layers { display: grid; gap: 12px; margin: 20px 0; }
+.layer { background: var(--card); border: 1px solid var(--line); border-left: 6px solid var(--accent); border-radius: 10px; padding: 16px 20px; display: grid; grid-template-columns: 150px 1fr; gap: 4px 20px; align-items: baseline; }
+.layer.l2 { border-left-color: color-mix(in srgb, var(--accent) 60%, var(--bg)); }
+.layer.l3 { border-left-color: var(--line); border-left-style: dashed; }
+.layer .amt { font-size: 28px; font-weight: 700; letter-spacing: -.01em; line-height: 1.1; }
+.layer .amt small { display: block; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .03em; text-transform: uppercase; margin-bottom: 4px; }
+.layer h3 { margin: 0 0 4px; font-size: 18px; }
+.layer p { margin: 0; font-size: 15.5px; }
+
+/* Horizontal bar chart */
+.chart { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px 14px; margin: 18px 0; }
+.chart-title { font-weight: 600; margin: 0 0 2px; }
+.chart-sub { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+.hbar { display: grid; grid-template-columns: minmax(150px, 34%) 1fr; gap: 6px 14px; align-items: center; }
+.hbar .lab { font-size: 14.5px; line-height: 1.3; }
+.hbar .lab span { display: block; color: var(--muted); font-size: 12.5px; }
+.hbar .row { display: flex; align-items: center; gap: 8px; min-height: 30px; cursor: default; }
+.hbar .fill { height: 16px; background: var(--s-bar); border-radius: 0 4px 4px 0; min-width: 3px; }
+.hbar .fill.hatch { background: repeating-linear-gradient(45deg, var(--s-bar) 0 4px, color-mix(in srgb, var(--s-bar) 45%, var(--card)) 4px 7px); }
+.hbar .val { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hbar .row:hover .fill { filter: brightness(1.08); }
+.bracket { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
+.bracket i { flex: 1; height: 0; border-top: 1px solid var(--grid); }
+
+/* Stacked bars */
+.stack-block { margin: 6px 0 18px; }
+.stack-head { display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px; margin-bottom: 6px; }
+.stack-head b { font-weight: 600; }
+.stack-head span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.stack { display: flex; gap: 2px; height: 34px; }
+.stack > div { height: 100%; cursor: default; }
+.stack > div:first-child { border-radius: 4px 0 0 4px; }
+.stack > div:last-child { border-radius: 0 4px 4px 0; }
+.stack > div:hover { filter: brightness(1.08); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 8px 0 0; padding: 0; list-style: none; font-size: 14px; }
+.legend li { margin: 0; display: flex; align-items: center; gap: 6px; }
+.legend li::before { content: ""; width: 12px; height: 12px; border-radius: 3px; background: var(--c); flex: none; }
+.legend b { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+details { margin: 10px 0 0; font-size: 14.5px; }
+summary { cursor: pointer; color: var(--accent); }
+.tbl { overflow-x: auto; margin: 10px 0; }
+table { border-collapse: collapse; font-size: 14.5px; min-width: 100%; }
+th, td { border-bottom: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+th { font-weight: 600; background: var(--code); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.sub td:first-child { padding-left: 26px; color: var(--muted); }
+tr.total td { font-weight: 700; }
+
+/* Outside cards */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.card { background: var(--card); border: 1px dashed var(--line); border-radius: 10px; padding: 14px 16px; }
+.card .n { font-size: 22px; font-weight: 700; line-height: 1.2; }
+.card h3 { margin: 2px 0 6px; font-size: 16.5px; }
+.card p { margin: 0; font-size: 14.5px; line-height: 1.5; }
+
+/* Steps */
+ol.steps { padding-left: 0; list-style: none; counter-reset: c; margin: 16px 0; }
+ol.steps > li { counter-increment: c; position: relative; padding: 4px 0 10px 46px; margin: 0; }
+ol.steps > li::before { content: counter(c); position: absolute; left: 0; top: 2px; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: var(--bg); font-weight: 700; display: grid; place-items: center; font-size: 15px; }
+.dont { border-left: 4px solid #d03b3b; }
+
+/* Tooltip */
+#tip { position: fixed; pointer-events: none; z-index: 10; background: var(--fg); color: var(--bg); font-size: 13.5px; line-height: 1.4;
+  padding: 7px 10px; border-radius: 6px; max-width: 260px; opacity: 0; transition: opacity .1s; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+#tip.on { opacity: 1; }
+#tip b { display: block; }
+
+.sources { font-size: 14.5px; }
+.sources li { margin: 4px 0; }
+footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 34px; }
+  .lede { font-size: 19px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat .n { font-size: 27px; }
+  .layer { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .hbar { grid-template-columns: 1fr; gap: 0; }
+  .hbar .row { margin-bottom: 8px; }
+}
+@media (forced-colors: active) {
+  .stack > div, .hbar .fill, .legend li::before { forced-color-adjust: none; border: 1px solid CanvasText; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<div class="kicker">Seattle homelessness · first principles</div>
+<h1>What does Seattle spend on homelessness?</h1>
+<p class="lede">The city budgets <b>$229 million</b> for homelessness in 2026. Almost all of it is local tax money. County, state and federal dollars come mostly through a separate regional agency, and that agency is mostly funded by Seattle too.</p>
+<p class="meta">Updated October 31, 2026 · Figures are the 2026 adopted budget unless marked otherwise</p>
+
+<nav class="toc">
+  <a href="#layers">Three layers</a>
+  <a href="#city">Where the city's money goes</a>
+  <a href="#sources">Where the money comes from</a>
+  <a href="#outside">Money nobody adds up</a>
+  <a href="#2027">2027</a>
+  <a href="#say-it">How to say it</a>
+  <a href="#refs">Sources</a>
+</nav>
+
+<div class="stats">
+  <div class="stat"><div class="n">$229M</div><div class="l">City of Seattle homelessness budget, 2026</div></div>
+  <div class="stat"><div class="n">~$285</div><div class="l">Per Seattle resident per year (about 800,000 people)</div></div>
+  <div class="stat"><div class="n">58%</div><div class="l">Share of the regional agency's budget that Seattle pays</div></div>
+  <div class="stat"><div class="n">~3%</div><div class="l">Share of Seattle's payment to the regional agency that is federal money</div></div>
+</div>
+
+<h2 id="layers">The money comes in three layers</h2>
+<p>There is no single "homelessness budget." Public money for homelessness in Seattle sits in three places, and they overlap, so you can't simply add up the totals.</p>
+
+<div class="layers">
+  <div class="layer l1">
+    <div class="amt"><small>Layer 1</small>$228.7M</div>
+    <div><h3>City of Seattle</h3><p>The city's own official homelessness figure. It covers shelter and service contracts, encampment response and staff. This is the number the City Council controls.</p></div>
+  </div>
+  <div class="layer l2">
+    <div class="amt"><small>Layer 2</small>$202.9M</div>
+    <div><h3>King County Regional Homelessness Authority (KCRHA)</h3><p>A regional pool covering all of King County. It combines city, county, state and federal money. <b>Seattle provides $117.6M of it</b>, which also counts in Layer 1.</p></div>
+  </div>
+  <div class="layer l3">
+    <div class="amt"><small>Layer 3</small>Not totaled</div>
+    <div><h3>Everything else</h3><p>Federal grants paid straight to providers, the county's supportive-housing sales tax, the city's affordable-housing budget, Medicaid and housing vouchers. These are real money, but nobody adds them up.</p></div>
+  </div>
+</div>
+
+<h2 id="city">Where the city's $229 million goes</h2>
+<p>About three-quarters runs through the Human Services Department (HSD), and most of that is passed on to the regional agency. The rest is spread across other city departments.</p>
+
+<div class="chart" role="figure" aria-labelledby="c1t">
+  <p class="chart-title" id="c1t">City of Seattle homelessness spending, 2026 adopted</p>
+  <p class="chart-sub">Millions of dollars. Hover a bar for detail.</p>
+  <div class="hbar">
+    <div class="lab">Passed to KCRHA<span>Human Services Dept.</span></div>
+    <div class="row" data-tip="<b>$126.8M passed to KCRHA</b>Shelter, villages, rapid rehousing, supportive housing and more, contracted through the regional agency."><div class="fill" style="width:78%"></div><span class="val">$126.8M</span></div>
+
+    <div class="lab">Contracts the city runs itself<span>Human Services Dept.</span></div>
+    <div class="row" data-tip="<b>$38.1M city-managed programs</b>Provider contracts HSD manages directly, outside KCRHA. Up from $21.7M in 2025."><div class="fill" style="width:23.4%"></div><span class="val">$38.1M</span></div>
+
+    <div class="lab">Other city departments<span>Cleanup, hygiene, etc. (not itemized)</span></div>
+    <div class="row" data-tip="<b>~$32M in other departments</b>The rest of the city's $228.7M total, for example SPU's Clean City and hygiene programs and RV remediation. The budget book doesn't list it in one place."><div class="fill hatch" style="width:19.7%"></div><span class="val">~$32M</span></div>
+
+    <div class="lab">Encampment response (Unified Care Team)<span>Parks, SDOT, HSD, SPU, SPD, others</span></div>
+    <div class="row" data-tip="<b>~$30M Unified Care Team</b>Parks $11.4M, SDOT $6.7M, HSD $5.6M, SPU $2.8M, SPD $2.2M, FAS and IT ~$1.2M."><div class="fill" style="width:18.4%"></div><span class="val">~$30M</span></div>
+
+    <div class="lab">Contract oversight staff<span>Human Services Dept.</span></div>
+    <div class="row" data-tip="<b>$2.0M contract oversight</b>Eight HSD staff who manage provider contracts, including the KCRHA contract."><div class="fill" style="width:1.2%"></div><span class="val">$2.0M</span></div>
+  </div>
+  <div class="bracket"><i></i>Total $228.7M · HSD's share is $172.4M (75%)<i></i></div>
+  <details>
+    <summary>Show as a table</summary>
+    <div class="tbl"><table>
+      <tr><th>Item</th><th class="num">2026 adopted</th></tr>
+      <tr><td>Human Services Dept. homelessness</td><td class="num">$172.4M</td></tr>
+      <tr class="sub"><td>Passed to KCRHA</td><td class="num">$126.8M</td></tr>
+      <tr class="sub"><td>City-managed programs</td><td class="num">$38.1M</td></tr>
+      <tr class="sub"><td>Unified Care Team (HSD share)</td><td class="num">$5.7M</td></tr>
+      <tr class="sub"><td>Contract oversight staff</td><td class="num">$2.0M</td></tr>
+      <tr><td>Other city departments</td><td class="num">~$56M</td></tr>
+      <tr class="sub"><td>Unified Care Team outside HSD</td><td class="num">~$24M</td></tr>
+      <tr class="sub"><td>Not itemized in one place</td><td class="num">~$32M</td></tr>
+      <tr class="total"><td>Citywide homelessness budget</td><td class="num">$228.7M</td></tr>
+    </table></div>
+  </details>
+</div>
+<p class="note">HSD's homelessness budget rose 24% from 2025 ($138.9M → $172.4M). It includes $11.5M for prevention and rental assistance, $20M set aside in case federal funding is cut, and $7.8M to open 155 new shelter units.</p>
+
+<h2 id="sources">Where the money comes from</h2>
+<p>The city's own $229M is almost entirely local: the General Fund, a short-term rental tax and the Housing Levy. Of the $126.8M it sends to the regional agency, only $3.9M (about 3%) is federal grant money.</p>
+<p>County, state and federal money shows up mainly in the regional agency, KCRHA. Its funders look different depending on whether you ask <b>who sends the check</b> or <b>who raised the money</b>, because King County's contribution is mostly state money passing through.</p>
+
+<div class="chart" role="figure" aria-labelledby="c2t">
+  <p class="chart-title" id="c2t">KCRHA 2026 budget: $202.9M, all of King County</p>
+  <p class="chart-sub">Same money, two ways of looking at it. Hover a segment for detail.</p>
+
+  <div class="stack-block">
+    <div class="stack-head"><b>Who sends the check</b><span>$202.9M</span></div>
+    <div class="stack" aria-hidden="true">
+      <div style="flex:117.6;background:var(--s-seattle)" data-tip="<b>City of Seattle: $117.6M (58%)</b>Mostly General Fund. Includes $3.9M of federal CDBG and ESG grants the city passes through."></div>
+      <div style="flex:43.5;background:var(--s-county)" data-tip="<b>King County: $43.5M (21%)</b>More than half is state money passing through the county. About $18M is county-raised: document recording fees, the human services levy, a lodging tax."></div>
+      <div style="flex:25.4;background:var(--s-federal)" data-tip="<b>HUD Continuum of Care: $25.4M (13%)</b>Federal grants KCRHA holds directly. The region gets $64–67M from this program in total."></div>
+      <div style="flex:16.0;background:var(--s-state)" data-tip="<b>WA Dept. of Commerce: $16.0M (8%)</b>State grants paid directly to KCRHA."></div>
+    </div>
+    <ul class="legend">
+      <li style="--c:var(--s-seattle)">Seattle <b>$117.6M</b></li>
+      <li style="--c:var(--s-county)">King County <b>$43.5M</b></li>
+      <li style="--c:var(--s-federal)">Federal (HUD) <b>$25.4M</b></li>
+      <li style="--c:var(--s-state)">State <b>$16.0M</b></li>
+    </ul>
+  </div>
+
+  <div class="stack-block">
+    <div class="stack-head"><b>Who raised the money</b><span>approximate</span></div>
+    <div class="stack" aria-hidden="true">
+      <div style="flex:132.8;background:var(--s-seattle)" data-tip="<b>Local taxes: ~$133M (65%)</b>About $114M from Seattle, $18M from King County and $0.5M from other cities and donations."></div>
+      <div style="flex:31.0;background:var(--s-federal)" data-tip="<b>Federal: ~$31M (15%)</b>HUD Continuum of Care $25.4M, plus CDBG and ESG grants passed through by Seattle ($3.9M) and the county ($1.7M)."></div>
+      <div style="flex:39.1;background:var(--s-state)" data-tip="<b>State: ~$39M (19%)</b>Commerce's direct $16.0M, plus about $23M passed through King County (Emergency Housing Fund, Consolidated Homeless Grant, state ESG)."></div>
+    </div>
+    <ul class="legend">
+      <li style="--c:var(--s-seattle)">Local <b>~$133M</b></li>
+      <li style="--c:var(--s-federal)">Federal <b>~$31M</b></li>
+      <li style="--c:var(--s-state)">State <b>~$39M</b></li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Show as a table</summary>
+    <div class="tbl"><table>
+      <tr><th>Funder</th><th class="num">2026</th><th class="num">Share</th></tr>
+      <tr><td>City of Seattle</td><td class="num">$117.6M</td><td class="num">58%</td></tr>
+      <tr><td>King County</td><td class="num">$43.5M</td><td class="num">21%</td></tr>
+      <tr class="sub"><td>of which state pass-through</td><td class="num">~$23.1M</td><td class="num"></td></tr>
+      <tr class="sub"><td>of which federal pass-through</td><td class="num">~$1.7M</td><td class="num"></td></tr>
+      <tr class="sub"><td>of which county-raised</td><td class="num">~$18.0M</td><td class="num"></td></tr>
+      <tr><td>HUD Continuum of Care (federal)</td><td class="num">$25.4M</td><td class="num">13%</td></tr>
+      <tr><td>WA Dept. of Commerce (state)</td><td class="num">$16.0M</td><td class="num">8%</td></tr>
+      <tr><td>Other cities and donations</td><td class="num">$0.5M</td><td class="num">&lt;1%</td></tr>
+      <tr class="total"><td>Total</td><td class="num">$202.9M</td><td class="num">100%</td></tr>
+    </table></div>
+    <p class="note">The county's breakdown uses its adopted figures, which differ slightly from its contract total. KCRHA's own footnote puts the mix at 17% federal, 23% state and 60% local.</p>
+  </details>
+</div>
+
+<p><b>What KCRHA buys:</b> enhanced shelter (45%), permanent supportive housing (12%), rapid rehousing (12%), tiny-home villages (9%), its own admin and operations (7%), transitional housing (4%), and smaller programs such as day centers, diversion and safe parking. KCRHA spends countywide, so not all of this lands in Seattle.</p>
+
+<h2 id="outside">Money nobody adds up</h2>
+<p>These public dollars also serve homeless people in Seattle, but neither the city's budget nor KCRHA's counts them. Several are big.</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="n">~$40M a year</div>
+    <h3>Federal HUD grants paid straight to providers</h3>
+    <p>The region gets $64–67M a year from HUD's Continuum of Care program. KCRHA holds $25M; the rest goes straight to providers and housing authorities, mostly for supportive housing for about 4,500 households. This is the money HUD tried to cut in 2025. King County sued and won in June 2026.</p>
+  </div>
+  <div class="card">
+    <div class="n">0.1% sales tax</div>
+    <h3>King County Health Through Housing</h3>
+    <p>A countywide sales tax that buys and runs supportive housing: 15+ buildings and 1,000+ residents, several of them in Seattle. The county shows about $180M of 2026 spending, but that includes building purchases and bond payments. The yearly operating cost and Seattle's share aren't published.</p>
+  </div>
+  <div class="card">
+    <div class="n">$349.5M</div>
+    <h3>Seattle Office of Housing</h3>
+    <p>Affordable housing in general, from the Housing Levy, the JumpStart payroll tax and federal grants. That includes building and running about 5,700 supportive homes, many for formerly homeless people. The city doesn't count it as homelessness spending.</p>
+  </div>
+  <div class="card">
+    <div class="n">Not quantified</div>
+    <h3>Health care and housing vouchers</h3>
+    <p>Medicaid housing supports, the county's behavioral-health levies, and Seattle Housing Authority vouchers for homeless people and veterans. These are large but aren't reported as homelessness spending.</p>
+  </div>
+</div>
+
+<div class="callout">
+  <p><b>Does this include philanthropy?</b> No. Every figure on this page is public money. KCRHA's budget shows just $150K in donations. Most private giving goes straight to nonprofits such as Union Gospel Mission and DESC, and nobody tracks it in one place.</p>
+</div>
+
+<h2 id="2027">What changes in 2027</h2>
+<p>Mayor Wilson's first budget, proposed in September 2026, is before the City Council now. Here's what it would change for the Human Services Department's homelessness spending.</p>
+<div class="tbl"><table>
+  <tr><th></th><th class="num">2026 adopted</th><th class="num">2027 proposed</th></tr>
+  <tr><td>HSD homelessness budget</td><td class="num">$172.4M</td><td class="num">$183.5M</td></tr>
+  <tr class="sub"><td>General Fund</td><td class="num">$152.7M</td><td class="num">$95.6M</td></tr>
+  <tr class="sub"><td>JumpStart payroll tax</td><td class="num">—</td><td class="num">$65.5M</td></tr>
+  <tr><td>Contracts run through KCRHA</td><td class="num">$126.8M</td><td class="num">~$0 (moved back to HSD)</td></tr>
+</table></div>
+<ul>
+  <li><b>The city takes its contracts back from KCRHA.</b> About $113M in contracts (117 contracts with 40 providers) moves back into HSD, along with 23 new city staff to manage them. Shelter accounts for $80M of it.</li>
+  <li><b>JumpStart pays for homelessness services for the first time.</b> The payroll tax was meant for affordable housing; the city is using it to help close a $175M General Fund gap.</li>
+  <li><b>New money:</b> $37M for about 1,000 new shelter beds by the end of 2027, $6.5M more for prevention, and $10.2M for provider inflation.</li>
+</ul>
+
+<h2 id="say-it">How to say it without double counting</h2>
+<ol class="steps">
+  <li><b>Start with the city's $229M.</b> That's what Seattle taxpayers fund through the city budget, and what the City Council decides.</li>
+  <li><b>Add the roughly $85M of KCRHA money that doesn't come from Seattle</b> (county, state, federal and other cities), noting it's spread across the whole county.</li>
+  <li><b>Then point to the rest as "more, but not added up anywhere":</b> direct federal grants, the county's housing sales tax, the city's affordable-housing budget and health care.</li>
+</ol>
+<div class="callout dont">
+  <p><b>Don't</b> add KCRHA's $202.9M to the city's $228.7M. That counts Seattle's $117.6M twice.</p>
+</div>
+
+<h2 id="refs">Sources</h2>
+<ol class="sources">
+  <li><a href="https://www.seattle.gov/documents/Departments/FinanceDepartment/26adoptedbudget/2026%20Adopted%20Budget%20Book%20-%20Edited%20June%202026.pdf">City of Seattle 2026 Adopted Budget</a>: HSD overview and Addressing Homelessness budget (pp. 187–189); Unified Care Team provisos.</li>
+  <li><a href="https://kcrha.org/wp-content/uploads/2026/02/KCHRA-Governing-Board-February-20-Special-Meeting-Packet-final-update.pdf">KCRHA Governing Board packet, February 2026</a>: adopted 2026 budget by funder and fund source (pp. 14–29).</li>
+  <li><a href="https://forseattle.substack.com/p/whats-in-seattles-1835-million-homelessness">For Seattle: What's in Seattle's $183.5 million homelessness budget?</a> (October 2026): 2027 fund sources and the KCRHA contract transfer.</li>
+  <li><a href="https://content.govdelivery.com/accounts/WASEATTLE/bulletins/42c0669">Seattle HSD: 2027–2028 proposed budget update</a>.</li>
+  <li><a href="https://wilson.seattle.gov/2026/09/22/mayor-wilson-releases-2027-2028-proposed-budget-prioritizing-stability-safety-and-affordability/">Mayor Wilson's 2027–2028 proposed budget</a>.</li>
+  <li><a href="https://files.hudexchange.info/reports/published/CoC_AwardComp_CoC_WA-500-2023_WA_2023.pdf">HUD FY2023 Continuum of Care awards, Seattle/King County</a> ($63.9M) and <a href="https://kingcounty.gov/en/dept/council/governance-leadership/county-council/newsroom/2025/11-18-mosqueda-continuum-of-care-amendment-release">King County Council on Continuum of Care funding</a> ($67M).</li>
+  <li><a href="https://kcrha.org/news-hud-withdraws-notice-of-funding-opportunity/">KCRHA: court order pausing HUD's funding notice</a>.</li>
+  <li><a href="https://cdn.kingcounty.gov/-/media/king-county/depts/executive/zahilay/budget/budget/quarterlyreports/2026-quarterly-reports/q2-2026-quarterlyreport.pdf?rev=db4961e6dce345618f30029c3f67a56d&hash=BD66A9CBD62EC4DA836FBF1082E23085">King County Q2 2026 budget report</a>: Health Through Housing fund.</li>
+  <li><a href="https://www.seattle.gov/human-services/about-us/funding">Seattle HSD budget overview</a>.</li>
+</ol>
+
+<footer>Per-resident figure assumes about 800,000 Seattle residents. "Who raised the money" traces each funder's pass-through grants back to their source and is approximate. Corrections welcome.</footer>
+</main>
+
+<div id="tip" role="tooltip"></div>
+<script>
+(function () {
+  var tip = document.getElementById('tip'), cur = null;
+  function place(x, y) {
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8);
+    var top = y - h - 12 < 8 ? y + 18 : y - h - 12;
+    tip.style.left = left + 'px'; tip.style.top = top + 'px';
+  }
+  function show(el, x, y) { cur = el; tip.innerHTML = el.getAttribute('data-tip'); tip.classList.add('on'); place(x, y); }
+  function hide() { cur = null; tip.classList.remove('on'); }
+  document.querySelectorAll('[data-tip]').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') show(el, e.clientX, e.clientY); });
+    el.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hide(); });
+    el.addEventListener('click', function (e) {
+      if (cur === el) { hide(); return; }
+      var r = el.getBoundingClientRect(); show(el, e.clientX || r.left + r.width / 2, e.clientY || r.top);
+      e.stopPropagation();
+    });
+  });
+  document.addEventListener('click', hide);
+  window.addEventListener('scroll', hide, { passive: true });
+})();
+</script>
+</body>
+</html>
