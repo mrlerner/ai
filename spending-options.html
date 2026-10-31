@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homelessness Spending Options</title>
+<meta name="description" content="How the ~$615M spent on homelessness in Seattle from all sources splits between places to sleep and services, what each kind of place costs, and three options for bringing everyone inside.">
+<style>
+  /* Matches denver-vs-seattle-homelessness.html. Seattle = blue (--s1), King County = orange (--s2), federal = aqua (--s3), state = yellow (--s4), everywhere. */
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --card: #ffffff;
+    --card-alt: #f8f8f6;
+    --border: #e3e2dc;
+    --grid: #ececea;
+    --text: #1a1a1a;
+    --muted: #5f5e5a;
+    --light: #8d8c86;
+    --accent: #6d28a8;
+    --accent-soft: #efe6f8;
+    --red: #9e2a2a;
+    --red-soft: #f8dede;
+    --blue: #1e5a9e;
+    --s1: #2a78d6;   /* Seattle / local */
+    --s2: #eb6834;   /* King County */
+    --s3: #1baf7a;   /* Federal */
+    --s4: #eda100;   /* State */
+    --dim: #c9c8c1;
+    --tip-bg: #1a1a1a;
+    --tip-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+      --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+      --accent: #b48fe8; --accent-soft: #2a1f3a;
+      --red: #f08a8a; --red-soft: #3a1f1f; --blue: #8cb8f0;
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+      --dim: #4a4a47; --tip-bg: #f2f2ef; --tip-fg: #161616;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+    --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+    --accent: #b48fe8; --accent-soft: #2a1f3a;
+    --red: #f08a8a; --red-soft: #3a1f1f; --blue: #8cb8f0;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+    --dim: #4a4a47; --tip-bg: #f2f2ef; --tip-fg: #161616;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background: var(--bg); }
+  body { background:var(--bg); color:var(--text); font-family:Georgia,'Times New Roman',serif; line-height:1.7; }
+  .container { max-width:960px; margin:0 auto; padding-block:32px 64px; padding-left:max(24px, env(safe-area-inset-left, 0px)); padding-right:max(24px, env(safe-area-inset-right, 0px)); }
+  a { color: var(--blue); }
+  .sans, .subtitle, .section-title, .card h3, .hero, .kpi, .chart-card h3, .chart-card .sub, .legend, .chart-note, details.tbl, .tooltip, .callout h3, .sources, .hbar, .stack-head, .bracket, .layer .amt, .steps-n { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+
+  h1 { font-size:34px; font-weight:700; letter-spacing:-0.5px; line-height:1.2; margin-bottom:10px; border-bottom:3px double var(--border); padding-bottom:14px; text-wrap:balance; }
+  .subtitle { color:var(--muted); font-size:14px; margin-bottom:10px; }
+  .lede { font-size:18px; line-height:1.6; color:var(--text); margin:18px 0 12px; max-width:760px; }
+  .lede em { color: var(--accent); font-style: italic; }
+
+  .section { margin-top:48px; }
+  .section-title { font-size:15px; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--muted); }
+  .section-intro { font-size:16.5px; color:var(--muted); margin-bottom:16px; max-width:760px; }
+  .section-intro + .section-intro { margin-top:-6px; }
+  .headline { font-size:26px; font-weight:700; line-height:1.25; letter-spacing:-0.3px; margin-bottom:16px; max-width:820px; text-wrap:balance; }
+  .section-intro b, .card p b, .callout p b { color:var(--text); font-weight:600; }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:16px 18px; min-width:0; }
+  .card.outside { border-style:dashed; }
+  .card h3 { font-size:16.5px; font-weight:700; margin-bottom:8px; color:var(--text); line-height:1.35; text-wrap:balance; }
+  .card .big { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:24px; font-weight:600; letter-spacing:-0.5px; line-height:1.2; margin-bottom:4px; }
+  .card p, .card li { font-size:16px; color:var(--muted); line-height:1.65; }
+  .card ul { padding-left:18px; }
+  .card li { margin-bottom:5px; }
+
+  /* Hero figures */
+  .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:12px; margin:18px 0 6px; }
+  .hero .h { border-left:3px solid var(--s1); padding:4px 0 4px 14px; min-width:0; }
+  .hero .h.acc { border-left-color: var(--accent); }
+  .hero .h .v { font-size:44px; font-weight:600; line-height:1; letter-spacing:-1px; }
+  .hero .h .l { font-size:13.5px; color:var(--muted); margin-top:6px; line-height:1.45; }
+  .hero .h .l b { color:var(--text); font-weight:600; }
+
+  /* Three layers */
+  .layers { display:grid; gap:12px; }
+  .layer { background:var(--card); border:1px solid var(--border); border-left:4px solid var(--s1); border-radius:6px; padding:14px 18px; display:grid; grid-template-columns:150px 1fr; gap:4px 20px; align-items:baseline; min-width:0; }
+  .layer.l2 { border-left-color: var(--accent); }
+  .layer.l3 { border-left:4px dashed var(--dim); }
+  .layer .amt { font-size:28px; font-weight:600; letter-spacing:-0.5px; line-height:1.1; }
+  .layer .amt small { display:block; font-size:12px; font-weight:600; color:var(--light); letter-spacing:.5px; text-transform:uppercase; margin-bottom:4px; }
+  .layer h3 { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:16.5px; font-weight:700; margin-bottom:4px; }
+  .layer p { font-size:16px; color:var(--muted); line-height:1.6; }
+  .layer p b { color:var(--text); font-weight:600; }
+
+  /* Charts */
+  .chart-card { border:1px solid var(--border); border-radius:6px; padding:16px 18px 12px; background:var(--card); margin-bottom:16px; min-width:0; }
+  .chart-card h3 { font-size:16.5px; font-weight:700; margin-bottom:2px; text-wrap:balance; }
+  .chart-card .sub { font-size:15.5px; color:var(--muted); margin-bottom:12px; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:13px; color:var(--muted); margin:6px 0 4px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .legend b { color:var(--text); font-weight:600; font-variant-numeric:tabular-nums; }
+  .sw { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  .chart-note { font-size:14.5px; color:var(--light); margin-top:8px; line-height:1.5; }
+  details.tbl { margin-top:8px; overflow-x:auto; }
+  details.tbl summary { cursor:pointer; font-size:14.5px; color:var(--blue); }
+  details.tbl table { width:100%; border-collapse:collapse; margin-top:8px; font-size:14.5px; }
+  details.tbl th, details.tbl td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--border); font-variant-numeric: tabular-nums; vertical-align:top; }
+  details.tbl th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.4px; }
+  details.tbl td.n, details.tbl th.n { text-align:right; white-space:nowrap; }
+  details.tbl tr.sub td:first-child { padding-left:24px; color:var(--muted); }
+  details.tbl tr.total td { font-weight:700; }
+  table.plain { width:100%; border-collapse:collapse; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:15px; }
+  table.plain th, table.plain td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); font-variant-numeric:tabular-nums; vertical-align:top; }
+  table.plain th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.4px; }
+  table.plain td.n, table.plain th.n { text-align:right; white-space:nowrap; }
+  table.plain tr.sub td:first-child { padding-left:24px; color:var(--muted); }
+
+  /* Horizontal bars */
+  .hbar { display:grid; grid-template-columns:minmax(170px, 32%) 1fr; gap:4px 14px; align-items:center; }
+  .hbar .lab { font-size:14.5px; line-height:1.3; color:var(--text); }
+  .hbar .lab span { display:block; color:var(--light); font-size:12.5px; }
+  .hbar .row { display:flex; align-items:center; gap:8px; min-height:34px; cursor:default; }
+  .hbar .fill { height:16px; background:var(--s1); border-radius:0 4px 4px 0; min-width:3px; }
+  .hbar .fill.hatch { background:repeating-linear-gradient(45deg, var(--s1) 0 4px, color-mix(in srgb, var(--s1) 40%, var(--card)) 4px 7px); }
+  .hbar .val { font-size:13.5px; font-weight:600; color:var(--text); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .hbar .row:hover .fill { filter:brightness(1.08); }
+  .hbar .seg2 { display:flex; gap:2px; min-width:3px; }
+  .hbar .seg2 .fill { min-width:0; border-radius:0; }
+  .hbar .seg2 .fill:last-child { border-radius:0 4px 4px 0; }
+  .hbar .fill.oth, .sw.oth { background:color-mix(in srgb, var(--s1) 42%, var(--card)); }
+  .bracket { display:flex; align-items:center; gap:8px; margin:10px 0 2px; font-size:13.5px; color:var(--muted); }
+  .bracket i { flex:1; height:0; border-top:1px solid var(--grid); }
+
+  /* Stacked bars */
+  .segs { display:grid; gap:16px; }
+  .stack-head { font-size:14px; color:var(--muted); margin-bottom:6px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .stack-head b { color:var(--text); }
+  .stack { display:flex; height:28px; gap:2px; }
+  .stack > div { height:100%; min-width:2px; cursor:default; }
+  .stack > div:first-child { border-radius:4px 0 0 4px; }
+  .stack > div:last-child { border-radius:0 4px 4px 0; }
+  .stack > div:hover { filter:brightness(1.08); }
+
+  /* Callout */
+  .callout { border-left:4px solid var(--accent); background:var(--card-alt); border-radius:6px; padding:14px 18px; margin:16px 0; }
+  .callout.warn { border-left-color: var(--red); }
+  .callout h3 { font-size:17px; font-weight:700; margin-bottom:6px; text-wrap:balance; }
+  .callout p { font-size:16px; color:var(--muted); line-height:1.6; }
+  .callout p + p { margin-top:8px; }
+
+  /* Steps */
+  ol.steps { list-style:none; counter-reset:c; display:grid; gap:12px; margin:4px 0 8px; }
+  ol.steps > li { counter-increment:c; position:relative; padding-left:44px; font-size:16.5px; color:var(--muted); max-width:780px; }
+  ol.steps > li b { color:var(--text); }
+  ol.steps > li::before { content:counter(c); position:absolute; left:0; top:1px; width:28px; height:28px; border-radius:50%; background:var(--accent); color:var(--bg);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-weight:700; font-size:14px; display:grid; place-items:center; }
+  ul.points { padding-left:20px; max-width:780px; }
+  ul.points li { font-size:16.5px; color:var(--muted); margin-bottom:8px; }
+  ul.points li b { color:var(--text); }
+
+  .tooltip { position:fixed; pointer-events:none; background:var(--tip-bg); color:var(--tip-fg); font-size:12.5px; line-height:1.45; padding:8px 10px; border-radius:6px; max-width:280px; opacity:0; transition:opacity .12s; z-index:10; }
+  .tooltip b { font-weight:600; display:block; }
+  .tooltip.show { opacity:1; }
+
+  /* Sources */
+  .sources { font-size:14.5px; color:var(--muted); }
+  .sources li { margin-bottom:6px; line-height:1.5; }
+  .sources ol { padding-left:22px; }
+  .sources a { word-break:break-word; }
+
+  @media (max-width:640px) {
+    .container { padding-block:20px 48px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+    h1 { font-size:27px; }
+    .hero { grid-template-columns:1fr 1fr; }
+    .hero .h .v { font-size:34px; }
+    .headline { font-size:22px; }
+    .layer { grid-template-columns:1fr; }
+    .hbar { grid-template-columns:1fr; gap:0; }
+    .hbar .row { margin-bottom:8px; }
+  }
+  @media (forced-colors: active) {
+    .stack > div, .hbar .fill, .sw { forced-color-adjust:none; border:1px solid CanvasText; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tooltip { transition:none; } }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<div class="tooltip" id="tip" role="status" aria-live="polite"></div>
+<div class="container">
+
+<h1>Spending Options: What Else Could Seattle Buy?</h1>
+<div class="subtitle">Draft, October 31, 2026. Built on <a href="https://mrlerner.github.io/ai/seattle-homelessness-budget.html">What Does Seattle Spend on Homelessness?</a> Figures marked <i>estimate</i> are our own arithmetic.</div>
+
+<p class="lede"><em>The short answer:</em> counting every source, about $615 million a year is spent on homelessness in Seattle, and about $450 million of it pays for places to sleep. The biggest share goes to permanent supportive apartments (~$231M), then shelter (~$143M). The city's own $229 million is the opposite: mostly shelter. Bringing the ~6,700 people still outside indoors would cost roughly another $190–390 million a year, depending on the kind of place.</p>
+
+<div class="hero">
+  <div class="h"><div class="v">~$615M</div><div class="l"><b>All sources</b> per year, of which the city budget is $229M <i>estimate</i></div></div>
+  <div class="h"><div class="v">~$450M</div><div class="l">Goes to <b>places to sleep</b>: apartments, shelter, villages <i>estimate</i></div></div>
+  <div class="h"><div class="v">~$165M</div><div class="l">Goes to <b>services and everything else</b> <i>estimate</i></div></div>
+  <div class="h acc"><div class="v">~6,700</div><div class="l">People <b>sleeping outside</b> in Seattle on a given night <i>estimate</i></div></div>
+</div>
+
+<div class="section">
+  <h2 class="headline">About $450 million a year pays for places to sleep. Most of it goes to supportive apartments, but the city's own share is mostly shelter.</h2>
+  <div class="chart-card">
+    <h3>Places to sleep, by type, all sources</h3>
+    <div class="sub">Millions of dollars a year, central estimates. Hover or tap a bar for detail.</div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--s1)"></i>City homelessness budget <b>~$113M</b></span>
+      <span><i class="sw oth"></i>Everyone else: federal, state, county, city housing office, private <b>~$337M</b></span>
+    </div>
+    <div class="hbar">
+      <div class="lab">Permanent supportive housing<span>Apartments with on-site services</span></div>
+      <div class="row" data-tip="<b>~$231M supportive housing</b>City homelessness budget $8.7M. Everyone else ~$223M: housing-authority vouchers ~$47M, the city's Office of Housing ~$45M, private ~$30M, HUD grants via the county ~$27M, Health Through Housing ~$26M, Medicaid ~$22M, state ~$11M, other regional-agency funders ~$10M, county levies ~$5M."><div class="seg2" style="width:80%"><div class="fill" style="flex:8.7"></div><div class="fill oth" style="flex:222.7"></div></div><span class="val">~$231M</span></div>
+
+      <div class="lab">Shelter<span>Group shelter and hotel rooms</span></div>
+      <div class="row" data-tip="<b>~$143M shelter</b>City ~$73M: Seattle's regional-agency shelter contracts (less ~$15M of villages) plus $7.8M for 155 new rooms with doors. Everyone else ~$71M: private ~$55M (Union Gospel Mission, Mary's Place, the Salvation Army) and other regional-agency funders ~$16M."><div class="seg2" style="width:49.6%"><div class="fill" style="flex:72.9"></div><div class="fill oth" style="flex:70.5"></div></div><span class="val">~$143M</span></div>
+
+      <div class="lab">Rapid rehousing<span>Short-term rent help in private apartments</span></div>
+      <div class="row" data-tip="<b>~$26M rapid rehousing</b>City $8.1M. Everyone else ~$18M: other regional-agency funders ~$9M, VA veterans grants ~$6M, HUD ~$3M."><div class="seg2" style="width:9%"><div class="fill" style="flex:8.1"></div><div class="fill oth" style="flex:18"></div></div><span class="val">~$26M</span></div>
+
+      <div class="lab">Rent vouchers<span>Housing-authority vouchers, no services</span></div>
+      <div class="row" data-tip="<b>~$18M rent vouchers</b>All federal: Seattle Housing Authority Emergency Housing Vouchers and the homeless share of its family and disability vouchers."><div class="seg2" style="width:6.2%"><div class="fill oth" style="flex:1"></div></div><span class="val">~$18M</span></div>
+
+      <div class="lab">Tiny-home villages<span>Small lockable huts with shared bathrooms</span></div>
+      <div class="row" data-tip="<b>~$17M tiny-home villages</b>City ~$15M (our estimate of the villages inside Seattle's $80.1M shelter contracts) and ~$2M from other regional-agency funders."><div class="seg2" style="width:5.9%"><div class="fill" style="flex:15"></div><div class="fill oth" style="flex:2"></div></div><span class="val">~$17M</span></div>
+
+      <div class="lab">Transitional housing<span>Time-limited housing with a program</span></div>
+      <div class="row" data-tip="<b>~$9M transitional housing</b>City $3.1M, other regional-agency funders ~$3M, VA per-diem beds ~$3M."><div class="seg2" style="width:3.1%"><div class="fill" style="flex:3.1"></div><div class="fill oth" style="flex:6"></div></div><span class="val">~$9M</span></div>
+
+      <div class="lab">Safe parking<span>Lots for people living in cars and RVs</span></div>
+      <div class="row" data-tip="<b>~$5M safe parking</b>Seattle's regional-agency contracts for staffed lots."><div class="seg2" style="width:1.7%"><div class="fill" style="flex:1"></div></div><span class="val">~$5M</span></div>
+    </div>
+    <div class="bracket"><i></i>Total ~$450M · temporary places (shelter, villages, transitional, safe parking) ~$175M<i></i></div>
+    <p class="chart-note">Estimate. The city's amounts come from the list of Seattle's $112.8M in regional-agency (KCRHA) contracts, which are 71% shelter, plus $7.8M of new shelter in the city budget. Seattle contracts its tiny-home villages as shelter, so the ~$15M village figure is our estimate. Everything else comes from the all-sources count on the <a href="https://mrlerner.github.io/ai/seattle-homelessness-budget.html">budget page</a>, which counts each dollar once, in Seattle only, by who raised it. Building costs (about $65M a year, almost all for supportive housing) aren't included.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="headline">About $165 million goes to services, encampment response and cleanup, and most of that is city money.</h2>
+  <div class="chart-card">
+    <h3>Services and everything else, all sources</h3>
+    <div class="sub">Millions of dollars a year, on the same scale as the chart above.</div>
+    <div class="hbar">
+      <div class="lab">Private services<span>Meals, day centers, recovery programs</span></div>
+      <div class="row" data-tip="<b>~$35M private services</b>Our estimate of the private donations that pay for services rather than beds: meals, day centers, clothing and recovery programs."><div class="fill oth" style="width:12.1%"></div><span class="val">~$35M</span></div>
+
+      <div class="lab">Cleanup and hygiene<span>Other city departments, not itemized</span></div>
+      <div class="row" data-tip="<b>~$31.9M cleanup and hygiene</b>The part of the city total that sits outside the Human Services Department and the encampment team: for example SPU's Clean City and hygiene programs and RV remediation."><div class="fill hatch" style="width:11%"></div><span class="val">~$31.9M</span></div>
+
+      <div class="lab">Encampment response<span>Unified Care Team, seven departments</span></div>
+      <div class="row" data-tip="<b>~$29.9M Unified Care Team</b>Outreach and camp removals: Parks $11.4M, SDOT $6.7M, Human Services $5.7M, SPU $2.8M, SPD $2.2M, FAS and IT about $1.2M."><div class="fill" style="width:10.3%"></div><span class="val">$29.9M</span></div>
+
+      <div class="lab">City-run contracts<span>Not broken out by type</span></div>
+      <div class="row" data-tip="<b>~$26.6M city-run contracts</b>The rest of the $38.1M the Human Services Department contracts directly, after prevention. Some of it is probably shelter; the budget doesn't say how much."><div class="fill hatch" style="width:9.2%"></div><span class="val">~$26.6M</span></div>
+
+      <div class="lab">Prevention and diversion<span>Keeping people from losing housing</span></div>
+      <div class="row" data-tip="<b>~$13.9M prevention and diversion</b>$11.5M of city rental assistance and prevention, plus $2.4M of diversion contracts (one-time help to stay with family or move)."><div class="fill" style="width:4.8%"></div><span class="val">$13.9M</span></div>
+
+      <div class="lab">Other funders' services<span>Regional agency and county, Seattle share</span></div>
+      <div class="row" data-tip="<b>~$14M other funders</b>Seattle's estimated share of the county, state and federal money in the regional agency that pays for services and admin rather than beds, plus ~$3M of county levy money."><div class="fill oth" style="width:4.8%"></div><span class="val">~$14M</span></div>
+
+      <div class="lab">Admin, data, youth<span>Regional agency and city staff</span></div>
+      <div class="row" data-tip="<b>~$8.2M admin, data and youth</b>The ~$4.8M of Seattle's KCRHA contract outside the program list (mostly admin and data), $2.0M of city contract-oversight staff and $1.4M of new city youth money."><div class="fill" style="width:2.8%"></div><span class="val">$8.2M</span></div>
+
+      <div class="lab">Day centers<span>Showers, laundry, a place to be by day</span></div>
+      <div class="row" data-tip="<b>$5.5M day centers</b>Seattle's regional-agency contracts for day centers and hygiene."><div class="fill" style="width:1.9%"></div><span class="val">$5.5M</span></div>
+    </div>
+    <div class="bracket"><i></i>Total ~$165M · city ~$116M · striped bars are amounts the budget doesn't itemize<i></i></div>
+    <details class="tbl"><summary>Details: city budget vs. all sources</summary>
+      <table>
+        <tr><th>Piece</th><th class="n">City budget</th><th class="n">All sources</th></tr>
+        <tr><td>Places to sleep</td><td class="n">$112.8M</td><td class="n">~$450M</td></tr>
+        <tr class="sub"><td>Permanent supportive housing</td><td class="n">$8.7M</td><td class="n">~$231M</td></tr>
+        <tr class="sub"><td>Shelter</td><td class="n">~$72.9M</td><td class="n">~$143M</td></tr>
+        <tr class="sub"><td>Rapid rehousing</td><td class="n">$8.1M</td><td class="n">~$26M</td></tr>
+        <tr class="sub"><td>Rent vouchers</td><td class="n">—</td><td class="n">~$18M</td></tr>
+        <tr class="sub"><td>Tiny-home villages</td><td class="n">~$15.0M</td><td class="n">~$17M</td></tr>
+        <tr class="sub"><td>Transitional housing</td><td class="n">$3.1M</td><td class="n">~$9M</td></tr>
+        <tr class="sub"><td>Safe parking</td><td class="n">$5.0M</td><td class="n">~$5M</td></tr>
+        <tr><td>Services and everything else</td><td class="n">$116.0M</td><td class="n">~$165M</td></tr>
+        <tr class="sub"><td>Cleanup and hygiene, other departments</td><td class="n">$31.9M</td><td class="n">$31.9M</td></tr>
+        <tr class="sub"><td>Encampment response (Unified Care Team)</td><td class="n">$29.9M</td><td class="n">$29.9M</td></tr>
+        <tr class="sub"><td>City-run contracts, not itemized</td><td class="n">$26.6M</td><td class="n">$26.6M</td></tr>
+        <tr class="sub"><td>Prevention and diversion</td><td class="n">$13.9M</td><td class="n">$13.9M</td></tr>
+        <tr class="sub"><td>Admin, data, youth</td><td class="n">$8.2M</td><td class="n">$8.2M</td></tr>
+        <tr class="sub"><td>Day centers</td><td class="n">$5.5M</td><td class="n">$5.5M</td></tr>
+        <tr class="sub"><td>Private services</td><td class="n">—</td><td class="n">~$35M</td></tr>
+        <tr class="sub"><td>Other funders' services</td><td class="n">—</td><td class="n">~$14M</td></tr>
+        <tr class="total"><td>Total</td><td class="n">$228.7M</td><td class="n">~$615M</td></tr>
+      </table>
+      <p class="chart-note">City column: Seattle's KCRHA contracts by program (moving to the city in 2027, as reported by <i>For Seattle</i>) plus the 2026 Adopted Budget, as summarized on the budget page. The city items add to $228.8M because of rounding. All-sources column: the budget page's estimate, with private money split roughly $55M shelter, $30M supportive housing and $35M services.</p>
+    </details>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="headline">What one place costs per year, by type</h2>
+  <p class="section-intro">The upfront cost is spread over each type's likely life (about 5 years for a village, 30 for a building) at 4.5% interest, so every type can be compared per year. <b>Staff, not the building, is most of the running cost.</b></p>
+  <div class="chart-card">
+    <table class="plain">
+      <tr><th>Type</th><th class="n">To run, per year</th><th class="n">To buy or build, once</th><th class="n">All in, per year</th></tr>
+      <tr><td>Group shelter bed</td><td class="n">$23–37k</td><td class="n">little (leased)</td><td class="n">~$28k</td></tr>
+      <tr><td>Tiny-home village unit</td><td class="n">$25–50k</td><td class="n">$34–55k</td><td class="n">$31–62k</td></tr>
+      <tr><td>Bought motel room, run as shelter</td><td class="n">$39–45k</td><td class="n">$150–250k</td><td class="n">$48–60k</td></tr>
+      <tr><td>New permanent supportive apartment</td><td class="n">$21–33k</td><td class="n">~$500k</td><td class="n">$52–64k</td></tr>
+    </table>
+    <p class="chart-note">Group shelter: Seattle's new shelter sites average $28k a bed (PubliCola, March 2026); Portland's group shelters cost $37k; $23k is the regional agency's 2026 shelter money divided by its 5,269 beds <i>(estimate)</i>. Village and motel figures are from our tiny-homes notes. Apartments: Health Through Housing ran at $21k a unit in 2023 and about $33k in 2024; new construction is about $500k a unit.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="headline">Three ways to bring everyone inside</h2>
+  <p class="section-intro">Each option gives a place to the roughly <b>6,700 people outside</b> and keeps everything funded today. The difference is what kind of place they get. Percentages compare the added cost with today's ~$615M from all sources.</p>
+  <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))">
+    <div class="card" style="border-top:4px solid var(--s1)">
+      <div class="big">+$190M a year <small style="font-size:14px;font-weight:500;color:var(--muted)">(+31%)</small></div>
+      <h3>1. Cheapest: a bed for everyone</h3>
+      <ul>
+        <li><b>What:</b> group shelter beds, plus safe lots for the people living in vehicles.</li>
+        <li><b>Cost:</b> about $28k a place. Little upfront, because the buildings can be leased.</li>
+        <li><b>Speed:</b> months.</li>
+        <li><b>The catch:</b> many people won't come. Only 25% of shelter offers were accepted in 2024, and the most common reason for saying no was wanting a tiny house instead. Basic mats send only 3–6% of the people who leave to housing.</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--accent)">
+      <div class="big">+$300M a year <small style="font-size:14px;font-weight:500;color:var(--muted)">(+49%)</small></div>
+      <h3>2. Middle: a room with a door</h3>
+      <ul>
+        <li><b>What:</b> half tiny-home villages, half bought motels. This is Denver's approach.</li>
+        <li><b>Cost:</b> about $45k a place, plus about <b>$0.8B once</b> to buy motels and build villages.</li>
+        <li><b>Speed:</b> villages in weeks once a site is found; motels in months.</li>
+        <li><b>Why:</b> people rarely turn down a tiny house, and villages run 90–95% full. Villages send 34–46% of the people who leave to housing, and motels 38%. That turnover lets each room serve more people over time.</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--s2)">
+      <div class="big">+$390M a year <small style="font-size:14px;font-weight:500;color:var(--muted)">(+63%)</small></div>
+      <h3>3. Most expensive: an apartment for everyone</h3>
+      <ul>
+        <li><b>What:</b> new permanent supportive apartments, the Housing First approach.</li>
+        <li><b>Cost:</b> about $58k a place all in, including <b>$3.4B once</b> to build. It's the cheapest to run (about $180M a year once built), but the most expensive to build.</li>
+        <li><b>Speed:</b> years. The county took three years to get about 1,500 units, even buying existing hotels.</li>
+        <li><b>Why:</b> about 80% of people are still housed a year or two later. But it ends with everyone in permanent units, so new people becoming homeless need new units too.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-top:16px">
+    <h3>Added cost per year, compared with what's spent today</h3>
+    <div class="sub">Millions of dollars a year, all in (building costs spread over each type's life). Hover or tap a bar for detail.</div>
+    <div class="hbar">
+      <div class="lab">Today, all sources<span>For comparison</span></div>
+      <div class="row" data-tip="<b>~$615M today</b>Our estimate of everything spent on homelessness in Seattle each year: city, county, state, federal and private, counted once."><div class="fill" style="width:80%;background:var(--dim)"></div><span class="val">~$615M</span></div>
+
+      <div class="lab">Today, city budget<span>For comparison</span></div>
+      <div class="row" data-tip="<b>$228.7M</b>Seattle's 2026 homelessness budget, the part the City Council controls."><div class="fill" style="width:29.8%;background:var(--dim)"></div><span class="val">$229M</span></div>
+
+      <div class="lab">1. A bed for everyone<span>~$28k a place</span></div>
+      <div class="row" data-tip="<b>~$188M a year added</b>6,700 places at about $28k each. A range of $23–37k a place gives $155–250M."><div class="fill" style="width:24.5%"></div><span class="val">+$188M</span></div>
+
+      <div class="lab">2. A room with a door<span>~$45k a place</span></div>
+      <div class="row" data-tip="<b>~$302M a year added</b>6,700 places at about $45k each, half villages and half motels. A range of $31–60k a place gives $210–400M."><div class="fill" style="width:39.3%"></div><span class="val">+$302M</span></div>
+
+      <div class="lab">3. An apartment for everyone<span>~$58k a place</span></div>
+      <div class="row" data-tip="<b>~$389M a year added</b>6,700 apartments at about $58k each: $27k to run plus $31k a year of building cost. Running alone is about $181M a year, after paying $3.35B to build."><div class="fill" style="width:50.6%"></div><span class="val">+$389M</span></div>
+    </div>
+    <p class="chart-note">For comparison, McKinsey estimated in 2020 that solving homelessness across King County would cost $360–410M a year, about twice what was spent then. Seattle's ~$615M today is already well above that, though McKinsey priced only housing and services, and costs have risen since.</p>
+  </div>
+
+  <div class="chart-card">
+    <h3>One-time cost to buy or build</h3>
+    <div class="sub">Billions of dollars, before anyone moves in.</div>
+    <div class="hbar">
+      <div class="lab">1. A bed for everyone<span>Leased buildings</span></div>
+      <div class="row" data-tip="<b>Small</b>Group shelters usually run in leased buildings, so the upfront cost is fit-out and furniture."><div class="fill" style="width:0.6%"></div><span class="val">Small</span></div>
+
+      <div class="lab">2. A room with a door<span>~$120k a place on average</span></div>
+      <div class="row" data-tip="<b>~$0.8B once</b>3,350 village units at $34–55k and 3,350 motel rooms at $150–250k."><div class="fill" style="width:19.6%"></div><span class="val">~$0.8B</span></div>
+
+      <div class="lab">3. An apartment for everyone<span>~$500k a unit</span></div>
+      <div class="row" data-tip="<b>~$3.4B once</b>6,700 new apartments at about $500k each. Buying and converting hotels instead, at the county's $273k average, would be about $1.8B."><div class="fill" style="width:80%"></div><span class="val">~$3.4B</span></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Why not just rearrange today's money?</h3>
+    <p>Because most of it is already in use. Of the ~$450M spent on places to sleep, ~$231M pays rent and staff for people living in supportive apartments now, and ~$143M runs shelter. Moving that money means putting someone else outside. And the temporary money already buys the cheap kind: shelter is about 82% of the ~$175M spent on temporary places.</p>
+    <p><b>What can move is the money for new buildings.</b> About $65M a year goes to building supportive housing, roughly 130 new apartments at $500k each. Spent on motels or villages instead, it would buy about 260–430 motel rooms or 1,200–1,900 village units a year <i>(estimate)</i>, though each still needs $25–50k a year to run.</p>
+    <p>The Discovery Institute proposes going further, by redirecting 20% of homelessness and housing money to emergency treatment shelters. Applied to ~$615M, that's about $120M a year: roughly 2,700 rooms with doors at $45k or 4,300 group beds at $28k <i>(estimate)</i>.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="headline">What these numbers leave out</h2>
+  <ul class="points">
+    <li><b>People keep becoming homeless.</b> 6,700 is one night. About 54,000 people are homeless in King County at some point in a year. Options 1 and 2 only keep up if rooms turn over, which takes case managers and housing to move people into.</li>
+    <li><b>Vehicles need lots, not rooms.</b> About 27% of people outside live in cars or RVs. Safe lots cost less than rooms, so every option would cost somewhat less than shown.</li>
+    <li><b>Budgets aren't spending.</b> Every figure here is a budget. $110M of the $565M Seattle has awarded through the regional agency since 2021 went unused, so real spending is probably lower.</li>
+    <li><b>Treatment isn't included.</b> About 75% of people outside have a substance use problem. Detox and psychiatric beds are a separate cost, on top of every option.</li>
+    <li><b>A real plan mixes them.</b> The Denver plan uses rooms with doors for people who won't take a mat, keeps group beds for people who will, and uses safe lots for vehicles.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">Sources</div>
+  <div class="sources">
+    <ol>
+      <li>What Does Seattle Spend on Homelessness? (city budget figures, the all-sources estimate and their sources). <a href="https://mrlerner.github.io/ai/seattle-homelessness-budget.html">mrlerner.github.io</a></li>
+      <li>Alex Lofton, "What's in Seattle's $183.5 million homelessness budget?" <i>For Seattle</i>, Oct 26, 2026: Seattle's $112.8M in KCRHA contracts by program, and unused awards. <a href="https://forseattle.substack.com/p/whats-in-seattles-1835-million-homelessness">substack.com</a></li>
+      <li>Discovery Institute, <i>Seattle Strategic Plan</i> (2024): the proposal to redirect 20% of funding to emergency treatment shelters.</li>
+      <li>King County Regional Homelessness Authority, Governing Board packet, Feb 20, 2026: 2026 budget by program (p. 17). <a href="https://kcrha.org/wp-content/uploads/2026/02/KCHRA-Governing-Board-February-20-Special-Meeting-Packet-final-update.pdf">kcrha.org</a></li>
+      <li>PubliCola, "Wilson's shelter plan," Mar 17, 2026: $28k average cost per bed. <a href="https://publicola.com/2026/03/17/wilsons-shelter-plan-17-million-with-first-units-opening-as-soon-as-april/">publicola.com</a></li>
+      <li>City of Kirkland, overview of tiny-house program models (LIHI and Pallet costs), Oct 2024. <a href="https://kirklandwa.gov/files/sharedassets/public/v/1/finance-and-administration/budget-documents/25-26-budget/2025-2026-overview-of-tiny-house-program-models-issue-paper.pdf">kirklandwa.gov</a></li>
+      <li>Queen Anne News, "King County spends nearly $300K per unit," Aug 2024: Health Through Housing capital and operating costs. <a href="https://queenannenews.com/news/2024/aug/27/king-county-spends-nearly-300k-per-unit-of-sales-tax-for-homeless-housing/">queenannenews.com</a></li>
+      <li>Multnomah County, Adult Shelter Review FY25: motel and group-shelter costs and exits. <a href="https://hsd.multco.us/wp-content/uploads/2026/01/Adult-Shelter-Review-FY25.pdf">multco.us</a></li>
+      <li>PubliCola, exits by shelter type in Seattle, 2019. <a href="https://publicola.com/2020/11/28/the-c-is-for-crank-no-danny-westneat-building-1000-tiny-houses-wont-solve-homelessness/amp/">publicola.com</a>; Mayor's office on tiny-house exits, Jul 30, 2025. <a href="https://harrell.seattle.gov/2025/07/30/mayor-harrell-announces-expansion-of-available-shelter-adding-more-than-100-new-tiny-houses/">seattle.gov</a></li>
+      <li>Seattle Unified Care Team quarterly report, Q3 2023: shelter offers and reasons for declining. <a href="https://clerk.seattle.gov/~cfpics/cf_322689q3.pdf">seattle.gov</a></li>
+      <li>McKinsey, "Why does prosperous King County have a homelessness crisis?" 2020. <a href="https://www.mckinsey.com/featured-insights/future-of-cities/the-economics-of-homelessness-in-seattle-and-king-county">mckinsey.com</a></li>
+    </ol>
+    <p class="chart-note">The 6,700 figure is 68% of King County's ~9,810 unsheltered people (point-in-time count), the share a 2019 survey found in Seattle. The 25% acceptance rate is for 2024; the 80% still-housed figure is from the Housing First trials summarized in the Denver plan. Corrections welcome.</p>
+  </div>
+</div>
+
+</div>
+<script>
+(function () {
+  var tip = document.getElementById('tip'), cur = null;
+  function place(x, y) {
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    tip.style.top = (y - h - 12 < 8 ? y + 18 : y - h - 12) + 'px';
+  }
+  function show(el, x, y) { cur = el; tip.innerHTML = el.getAttribute('data-tip'); tip.classList.add('show'); place(x, y); }
+  function hide() { cur = null; tip.classList.remove('show'); }
+  document.querySelectorAll('[data-tip]').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') show(el, e.clientX, e.clientY); });
+    el.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hide(); });
+    el.addEventListener('click', function (e) {
+      if (cur === el) { hide(); return; }
+      var r = el.getBoundingClientRect(); show(el, e.clientX || r.left + r.width / 2, e.clientY || r.top);
+      e.stopPropagation();
+    });
+  });
+  document.addEventListener('click', hide);
+  window.addEventListener('scroll', hide, { passive: true });
+})();
+</script>
+</body>
+</html>
