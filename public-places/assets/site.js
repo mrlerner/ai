@@ -12,6 +12,7 @@
       { name: "Where camping would be banned", href: "map.html" },
       { name: "Village sites", href: "map.html#villages" },
       { name: "Hotels", href: "map.html#hotels" },
+      { name: "Top 50 village sites", href: "map.html#top" },
       { name: "Encampment reports: Wallingford", href: "wallingford.html" },
     ] },
     { name: "Budget", pages: [
@@ -58,7 +59,7 @@
   // Which page this is: the file name (or index.html for a bare folder URL), plus the hash for pages with tabs.
   const current = () => {
     const file = location.pathname.split("/").pop() || "index.html";
-    return file === "map.html" && ["#villages", "#hotels"].includes(location.hash) ? "map.html" + location.hash : file;
+    return file === "map.html" && ["#villages", "#hotels", "#top"].includes(location.hash) ? "map.html" + location.hash : file;
   };
 
   const render = () => {
