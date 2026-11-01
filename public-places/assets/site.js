@@ -59,7 +59,7 @@
   // Which page this is: the file name (or index.html for a bare folder URL), plus the hash for pages with tabs.
   const current = () => {
     const file = location.pathname.split("/").pop() || "index.html";
-    return file === "map.html" && ["#villages", "#hotels", "#top"].includes(location.hash) ? "map.html" + location.hash : file;
+    return file === "map.html" && ["#villages", "#hotels", "#top"].includes(location.hash.split("/")[0]) ? "map.html" + location.hash.split("/")[0] : file;
   };
 
   const render = () => {
