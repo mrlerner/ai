@@ -4,6 +4,7 @@
   const SECTIONS = [
     { name: "The pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "The case", pages: [
+      { name: "How many sleep outside", href: "count.html" },
       { name: "Denver vs. Seattle", href: "denver-vs-seattle.html" },
       { name: "The Denver plan for Seattle", href: "denver-plan.html" },
     ] },
@@ -17,6 +18,7 @@
       { name: "What Seattle spends", href: "budget.html" },
       { name: "What else it could buy", href: "spending-options.html" },
     ] },
+    { name: "Simulator", pages: [{ name: "State of Emergency", href: "simulator.html" }] },
   ];
 
   const CSS = `

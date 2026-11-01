@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Many Sleep Outside</title>
+<meta name="description" content="How many people sleep outside in Seattle, how we define it, and how we got the number from the 2026 King County count.">
+<style>
+  /* The same palette and type as budget.html. Seattle = blue (--s1). */
+  :root {
+    color-scheme: light;
+    --bg: #ffffff; --card: #ffffff; --card-alt: #f8f8f6; --border: #e3e2dc; --grid: #ececea;
+    --text: #1a1a1a; --muted: #5f5e5a; --light: #8d8c86;
+    --accent: #6d28a8; --blue: #1e5a9e; --s1: #2a78d6; --s2: #eb6834; --dim: #c9c8c1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+      --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+      --accent: #b48fe8; --blue: #8cb8f0; --s1: #3987e5; --s2: #d95926; --dim: #4a4a47;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+    --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+    --accent: #b48fe8; --blue: #8cb8f0; --s1: #3987e5; --s2: #d95926; --dim: #4a4a47;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background: var(--bg); }
+  body { background:var(--bg); color:var(--text); font-family:Georgia,'Times New Roman',serif; line-height:1.7; }
+  .container { max-width:960px; margin:0 auto; padding-block:32px 64px; padding-left:max(24px, env(safe-area-inset-left, 0px)); padding-right:max(24px, env(safe-area-inset-right, 0px)); }
+  a { color: var(--blue); }
+  .subtitle, .section-title, .big, .kpis, .stack-head, .legend, table.plain, .callout h3, .sources, .calc { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+
+  h1 { font-size:34px; font-weight:700; letter-spacing:-0.5px; line-height:1.2; margin-bottom:10px; border-bottom:3px double var(--border); padding-bottom:14px; text-wrap:balance; }
+  .subtitle { color:var(--muted); font-size:14px; margin-bottom:10px; }
+
+  /* The number */
+  .big { margin:28px 0 8px; }
+  .big .v { font-size:96px; font-weight:700; line-height:1; letter-spacing:-3px; color:var(--s1); font-variant-numeric:tabular-nums; }
+  .big .l { font-size:21px; font-weight:600; line-height:1.35; margin-top:10px; max-width:640px; text-wrap:balance; }
+  .big .r { font-size:14.5px; color:var(--muted); margin-top:6px; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:12px; margin:24px 0 8px; }
+  .kpis .h { border-left:3px solid var(--s1); padding:4px 0 4px 14px; min-width:0; }
+  .kpis .h.alt { border-left-color: var(--dim); }
+  .kpis .v { font-size:32px; font-weight:600; line-height:1; letter-spacing:-1px; font-variant-numeric:tabular-nums; }
+  .kpis .l { font-size:13.5px; color:var(--muted); margin-top:6px; line-height:1.45; }
+
+  .section { margin-top:48px; }
+  .section-title { font-size:15px; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--muted); }
+  .headline { font-size:26px; font-weight:700; line-height:1.25; letter-spacing:-0.3px; margin-bottom:16px; max-width:820px; text-wrap:balance; }
+  .section-intro { font-size:16.5px; color:var(--muted); margin-bottom:16px; max-width:760px; }
+  .section-intro b { color:var(--text); font-weight:600; }
+
+  /* Where people sleep */
+  .stack-head { font-size:14px; color:var(--muted); margin-bottom:6px; }
+  .stack { display:flex; height:30px; gap:2px; margin-bottom:8px; }
+  .stack > div { height:100%; }
+  .stack > div:first-child { border-radius:4px 0 0 4px; }
+  .stack > div:last-child { border-radius:0 4px 4px 0; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:13.5px; color:var(--muted); }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .legend b { color:var(--text); font-weight:600; font-variant-numeric:tabular-nums; }
+  .sw { width:12px; height:12px; border-radius:3px; display:inline-block; }
+
+  /* Definition */
+  .defs { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:16px 18px; min-width:0; }
+  .card.out { border-style:dashed; }
+  .card h3 { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:16.5px; font-weight:700; margin-bottom:8px; }
+  .card li { font-size:16px; color:var(--muted); line-height:1.6; margin-bottom:4px; }
+  .card ul { padding-left:18px; }
+
+  /* Method */
+  ol.steps { list-style:none; counter-reset:c; display:grid; gap:14px; margin:4px 0 8px; }
+  ol.steps > li { counter-increment:c; position:relative; padding-left:44px; font-size:16.5px; color:var(--muted); max-width:780px; }
+  ol.steps > li b { color:var(--text); }
+  ol.steps > li::before { content:counter(c); position:absolute; left:0; top:1px; width:28px; height:28px; border-radius:50%; background:var(--s1); color:var(--bg);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-weight:700; font-size:14px; display:grid; place-items:center; }
+  .calc { display:inline-block; margin-top:6px; background:var(--card-alt); border:1px solid var(--border); border-radius:6px; padding:6px 12px; font-size:15px; color:var(--text); font-variant-numeric:tabular-nums; }
+
+  .tbl { overflow-x:auto; }
+  table.plain { width:100%; border-collapse:collapse; font-size:15px; }
+  table.plain th, table.plain td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); font-variant-numeric:tabular-nums; vertical-align:top; }
+  table.plain th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.4px; }
+  table.plain td.n, table.plain th.n { text-align:right; white-space:nowrap; }
+  table.plain td span { display:block; color:var(--light); font-size:13px; }
+  table.plain tr.use td { font-weight:600; }
+
+  .callout { border-left:4px solid var(--s1); background:var(--card-alt); border-radius:6px; padding:14px 18px; margin:16px 0; max-width:820px; }
+  .callout h3 { font-size:17px; font-weight:700; margin-bottom:6px; }
+  .callout p { font-size:16px; color:var(--muted); line-height:1.6; }
+  .callout p + p { margin-top:8px; }
+  .callout p b { color:var(--text); }
+
+  ul.points { padding-left:20px; max-width:780px; }
+  ul.points li { font-size:16.5px; color:var(--muted); margin-bottom:8px; }
+  ul.points li b { color:var(--text); }
+
+  .sources { font-size:14.5px; color:var(--muted); }
+  .sources ol { padding-left:22px; }
+  .sources li { margin-bottom:6px; line-height:1.5; }
+  .sources a { word-break:break-word; }
+
+  @media (max-width:640px) {
+    .container { padding-block:20px 48px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+    h1 { font-size:27px; }
+    .big .v { font-size:72px; }
+    .headline { font-size:22px; }
+  }
+</style>
+</head>
+<body>
+<script src="assets/site.js"></script>
+
+<div class="container">
+
+<h1>How Many People Sleep Outside in Seattle?</h1>
+<div class="subtitle">Updated November 1, 2026. This is the number every page on this site uses. It changes when King County publishes Seattle's own 2026 figure.</div>
+
+<div class="big">
+  <div class="v">5,600</div>
+  <div class="l">people slept outside within Seattle's city limits on a night in late January 2026</div>
+  <div class="r">Likely range 5,400 to 5,750. Up about 24% from about 4,500 in January 2024.</div>
+</div>
+
+<div class="kpis">
+  <div class="h"><div class="v">~1,300</div><div class="l">in cars, vans and RVs (23%)</div></div>
+  <div class="h"><div class="v">~4,300</div><div class="l">in tents, on sidewalks, in parks, doorways and other places outside (77%)</div></div>
+  <div class="h alt"><div class="v">11,829</div><div class="l">slept outside in all of King County that night. Seattle is about half.</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">What we count</div>
+  <h2 class="headline">Everyone sleeping outside on one night: in a tent, on the street or in a vehicle.</h2>
+  <p class="section-intro">This is what the federal count calls <b>unsheltered</b>: anyone whose bed that night is a place not meant for sleeping. It's the simplest number that matches what people see in public places, and it's measured the same way every two years.</p>
+  <div class="defs">
+    <div class="card">
+      <h3>Counted</h3>
+      <ul>
+        <li>Tents and makeshift shelters, anywhere</li>
+        <li>Sidewalks, doorways, parks, under bridges</li>
+        <li>Cars, vans, trucks, RVs and boats</li>
+        <li>Abandoned buildings and other places not meant for sleeping</li>
+      </ul>
+    </div>
+    <div class="card out">
+      <h3>Not counted</h3>
+      <ul>
+        <li>Shelters, including tiny home villages and hotel shelter rooms</li>
+        <li>Transitional housing</li>
+        <li>Jail, hospital or treatment</li>
+        <li>Staying on a friend's couch</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Why we don't use "chronically homeless"</h3>
+    <p>The federal definition of chronic homelessness requires a year or more without a home plus a disability, both self-reported in a survey. In King County it swung from <b>66%</b> of people outside in 2024 to <b>38%</b> in 2026, far more than the population could have changed in two years. A number that moves that much with the survey can't anchor a plan.</p>
+    <p>Everyone counted here is using a public place as a bedroom tonight, which is the problem the pledge is about. We describe who they are separately, below, instead of shrinking the count.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">What "Seattle" means in the county's numbers</div>
+  <h2 class="headline">The county reports a "Seattle Metro" area, not the city. It's slightly bigger.</h2>
+  <p class="section-intro">The King County Regional Homelessness Authority splits the county into subregions drawn around where people go for services, not along city lines. Its 2024 report says three things about Seattle Metro <a href="#s4">[4]</a>:</p>
+  <ul class="points">
+    <li><b>It includes Vashon-Maury Island,</b> which is outside the city, "because most unsheltered people report receiving services in Seattle."</li>
+    <li><b>White Center and Skyway</b>, unincorporated areas next to the city, didn't have enough survey data to report on their own and "were considered continuous with Seattle Metro" in the analysis.</li>
+    <li><b>People are placed by where they were surveyed,</b> not where they slept: "subregional characteristics were estimated based on the locations of each sampling site." Someone sleeping in Seattle who took the survey in Burien counts toward South King County, and the reverse.</li>
+  </ul>
+  <p class="section-intro">No published count follows the city limits exactly. We start from Seattle Metro and take out Vashon, the one piece the county names and that has its own local count. White Center, Skyway and people surveyed across the city line are left as they are, because no source says how many they are or which way they push the total.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">How we got 5,600</div>
+  <h2 class="headline">King County hasn't published its 2026 Seattle figure yet, so we take Seattle's share from a University of Washington report and subtract Vashon.</h2>
+  <ol class="steps">
+    <li><b>The county count.</b> The county's January 2026 count found 11,829 people outside countywide. Its initial report has no subregion breakdown; the full report is due "later this year." <a href="#s1">[1]</a></li>
+    <li><b>Seattle Metro's vehicle residents.</b> The University of Washington team that runs the count published a report on people living in vehicles on October 1, 2026. It gives 1,315 people living in vehicles in Seattle Metro and says they are 23% of Seattle Metro's unsheltered population. <a href="#s2">[2]</a></li>
+    <li><b>Divide.</b> If 1,315 people are 23% of the total, Seattle Metro had about 5,700 people outside. The report rounds 23% to a whole number, so the true share is between 22.5% and 23.5%, which gives 5,600 to 5,850.<br><span class="calc">1,315 ÷ 0.23 = 5,717</span></li>
+    <li><b>Take out Vashon.</b> The 2024 count found 90 homeless people on Vashon, and a local organizer's tally was 149, possibly near 200. <a href="#s5">[5]</a> We subtract about 100, with 90 to 200 in the range.<br><span class="calc">5,717 − ~100 ≈ 5,600 within the city (range 5,400 to 5,750)</span></li>
+  </ol>
+
+  <p class="section-intro" style="margin-top:24px">Two other ways to estimate Seattle Metro land close to the first. We use the first because it relies only on Seattle Metro's own figures. Each would also need Vashon taken out.</p>
+  <div class="tbl"><table class="plain">
+    <thead><tr><th>Method</th><th>Calculation</th><th class="n">Seattle Metro, Jan. 2026</th></tr></thead>
+    <tbody>
+      <tr class="use"><td>Seattle Metro's vehicle share (what we use)<span>Only Seattle Metro's own figures</span></td><td>1,315 ÷ 23%</td><td class="n">5,717</td></tr>
+      <tr><td>Everyone outside who isn't in the rest of the county<span>Depends on every other subregion's rounding too</span></td><td>11,829 − (2,652 ÷ 45%)</td><td class="n">5,936</td></tr>
+      <tr><td>Seattle Metro's 2024 share of the county<span>Assumes Seattle grew at the county's rate</span></td><td>11,829 × (4,585 ÷ 9,810)</td><td class="n">5,529</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">The trend</div>
+  <h2 class="headline">The number outside keeps rising, in Seattle and the county.</h2>
+  <div class="tbl"><table class="plain">
+    <thead><tr><th>January count</th><th class="n">Seattle, city limits</th><th class="n">Seattle Metro</th><th class="n">King County</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>2022</td><td class="n">—</td><td class="n">—</td><td class="n">7,685</td><td>KCRHA <a href="#s3">[3]</a></td></tr>
+      <tr><td>2024</td><td class="n">~4,500</td><td class="n">4,585</td><td class="n">9,810</td><td>KCRHA <a href="#s3">[3]</a> <a href="#s4">[4]</a>; Vashon <a href="#s5">[5]</a></td></tr>
+      <tr class="use"><td>2026</td><td class="n">~5,600</td><td class="n">~5,700</td><td class="n">11,829</td><td>KCRHA <a href="#s1">[1]</a>; Seattle derived from UW <a href="#s2">[2]</a></td></tr>
+    </tbody>
+  </table></div>
+  <p class="section-intro" style="margin-top:12px">Since 2022 the count has used the same survey method, so these years compare. Counts from before 2022 used volunteers walking the streets and aren't comparable.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Who is outside</div>
+  <h2 class="headline">Many have a serious mental illness or an addiction. The county's 2026 survey of people outside:</h2>
+  <div class="tbl"><table class="plain">
+    <thead><tr><th>King County, people outside, 2026</th><th class="n">Share</th><th class="n">In Seattle, if the same</th></tr></thead>
+    <tbody>
+      <tr><td>Substance use disorder</td><td class="n">41%</td><td class="n">~2,300</td></tr>
+      <tr><td>Serious mental illness</td><td class="n">31%</td><td class="n">~1,700</td></tr>
+      <tr><td>Chronically homeless (federal definition)</td><td class="n">38%</td><td class="n">~2,100</td></tr>
+    </tbody>
+  </table></div>
+  <p class="section-intro" style="margin-top:12px">These are self-reported, so they likely undercount, and the county doesn't publish how much addiction and mental illness overlap. Seattle probably runs higher than the county: 54% of Seattle's vehicle residents are chronically homeless, against 43% countywide. <a href="#s1">[1]</a> <a href="#s2">[2]</a></p>
+</div>
+
+<div class="section">
+  <div class="section-title">What this number doesn't tell you</div>
+  <ul class="points">
+    <li><b>It's one night.</b> More people sleep outside at some point during a year than on any one night. The UW team estimates 1.33 different people over a year for each vehicle resident on the count night in Seattle Metro; if that held for everyone, it would be about 7,400 people a year within the city. <a href="#s2">[2]</a></li>
+    <li><b>It's a survey estimate.</b> Since 2022 the count has used a method in which people outside recruit each other into the survey, and the results are weighted. That's more complete than a street tally, but it has its own margin, wider than the range above.</li>
+    <li><b>The city line is approximate.</b> White Center, Skyway and people surveyed on the other side of the city line could move the city's true number up or down. No source measures them.</li>
+    <li><b>It will be replaced.</b> When the county publishes its 2026 Seattle Metro figure, this page and every page that uses it will switch to that figure, minus Vashon.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">Sources</div>
+  <div class="sources"><ol>
+    <li id="s1">King County Regional Homelessness Authority, <a href="https://kcrha.org/wp-content/uploads/2026/06/KCRHA_Point-in-Time-Count-2026_Executive-Report.pdf" target="_blank" rel="noopener">2026 Point-in-Time Count and Housing Inventory Count, initial release</a>, June 2026, and its <a href="https://kcrha.org/wp-content/uploads/2026/06/2026-KCRHA-PIT-FAQ-Initial-Release.pdf" target="_blank" rel="noopener">FAQ</a>. Countywide totals, health conditions, and the note that subregion figures come in the comprehensive report.</li>
+    <li id="s2">Almquist, Carey, Mathewson and Rothfolk (University of Washington and KCRHA), <a href="https://csde.washington.edu/wp-content/uploads/2026/10/VehicleLiving_Short_Report.pdf" target="_blank" rel="noopener">King County, WA Point-in-Time Data: People Living in Vehicles, 2026</a>, October 1, 2026. Seattle Metro's 1,315 vehicle residents and their 23% share, the rest of the county's 2,652 and 45%, chronic rates and the annual multiplier.</li>
+    <li id="s3">KCRHA, <a href="https://kcrha.org/wp-content/uploads/2026/06/2026-KCRHA-PIT-FAQ-Initial-Release.pdf" target="_blank" rel="noopener">2026 PIT FAQ</a>, table of 2022, 2024 and 2026 counts.</li>
+    <li id="s4">KCRHA, <a href="https://kcrha.org/wp-content/uploads/2025/06/KCRHA_PIT-24_Summary-FAQ.pdf" target="_blank" rel="noopener">2024 Comprehensive Unsheltered Point-in-Time Count: Summary of Key Findings and FAQ</a>, and the <a href="https://kcrha.org/wp-content/uploads/2026/04/Revised-Point-in-Time-Count-2024-King-County-final.pdf" target="_blank" rel="noopener">2024 Point-in-Time Count Comprehensive Report</a> (revised March 2026), pages 11 and 76–82. Seattle Metro, 4,585 unsheltered, including Vashon; how subregions are drawn; 66% of people outside countywide chronically homeless.</li>
+    <li id="s5">Vashon-Maury Island Beachcomber, <a href="https://www.vashonbeachcomber.com/?p=44861" target="_blank" rel="noopener">report on the 2024 count on Vashon</a>, February 14, 2024: 90 people counted on the island, and a local organizer's tally of 149, possibly near 200, which also includes people not sleeping outside.</li>
+  </ol></div>
+</div>
+
+</div>
+</body>
+</html>

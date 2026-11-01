@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>State of Emergency</title>
+<meta name="description" content="A Seattle shelter simulator: the mayor's money, your plan. Choose the kind of places, the support and the public places to clear first, then watch the year play out.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/sim-data.js"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff; --card: #ffffff; --card-alt: #f8f8f6; --border: #e3e2dc; --grid: #ececea;
+    --text: #1a1a1a; --muted: #5f5e5a; --light: #8d8c86;
+    --blue: #1e5a9e; --accent: #2a78d6;
+    --red: #d1453b; --green: #1f9e5c; --green-soft: #dff3e8; --amber: #d98a00; --gray: #9a9993;
+    --mayor: #8d8c86;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+      --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+      --blue: #8cb8f0; --accent: #3987e5;
+      --red: #ec6a5e; --green: #3cc07a; --green-soft: #183a27; --amber: #f0a63a; --gray: #77766f;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+    --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+    --blue: #8cb8f0; --accent: #3987e5;
+    --red: #ec6a5e; --green: #3cc07a; --green-soft: #183a27; --amber: #f0a63a; --gray: #77766f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, sans-serif; }
+  a { color: var(--blue); }
+  main { max-width: 1180px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-left)) 64px; }
+  .kicker { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); }
+  h1 { font-size: 40px; line-height: 1.05; letter-spacing: -1px; margin: 4px 0 10px; }
+  .intro { font-size: 18px; color: var(--muted); max-width: 70ch; }
+  .intro b { color: var(--text); }
+
+  /* Scoreboard */
+  .board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 20px 0 16px; }
+  .tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; min-width: 0; }
+  .tile .lab { font-size: 12.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .tile .v { font-size: 34px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .tile .v small { font-size: 15px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+  .tile .vs { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+  .tile .vs b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .goalbar { position: relative; height: 10px; border-radius: 5px; background: var(--grid); margin-top: 8px; }
+  .goalbar .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 5px; background: var(--amber); }
+  .goalbar .fill.met { background: var(--green); }
+  .goalbar .mk { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; background: var(--muted); }
+  .tile .delta { display: inline-block; font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 1px 8px; margin-top: 6px; }
+  .delta.up { background: var(--green-soft); color: var(--green); }
+  .delta.down { background: color-mix(in srgb, var(--red) 16%, transparent); color: var(--red); }
+  .delta.same { background: var(--card-alt); color: var(--muted); }
+  .lab .short { display: none; }
+  .zones-mini { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .zones-mini b { color: var(--text); font-weight: 600; }
+
+  .plan { background: var(--card-alt); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-top: 18px; }
+  .plan-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 2px 4px 10px; }
+  .plan-head .name { font-size: 18px; font-weight: 800; }
+  .plan-head .name small { font-size: 13px; font-weight: 700; color: var(--accent); margin-left: 6px; text-transform: uppercase; letter-spacing: .05em; }
+  .plan-head .money { flex: 1 1 260px; }
+  .controls { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: stretch; }
+  .controls .ctl { padding: 12px 13px; }
+  /* In the narrow columns, choices stack instead of squeezing side by side. */
+  .controls .seg { grid-auto-flow: row; }
+  .controls .seg button { border-left: 0; border-top: 1px solid var(--border); text-align: left; padding: 7px 10px; }
+  .controls .seg button:first-child { border-top: 0; }
+  .controls .order li { font-size: 14.5px; }
+  .ctl { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .ctl h2 { font-size: 16px; line-height: 1.3; margin-bottom: 4px; }
+  .ctl h2 span { color: var(--accent); margin-right: 4px; }
+  .ctl .hint { font-size: 13.5px; color: var(--muted); margin-bottom: 10px; }
+  .order { list-style: none; display: grid; gap: 6px; }
+  .order li { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 8px; background: var(--card-alt); border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; font-size: 15px; }
+  .order .rank { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 13px; display: grid; place-items: center; }
+  .order button { font: inherit; font-size: 13px; border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 6px; padding: 2px 8px; cursor: pointer; }
+  .order button:disabled { opacity: .3; cursor: default; }
+  .slider { margin: 8px 0 4px; }
+  .slider .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 15px; }
+  .slider .row b { font-variant-numeric: tabular-nums; }
+  .slider .row span.sub { font-size: 12.5px; color: var(--muted); }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .seg button { font: inherit; font-size: 13.5px; font-weight: 600; border: 0; border-left: 1px solid var(--border); background: var(--card); color: var(--text); padding: 7px 4px; cursor: pointer; }
+  .seg button:first-child { border-left: 0; }
+  .seg button[aria-pressed=true] { background: var(--accent); color: #fff; }
+  .seg-desc { font-size: 13px; color: var(--muted); margin-top: 6px; min-height: 2.6em; }
+  .toggle { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; font-size: 15px; }
+  .toggle input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--red); flex: none; }
+  .reset { font: inherit; font-size: 14px; border: 1px solid var(--border); background: var(--card-alt); color: var(--text); border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+  .money { font-size: 13.5px; color: var(--muted); }
+  .money b { color: var(--text); }
+
+  .stage { display: grid; gap: 10px; min-width: 0; }
+  #map { height: 540px; border-radius: 10px; border: 1px solid var(--border); background: var(--card-alt); }
+  .player { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+  .play { font: inherit; font-weight: 800; font-size: 17px; border: 0; border-radius: 999px; background: var(--red); color: #fff; padding: 10px 22px; cursor: pointer; white-space: nowrap; }
+  .play.paused { background: var(--accent); }
+  .timeline { position: relative; height: 10px; border-radius: 5px; background: var(--grid); }
+  .timeline .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 5px; background: var(--accent); width: 0; }
+  .when { font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 92px; text-align: right; }
+  .ticker { font-size: 14.5px; color: var(--muted); min-height: 1.5em; padding: 0 4px; }
+  .ticker b { color: var(--text); }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted); padding: 0 4px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .sq { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+
+  /* The papers */
+  #papers { margin-top: 28px; scroll-margin-top: 12px; }
+  .papers-head { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .approval .v { font-size: 56px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
+  .approval .l { font-size: 14px; color: var(--muted); }
+  .groups { display: grid; gap: 6px; }
+  .grp { display: grid; grid-template-columns: 170px 1fr 40px; gap: 10px; align-items: center; font-size: 14px; }
+  .grp .bar { height: 10px; border-radius: 5px; background: var(--grid); overflow: hidden; }
+  .grp .bar i { display: block; height: 100%; border-radius: 5px; }
+  .grp .n { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .front { margin-top: 12px; display: grid; gap: 10px; }
+  .story { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .story button { all: unset; display: block; width: 100%; box-sizing: border-box; padding: 14px 16px; cursor: pointer; }
+  .story .outlet { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .story .hl { font-family: Georgia, "Times New Roman", serif; font-size: 21px; font-weight: 700; line-height: 1.25; margin-top: 2px; }
+  .story .more { font-size: 13px; color: var(--blue); margin-top: 4px; }
+  .story .body { display: none; padding: 0 16px 14px; font-family: Georgia, "Times New Roman", serif; font-size: 16.5px; line-height: 1.6; color: var(--muted); }
+  .story.open .body { display: block; }
+  .story.open .more { display: none; }
+  .fine { font-size: 13px; color: var(--light); margin-top: 8px; }
+
+  details.how { margin-top: 28px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+  details.how summary { cursor: pointer; font-weight: 700; }
+  details.how p, details.how li { font-size: 15px; color: var(--muted); margin-top: 8px; max-width: 80ch; }
+  details.how ul { padding-left: 20px; }
+  details.how b { color: var(--text); }
+  table.assume { border-collapse: collapse; margin-top: 10px; font-size: 14px; width: 100%; }
+  table.assume th, table.assume td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.assume th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .tbl { overflow-x: auto; }
+
+  .leaflet-container { font: inherit; }
+  .leaflet-tooltip.tip { background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 6px; font-size: 13px; padding: 6px 9px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  .leaflet-tooltip.tip::before { display: none; }
+  .site-icon svg { display: block; }
+
+  @media (max-width: 1100px) { .controls { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 980px) {
+    /* On phones the scoreboard sits above the plan and sticks, so results stay in view while you change the plan. */
+    main { display: flex; flex-direction: column; }
+    main > .board { order: 1; } main > .plan { order: 2; } main > .stage { order: 3; } main > #papers { order: 4; } main > .how { order: 5; }
+    main > .kicker, main > h1, main > .intro { order: 0; }
+    #map { height: 420px; }
+    .board { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; position: sticky; top: 0; z-index: 1000; background: var(--bg); padding: 6px 0; margin: 12px 0; }
+    .tile { padding: 6px 8px; }
+    .tile .lab { font-size: 10.5px; letter-spacing: .02em; }
+    .lab .long { display: none; } .lab .short { display: inline; }
+    .tile .v { font-size: 20px; letter-spacing: -.5px; }
+    .tile .v small { font-size: 12px; }
+    .tile .vs, .zones-mini, .tile .delta, .tile .v small.goal { display: none; }
+    .goalbar { margin-top: 4px; height: 6px; }
+    .papers-head { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) { .controls { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) {
+    h1 { font-size: 32px; }
+    .intro { font-size: 16.5px; }
+    .grp { grid-template-columns: 120px 1fr 36px; font-size: 13px; }
+    .story .hl { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<script src="assets/site.js"></script>
+<main>
+  <div class="kicker">A Seattle shelter simulator</div>
+  <h1>State of Emergency</h1>
+  <p class="intro">About <b>5,600 people</b> sleep outside in Seattle. The mayor has <b>$35 million a year</b>, enough for 960 tiny homes with full 24/7 services. But tiny homes are slow to site and build, so her plan has only <b id="mayorInside">340 people</b> inside by month 12. You're a council member with the same money. <b>In 12 months, can you beat that?</b></p>
+
+  <section class="plan" aria-label="Your plan">
+    <div class="plan-head" id="planHead"></div>
+    <div class="controls" id="controls"></div>
+  </section>
+
+  <div class="board" id="board" aria-live="polite"></div>
+
+  <div class="stage">
+      <div id="map" role="img" aria-label="Map of Seattle showing encampments as red dots and new shelter sites as green markers"></div>
+      <div class="player">
+        <button class="play" id="play">▶ Play the year</button>
+        <div class="timeline" aria-hidden="true"><div class="fill" id="tfill"></div></div>
+        <div class="when" id="when">January</div>
+      </div>
+      <div class="ticker" id="ticker">Red dots are encampments. Hollow green markers are your planned sites. Press play to watch the year.</div>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--red)"></i>People outside</span>
+        <span><i class="dot" style="background:var(--green)"></i>Your sites (tent camp, tiny homes, hotel)</span>
+        <span><i class="sq" style="background:color-mix(in srgb, var(--green) 45%, transparent)"></i>Public places cleared</span>
+        <span><i class="dot" style="background:var(--amber)"></i>Site with frequent incidents</span>
+      </div>
+  </div>
+
+  <section id="papers" hidden></section>
+
+  <details class="how">
+    <summary>How the simulator works, and what's estimated</summary>
+    <p><b>People outside.</b> About 5,600 people slept outside within Seattle's city limits in January 2026 (<a href="count.html">how we count</a>). The simulator spreads them across the places that got encampment reports in September 2026, in proportion to how many reports each got. Reports aren't a census, so this puts people roughly where they really are, not exactly.</p>
+    <p><b>The mayor's plan.</b> 960 tiny homes with full 24/7 services. With building costs spread over five years, that costs about $35 million a year, which is the budget for every plan. Her villages take about seven months to site and open, and the city starts about one a month. That reproduces her real pace: about 280 places in her first ten months.</p>
+    <p><b>Clearing public places.</b> Outreach works through your public places in the order you ranked them. Everyone there gets an offer of a place. People who accept move in; people who say no move out of the protected place, as the pledge's rules require. A protected place counts as cleared once everyone in it has had an offer, so it clears only as fast as places open.</p>
+    <p><b>Who needs what.</b> Of every 20 people, the simulator assumes 9 mostly need a place, 5 need some support (often because of addiction) and 6 need a lot (often serious mental illness). That follows the 2026 county count, where 31% of people outside reported a serious mental illness and 41% an addiction. People in the high-need group are placed in full-support places first. When there's no full-support place left, they go into whatever is open.</p>
+    <p><b>Incidents.</b> "Incidents" stands for calls for help, disturbances and complaints. A site has more of them when its residents need more support than it gives, and tent camps have a few more than buildings. Each incident is weighted by who's nearby: low on industrial land, higher on a residential block. Sites placed by emergency decree count a bit higher in residential areas, because neighbors weren't consulted. The simulator compares incidents at your sites with what the same people caused while they were outside. Every plan includes a basic safety standard: naloxone, a daily check, and someone who can respond.</p>
+    <p><b>Approval and headlines.</b> Simulated, not a poll. Five groups of voters each care about different results, and the overall number is their weighted average. The outlets and stories are invented and written from your results.</p>
+    <div class="tbl"><table class="assume">
+      <thead><tr><th>Place type</th><th>Opens in</th><th>Say yes to an offer</th><th>Building cost, per place per year</th><th>Site size</th></tr></thead>
+      <tbody>
+        <tr><td>Tent camp</td><td>1 month (1 week by decree)</td><td>60%</td><td>~$1k</td><td>100</td></tr>
+        <tr><td>Hotel room, bought</td><td>3 months (1 by decree)</td><td>90%</td><td>~$13k ($200k a room over 30 years)</td><td>The hotel's rooms</td></tr>
+        <tr><td>Tiny home village</td><td>7 months (2½ by decree)</td><td>85%</td><td>~$8k ($35k a home over 5 years)</td><td>75</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl"><table class="assume">
+      <thead><tr><th>Support</th><th>What it is</th><th>Staffing cost, per place per year</th><th>People still there after a year, when it matches their needs</th></tr></thead>
+      <tbody>
+        <tr><td>Self-managed</td><td>Resident leads, a coordinator shared across sites, toilets, power, naloxone</td><td>~$3k</td><td rowspan="4">92% when support matches need; 75%, 55% or 45% when it falls one, two or three steps short</td></tr>
+        <tr><td>Light</td><td>Day staff, visiting outreach and case managers</td><td>~$9k</td></tr>
+        <tr><td>Standard</td><td>Staff day and night, case managers on site</td><td>~$17k</td></tr>
+        <tr><td>Full</td><td>24/7 staff with behavioral health care (the mayor's level)</td><td>~$24k</td></tr>
+      </tbody>
+    </table></div>
+    <p>Hotels need about 30% less staffing (one front desk covers many rooms), and tents about 10% more. Site upkeep (toilets, utilities, trash) adds $3k–6k a place. All of these are our estimates, built from Seattle's $28k average cost per new shelter bed, San Diego's sanctioned camps (about $8–11.5k a tent) and the hotel explorer. Sources are on the <a href="spending-options.html">spending options</a> and <a href="map.html#hotels">hotel</a> pages. Places come from the <a href="map.html#villages">village sites</a> (public lots at least 300 feet from schools, child care and playgrounds) and the <a href="map.html#hotels">hotel explorer</a> (budget and mid-price hotels, cheapest per room first).</p>
+  </details>
+</main>
+
+<script>
+(() => {
+const S = window.SIM;
+const $ = id => document.getElementById(id);
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt = n => Math.round(n).toLocaleString("en-US");
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const WEEKS = 52, WPM = 52 / 12;
+const monthOf = w => MONTHS[Math.min(11, Math.floor(w / WPM))];
+
+// ---------- assumptions (all estimates; see "How the simulator works") ----------
+const PEOPLE = 5600;
+const GOAL = 1000; // the mayor's promise: 1,000 new places a year
+const ZONES = { schools: "Schools and child care", parks: "Parks and trails", business: "Business districts", transit: "Transit, libraries, community centers" };
+const CLEAR_MSG = { schools: "every school and child care zone is clear", parks: "every park and trail is clear", business: "every business district is clear", transit: "every light rail station, library and community center is clear" };
+const SHORT = { schools: "Schools", parks: "Parks", business: "Business districts", transit: "Transit and libraries" };
+const ALLOWED = ["residential", "commercial", "industrial"];
+const SERVICE = [
+  { k: "self", name: "Self-managed", staff: 3, desc: "Resident leads, a coordinator shared across sites, toilets, power, naloxone." },
+  { k: "light", name: "Light", staff: 9, desc: "Day staff, visiting outreach and case managers." },
+  { k: "standard", name: "Standard", staff: 17, desc: "Staff day and night, case managers on site." },
+  { k: "full", name: "Full", staff: 24, desc: "24/7 staff with behavioral health care. The mayor's level." },
+];
+const TYPES = {
+  tent: { name: "Tent camps", one: "tent camp", ops: 3, staffF: 1.1, capital: 1, accept: 0.6, lead: [1, 0.25], fill: 15, size: 100, minLot: 25000, incident: 1.2,
+          note: "Cheapest and fastest. Fewer people say yes." },
+  hotel: { name: "Hotel rooms", one: "hotel", ops: 6, staffF: 0.7, capital: 13, accept: 0.9, lead: [3, 1], fill: 12, incident: 0.9,
+           note: "A locked door. Costly to buy, quick to open." },
+  village: { name: "Tiny homes", one: "tiny home village", ops: 4, staffF: 1.0, capital: 8, accept: 0.85, lead: [7, 2.5], fill: 10, size: 75, minLot: 33750, incident: 1.0,
+             note: "A locked door. Slow to site." },
+};
+const TYPE_ORDER = ["tent", "hotel", "village"];
+const NEED_PATTERN = [0,0,0,0,0,0,0,0,0, 1,1,1,1,1, 3,3,3,3,3,3]; // 9 mostly need a place, 5 some support, 6 a lot
+const NEED_RATE = { 0: 1, 1: 2, 3: 4 };
+const STAY = [0.92, 0.75, 0.55, 0.45];
+const SITE_WEIGHT = { industrial: 0.4, commercial: 0.8, business: 1.0, campus: 1.0, residential: 1.2 };
+const STREET_WEIGHT = { schools: 1.5, parks: 1.3, business: 1.2, transit: 1.3, residential: 1.2, commercial: 0.8, industrial: 0.4 };
+const LOCATIONS = [
+  { k: "industrial", name: "Industrial areas", desc: "Few neighbors, so incidents matter less. Farther from people, so fewer say yes.", accept: 0.85 },
+  { k: "anywhere", name: "Biggest lots", desc: "The largest public lots wherever they are, as the mayor does.", accept: 1.0 },
+  { k: "near", name: "Near encampments", desc: "Close to where people are now, so more say yes. More neighbors.", accept: 1.1 },
+];
+const cost = (t, s) => SERVICE[s].staff * TYPES[t].staffF + TYPES[t].ops + TYPES[t].capital; // $k a place a year
+const MAYOR = { mix: { tent: 0, hotel: 0, village: 100 }, service: 3, full: 0, loc: "anywhere", emergency: false };
+const BUDGET = 960 * cost("village", 3); // $k a year: the mayor's 960 tiny homes at full service
+
+// ---------- people ----------
+let seed = 7;
+const rand = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const places = S.places.filter(p => p[2] !== "outside").map(([lng, lat, g, n]) => ({ lng, lat, g, n }));
+const totalReports = places.reduce((t, p) => t + p.n, 0);
+// Largest-remainder rounding so the people add up to exactly 5,600.
+places.forEach(p => { p.exact = p.n * PEOPLE / totalReports; p.pop = Math.floor(p.exact); });
+let short = PEOPLE - places.reduce((t, p) => t + p.pop, 0);
+[...places].sort((a, b) => (b.exact - b.pop) - (a.exact - a.pop)).slice(0, short).forEach(p => p.pop++);
+const people = [];
+places.forEach((p, ci) => { for (let i = 0; i < p.pop; i++) people.push({ c: ci, g: p.g, need: NEED_PATTERN[people.length % 20], u: rand(), v: Math.max(1e-6, rand()) }); });
+const distM = (a, b) => { const kx = 111320 * Math.cos(47.6 * Math.PI / 180); return Math.hypot((a.lng - b.lng) * kx, (a.lat - b.lat) * 111320); };
+const allowedIdx = places.map((p, i) => i).filter(i => ALLOWED.includes(places[i].g));
+// Where people go when they leave a protected place or a site: the nearest place in an allowed area.
+const nearestAllowed = places.map(p => allowedIdx.reduce((best, j) => distM(p, places[j]) < distM(p, places[best]) ? j : best, allowedIdx[0]));
+const lots = S.lots.map(l => ({ ...l, lng: l.p[0], lat: l.p[1] }));
+lots.forEach(l => { l.nearPeople = places.reduce((t, p) => t + (distM(l, p) < 1000 ? p.pop : 0), 0); });
+const hotelsByPrice = S.hotels.map(h => ({ ...h, lng: h.p[0], lat: h.p[1], per: h.av ? h.av / h.r : 400000 })).sort((a, b) => a.per - b.per);
+
+// ---------- the plan ----------
+const plan = { order: ["schools", "parks", "business", "transit"], ...structuredClone(MAYOR) };
+
+function sharesOf(p) {
+  const tot = TYPE_ORDER.reduce((t, k) => t + p.mix[k], 0) || 1;
+  return Object.fromEntries(TYPE_ORDER.map(k => [k, p.mix[k] / tot]));
+}
+function affordable(p) {
+  const sh = sharesOf(p), f = p.service === 3 ? 0 : p.full / 100;
+  const per = TYPE_ORDER.reduce((t, k) => t + sh[k] * ((1 - f) * cost(k, p.service) + f * cost(k, 3)), 0);
+  return { places: Math.floor(BUDGET / per), per };
+}
+
+function buildSites(p, n) {
+  const sh = sharesOf(p), want = Object.fromEntries(TYPE_ORDER.map(k => [k, Math.round(n * sh[k])]));
+  const lotOrder = p.loc === "industrial" ? [...lots].sort((a, b) => (b.z === "industrial") - (a.z === "industrial") || b.u - a.u)
+    : p.loc === "near" ? [...lots].sort((a, b) => b.nearPeople - a.nearPeople) : [...lots].sort((a, b) => b.u - a.u);
+  const used = new Set(), queues = { tent: [], hotel: [], village: [] };
+  for (const k of ["village", "tent"]) {
+    let left = want[k];
+    while (left > 0) {
+      const lot = lotOrder.find(l => !used.has(l) && l.u >= TYPES[k].minLot);
+      if (!lot) break;
+      used.add(lot);
+      const beds = Math.min(TYPES[k].size, left);
+      queues[k].push({ type: k, n: lot.n, lng: lot.lng, lat: lot.lat, z: lot.z, beds });
+      left -= beds;
+    }
+  }
+  let left = want.hotel;
+  for (const h of hotelsByPrice) {
+    if (left <= 0) break;
+    const beds = Math.min(h.r, left);
+    queues.hotel.push({ type: "hotel", n: h.n, lng: h.lng, lat: h.lat, z: h.z || "commercial", beds });
+    left -= beds;
+  }
+  // The city starts a few sites a month, sharing its starts across types in proportion to the places still to come.
+  const perMonth = p.emergency ? 3 : 1, sites = [];
+  for (let m = 0; m < 12; m++) {
+    for (let s = 0; s < perMonth; s++) {
+      const rem = TYPE_ORDER.map(k => [k, queues[k].reduce((t, x) => t + x.beds, 0)]).filter(([, b]) => b > 0);
+      if (!rem.length) break;
+      rem.sort((a, b) => b[1] - a[1]);
+      const site = queues[rem[0][0]].shift();
+      site.start = m;
+      site.openW = Math.round((m + TYPES[site.type].lead[p.emergency ? 1 : 0]) * WPM);
+      sites.push(site);
+    }
+  }
+  return sites;
+}
+
+// ---------- the year ----------
+function simulate(p, record) {
+  const afford = affordable(p);
+  const sites = buildSites(p, afford.places);
+  const nPlaces = places.length;
+  const locAccept = LOCATIONS.find(l => l.k === p.loc).accept;
+  const f = p.service === 3 ? 0 : p.full / 100;
+  sites.forEach(s => {
+    s.fullBeds = Math.round(s.beds * f); s.baseBeds = s.beds - s.fullBeds;
+    s.fullUsed = 0; s.baseUsed = 0; s.residents = []; s.inc = 0; s.incW = 0;
+    s.cursor = {};
+  });
+  // Unoffered people, by place.
+  const waiting = places.map(() => []);
+  people.forEach((x, i) => waiting[x.c].push(i));
+  const state = new Array(people.length).fill(0); // 0 outside, 1 inside, 2 moved out of a protected place, 3 left a site
+  const where = people.map(x => x.c);
+  const groupPop = {}, groupOffered = {};
+  people.forEach(x => { groupPop[x.g] = (groupPop[x.g] || 0) + 1; groupOffered[x.g] = 0; });
+  const queueOrder = [...p.order, ...ALLOWED];
+  const returning = [];
+  const clearedW = {};
+  const counts = places.map(pl => pl.pop);
+  const weeks = [];
+  let siteInc = 0, streetInc = 0, nearHomeInc = 0;
+  // For each site, places in each group sorted by distance, so a site fills from its nearest encampments.
+  const sortedBy = (s, g) => s.cursor[g] || (s.cursor[g] = { list: places.map((pl, i) => i).filter(i => places[i].g === g).sort((a, b) => distM(places[a], s) - distM(places[b], s)), at: 0 });
+  const leaveAt = new Map();
+
+  for (let w = 0; w < WEEKS; w++) {
+    const moves = [], events = [];
+    // People who leave a site this week go back outside, to an allowed area.
+    for (const s of sites) {
+      if (!s.residents.length) continue;
+      s.residents = s.residents.filter(i => {
+        if (leaveAt.get(i) !== w) return true;
+        const bed = people[i].bed;
+        if (bed === "full") s.fullUsed--; else s.baseUsed--;
+        state[i] = 3; const to = nearestAllowed[people[i].c]; where[i] = to; counts[to]++;
+        returning.push(i);
+        if (record) moves.push([s.lat, s.lng, places[to].lat, places[to].lng, "out"]);
+        return false;
+      });
+    }
+    for (const s of sites) {
+      if (s.openW > w) continue;
+      if (s.openW === w) events.push({ kind: "open", site: s });
+      const T = TYPES[s.type];
+      let admitted = 0, tries = 0;
+      while (admitted < T.fill && s.fullUsed + s.baseUsed < s.beds && tries < T.fill * 4) {
+        tries++;
+        // Next person: the highest-ranked group with anyone left to offer, nearest encampment first.
+        let i = -1, g = null;
+        for (const gg of queueOrder) {
+          const cur = sortedBy(s, gg);
+          while (cur.at < cur.list.length && !waiting[cur.list[cur.at]].length) cur.at++;
+          if (cur.at < cur.list.length) { i = waiting[cur.list[cur.at]].pop(); g = gg; break; }
+        }
+        let again = false;
+        if (i < 0) { if (!returning.length) break; i = returning.shift(); again = true; }
+        const x = people[i];
+        if (!again) { groupOffered[x.g]++; if (groupOffered[x.g] === groupPop[x.g] && !(x.g in clearedW) && ZONES[x.g]) { clearedW[x.g] = w; events.push({ kind: "clear", g: x.g }); } }
+        const yes = x.u < Math.min(0.97, T.accept * locAccept * (again ? 0.6 : 1));
+        const from = places[where[i]];
+        counts[where[i]]--;
+        if (yes) {
+          // High-need people take full-support beds first; everyone else takes the rest.
+          let bed;
+          if (x.need === 3 && s.fullUsed < s.fullBeds) bed = "full";
+          else if (s.baseUsed < s.baseBeds) bed = "base";
+          else bed = "full";
+          if (bed === "full") s.fullUsed++; else s.baseUsed++;
+          x.bed = bed;
+          const level = bed === "full" ? 3 : p.service;
+          x.mis = Math.max(0, x.need - level);
+          const stay = STAY[x.mis], hz = 1 - Math.pow(stay, 1 / 52);
+          const after = Math.ceil(Math.log(x.v) / Math.log(1 - hz));
+          if (w + after < WEEKS) leaveAt.set(i, w + after);
+          state[i] = 1; s.residents.push(i); admitted++;
+          if (record) moves.push([from.lat, from.lng, s.lat, s.lng, "in"]);
+        } else if (!again) {
+          // Said no: moves out of a protected place to an allowed area.
+          if (ZONES[x.g]) { const to = nearestAllowed[x.c]; where[i] = to; counts[to]++; state[i] = 2;
+            if (record) moves.push([from.lat, from.lng, places[to].lat, places[to].lng, "no"]); }
+          else counts[where[i]]++;
+        } else counts[where[i]]++;
+      }
+      // Incidents this week, weighted by who's nearby, against what the same people caused outside.
+      let inc = 0, street = 0;
+      for (const i of s.residents) {
+        const x = people[i], base = NEED_RATE[x.need];
+        let wgt = SITE_WEIGHT[s.z] ?? 1;
+        if (p.emergency && s.z === "residential") wgt *= 1.25;
+        inc += base * (1 + 0.75 * x.mis) * T.incident * wgt;
+        street += base * 1.75 * STREET_WEIGHT[x.g];
+      }
+      s.inc += inc; s.incW = s.residents.length ? inc / s.residents.length : 0;
+      siteInc += inc; streetInc += street;
+      if (s.z === "residential" || s.z === "commercial") nearHomeInc += inc;
+    }
+    if (record) weeks.push({ moves, events, counts: Int16Array.from(counts),
+      sites: sites.map(s => [s.openW <= w, s.residents.length, s.incW]),
+      inside: sites.reduce((t, s) => t + s.residents.length, 0),
+      cleared: Object.fromEntries(Object.keys(ZONES).map(g => [g, groupOffered[g] / groupPop[g]])) });
+  }
+  const inside = sites.reduce((t, s) => t + s.residents.length, 0);
+  const protectedPop = Object.keys(ZONES).reduce((t, g) => t + groupPop[g], 0);
+  const protectedOffered = Object.keys(ZONES).reduce((t, g) => t + groupOffered[g], 0);
+  const openBeds = sites.filter(s => s.openW < WEEKS).reduce((t, s) => t + s.beds, 0);
+  const sh = sharesOf(p);
+  return {
+    afford, sites, openBeds, inside, weeks,
+    cleared: Object.fromEntries(Object.keys(ZONES).map(g => [g, groupOffered[g] / groupPop[g]])),
+    clearedW, clearedAll: protectedOffered / protectedPop,
+    incRatio: streetInc ? siteInc / streetInc : 0, nearHome: streetInc ? nearHomeInc / streetInc : 0,
+    shares: sh, service: p.service, full: f,
+  };
+}
+
+// ---------- controls ----------
+const C = $("controls");
+function renderControls() {
+  const sh = sharesOf(plan), af = affordable(plan);
+  C.innerHTML = `
+  <div class="ctl"><h2><span>1</span>Which public places come first?</h2>
+    <div class="hint">Outreach clears them in this order.</div>
+    <ol class="order">${plan.order.map((g, i) => `<li><span class="rank">${i + 1}</span><span>${SHORT[g]}</span>
+      <span><button data-up="${i}" ${i === 0 ? "disabled" : ""} aria-label="Move ${SHORT[g]} up">↑</button></span></li>`).join("")}</ol></div>
+
+  <div class="ctl"><h2><span>2</span>What kind of places?</h2>
+    <div class="hint">Your mix of new places. The mayor's plan is all tiny homes.</div>
+    ${TYPE_ORDER.map(k => `<div class="slider"><div class="row"><label for="mix-${k}">${TYPES[k].name}</label><b>${Math.round(sh[k] * 100)}%</b></div>
+      <input type="range" id="mix-${k}" min="0" max="100" step="5" value="${plan.mix[k]}">
+      <div class="row"><span class="sub">${TYPES[k].note} About $${Math.round(cost(k, plan.service))}k a year each.</span></div></div>`).join("")}
+  </div>
+
+  <div class="ctl"><h2><span>3</span>How much support?</h2>
+    <div class="hint">For most places.</div>
+    <div class="seg" id="svc">${SERVICE.map((s, i) => `<button data-s="${i}" aria-pressed="${plan.service === i}">${s.name}</button>`).join("")}</div>
+    <div class="seg-desc">${SERVICE[plan.service].desc}</div>
+    ${plan.service < 3 ? `<div class="slider"><div class="row"><label for="full">Full-support places for the people who need it most</label><b>${plan.full}%</b></div>
+      <input type="range" id="full" min="0" max="60" step="5" value="${plan.full}">
+      <div class="row"><span class="sub">About 30% of people outside need a lot of support.</span></div></div>` : ""}
+  </div>
+
+  <div class="ctl"><h2><span>4</span>Where do sites go?</h2>
+    <div class="seg" id="loc">${LOCATIONS.map(l => `<button data-l="${l.k}" aria-pressed="${plan.loc === l.k}">${l.name}</button>`).join("")}</div>
+    <div class="seg-desc">${LOCATIONS.find(l => l.k === plan.loc).desc}</div>
+  </div>
+
+  <div class="ctl"><h2><span>5</span>Declare a state of emergency?</h2>
+    <label class="toggle"><input type="checkbox" id="emerg" ${plan.emergency ? "checked" : ""}>
+      <span>Site places by decree. They open in weeks instead of months, and the city can start three sites a month instead of one. Neighbors don't get a say.</span></label>
+  </div>
+
+`;
+  renderPlanHead();
+  C.querySelectorAll("[data-up]").forEach(b => b.onclick = () => { const i = +b.dataset.up; [plan.order[i - 1], plan.order[i]] = [plan.order[i], plan.order[i - 1]]; changed(true); });
+  TYPE_ORDER.forEach(k => { const el = $("mix-" + k);
+    el.oninput = () => { plan.mix[k] = +el.value; if (!TYPE_ORDER.some(t => plan.mix[t] > 0)) plan.mix[k] = 5; changed(false); };
+    el.onchange = () => renderControls(); });
+  C.querySelectorAll("#svc button").forEach(b => b.onclick = () => { plan.service = +b.dataset.s; changed(true); });
+  if ($("full")) { $("full").oninput = e => { plan.full = +e.target.value; changed(false); }; $("full").onchange = () => renderControls(); }
+  C.querySelectorAll("#loc button").forEach(b => b.onclick = () => { plan.loc = b.dataset.l; changed(true); });
+  $("emerg").onchange = e => { plan.emergency = e.target.checked; changed(true); };
+}
+const isMayor = () => TYPE_ORDER.every(k => sharesOf(plan)[k] === sharesOf(MAYOR)[k]) && plan.service === 3 && plan.loc === MAYOR.loc && plan.emergency === MAYOR.emergency;
+function renderPlanHead() {
+  const af = affordable(plan), m = isMayor();
+  $("planHead").innerHTML = `<div class="name">${m ? "The mayor's plan" : "Your plan"}<small>${m ? "Where you start" : "Changed"}</small></div>
+    <div class="money"><b>$${(BUDGET / 1000).toFixed(0)}M a year</b> pays for <b>${fmt(af.places)} places</b> at about $${Math.round(af.per)}k each${you ? `. <b>${fmt(you.openBeds)}</b> of them open by month 12` : ""}.</div>
+    <button class="reset" id="reset" ${m ? "disabled" : ""}>Reset to the mayor's plan</button>`;
+  $("reset").onclick = () => { Object.assign(plan, structuredClone(MAYOR)); changed(true); };
+}
+
+// ---------- scoreboard ----------
+let you = null, mayor = null, mayorKey = "";
+const pct = x => Math.round(x * 100);
+function delta(a, b, better, unit = "") {
+  const d = a - b;
+  if (Math.abs(d) < 0.5) return `<span class="delta same">Same as the mayor</span>`;
+  const good = better === "up" ? d > 0 : d < 0;
+  return `<span class="delta ${good ? "up" : "down"}">${d > 0 ? "+" : "−"}${fmt(Math.abs(d))}${unit} vs. mayor</span>`;
+}
+const incWord = r => r < 0.45 ? "Low" : r < 0.75 ? "Moderate" : r < 1.0 ? "High" : "Very high";
+function renderBoard() {
+  const zl = plan.order.map(g => `${SHORT[g]} <b>${you.clearedW[g] !== undefined ? monthOf(you.clearedW[g]).slice(0, 3) : pct(you.cleared[g]) + "%"}</b>`).join(" · ");
+  $("board").innerHTML = `
+    <div class="tile"><div class="lab"><span class="long">People inside, month 12</span><span class="short">Inside</span></div><div class="v">${fmt(you.inside)}<small class="goal"> of ${fmt(GOAL)} goal</small></div>
+      <div class="goalbar" role="img" aria-label="${fmt(you.inside)} of a ${fmt(GOAL)} goal; the mayor's plan reaches ${fmt(mayor.inside)}">
+        <div class="fill ${you.inside >= GOAL ? "met" : ""}" style="width:${Math.min(100, 100 * you.inside / GOAL)}%"></div>
+        <div class="mk" style="left:${Math.min(100, 100 * mayor.inside / GOAL)}%"></div></div>
+      <div class="vs">Goal: the mayor's promise of 1,000 a year. Line: her plan, <b>${fmt(mayor.inside)}</b></div>${delta(you.inside, mayor.inside, "up")}</div>
+    <div class="tile"><div class="lab"><span class="long">Public places cleared</span><span class="short">Cleared</span></div><div class="v">${pct(you.clearedAll)}<small>%</small></div>
+      <div class="vs">Mayor's plan: <b>${pct(mayor.clearedAll)}%</b></div>${delta(pct(you.clearedAll), pct(mayor.clearedAll), "up", " pts")}
+      <div class="zones-mini">${zl}</div></div>
+    <div class="tile"><div class="lab"><span class="long">Incidents at sites</span><span class="short">Incidents</span></div><div class="v">${incWord(you.incRatio)}</div>
+      <div class="vs"><b>${pct(you.incRatio)}%</b> of what the same people caused outside. Mayor: <b>${pct(mayor.incRatio)}%</b></div>
+      ${delta(pct(you.incRatio), pct(mayor.incRatio), "down", " pts")}</div>
+    <div class="tile"><div class="lab"><span class="long">Places open by month 12</span><span class="short">Open</span></div><div class="v">${fmt(you.openBeds)}</div>
+      <div class="vs">Money for <b>${fmt(you.afford.places)}</b>. Mayor: <b>${fmt(mayor.openBeds)}</b> open</div>${delta(you.openBeds, mayor.openBeds, "up")}</div>`;
+}
+
+// ---------- map ----------
+const map = L.map("map", { zoomSnap: 0.25, scrollWheelZoom: false, preferCanvas: true });
+const dark = matchMedia("(prefers-color-scheme: dark)").matches && document.documentElement.dataset.theme !== "light";
+L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/${dark ? "World_Dark_Gray_Base" : "World_Light_Gray_Base"}/MapServer/tile/{z}/{y}/{x}`,
+  { attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom: 16 }).addTo(map);
+map.createPane("zones").style.zIndex = 350;
+map.createPane("dots").style.zIndex = 620;
+map.createPane("sites").style.zIndex = 640;
+const SEATTLE = [[47.4955, -122.436], [47.734, -122.236]];
+map.fitBounds(SEATTLE);
+const zoneLayers = Object.fromEntries(Object.keys(ZONES).map(g => [g, L.geoJSON(S.zones[g], { pane: "zones", interactive: false,
+  style: { stroke: false, fillColor: css("--gray"), fillOpacity: 0.12 } }).addTo(map)]));
+const clusterMarks = places.map(p => L.circleMarker([p.lat, p.lng], { pane: "dots", radius: 0, stroke: false, fillColor: css("--red"), fillOpacity: 0.75, interactive: false }).addTo(map));
+const radius = n => n > 0 ? 1.4 + Math.sqrt(n) * 0.8 : 0;
+function drawClusters(counts) { clusterMarks.forEach((m, i) => m.setRadius(radius(counts ? counts[i] : places[i].pop))); }
+const siteLayer = L.layerGroup().addTo(map);
+const ICON = {
+  tent: '<path d="M2 18 L11 3 L20 18 Z"/><path d="M11 9 L8 18 M11 9 L14 18" stroke-width="1.2"/>',
+  village: '<path d="M3 10 L11 3 L19 10 V19 H3 Z"/><rect x="9" y="12" width="4" height="7"/>',
+  hotel: '<rect x="4" y="2" width="14" height="17" rx="1"/><path d="M7 6h2M13 6h2M7 10h2M13 10h2M7 14h2M13 14h2" stroke-width="1.4"/>',
+};
+function siteIcon(type, open, color) {
+  const fill = open ? color : "transparent", stroke = open ? css("--bg") : color;
+  return L.divIcon({ className: "site-icon", iconSize: [22, 22], iconAnchor: [11, 11],
+    html: `<svg width="22" height="22" viewBox="0 0 22 22" fill="${fill}" stroke="${stroke}" stroke-width="1.6" stroke-linejoin="round">${ICON[type]}</svg>` });
+}
+let siteMarks = [];
+function drawSites(r, wk) {
+  siteLayer.clearLayers();
+  siteMarks = r.sites.map((s, i) => {
+    const st = wk ? wk.sites[i] : [false, 0, 0];
+    // Amber: incidents per resident well above what a calm, well-matched site sees (about 2–2.6 a week on this scale).
+    const color = st[0] && st[2] > 3.5 ? css("--amber") : css("--green");
+    const m = L.marker([s.lat, s.lng], { pane: "sites", icon: siteIcon(s.type, st[0], color), keyboard: false })
+      .bindTooltip(() => `<b>${s.n}</b><br>${TYPES[s.type].one}, ${fmt(s.beds)} places<br>Opens in ${s.openW < WEEKS ? monthOf(s.openW) : "next year"}${wk && st[0] ? `<br>${fmt(st[1])} living here now` : ""}`, { className: "tip", direction: "top", offset: [0, -10] });
+    m.addTo(siteLayer);
+    return m;
+  });
+}
+function paintZones(cleared) {
+  Object.entries(zoneLayers).forEach(([g, l]) => l.setStyle(cleared && cleared[g] >= 0.999
+    ? { fillColor: css("--green"), fillOpacity: 0.32 } : { fillColor: css("--gray"), fillOpacity: 0.12 }));
+}
+
+// ---------- playback ----------
+let playing = false, week = 0, timer = null, run = null;
+const movers = L.layerGroup().addTo(map);
+function animateMoves(moves) {
+  const show = moves.length > 36 ? moves.filter((_, i) => i % Math.ceil(moves.length / 36) === 0) : moves;
+  const color = { in: css("--green"), out: css("--red"), no: css("--gray") };
+  show.forEach(([a, b, c, d, kind]) => {
+    const m = L.circleMarker([a, b], { pane: "sites", radius: 3, stroke: false, fillColor: color[kind], fillOpacity: 0.95, interactive: false }).addTo(movers);
+    const t0 = performance.now(), dur = 380 + Math.random() * 160;
+    const step = now => { const k = Math.min(1, (now - t0) / dur), e = k * (2 - k);
+      m.setLatLng([a + (c - a) * e, b + (d - b) * e]);
+      if (k < 1) requestAnimationFrame(step); else movers.removeLayer(m); };
+    requestAnimationFrame(step);
+  });
+}
+function showWeek(w) {
+  const wk = run.weeks[w];
+  drawClusters(wk.counts); drawSites(run, wk); paintZones(wk.cleared);
+  $("tfill").style.width = `${(w + 1) / WEEKS * 100}%`;
+  $("when").textContent = monthOf(w);
+  const ev = wk.events.find(e => e.kind === "clear") || wk.events.find(e => e.kind === "open");
+  if (ev) $("ticker").innerHTML = ev.kind === "clear" ? `<b>${monthOf(w)}:</b> ${CLEAR_MSG[ev.g]}.`
+    : `<b>${monthOf(w)}:</b> ${ev.site.n} opens as a ${TYPES[ev.site.type].one}, ${fmt(ev.site.beds)} places.`;
+  const t = $("board").querySelector(".tile");
+  t.querySelector(".v").innerHTML = `${fmt(wk.inside)}<small class="goal"> of ${fmt(GOAL)} goal</small>`;
+  const f = t.querySelector(".goalbar .fill"); f.style.width = `${Math.min(100, 100 * wk.inside / GOAL)}%`; f.classList.toggle("met", wk.inside >= GOAL);
+}
+function tick() {
+  if (week >= WEEKS) { stop(true); return; }
+  showWeek(week); animateMoves(run.weeks[week].moves); week++;
+  timer = setTimeout(tick, 430);
+}
+function stop(done) {
+  playing = false; clearTimeout(timer);
+  $("play").textContent = done ? "↻ Play again" : "▶ Resume"; $("play").classList.toggle("paused", !done);
+  if (done) { renderBoard(); renderPapers(); }
+}
+$("play").onclick = () => {
+  if (playing) return stop(false);
+  if (!run || week >= WEEKS || week === 0) { seedReset(); run = simulate(plan, true); week = 0; $("papers").hidden = true; }
+  playing = true; $("play").textContent = "❚❚ Pause"; $("play").classList.remove("paused");
+  tick();
+};
+function seedReset() { /* the simulation is deterministic; nothing to reset */ }
+function resetPlayback() {
+  stop(false); week = 0; run = null; movers.clearLayers();
+  $("play").textContent = "▶ Play the year"; $("play").classList.remove("paused");
+  $("tfill").style.width = "0"; $("when").textContent = "January";
+  $("ticker").innerHTML = "Red dots are encampments. Hollow green markers are your planned sites. Press play to watch the year.";
+  $("papers").hidden = true;
+}
+
+// ---------- the papers ----------
+function approvalOf(r, m) {
+  const tentShare = r.shares.tent, svc = (r.service + 3 * r.full * (r.service < 3 ? 1 : 0)) / 3;
+  const clamp = x => Math.max(5, Math.min(95, Math.round(x)));
+  const groups = [
+    { k: "Parents", share: 0.25, v: clamp(25 + 65 * (0.6 * r.cleared.schools + 0.4 * r.cleared.parks)) },
+    { k: "Downtown and business", share: 0.15, v: clamp(25 + 45 * r.cleared.business + 25 * Math.min(1, r.inside / 1500)) },
+    { k: "Neighbors of new sites", share: 0.2, v: clamp(80 - 70 * r.nearHome) },
+    { k: "Compassion first", share: 0.25, v: clamp(25 + 40 * Math.min(1, r.inside / 1800) + 25 * Math.min(1, svc) - 20 * tentShare) },
+    { k: "Taxpayers", share: 0.15, v: clamp(35 + 45 * Math.min(1, Math.max(0, r.inside / Math.max(1, m.inside) - 1) / 2)) },
+  ];
+  return { groups, overall: Math.round(groups.reduce((t, g) => t + g.share * g.v, 0)) };
+}
+function headlines(r, m) {
+  const sch = r.clearedW.schools, parks = r.cleared.parks, times = r.inside / Math.max(1, m.inside);
+  const bigNear = [...r.sites].filter(s => s.openW < WEEKS && (s.z === "residential")).sort((a, b) => b.inc - a.inc)[0];
+  const tents = Math.round(r.shares.tent * 100), hotels = Math.round(r.shares.hotel * 100);
+  const svcName = SERVICE[r.service].name.toLowerCase();
+  const out = [];
+  out.push({ outlet: "The Emerald Ledger",
+    hl: sch !== undefined ? `Every school zone clear by ${monthOf(sch)} under council member's emergency plan` : `School zones still crowded a year into the council's plan`,
+    body: `${fmt(r.inside)} people were living in new places at the end of the year, against ${fmt(m.inside)} under the mayor's plan for the same money. ${pct(r.clearedAll)}% of the city's protected public places were cleared${sch !== undefined ? `, starting with schools in ${monthOf(sch)}` : ""}. Parks were ${pct(parks)}% clear.` });
+  out.push({ outlet: "The Commerce Desk",
+    hl: times >= 1.5 ? `Same budget, ${times >= 2.95 ? Math.round(times) : times.toFixed(1)} times the people inside. What's the mayor's excuse?` : times >= 1.05 ? `Council plan edges out the mayor's on the same money` : `Council plan does no better than the mayor's`,
+    body: `The plan spends the mayor's $${(BUDGET / 1000).toFixed(0)} million a year on a mix of ${tents}% tent camps, ${hotels}% hotel rooms and ${100 - tents - hotels}% tiny homes. It paid for ${fmt(r.afford.places)} places and opened ${fmt(r.openBeds)} within the year. ${r.cleared.business > 0 ? `Business districts were ${pct(r.cleared.business)}% clear by December.` : `Outreach hadn't reached the business districts by December.`}` });
+  out.push({ outlet: "Block by Block",
+    hl: r.nearHome > 0.45 && bigNear ? `Neighbors near ${bigNear.n} say nobody asked them` : r.nearHome > 0.2 ? `Some neighbors uneasy as new sites fill up` : `New sites mostly out of sight, and out of mind`,
+    body: `Incidents at the new sites ran at about ${pct(r.incRatio)}% of what the same people caused while living outside${r.nearHome > 0.2 ? `, and most of them were near homes` : `, most of them away from homes`}. ${plannedNote(r)}` });
+  out.push({ outlet: "Street Level",
+    hl: tents >= 50 ? `"A tent isn't a home," advocates say, "but it beats a sidewalk"` : r.service >= 2 || r.full >= 0.3 ? `Advocates cautiously welcome plan that keeps support for those who need it most` : `Light support worries advocates as people leave new sites`,
+    body: `The plan runs most places at the ${svcName} support level${r.service < 3 ? `, with ${pct(r.full)}% of places at full support for people with serious mental illness or addiction` : ""}. About 30% of people outside need a lot of support. ${r.full >= 0.28 || r.service === 3 ? "This plan has room for most of them." : "This plan has full-support room for fewer of them, so more leave."}` });
+  return out;
+}
+function plannedNote(r) {
+  const ind = r.sites.filter(s => s.openW < WEEKS && s.z === "industrial").length, all = r.sites.filter(s => s.openW < WEEKS).length;
+  return all ? `${ind} of the ${all} sites that opened are on industrial land.` : "No new sites opened this year.";
+}
+function renderPapers() {
+  const a = approvalOf(you, mayor), hs = headlines(you, mayor);
+  const color = v => v >= 55 ? css("--green") : v >= 40 ? css("--amber") : css("--red");
+  const P = $("papers");
+  P.innerHTML = `
+    <div class="papers-head">
+      <div class="approval"><div class="v" style="color:${color(a.overall)}">${a.overall}%</div><div class="l">simulated approval of your plan</div></div>
+      <div class="groups">${a.groups.map(g => `<div class="grp"><span>${g.k}</span><span class="bar"><i style="width:${g.v}%;background:${color(g.v)}"></i></span><span class="n">${g.v}%</span></div>`).join("")}</div>
+    </div>
+    <div class="front">${hs.map((h, i) => `<div class="story" id="st${i}"><button aria-expanded="false"><div class="outlet">${h.outlet}</div><div class="hl">${h.hl}</div><div class="more">Read the story</div></button><div class="body">${h.body}</div></div>`).join("")}</div>
+    <p class="fine">Simulated, not a poll: each group of voters weighs different results. The outlets and stories are invented and written from your results. Change your plan and play again.</p>`;
+  P.hidden = false;
+  P.querySelectorAll(".story button").forEach(b => b.onclick = () => { const s = b.parentElement; s.classList.toggle("open"); b.setAttribute("aria-expanded", s.classList.contains("open")); });
+  P.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ---------- wiring ----------
+let pending = null;
+function changed(rerender) {
+  if (rerender) renderControls();
+  else TYPE_ORDER.forEach(k => { const lab = $("mix-" + k)?.closest(".slider")?.querySelector(".row b"); if (lab) lab.textContent = Math.round(sharesOf(plan)[k] * 100) + "%"; });
+  if (!rerender && $("full")) $("full").closest(".slider").querySelector(".row b").textContent = plan.full + "%";
+  // A short timer, not requestAnimationFrame, so the forecast still updates when the tab isn't being painted.
+  clearTimeout(pending);
+  pending = setTimeout(() => {
+    const key = plan.order.join();
+    if (key !== mayorKey) { mayor = simulate({ ...structuredClone(MAYOR), order: plan.order }, false); mayorKey = key; }
+    you = simulate(plan, false);
+    resetPlayback(); renderBoard(); drawSites(you, null); drawClusters(null); paintZones(null);
+    renderPlanHead();
+    $("mayorInside").textContent = `${fmt(mayor.inside)} people`;
+   }, 20);
+}
+renderControls();
+changed(false);
+addEventListener("load", () => { map.invalidateSize(); map.fitBounds(SEATTLE); });
+})();
+</script>
+</body>
+</html>
