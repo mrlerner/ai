@@ -12,8 +12,8 @@
       { name: "Where camping would be banned", href: "map.html" },
       { name: "Village sites", href: "map.html#villages" },
       { name: "Hotels", href: "map.html#hotels" },
-      { name: "Top 50 village sites", href: "map.html#top" },
-      { name: "Top hotels", href: "map.html#tophotels" },
+      { name: "Viable village sites", href: "map.html#top" },
+      { name: "Viable hotels", href: "map.html#tophotels" },
       { name: "Encampment reports: Wallingford", href: "wallingford.html" },
     ] },
     { name: "Budget", pages: [
