@@ -890,7 +890,9 @@ function pickTop(s, { scroll = false } = {}) {
   drawTop(); drawTopPanel(); drawTopTable();
   // Scroll first and without animation: a smooth scroll during the fly leaves the map drawn at the old site.
   if (scroll) $("map").scrollIntoView({ block: "center" });
-  map.flyToBounds(L.geoJSON(s.g).getBounds(), { maxZoom: 18, padding: [50, 50], duration: 0.6 });
+  // Two levels out from a tight fit, so the blocks around the site show too: what's next door matters as much as the lot.
+  const b = L.geoJSON(s.g).getBounds();
+  map.flyTo(b.getCenter(), Math.min(map.getBoundsZoom(b, false, L.point(100, 100)) - 2, 16), { duration: 0.6 });
 }
 const stepTop = d => { const r = (topPick || 0) + d; if (r >= 1 && r <= TS.sites.length) pickTop(TS.sites[r - 1]); };
 function overviewTop() {
