@@ -13,6 +13,7 @@
       { name: "Village sites", href: "map.html#villages" },
       { name: "Hotels", href: "map.html#hotels" },
       { name: "Top 50 village sites", href: "map.html#top" },
+      { name: "Top hotels", href: "map.html#tophotels" },
       { name: "Encampment reports: Wallingford", href: "wallingford.html" },
     ] },
     { name: "Budget", pages: [
@@ -59,7 +60,7 @@
   // Which page this is: the file name (or index.html for a bare folder URL), plus the hash for pages with tabs.
   const current = () => {
     const file = location.pathname.split("/").pop() || "index.html";
-    return file === "map.html" && ["#villages", "#hotels", "#top"].includes(location.hash.split("/")[0]) ? "map.html" + location.hash.split("/")[0] : file;
+    return file === "map.html" && ["#villages", "#hotels", "#top", "#tophotels"].includes(location.hash.split("/")[0]) ? "map.html" + location.hash.split("/")[0] : file;
   };
 
   const render = () => {
