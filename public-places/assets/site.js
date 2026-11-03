@@ -1,26 +1,32 @@
 // Shared site header. Every page includes this script right after <body>, so the header renders before the page does.
 // To add a page, add it to SECTIONS; the first page in a section is where the section's top-level link goes.
+// Sections marked footer: true are listed in the site footer instead of the top bar.
 (() => {
   const SECTIONS = [
-    { name: "The pledge", pages: [{ name: "The pledge", href: "index.html" }] },
-    { name: "The case", pages: [
-      { name: "How many sleep outside", href: "count.html" },
-      { name: "Denver vs. Seattle", href: "denver-vs-seattle.html" },
-      { name: "The Denver plan for Seattle", href: "denver-plan.html" },
+    { name: "The Problem", pages: [
+      { name: "Public spaces", href: "wallingford.html" },
+      { name: "People sleeping outside", href: "count.html" },
     ] },
+    { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "Maps", pages: [
       { name: "Where camping would be banned", href: "map.html" },
       { name: "Village sites", href: "map.html#villages" },
       { name: "Hotels", href: "map.html#hotels" },
       { name: "Viable village sites", href: "map.html#top" },
       { name: "Viable hotels", href: "map.html#tophotels" },
-      { name: "Encampment reports: Wallingford", href: "wallingford.html" },
     ] },
-    { name: "Budget", pages: [
+    { name: "How to Help", pages: [{ name: "How to help", href: "help.html" }] },
+    // Footer sections: useful background, but not part of the main argument. Their pages still get a sub-nav.
+    { name: "Denver comparison", footer: true, pages: [
+      { name: "Denver vs. Seattle", href: "denver-vs-seattle.html" },
+      { name: "The Denver plan for Seattle", href: "denver-plan.html" },
+    ] },
+    { name: "Budget", footer: true, pages: [
       { name: "What Seattle spends", href: "budget.html" },
       { name: "What else it could buy", href: "spending-options.html" },
+      { name: "Service levels", href: "service-levels.html" },
     ] },
-    { name: "Simulator", pages: [{ name: "State of Emergency", href: "simulator.html" }] },
+    { name: "Simulator", footer: true, pages: [{ name: "State of Emergency", href: "simulator.html" }] },
   ];
 
   const CSS = `
@@ -49,9 +55,17 @@
 .pp-sub a[aria-current="page"] { color: var(--pp-fg); border-bottom-color: var(--pp-accent); font-weight: 600; }
 @media (max-width: 640px) {
   .pp-bar { padding-top: 10px; padding-bottom: 6px; }
-  .pp-sections { width: calc(100% + 11px); margin-left: -11px; overflow-x: auto; scrollbar-width: none; }
-  .pp-sections a { padding: 6px 10px; }
+  .pp-sections { width: calc(100% + 8px); margin-left: -8px; overflow-x: auto; scrollbar-width: none; }
+  .pp-sections a { padding: 6px 8px; font-size: 14.5px; }
 }
+.pp-foot { border-top: 1px solid var(--pp-line); border-bottom: 0; background: var(--pp-sub); font-size: 14.5px; }
+.pp-foot .pp-in { padding-top: 28px; padding-bottom: 36px; align-items: flex-start; flex-wrap: wrap; gap: 24px 48px; }
+.pp-foot h2 { font-size: 12.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--pp-muted); font-weight: 600; margin-bottom: 8px; border: 0; padding: 0; line-height: 1.4; }
+.pp-foot ul { list-style: none; padding: 0; }
+.pp-foot li { margin: 0 0 6px; padding: 0; }
+.pp-foot a { color: var(--pp-fg); }
+.pp-foot a:hover { color: var(--pp-accent); }
+.pp-foot a[aria-current="page"] { font-weight: 600; }
 @media print { .pp-site { display: none; } }`;
 
   const MARK = `<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="var(--pp-accent)"/>` +
@@ -66,7 +80,7 @@
   const render = () => {
     const here = current();
     const section = SECTIONS.find(s => s.pages.some(p => p.href === here));
-    const tops = SECTIONS.map(s => `<a href="${s.pages[0].href}"${s === section ? ' class="pp-on"' : ""}>${s.name}</a>`).join("");
+    const tops = SECTIONS.filter(s => !s.footer).map(s => `<a href="${s.pages[0].href}"${s === section ? ' class="pp-on"' : ""}>${s.name}</a>`).join("");
     const sub = section && section.pages.length > 1
       ? `<nav class="pp-sub" aria-label="${section.name}"><div class="pp-in">` +
         section.pages.map(p => `<a href="${p.href}"${p.href === here ? ' aria-current="page"' : ""}>${p.name}</a>`).join("") +
@@ -76,6 +90,14 @@
       `<nav class="pp-sections" aria-label="Site">${tops}</nav></div>${sub}`;
   };
 
+  const renderFooter = () => {
+    const here = current();
+    const cols = SECTIONS.filter(s => s.footer).map(s => `<div><h2>${s.name}</h2><ul>` +
+      s.pages.map(p => `<li><a href="${p.href}"${p.href === here ? ' aria-current="page"' : ""}>${p.name}</a></li>`).join("") +
+      `</ul></div>`).join("");
+    return `<div class="pp-in">${cols}</div>`;
+  };
+
   const style = document.createElement("style");
   style.textContent = CSS;
   document.head.appendChild(style);
@@ -83,6 +105,11 @@
   header.className = "pp-site";
   header.innerHTML = render();
   document.currentScript.before(header);
+  // The footer lists the footer-only sections, at the end of the page.
+  const footer = document.createElement("footer");
+  footer.className = "pp-site pp-foot";
+  footer.innerHTML = renderFooter();
+  addEventListener("DOMContentLoaded", () => document.body.append(footer));
   // The map's tabs change the hash, so keep the sub-nav in step with them.
-  addEventListener("hashchange", () => { header.innerHTML = render(); });
+  addEventListener("hashchange", () => { header.innerHTML = render(); footer.innerHTML = renderFooter(); });
 })();

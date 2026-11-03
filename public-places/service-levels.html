@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Levels and Cost</title>
+<meta name="description" content="What Seattle's tiny-home villages and hotel shelters come with today, two lighter service standards, and how many more people the same money would house at each.">
+<style>
+  /* Same tokens and type as budget.html. Chart hues, in this order: staff = --s1, meals = --s4, case management = --accent, site and admin = --s3, building = hatched gray. */
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --card: #ffffff;
+    --card-alt: #f8f8f6;
+    --border: #e3e2dc;
+    --grid: #ececea;
+    --text: #1a1a1a;
+    --muted: #5f5e5a;
+    --light: #8d8c86;
+    --accent: #6d28a8;
+    --accent-soft: #efe6f8;
+    --red: #9e2a2a;
+    --red-soft: #f8dede;
+    --blue: #1e5a9e;
+    --s1: #2a78d6;
+    --s3: #1baf7a;
+    --s4: #eda100;
+    --c-svc: #6d28a8;
+    --dim: #c9c8c1;
+    --tip-bg: #1a1a1a;
+    --tip-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+      --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+      --accent: #b48fe8; --accent-soft: #2a1f3a;
+      --red: #f08a8a; --red-soft: #3a1f1f; --blue: #8cb8f0;
+      --s1: #3987e5; --s3: #199e70; --s4: #c98500; --c-svc: #9a6fd6;
+      --dim: #4a4a47; --tip-bg: #f2f2ef; --tip-fg: #161616;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #161616; --card: #1c1c1b; --card-alt: #202020; --border: #333331; --grid: #262625;
+    --text: #ececea; --muted: #b3b2ab; --light: #8a8983;
+    --accent: #b48fe8; --accent-soft: #2a1f3a;
+    --red: #f08a8a; --red-soft: #3a1f1f; --blue: #8cb8f0;
+    --s1: #3987e5; --s3: #199e70; --s4: #c98500; --c-svc: #9a6fd6;
+    --dim: #4a4a47; --tip-bg: #f2f2ef; --tip-fg: #161616;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background: var(--bg); }
+  body { background:var(--bg); color:var(--text); font-family:Georgia,'Times New Roman',serif; line-height:1.7; }
+  .container { max-width:960px; margin:0 auto; padding-block:32px 64px; padding-left:max(24px, env(safe-area-inset-left, 0px)); padding-right:max(24px, env(safe-area-inset-right, 0px)); }
+  a { color: var(--blue); }
+  .sans, .subtitle, .section-title, .card h3, .hero, .chart-card h3, .chart-card .sub, .legend, .chart-note, details.tbl, .tooltip, .callout h3, .sources, .cbar, .cmp { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+
+  h1 { font-size:34px; font-weight:700; letter-spacing:-0.5px; line-height:1.2; margin-bottom:10px; border-bottom:3px double var(--border); padding-bottom:14px; text-wrap:balance; }
+  .subtitle { color:var(--muted); font-size:14px; margin-bottom:10px; }
+  .lede { font-size:18px; line-height:1.6; color:var(--text); margin:18px 0 12px; max-width:760px; }
+  .lede em { color: var(--accent); font-style: italic; }
+
+  .section { margin-top:48px; }
+  .section-title { font-size:15px; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--muted); }
+  .section-intro { font-size:16.5px; color:var(--muted); margin-bottom:16px; max-width:760px; }
+  .headline { font-size:26px; font-weight:700; line-height:1.25; letter-spacing:-0.3px; margin-bottom:16px; max-width:820px; text-wrap:balance; }
+  .section-intro b, .card p b, .callout p b { color:var(--text); font-weight:600; }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:16px 18px; min-width:0; }
+  .card h3 { font-size:16.5px; font-weight:700; margin-bottom:8px; color:var(--text); line-height:1.35; text-wrap:balance; }
+  .card p, .card li { font-size:16px; color:var(--muted); line-height:1.65; }
+  .card ul { padding-left:18px; }
+  .card li { margin-bottom:5px; }
+
+  /* Summary comparison table */
+  .cmp-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:6px; background:var(--card); margin:18px 0 8px; }
+  table.cmp { width:100%; min-width:600px; border-collapse:collapse; font-size:14.5px; line-height:1.45; }
+  table.cmp th, table.cmp td { text-align:left; padding:9px 12px; border-bottom:1px solid var(--border); vertical-align:top; font-variant-numeric:tabular-nums; }
+  table.cmp tr:last-child td { border-bottom:0; }
+  table.cmp thead th { font-size:16px; font-weight:700; color:var(--text); padding-top:14px; }
+  table.cmp thead th small { display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.4px; color:var(--light); margin-bottom:2px; }
+  table.cmp thead th.now small { color:var(--accent); }
+  table.cmp th[scope="row"] { color:var(--muted); font-weight:600; font-size:13px; width:22%; }
+  table.cmp td { color:var(--muted); width:26%; }
+  table.cmp .now { background:var(--accent-soft); }
+  table.cmp tr.grp th { font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--light); background:var(--card-alt); padding:7px 12px; }
+  table.cmp tr.key td { font-size:17px; font-weight:700; color:var(--text); }
+  table.cmp tr.key td.up { color:var(--s3); }
+  table.cmp td b { color:var(--text); font-weight:600; }
+
+  /* Detail tables */
+  .tbl-wrap { overflow-x:auto; }
+  table.plain { width:100%; border-collapse:collapse; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:14.5px; line-height:1.45; }
+  table.plain th, table.plain td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); font-variant-numeric:tabular-nums; vertical-align:top; }
+  table.plain th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.4px; }
+  table.plain td.n, table.plain th.n { text-align:right; white-space:nowrap; }
+  table.plain td.n { color:var(--text); }
+  table.plain td small { display:block; color:var(--light); font-size:12.5px; }
+  table.plain tr.total td { font-weight:700; color:var(--text); }
+  table.plain.w { min-width:640px; }
+
+  /* Charts */
+  .chart-card { border:1px solid var(--border); border-radius:6px; padding:16px 18px 12px; background:var(--card); margin-bottom:16px; min-width:0; }
+  .chart-card h3 { font-size:16.5px; font-weight:700; margin-bottom:2px; text-wrap:balance; }
+  .chart-card .sub { font-size:15.5px; color:var(--muted); margin-bottom:12px; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:13px; color:var(--muted); margin:4px 0 12px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .sw { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  .chart-note { font-size:14.5px; color:var(--light); margin-top:8px; line-height:1.5; }
+  details.tbl { margin-top:8px; overflow-x:auto; }
+  details.tbl summary { cursor:pointer; font-size:14.5px; color:var(--blue); }
+  details.tbl table { margin-top:8px; }
+
+  .hatch { background:repeating-linear-gradient(45deg, var(--dim) 0 4px, color-mix(in srgb, var(--dim) 35%, var(--card)) 4px 7px); }
+  .cbar { display:grid; grid-template-columns:minmax(150px, 26%) 1fr; gap:4px 14px; align-items:center; }
+  .cbar .lab { font-size:14.5px; line-height:1.3; color:var(--text); }
+  .cbar .lab span { display:block; color:var(--light); font-size:12.5px; }
+  .cbar .row { display:flex; align-items:center; gap:8px; min-height:34px; }
+  .cbar .stack { display:flex; height:18px; gap:2px; }
+  .cbar .stack > div { height:100%; min-width:2px; cursor:default; }
+  .cbar .stack > div:first-child { border-radius:4px 0 0 4px; }
+  .cbar .stack > div:last-child { border-radius:0 4px 4px 0; }
+  .cbar .stack > div:hover { filter:brightness(1.08); }
+  .cbar .val { font-size:13.5px; font-weight:600; color:var(--text); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .cbar .gap { grid-column:1 / -1; height:10px; border-bottom:1px solid var(--grid); margin-bottom:10px; }
+
+  /* Callout */
+  .callout { border-left:4px solid var(--accent); background:var(--card-alt); border-radius:6px; padding:14px 18px; margin:16px 0; }
+  .callout.warn { border-left-color: var(--red); }
+  .callout h3 { font-size:17px; font-weight:700; margin-bottom:6px; text-wrap:balance; }
+  .callout p { font-size:16px; color:var(--muted); line-height:1.6; }
+  .callout p + p { margin-top:8px; }
+
+  ul.points { padding-left:20px; max-width:780px; }
+  ul.points li { font-size:16.5px; color:var(--muted); margin-bottom:8px; }
+  ul.points li b { color:var(--text); }
+
+  .tooltip { position:fixed; pointer-events:none; background:var(--tip-bg); color:var(--tip-fg); font-size:12.5px; line-height:1.45; padding:8px 10px; border-radius:6px; max-width:280px; opacity:0; transition:opacity .12s; z-index:10; }
+  .tooltip b { font-weight:600; display:block; }
+  .tooltip.show { opacity:1; }
+
+  .sources { font-size:14.5px; color:var(--muted); }
+  .sources li { margin-bottom:6px; line-height:1.5; }
+  .sources ol { padding-left:22px; }
+  .sources a { word-break:break-word; }
+
+  @media (max-width:640px) {
+    .container { padding-block:20px 48px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+    h1 { font-size:27px; }
+    .headline { font-size:22px; }
+    .cbar { grid-template-columns:1fr; gap:0; }
+    .cbar .row { margin-bottom:8px; }
+  }
+  @media (forced-colors: active) {
+    .cbar .stack > div, .sw { forced-color-adjust:none; border:1px solid CanvasText; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tooltip { transition:none; } }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<script src="assets/site.js"></script>
+<div class="tooltip" id="tip" role="status" aria-live="polite"></div>
+<div class="container">
+
+<h1>How Much Should a Shelter Bed Come With?</h1>
+<div class="subtitle">Draft, November 1, 2026. Builds on <a href="spending-options.html">What Else Could Seattle Buy?</a> Figures marked <i>estimate</i> are our own arithmetic.</div>
+
+<p class="lede"><em>The short answer:</em> every new place Seattle opens comes with the same full package: staff on site around the clock, a case manager for every 20 or so residents, a behavioral health specialist, meals, plumbed showers and grid power. That package, not the tiny home, is most of the cost. The same yearly money that runs <b>1,000 places at today's standard</b> would run about <b>1,770 at a medium standard</b> or <b>3,540 at a low one</b> <i>(estimate)</i>.</p>
+
+<div class="cmp-wrap">
+<table class="cmp">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" class="now"><small>Today's standard</small>High</th>
+      <th scope="col"><small>Option</small>Medium</th>
+      <th scope="col"><small>Option</small>Low</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">Built for</th><td class="now">People with serious mental illness or addiction</td><td>People managing addiction day to day</td><td>People who mostly need a place: working, couples, close to housing</td></tr>
+    <tr><th scope="row">Staff on site</th><td class="now">Two or more, 24/7</td><td>One, 24/7, plus a day manager</td><td>One paid site host, 24/7; residents help run the site</td></tr>
+    <tr><th scope="row">Case management</th><td class="now">Required, on site, about 1 per 20</td><td>Visiting, about 1 per 40</td><td>A navigator visits weekly, about 1 per 75</td></tr>
+    <tr><th scope="row">Behavioral health</th><td class="now">Specialist on site; addiction medicine</td><td>Mobile team visits weekly</td><td>Naloxone on site; referrals</td></tr>
+    <tr><th scope="row">Meals</th><td class="now">Two to three a day</td><td>One hot meal; shared kitchen</td><td>Food bank and donated meals</td></tr>
+    <tr><th scope="row">Toilets and showers</th><td class="now">Plumbed hygiene trailer, sewer hookup, laundry</td><td>Hygiene trailer on holding tanks, pumped weekly</td><td>Portable toilets and hand-wash stations; mobile showers twice a week</td></tr>
+    <tr><th scope="row">Power and heat</th><td class="now">Grid power; heat and outlets in every tiny home</td><td>Grid power; heat in every tiny home</td><td>Solar or generator for charging and a heated common room; no heat in tiny homes</td></tr>
+    <tr><th scope="row">Time to open a village</th><td class="now">5–12 months</td><td>2–4 months <i>(estimate)</i></td><td>2–6 weeks</td></tr>
+
+    <tr class="grp"><th scope="colgroup" colspan="4">Tiny-home villages · per place, per year, all in</th></tr>
+    <tr><th scope="row">Cost to run</th><td class="now">$28k</td><td>$16k</td><td>$9k</td></tr>
+    <tr><th scope="row">Cost to run and build</th><td class="now"><b>$38k</b></td><td><b>$22k</b></td><td><b>$11k</b></td></tr>
+    <tr><th scope="row">Places for $38M a year</th><td class="now">1,000</td><td>~1,770</td><td>~3,540</td></tr>
+    <tr class="key"><th scope="row">More people housed than today's standard</th><td class="now">—</td><td class="up">+770</td><td class="up">+2,540</td></tr>
+    <tr><th scope="row">To house all ~5,600 people outside</th><td class="now">~$215M a year</td><td>~$122M a year</td><td>~$60M a year</td></tr>
+
+    <tr class="grp"><th scope="colgroup" colspan="4">Bought motel rooms · per room, per year, all in</th></tr>
+    <tr><th scope="row">Cost to run and buy</th><td class="now"><b>$54k</b></td><td><b>$37k</b></td><td><b>$28k</b></td></tr>
+    <tr><th scope="row">Rooms for $38M a year</th><td class="now">~710</td><td>~1,030</td><td>~1,380</td></tr>
+    <tr class="key"><th scope="row">More people housed than today's standard</th><td class="now">—</td><td class="up">+320</td><td class="up">+670</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="chart-note">$38M a year is what 1,000 places cost at today's village standard, close to the $37M the 2027 budget sets aside for about 1,000 new beds. "All in" spreads the cost to build a village over 5 years and to buy a motel over 30, at 4.5% interest. Every cost here is our estimate, built from the parts in the tables below. Hotels already have plumbing and power, so only the staffing and meals change.</p>
+
+<div class="callout">
+  <h3>Mixing levels by need costs about the same as all medium</h3>
+  <p>About 30% of people outside need a lot of support, 25% some, and 45% mostly need a place <i>(our rough split from the 2026 county count)</i>. Matching each group to high, medium and low averages <b>about $22k a place</b> in villages, or <b>~1,760 places for $38M, +760</b>. That's nearly the same count as all medium, but the people who need the most get the most.</p>
+</div>
+
+<div class="section">
+  <h2 class="headline">Today's standard is the full package, at every site, for everyone.</h2>
+  <p class="section-intro">The city says every new place pairs <b>24/7 staffing</b> with <b>mandatory case management</b>, an <b>onsite behavioral health specialist</b>, addiction medicine and mental health counseling. The first 500 places were aimed at people who were chronically homeless with high needs. The city's budget director put the average at <b>about $28k a place a year</b>, with some sites above $45k.</p>
+  <p class="section-intro">That standard came from good reasons. Pallet, which made many of the tiny homes, required 24/7 staff, meals, hygiene, transportation and case management before it would ship, and LIHI makes case management mandatory in its villages. Both said shelter without services doesn't move people into housing and neighbors won't accept a village without staff. But the result is that <b>there's no lighter tier</b> for people who don't need all of it, and Pallet's rule no longer binds anyone: the company shut down in September 2026.</p>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Tiny-home village, high</h3>
+      <ul>
+        <li>An insulated tiny home with a locking door, heat, lights and outlets</li>
+        <li>Two or more staff on site at all times; a site manager</li>
+        <li>A case manager for about every 20 residents, and a behavioral health specialist</li>
+        <li>Two to three meals a day; a kitchen and community room</li>
+        <li>A plumbed hygiene trailer with showers and laundry, connected to sewer and water</li>
+        <li>Fencing, a staffed gate, transportation to appointments</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Hotel room run as shelter, high</h3>
+      <ul>
+        <li>A private room with its own bathroom</li>
+        <li>24/7 front desk and security, plus floor staff</li>
+        <li>Case management at about 1 per 20 and behavioral health on site</li>
+        <li>Three meals a day delivered, housekeeping and linen service</li>
+        <li>DESC's hotel shelter at the Red Lion cost about $39k a room a year; high-need sites run up to $45k</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="headline">People, not tiny homes, are two-thirds of the running cost.</h2>
+  <p class="section-intro">At today's standard, staff on site and case management are about <b>$19k of the $28k</b> it takes to run a village place each year. The tiny home and site work, spread over five years, add about $10k. Cutting staffing is what moves the total; switching from plumbing to portable toilets saves far less.</p>
+  <div class="chart-card">
+    <h3>What one place costs per year, by service level</h3>
+    <div class="sub">Thousands of dollars per place per year, all in. Hover or tap a segment for detail.</div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--s1)"></i>Staff on site</span>
+      <span><i class="sw" style="background:var(--s4)"></i>Meals</span>
+      <span><i class="sw" style="background:var(--c-svc)"></i>Case management and behavioral health</span>
+      <span><i class="sw" style="background:var(--s3)"></i>Toilets, power, upkeep and admin</span>
+      <span><i class="sw hatch"></i>Building or buying, per year</span>
+    </div>
+    <div class="cbar">
+      <div class="lab">Village, high<span>Today's standard</span></div>
+      <div class="row"><div class="stack" style="width:69.8%">
+        <div style="flex:12.9;background:var(--s1)" data-tip="<b>Staff on site: $12.9k</b>Two monitors on shift around the clock (about 8.4 full-time jobs per 50 tiny homes) plus a site manager."></div>
+        <div style="flex:3.0;background:var(--s4)" data-tip="<b>Meals: $3.0k</b>Two to three meals a day, about $8 a person a day."></div>
+        <div style="flex:6.2;background:var(--c-svc)" data-tip="<b>Case management and behavioral health: $6.2k</b>Case managers at about 1 per 20 ($4.2k) and a behavioral health specialist on site ($2.0k)."></div>
+        <div style="flex:6.0;background:var(--s3)" data-tip="<b>Toilets, power, upkeep and admin: $6.0k</b>Hygiene trailer servicing $1.2k, grid power, heat and water $1.0k, security, repairs and a van $1.2k, operator overhead $2.6k."></div>
+        <div class="hatch" style="flex:10.3" data-tip="<b>Building: $10.3k a year</b>About $45k a place for the tiny home, utility hookups, hygiene and kitchen buildings (range $34–55k), spread over 5 years."></div>
+      </div><span class="val">$38k</span></div>
+
+      <div class="lab">Village, medium</div>
+      <div class="row"><div class="stack" style="width:39.5%">
+        <div style="flex:7.4;background:var(--s1)" data-tip="<b>Staff on site: $7.4k</b>One monitor on shift around the clock plus a day site manager."></div>
+        <div style="flex:1.2;background:var(--s4)" data-tip="<b>Meals: $1.2k</b>One hot meal a day and a shared kitchen stocked by food banks."></div>
+        <div style="flex:2.6;background:var(--c-svc)" data-tip="<b>Case management and behavioral health: $2.6k</b>Visiting case managers at about 1 per 40 ($2.1k) and a mobile behavioral health team weekly, partly billed to Medicaid ($0.5k)."></div>
+        <div style="flex:4.8;background:var(--s3)" data-tip="<b>Toilets, power, upkeep and admin: $4.8k</b>Hygiene trailer on holding tanks, pumped weekly, $1.5k; grid power and heat $1.0k; repairs and bus passes $0.8k; overhead $1.5k."></div>
+        <div class="hatch" style="flex:5.7" data-tip="<b>Building: $5.7k a year</b>About $25k a place (range $20–30k): the same tiny home, grid power, a hygiene trailer with no sewer connection. Spread over 5 years."></div>
+      </div><span class="val">$22k</span></div>
+
+      <div class="lab">Village, low</div>
+      <div class="row"><div class="stack" style="width:19.6%">
+        <div style="flex:4.6;background:var(--s1)" data-tip="<b>Staff on site: $4.6k</b>One paid site host on shift around the clock. Residents help run the site, as in Seattle's self-managed camps."></div>
+        <div style="flex:0.3;background:var(--s4)" data-tip="<b>Meals: $0.3k</b>Food bank deliveries and donated meals."></div>
+        <div style="flex:1.2;background:var(--c-svc)" data-tip="<b>Case management and behavioral health: $1.2k</b>A navigator visits weekly, about 1 per 75; naloxone on site and referrals."></div>
+        <div style="flex:2.9;background:var(--s3)" data-tip="<b>Toilets, power, upkeep and admin: $2.9k</b>Portable toilets serviced three times a week and mobile showers $1.1k; solar or generator power for a heated common room $0.6k; repairs $0.4k; overhead $0.8k."></div>
+        <div class="hatch" style="flex:1.8" data-tip="<b>Building: $1.8k a year</b>About $8k a place (range $5–10k): a basic tiny home, gravel, fencing and a common room. Toilets are rented, not built."></div>
+      </div><span class="val">$11k</span></div>
+
+      <div class="gap"></div>
+
+      <div class="lab">Motel room, high<span>Today's hotel-shelter standard</span></div>
+      <div class="row"><div class="stack" style="width:98.7%">
+        <div style="flex:17.0;background:var(--s1)" data-tip="<b>Staff on site: $17.0k</b>24/7 front desk, security and floor staff, two to three on shift per 50 rooms."></div>
+        <div style="flex:5.0;background:var(--s4)" data-tip="<b>Meals: $5.0k</b>Three meals a day, delivered to rooms with no kitchens."></div>
+        <div style="flex:6.2;background:var(--c-svc)" data-tip="<b>Case management and behavioral health: $6.2k</b>Case managers at about 1 per 20 and behavioral health on site."></div>
+        <div style="flex:13.8;background:var(--s3)" data-tip="<b>Building upkeep and admin: $13.8k</b>Utilities, maintenance and insurance $7.5k, housekeeping and linen $2.5k, overhead $3.8k. A hotel costs more to keep up than a village."></div>
+        <div class="hatch" style="flex:12.3" data-tip="<b>Buying: $12.3k a year</b>About $200k a room (range $150–250k with renovation), spread over 30 years."></div>
+      </div><span class="val">$54k</span></div>
+
+      <div class="lab">Motel room, medium</div>
+      <div class="row"><div class="stack" style="width:67.6%">
+        <div style="flex:9.5;background:var(--s1)" data-tip="<b>Staff on site: $9.5k</b>24/7 front desk plus one floor staffer at night for wellness checks."></div>
+        <div style="flex:1.5;background:var(--s4)" data-tip="<b>Meals: $1.5k</b>One meal a day; a fridge and microwave in each room."></div>
+        <div style="flex:2.6;background:var(--c-svc)" data-tip="<b>Case management and behavioral health: $2.6k</b>Visiting case managers at about 1 per 40 and a mobile behavioral health team."></div>
+        <div style="flex:11.3;background:var(--s3)" data-tip="<b>Building upkeep and admin: $11.3k</b>Utilities, maintenance and insurance $7.5k, weekly linen $1.5k, overhead $2.3k."></div>
+        <div class="hatch" style="flex:12.3" data-tip="<b>Buying: $12.3k a year</b>The same building as the high standard."></div>
+      </div><span class="val">$37k</span></div>
+
+      <div class="lab">Motel room, low</div>
+      <div class="row"><div class="stack" style="width:50.7%">
+        <div style="flex:5.0;background:var(--s1)" data-tip="<b>Staff on site: $5.0k</b>One desk clerk on shift around the clock, run like a rooming house."></div>
+        <div style="flex:0.1;background:var(--s4)" data-tip="<b>Meals: none</b>Residents use food banks; rooms have a fridge and microwave."></div>
+        <div style="flex:1.2;background:var(--c-svc)" data-tip="<b>Case management and behavioral health: $1.2k</b>A navigator visits weekly; naloxone at the desk."></div>
+        <div style="flex:9.4;background:var(--s3)" data-tip="<b>Building upkeep and admin: $9.4k</b>Utilities, maintenance and insurance $7.5k, cleaning between residents $0.5k, overhead $1.4k."></div>
+        <div class="hatch" style="flex:12.3" data-tip="<b>Buying: $12.3k a year</b>The same building as the high standard."></div>
+      </div><span class="val">$28k</span></div>
+    </div>
+    <p class="chart-note">Bars are on one scale. A hotel's building costs don't change with the service level, so cutting services saves less per room there than in a village. The low hotel standard is close to Denver's Best Western shelter, which reported running costs of $3–4M a year for 194 rooms, about $15–21k a room.</p>
+    <details class="tbl"><summary>Details: every line, per place per year</summary>
+      <div class="tbl-wrap">
+      <table class="plain w">
+        <tr><th>Village, 50 tiny homes</th><th class="n">High</th><th class="n">Medium</th><th class="n">Low</th></tr>
+        <tr><td>Staff on site<small>2 on shift 24/7 / 1 on shift 24/7 / a site host 24/7</small></td><td class="n">$11.0k</td><td class="n">$5.5k</td><td class="n">$4.6k</td></tr>
+        <tr><td>Site manager</td><td class="n">$1.9k</td><td class="n">$1.9k</td><td class="n">—</td></tr>
+        <tr><td>Case management<small>1 per 20 / 1 per 40 / 1 per 75</small></td><td class="n">$4.2k</td><td class="n">$2.1k</td><td class="n">$1.1k</td></tr>
+        <tr><td>Behavioral health<small>on site / mobile team / naloxone and referral</small></td><td class="n">$2.0k</td><td class="n">$0.5k</td><td class="n">$0.1k</td></tr>
+        <tr><td>Meals<small>2–3 a day / 1 a day / donated</small></td><td class="n">$3.0k</td><td class="n">$1.2k</td><td class="n">$0.3k</td></tr>
+        <tr><td>Toilets, showers, laundry<small>plumbed trailer / holding tanks / portable toilets, mobile showers</small></td><td class="n">$1.2k</td><td class="n">$1.5k</td><td class="n">$1.1k</td></tr>
+        <tr><td>Power, heat, water<small>grid, heat in tiny homes / grid, heat in tiny homes / solar or generator, heated common room</small></td><td class="n">$1.0k</td><td class="n">$1.0k</td><td class="n">$0.6k</td></tr>
+        <tr><td>Security, repairs, transportation</td><td class="n">$1.2k</td><td class="n">$0.8k</td><td class="n">$0.4k</td></tr>
+        <tr><td>Operator overhead, 10%</td><td class="n">$2.6k</td><td class="n">$1.5k</td><td class="n">$0.8k</td></tr>
+        <tr class="total"><td>To run, per year</td><td class="n">$28.1k</td><td class="n">$16.0k</td><td class="n">$9.0k</td></tr>
+        <tr><td>To build, once<small>range</small></td><td class="n">$45k<small>$34–55k</small></td><td class="n">$25k<small>$20–30k</small></td><td class="n">$8k<small>$5–10k</small></td></tr>
+        <tr class="total"><td>All in, per year</td><td class="n">$38.4k</td><td class="n">$21.7k</td><td class="n">$10.8k</td></tr>
+      </table>
+      <table class="plain w" style="margin-top:16px">
+        <tr><th>Motel, 50 rooms</th><th class="n">High</th><th class="n">Medium</th><th class="n">Low</th></tr>
+        <tr><td>Staff on site<small>desk, security, floor staff / desk and night checks / desk clerk</small></td><td class="n">$17.0k</td><td class="n">$9.5k</td><td class="n">$5.0k</td></tr>
+        <tr><td>Case management and behavioral health</td><td class="n">$6.2k</td><td class="n">$2.6k</td><td class="n">$1.2k</td></tr>
+        <tr><td>Meals<small>3 a day delivered / 1 a day / none</small></td><td class="n">$5.0k</td><td class="n">$1.5k</td><td class="n">—</td></tr>
+        <tr><td>Housekeeping and linen</td><td class="n">$2.5k</td><td class="n">$1.5k</td><td class="n">$0.5k</td></tr>
+        <tr><td>Utilities, maintenance, insurance</td><td class="n">$7.5k</td><td class="n">$7.5k</td><td class="n">$7.5k</td></tr>
+        <tr><td>Operator overhead, 10%</td><td class="n">$3.8k</td><td class="n">$2.3k</td><td class="n">$1.4k</td></tr>
+        <tr class="total"><td>To run, per year</td><td class="n">$42.0k</td><td class="n">$24.9k</td><td class="n">$15.6k</td></tr>
+        <tr><td>To buy, once</td><td class="n" colspan="3">$200k a room for every level (range $150–250k)</td></tr>
+        <tr class="total"><td>All in, per year</td><td class="n">$54.3k</td><td class="n">$37.2k</td><td class="n">$27.9k</td></tr>
+      </table>
+      </div>
+      <p class="chart-note">Staff costs assume about $65k a year per full-time job with benefits ($55k for a site host), and 4.2 full-time jobs to cover one post around the clock. Case managers are $85k. The high totals match the city's $28k average and DESC's $39–45k hotel figures; the low village total matches San Diego's staffed Safe Sleeping sites, about $8–11.5k a tent. Medium is built up from the parts and has no direct benchmark.</p>
+    </details>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="headline">Generators and portable toilets are faster, not cheaper. Use them to open, then hook up.</h2>
+  <p class="section-intro">The infrastructure choices mostly trade <b>speed</b> for <b>running cost</b>. A grid connection or sewer hookup can take months of permits and utility work, and it's a big part of why a village takes 5–12 months to open. The quick options get a site open in days but cost more every month they stay.</p>
+  <div class="chart-card">
+    <div class="tbl-wrap">
+    <table class="plain w">
+      <tr><th>For a village of 50 tiny homes</th><th>Time to set up</th><th>Upfront</th><th>To run, per tiny home per year</th><th>Trade-off</th></tr>
+      <tr><td><b>Grid power</b></td><td>2–6 months</td><td>$50–150k for the service connection</td><td class="n">~$300</td><td>Cheapest to run; the wait is the utility and the permit</td></tr>
+      <tr><td><b>Generator</b>, heat in every tiny home</td><td>Days</td><td>Rented</td><td class="n">~$1,900</td><td>About six times the grid's running cost, plus noise and refueling</td></tr>
+      <tr><td><b>Solar and battery</b>, lights and charging only</td><td>Weeks</td><td>$15–30k</td><td class="n">~$100</td><td>Cheap and quiet, but can't heat tiny homes in a Seattle winter</td></tr>
+      <tr><td><b>Sewer-connected hygiene trailer</b></td><td>Months</td><td>~$45k per trailer plus a side sewer</td><td class="n">~$1,200</td><td>Showers, laundry, flush toilets; slowest to permit</td></tr>
+      <tr><td><b>Hygiene trailer on holding tanks</b></td><td>Weeks</td><td>~$45k per trailer</td><td class="n">~$1,500</td><td>Same facilities, no sewer permit; pumping costs more</td></tr>
+      <tr><td><b>Portable toilets</b> and hand-wash stations</td><td>Days</td><td>Rented</td><td class="n">~$700</td><td>Fastest and cheap, but no showers, and the least dignified</td></tr>
+    </table>
+    </div>
+    <p class="chart-note">All <i>estimates</i>. Grid power assumes about 120,000 kWh a year for 50 heated tiny homes at Seattle City Light rates; the generator assumes diesel at $4.75 a gallon plus about $3k a month to rent a towable unit. The hygiene trailer price is Pallet's two-stall unit ($44,995). Portable toilets assume six units with hand-wash stations, serviced three times a week.</p>
+  </div>
+  <div class="callout">
+    <h3>Open fast, then hook up</h3>
+    <p>The cheapest path to speed is to open a site on <b>portable toilets and a rented generator</b>, then switch to grid power and a hygiene trailer within a few months. A generator heating every tiny home for a whole year costs about <b>$80k more</b> than the grid for a site of 50 tiny homes, so it's a bridge, not a standard. That's separate from the service level: a high-service village can open on a generator, and a low-service one can run on the grid.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="headline">The extra places pay off unless lighter services cut exits by almost half.</h2>
+  <p class="section-intro">Cheaper places only help if people still move on. Case managers are what move people into housing, and a room that never turns over serves one person forever. The evidence on how much exits fall with lighter services is thin, so here's the break-even instead:</p>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Medium villages: 77% more places</h3>
+      <p>Medium moves more people into housing than high <b>unless exits per place fall by more than 43%</b>. Visiting case managers at 1 per 40 still meet every resident every week or two.</p>
+    </div>
+    <div class="card">
+      <h3>Low villages: 3.5 times the places</h3>
+      <p>Low comes out ahead <b>unless exits fall by more than 72%</b>. That's possible: basic group shelter sends only 3–6% of the people who leave to housing, against 34–46% for villages. Low is for people who need a place more than a program.</p>
+    </div>
+    <div class="card">
+      <h3>Hotels: 45% to 95% more rooms</h3>
+      <p>Medium hotel rooms break even at a <b>32%</b> drop in exits, and low at <b>49%</b>. The margin is smaller because a hotel's building costs don't fall with the service level.</p>
+    </div>
+  </div>
+  <p class="section-intro" style="margin-top:16px">Even when exits fall, everyone in the extra places is <b>inside tonight</b>, which is the point of the pledge. And a lighter tier frees today's full-service places for the people who need them most. Bayside, a high-service village aimed at high-need residents, took about 2½ months to fill because intake ran 7–10 people a week.</p>
+</div>
+
+<div class="section">
+  <h2 class="headline">What no standard should cut</h2>
+  <ul class="points">
+    <li><b>A door that locks</b>, and fire-safe spacing between tiny homes. People rarely turn down a tiny house; they often turn down a mat.</li>
+    <li><b>Someone accountable on site around the clock.</b> It's what neighbors are promised and what makes siting possible. Low keeps a paid host 24/7.</li>
+    <li><b>Fencing and a monitored gate.</b> Cheap, and it's what separates a village from an encampment.</li>
+    <li><b>Sanitation every day.</b> Portable toilets serviced often enough to stay clean, and hand-washing.</li>
+    <li><b>Naloxone and overdose checks.</b> Fentanyl makes it dangerous to use alone. That's why the low <i>hotel</i> standard still keeps a 24/7 desk: someone using drugs alone in a hotel room has no one nearby, while neighbors in a village are steps away.</li>
+    <li><b>A path out.</b> Even at low, a navigator visits weekly, and residents are expected to take housing when it's offered.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2 class="headline">What these numbers leave out</h2>
+  <ul class="points">
+    <li><b>Every line is our estimate.</b> The high totals match the city's published averages, and the low village matches San Diego's tent sites, but the component costs are built up, not taken from contracts.</li>
+    <li><b>Land.</b> A village still needs a site and a lease, at every service level. Lighter services shorten the setup, not the hunt for land.</li>
+    <li><b>Vehicles need lots, not tiny homes.</b> About 23% of people outside live in cars or RVs; safe lots cost less than any of these.</li>
+    <li><b>Treatment isn't included</b> at any level. Detox and psychiatric beds are a separate cost.</li>
+    <li><b>Neighborhood acceptance may fall</b> with lighter staffing. That's a political cost, not a budget line, and it's why the floor above keeps a person on site 24/7.</li>
+  </ul>
+  <div class="callout warn">
+    <h3>To check</h3>
+    <p>Village-by-village operating budgets from Human Services Department contracts, to replace the built-up line items. San Diego's Safe Sleeping budget from city documents. A Seattle City Light quote and timeline for a village service connection. Whether the 2026 interim law lets a low-service site use portable toilets and generators long term.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Sources</div>
+  <div class="sources">
+    <ol>
+      <li>City of Seattle, "Neighbor by Neighbor" shelter expansion: the four shelter models and the service package for each. <a href="https://seattle.gov/mayor/vision-and-values/shelter-expansion">seattle.gov</a></li>
+      <li>PubliCola, "Wilson's shelter plan," Mar 17, 2026: about $28k per place a year, some above $45k. <a href="https://publicola.com/2026/03/17/wilsons-shelter-plan-17-million-with-first-units-opening-as-soon-as-april/">publicola.com</a></li>
+      <li>KOMO, Sept 2026: the reset to about 960 beds for about $37M. <a href="https://komonews.com/news/local/mayor-katie-wilson-walks-back-1k-shelter-beds-a-year-promise-as-seattle-budget-gap-grows-homeless-houseless-housingcrisis-camping-rv-drugs-addiction-mental-health-unsheltered-resources-tiny-home-taxes-taxpayer-deficit-funding">komonews.com</a></li>
+      <li>City of Kirkland, overview of tiny-house program models, Oct 2024: LIHI's staffing rules and costs, and Pallet's price sheet. <a href="https://kirklandwa.gov/files/sharedassets/public/v/1/finance-and-administration/budget-documents/25-26-budget/2025-2026-overview-of-tiny-house-program-models-issue-paper.pdf">kirklandwa.gov</a></li>
+      <li>Pallet, "Dignity Standards," Dec 2022. <a href="https://prnewswire.com/news-releases/pallet-shelter-announces-dignity-standards-to-ensure-supportive-services-offered-onsite-301703979.html">prnewswire.com</a>; PubliCola on Pallet's closure, Sept 3, 2026. <a href="https://publicola.com/2026/09/03/pallet-company-that-built-just-opened-interbay-shelter-closes-abruptly/">publicola.com</a></li>
+      <li>PubliCola, DESC's hotel shelter at the Red Lion, Feb 2021. <a href="https://publicola.com/2021/02/01/after-city-rejects-expansion-plan-hotel-based-shelter-program-seeks-path-forward/">publicola.com</a></li>
+      <li>Denver7, the Best Western hotel shelter's operating budget. <a href="https://www.denver7.com/follow-up/denver-bought-a-hotel-to-turn-it-into-a-homeless-shelter-heres-what-itll-cost-how-itll-work">denver7.com</a></li>
+      <li>CBS 8, San Diego's Safe Sleeping sites: one site's yearly cost and tent count. <a href="https://www.cbs8.com/article/news/local/working-for-you/san-diegos-safe-sleeping-sites-working/509-0b317def-d7f8-4746-9461-a066037591a7">cbs8.com</a></li>
+      <li>South Seattle Emerald, Cloverleaf village opening, Oct 30, 2026. <a href="https://southseattleemerald.org/news/2026/10/30/seattles-largest-tiny-home-village-opens-in-industrial-south-park">southseattleemerald.org</a>; Seattle Red, Bayside intake. <a href="https://seattlered.com/homelessness/katie-wilson-interbay-homeless-shelter-nearly-empty/4119007">seattlered.com</a></li>
+      <li>Exits by shelter type, the vehicle share and the count of ~5,600: <a href="spending-options.html">What Else Could Seattle Buy?</a> and <a href="count.html">How Many Sleep Outside</a>, with their sources.</li>
+    </ol>
+    <p class="chart-note">The need split (30% high, 25% some, 45% mostly a place) is our judgment from the King County 2026 count's self-reported shares: 31% serious mental illness, 41% substance use disorder, 38% chronically homeless. Corrections welcome.</p>
+  </div>
+</div>
+
+</div>
+<script>
+(function () {
+  var tip = document.getElementById('tip'), cur = null;
+  function place(x, y) {
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    tip.style.top = (y - h - 12 < 8 ? y + 18 : y - h - 12) + 'px';
+  }
+  function show(el, x, y) { cur = el; tip.innerHTML = el.getAttribute('data-tip'); tip.classList.add('show'); place(x, y); }
+  function hide() { cur = null; tip.classList.remove('show'); }
+  document.querySelectorAll('[data-tip]').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') show(el, e.clientX, e.clientY); });
+    el.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hide(); });
+    el.addEventListener('click', function (e) {
+      if (cur === el) { hide(); return; }
+      var r = el.getBoundingClientRect(); show(el, e.clientX || r.left + r.width / 2, e.clientY || r.top);
+      e.stopPropagation();
+    });
+  });
+  document.addEventListener('click', hide);
+  window.addEventListener('scroll', hide, { passive: true });
+})();
+</script>
+</body>
+</html>
