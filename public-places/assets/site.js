@@ -4,8 +4,9 @@
 (() => {
   const SECTIONS = [
     { name: "The Problem", pages: [
-      { name: "Public spaces", href: "wallingford.html" },
+      { name: "Public spaces", href: "public-spaces.html" },
       { name: "People sleeping outside", href: "count.html" },
+      { name: "Wallingford, block by block", href: "wallingford.html" },
     ] },
     { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "Maps", pages: [
