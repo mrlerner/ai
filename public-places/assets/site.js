@@ -19,6 +19,13 @@
       { name: "What else it could buy", href: "spending-options.html" },
       { name: "Service levels", href: "service-levels.html" },
     ] },
+    // One research brief per pledge item, reached from the Pledge Details tab (details.html#pledge) and the footer.
+    // nosub: they link to each other at the bottom of each brief, so they get no sub-nav.
+    { name: "Research briefs", footer: true, nosub: true, pages: [
+      { name: "Keeping public places clear", href: "pledge-public-places.html" },
+      { name: "Adding 1,000 rooms", href: "pledge-rooms.html" },
+      { name: "Publishing the numbers", href: "pledge-numbers.html" },
+    ] },
     // The Details page has no tab for this view; its #existing hash opens it.
     { name: "Existing villages", footer: true, pages: [{ name: "Villages and hotels open now", href: "details.html#existing" }] },
     { name: "Simulator", footer: true, pages: [{ name: "State of Emergency", href: "simulator.html" }] },
@@ -77,7 +84,7 @@
     const here = current();
     const section = SECTIONS.find(s => s.pages.some(p => p.href === here));
     const tops = SECTIONS.filter(s => !s.footer).map(s => `<a href="${s.pages[0].href}"${s === section ? ' class="pp-on"' : ""}>${s.name}</a>`).join("");
-    const sub = section && section.pages.length > 1
+    const sub = section && !section.nosub && section.pages.length > 1
       ? `<nav class="pp-sub" aria-label="${section.name}"><div class="pp-in">` +
         section.pages.map(p => `<a href="${p.href}"${p.href === here ? ' aria-current="page"' : ""}>${p.name}</a>`).join("") +
         `</div></nav>`
