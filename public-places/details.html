@@ -173,14 +173,78 @@ tr.total td { font-weight: 600; }
   .layout { grid-template-columns: 1fr; }
   #map { height: 460px; }
 }
+/* doc:css */
+/* Moving Faster: a tab of text and charts, with no map. */
+.views { flex-wrap: wrap; max-width: 100%; }
+.doc { max-width: 880px; }
+.doc .lead { font-size: 28px; line-height: 1.2; margin: 18px 0 10px; text-wrap: balance; }
+.doc .intro { font-size: 17.5px; color: var(--muted); max-width: 70ch; margin: 0 0 18px; }
+.doc h3 { font-size: 19px; margin: 36px 0 8px; }
+.doc .sub { max-width: 80ch; }
+.doc table td:first-child { min-width: 14em; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 18px 0 8px; }
+.stats div { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 14px 12px; }
+.stats b { display: block; font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stats span { display: block; font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.35; }
+.reasons { padding-left: 22px; max-width: 76ch; }
+.reasons li { margin: 10px 0; }
+.when { list-style: none; padding: 0; margin: 14px 0 18px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 12px; border-top: 2px solid var(--line); }
+.when li { position: relative; padding: 16px 0 0; font-size: 14.5px; line-height: 1.4; color: var(--muted); }
+.when li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--civic); border: 2px solid var(--bg); }
+.when li b { display: block; color: var(--fg); margin-bottom: 2px; }
+.ideas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0 8px; }
+.ideas div { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 15px; }
+.ideas div b { display: block; font-size: 16px; margin-bottom: 4px; }
+@media (max-width: 760px) {
+  .doc .lead { font-size: 23px; }
+  .stats, .ideas { grid-template-columns: 1fr 1fr; }
+  .ideas { grid-template-columns: 1fr; }
+  .when { grid-template-columns: 1fr; border-top: 0; border-left: 2px solid var(--line); gap: 0; }
+  .when li { padding: 0 0 14px 18px; }
+  .when li::before { top: 4px; left: -7px; }
+}
+/* Timeline: one row per step, today's bar above the faster bar, on a shared axis in weeks (--span). */
+.gantt { --span: 30; --now: var(--faint); --fast: var(--civic); margin: 16px 0 6px; font-size: 14px; }
+.gkey { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 10px; color: var(--muted); }
+.gkey span { display: inline-flex; align-items: center; gap: 6px; }
+.gkey i { width: 18px; height: 10px; border-radius: 3px; background: var(--now); }
+.gkey i.fast { background: var(--fast); }
+.grow { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 4px 14px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.grow.axis { border-bottom: 0; padding: 0 0 2px; }
+.glab { line-height: 1.3; }
+.glab small { display: block; color: var(--muted); font-size: 12.5px; }
+.gtrack { position: relative; height: 30px; }
+.gtrack.ticks { height: 18px; color: var(--muted); font-size: 12px; }
+.gtrack.ticks span { position: absolute; left: calc(var(--w) / var(--span) * 100%); transform: translateX(-50%); white-space: nowrap; }
+.gtrack.ticks span:first-child { transform: none; }
+.gtrack.ticks span:last-child { transform: translateX(-100%); }
+.gbar { position: absolute; left: calc(var(--a) / var(--span) * 100%); width: max(4px, calc((var(--b) - var(--a)) / var(--span) * 100%)); height: 12px; border-radius: 3px; background: var(--now); }
+.gbar.fast { top: 16px; background: var(--fast); }
+.gbar.fast.temp { background: repeating-linear-gradient(135deg, var(--fast) 0 5px, color-mix(in srgb, var(--fast) 45%, transparent) 5px 10px); }
+.grid-lines { position: relative; }
+.gmark { position: absolute; top: 0; bottom: 0; width: 0; border-left: 2px dashed var(--now); left: calc(220px + 14px + (100% - 234px) * var(--w) / var(--span)); pointer-events: none; }
+.gmark.fast { border-left-color: var(--fast); }
+@media (max-width: 640px) {
+  .grow { grid-template-columns: 1fr; }
+  .gmark { left: calc(100% * var(--w) / var(--span)); }
+  .grow.axis .glab { display: none; }
+  .glab { position: relative; z-index: 1; background: var(--bg); }
+  .gtrack.ticks .odd { display: none; }
+}
+.gkey i.dash { width: 0; height: 14px; border-radius: 0; background: none; border-left: 2px dashed var(--fg); }
+.gkey i.temp { background: repeating-linear-gradient(135deg, var(--fast) 0 5px, color-mix(in srgb, var(--fast) 45%, transparent) 5px 10px); }
+.lessons td:first-child { min-width: 10em; }
+.lessons td .sub { display: block; font-size: 12.5px; margin-top: 4px; font-weight: 400; }
+/* /doc:css */
 </style>
 </head>
 <body>
 <script src="assets/site.js"></script>
 <main>
-  <div class="views" role="group" aria-label="Map view">
+  <div class="views" role="group" aria-label="Section">
     <button data-v="top" data-views="top villages" aria-pressed="true">Available tiny home land</button>
     <button data-v="tophotels" data-views="tophotels hotels" aria-pressed="false">Available hotels</button>
+    <button data-v="faster" data-views="faster" aria-pressed="false">Moving Faster</button>
   </div>
   <div class="vctl" id="vctl" hidden></div>
   <div class="vctl" id="hctl" hidden></div>
@@ -271,6 +335,119 @@ tr.total td { font-weight: 600; }
   <div id="tcautionBox" hidden><h2>A cautionary tale</h2>
   <div class="callout" id="tcaution"></div></div>
   </section>
+<!-- doc:sections -->
+  <section id="fasterSection" class="doc" hidden>
+  <h2 class="lead">The money is there. Use the state of emergency to move faster.</h2>
+  <p class="intro">Mayor Wilson promised 1,000 new shelter units in her first year, and her own budget pays for about that many. Ten months in, about 280 have opened. Money didn't hold her back. Opening villages one at a time did.</p>
+
+  <div class="stats">
+    <div><b>1,000</b><span>new shelter units promised for her first year in office, and 4,000 by the end of her term</span></div>
+    <div><b>$37M</b><span>in her 2027–28 budget for about 1,000 new shelter beds, on top of $17.5M found in March 2026</span></div>
+    <div><b>$28k</b><span>what the city says one new unit costs to run for a year</span></div>
+    <div><b>~280</b><span>new units opened in her first ten months</span></div>
+  </div>
+
+  <h3>The money is there</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>1,000 tiny homes</th><th class="n">Per home</th><th class="n">In all</th></tr></thead>
+    <tbody>
+      <tr><td>Run for a year: staff on site 24/7, meals, case management</td><td class="n">$28k</td><td class="n">$28M a year</td></tr>
+      <tr><td>Build, with site work</td><td class="n">$34–55k</td><td class="n">$34–55M once</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="reasons">
+    <li><b>The mayor budgeted it.</b> Her proposed 2027–28 budget has $37M for about 1,000 new shelter beds by the end of 2027. The city's own math says 1,000 homes are affordable. Her plan just takes two years.</li>
+    <li><b>Running 1,000 homes costs about $28M a year.</b> That's about an eighth of the $229M the city budgets for homelessness, and about what it spends on the Unified Care Team ($29.9M), which clears encampments.</li>
+    <li><b>Building is one-time money, the easiest kind to find.</b> The $17.5M in March came entirely from leftovers: an underused federal loan fund, an old downtown development fee and shelter money that hadn't been spent.</li>
+    <li><b>Twelve months instead of twenty-four doesn't make a home cost more.</b> It spends the same money a year sooner, and people are inside a year sooner.</li>
+  </ul>
+  <p class="sub">The running cost is the city's own planning number. The building cost runs from LIHI's Belmont village (about $34k a home with site work) to the Bayside Pallet village (about $53k). More on the <a href="budget.html">city's homelessness budget</a> and <a href="service-levels.html">what each home comes with</a>.</p>
+
+  <h3>Why the mayor fell short</h3>
+  <ol class="when">
+    <li><b>January 2026</b>Takes office promising 1,000 new units in her first year.</li>
+    <li><b>March</b>“Path to 500” by the World Cup, paid for with $17.5M in leftovers.</li>
+    <li><b>June</b>Bayside opens with 50 of its 75 tiny homes ready. Five people move in the first week.</li>
+    <li><b>September</b>Pallet, which made the fast-to-install units, shuts down. The goal is reset to 960 units over two years.</li>
+    <li><b>October</b>The first-year goal moves to 2027. Cloverleaf opens with 90 homes, almost six months after it was announced.</li>
+  </ol>
+  <ol class="reasons">
+    <li><b>One site at a time.</b> Every new home is in a new village, and each village needs land, a lease, a permit, a neighborhood fight and an operator: 5–12 months apiece.</li>
+    <li><b>Small sites.</b> Villages were capped at 100 people until this year, now 150. At about 75 homes a site, 1,000 a year means opening a new village every 3–4 weeks.</li>
+    <li><b>Extra steps for every site:</b> a good-neighbor agreement, a plan to keep the area around it clear of encampments, an acuity work group, and the Council's demand for an exact plan before it would pass budget bills.</li>
+    <li><b>The fast supplier closed.</b> Pallet shut down in September. LIHI's wood-framed tiny homes take longer to build.</li>
+    <li><b>Every home is a full-service home,</b> built for people with high needs. That sets the pace of move-ins: Bayside took about 2½ months to fill.</li>
+  </ol>
+
+  <h3>Use the 2015 state of emergency to open villages in batches</h3>
+  <p>Seattle has been under a homelessness civil emergency since November 2, 2015, and no mayor has ended it. The city's emergency powers law lets the mayor sign contracts without the usual bidding and set aside ordinary permit steps. Mayor Murray used it to open sanctioned camps without normal land-use review. Mayor Wilson's January executive order mentions the emergency but doesn't use those powers.</p>
+  <p>Denver declared its own emergency in July 2023. Here is what it, and others, did with that kind of power:</p>
+  <div class="ideas">
+    <div><b>Pick the sites in one batch</b>Denver named 11 sites 37 days into its emergency and ordered 200 tiny homes at once. Seattle approves villages one at a time. The <a href="#top">available land tab</a> ranks the sites that fit today.</div>
+    <div><b>Skip months of bidding</b>Denver signed contracts worth millions of dollars without public bidding during its emergency. Seattle can pre-approve a list of operators and suppliers and hire from it in days.</div>
+    <div><b>Open first, finish later</b>Open with tents or platforms, portable toilets and a generator, and bring in the tiny homes, power and sewer while people are living there. San Diego opened a 136-tent site seven weeks after picking it. Seattle's 2015 sanctioned camp in Interbay opened with city-paid sanitation and was built out over the following weeks.</div>
+    <div><b>Review every permit at once</b>For Cloverleaf, every department head reviewed the plans together. LIHI called it the fastest permit it had ever gotten. Make that the rule, with one standard site plan.</div>
+    <div><b>Talk to neighbors after opening, not instead of opening</b>Denver opened its largest village with a six-month community review that started on opening day. Seattle requires a good-neighbor agreement and an encampment-free plan before it opens.</div>
+    <div><b>Fill a village in a night</b>Denver moved 54 people into its first village on opening night, from a by-name list. Bayside took in 5 people its first week.</div>
+  </div>
+
+  <h3>How long a village takes, and how to cut it in half</h3>
+  <p class="sub">One village of about 75 tiny homes. Today is based on Bayside, Cloverleaf and Olympic Hills, which took 5–7 months to open and up to 2 more to fill. How long each step takes is our estimate.</p>
+  <div class="gantt" style="--span: 7.5">
+    <div class="gkey"><span><i></i>Today</span><span><i class="fast"></i>Faster</span><span><i class="fast temp"></i>Faster, temporary: tents, portable toilets, a generator</span><span><i class="dash"></i>First people move in</span></div>
+    <div class="grid-lines">
+      <div class="gmark" style="--w: 5"></div>
+      <div class="gmark fast" style="--w: 1.5"></div>
+      <div class="grow"><div class="glab">Find and lease a site<small>Faster: pick sites in a batch</small></div><div class="gtrack"><span class="gbar" style="--a: 0; --b: 2.5"></span><span class="gbar fast" style="--a: 0; --b: .75"></span></div></div>
+      <div class="grow"><div class="glab">Permits<small>Faster: every department at once</small></div><div class="gtrack"><span class="gbar" style="--a: 1.5; --b: 3.5"></span><span class="gbar fast" style="--a: .5; --b: 1.25"></span></div></div>
+      <div class="grow"><div class="glab">Hire an operator<small>Faster: from a pre-approved list</small></div><div class="gtrack"><span class="gbar" style="--a: 2; --b: 4"></span><span class="gbar fast" style="--a: .5; --b: 1"></span></div></div>
+      <div class="grow"><div class="glab">Neighborhood agreements<small>Faster: after opening</small></div><div class="gtrack"><span class="gbar" style="--a: 2.5; --b: 4.5"></span><span class="gbar fast" style="--a: 1.5; --b: 4"></span></div></div>
+      <div class="grow"><div class="glab">Site work, power, water, sewer<small>Faster: open on portable toilets and a generator</small></div><div class="gtrack"><span class="gbar" style="--a: 3.5; --b: 5"></span><span class="gbar fast temp" style="--a: 1; --b: 1.5"></span><span class="gbar fast" style="--a: 1.5; --b: 3.5"></span></div></div>
+      <div class="grow"><div class="glab">Tiny homes<small>Faster: bought in bulk ahead of time, tents first</small></div><div class="gtrack"><span class="gbar" style="--a: 3; --b: 5"></span><span class="gbar fast temp" style="--a: 1.5; --b: 2"></span><span class="gbar fast" style="--a: 2; --b: 3"></span></div></div>
+      <div class="grow"><div class="glab">Move people in<small>Faster: a whole camp at once, by name</small></div><div class="gtrack"><span class="gbar" style="--a: 5; --b: 7"></span><span class="gbar fast" style="--a: 1.5; --b: 2"></span></div></div>
+      <div class="grow axis"><div class="glab"></div><div class="gtrack ticks"><span style="--w: 0">Start</span><span class="odd" style="--w: 1">1 mo</span><span style="--w: 2">2</span><span class="odd" style="--w: 3">3</span><span style="--w: 4">4</span><span class="odd" style="--w: 5">5</span><span style="--w: 6">6</span><span style="--w: 7.5">7½ mo</span></div></div>
+    </div>
+  </div>
+  <p><b>Today: people move in after about 5 months, and the village is full after about 7. Faster: people move in after about 6 weeks, and the tiny homes are done in about 3 months.</b> San Diego opened a tent site in seven weeks, and Denver built its first village in 45 days.</p>
+  <p class="sub">A generator costs more to run than grid power, about $80k a year more for 50 heated tiny homes. Use it to open, then hook up. See <a href="service-levels.html">service levels</a>.</p>
+
+  <h3>Make enforcement possible: somewhere police can take people</h3>
+  <p>Enforcing a camping ban runs on officer time. Today an officer with someone in crisis or high on the street can take them to jail or an emergency room, and either can cost hours.</p>
+  <div class="ideas">
+    <div><b>San Francisco's 822 Geary</b>A 16-bed unit, open 24/7, where police, paramedics and crisis teams drop people off for up to 23 hours of care. Drop-offs fell from about six hours of officer time to about two minutes. About half the people admitted connect to ongoing care.</div>
+    <div><b>How it opened fast</b>Mayor Lurie's fentanyl emergency ordinance in February 2025 let the city skip normal contracting. The unit opened about two months later, in a building the city already owned and had left empty, leased to the operator for $1 a month.</div>
+  </div>
+  <p>Seattle's levy-funded crisis center won't open until the end of 2027 at the earliest. Under the emergency, Seattle and King County could open an interim drop-off unit in a building they already own, paid for by the Crisis Care Centers levy and Medicaid. More in <a href="denver-plan.html">the Denver plan for Seattle</a>.</p>
+
+  <h3>What other cities teach</h3>
+  <div class="tbl"><table class="lessons">
+    <thead><tr><th>City</th><th>What worked</th><th>Watch out for</th></tr></thead>
+    <tbody>
+      <tr><td><b>Denver</b><span class="sub">Emergency declared July 2023. People sleeping outside down 61%, 2022 to 2026</span></td><td>A room people accept, one they can lock: about 1,284 hotel rooms and tiny homes in 16 months. A room for everyone on a by-name list before a camp is cleared, and the block kept clear after. A ladder of an offer, two warnings, then a ticket. One office in charge, with a public number.</td><td>Money that ran out. Much of it was one-time federal money, and the leased hotels closed in 2025 and 2026.</td></tr>
+      <tr><td><b>San Francisco</b><span class="sub">People sleeping outside down 22%, 2024 to 2026; people in tents down 85%</span></td><td>Emergency powers to skip slow contracting. The police drop-off unit. Treatment the same day. An RV ladder with permits and buybacks: lived-in RVs down more than 42%.</td><td>Sweeps without enough rooms. Fewer tents can mean people lost their things, not that they came inside.</td></tr>
+      <tr><td><b>San Diego</b><span class="sub">Camping banned near schools, transit and parks since July 2023</span></td><td>Places named in law where camping is never allowed, shelter or not. Staffed tent lots as a fast, cheap bridge: about 760 tents at about $10k a tent a year.</td><td>A tent as the final offer. Downtown cleared, but the number of people outside citywide didn't fall, and few people moved on to housing.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sub">More on <a href="other-cities.html">what we can learn from other cities</a>.</p>
+
+  <h3>Sources</h3>
+  <ul class="notes">
+    <li>The promise: City of Seattle, “Neighbor by Neighbor” shelter expansion. <a href="https://seattle.gov/mayor/vision-and-values/shelter-expansion" target="_blank" rel="noopener">seattle.gov</a></li>
+    <li>The $37M: Human Services Department, 2027–2028 proposed budget update. <a href="https://content.govdelivery.com/accounts/WASEATTLE/bulletins/42c0669" target="_blank" rel="noopener">govdelivery.com</a></li>
+    <li>The $17.5M and $28k a unit: PubliCola, Mar 17, 2026. <a href="https://publicola.com/2026/03/17/wilsons-shelter-plan-17-million-with-first-units-opening-as-soon-as-april/" target="_blank" rel="noopener">publicola.com</a></li>
+    <li>The reset to 960: KOMO, Sept 2026. <a href="https://komonews.com/news/local/mayor-katie-wilson-walks-back-1k-shelter-beds-a-year-promise-as-seattle-budget-gap-grows-homeless-houseless-housingcrisis-camping-rv-drugs-addiction-mental-health-unsheltered-resources-tiny-home-taxes-taxpayer-deficit-funding" target="_blank" rel="noopener">komonews.com</a>. The goal moved to 2027: KUOW, Oct 21, 2026. <a href="https://www.kuow.org/governing/2026-10-21/wilson-wants-to-emulate-denver-houston-with-new-homelessness-strategy" target="_blank" rel="noopener">kuow.org</a></li>
+    <li>Bayside: Seattle Red. <a href="https://seattlered.com/homelessness/katie-wilson-interbay-homeless-shelter-nearly-empty/4119007" target="_blank" rel="noopener">seattlered.com</a>. Cloverleaf: South Seattle Emerald, Oct 30, 2026. <a href="https://southseattleemerald.org/news/2026/10/30/seattles-largest-tiny-home-village-opens-in-industrial-south-park" target="_blank" rel="noopener">southseattleemerald.org</a></li>
+    <li>Pallet: PubliCola, Sept 3, 2026. <a href="https://publicola.com/2026/09/03/pallet-company-that-built-just-opened-interbay-shelter-closes-abruptly/" target="_blank" rel="noopener">publicola.com</a>. Village size cap: PubliCola, Apr 16, 2026. <a href="https://publicola.com/2026/04/16/mayor-wilsons-shelter-acceleration-plan-moves-forward-with-some-questions-unanswered/" target="_blank" rel="noopener">publicola.com</a></li>
+    <li>The $229M city homelessness budget and the $29.9M Unified Care Team: our <a href="budget.html">budget page</a>. Units opened: Bayside 75, Olympic Hills 45, Belmont 31, Brighton 14, a youth site 24, Cloverleaf 90.</li>
+    <li>Seattle's 2015 emergency: Madison Park Times, Nov 5, 2015 <a href="https://madisonparktimes.com/news/2015/nov/05/mayor-king-county-declare-state-of-emergency-over-" target="_blank" rel="noopener">madisonparktimes.com</a>; still in effect: Fox 13 <a href="https://www.fox13seattle.com/news/seattle-homeless-shelter-expansion" target="_blank" rel="noopener">fox13seattle.com</a>; what the emergency powers allow: Seattle City Council Insight <a href="https://sccinsight.com/2020/03/03/mayor-declares-civil-emergency-related-to-coronavirus/" target="_blank" rel="noopener">sccinsight.com</a>; how Murray used it: Cascade PBS, June 2016 <a href="https://www.cascadepbs.org/equity/2016/06/seattles-homeless-emergency-no-end-in-sight/" target="_blank" rel="noopener">cascadepbs.org</a>; Executive Order 2026-02 <a href="https://wilson.seattle.gov/wp-content/uploads/sites/43/2026/01/Executive-Order-202602-Accelerate-housing-and-shelter.pdf" target="_blank" rel="noopener">wilson.seattle.gov</a></li>
+    <li>Denver's emergency: Colorado Politics on the 11 sites and 200 units, Aug 24, 2023 <a href="https://www.coloradopolitics.com/2023/08/24/denver-identifies-11-potential-sites-for-micro-communities-plans-to-buy-200-pallet-shelters-19029edc-e610-55c4-91eb-7834e31a2fca" target="_blank" rel="noopener">coloradopolitics.com</a>; on contracts without bidding and Stay Inn's opening, Jan 2, 2024 <a href="https://www.coloradopolitics.com/2024/01/02/denvers-homelessness-emergency-order-expires-167-days-and-45-million-in-spending-later-8af20e47-a838-5349-9c8e-56316b2219fd/" target="_blank" rel="noopener">coloradopolitics.com</a>; on La Paz's opening, Mar 12, 2024 <a href="https://www.coloradopolitics.com/2024/03/12/mike-johnston-opens-citys-largest-homeless-micro-community-in-overland-park-746784ba-de5b-5cd7-ac8a-433ff423ea64" target="_blank" rel="noopener">coloradopolitics.com</a></li>
+    <li>Village timelines: Bayside, KOMO <a href="https://komonews.com/news/project-seattle/new-questions-as-seattles-newest-75-unit-shelter-opens-with-15-residents-armory-way-nonprofit-mayor-katie-wilson-housing-administration-everett-pallet-shelter-dan-wise" target="_blank" rel="noopener">komonews.com</a> and My Ballard <a href="https://www.myballard.com/?p=270825" target="_blank" rel="noopener">myballard.com</a>; Cloverleaf, LIHI <a href="https://www.lihihousing.org/post/celebrating-sfnw-s-750th-tiny-house-mayor-announces-new-south-park-village" target="_blank" rel="noopener">lihihousing.org</a> and The Urbanist on the joint permit review <a href="https://www.theurbanist.org/seattle-opens-its-largest-tiny-house-village-yet-in-south-park/" target="_blank" rel="noopener">theurbanist.org</a>; Olympic Hills, Spokesman-Review <a href="https://www.spokesman.com/stories/2025/aug/06/two-tiny-house-villages-coming-to-seattle" target="_blank" rel="noopener">spokesman.com</a> and KCRHA <a href="https://kcrha.org/news-expanding-shelter-olympic-hills-tiny-house-village/" target="_blank" rel="noopener">kcrha.org</a></li>
+    <li>Tent sites: San Diego's first Safe Sleeping site <a href="https://www.sandiego.gov/outreach2-article/mayor-gloria-announces-opening-first-safe-sleeping-site-san-diegans-experiencing" target="_blank" rel="noopener">sandiego.gov</a>; Seattle's 2015 sanctioned camps, The Stranger <a href="https://www.thestranger.com/news/seattles-first-city-sanctioned-homeless-encampments-will-open-this-week-23165866/" target="_blank" rel="noopener">thestranger.com</a></li>
+    <li>822 Geary: Mission Local, April 2025 <a href="https://missionlocal.org/2025/04/sf-opens-geary-crisis-stabilization-center/" target="_blank" rel="noopener">missionlocal.org</a>; sf.gov on the fentanyl emergency ordinance <a href="https://www.sf.gov/mayor-lurie-signs-fentanyl-state-of-emergency-ordinance-announces-plan-for-247-police-friendly-stabilization-center" target="_blank" rel="noopener">sf.gov</a>; the city's lease memo <a href="https://media.api.sf.gov/documents/Final_822_Geary_CSU_Crestwood_1000035278_HC_Memo.pdf" target="_blank" rel="noopener">sf.gov</a></li>
+    <li>Other cities: sources on our <a href="other-cities.html">other cities page</a>.</li>
+  </ul>
+  </section>
+<!-- /doc:sections -->
 </main>
 
 <script>
@@ -1193,8 +1370,16 @@ $("enotes").innerHTML = [
   `<b>Not shown:</b> supportive housing in apartment buildings, group shelters, and safe parking lots. `,
 ].map(t => `<li>${t}</li>`).join("");
 
+// Moving Faster is text, not a map view: it hides the map and everything that goes with it.
+const DOCS = { faster: "fasterSection" };
+const MAP_PARTS = ["banSection", "villageSection", "hotelSection", "topSection", "existingSection", "callout", "topSummary", "vctl", "hctl"];
 function draw() {
   document.querySelectorAll(".views button").forEach(b => b.setAttribute("aria-pressed", b.dataset.views.split(" ").includes(view)));
+  const doc = view in DOCS;
+  document.querySelector(".layout").hidden = doc;
+  Object.entries(DOCS).forEach(([v, id]) => { $(id).hidden = v !== view; });
+  if (doc) { MAP_PARTS.forEach(id => { $(id).hidden = true; }); return; }
+  map.invalidateSize();
   useTop();
   const v = view === "villages", h = view === "hotels", t = onTop(), e = view === "existing";
   $("banSection").hidden = true; $("villageSection").hidden = !v; $("hotelSection").hidden = !h; $("topSection").hidden = !t;
@@ -1216,7 +1401,7 @@ function draw() {
 // #top/12 opens the top sites tab on site 12, and #tophotels/3 the top hotels tab on hotel 3.
 // #existing (existing villages and hotels) has no tab; the site footer links to it.
 // Encampments and drug zones moved to The Problem page; old links to them (#problem, #protected, #allowed) open on tiny home land.
-const VIEWS = ["top", "villages", "tophotels", "hotels", "existing"];
+const VIEWS = ["top", "villages", "tophotels", "hotels", "faster", "existing"];
 const viewFromHash = () => VIEWS.find(v => "#" + v === location.hash.split("/")[0]) || "top";
 // The ranked tabs open on their first site; #top/all and #tophotels/all open the overview.
 const pickFromHash = () => {
@@ -1227,7 +1412,7 @@ const pickFromHash = () => {
 };
 document.querySelectorAll(".views button").forEach(b => b.onclick = () => { location.hash = b.dataset.v; });
 // Each tab opens on the whole city, not wherever the last tab left the map.
-addEventListener("hashchange", () => { const was = view; view = viewFromHash(); if (view !== was) scrollTo(0, 0); pickFromHash(); hidden.clear(); draw(); if (topPick) pickTop(TS.sites[topPick - 1]); else map.fitBounds(SEATTLE); });
+addEventListener("hashchange", () => { const was = view; view = viewFromHash(); if (view !== was) scrollTo(0, 0); pickFromHash(); hidden.clear(); draw(); if (topPick) pickTop(TS.sites[topPick - 1]); else if (!(view in DOCS)) map.fitBounds(SEATTLE); });
 view = viewFromHash();
 pickFromHash();
 drawMarks();
@@ -1236,7 +1421,7 @@ const SEATTLE = [[47.4955, -122.436], [47.734, -122.236]];
 map.fitBounds(SEATTLE);
 draw();
 // The map can measure itself before the stylesheet lands, so fit again once the page has laid out.
-addEventListener("load", () => { map.invalidateSize(); map.fitBounds(SEATTLE); if (topPick) pickTop(TS.sites[topPick - 1]); });
+addEventListener("load", () => { if (view in DOCS) return; map.invalidateSize(); map.fitBounds(SEATTLE); if (topPick) pickTop(TS.sites[topPick - 1]); });
 </script>
 </body>
 </html>
