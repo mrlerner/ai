@@ -105,7 +105,6 @@ a { color: var(--camp); }
     <span class="label">Show</span>
     <button class="chip" data-show="camp" aria-pressed="true">Encampments</button>
     <button class="chip" data-show="drug" aria-pressed="true">Drug zones</button>
-    <button class="chip" data-show="out" aria-pressed="true">Outside public places too</button>
   </div>
   <div class="controls" id="views"><span class="label">Look at</span></div>
 
@@ -160,7 +159,7 @@ const P = D.places;
 const camps = P.filter(p => p.camp), drugs = P.filter(p => p.drug);
 const campsIn = camps.filter(p => p.k), drugsIn = drugs.filter(p => p.k);
 const span = `${monthOf(D.start)} through ${monthOf(D.end)} ${D.end.slice(0, 4)}`;
-const show = { camp: true, drug: true, out: true };
+const show = { camp: true, drug: true };
 let selected = null;
 
 // ---------- headline ----------
@@ -205,11 +204,10 @@ function tipFor(p) {
 function drawMap() {
   dots.clearLayers();
   markers.clear();
-  const list = P.filter(p => show.out || p.k);
   // Encampments first, then drug zones on top; within each, biggest first so small dots stay clickable.
   const layers = [
-    ...list.filter(p => show.camp && p.camp && !(show.drug && p.drug)).sort((a, b) => b.reports - a.reports).map(p => [p, "camp"]),
-    ...list.filter(p => show.drug && p.drug).sort((a, b) => (b.calls + b.od) - (a.calls + a.od)).map(p => [p, "drug"]),
+    ...P.filter(p => show.camp && p.camp && !(show.drug && p.drug)).sort((a, b) => b.reports - a.reports).map(p => [p, "camp"]),
+    ...P.filter(p => show.drug && p.drug).sort((a, b) => (b.calls + b.od) - (a.calls + a.od)).map(p => [p, "drug"]),
   ];
   layers.forEach(([p, kind]) => {
     const inside = !!p.k, sel = p === selected;

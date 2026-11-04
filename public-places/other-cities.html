@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What We Can Learn from Other Cities</title>
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f2421; --muted: #5d6660; --line: #e2e0d8; --accent: #2a6fb5; --card: #ffffff; --code: #f0efe9;
+  --good: #2f7d4f; --bad: #b4532a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161a17; --fg: #e6e9e5; --muted: #9aa49c; --line: #2c332e; --accent: #7fb2ea; --card: #1d221f; --code: #242a26;
+    --good: #6cc08f; --bad: #e89770;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161a17; --fg: #e6e9e5; --muted: #9aa49c; --line: #2c332e; --accent: #7fb2ea; --card: #1d221f; --code: #242a26;
+  --good: #6cc08f; --bad: #e89770;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+main { max-width: 820px; margin: 0 auto; padding: 48px 16px 96px; }
+.kicker { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
+h1 { font-size: 44px; line-height: 1.1; margin: 8px 0 14px; letter-spacing: -.015em; }
+.lede { font-size: 21px; line-height: 1.45; max-width: 36em; margin: 0 0 8px; }
+.meta { color: var(--muted); font-size: 15px; }
+h2 { font-size: 27px; line-height: 1.25; margin: 56px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 19px; margin: 28px 0 6px; }
+a { color: var(--accent); }
+p, li { max-width: 70ch; }
+li { margin: 6px 0; }
+nav.toc { margin: 24px 0 8px; font-size: 15px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.stat .c { font-size: 13px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.stat .n { font-size: 34px; font-weight: 700; line-height: 1.1; letter-spacing: -.01em; margin-top: 4px; }
+.stat .l { font-size: 14.5px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+
+/* One card per city */
+.city { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px 8px; margin: 18px 0; }
+.city h3 { margin: 0 0 2px; font-size: 22px; }
+.city .tag { color: var(--muted); font-size: 15px; margin: 0 0 10px; }
+.city dl { margin: 0; }
+.city dt { font-weight: 600; font-size: 15px; margin-top: 12px; }
+.city dd { margin: 2px 0 0; font-size: 16px; max-width: 70ch; }
+.city dd.take { color: var(--good); }
+.city dd.avoid { color: var(--bad); }
+.city dd.take, .city dd.avoid { padding-bottom: 12px; }
+
+.tbl { overflow-x: auto; margin: 16px 0; }
+table { border-collapse: collapse; font-size: 15px; min-width: 100%; }
+th, td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { font-weight: 600; background: var(--code); }
+/* The comparison table breaks out of the 820px column on wide screens so all five columns fit. */
+.tbl.wide { width: min(1120px, 100vw - 32px); margin-left: 50%; transform: translateX(-50%); }
+.compare { min-width: 820px; }
+.compare td:first-child { font-weight: 600; width: 120px; }
+.compare td:last-child, .compare th:last-child { background: color-mix(in srgb, var(--accent) 9%, transparent); width: 24%; }
+.swipe { display: none; color: var(--muted); font-size: 14px; }
+.note { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+.sources li { font-size: 14.5px; color: var(--muted); margin: 4px 0; }
+
+.callout { background: var(--code); border-radius: 10px; padding: 14px 18px; margin: 18px 0; }
+.callout p { margin: 4px 0; }
+
+@media (max-width: 640px) {
+  body { font-size: 16px; } h1 { font-size: 34px; } h2 { font-size: 23px; } .lede { font-size: 19px; }
+  .stats { grid-template-columns: 1fr; }
+  .city { padding: 16px 16px 6px; }
+}
+.swipe.on { display: block; }
+</style>
+</head>
+<body>
+<script src="assets/site.js"></script>
+<main>
+<div class="kicker">Protect Public Places</div>
+<h1>What We Can Learn from Other Cities</h1>
+<p class="lede">Denver, San Francisco and San Diego all banned camping in public places and opened somewhere else for people to go. Each one offered something different, and the results were different too.</p>
+<p class="meta">Draft, November 2026. Figures are the cities' own unless a source says otherwise. Seattle's street count rose 54% over the years Denver's fell.</p>
+<nav class="toc"><a href="#cities">The three cities</a><a href="#common">What they share</a><a href="#differ">Where they differ</a><a href="#compare">Side by side</a><a href="#seattle">The better strategy</a><a href="#sources">Sources</a></nav>
+
+<div class="stats">
+  <div class="stat"><div class="c">Denver</div><div class="n">−61%</div><div class="l">people sleeping outside, January 2022 to January 2026</div></div>
+  <div class="stat"><div class="c">San Francisco</div><div class="n">−22%</div><div class="l">people sleeping outside, 2024 to 2026. The count moved from night to morning, so the drop is uncertain</div></div>
+  <div class="stat"><div class="c">San Diego</div><div class="n">No drop</div><div class="l">in people sleeping outside citywide since its 2023 ban, per the city auditor, even though downtown cleared</div></div>
+</div>
+
+<h2 id="cities">The three cities</h2>
+
+<div class="city">
+  <h3>Denver: a room with a door, and a ladder</h3>
+  <p class="tag">Camping ban since 2012. Mayor Johnston declared an emergency in July 2023.</p>
+  <dl>
+    <dt>What it did</dt>
+    <dd>Bought three hotels, leased two and built five villages of pallet units: about 1,284 private rooms in 16 months. It resolved camps only once it had a room for everyone on a by-name list, then kept the block closed. Each contact climbs a ladder: an outreach worker and an officer offer a room, then a spoken warning, a written warning, and only then a ticket. It wrote 14 camping tickets in all of 2023.</dd>
+    <dt>What it cost</dt>
+    <dd>About $45,000 per room per year to run, and at least $178M in all by the city auditor's count, much of it one-time federal money that has now run out.</dd>
+    <dt>What it got</dt>
+    <dd>Street homelessness fell 61% from 2022 to 2026, and encampment complaints fell 40%. About 18% of the roughly 3,800 people served had reached permanent housing by April 2025.</dd>
+    <dt>Take</dt>
+    <dd class="take">The offer people accept (a room they can lock), the ladder, keeping cleared blocks closed, and one office in charge with a public number.</dd>
+    <dt>Watch out for</dt>
+    <dd class="avoid">Funding that disappears. The leased hotels closed in 2025 and 2026, and the 2026 budget cut $12.4M from shelter. Denver also can't say how many people stay housed.</dd>
+  </dl>
+</div>
+
+<div class="city">
+  <h3>San Francisco: enforcement and treatment</h3>
+  <p class="tag">Old laws against camping, held back by a court injunction until the 2024 <i>Grants Pass</i> decision. Mayor Lurie's "Breaking the Cycle" plan since 2025.</p>
+  <dl>
+    <dt>What it did</dt>
+    <dd>Cleared camps often once the courts allowed it, including on state highway land after a 2025 deal with Caltrans. Under a fentanyl emergency ordinance it opened treatment and sober beds quickly. It also opened a 16-bed unit at 822 Geary where police can drop someone off in about two minutes instead of six hours, and a $14.5M RESET center that takes people police arrest for public intoxication. Outreach workers stopped handing out drug-smoking supplies without a link to treatment. A 2025 law limits lived-in RVs, with permits, buybacks and a shelter that takes RV residents.</dd>
+    <dt>What it cost</dt>
+    <dd>We found no per-bed figure. It opened 863 shelter beds in 16 months but closed others, for a net gain of 403. At least 470 of the beds require sobriety or focus on addiction treatment.</dd>
+    <dt>What it got</dt>
+    <dd>Street homelessness fell 22% from 2024 to 2026, and people living in tents fell 85%. A record 57% of homeless people were sheltered on count night. Lived-in RVs fell more than 42%. Advocates say the new morning count and the sweeps overstate the drop. A civil grand jury found that only 30–40% of people in some city programs ended the year in stable housing.</dd>
+    <dt>Take</dt>
+    <dd class="take">The police drop-off unit, the RV ladder, opening treatment the same day, and emergency powers to skip slow contracting.</dd>
+    <dt>Watch out for</dt>
+    <dd class="avoid">Sweeps without enough rooms. Police call it the "forever sweep," and fewer tents can mean people lost their gear, not that they came inside. In 2024 only 30% of shelter offers were accepted.</dd>
+  </dl>
+</div>
+
+<div class="city">
+  <h3>San Diego: a ban and a staffed tent camp</h3>
+  <p class="tag">Unsafe Camping Ordinance, effective July 2023. Two "Safe Sleeping" sites on the edge of Balboa Park.</p>
+  <dl>
+    <dt>What it did</dt>
+    <dd>Banned camping at all times near schools and shelters, on transit, and in parks, canyons and riverbanks. Elsewhere camping is banned only when shelter is available, and police can't ticket at night. To make that shelter available, it opened about 760 tents on two fenced dirt lots in about 16 months. Each tent sleeps two and is open at the bottom, and staff are on site 24/7. Entry is by referral only, and the sites are low barrier: pets and partners are welcome, and no sobriety is required.</dd>
+    <dt>What it cost</dt>
+    <dd>About $9,000–11,000 per tent per year, from the council's contract figures. Each tent added in the 2024 expansion cost about $5,000 a year.</dd>
+    <dt>What it got</dt>
+    <dd>Downtown cleared, and about 1,000 people lived at the sites in 2024. But people sleeping outside citywide didn't go down, and encampment reports rose 13%. About 10% of people who left went to permanent housing, against 18% from the city's indoor shelters. 21 residents have died since 2023, and residents sued over the conditions.</dd>
+    <dt>Take</dt>
+    <dd class="take">The law's always-banned zones around schools, transit and parks, and a staffed lot as a fast, cheap bridge.</dd>
+    <dt>Watch out for</dt>
+    <dd class="avoid">A tent as the final offer. It fills up but rarely leads to housing. Under its ban, a full camp also means the citywide rule can't be enforced.</dd>
+  </dl>
+</div>
+
+<h2 id="common">What all three have in common</h2>
+<ul>
+  <li><b>A camping ban that is enforced.</b> All three wrote rules about where people can't camp and sent someone to enforce them. That is what Seattle lacks: it has sweeps, but no ban behind them.</li>
+  <li><b>Somewhere to send people.</b> None of them relied on enforcement alone. Each opened hundreds of places to sleep within about a year and a half.</li>
+  <li><b>Speed from emergency powers and buildings the city already had.</b> Denver declared an emergency and bought hotels in weeks, San Francisco used a fentanyl emergency to skip contracting, and San Diego put tents on city lots.</li>
+  <li><b>An outreach worker comes before the police.</b> Each pairs outreach with officers, and tickets and arrests are rare compared with warnings.</li>
+  <li><b>Sidewalks cleared faster than homelessness fell.</b> Each city cleared its most visible areas. How many people actually moved into housing is the weak or missing number in all three.</li>
+</ul>
+
+<h2 id="differ">Where they differ</h2>
+<ul>
+  <li><b>What the city offers.</b> Denver offers a private room with a door that locks, San Francisco more and more a treatment or sober bed, and San Diego a tent. That is the biggest difference, and it tracks the results.</li>
+  <li><b>How hard the city enforces.</b> Denver climbs a ladder and then holds the block, San Francisco clears often, and San Diego mostly warns, while its citywide ban switches off whenever the camps are full.</li>
+  <li><b>Cost per bed.</b> A San Diego tent costs about $10,000 a year to run and a Denver room about $45,000. The cheaper offer was also the one that housed the fewest people.</li>
+  <li><b>Drugs.</b> Denver and San Diego are low barrier and let people in without sobriety. San Francisco is adding beds that require sobriety and is pushing people toward treatment.</li>
+</ul>
+
+<h2 id="compare">Side by side</h2>
+<p>The last column is the strongest choice on each row for Seattle, and the pledge item it supports.</p>
+<p class="swipe">Swipe the table sideways to see all of it →</p>
+<div class="tbl wide">
+<table class="compare">
+  <thead><tr><th></th><th>Denver</th><th>San Francisco</th><th>San Diego</th><th>Better strategy</th></tr></thead>
+  <tbody>
+    <tr><td>The law</td>
+      <td>Citywide camping ban since 2012</td>
+      <td>Old laws, held back by a court until <i>Grants Pass</i> (2024)</td>
+      <td>2023 ordinance: some places banned at all times, the rest only when shelter is open</td>
+      <td>Name the places in law, banned at all times whether or not there's shelter, as San Diego does (pledge item 1)</td></tr>
+    <tr><td>The offer</td>
+      <td>A private room with a locking door, in a hotel or a village</td>
+      <td>A shelter bed, more and more a treatment or sober bed</td>
+      <td>A tent for two in a fenced, staffed lot</td>
+      <td>Denver's room with a door. A staffed lot only as a bridge while rooms open (item 4)</td></tr>
+    <tr><td>Enforcement</td>
+      <td>A ladder: offer, warnings, then a ticket. Cleared blocks stay closed</td>
+      <td>Frequent sweeps, including on state highway land</td>
+      <td>Mostly warnings. No tickets at night or when shelter is full</td>
+      <td>Denver's ladder, and hold every cleared place (items 2 and 3)</td></tr>
+    <tr><td>Speed</td>
+      <td>1,284 rooms in 16 months</td>
+      <td>863 beds opened in 16 months, net +403</td>
+      <td>About 760 tents in 16 months</td>
+      <td>Buy or lease buildings under emergency powers rather than build (item 4)</td></tr>
+    <tr><td>Cost per place per year</td>
+      <td>About $45,000 a room</td>
+      <td>Not published</td>
+      <td>About $9,000–11,000 a tent</td>
+      <td>Pay for the room and the case manager. Save on the tent's model of one crew covering many people</td></tr>
+    <tr><td>Drugs</td>
+      <td>Low barrier. Rooms first, treatment offered</td>
+      <td>A police drop-off unit, the RESET center and sober beds</td>
+      <td>Low barrier. Treatment on site still being planned</td>
+      <td>Low-barrier rooms with overdose safety, plus San Francisco's police drop-off unit (item 2)</td></tr>
+    <tr><td>Vehicles</td>
+      <td>Not a separate track</td>
+      <td>An RV permit ladder with buybacks. Lived-in RVs down 42%</td>
+      <td>Not covered by the tent sites</td>
+      <td>San Francisco's RV ladder, with buybacks and a safe lot open first</td></tr>
+    <tr><td>Exits to housing</td>
+      <td>18% of people served (to April 2025)</td>
+      <td>30–40% of some programs' participants (grand jury)</td>
+      <td>About 10% of people who left</td>
+      <td>A case manager pushing every stay toward housing, plus a one-year check on everyone who leaves (items 4 and 5)</td></tr>
+    <tr><td>Reporting</td>
+      <td>A monthly public dashboard and a daily by-name list</td>
+      <td>Quarterly RV counts. Contracts being rewritten around outcomes</td>
+      <td>An audit three years in. Safety oversight lagged</td>
+      <td>A monthly public report, including deaths and returns to the street (item 5)</td></tr>
+    <tr><td>Result</td>
+      <td>−61% outside (2022–26)</td>
+      <td>−22% outside (2024–26), count method changed</td>
+      <td>Downtown cleared. No drop citywide</td>
+      <td>Denver's result is the one to aim for</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">The three cities count differently. Denver's 2025 and 2026 counts fell on freezing nights, San Francisco moved its count to the morning, and the housing-exit figures use different denominators (people served, people who left, program participants). Read the rows as rough comparisons, not a controlled study.</p>
+
+<h2 id="seattle">The better strategy for Seattle</h2>
+<p>Take <b>Denver's offer and ladder</b>, <b>San Diego's always-banned zones</b> and <b>San Francisco's tools for drugs and vehicles</b>. That combination is the pledge:</p>
+<ol>
+  <li><b>Write the places into law, banned at all times.</b> San Diego shows why: a ban that applies only when shelter is open switches off whenever the shelter fills. Schools, parks and transit should be off limits whatever the bed count.</li>
+  <li><b>Make the offer a room with a door that locks.</b> San Diego proves people will take a tent. Denver proves a room does far more: about 18% of people reached permanent housing, against about 10% from San Diego's tents. That is a rough comparison, since the two numbers use different denominators.</li>
+  <li><b>Use a staffed lot only as a bridge.</b> A San Diego-style lot is fast and cheap, at about $10,000 a tent. It can take people off a school block while rooms open, but it shouldn't be where they end up.</li>
+  <li><b>Climb a ladder and hold the block.</b> Denver's ladder beats San Francisco's repeated sweeps and Seattle's one-step sweep. People come back unless the block stays closed and outreach returns.</li>
+  <li><b>Borrow San Francisco's police drop-off unit and RV ladder.</b> Officer hours are what a ladder uses up fastest, and vehicles are about a quarter of Seattle's unsheltered people.</li>
+  <li><b>Report what the others didn't.</b> Publish deaths, returns to the street and a one-year housing check every month. San Diego's 21 deaths and Denver's untracked exits show what happens without them.</li>
+</ol>
+<div class="callout">
+  <p><b>More detail:</b> <a href="denver-vs-seattle.html">Denver vs. Seattle</a> compares Denver and Seattle in depth. <a href="denver-plan.html">The Denver plan for Seattle</a> covers costs, the San Francisco tools and what happens after the room.</p>
+</div>
+
+<h2 id="sources">Sources</h2>
+<ul class="sources">
+  <li>Denver: Denver Auditor, All In Mile High audit, March 2026 <a href="https://www.denvergov.org/files/assets/public/v/5/auditor/documents/audit-services/audit-reports/2026/all-in-mile-high_march-2026.pdf">denvergov.org</a>; All In Mile High dashboard <a href="https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Mayors-Office/Programs-and-Initiatives/Homelessness-Initiative/All-In-Mile-High-Dashboard">denvergov.org</a>. Everything else for Denver is on <a href="denver-vs-seattle.html">Denver vs. Seattle</a> and <a href="denver-plan.html">the Denver plan</a>, with their sources.</li>
+  <li>San Francisco: the city's announcement of the 2026 count <a href="https://www.sf.gov/news-mayor-lurie-announces-san-francisco-has-reached-lowest-level-of-unsheltered-homelessness-in-15-years">sf.gov</a>; SF Standard on the count, May 12, 2026 <a href="https://sfstandard.com/2026/05/12/san-francisco-point-in-time-homeless-count/">sfstandard.com</a>; Mission Local on beds opened and closed, May 2026 <a href="https://missionlocal.org/2026/05/sf-lurie-shelter-beds/">missionlocal.org</a>; the fentanyl emergency ordinance <a href="https://www.sf.gov/mayor-lurie-signs-fentanyl-state-of-emergency-ordinance-announces-plan-for-247-police-friendly-stabilization-center">sf.gov</a>; Mission Local on 822 Geary <a href="https://missionlocal.org/2025/04/sf-opens-geary-crisis-stabilization-center/">missionlocal.org</a>; KQED on the RESET center <a href="https://www.kqed.org/news/12081889/not-a-jail-not-an-emergency-room-what-is-daniel-luries-new-reset-center">kqed.org</a>; KQED on the RV law <a href="https://www.kqed.org/news/12048307/sf-just-voted-to-ban-long-term-rv-parking-what-happens-to-the-people-inside">kqed.org</a>; GrowSF on tents and RVs, June 2026 <a href="https://growsf.org/news/2026-06-12-tents-and-rvs-fall/">growsf.org</a>; SF Standard on the "forever sweep," Feb 2026 <a href="https://sfstandard.com/2026/02/04/forever-sweep-san-francisco-preps-homeless-migration-super-bowl/">sfstandard.com</a>; KQED on the court lifting limits on sweeps <a href="https://www.kqed.org/news/11993312/court-lifts-restrictions-on-sf-encampment-sweeps">kqed.org</a>; the city's contract overhaul after the grand jury <a href="https://www.sf.gov/news-mayor-lurie-launches-sweeping-effort-to-redo-all-city-homelessness-contracts-with-focus-on-outcomes-accountability-for-results">sf.gov</a>.</li>
+  <li>San Diego: Municipal Code §63.0401–63.0406 <a href="https://docs.sandiego.gov/municode/MuniCodeChapter06/Ch06Art03Division04.pdf">sandiego.gov</a>; City Auditor, Unsafe Camping Ordinance audit, April 2026 <a href="https://www.sandiego.gov/sites/default/files/2026-04/unsafe-camping-ordinance-highlights.pdf">sandiego.gov</a>; Safe Sleeping Program <a href="https://www.sandiego.gov/homelessness-strategies-and-solutions/services/safe-sleeping-program">sandiego.gov</a>; NBC San Diego on the 2024 expansion <a href="https://www.nbcsandiego.com/news/local/san-diego-city-council-approves-expansion-balboa-park-safe-sleeping-sites/3637856/">nbcsandiego.com</a>; Voice of San Diego on housing exits, May 2024 <a href="https://voiceofsandiego.org/2024/05/14/how-san-diegos-safe-sleeping-sites-are-faring-on-housing/">voiceofsandiego.org</a>; Voice of San Diego on deaths, Oct 2026 <a href="https://voiceofsandiego.org/2026/10/14/council-candidates-say-changes-needed-after-safe-sleeping-deaths/">voiceofsandiego.org</a>; CalMatters on the ban and the sites, April 2024 <a href="https://calmatters.org/housing/homelessness/2024/04/homeless-encampment-ban/">calmatters.org</a>.</li>
+</ul>
+</main>
+<script>
+// Show the swipe hint only when the comparison table is wider than the screen.
+(() => {
+  const box = document.querySelector(".tbl.wide"), hint = document.querySelector(".swipe");
+  const check = () => hint.classList.toggle("on", box.scrollWidth > box.clientWidth + 1);
+  addEventListener("resize", check);
+  check();
+})();
+</script>
+</body>
+</html>

@@ -18,7 +18,8 @@
     ] },
     { name: "How to Help", pages: [{ name: "How to help", href: "help.html" }] },
     // Footer sections: useful background, but not part of the main argument. Their pages still get a sub-nav.
-    { name: "Denver comparison", footer: true, pages: [
+    { name: "Other cities", footer: true, pages: [
+      { name: "What we can learn", href: "other-cities.html" },
       { name: "Denver vs. Seattle", href: "denver-vs-seattle.html" },
       { name: "The Denver plan for Seattle", href: "denver-plan.html" },
     ] },
