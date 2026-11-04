@@ -3,11 +3,11 @@
 // Sections marked footer: true are listed in the site footer instead of the top bar; footer sections marked hub: true list only their first page.
 (() => {
   const SECTIONS = [
+    { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "The Problem", pages: [
       { name: "Public spaces", href: "public-spaces.html" },
       { name: "People sleeping outside", href: "count.html" },
     ] },
-    { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "Maps", pages: [
       { name: "Encampments and drug zones", href: "map.html" },
       { name: "Available tiny home land", href: "map.html#top" },
@@ -68,8 +68,11 @@
 .pp-foot a[aria-current="page"] { font-weight: 600; }
 @media print { .pp-site { display: none; } }`;
 
+  // A tiny house with a door that locks: the room the pledge promises.
   const MARK = `<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="var(--pp-accent)"/>` +
-    `<path d="M6.2 11.4l3.1 3.1 6.5-7" fill="none" stroke="var(--pp-bg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    `<path d="M4.2 10.8L11 4.7l6.8 6.1" fill="none" stroke="var(--pp-bg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>` +
+    `<path d="M6 9.6L11 5.3l5 4.3v7.9H6z" fill="var(--pp-bg)"/><rect x="9.2" y="12" width="3.6" height="5.5" rx=".5" fill="var(--pp-accent)"/>` +
+    `<circle cx="11" cy="14.3" r=".75" fill="var(--pp-bg)"/><path d="M10.6 14.6h.8l.25 1.5h-1.3z" fill="var(--pp-bg)"/></svg>`;
 
   // Which page this is: the file name (or index.html for a bare folder URL), plus the hash for pages with tabs.
   const current = () => {

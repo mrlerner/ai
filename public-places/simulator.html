@@ -198,7 +198,7 @@
         <div class="timeline" aria-hidden="true"><div class="fill" id="tfill"></div></div>
         <div class="when" id="when">January</div>
       </div>
-      <div class="ticker" id="ticker">Red dots are encampments. Hollow green markers are your planned sites. Press play to watch the year.</div>
+      <div class="ticker" id="ticker">Red dots are encampments. Hollow green markers are your planned sites.</div>
       <div class="legend">
         <span><i class="dot" style="background:var(--red)"></i>People outside</span>
         <span><i class="dot" style="background:var(--green)"></i>Your sites (tent camp, tiny homes, hotel)</span>
@@ -211,12 +211,12 @@
 
   <details class="how">
     <summary>How the simulator works, and what's estimated</summary>
-    <p><b>People outside.</b> About 5,600 people slept outside within Seattle's city limits in January 2026 (<a href="count.html">how we count</a>). The simulator spreads them across the places that got encampment reports in September 2026, in proportion to how many reports each got. Reports aren't a census, so this puts people roughly where they really are, not exactly.</p>
-    <p><b>The mayor's plan.</b> 960 tiny homes with full 24/7 services. With building costs spread over five years, that costs about $35 million a year, which is the budget for every plan. Her villages take about seven months to site and open, and the city starts about one a month. That reproduces her real pace: about 280 places in her first ten months.</p>
-    <p><b>Clearing public places.</b> Outreach works through your public places in the order you ranked them. Everyone there gets an offer of a place. People who accept move in; people who say no move out of the protected place, as the pledge's rules require. A protected place counts as cleared once everyone in it has had an offer, so it clears only as fast as places open.</p>
-    <p><b>Who needs what.</b> Of every 20 people, the simulator assumes 9 mostly need a place, 5 need some support (often because of addiction) and 6 need a lot (often serious mental illness). That follows the 2026 county count, where 31% of people outside reported a serious mental illness and 41% an addiction. People in the high-need group are placed in full-support places first. When there's no full-support place left, they go into whatever is open.</p>
-    <p><b>Incidents.</b> "Incidents" stands for calls for help, disturbances and complaints. A site has more of them when its residents need more support than it gives, and tent camps have a few more than buildings. Each incident is weighted by who's nearby: low on industrial land, higher on a residential block. Sites placed by emergency decree count a bit higher in residential areas, because neighbors weren't consulted. The simulator compares incidents at your sites with what the same people caused while they were outside. Every plan includes a basic safety standard: naloxone, a daily check, and someone who can respond.</p>
-    <p><b>Approval and headlines.</b> Simulated, not a poll. Five groups of voters each care about different results, and the overall number is their weighted average. The outlets and stories are invented and written from your results.</p>
+    <p><b>People outside.</b> About 5,600 people slept outside within Seattle's city limits in January 2026 (<a href="count.html">how we count</a>). The simulator spreads them across the places that got encampment reports in September 2026, in proportion to the reports. Reports aren't a census, so locations are rough.</p>
+    <p><b>The mayor's plan.</b> 960 tiny homes with full 24/7 services. With building costs spread over five years, that's about $35 million a year, the budget for every plan. Her villages take about seven months to site and open, and the city starts about one a month, which matches her real pace: about 280 places in her first ten months.</p>
+    <p><b>Clearing public places.</b> Outreach works through your public places in the order you ranked them. Everyone there gets an offer. People who accept move in; people who say no must leave the protected place. It counts as cleared once everyone in it has had an offer, so it clears only as fast as places open.</p>
+    <p><b>Who needs what.</b> Of every 20 people, the simulator assumes 9 mostly need a place, 5 need some support (often addiction) and 6 need a lot (often serious mental illness). In the 2026 county count, 31% of people outside reported a serious mental illness and 41% an addiction. High-need people get full-support places first, then whatever is open.</p>
+    <p><b>Incidents.</b> Calls for help, disturbances and complaints. A site has more when its residents need more support than it gives, and tent camps have a few more than buildings. Each is weighted by who's nearby: low on industrial land, higher on a residential block, and a bit higher for sites placed by decree. The simulator compares incidents at your sites with what the same people caused outside. Every plan includes naloxone, a daily check and someone who can respond.</p>
+    <p><b>Approval and headlines.</b> Simulated, not a poll. Five groups of voters each care about different results, and the overall number is their weighted average. The outlets and stories are invented.</p>
     <div class="tbl"><table class="assume">
       <thead><tr><th>Place type</th><th>Opens in</th><th>Say yes to an offer</th><th>Building cost, per place per year</th><th>Site size</th></tr></thead>
       <tbody>
@@ -234,7 +234,7 @@
         <tr><td>Full</td><td>24/7 staff with behavioral health care (the mayor's level)</td><td>~$24k</td></tr>
       </tbody>
     </table></div>
-    <p>Hotels need about 30% less staffing (one front desk covers many rooms), and tents about 10% more. Site upkeep (toilets, utilities, trash) adds $3k–6k a place. All of these are our estimates, built from Seattle's $28k average cost per new shelter bed, San Diego's sanctioned camps (about $8–11.5k a tent) and the hotel explorer. Sources are on the <a href="spending-options.html">spending options</a> and <a href="map.html#hotels">hotel</a> pages. Places come from the <a href="map.html#villages">village sites</a> (public lots at least 300 feet from schools, child care and playgrounds) and the <a href="map.html#hotels">hotel explorer</a> (budget hotels, cheapest per room first).</p>
+    <p>Hotels need about 30% less staffing, and tents about 10% more. Site upkeep (toilets, utilities, trash) adds $3k–6k a place. These are our estimates, built from Seattle's $28k average cost per new shelter bed, San Diego's sanctioned camps (about $8–11.5k a tent) and the hotel explorer. Sources are on the <a href="spending-options.html">spending options</a> and <a href="map.html#hotels">hotel</a> pages. Places come from the <a href="map.html#villages">village sites</a> (public lots at least 300 feet from schools, child care and playgrounds) and the <a href="map.html#hotels">hotel explorer</a> (budget hotels, cheapest per room first).</p>
   </details>
 </main>
 
@@ -650,7 +650,7 @@ function resetPlayback() {
   stop(false); week = 0; run = null; movers.clearLayers();
   $("play").textContent = "▶ Play the year"; $("play").classList.remove("paused");
   $("tfill").style.width = "0"; $("when").textContent = "January";
-  $("ticker").innerHTML = "Red dots are encampments. Hollow green markers are your planned sites. Press play to watch the year.";
+  $("ticker").innerHTML = "Red dots are encampments. Hollow green markers are your planned sites.";
   $("papers").hidden = true;
 }
 
@@ -701,7 +701,7 @@ function renderPapers() {
       <div class="groups">${a.groups.map(g => `<div class="grp"><span>${g.k}</span><span class="bar"><i style="width:${g.v}%;background:${color(g.v)}"></i></span><span class="n">${g.v}%</span></div>`).join("")}</div>
     </div>
     <div class="front">${hs.map((h, i) => `<div class="story" id="st${i}"><button aria-expanded="false"><div class="outlet">${h.outlet}</div><div class="hl">${h.hl}</div><div class="more">Read the story</div></button><div class="body">${h.body}</div></div>`).join("")}</div>
-    <p class="fine">Simulated, not a poll: each group of voters weighs different results. The outlets and stories are invented and written from your results. Change your plan and play again.</p>`;
+    <p class="fine">Simulated, not a poll. The outlets and stories are invented.</p>`;
   P.hidden = false;
   P.querySelectorAll(".story button").forEach(b => b.onclick = () => { const s = b.parentElement; s.classList.toggle("open"); b.setAttribute("aria-expanded", s.classList.contains("open")); });
   P.scrollIntoView({ behavior: "smooth", block: "start" });

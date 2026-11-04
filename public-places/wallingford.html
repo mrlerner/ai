@@ -299,10 +299,10 @@ $("filters").querySelectorAll(".chip").forEach(c => c.onclick = () => {
 });
 $("notes").innerHTML = [
   `A dot is a block where at least one neighbor reported an encampment to the city that month. It isn't proof a camp is there now, and camps nobody reports don't show up.`,
-  `Dots sit in the middle of each block's reports, never at a report's exact spot, and the last ${(new Date(D.built) - new Date(D.cutoff)) / 864e5} days are left out. The page shows places, never people.`,
+  `Dots sit in the middle of each block's reports, never at a report's exact spot, and the last ${(new Date(D.built) - new Date(D.cutoff)) / 864e5} days are left out.`,
   `${D.reports.toLocaleString()} reports since July 2022 from the City of Seattle's <a href="https://data.seattle.gov/d/k7ra-jqqe" target="_blank" rel="noopener">Unauthorized Encampment Reports</a> (Find It, Fix It, the city's web form and phone). July 2022 is when the current report form started; earlier reports are counted differently.`,
   `The shaded areas are the <a href="https://unsheltered.davepeck.org/safe-zones/" target="_blank" rel="noopener">safe zones from Unsheltered Seattle</a>: schools, parks, libraries and child care from OpenStreetMap, with 300 feet around each. A block is near one when its dot is inside. ${D.hood}'s boundary is Crosswalk Watch's, from the city's Neighborhood Map Atlas.`,
-  `Built ${dayName(D.built)}, ${D.built.slice(0, 4)}, with data through ${dayName(D.cutoff)}. A prototype: nothing here is final.`,
+  `Built ${dayName(D.built)}, ${D.built.slice(0, 4)}, with data through ${dayName(D.cutoff)}.`,
 ].map(t => `<li>${t}</li>`).join("");
 
 // Links like #m=2026-09&b=4500-block-of-whitman-ave-n open that month and block.
