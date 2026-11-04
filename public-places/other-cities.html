@@ -65,13 +65,18 @@ th { font-weight: 600; background: var(--code); }
 .note { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
 .sources li { font-size: 14.5px; color: var(--muted); margin: 4px 0; }
 
-.callout { background: var(--code); border-radius: 10px; padding: 14px 18px; margin: 18px 0; }
-.callout p { margin: 4px 0; }
+/* Links to the deeper pages on each city */
+.explore { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 12px 0 8px; }
+.explore a { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; text-decoration: none; color: var(--fg); }
+.explore a:hover { border-color: var(--accent); }
+.explore a b { display: block; color: var(--accent); font-size: 16px; line-height: 1.3; margin-bottom: 3px; }
+.explore a span { display: block; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
 
 @media (max-width: 640px) {
   body { font-size: 16px; } h1 { font-size: 34px; } h2 { font-size: 23px; } .lede { font-size: 19px; }
   .stats { grid-template-columns: 1fr; }
   .city { padding: 16px 16px 6px; }
+  .explore { grid-template-columns: 1fr; gap: 8px; }
 }
 .swipe.on { display: block; }
 </style>
@@ -83,7 +88,7 @@ th { font-weight: 600; background: var(--code); }
 <h1>What We Can Learn from Other Cities</h1>
 <p class="lede">Denver, San Francisco and San Diego all banned camping in public places and opened somewhere else for people to go. Each one offered something different, and the results were different too.</p>
 <p class="meta">Draft, November 2026. Figures are the cities' own unless a source says otherwise. Seattle's street count rose 54% over the years Denver's fell.</p>
-<nav class="toc"><a href="#cities">The three cities</a><a href="#common">What they share</a><a href="#differ">Where they differ</a><a href="#compare">Side by side</a><a href="#seattle">The better strategy</a><a href="#sources">Sources</a></nav>
+<nav class="toc"><a href="#cities">The three cities</a><a href="#common">What they share</a><a href="#differ">Where they differ</a><a href="#compare">Side by side</a><a href="#seattle">The better strategy</a><a href="#deeper">Go deeper</a><a href="#sources">Sources</a></nav>
 
 <div class="stats">
   <div class="stat"><div class="c">Denver</div><div class="n">−61%</div><div class="l">people sleeping outside, January 2022 to January 2026</div></div>
@@ -233,8 +238,12 @@ th { font-weight: 600; background: var(--code); }
   <li><b>Borrow San Francisco's police drop-off unit and RV ladder.</b> Officer hours are what a ladder uses up fastest, and vehicles are about a quarter of Seattle's unsheltered people.</li>
   <li><b>Report what the others didn't.</b> Publish deaths, returns to the street and a one-year housing check every month. San Diego's 21 deaths and Denver's untracked exits show what happens without them.</li>
 </ol>
-<div class="callout">
-  <p><b>More detail:</b> <a href="denver-vs-seattle.html">Denver vs. Seattle</a> compares Denver and Seattle in depth. <a href="denver-plan.html">The Denver plan for Seattle</a> covers costs, the San Francisco tools and what happens after the room.</p>
+<h2 id="deeper">Go deeper</h2>
+<p>This page is the summary. Each of these goes further into one city.</p>
+<div class="explore">
+  <a href="denver-vs-seattle.html"><b>Denver vs. Seattle</b><span>Rooms, encampment reports, the enforcement ladder and the money, side by side since 2022.</span></a>
+  <a href="denver-plan.html"><b>The Denver plan for Seattle</b><span>What it would take to offer everyone in Seattle a room, what it costs and what happens after.</span></a>
+  <a href="denver-plan.html#sf"><b>Two things to borrow from San Francisco</b><span>The police drop-off unit at 822 Geary and the RV permit ladder.</span></a>
 </div>
 
 <h2 id="sources">Sources</h2>

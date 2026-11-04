@@ -1,12 +1,11 @@
 // Shared site header. Every page includes this script right after <body>, so the header renders before the page does.
 // To add a page, add it to SECTIONS; the first page in a section is where the section's top-level link goes.
-// Sections marked footer: true are listed in the site footer instead of the top bar.
+// Sections marked footer: true are listed in the site footer instead of the top bar; footer sections marked hub: true list only their first page.
 (() => {
   const SECTIONS = [
     { name: "The Problem", pages: [
       { name: "Public spaces", href: "public-spaces.html" },
       { name: "People sleeping outside", href: "count.html" },
-      { name: "Wallingford, block by block", href: "wallingford.html" },
     ] },
     { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "Maps", pages: [
@@ -18,8 +17,8 @@
     ] },
     { name: "How to Help", pages: [{ name: "How to help", href: "help.html" }] },
     // Footer sections: useful background, but not part of the main argument. Their pages still get a sub-nav.
-    { name: "Other cities", footer: true, pages: [
-      { name: "What we can learn", href: "other-cities.html" },
+    { name: "Other cities", footer: true, hub: true, pages: [
+      { name: "Learning from other cities", href: "other-cities.html" },
       { name: "Denver vs. Seattle", href: "denver-vs-seattle.html" },
       { name: "The Denver plan for Seattle", href: "denver-plan.html" },
     ] },
@@ -95,7 +94,7 @@
   const renderFooter = () => {
     const here = current();
     const cols = SECTIONS.filter(s => s.footer).map(s => `<div><h2>${s.name}</h2><ul>` +
-      s.pages.map(p => `<li><a href="${p.href}"${p.href === here ? ' aria-current="page"' : ""}>${p.name}</a></li>`).join("") +
+      (s.hub ? s.pages.slice(0, 1) : s.pages).map(p => `<li><a href="${p.href}"${p.href === here ? ' aria-current="page"' : ""}>${p.name}</a></li>`).join("") +
       `</ul></div>`).join("");
     return `<div class="pp-in">${cols}</div>`;
   };
