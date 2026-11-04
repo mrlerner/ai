@@ -10,6 +10,7 @@
     { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "Maps", pages: [
       { name: "Where camping would be banned", href: "map.html" },
+      { name: "Villages and hotels today", href: "map.html#existing" },
       { name: "Village sites", href: "map.html#villages" },
       { name: "Hotels", href: "map.html#hotels" },
       { name: "Viable village sites", href: "map.html#top" },
@@ -75,7 +76,7 @@
   // Which page this is: the file name (or index.html for a bare folder URL), plus the hash for pages with tabs.
   const current = () => {
     const file = location.pathname.split("/").pop() || "index.html";
-    return file === "map.html" && ["#villages", "#hotels", "#top", "#tophotels"].includes(location.hash.split("/")[0]) ? "map.html" + location.hash.split("/")[0] : file;
+    return file === "map.html" && ["#existing", "#villages", "#hotels", "#top", "#tophotels"].includes(location.hash.split("/")[0]) ? "map.html" + location.hash.split("/")[0] : file;
   };
 
   const render = () => {
