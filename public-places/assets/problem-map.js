@@ -13,7 +13,7 @@
   const monthOf = d => new Date(d + "T12:00").toLocaleDateString("en-US", { month: "long" });
   const plural = (n, one, many = one + "s") => `${fmt(n)} ${n === 1 ? one : many}`;
   // Short names for the kinds of public place, for tooltips and the panel.
-  const SHORT = { schools: "school or child care zone", playgrounds: "playground zone", business: "business district" };
+  const SHORT = { schools: "school or child care zone", playgrounds: "playground zone", business: "busy sidewalk zone" };
 
   const P = D.places;
   const camps = P.filter(p => p.camp), drugs = P.filter(p => p.drug);
