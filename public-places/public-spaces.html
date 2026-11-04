@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Problem</title>
-<meta name="description" content="About 5,600 people sleep outside in Seattle, with hundreds of encampments and dozens of open-air drug zones in its schools, playgrounds and busy sidewalks.">
-<meta property="og:description" content="5,600 people sleeping outside. 563 encampments and 36 open-air drug zones in Seattle's schools, playgrounds and busy sidewalks.">
+<meta name="description" content="About 5,600 people sleep outside in Seattle, with hundreds of encampments and dozens of open-air drug zones near its schools, parks, and busy sidewalks.">
+<meta property="og:description" content="5,600 people sleeping outside. 563 encampments and 36 open-air drug zones near Seattle's schools, parks, and busy sidewalks.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="assets/problem-data.js"></script>
@@ -144,7 +144,7 @@ const $ = id => document.getElementById(id);
 const { D, P, camps, drugs, campsIn, drugsIn, span, SHORT, fmt, pct } = problemMap.data;
 
 // ---------- headline ----------
-$("headline").innerHTML = `<span class="camp">${fmt(campsIn.length)}</span> encampments and <span class="drug">${fmt(drugsIn.length)}</span> open-air drug zones in Seattle's schools, playgrounds and busy sidewalks.`;
+$("headline").innerHTML = `<span class="camp">${fmt(campsIn.length)}</span> encampments and <span class="drug">${fmt(drugsIn.length)}</span> open-air drug zones near Seattle's schools, parks, and busy sidewalks.`;
 // The people outside are the 2026 King County count, fixed text like the h1; see methodology.html.
 $("tiles").innerHTML = [
   ["~4,300", "", `in tents, on sidewalks, in parks, doorways and other places outside`],
