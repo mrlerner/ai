@@ -46,6 +46,9 @@ nav.toc { margin: 24px 0 8px; font-size: 15px; display: flex; flex-wrap: wrap; g
 .stat .l { font-size: 14.5px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
 
 .tbl { overflow-x: auto; margin: 16px 0; }
+.ladder td:first-child { font-weight: 600; white-space: nowrap; }
+.ladder { min-width: 640px; }
+
 table { border-collapse: collapse; font-size: 15px; min-width: 100%; }
 th, td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
 th { font-weight: 600; background: var(--code); }
@@ -104,8 +107,8 @@ ol.rules > li > b:first-child { display: block; }
 <div class="kicker">Encampment prototype · Draft, October 30, 2026</div>
 <h1>The Denver Plan for Seattle</h1>
 <p class="lede">What it would take to offer every chronically unsheltered person in Seattle a room with a door that locks, where the money would come from, and how to start keeping schools and parks clear before there are enough rooms.</p>
-<p class="meta">The working detail behind item 4 of the <a href="index.html">Protect Public Places Pledge</a>, built on the <a href="denver-vs-seattle.html">Denver vs. Seattle analysis</a> and the Mike/Matt call of October 30. Figures tagged <span class="tag est">estimate</span> are our own arithmetic, not a published number. A working draft: see <a href="#check">what to check first</a>.</p>
-<nav class="toc"><a href="#principles">First principles</a><a href="#answer">The short answer</a><a href="#wait">Did Denver wait for a room?</a><a href="#gap">What Seattle is missing</a><a href="#rooms">How many rooms</a><a href="#cost">What it costs</a><a href="#money">Where the money comes from</a><a href="#after">What happens after the room</a><a href="#treatment">Rooms first, not treatment</a><a href="#sf">From San Francisco</a><a href="#before">Enforcing before there are rooms</a><a href="#coalitions">Who's for and against</a><a href="#politics">The political reality</a><a href="#pledge">What changes in the pledge</a><a href="#check">What to check</a><a href="#sources">Sources</a></nav>
+<p class="meta">The working detail behind items 1 and 2 of the <a href="index.html">Public Places Pledge</a>, built on the <a href="denver-vs-seattle.html">Denver vs. Seattle analysis</a> and the Mike/Matt call of October 30. Figures tagged <span class="tag est">estimate</span> are our own arithmetic, not a published number. A working draft: see <a href="#check">what to check first</a>.</p>
+<nav class="toc"><a href="#principles">First principles</a><a href="#answer">The short answer</a><a href="#wait">Did Denver wait for a room?</a><a href="#gap">What Seattle is missing</a><a href="#rooms">How many rooms</a><a href="#cost">What it costs</a><a href="#money">Where the money comes from</a><a href="#after">What happens after the room</a><a href="#treatment">Rooms first, not treatment</a><a href="#sf">From San Francisco</a><a href="#before">Enforcing before there are rooms</a><a href="#coalitions">Who's for and against</a><a href="#politics">The political reality</a><a href="#pledge">What changes in the pledge</a><a href="#check">What to check</a><a href="#why">Why public places first</a><a href="#ladder">The enforcement ladder</a><a href="#limits">What council can and can't do</a><a href="#sources">Sources</a></nav>
 
 <h2 id="principles">First principles: what a room with a door does</h2>
 <p>Denver cut the number of people sleeping outside by 61% from 2022 to 2026, and San Francisco cut its number by 22% from 2024 to 2026 (January point-in-time counts). Those drops are results. Underneath them are four questions about people, not cities. No study answers any of them cleanly, and no city publishes acceptance rates by type of shelter. But enough program data exists to put ranges on each one.</p>
@@ -552,7 +555,7 @@ The maximum penalty is 60 days in jail. <b>Nothing in the law requires an availa
 </ol>
 
 <h2 id="pledge">What changes in the pledge</h2>
-<p>Suggested edits to the <a href="index.html">Protect Public Places Pledge</a>, not yet made:</p>
+<p>Suggested edits to an earlier, five-item draft of the <a href="index.html">pledge</a>. The current pledge has four items:</p>
 <ul>
   <li><b>Item 2 (enforce with a ladder):</b> add "zone by zone, as fast as there are rooms to offer, schools first." It answers "you're enforcing with nothing to offer" without waiting for every room.</li>
   <li><b>Item 4 (build rooms):</b> add how to pay: "by buying existing buildings instead of building new ones, and keeping every tiny home village open until rooms replace it, before asking for new taxes."</li>
@@ -574,6 +577,40 @@ The maximum penalty is 60 days in jail. <b>Nothing in the law requires an availa
   <li><b>San Francisco:</b> whether Wilson signs the RV package and whether it includes buybacks; 822 Geary's yearly operating cost (not found); the drop-off and care-connection figures are the city's own, not independently checked; how much of the 2026 drop came from the new morning count.</li>
   <li><b>From memory or a single source:</b> the Days Inn unit count (54 or 62), Pallet's shutdown, the D5 candidates' positions, the Change Washington poll.</li>
 </ul>
+
+<!-- Moved from the pledge page, November 2026. -->
+<h2 id="why">Why public places first</h2>
+<p>Seattle's trap has been treating rooms as a condition for enforcing at all. Rooms never arrive fast enough, so the only tool left is the same-day sidewalk sweep, and people move a few hundred meters and come back. Starting with public places breaks that link: it's a much smaller job than the whole city, and it's the part neighbors care about most. The <a href="public-spaces.html">public spaces page</a> counts how many encampments and drug zones are in or near them, by district.</p>
+
+<div class="callout">
+  <p><b>The tradeoff, said out loud.</b> Some people will move a few blocks rather than inside. The Denver analysis found the median person displaced by a Seattle sweep was about 700 meters away a year later. The pledge's position is that a school or a park matters more than a side street, and that's why the pledge's rooms with locking doors aren't optional.</p>
+</div>
+
+<h2 id="ladder">The enforcement ladder</h2>
+<p>Written into the ordinance, so it's the same everywhere and every step can be counted. Since the Supreme Court's <i>Grants Pass</i> decision in 2024, federal law doesn't require a shelter bed before enforcing, so the first step offers the best shelter that exists that day, a room whenever there is one.</p>
+<div class="tbl"><table class="ladder">
+<thead><tr><th>Step</th><th>Camping</th><th>Public drug use</th><th>Within</th></tr></thead>
+<tbody>
+<tr><td>0. Posted</td><td>Signs mark the place as a no-camping, no-drug-use zone</td><td>Same signs</td><td>When the ordinance takes effect</td></tr>
+<tr><td>1. Offer</td><td>An outreach worker and an officer arrive together and offer a room, or the best shelter available that day</td><td>The same team offers treatment that day, including medication for opioid addiction, plus a room if the person is unsheltered</td><td>72 hours of a report at a public place</td></tr>
+<tr><td>2. Spoken warning</td><td>"Camping is not allowed here." The offer is repeated</td><td>"Using here is not allowed." The treatment offer is repeated</td><td>Same visit</td></tr>
+<tr><td>3. Written notice</td><td>A dated notice to move. Belongings will be stored, not thrown out</td><td>A written warning with the treatment referral</td><td>48 hours later for camping; the next contact for drug use</td></tr>
+<tr><td>4. Citation or arrest</td><td>A ticket, dismissed if the person accepts shelter or treatment</td><td>Arrest or citation with referral to diversion (LEAD or the state's recovery navigators), charged only if diversion is declined</td><td>When the notice runs out; the third contact for drug use</td></tr>
+<tr><td>5. Hold</td><td>The place goes on the daily patrol list. Anyone who returns starts again at step 2</td><td>Same, plus stay-out orders for repeat use at the same place</td><td>Ongoing</td></tr>
+</tbody></table></div>
+<p><b>Dealing gets no ladder.</b> Sales at a public place mean arrest and prosecution. The ladder is for people using, not for people selling to them.</p>
+<p><b>The threat is rarely used because it rarely has to be.</b> In 2023, Denver police logged 297 spoken warnings, 3 written warnings and 14 camping tickets, while Denver cut street homelessness 61% from 2022 to 2026. Seattle's rose 54% over the same period.</p>
+
+<h2 id="limits">What council can and can't do</h2>
+<ul>
+  <li><b>Council can:</b> pass the ordinance naming public places and writing in the ladder, fund the outreach-and-officer teams, move money from sweeps to rooms, change siting rules (see <a href="map.html#villages">possible village sites</a>), and require the monthly report.</li>
+  <li><b>Council can't make the city attorney prosecute.</b> The city attorney is elected separately and doesn't prosecute camping today. The pledge needs a city attorney version too; the next race for that office is in 2029.</li>
+  <li><b>Seattle doesn't need a new drug law.</b> Washington made public drug use a crime again in 2023, after the <i>Blake</i> ruling, and Seattle adopted it into city code that fall. The gap is enforcement.</li>
+  <li><b>State courts are still a risk.</b> <i>Grants Pass</i> settled the federal question, but Washington courts can rule under the state constitution, as a 2023 ruling against Seattle's sidewalk-obstruction rule did. The ordinance needs a careful lawyer.</li>
+  <li><b>Money.</b> The yearly cost of running rooms at Seattle's scale (about $180–200M) roughly matches what <a href="budget.html">Seattle already spends</a> on sweeps, congregate shelter and rooms (see <a href="denver-plan.html#cost">what it costs</a> in the Denver plan). The one-time cost of buying or leasing buildings (about $400–600M) isn't covered. The likely answers are a bond measure, or King County running some of its roughly 1,400 hotel rooms as shelter.</li>
+</ul>
+
+<p class="note">Still to check for these sections: the 2023 drug law and Seattle's ordinance adopting it, LEAD and the recovery navigators, and the 2029 city attorney race are from memory. The ladder's deadlines (72 hours, 48 hours) are suggestions, not Denver's numbers.</p>
 
 <h2 id="sources">Sources</h2>
 <ul class="sources">
