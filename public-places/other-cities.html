@@ -61,6 +61,10 @@ th { font-weight: 600; background: var(--code); }
 .compare { min-width: 820px; }
 .compare td:first-child { font-weight: 600; width: 120px; }
 .compare td:last-child, .compare th:last-child { background: color-mix(in srgb, var(--accent) 9%, transparent); width: 24%; }
+/* Seattle vs. Denver and SF: highlight the Seattle column instead of the last one. */
+.compare.vs { min-width: 720px; }
+.compare.vs td:last-child, .compare.vs th:last-child { background: none; width: auto; }
+.compare.vs td:nth-child(2), .compare.vs th:nth-child(2) { background: color-mix(in srgb, var(--accent) 9%, transparent); width: 36%; }
 .swipe { display: none; color: var(--muted); font-size: 14px; }
 .note { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
 .sources li { font-size: 14.5px; color: var(--muted); margin: 4px 0; }
@@ -108,7 +112,7 @@ th { font-weight: 600; background: var(--code); }
 <h1>What We Can Learn from Other Cities</h1>
 <p class="lede">Denver, San Francisco and San Diego all banned camping in public places and opened somewhere else for people to go.</p>
 <p class="meta">Draft, November 2026. Seattle's street count rose 54% over the years Denver's fell.</p>
-<nav class="toc"><a href="#cities">The three cities</a><a href="#common">What they share</a><a href="#differ">Where they differ</a><a href="#compare">Side by side</a><a href="#tiny-homes">Tiny home costs</a><a href="#seattle">The better strategy</a><a href="#deeper">Go deeper</a><a href="#sources">Sources</a></nav>
+<nav class="toc"><a href="#cities">The three cities</a><a href="#common">What they share</a><a href="#differ">Where they differ</a><a href="#compare">Side by side</a><a href="#seattle-vs">Seattle vs. Denver and SF</a><a href="#tiny-homes">Tiny home costs</a><a href="#seattle">The better strategy</a><a href="#deeper">Go deeper</a><a href="#sources">Sources</a></nav>
 
 <div class="stats">
   <div class="stat"><div class="c">Denver</div><div class="n">−61%</div><div class="l">people sleeping outside, January 2022 to January 2026</div></div>
@@ -247,6 +251,51 @@ th { font-weight: 600; background: var(--code); }
 </div>
 <p class="note">The cities count differently. Denver's 2025 and 2026 counts fell on freezing nights, San Francisco moved its count to the morning, and the housing-exit figures use different denominators (people served, people who left, program participants).</p>
 
+<h2 id="seattle-vs">Seattle vs. Denver and San Francisco</h2>
+<p>Seattle is doing pieces of what Denver and San Francisco did, but not together.</p>
+<p class="swipe">Swipe the table sideways to see all of it →</p>
+<div class="tbl wide">
+<table class="compare vs">
+  <thead><tr><th></th><th>Seattle today</th><th>Denver</th><th>San Francisco</th></tr></thead>
+  <tbody>
+    <tr><td>The law</td>
+      <td>No camping ban. Parks rules, and a sidewalk-obstruction rule a court found unconstitutional (stayed on appeal). The city attorney doesn't prosecute camping</td>
+      <td>Citywide camping ban since 2012, prosecuted by the city attorney</td>
+      <td>Old laws, enforced since <i>Grants Pass</i> (2024)</td></tr>
+    <tr><td>The offer</td>
+      <td>Usually a mat in a congregate hall, from shelters 93–94% full. About 600 tiny homes, and 187 rooms with a door opened in 2026</td>
+      <td>A private room with a locking door, in a hotel or a village</td>
+      <td>A shelter bed, more and more a treatment or sober bed</td></tr>
+    <tr><td>Enforcement</td>
+      <td>One rung, the sweep: 2,504 removals in 2024, about 55 for every 100 people outside. Most need no notice or shelter offer, and people come back</td>
+      <td>A ladder: offer, warnings, then a ticket. About 9 cleanups for every 100 people outside, and cleared blocks stay closed</td>
+      <td>Frequent sweeps, including on state highway land</td></tr>
+    <tr><td>Speed</td>
+      <td>8 villages opened since 2023 (281 units), 5 closed. 960 rooms planned over two years</td>
+      <td>1,284 rooms in 16 months</td>
+      <td>863 beds opened in 16 months, net +403</td></tr>
+    <tr><td>Drugs</td>
+      <td>An 8-slot post-overdose center and about 13 city-funded detox beds. No police drop-off in Seattle until late 2027</td>
+      <td>Low barrier. Rooms first, treatment offered</td>
+      <td>A police drop-off unit, the RESET center and sober beds</td></tr>
+    <tr><td>Vehicles</td>
+      <td>The council passed a San Francisco-style permit and two-hour limit, 6–3, in October. The mayor vetoed the permit program in November, and the override looks one vote short. Instead: a working group to propose rules by March, and RV lots with about 200 spaces by 2027. No parking limits, no buyback</td>
+      <td>Not a separate track</td>
+      <td>Permits for people already in RVs, a two-hour limit for everyone else, buybacks, and a shelter that takes RV residents. Lived-in RVs down 42%</td></tr>
+    <tr><td>Who's in charge</td>
+      <td>Split between the city and a regional authority that is being dismantled. No public target</td>
+      <td>The mayor's office, with a target, a monthly dashboard and a daily by-name list</td>
+      <td>The mayor's office, under a fentanyl emergency ordinance. Contracts being rewritten around outcomes</td></tr>
+    <tr><td>Result</td>
+      <td>+54% outside (King County, 2022–26)</td>
+      <td>−61% outside (2022–26)</td>
+      <td>−22% outside (2024–26), count method changed</td></tr>
+  </tbody>
+</table>
+</div>
+<p><b>The RV veto is the clearest example.</b> San Francisco and Seattle's council both started with a count, permits for the people already living in RVs, and a two-hour limit for everyone else. In early November Mayor Wilson vetoed Seattle's permit program, citing its $10 million cost and the risk of pushing people from RVs into tents. Councilmember Saka, who voted for it, now backs her alternative, so the override looks one vote short. Her plan keeps the safe lots and the outreach but drops the parking limits, and her staff expect little change on the street until the lots open. San Francisco ran both halves at once, and lived-in RVs fell 42% within a year.</p>
+<p class="note">Seattle's figures and sources are on <a href="denver-vs-seattle.html">Denver vs. Seattle</a> and <a href="denver-plan.html#gap">the Denver plan</a>. The RV veto: Seattle Times, November 2026.</p>
+
 <h2 id="tiny-homes">What a tiny home costs to run, city by city</h2>
 <p>Seattle runs a tiny home for about <b>$35,000 a year</b>, near the bottom of the West Coast cities that publish a figure. City averages for staffed villages run $33,000–51,000 a home, because they all keep staff on site around the clock. The villages that cost far less are run by their residents.</p>
 <div class="tbl">
@@ -313,10 +362,10 @@ th { font-weight: 600; background: var(--code); }
 </ul>
 </main>
 <script>
-// Show the swipe hint only when the comparison table is wider than the screen.
+// Show each swipe hint only when the table after it is wider than the screen.
 (() => {
-  const box = document.querySelector(".tbl.wide"), hint = document.querySelector(".swipe");
-  const check = () => hint.classList.toggle("on", box.scrollWidth > box.clientWidth + 1);
+  const pairs = [...document.querySelectorAll(".swipe")].map(hint => [hint, hint.nextElementSibling]);
+  const check = () => pairs.forEach(([hint, box]) => hint.classList.toggle("on", box.scrollWidth > box.clientWidth + 1));
   addEventListener("resize", check);
   check();
 })();
