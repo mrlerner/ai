@@ -6,7 +6,7 @@
     { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "The Problem", pages: [{ name: "The problem", href: "public-spaces.html" }] },
     // The map's own pill buttons switch between its tabs, so it needs no sub-nav.
-    { name: "The Details", pages: [{ name: "The details", href: "map.html" }] },
+    { name: "The Details", pages: [{ name: "The details", href: "details.html" }] },
     { name: "How to Help", pages: [{ name: "How to help", href: "help.html" }] },
     // Footer sections: useful background, but not part of the main argument. Their pages still get a sub-nav.
     { name: "Other cities", footer: true, hub: true, pages: [
@@ -19,6 +19,8 @@
       { name: "What else it could buy", href: "spending-options.html" },
       { name: "Service levels", href: "service-levels.html" },
     ] },
+    // The Details page has no tab for this view; its #existing hash opens it.
+    { name: "Existing villages", footer: true, pages: [{ name: "Villages and hotels open now", href: "details.html#existing" }] },
     { name: "Simulator", footer: true, pages: [{ name: "State of Emergency", href: "simulator.html" }] },
     { name: "Methodology", footer: true, pages: [{ name: "How we count", href: "methodology.html" }] },
   ];
