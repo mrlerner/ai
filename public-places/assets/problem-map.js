@@ -29,6 +29,7 @@
 .pm-panel dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 10px 0; }
 .pm-panel dt { color: var(--muted); }
 .pm-panel dd { margin: 0; font-variant-numeric: tabular-nums; }
+.pm-facts { margin: 10px 0; padding: 0; list-style: none; display: grid; gap: 6px; }
 .pm-panel .tags { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 8px; }
 .pm-tag { font-size: 12.5px; font-weight: 600; border-radius: 999px; padding: 2px 9px; color: #fff; }
 .pm-tag.camp { background: var(--camp); }
@@ -138,12 +139,12 @@
         const what = [show.camp && "blue dots are encampments", show.drug && "orange dots are open-air drug zones"].filter(Boolean).join(" and ");
         panel.innerHTML = `<h3>Pick a dot</h3>
           <div class="sub">${what ? what[0].toUpperCase() + what.slice(1) + ", " + span + ". Tap one to see what was reported there." : "Turn on encampments or drug zones to see them on the map."}</div>
-          <dl>
-            ${show.camp ? `<dt>Encampments</dt><dd>${fmt(camps.length)} (${fmt(campsIn.length)} in public places)</dd>` : ""}
-            ${show.drug ? `<dt>Drug zones</dt><dd>${fmt(drugs.length)} (${fmt(drugsIn.length)} in public places)</dd>` : ""}
-            ${show.camp ? `<dt>Reports</dt><dd>${fmt(D.totals.reports)}</dd>` : ""}
-            ${show.drug ? `<dt>Drug calls</dt><dd>${fmt(D.totals.calls)}</dd><dt>Overdose calls</dt><dd>${fmt(D.totals.overdoses)}</dd>` : ""}
-          </dl>`;
+          <ul class="pm-facts">
+            ${show.camp ? `<li><b>${fmt(camps.length)}</b> encampments, ${fmt(campsIn.length)} of them in public places</li>` : ""}
+            ${show.drug ? `<li><b>${fmt(drugs.length)}</b> open-air drug zones, ${fmt(drugsIn.length)} of them in public places</li>` : ""}
+            ${show.camp ? `<li><b>${fmt(D.totals.reports)}</b> encampment reports to the city</li>` : ""}
+            ${show.drug ? `<li><b>${fmt(D.totals.calls)}</b> calls to police about drug use</li><li><b>${fmt(D.totals.overdoses)}</b> overdose calls to Seattle Fire</li>` : ""}
+          </ul>`;
         return;
       }
       panel.innerHTML = placeHtml(p);
@@ -157,8 +158,8 @@
         <dl>
           <dt>Encampment reports</dt><dd>${fmt(p.reports)}${p.reports ? ` on ${plural(p.cdays, "day")}` : ""}</dd>
           <dt>Saw tents</dt><dd>${fmt(p.tents)}</dd>
-          <dt>Resident drug calls</dt><dd>${fmt(p.calls)}</dd>
-          <dt>Overdose calls</dt><dd>${fmt(p.od)}</dd>
+          <dt>Calls to police about drugs</dt><dd>${fmt(p.calls)}</dd>
+          <dt>Overdose calls to Seattle Fire</dt><dd>${fmt(p.od)}</dd>
           ${p.calls + p.od ? `<dt>Days with a call</dt><dd>${fmt(p.ddays)}</dd>` : ""}
         </dl>
         <div class="sub">${span}. The dot sits in the middle of the reports and calls, never at one of them.</div>
