@@ -235,6 +235,10 @@ tr.total td { font-weight: 600; }
 .gkey i.temp { background: repeating-linear-gradient(135deg, var(--fast) 0 5px, color-mix(in srgb, var(--fast) 45%, transparent) 5px 10px); }
 .lessons td:first-child { min-width: 10em; }
 .lessons td .sub { display: block; font-size: 12.5px; margin-top: 4px; font-weight: 400; }
+/* Pledge Details: each pledge item, then ideas under it. */
+.pitem { display: flex; gap: 14px; align-items: flex-start; margin: 44px 0 12px; padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--civic); border-radius: 0 10px 10px 0; font-size: 16px; color: var(--muted); }
+.pitem > span { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--civic); color: #fff; font-weight: 700; display: grid; place-items: center; }
+.pitem b { display: block; font-size: 19px; line-height: 1.3; color: var(--fg); margin-bottom: 4px; }
 /* /doc:css */
 </style>
 </head>
@@ -244,6 +248,7 @@ tr.total td { font-weight: 600; }
   <div class="views" role="group" aria-label="Section">
     <button data-v="top" data-views="top villages" aria-pressed="true">Available tiny home land</button>
     <button data-v="tophotels" data-views="tophotels hotels" aria-pressed="false">Available hotels</button>
+    <button data-v="pledge" data-views="pledge" aria-pressed="false">Pledge Details</button>
     <button data-v="faster" data-views="faster" aria-pressed="false">Moving Faster</button>
   </div>
   <div class="vctl" id="vctl" hidden></div>
@@ -336,6 +341,61 @@ tr.total td { font-weight: 600; }
   <div class="callout" id="tcaution"></div></div>
   </section>
 <!-- doc:sections -->
+  <section id="pledgeSection" class="doc" hidden>
+  <h2 class="lead">Ideas behind each part of the pledge</h2>
+  <p class="intro">The pledge is short so anyone can sign it in a minute. Behind each item are ideas we think would work, drawn from other cities and from Seattle's own numbers. Deciding how is the City Council's job, and we're not trying to do it for them. We're sharing these to show there's more Seattle can do.</p>
+
+  <div class="pitem"><span>1</span><div><b>Keep our schools, parks, and busy sidewalks free of camping and drug use.</b>Enforce the existing laws with a clear path to housing, recovery, or court.</div></div>
+  <div class="ideas">
+    <div><b>Name the places in law</b>San Diego bans camping near schools, on transit and in parks at all times, whether or not shelter is open. A ban that applies only when shelter is open switches off whenever the shelter fills.</div>
+    <div><b>Start with schools</b>About 110 places near schools and child care have encampment reports, perhaps 250 people (our estimate). The beds the mayor already plans could cover them in months. Parks and busy sidewalks could follow as rooms open.</div>
+    <div><b>An offer first, then a ladder</b>In Denver an outreach worker and an officer arrive together and offer a room. Then come a spoken warning, a written warning, and only then a ticket. Denver wrote 14 camping tickets in all of 2023.</div>
+    <div><b>Keep cleared places clear</b>After a Seattle sweep, people often come back a few blocks away. Denver puts a cleared block on a daily patrol list, and anyone who returns starts again with an offer.</div>
+    <div><b>Somewhere police can take people</b>At San Francisco's 822 Geary, police drop someone off in about two minutes instead of spending six hours. Seattle's levy-funded crisis center won't open until late 2027 at the earliest.</div>
+    <div><b>A path for people in RVs</b>About 1,300 of the 5,600 people outside live in vehicles. San Francisco gave permits to people already in RVs, set a two-hour limit for everyone else, offered buybacks and opened lots. Lived-in RVs fell 42%.</div>
+  </div>
+  <p class="sub">More on <a href="other-cities.html">other cities</a> and <a href="denver-plan.html">the Denver plan for Seattle</a>.</p>
+
+  <div class="pitem"><span>2</span><div><b>Add at least 1,000 tiny homes or hotel rooms in the next 12 months.</b>People want a door that locks.</div></div>
+  <p>1,000 rooms won't end it. About 5,600 people sleep outside in Seattle, so 1,000 rooms has to happen this year and every year after. That only works if each room costs less to open and to run.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>The money that runs 1,000 tiny homes today could run</th><th class="n">Homes</th></tr></thead>
+    <tbody>
+      <tr><td>Today: two staff on site 24/7 and full services at every village</td><td class="n">1,000</td></tr>
+      <tr><td>Services matched to what each person needs</td><td class="n">~1,760</td></tr>
+      <tr><td>One daytime staffer and an overnight patrol shared by 2–3 villages, every case manager kept</td><td class="n">~2,000</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sub">Our estimates. The two ideas overlap, so they don't add up. Details on <a href="service-levels.html">service levels</a>.</p>
+  <div class="ideas">
+    <div><b>Buy rooms that already exist</b>A motel on Aurora costs roughly $90–180k a room and is ready in weeks. A new building takes 3–5 years. The $65M of unspent JumpStart construction money in the 2027 budget would buy about 260–430 motel rooms.</div>
+    <div><b>Match services to need</b>Every new place gets the full package: two staff around the clock, a case manager for every 20 residents and a behavioral health specialist. About 45% of people outside mostly need a place, not intensive care (our rough split).</div>
+    <div><b>Share the overnight staff</b>Two staff on site 24/7 are about $18k of a tiny home's $28k a year. Olympia's Plum Street Village asks for staff from 7am to 9pm. An overnight patrol and naloxone in every home could cover the rest.</div>
+    <div><b>Bigger villages</b>Staff cost about the same for 40 homes or 150. Seattle's 2026 law allows villages of up to 150 people. San Diego added 235 tents to its existing sites for about $5k each a year.</div>
+    <div><b>Stop closing villages</b>Seattle opened 8 villages since 2023 and closed 5, about 200 homes, mostly because land leases ended. Keeping 200 open costs about $5–6M a year. They're the cheapest doors that lock the city has.</div>
+    <div><b>Open villages in batches</b>Denver named 11 sites in 37 days and ordered 200 tiny homes at once. Seattle approves one village at a time. See <a href="#faster">Moving Faster</a>.</div>
+    <div><b>One-time money for one-time costs</b>Building and buying happen once. Fund balances, bonds ($100M costs about $7.7M a year for 20 years) and hotels the county is selling can pay for them. Medicaid can pay for some of the care inside.</div>
+    <div><b>Plan the way out</b>Rooms only open up again when people move on. Giving room residents priority for supportive housing keeps the 1,000 turning over instead of filling once and stopping.</div>
+  </div>
+
+  <div class="pitem"><span>3</span><div><b>Publish the numbers quarterly.</b>Report on the number of people sleeping outside and the number of new rooms.</div></div>
+  <div class="ideas">
+    <div><b>One office, one public target</b>Denver runs it from the mayor's office, with a target, a monthly dashboard and a daily list of people by name. Seattle splits the job with a regional authority that is being dismantled.</div>
+    <div><b>Which public places are clear</b>Each quarter, how many schools, parks and busy sidewalks still have encampments, from the city's own reports. Our <a href="public-spaces.html">public spaces page</a> shows it can be done.</div>
+    <div><b>Rooms opened, filled and turned over</b>How many rooms opened, how many are full, how long a room sits empty and how long people stay. Bayside took about 2½ months to fill.</div>
+    <div><b>What happens after</b>Deaths, returns to the street and a one-year housing check on everyone who leaves a room. Denver, San Francisco and San Diego don't report all three.</div>
+    <div><b>Every step of the ladder</b>Offers made and accepted, warnings, citations, and what happened after each one.</div>
+    <div><b>Cost per room, by type</b>What a tent, a tiny home and a hotel room each cost to run, so savings from new staffing models show up.</div>
+  </div>
+
+  <h3>Sources</h3>
+  <ul class="notes">
+    <li>Other cities, the enforcement ladder, 822 Geary and the RV permits: our <a href="other-cities.html">other cities page</a> and <a href="denver-plan.html">the Denver plan for Seattle</a>, with their sources.</li>
+    <li>Service levels, staffing costs and the $28k a tiny home: our <a href="service-levels.html">service levels page</a>. Olympia's Plum Street Village RFP, 2023 <a href="https://www.thejoltnews.com/uploads/files/20230907-185958-Plum-St-RFP.pdf" target="_blank" rel="noopener">thejoltnews.com</a>.</li>
+    <li>San Diego's added tents: NBC San Diego, Oct 2024 <a href="https://www.nbcsandiego.com/news/local/san-diego-city-council-approves-expansion-balboa-park-safe-sleeping-sites/3637856/" target="_blank" rel="noopener">nbcsandiego.com</a>. Village size cap: PubliCola, Apr 16, 2026 <a href="https://publicola.com/2026/04/16/mayor-wilsons-shelter-acceleration-plan-moves-forward-with-some-questions-unanswered/" target="_blank" rel="noopener">publicola.com</a>.</li>
+    <li>People outside and in vehicles: our <a href="methodology.html">methodology page</a>.</li>
+  </ul>
+  </section>
   <section id="fasterSection" class="doc" hidden>
   <h2 class="lead">The money is there. Use the state of emergency to move faster.</h2>
 
@@ -1368,8 +1428,8 @@ $("enotes").innerHTML = [
   `<b>Not shown:</b> supportive housing in apartment buildings, group shelters, and safe parking lots. `,
 ].map(t => `<li>${t}</li>`).join("");
 
-// Moving Faster is text, not a map view: it hides the map and everything that goes with it.
-const DOCS = { faster: "fasterSection" };
+// Pledge Details and Moving Faster are text, not map views: each hides the map and everything that goes with it.
+const DOCS = { pledge: "pledgeSection", faster: "fasterSection" };
 const MAP_PARTS = ["banSection", "villageSection", "hotelSection", "topSection", "existingSection", "callout", "topSummary", "vctl", "hctl"];
 function draw() {
   document.querySelectorAll(".views button").forEach(b => b.setAttribute("aria-pressed", b.dataset.views.split(" ").includes(view)));
@@ -1399,7 +1459,7 @@ function draw() {
 // #top/12 opens the top sites tab on site 12, and #tophotels/3 the top hotels tab on hotel 3.
 // #existing (existing villages and hotels) has no tab; the site footer links to it.
 // Encampments and drug zones moved to The Problem page; old links to them (#problem, #protected, #allowed) open on tiny home land.
-const VIEWS = ["top", "villages", "tophotels", "hotels", "faster", "existing"];
+const VIEWS = ["top", "villages", "tophotels", "hotels", "pledge", "faster", "existing"];
 const viewFromHash = () => VIEWS.find(v => "#" + v === location.hash.split("/")[0]) || "top";
 // The ranked tabs open on their first site; #top/all and #tophotels/all open the overview.
 const pickFromHash = () => {
