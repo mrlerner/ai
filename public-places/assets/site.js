@@ -4,16 +4,9 @@
 (() => {
   const SECTIONS = [
     { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
-    { name: "The Problem", pages: [
-      { name: "Public spaces", href: "public-spaces.html" },
-      { name: "People sleeping outside", href: "count.html" },
-    ] },
-    { name: "Maps", pages: [
-      { name: "Encampments and drug zones", href: "map.html" },
-      { name: "Available tiny home land", href: "map.html#top" },
-      { name: "Available hotels", href: "map.html#tophotels" },
-      { name: "Existing villages and hotels", href: "map.html#existing" },
-    ] },
+    { name: "The Problem", pages: [{ name: "The problem", href: "public-spaces.html" }] },
+    // The map's own pill buttons switch between its tabs, so it needs no sub-nav.
+    { name: "Maps", pages: [{ name: "Maps", href: "map.html" }] },
     { name: "How to Help", pages: [{ name: "How to help", href: "help.html" }] },
     // Footer sections: useful background, but not part of the main argument. Their pages still get a sub-nav.
     { name: "Other cities", footer: true, hub: true, pages: [
@@ -27,6 +20,7 @@
       { name: "Service levels", href: "service-levels.html" },
     ] },
     { name: "Simulator", footer: true, pages: [{ name: "State of Emergency", href: "simulator.html" }] },
+    { name: "Methodology", footer: true, pages: [{ name: "How we count", href: "methodology.html" }] },
   ];
 
   const CSS = `
@@ -74,13 +68,8 @@
     `<path d="M6 9.6L11 5.3l5 4.3v7.9H6z" fill="var(--pp-bg)"/><rect x="9.2" y="12" width="3.6" height="5.5" rx=".5" fill="var(--pp-accent)"/>` +
     `<circle cx="11" cy="14.3" r=".75" fill="var(--pp-bg)"/><path d="M10.6 14.6h.8l.25 1.5h-1.3z" fill="var(--pp-bg)"/></svg>`;
 
-  // Which page this is: the file name (or index.html for a bare folder URL), plus the hash for pages with tabs.
-  const current = () => {
-    const file = location.pathname.split("/").pop() || "index.html";
-    // Each map tab's ranked and all-sites modes share one nav link.
-    const tab = { "#top": "#top", "#villages": "#top", "#tophotels": "#tophotels", "#hotels": "#tophotels", "#existing": "#existing" }[location.hash.split("/")[0]];
-    return file === "map.html" && tab ? "map.html" + tab : file;
-  };
+  // Which page this is: the file name, or index.html for a bare folder URL.
+  const current = () => location.pathname.split("/").pop() || "index.html";
 
   const render = () => {
     const here = current();
@@ -91,7 +80,7 @@
         section.pages.map(p => `<a href="${p.href}"${p.href === here ? ' aria-current="page"' : ""}>${p.name}</a>`).join("") +
         `</div></nav>`
       : "";
-    return `<div class="pp-in pp-bar"><a class="pp-brand" href="index.html">${MARK}Protect Public Places</a>` +
+    return `<div class="pp-in pp-bar"><a class="pp-brand" href="index.html">${MARK}Fix Seattle's Public Places</a>` +
       `<nav class="pp-sections" aria-label="Site">${tops}</nav></div>${sub}`;
   };
 
@@ -115,6 +104,4 @@
   footer.className = "pp-site pp-foot";
   footer.innerHTML = renderFooter();
   addEventListener("DOMContentLoaded", () => document.body.append(footer));
-  // The map's tabs change the hash, so keep the sub-nav in step with them.
-  addEventListener("hashchange", () => { header.innerHTML = render(); footer.innerHTML = renderFooter(); });
 })();

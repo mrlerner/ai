@@ -6,7 +6,7 @@
 <title>Fix Seattle's Public Places</title>
 <meta name="description" content="A voter pledge: in 2027, vote for Seattle City Council candidates who commit to keep public spaces clear and get people into rooms with doors that lock.">
 <meta property="og:title" content="Sign the pledge: Fix Seattle's Public Places">
-<meta property="og:description" content="I pledge to vote for City Council candidates who commit to keep Seattle's schools, playgrounds and business districts clear, and get people inside to rooms with doors that lock. Add your name.">
+<meta property="og:description" content="I pledge to vote for City Council candidates who commit to pass a camping ban for Seattle's schools, parks and busy sidewalks, and get people inside to rooms with doors that lock. Add your name.">
 <meta property="og:type" content="website">
 <style>
 :root {
@@ -29,12 +29,9 @@ body { margin: 0; background: var(--bg); color: var(--fg);
 a { color: var(--accent); }
 main { max-width: 1120px; margin: 0 auto; padding: 40px 16px 96px; }
 .grid { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; }
-.kicker { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
-h1 { font-size: 46px; line-height: 1.08; margin: 8px 0 14px; letter-spacing: -.02em; text-wrap: balance; }
-.lede { font-size: 21px; line-height: 1.45; margin: 0 0 14px; max-width: 34em; }
-.vow { font-size: 21px; line-height: 1.4; font-weight: 700; margin: 0 0 28px; max-width: 34em; }
+h1 { font-size: 36px; line-height: 1.15; margin: 8px 0 28px; letter-spacing: -.015em; text-wrap: balance; max-width: 20em; }
 
-/* The four items */
+/* The pledge items */
 ol.items { list-style: none; counter-reset: c; padding: 0; margin: 0; }
 ol.items li { counter-increment: c; position: relative; padding: 18px 0 18px 54px; border-top: 1px solid var(--line); }
 ol.items li:first-child { border-top: 0; padding-top: 4px; }
@@ -43,6 +40,8 @@ ol.items li::before { content: counter(c); position: absolute; left: 0; top: 18p
 ol.items li:first-child::before { top: 4px; }
 ol.items b { display: block; font-size: 19px; line-height: 1.35; margin-bottom: 4px; }
 ol.items p { margin: 0; color: var(--muted); font-size: 16.5px; max-width: 62ch; }
+ol.items sup { font-size: 12px; line-height: 0; margin-left: 1px; }
+ol.items sup a { text-decoration: none; font-weight: 600; }
 
 /* The sign card */
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px 24px 20px;
@@ -120,7 +119,7 @@ button.cta:disabled { opacity: .65; cursor: default; }
 }
 @media (max-width: 640px) {
   main { padding-top: 28px; }
-  h1 { font-size: 34px; } .lede { font-size: 19px; }
+  h1 { font-size: 28px; margin-bottom: 22px; }
   ol.items li { padding-left: 46px; } ol.items li::before { width: 32px; height: 32px; font-size: 15px; }
   ol.items b { font-size: 18px; }
   .card { padding: 20px 16px 16px; }
@@ -133,19 +132,14 @@ button.cta:disabled { opacity: .65; cursor: default; }
 <main>
 <div class="grid">
 <article>
-  <div class="kicker">A voter pledge for Seattle's 2027 City Council elections</div>
-  <h1>Fix Seattle's Public Places</h1>
-  <p class="lede">Keep Seattle's schools, playgrounds and business districts clear, and get people inside to rooms with doors that lock.</p>
-  <p class="vow">I pledge to vote for City Council candidates who commit to these four things.</p>
+  <h1>I pledge to vote for City Council candidates who commit to these three things.</h1>
   <ol class="items">
-    <li><b>Public spaces are for everyone.</b>
-      <p>Keep them clear of drug use and camping. Prioritize the public places to keep clear (schools, playgrounds, business districts) and publish an enforcement ladder with a clear path to housing, recovery, or court.</p></li>
-    <li><b>Use the state of emergency to add at least 1,000 rooms with locking doors in the next 12 months.</b>
-      <p>When Seattle offered hotel rooms at one camp, 73% of people came inside. Buy hotels and site tiny home villages in weeks, not months.</p></li>
-    <li><b>Spend less money supervising people, so we can house more people.</b>
-      <p>Seattle's tiny home villages keep two staff on site 24 hours a day, at a cost of about $28,000 a year per unit. We can cut the cost in half by moving to part-time daytime staff and overnight patrols shared between villages.</p></li>
-    <li><b>Publish the numbers monthly.</b>
-      <p>The number of people sleeping outside, new housing units opened, and dollars spent per unit per year.</p></li>
+    <li><b>Pass a camping ban for schools, parks, and busy sidewalks.</b>
+      <p>Keep them free of camping and drug use. Enforce the law with a clear path to housing, recovery, or court.</p></li>
+    <li><b>Use the 2015 State of Emergency<sup><a href="methodology.html#emergency" target="_blank" rel="noopener" aria-label="Source">1</a></sup> to add at least 1,000 tiny homes and hotel rooms in the next 12 months.</b>
+      <p>Site tiny home villages in weeks not months. The most common reason people gave for turning down a shelter bed in Seattle was that they wanted a tiny home.<sup><a href="methodology.html#tiny-homes" target="_blank" rel="noopener" aria-label="Source">2</a></sup></p></li>
+    <li><b>Publish the numbers quarterly.</b>
+      <p>Report the number of people sleeping outside and how many new housing units opened.</p></li>
   </ol>
 </article>
 
@@ -164,7 +158,6 @@ button.cta:disabled { opacity: .65; cursor: default; }
     <label class="sr" for="zip">ZIP code</label><input type="text" id="zip" name="zip" placeholder="ZIP code" autocomplete="postal-code" inputmode="numeric" maxlength="5" pattern="\d{5}" required>
     <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
     <label class="check"><input type="checkbox" id="show" checked> Show my first name and last initial in the list of signers</label>
-    <label class="check"><input type="checkbox" id="updates" checked> Email me where my council candidates stand</label>
     <button class="cta" type="submit" id="go">Sign the pledge</button>
     <p class="err" id="err" role="alert"></p>
     <p class="fine">Your email and ZIP code are never shown or shared. The list shows your neighborhood, from your ZIP code.</p>
@@ -292,7 +285,7 @@ button.cta:disabled { opacity: .65; cursor: default; }
   };
 
   // Share links. The native share sheet is first on phones; everything else is a plain link.
-  const msg = "I pledged to vote for Seattle City Council candidates who commit to keep schools, playgrounds and business districts clear, and get people inside to rooms with doors that lock. Add your name:";
+  const msg = "I pledged to vote for Seattle City Council candidates who commit to pass a camping ban for schools, parks and busy sidewalks, and get people inside to rooms with doors that lock. Add your name:";
   $("share-text").href = `sms:?&body=${encodeURIComponent(`${msg} ${shareUrl}`)}`;
   $("share-email").href = `mailto:?subject=${encodeURIComponent("Will you sign the pledge to fix Seattle's public places?")}&body=${encodeURIComponent(`${msg}\n\n${shareUrl}`)}`;
   $("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
@@ -322,7 +315,7 @@ button.cta:disabled { opacity: .65; cursor: default; }
     $("go").disabled = true;
     $("go").textContent = "Signing…";
     post({ action: "sign", first: $("first").value.trim(), last: $("last").value.trim(), email: $("email").value.trim(), zip: $("zip").value.trim(),
-      show: $("show").checked, updates: $("updates").checked, source, website: $("website").value })
+      show: $("show").checked, updates: false, source, website: $("website").value })
       .then(d => {
         if (!d.ok) throw new Error(d.error || "Something went wrong.");
         const s = { n: d.n, first: $("first").value.trim(), token: d.token, already: d.already };

@@ -11,21 +11,21 @@
   color-scheme: light;
   --bg: #fcfcfb; --card: #ffffff; --fg: #0b0b0b; --muted: #52514e; --faint: #8a8984; --line: #e4e3df; --chip: #f0efec;
   --recent: #eb6834; --earlier: #2a78d6; --bar: #9ec5f4; --bar-on: #2a78d6; --ring: #0b0b0b;
-  --key-fill: #7a8a7a; --edge: #3a3a38;
+  --key-fill: #2f9e44; --edge: #3a3a38;
 }
 @media (prefers-color-scheme: dark) {
   :root:where(:not([data-theme="light"])) {
     color-scheme: dark;
     --bg: #1a1a19; --card: #222220; --fg: #f0efec; --muted: #c3c2b7; --faint: #8f8e86; --line: #383835; --chip: #2c2c2a;
     --recent: #d95926; --earlier: #3987e5; --bar: #1c5cab; --bar-on: #86b6ef; --ring: #f0efec;
-    --key-fill: #9fb09f; --edge: #d8d7d0;
+    --key-fill: #4cc35f; --edge: #d8d7d0;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #1a1a19; --card: #222220; --fg: #f0efec; --muted: #c3c2b7; --faint: #8f8e86; --line: #383835; --chip: #2c2c2a;
   --recent: #d95926; --earlier: #3987e5; --bar: #1c5cab; --bar-on: #86b6ef; --ring: #f0efec;
-  --key-fill: #9fb09f; --edge: #d8d7d0;
+  --key-fill: #4cc35f; --edge: #d8d7d0;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
@@ -88,7 +88,7 @@ a { color: var(--earlier); }
 <body>
 <script src="assets/site.js"></script>
 <main>
-  <div class="kicker">Prototype · Encampment reports</div>
+  <div class="kicker">Encampment reports</div>
   <h1>Encampments in <span id="hoodname"></span></h1>
 
   <div class="hero">
@@ -155,7 +155,7 @@ L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/${dark 
 }).addTo(map);
 L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/${dark ? "World_Dark_Gray_Reference" : "World_Light_Gray_Reference"}/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 16, pane: "overlayPane" }).addTo(map);
 const toLatLngs = rings => (Array.isArray(rings[0][0][0]) ? rings : [rings]).map(poly => poly.map(r => r.map(([x, y]) => [y, x])));
-const keyStyle = () => ({ color: css("--key-fill"), weight: 1, fillColor: css("--key-fill"), fillOpacity: 0.22 });
+const keyStyle = () => ({ color: css("--key-fill"), weight: 1, fillColor: css("--key-fill"), fillOpacity: 0.25 });
 D.keys.forEach(k => {
   const g = k.geom, tip = `${k.name} <span style="color:var(--muted)">(${k.kind === "childcare" ? "child care" : k.kind})</span>`;
   const layer = g.type === "Point"

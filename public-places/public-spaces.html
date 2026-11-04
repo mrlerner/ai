@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Seattle's Public Spaces</title>
+<title>The Problem</title>
+<meta name="description" content="About 5,600 people sleep outside in Seattle, with hundreds of encampments and dozens of open-air drug zones in its schools, playgrounds and business districts.">
+<meta property="og:description" content="5,600 people sleeping outside. 563 encampments and 36 open-air drug zones in Seattle's schools, playgrounds and business districts.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="assets/problem-data.js"></script>
-<script src="assets/problem-map.js"></script>
+<script src="assets/problem-map.js?v=2"></script>
 <style>
 :root {
   color-scheme: light;
@@ -30,12 +32,12 @@
 body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 main { max-width: 1100px; margin: 0 auto; padding: 28px 16px 72px; }
 .kicker { font-size: 13px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-h1 { font-size: 34px; line-height: 1.15; margin: 4px 0 12px; max-width: 28ch; text-wrap: balance; }
-h1 .camp { color: var(--camp); }
-h1 .drug { color: var(--drug); }
+h1 { font-size: 48px; line-height: 1.08; margin: 4px 0 10px; letter-spacing: -.02em; text-wrap: balance; }
+.sub { font-size: 27px; line-height: 1.25; font-weight: 700; margin: 0 0 24px; max-width: 34ch; text-wrap: balance; }
+.sub .camp { color: var(--camp); }
+.sub .drug { color: var(--drug); }
 h2 { font-size: 20px; margin: 40px 0 8px; }
 h3 { font-size: 17px; margin: 28px 0 6px; }
-.lede { font-size: 18px; color: var(--muted); max-width: 66ch; margin: 0 0 20px; }
 .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 22px; }
 .tile { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
 .tile .num { font-size: 30px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
@@ -59,13 +61,8 @@ tr.total td { font-weight: 600; border-top: 2px solid var(--line); }
 tbody.pick tr { cursor: pointer; }
 tbody.pick tr:hover, tbody.pick tr.sel { background: var(--chip); }
 .bar { display: inline-block; height: 9px; border-radius: 2px; margin-right: 6px; }
-.raw table { font: 12.5px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-.raw th { color: var(--fg); background: var(--chip); }
-.raw td { color: var(--muted); }
-.raw .links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; margin: 8px 0 0; }
-.raw p { max-width: 75ch; margin: 4px 0 10px; color: var(--muted); font-size: 15px; }
-.notes { color: var(--muted); font-size: 15px; max-width: 75ch; padding-left: 20px; }
-.notes li { margin: 6px 0; }
+tr.use td { font-weight: 600; }
+.note { color: var(--muted); font-size: 15px; max-width: 75ch; margin: 10px 0 0; }
 a { color: var(--camp); }
 .leaflet-container { font: inherit; }
 .leaflet-tooltip.tip { background: var(--card); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 9px; font-size: 13px; box-shadow: 0 2px 8px rgba(0,0,0,.15); width: max-content; max-width: 260px; white-space: normal; }
@@ -74,25 +71,20 @@ a { color: var(--camp); }
   .layout { grid-template-columns: 1fr; }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #map { height: 460px; }
-  h1 { font-size: 27px; }
-  .lede { font-size: 16px; }
+  h1 { font-size: 36px; }
+  .sub { font-size: 21px; }
 }
 </style>
 </head>
 <body>
 <script src="assets/site.js"></script>
 <main>
-  <div class="kicker">The Problem · Public spaces</div>
-  <h1 id="headline"></h1>
-  <p class="lede" id="lede"></p>
+  <div class="kicker">The Problem</div>
+  <h1>5,600 people sleeping outside.</h1>
+  <p class="sub" id="headline"></p>
 
   <div class="tiles" id="tiles"></div>
 
-  <div class="controls">
-    <span class="label">Show</span>
-    <button class="chip" data-show="camp" aria-pressed="true">Encampments</button>
-    <button class="chip" data-show="drug" aria-pressed="true">Drug zones</button>
-  </div>
   <div class="controls" id="views"><span class="label">Look at</span></div>
 
   <div class="layout">
@@ -121,29 +113,45 @@ a { color: var(--camp); }
     <tbody id="zones" class="pick"></tbody>
   </table></div>
 
-  <h2>How this page counts</h2>
-  <ul class="notes" id="notes"></ul>
+  <h2>People sleeping outside, by year</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>January count</th><th class="n">Seattle, city limits</th><th class="n">King County</th></tr></thead>
+    <tbody>
+      <tr><td>2022</td><td class="n">—</td><td class="n">7,685</td></tr>
+      <tr><td>2024</td><td class="n">~4,500</td><td class="n">9,810</td></tr>
+      <tr class="use"><td>2026</td><td class="n">~5,600</td><td class="n">11,829</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">King County counts every two years. Counts since 2022 use the same survey method; earlier counts aren't comparable.</p>
 
-  <h2>The data itself</h2>
-  <div class="raw" id="raw"></div>
+  <h2>Who is outside</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>King County, people outside, 2026</th><th class="n">Share</th><th class="n">In Seattle, if the same</th></tr></thead>
+    <tbody>
+      <tr><td>Substance use disorder</td><td class="n">41%</td><td class="n">~2,300</td></tr>
+      <tr><td>Serious mental illness</td><td class="n">31%</td><td class="n">~1,700</td></tr>
+      <tr><td>Chronically homeless (federal definition)</td><td class="n">38%</td><td class="n">~2,100</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Self-reported in the county's survey, so these likely undercount. Seattle probably runs higher: 54% of Seattle's vehicle residents are chronically homeless, against 43% countywide.</p>
+
+  <p class="note" style="margin-top:36px">How we got each number, what counts as an encampment or a drug zone, the sources and the raw data: <a href="methodology.html">Methodology</a>.</p>
 </main>
 
 <script>
 // The data and the map come from assets/problem-data.js and assets/problem-map.js, which the Maps page shares.
 const $ = id => document.getElementById(id);
-const { D, P, camps, drugs, campsIn, drugsIn, span, SHORT, fmt, pct, day } = problemMap.data;
+const { D, P, camps, drugs, campsIn, drugsIn, span, SHORT, fmt, pct } = problemMap.data;
 
 // ---------- headline ----------
-$("headline").innerHTML = `<span class="camp">${fmt(campsIn.length)}</span> encampments and <span class="drug">${fmt(drugsIn.length)}</span> open-air drug zones in Seattle's schools, playgrounds and business districts`;
-$("lede").textContent = `From ${span}, neighbors' reports and calls to the city point to ${fmt(camps.length)} encampments and ${fmt(drugs.length)} open-air drug zones across Seattle. ` +
-  `${pct(campsIn.length, camps.length)} of the encampments and ${pct(drugsIn.length, drugs.length)} of the drug zones were in the public places the pledge would protect.`;
-const nearKids = P.filter(p => p.k === "schools" || p.k === "playgrounds");
+$("headline").innerHTML = `<span class="camp">${fmt(campsIn.length)}</span> encampments and <span class="drug">${fmt(drugsIn.length)}</span> open-air drug zones in Seattle's schools, playgrounds and business districts.`;
+// The people outside are the 2026 King County count, fixed text like the h1; see methodology.html.
 $("tiles").innerHTML = [
-  [campsIn.length, "camp", `encampments in public places, out of ${fmt(camps.length)} citywide`],
-  [drugsIn.length, "drug", `open-air drug zones in public places, out of ${fmt(drugs.length)} citywide`],
-  [nearKids.length, "", `encampments or drug zones within 300 feet of a school, child care center or playground`],
-  [D.totals.reports + D.totals.calls + D.totals.overdoses, "", `encampment reports, drug calls and overdose calls behind the count`],
-].map(([n, c, t]) => `<div class="tile"><div class="num ${c}">${fmt(n)}</div><div class="what">${t}</div></div>`).join("");
+  ["~4,300", "", `in tents, on sidewalks, in parks, doorways and other places outside`],
+  ["~1,300", "", `in cars, vans and RVs`],
+  [fmt(campsIn.length), "camp", `encampments in public places, out of ${fmt(camps.length)} citywide`],
+  [fmt(drugsIn.length), "drug", `open-air drug zones in public places, out of ${fmt(drugs.length)} citywide`],
+].map(([n, c, t]) => `<div class="tile"><div class="num ${c}">${n}</div><div class="what">${t}</div></div>`).join("");
 
 // ---------- map ----------
 const map = L.map("map", { zoomSnap: 0.25, scrollWheelZoom: false, preferCanvas: true });
@@ -161,11 +169,7 @@ pm.add();
 pm.fitCity();
 // Leaflet can measure the map before the page has settled, which zooms out to the whole state; fit again once it has.
 addEventListener("load", () => { map.invalidateSize(); pm.fitCity(); });
-pm.views($("views"), pm.fitCity);
-document.querySelectorAll("[data-show]").forEach(b => b.onclick = () => {
-  b.setAttribute("aria-pressed", !pm.show[b.dataset.show]);
-  pm.add({ [b.dataset.show]: !pm.show[b.dataset.show] });
-});
+pm.lookAt($("views"), pm.fitCity);
 
 // ---------- tables ----------
 const kindRows = D.layers.map(l => [l, campsIn.filter(p => p.k === l.k).length, drugsIn.filter(p => p.k === l.k).length]);
@@ -187,40 +191,6 @@ $("zones").querySelectorAll("tr").forEach(tr => tr.onclick = () => {
   pm.select(P[+tr.dataset.i], true);
   $("map").scrollIntoView({ behavior: "smooth", block: "center" });
 });
-
-// ---------- notes ----------
-const T = D.totals;
-$("notes").innerHTML = [
-  `<b>Places.</b> Reports and calls are grouped into squares about 100 meters (328 feet) across. One big camp can cover two places, and a camp nobody reports doesn't show up.`,
-  `<b>Encampments.</b> A place counts as an encampment when it had ${D.rules.camp_min} or more <a href="${D.links.reports}" target="_blank" rel="noopener">Unauthorized Encampment Reports</a> on ${D.rules.camp_days} or more different days from ${span}. Reports come from Find It, Fix It, the city's web form and its phone line. A report means someone saw a camp, not that the city confirmed one.`,
-  `<b>Open-air drug zones.</b> A place counts as a drug zone when it had ${D.rules.drug_min} or more drug calls and overdose calls together, on ${D.rules.drug_days} or more different days, so one persistent caller can't make a zone alone. Find It, Fix It has no drug-use category (its "Illegal Dumping / Needles" category mixes needles with dumping), so drug use comes from 911 data instead.`,
-  `<b>Drug calls</b> are calls in SPD's <a href="${D.links.calls}" target="_blank" rel="noopener">Call Data</a> placed by the public (SPD marks these "community generated") that the caller described as drugs: use, dealing or loitering. ${fmt(T.calls_911)} of the ${fmt(T.calls)} came in on 911 and nearly all the rest on the non-emergency line. The dataset has a row for every police unit sent (${fmt(T.call_rows)} rows), so each call is counted once. Calls officers log themselves are left out, since they show where police patrol more than where neighbors see drug use.`,
-  `These are calls, not confirmed incidents: police reported they couldn't find the incident or caller on ${fmt(T.calls_unable)} of them (${pct(T.calls_unable, T.calls)}) and made an arrest on ${fmt(T.calls_arrest)}. They also depend on who picks up the phone, so places where people call less, or trust police less, are undercounted.`,
-  `<b>Overdose calls</b> are Seattle Fire's "Medic Response- Overdose" dispatches in its <a href="${D.links.fire}" target="_blank" rel="noopener">Real Time Fire 911 Calls</a>. Many overdoses are dispatched as a general medical call, so this is an undercount. King County's overdose dashboards are by zip code, too coarse to tell 3rd and Pine from Pike Place, so they aren't used here.`,
-  `<b>Public places</b> are the pledge's three: 300 feet around schools and licensed child care; 300 feet around playgrounds, from OpenStreetMap, which may miss a few; and business districts from the city's zoning (the Downtown zones, which take in Pike Place Market and the International District, plus Neighborhood Commercial and Seattle Mixed zones, which take in Capitol Hill and downtown Ballard). Parks away from a playground aren't counted. A place is in one when its dot is.`,
-  `<b>Locations.</b> Each dot sits in the middle of the reports and calls that made its place, never at one of them, and places are named by hundred block. SPD publishes its calls by hundred block or intersection too.`,
-  `Built ${day(D.built)}, ${D.built.slice(0, 4)}, with data from ${day(D.start)} through ${day(D.end)}, ${D.end.slice(0, 4)}.`,
-].map(t => `<li>${t}</li>`).join("");
-
-// ---------- the data itself ----------
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-const rawTable = s => `<div class="tbl"><table><thead><tr>${s.cols.map(c => `<th>${c}</th>`).join("")}</tr></thead>` +
-  `<tbody>${s.rows.map(r => `<tr>${r.map(v => `<td>${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
-const S = D.samples, Lk = D.links;
-$("raw").innerHTML = `
-  <p>The newest rows from the three city datasets behind these counts. Addresses are shortened to the hundred block.</p>
-  <h3>Encampment reports (Find It, Fix It)</h3>
-  <p>${fmt(T.reports)} reports from ${span}. Each row is one report, and the yes-or-no columns are the questions Find It, Fix It asks.</p>
-  ${rawTable(S.reports)}
-  <div class="links"><a href="${Lk.reports}" target="_blank" rel="noopener">Unauthorized Encampment Reports on data.seattle.gov ↗</a><a href="${Lk.reports_q}" target="_blank" rel="noopener">The query this page ran ↗</a></div>
-  <h3>Drug calls from the public (SPD)</h3>
-  <p>${fmt(T.calls)} calls from ${span}. Each row is one call, and <code>call_type</code> says whether it came in on 911.</p>
-  ${rawTable(S.calls)}
-  <div class="links"><a href="${Lk.calls}" target="_blank" rel="noopener">SPD Call Data on data.seattle.gov ↗</a><a href="${Lk.calls_q}" target="_blank" rel="noopener">The query this page ran ↗</a></div>
-  <h3>Overdose calls (Seattle Fire)</h3>
-  <p>${fmt(T.overdoses)} overdose dispatches from ${span}.</p>
-  ${rawTable(S.fire)}
-  <div class="links"><a href="${Lk.fire}" target="_blank" rel="noopener">Seattle Real Time Fire 911 Calls on data.seattle.gov ↗</a><a href="${Lk.fire_q}" target="_blank" rel="noopener">The query this page ran ↗</a></div>`;
 </script>
 </body>
 </html>

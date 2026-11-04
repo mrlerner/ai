@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=816">
+<title>Flyer</title>
+<meta name="robots" content="noindex">
+<style>
+/* One letter-size page (816 × 1056 px at 96 dpi). Embedded scaled down on the How to Help page; prints at full size.
+   The place comes from ?place=, so anyone can print one for the park or corner they care about. */
+@page { size: Letter; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; }
+/* html scrolls, so body's overflow clips only the page itself and a short window can still reach the bottom. */
+html { overflow: auto; }
+body { width: 8.5in; height: 11in; overflow: hidden; color: #1f2421;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+/* Opened on its own ("Open full size"): the sheet centered on grey, like the preview on the help page. */
+@media screen { html.alone { background: #e8e6e1; } html.alone body { margin: 24px auto; box-shadow: 0 2px 10px rgba(0,0,0,.25); } }
+.page { height: 11in; padding: 0.4in 0.5in 0.34in; display: flex; flex-direction: column; gap: 0.13in; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.brand { display: flex; align-items: center; gap: 9px; font-size: 19px; line-height: 1.1; font-weight: 800; letter-spacing: -.005em; }
+.brand svg { flex: none; }
+.ballot { font-size: 11.5px; line-height: 1.35; color: #5d6660; max-width: 3.2in; text-align: right; font-weight: 600; }
+.hero { background: #1d3f66; color: #fff; border-radius: 14px; padding: 18px 30px 20px; }
+.hero h1 { margin: 0; font-size: 70px; line-height: .98; font-weight: 900; letter-spacing: -.02em; }
+.hero h1 span { display: block; font-size: 30px; letter-spacing: .01em; font-weight: 800; color: #b9d3ef; margin-bottom: 4px; text-transform: uppercase; }
+.hero p { margin: 10px 0 0; font-size: 17px; line-height: 1.4; color: #e3ecf6; max-width: 6.4in; }
+.pledge { border: 3px solid #2a6fb5; border-radius: 14px; padding: 14px 20px 8px; }
+.pledge h2 { margin: 0 0 8px; font-size: 21px; line-height: 1.25; font-weight: 800; }
+.pledge ol { list-style: none; counter-reset: c; margin: 0; padding: 0; }
+.pledge li { counter-increment: c; position: relative; padding: 0 0 7px 42px; }
+.pledge li::before { content: counter(c); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%;
+  background: #2a6fb5; color: #fff; font-weight: 800; font-size: 16px; line-height: 30px; text-align: center; }
+.pledge li b { display: block; font-size: 16.5px; line-height: 1.3; }
+.pledge li span { display: block; font-size: 13.5px; line-height: 1.35; color: #3c4540; margin-top: 2px; }
+.act { display: grid; grid-template-columns: 1fr 2.15in; gap: 0.25in; align-items: start; flex: 1; }
+.steps h2 { font-size: 24px; line-height: 1.15; font-weight: 800; margin: 0 0 12px; }
+.step { display: grid; grid-template-columns: 42px 1fr; gap: 12px; margin-bottom: 8px; align-items: start; }
+.n { width: 42px; height: 42px; border-radius: 50%; color: #fff; font-size: 21px; font-weight: 900; line-height: 42px; text-align: center; background: #1d3f66; }
+.step h3 { font-size: 18px; line-height: 1.2; margin: 2px 0 2px; font-weight: 800; }
+.step p { margin: 0; font-size: 13.5px; line-height: 1.4; color: #3c4540; }
+.qr { border: 3px solid #1f2421; border-radius: 14px; padding: 12px 14px; text-align: center; }
+.qr .scan { font-size: 20px; line-height: 1.1; font-weight: 900; margin-bottom: 8px; }
+.qr svg { width: 100%; height: auto; display: block; }
+.qr p { margin: 8px 0 0; font-size: 13px; line-height: 1.35; color: #3c4540; }
+.foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; border-top: 2px solid #1f2421; padding-top: 8px;
+  font-size: 10.5px; line-height: 1.35; color: #5d6660; }
+.foot b { color: #1f2421; }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+if (window === window.top) document.documentElement.classList.add("alone");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const place = (new URLSearchParams(location.search).get("place") || "").trim().slice(0, 40) || "Cal Anderson Park";
+// The QR code opens the pledge next to this page, so it points wherever the site is served from.
+const pledge = new URL("index.html", location.href).href;
+const short = pledge.replace(/^https?:\/\//, "").replace(/\/index\.html$/, "");
+const qr = qrcode(0, "M"); qr.addData(pledge); qr.make();
+// Same mark as the site header (assets/site.js).
+const MARK = `<svg width="26" height="26" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#2a6fb5"/>` +
+  `<path d="M4.2 10.8L11 4.7l6.8 6.1" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>` +
+  `<path d="M6 9.6L11 5.3l5 4.3v7.9H6z" fill="#fff"/><rect x="9.2" y="12" width="3.6" height="5.5" rx=".5" fill="#2a6fb5"/>` +
+  `<circle cx="11" cy="14.3" r=".75" fill="#fff"/><path d="M10.6 14.6h.8l.25 1.5h-1.3z" fill="#fff"/></svg>`;
+document.title = `Flyer · Fix ${place}`;
+document.getElementById("page").innerHTML = `
+  <div class="top">
+    <div class="brand">${MARK}Fix Seattle's Public Places</div>
+    <div class="ballot">All seven district City Council seats are on the ballot in 2027.</div>
+  </div>
+  <div class="hero">
+    <h1><span>Fix</span>${esc(place)}</h1>
+    <p>Keep it free of camping and drug use, and offer everyone living outside a room with a locking door.</p>
+  </div>
+  <div class="pledge">
+    <h2>The pledge: I'll vote for City Council candidates who commit to these three things.</h2>
+    <ol>
+      <li><b>Pass a camping ban for schools, parks, and busy sidewalks.</b><span>Enforce it with a clear path to housing, recovery, or court.</span></li>
+      <li><b>Add at least 1,000 tiny homes and hotel rooms in the next 12 months.</b><span>When Seattle offered hotel rooms at one camp, 73% of people came inside.</span></li>
+      <li><b>Publish the numbers quarterly.</b><span>People sleeping outside, new housing units opened, and what each one costs a year.</span></li>
+    </ol>
+  </div>
+  <div class="act">
+    <div class="steps">
+      <h2>Help fix it. It takes a minute.</h2>
+      <div class="step"><div class="n">1</div><div><h3>Scan and sign the pledge</h3><p>Your name, email and ZIP code. Your email and ZIP are never shown or shared.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>Ask three neighbors to sign</h3><p>Candidates pay attention to how many voters in their own district have signed.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>Ask the candidates</h3><p>At forums and doorsteps, ask every council candidate whether they commit to all three.</p></div></div>
+    </div>
+    <div class="qr">
+      <div class="scan">Scan to sign the pledge</div>
+      ${qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true })}
+      <p>It takes 30 seconds.</p>
+    </div>
+  </div>
+  <div class="foot">
+    <div><b>Posted by a neighbor.</b> Please leave this up for two weeks.<br>No phone? Visit <b>${esc(short)}</b></div>
+  </div>`;
+// A long place name wraps; shrink the headline until the footer fits inside the bottom margin.
+const h1 = document.querySelector(".hero h1"), foot = document.querySelector(".foot"), page = document.getElementById("page");
+const fits = () => foot.getBoundingClientRect().bottom <= page.getBoundingClientRect().bottom - parseFloat(getComputedStyle(page).paddingBottom) + 0.5;
+for (let px = 70; !fits() && px > 40; px -= 2) h1.style.fontSize = px - 2 + "px";
+</script>
+</body>
+</html>

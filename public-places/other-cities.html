@@ -65,6 +65,26 @@ th { font-weight: 600; background: var(--code); }
 .note { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
 .sources li { font-size: 14.5px; color: var(--muted); margin: 4px 0; }
 
+/* Tiny home cost ranking */
+.rank td { vertical-align: middle; }
+.rank td:first-child { font-weight: 600; white-space: nowrap; }
+.rank td:first-child span { display: block; font-weight: 400; font-size: 13.5px; color: var(--muted); white-space: normal; }
+.rank .cost { width: 38%; min-width: 150px; }
+.rank .bar { height: 10px; border-radius: 5px; background: color-mix(in srgb, var(--muted) 45%, transparent); margin-bottom: 4px; }
+.rank .cost b { font-size: 15px; }
+.rank td:last-child { font-size: 14px; color: var(--muted); }
+.rank tr.us td { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.rank tr.us .bar { background: var(--accent); }
+.rank tr.sub td { color: var(--muted); }
+/* Phones: city and cost side by side, the note on its own line underneath. */
+@media (max-width: 640px) {
+  .rank thead { display: none; }
+  .rank tr { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); }
+  .rank td { border-bottom: 0; }
+  .rank .cost { width: auto; min-width: 0; }
+  .rank td:last-child { grid-column: 1 / -1; padding-top: 0; }
+}
+
 /* Links to the deeper pages on each city */
 .explore { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 12px 0 8px; }
 .explore a { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; text-decoration: none; color: var(--fg); }
@@ -84,11 +104,11 @@ th { font-weight: 600; background: var(--code); }
 <body>
 <script src="assets/site.js"></script>
 <main>
-<div class="kicker">Protect Public Places</div>
+<div class="kicker">Fix Seattle's Public Places</div>
 <h1>What We Can Learn from Other Cities</h1>
 <p class="lede">Denver, San Francisco and San Diego all banned camping in public places and opened somewhere else for people to go.</p>
 <p class="meta">Draft, November 2026. Seattle's street count rose 54% over the years Denver's fell.</p>
-<nav class="toc"><a href="#cities">The three cities</a><a href="#common">What they share</a><a href="#differ">Where they differ</a><a href="#compare">Side by side</a><a href="#seattle">The better strategy</a><a href="#deeper">Go deeper</a><a href="#sources">Sources</a></nav>
+<nav class="toc"><a href="#cities">The three cities</a><a href="#common">What they share</a><a href="#differ">Where they differ</a><a href="#compare">Side by side</a><a href="#tiny-homes">Tiny home costs</a><a href="#seattle">The better strategy</a><a href="#deeper">Go deeper</a><a href="#sources">Sources</a></nav>
 
 <div class="stats">
   <div class="stat"><div class="c">Denver</div><div class="n">−61%</div><div class="l">people sleeping outside, January 2022 to January 2026</div></div>
@@ -181,17 +201,17 @@ th { font-weight: 600; background: var(--code); }
       <td>A private room with a locking door, in a hotel or a village</td>
       <td>A shelter bed, more and more a treatment or sober bed</td>
       <td>A tent for two in a fenced, staffed lot</td>
-      <td>Denver's room with a door. A staffed lot only as a bridge while rooms open (item 4)</td></tr>
+      <td>Denver's room with a door. A staffed lot only as a bridge while rooms open (item 2)</td></tr>
     <tr><td>Enforcement</td>
       <td>A ladder: offer, warnings, then a ticket. Cleared blocks stay closed</td>
       <td>Frequent sweeps, including on state highway land</td>
       <td>Mostly warnings. No tickets at night or when shelter is full</td>
-      <td>Denver's ladder, and hold every cleared place (items 2 and 3)</td></tr>
+      <td>Denver's ladder, and hold every cleared place</td></tr>
     <tr><td>Speed</td>
       <td>1,284 rooms in 16 months</td>
       <td>863 beds opened in 16 months, net +403</td>
       <td>About 760 tents in 16 months</td>
-      <td>Buy or lease buildings under emergency powers rather than build (item 4)</td></tr>
+      <td>Buy or lease buildings under emergency powers rather than build (item 2)</td></tr>
     <tr><td>Cost per place per year</td>
       <td>About $45,000 a room</td>
       <td>Not published</td>
@@ -216,7 +236,7 @@ th { font-weight: 600; background: var(--code); }
       <td>A monthly public dashboard and a daily by-name list</td>
       <td>Quarterly RV counts. Contracts being rewritten around outcomes</td>
       <td>An audit three years in. Safety oversight lagged</td>
-      <td>A monthly public report, including deaths and returns to the street (item 5)</td></tr>
+      <td>A quarterly public report, including deaths and returns to the street (item 3)</td></tr>
     <tr><td>Result</td>
       <td>−61% outside (2022–26)</td>
       <td>−22% outside (2024–26), count method changed</td>
@@ -227,13 +247,53 @@ th { font-weight: 600; background: var(--code); }
 </div>
 <p class="note">The cities count differently. Denver's 2025 and 2026 counts fell on freezing nights, San Francisco moved its count to the morning, and the housing-exit figures use different denominators (people served, people who left, program participants).</p>
 
+<h2 id="tiny-homes">What a tiny home costs to run, city by city</h2>
+<p>Seattle runs a tiny home for about <b>$35,000 a year</b>, near the bottom of the West Coast cities that publish a figure. City averages for staffed villages run $33,000–51,000 a home, because they all keep staff on site around the clock. The villages that cost far less are run by their residents.</p>
+<div class="tbl">
+<table class="rank">
+  <thead><tr><th>City</th><th>Cost per tiny home per year</th><th>What the figure is</th></tr></thead>
+  <tbody>
+    <tr><td>Portland<span>Villages and pod sites</span></td>
+      <td class="cost"><div class="bar" style="width:100%"></div><b>$51,000</b></td>
+      <td>Average actual cost, FY 2025. Ranges from $21,000 at a small women's village to $70,000</td></tr>
+    <tr><td>Vancouver, WA<span>Safe Stay pallet sites</span></td>
+      <td class="cost"><div class="bar" style="width:98%"></div><b>About $50,000</b></td>
+      <td>About $1M a year for 20 two-person units, 2024. Staffed 24/7</td></tr>
+    <tr><td>San Francisco<span>Mission Cabins</span></td>
+      <td class="cost"><div class="bar" style="width:97%"></div><b>About $49,000</b></td>
+      <td>City estimate of $135 a cabin a night, 2023. Staffed 24 hours, with meals</td></tr>
+    <tr><td>Los Angeles<span>19 tiny home villages</span></td>
+      <td class="cost"><div class="bar" style="width:96%"></div><b>About $49,000</b></td>
+      <td>$25,281 a bed, FY 2025–26. Most cabins have two beds</td></tr>
+    <tr><td>San José<span>Five interim housing sites</span></td>
+      <td class="cost"><div class="bar" style="width:93%"></div><b>About $47,000</b></td>
+      <td>FY 2022–23, ranging from $37,000 to $62,000 a unit. Prefab modular units, sturdier than cabins</td></tr>
+    <tr class="us"><td>Seattle<span>About 600 homes in 20 villages</span></td>
+      <td class="cost"><div class="bar" style="width:69%"></div><b>About $35,000</b></td>
+      <td>Average from a mayor's office report, 2026. Two staff on site 24/7 at villages for people with high needs</td></tr>
+    <tr><td>Denver<span>Stay-In micro-community</span></td>
+      <td class="cost"><div class="bar" style="width:66%"></div><b>About $33,500</b></td>
+      <td>$1.8M operator contract for 54 units, 2026. Meals are paid for under a separate contract</td></tr>
+    <tr class="sub"><td>Portland<span>Dignity Village, run by residents</span></td>
+      <td class="cost"><div class="bar" style="width:2%"></div><b>Under $1,000</b> a person</td>
+      <td>No paid staff on site. Residents pay $100 a month in dues, 2024</td></tr>
+  </tbody>
+</table>
+</div>
+<ul>
+  <li><b>Seattle is not overpaying compared with other cities.</b> It runs a tiny home for about two-thirds of what Portland, San Francisco and Los Angeles spend.</li>
+  <li><b>Everyone pays for the same thing: staff on site 24 hours a day.</b> A few small sites run cheaper, like Portland's $21,000 women's village, but no city's average is much below $33,000. The savings in pledge item 3 come from changing that staffing model, not from catching up with a cheaper city.</li>
+  <li><b>Not every city uses tiny homes.</b> San Diego uses its staffed tent sites (about $10,000 a tent) and indoor shelters. Houston puts people straight into apartments. Austin's Esperanza Community is a state-sanctioned camp of shelters, with no published cost per unit.</li>
+</ul>
+<p class="note">The figures aren't measured the same way. Portland's are full actual costs, Denver's covers only the operator contract, and San Francisco's is an estimate made before opening. Los Angeles and Vancouver cabins usually sleep two, while most of Seattle's sleep one, so we compare per home, not per bed. San José's figures are from 2022–23.</p>
+
 <h2 id="seattle">The better strategy for Seattle</h2>
 <p>Take <b>Denver's offer and ladder</b>, <b>San Diego's always-banned zones</b> and <b>San Francisco's tools for drugs and vehicles</b>:</p>
 <ol>
   <li><b>Write the places into law, banned at all times.</b> In San Diego, a ban that applies only when shelter is open switches off whenever the shelter fills.</li>
   <li><b>Make the offer a room with a door that locks.</b> About 18% of Denver's people reached permanent housing, against about 10% from San Diego's tents.</li>
   <li><b>Use a staffed lot only as a bridge</b>, to clear a school block while rooms open.</li>
-  <li><b>Climb a ladder and hold the block.</b> People come back unless the block stays closed and outreach returns.</li>
+  <li><b>Publish an <a href="denver-plan.html#ladder">enforcement ladder</a> with a clear path to housing, recovery, or court, and hold the block.</b> People come back unless the block stays closed and outreach returns.</li>
   <li><b>Borrow San Francisco's police drop-off unit and RV ladder.</b> Vehicles are about a quarter of Seattle's unsheltered people.</li>
   <li><b>Report what the others didn't:</b> deaths, returns to the street and a one-year housing check, every month.</li>
 </ol>
@@ -249,6 +309,7 @@ th { font-weight: 600; background: var(--code); }
   <li>Denver: Denver Auditor, All In Mile High audit, March 2026 <a href="https://www.denvergov.org/files/assets/public/v/5/auditor/documents/audit-services/audit-reports/2026/all-in-mile-high_march-2026.pdf">denvergov.org</a>; All In Mile High dashboard <a href="https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Mayors-Office/Programs-and-Initiatives/Homelessness-Initiative/All-In-Mile-High-Dashboard">denvergov.org</a>. Everything else for Denver is on <a href="denver-vs-seattle.html">Denver vs. Seattle</a> and <a href="denver-plan.html">the Denver plan</a>, with their sources.</li>
   <li>San Francisco: the city's announcement of the 2026 count <a href="https://www.sf.gov/news-mayor-lurie-announces-san-francisco-has-reached-lowest-level-of-unsheltered-homelessness-in-15-years">sf.gov</a>; SF Standard on the count, May 12, 2026 <a href="https://sfstandard.com/2026/05/12/san-francisco-point-in-time-homeless-count/">sfstandard.com</a>; Mission Local on beds opened and closed, May 2026 <a href="https://missionlocal.org/2026/05/sf-lurie-shelter-beds/">missionlocal.org</a>; the fentanyl emergency ordinance <a href="https://www.sf.gov/mayor-lurie-signs-fentanyl-state-of-emergency-ordinance-announces-plan-for-247-police-friendly-stabilization-center">sf.gov</a>; Mission Local on 822 Geary <a href="https://missionlocal.org/2025/04/sf-opens-geary-crisis-stabilization-center/">missionlocal.org</a>; KQED on the RESET center <a href="https://www.kqed.org/news/12081889/not-a-jail-not-an-emergency-room-what-is-daniel-luries-new-reset-center">kqed.org</a>; KQED on the RV law <a href="https://www.kqed.org/news/12048307/sf-just-voted-to-ban-long-term-rv-parking-what-happens-to-the-people-inside">kqed.org</a>; GrowSF on tents and RVs, June 2026 <a href="https://growsf.org/news/2026-06-12-tents-and-rvs-fall/">growsf.org</a>; SF Standard on the "forever sweep," Feb 2026 <a href="https://sfstandard.com/2026/02/04/forever-sweep-san-francisco-preps-homeless-migration-super-bowl/">sfstandard.com</a>; KQED on the court lifting limits on sweeps <a href="https://www.kqed.org/news/11993312/court-lifts-restrictions-on-sf-encampment-sweeps">kqed.org</a>; the city's contract overhaul after the grand jury <a href="https://www.sf.gov/news-mayor-lurie-launches-sweeping-effort-to-redo-all-city-homelessness-contracts-with-focus-on-outcomes-accountability-for-results">sf.gov</a>.</li>
   <li>San Diego: Municipal Code §63.0401–63.0406 <a href="https://docs.sandiego.gov/municode/MuniCodeChapter06/Ch06Art03Division04.pdf">sandiego.gov</a>; City Auditor, Unsafe Camping Ordinance audit, April 2026 <a href="https://www.sandiego.gov/sites/default/files/2026-04/unsafe-camping-ordinance-highlights.pdf">sandiego.gov</a>; Safe Sleeping Program <a href="https://www.sandiego.gov/homelessness-strategies-and-solutions/services/safe-sleeping-program">sandiego.gov</a>; NBC San Diego on the 2024 expansion <a href="https://www.nbcsandiego.com/news/local/san-diego-city-council-approves-expansion-balboa-park-safe-sleeping-sites/3637856/">nbcsandiego.com</a>; Voice of San Diego on housing exits, May 2024 <a href="https://voiceofsandiego.org/2024/05/14/how-san-diegos-safe-sleeping-sites-are-faring-on-housing/">voiceofsandiego.org</a>; Voice of San Diego on deaths, Oct 2026 <a href="https://voiceofsandiego.org/2026/10/14/council-candidates-say-changes-needed-after-safe-sleeping-deaths/">voiceofsandiego.org</a>; CalMatters on the ban and the sites, April 2024 <a href="https://calmatters.org/housing/homelessness/2024/04/homeless-encampment-ban/">calmatters.org</a>.</li>
+  <li>Tiny home costs: Seattle, KOMO citing a mayor's office report, April 2026 <a href="https://komonews.com/news/local/western-washington-homeless-vote-poll-how-confident-are-you-that-the-city-of-seattle-will-adequately-address-homelessness-issues">komonews.com</a>; Portland, Multnomah County Adult Shelter Review FY 2025 <a href="https://hsd.multco.us/wp-content/uploads/2026/01/Adult-Shelter-Review-FY25.pdf">multco.us</a>; Portland's Dignity Village, Willamette Week, March 2024 <a href="https://www.wweek.com/news/2024/03/27/portlands-big-bet-on-pod-camps-comes-with-a-hefty-price-tag/">wweek.com</a>; Vancouver, City of Kirkland issue paper on tiny house programs, October 2024 <a href="https://kirklandwa.gov/files/sharedassets/public/v/1/finance-and-administration/budget-documents/25-26-budget/2025-2026-overview-of-tiny-house-program-models-issue-paper.pdf">kirklandwa.gov</a>; San Francisco, Mission Cabins FAQ <a href="https://hsh.archive.sf.gov/wp-content/uploads/2023/10/Updated-Mission-Cabin-FAQ-ENG.pdf">sf.gov</a>; Los Angeles, City Administrative Officer memo, April 2026 <a href="https://cityclerk.lacity.org/onlinedocs/2023/23-1022-S18_misc_4-14-26.pdf">lacity.org</a>; San José, city figures in SV@Home, February 2024 <a href="https://siliconvalleyathome.org/wp-content/uploads/2024/02/Feb-2024-PIA.pdf">siliconvalleyathome.org</a>; Denver, Colorado Politics, November 2025 <a href="https://www.coloradopolitics.com/2025/11/28/denver-council-to-consider-400-million-in-infrastructure-contracts">coloradopolitics.com</a>; San Diego FY 2027 shelter budget <a href="https://www.sandiego.gov/sites/default/files/2026-06/2026-6-16-city-of-san-diego-funds-2-700-sheltering-options-for-individuals-experiencing-homelessness-in-fy-2027-budget.pdf">sandiego.gov</a>.</li>
 </ul>
 </main>
 <script>
