@@ -6,7 +6,7 @@
     { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "The Problem", pages: [{ name: "The problem", href: "public-spaces.html" }] },
     // The map's own pill buttons switch between its tabs, so it needs no sub-nav.
-    { name: "Maps", pages: [{ name: "Maps", href: "map.html" }] },
+    { name: "The Details", pages: [{ name: "The details", href: "map.html" }] },
     { name: "How to Help", pages: [{ name: "How to help", href: "help.html" }] },
     // Footer sections: useful background, but not part of the main argument. Their pages still get a sub-nav.
     { name: "Other cities", footer: true, hub: true, pages: [
