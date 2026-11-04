@@ -55,9 +55,11 @@
 .pm-back { font: inherit; font-size: 14px; margin-top: 12px; background: none; border: 0; padding: 0; color: var(--camp); cursor: pointer; }
 .leaflet-tooltip.pm-pin { background: var(--fg); color: var(--bg); border: 0; border-radius: 6px; font-weight: 600; font-size: 13px; padding: 3px 8px; box-shadow: none; }
 .leaflet-tooltip.pm-pin::before { display: none; }`;
-  // The Look at buttons that step through public places one at a time: [key in D.near, button, what one of them is].
-  // The parks are the playgrounds the count uses, most of them named for the park they're in.
-  const STOPS = [["schools", "Schools", "school"], ["playgrounds", "Parks", "playground"]];
+  // The Look at buttons that step through places one at a time: [key, button, what one of them is]. "top" steps through
+  // the biggest dots on the map; the rest step through D.near. The parks are the playgrounds the count uses, most of them
+  // named for the park they're in.
+  const STOPS = [["top", "Most reported", "place"], ["schools", "Schools", "school"], ["playgrounds", "Parks", "playground"]];
+  const TOP_N = 25;
   const style = document.createElement("style");
   style.textContent = CSS;
   document.head.appendChild(style);
@@ -69,8 +71,23 @@
     lines.push(p.k ? `In a ${SHORT[p.k]}${p.near ? `: ${p.near}` : ""}` : "Not in a protected public place");
     return lines.join("<br>");
   };
-  const rCamp = p => 2.5 + Math.sqrt(p.reports) * 0.6;
-  const rDrug = p => 5 + Math.sqrt(p.calls + p.od) * 1.4;
+  // An encampment's dot grows with its reports, so the most reported camps are the biggest. Calls and reports come in at
+  // very different volumes (about 1 call for every 22 reports), so a drug zone isn't sized by its count. It gets the size
+  // of the encampment at the same rank: a drug zone busier than 90% of drug zones is as big as an encampment with more
+  // reports than 90% of encampments.
+  // Grows a little faster than area-for-area, so the most reported places stand well apart from the typical one.
+  const rReports = n => 2 + 0.8 * n ** 0.6;
+  const rCamp = p => rReports(p.reports);
+  const campReports = camps.map(p => p.reports).sort((a, b) => a - b);
+  const drugLoads = drugs.map(p => p.calls + p.od);
+  const rDrug = p => {
+    const v = p.calls + p.od;
+    const rank = (drugLoads.filter(x => x < v).length + drugLoads.filter(x => x === v).length / 2) / drugLoads.length;
+    return rReports(campReports[Math.min(campReports.length - 1, Math.floor(rank * campReports.length))]);
+  };
+  // The most reported places are the biggest dots, so encampments and drug zones rank on the same scale as their sizes.
+  const rPlace = p => Math.max(p.camp ? rCamp(p) : 0, p.drug ? rDrug(p) : 0);
+  const TOP = P.filter(p => p.camp || p.drug).sort((a, b) => rPlace(b) - rPlace(a)).slice(0, TOP_N);
   const toLatLngs = g => (g.type === "Polygon" ? [g.coordinates] : g.coordinates).map(poly => poly.map(r => r.map(([x, y]) => [y, x])));
 
   // panel and legend are elements the map writes into; onSelect is called with the place picked (or null).
@@ -88,16 +105,16 @@
     function drawMap() {
       dots.clearLayers();
       markers.clear();
-      // Encampments first, then drug zones on top; within each, biggest first so small dots stay clickable.
+      // A place that's both gets both dots, one inside the other. Biggest first, so smaller dots sit on top and stay clickable.
       const layers = [
-        ...P.filter(p => show.camp && p.camp && !(show.drug && p.drug)).sort((a, b) => b.reports - a.reports).map(p => [p, "camp"]),
-        ...P.filter(p => show.drug && p.drug).sort((a, b) => (b.calls + b.od) - (a.calls + a.od)).map(p => [p, "drug"]),
-      ];
-      layers.forEach(([p, kind]) => {
+        ...P.filter(p => show.camp && p.camp).map(p => [p, "camp", rCamp(p)]),
+        ...P.filter(p => show.drug && p.drug).map(p => [p, "drug", rDrug(p)]),
+      ].sort((a, b) => b[2] - a[2]);
+      layers.forEach(([p, kind, radius]) => {
         const inside = !!p.k, sel = p === selected;
         const mk = L.circleMarker([p.lat, p.lng], {
-          radius: kind === "drug" ? rDrug(p) : rCamp(p),
-          color: sel ? css("--ring") : css("--bg"), weight: sel ? 3 : kind === "drug" ? 1.5 : 0.8, opacity: inside ? 1 : 0.5,
+          radius,
+          color: sel ? css("--ring") : css("--bg"), weight: sel ? 3 : p.camp && p.drug ? 1.5 : 0.8, opacity: inside ? 1 : 0.5,
           fillColor: css(kind === "drug" ? "--drug" : "--camp"), fillOpacity: inside ? 0.85 : 0.3,
         });
         mk.bindTooltip(tipFor(p), { className: "tip", direction: "top" });
@@ -109,7 +126,7 @@
       legend.innerHTML = [
         show.camp && `<span><i class="pm-dot" style="background:var(--camp)"></i>Encampment: ${D.rules.camp_min}+ reports on ${D.rules.camp_days}+ days</span>`,
         show.drug && `<span><i class="pm-dot" style="background:var(--drug)"></i>Drug zone: ${D.rules.drug_min}+ drug or overdose calls on ${D.rules.drug_days}+ days</span>`,
-        (show.camp || show.drug) && `<span>Bigger dot, more reports or calls</span>`,
+        (show.camp || show.drug) && `<span>Bigger dot, more ${show.camp && show.drug ? "reports or calls, compared with its own kind" : show.camp ? "reports" : "calls"}</span>`,
         (show.camp || show.drug) && `<span><i class="pm-dot" style="background:var(${faded});opacity:.35"></i>Faded: outside the public places</span>`,
         `<span><i class="pm-keysw"></i>Public places the pledge protects</span>`,
       ].filter(Boolean).join("");
@@ -129,7 +146,11 @@
           </dl>`;
         return;
       }
-      panel.innerHTML = `<h3>${p.name}</h3>
+      panel.innerHTML = placeHtml(p);
+    }
+
+    function placeHtml(p) {
+      return `<h3>${p.name}</h3>
         <div class="sub">${[p.hood, `District ${p.d}`].filter(Boolean).join(" · ")}</div>
         <div class="tags">${p.camp ? `<span class="pm-tag camp">Encampment</span>` : ""}${p.drug ? `<span class="pm-tag drug">Drug zone</span>` : ""}${p.k ? "" : `<span class="pm-tag out">Outside public places</span>`}</div>
         <div class="sub" style="color:var(--fg)">${p.k ? `In a ${SHORT[p.k]}${p.near ? `: <b>${p.near}</b>` : ""}` : "Not in a protected public place"}</div>
@@ -153,7 +174,7 @@
       if (mk) mk.openTooltip();
     }
 
-    // ---------- stepping through schools and parks with an encampment or drug zone ----------
+    // ---------- stepping through the most reported places, and schools and parks with an encampment or drug zone ----------
     // Next and Previous sit in the panel and on the map, so on a phone the map alone is enough to step through.
     const Step = L.Control.extend({ options: { position: "topright" }, onAdd() {
       const el = L.DomUtil.create("div", "pm-step");
@@ -162,14 +183,25 @@
     } });
     const stopLayer = L.layerGroup(), stepper = new Step();
     let stop = null, stopButtons = null, fitAll = () => {};  // stop: { k, i }, which kind is being stepped through and which one
+    const stopList = k => k === "top" ? TOP : D.near[k];
     function pickStop(k, i) {
       stop = { k, i };
+      if (k === "top") {
+        // One place at a time, ringed like a picked dot.
+        const p = TOP[i];
+        selected = p;
+        drawMap(); drawStop();
+        onSelect(p);
+        map.flyTo([p.lat, p.lng], 16, { duration: 0.6 });
+        return;
+      }
+      if (selected) { selected = null; drawMap(); onSelect(null); }
       drawStop();
       // The school or park and every encampment and drug zone counted for it, with room around them.
       const s = D.near[k][i];
       map.flyToBounds([[s.lat, s.lng], ...s.p.map(j => [P[j].lat, P[j].lng])], { padding: [60, 60], maxZoom: 16, duration: 0.6 });
     }
-    const stepStop = d => { if (stop && D.near[stop.k][stop.i + d]) pickStop(stop.k, stop.i + d); };
+    const stepStop = d => { if (stop && stopList(stop.k)[stop.i + d]) pickStop(stop.k, stop.i + d); };
     function leaveStop() {
       if (!stop) return;
       stop = null;
@@ -180,28 +212,37 @@
       stopLayer.clearLayers();
       stopButtons?.querySelectorAll("[data-stop]").forEach(b => b.setAttribute("aria-pressed", stop?.k === b.dataset.stop));
       if (!stop) { map.removeLayer(stopLayer); if (stepper._map) stepper.remove(); return; }
-      const list = D.near[stop.k], s = list[stop.i], n = list.length, one = STOPS.find(([k]) => k === stop.k)[2];
-      const places = s.p.map(j => P[j]);
-      stopLayer.addTo(map);
-      L.circleMarker([s.lat, s.lng], { radius: 7, color: css("--bg"), weight: 2, fillColor: css("--fg"), fillOpacity: 1, interactive: false })
-        .bindTooltip(s.n, { permanent: true, direction: "right", offset: [8, 0], className: "pm-pin" }).addTo(stopLayer);
+      const list = stopList(stop.k), s = list[stop.i], n = list.length, one = STOPS.find(([k]) => k === stop.k)[2];
       if (!stepper._map) stepper.addTo(map);
       stepper.getContainer().innerHTML = `<button aria-label="Previous ${one}" ${stop.i ? "" : "disabled"}>‹</button><span>${stop.i + 1} of ${n}</span>` +
         `<button aria-label="Next ${one}" ${stop.i < n - 1 ? "" : "disabled"}>›</button>`;
       const [prev, next] = stepper.getContainer().querySelectorAll("button");
       prev.onclick = () => stepStop(-1); next.onclick = () => stepStop(1);
+      const tnav = `<div class="pm-tnav"><button data-d="-1" ${stop.i ? "" : "disabled"}>← Previous</button><span>${stop.i + 1} of ${n}</span>
+          <button data-d="1" ${stop.i < n - 1 ? "" : "disabled"}>Next →</button></div>`;
+      const back = `<button class="pm-back" data-all>← Whole city</button>`;
+      const wire = () => {
+        panel.querySelectorAll(".pm-tnav button").forEach(b => b.onclick = () => stepStop(+b.dataset.d));
+        panel.querySelector("[data-all]").onclick = () => { leaveStop(); fitAll(); };
+      };
+      if (stop.k === "top") {
+        panel.innerHTML = tnav + `<div class="sub">The ${n} most reported places, biggest dot first: encampments by their reports, drug zones by their calls next to other drug zones.</div>` +
+          placeHtml(s) + back;
+        wire();
+        return;
+      }
+      const places = s.p.map(j => P[j]);
+      stopLayer.addTo(map);
+      L.circleMarker([s.lat, s.lng], { radius: 7, color: css("--bg"), weight: 2, fillColor: css("--fg"), fillOpacity: 1, interactive: false })
+        .bindTooltip(s.n, { permanent: true, direction: "right", offset: [8, 0], className: "pm-pin" }).addTo(stopLayer);
       const nc = places.filter(p => p.camp).length, nd = places.filter(p => p.drug).length;
       const what = [nc && plural(nc, "encampment"), nd && plural(nd, "open-air drug zone")].filter(Boolean).join(" and ");
-      panel.innerHTML = `
-        <div class="pm-tnav"><button data-d="-1" ${stop.i ? "" : "disabled"}>← Previous</button><span>${stop.i + 1} of ${n}</span>
-          <button data-d="1" ${stop.i < n - 1 ? "" : "disabled"}>Next →</button></div>
+      panel.innerHTML = tnav + `
         <h3>${s.n}</h3>
         <div class="sub">${one[0].toUpperCase() + one.slice(1)}. ${what} within 300 feet, ${span}. Tap one to see what was reported there.</div>
         <div class="pm-nlist">${places.map((p, i) => `<button data-i="${i}"><b>${p.name}</b><span class="tags">${p.camp ? `<span class="pm-tag camp">Encampment</span>` : ""}${p.drug ? `<span class="pm-tag drug">Drug zone</span>` : ""}</span>
-          <div class="sub">${[p.camp && plural(p.reports, "encampment report"), p.drug && plural(p.calls + p.od, "drug or overdose call")].filter(Boolean).join(", ")}</div></button>`).join("")}</div>
-        <button class="pm-back" data-all>← Whole city</button>`;
-      panel.querySelectorAll(".pm-tnav button").forEach(b => b.onclick = () => stepStop(+b.dataset.d));
-      panel.querySelector("[data-all]").onclick = () => { leaveStop(); fitAll(); };
+          <div class="sub">${[p.camp && plural(p.reports, "encampment report"), p.drug && plural(p.calls + p.od, "drug or overdose call")].filter(Boolean).join(", ")}</div></button>`).join("")}</div>` + back;
+      wire();
       panel.querySelectorAll(".pm-nlist button").forEach(b => b.onclick = () => {
         const { k, i } = stop;
         select(places[+b.dataset.i], true);
@@ -228,7 +269,7 @@
       select,
       drawPanel,
       fitCity: () => map.fitBounds(cityBounds, { padding: [10, 10] }),
-      // The Look at buttons: Schools and Parks step through them one at a time, then the whole city and the busiest areas.
+      // The Look at buttons: Most reported, Schools and Parks step through places one at a time, then the whole city and the busiest areas.
       // fit shows the whole city. The arrow keys step and Escape goes back to the whole city while the map is on.
       lookAt(el, fit) {
         fitAll = fit;

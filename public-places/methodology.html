@@ -6,7 +6,7 @@
 <title>Methodology</title>
 <meta name="description" content="How we count the people sleeping outside in Seattle, its encampments and its open-air drug zones: definitions, calculations, sources and the raw data.">
 <script src="assets/problem-data.js"></script>
-<script src="assets/problem-map.js?v=2"></script>
+<script src="assets/problem-map.js?v=3"></script>
 <style>
   /* The same palette and type as budget.html. Seattle = blue (--s1). */
   :root {
@@ -251,6 +251,7 @@ $("notes").innerHTML = [
   `<b>Overdose calls</b> are Seattle Fire's "Medic Response- Overdose" dispatches in its <a href="${D.links.fire}" target="_blank" rel="noopener">Real Time Fire 911 Calls</a>. Many overdoses are dispatched as a general medical call, so this is an undercount. King County's overdose dashboards are by zip code, too coarse to tell 3rd and Pine from Pike Place, so they aren't used here.`,
   `<b>Public places</b> are the pledge's three: 300 feet around schools and licensed child care; parks, counted for now as 300 feet around playgrounds, from OpenStreetMap, which may miss a few; and busy sidewalks, meaning the business districts in the city's zoning (the Downtown zones, which take in Pike Place Market and the International District, plus Neighborhood Commercial and Seattle Mixed zones, which take in Capitol Hill and downtown Ballard). The whole zone counts, not only its sidewalks. Parks away from a playground aren't counted. A place is in one when its dot is.`,
   `<b>Locations.</b> Each dot sits in the middle of the reports and calls that made its place, never at one of them, and places are named by hundred block. SPD publishes its calls by hundred block or intersection too.`,
+  `<b>Dot sizes.</b> An encampment's dot grows with its number of reports, so the most reported camps are the biggest. There are about ${Math.round(T.reports / (T.calls + T.overdoses))} encampment reports for every drug or overdose call, so the two counts can't share a scale. A drug zone's dot is sized by its rank instead: one with more calls than 90% of drug zones gets the size of an encampment with more reports than 90% of encampments. Where a place is both, the smaller dot sits inside the bigger one.`,
   `Built ${day(D.built)}, ${D.built.slice(0, 4)}, with data from ${day(D.start)} through ${day(D.end)}, ${D.end.slice(0, 4)}.`,
 ].map(t => `<li>${t}</li>`).join("");
 
