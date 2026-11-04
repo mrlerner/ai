@@ -6,6 +6,8 @@
 <title>Seattle Public Places Map</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/problem-data.js"></script>
+<script src="assets/problem-map.js"></script>
 <style>
 :root {
   color-scheme: light;
@@ -37,6 +39,8 @@ a { color: var(--civic); }
 .views { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--chip); margin-bottom: 14px; }
 .views button { font: inherit; font-size: 15px; font-weight: 600; border: 0; background: none; color: var(--muted); padding: 7px 16px; border-radius: 999px; cursor: pointer; }
 .views button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.modes { margin: -4px 0 14px; }
+.modes button { font-size: 14.5px; padding: 6px 14px; }
 .layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 16px; }
 #map { height: 640px; border-radius: 10px; border: 1px solid var(--line); background: var(--chip); }
 .panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; font-size: 15px; align-self: start; }
@@ -182,14 +186,13 @@ tr.total td { font-weight: 600; }
   <div class="kicker">Prototype · Public Places Pledge</div>
 
   <div class="views" role="group" aria-label="Map view">
-    <button data-v="protected" aria-pressed="true">Protected public places</button>
-    <button data-v="allowed" aria-pressed="false">Where camping is allowed</button>
-    <button data-v="existing" aria-pressed="false">Villages and hotels today</button>
-    <button data-v="villages" aria-pressed="false">Potential village sites</button>
-    <button data-v="hotels" aria-pressed="false">Hotels</button>
-    <button data-v="top" aria-pressed="false">Viable village sites</button>
-    <button data-v="tophotels" aria-pressed="false">Viable hotels</button>
+    <button data-v="problem" data-views="problem" aria-pressed="true">Encampments and drug zones</button>
+    <button data-v="top" data-views="top villages" aria-pressed="false">Available tiny home land</button>
+    <button data-v="tophotels" data-views="tophotels hotels" aria-pressed="false">Available hotels</button>
+    <button data-v="existing" data-views="existing" aria-pressed="false">Existing villages and hotels</button>
   </div>
+  <div class="seg modes" id="modes" hidden></div>
+  <div class="vctl" id="pctl" hidden></div>
   <div class="vctl" id="vctl" hidden></div>
   <div class="vctl" id="hctl" hidden></div>
   <div class="tsum" id="topSummary" hidden></div>
@@ -198,6 +201,7 @@ tr.total td { font-weight: 600; }
     <div>
       <div id="map" role="img" aria-label="Map of Seattle's protected public places and the areas where camping would be allowed"></div>
       <div class="examples" id="examples"></div>
+      <div id="plegend"></div>
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
@@ -213,6 +217,11 @@ tr.total td { font-weight: 600; }
 
   <h2>How the map is drawn</h2>
   <ul class="notes" id="notes"></ul>
+  </section>
+
+  <section id="problemSection" hidden>
+  <h2>What the dots are</h2>
+  <ul class="notes" id="pnotes"></ul>
   </section>
 
   <section id="existingSection" hidden>
@@ -300,9 +309,9 @@ const pct = (a, b) => `${Math.round(100 * a / b)}%`;
 const fmt = n => n.toLocaleString("en-US");
 const sq = n => n >= 10 ? n.toFixed(0) : n.toFixed(1);
 const MARK_NAMES = { school: "School", childcare: "Child care", library: "Library", community: "Community center", station: "Light rail" };
-let view = "protected", showPlaces = false;
+let view = "problem", showPlaces = false;
 // The village, hotel and top site tabs are explorers: their own controls and dots, without the zone layers.
-const explorer = () => view === "existing" || view === "villages" || view === "hotels" || view === "top" || view === "tophotels";
+const explorer = () => view === "problem" || view === "existing" || view === "villages" || view === "hotels" || view === "top" || view === "tophotels";
 const hidden = new Set();
 
 // ---------- map ----------
@@ -381,6 +390,7 @@ map.on("zoomend", syncMarks);
 
 // ---------- panel ----------
 function drawPanel() {
+  if (view === "problem") return;
   if (view === "existing") return drawExistingPanel();
   if (view === "villages") return drawVillagePanel();
   if (view === "hotels") return drawHotelPanel();
@@ -423,6 +433,7 @@ function drawPanel() {
 }
 
 function drawCallout() {
+  if (view === "problem") return drawProblemCallout();
   if (view === "existing") return drawExistingCallout();
   if (view === "villages") return drawVillageCallout();
   if (view === "hotels") return drawHotelCallout();
@@ -1201,23 +1212,64 @@ function drawExistingTable() {
 $("enotes").innerHTML = [
   `<b>Villages:</b> the tiny house villages, Pallet shelter villages and sanctioned tent camps open in Seattle in November 2026, from the operators' and the city's own pages. It's our own list, so a new or small site may be missing. Each dot sits at the village's address point from King County's address locator. Ones marked "approximate spot" were placed from the street's address range.`,
   `<b>Hotels:</b> King County's <a href="https://aqua.kingcounty.gov/council/agendas/RPC/20260930-RPC-packet.pdf" target="_blank" rel="noopener">2025 Health Through Housing annual report</a> (Appendix B) for which buildings the county owns and how many housing units each has. The Civic Hotel is from <a href="https://scheerpost.com/2025/10/07/seattle-spent-millions-on-hotel-rooms-to-shelter-unhoused-people-then-it-stopped-filling-them/" target="_blank" rel="noopener">ProPublica and KUOW's reporting</a>.`,
-  `<b>Not shown:</b> supportive housing in apartment buildings, group shelters, and safe parking lots. See the <a href="#villages">Potential village sites</a> tab for villages that have closed.`,
+  `<b>Not shown:</b> supportive housing in apartment buildings, group shelters, and safe parking lots. Villages that have closed are on the <a href="#villages">Available tiny home land</a> tab, under "All land, with sliders."`,
 ].map(t => `<li>${t}</li>`).join("");
 
+// ---------- encampments and drug zones ----------
+// The same map as the Public spaces page, from assets/problem-map.js and assets/problem-data.js.
+const pm = problemMap(map, { panel: $("panel"), legend: $("plegend") });
+const PM = problemMap.data;
+$("pctl").innerHTML = `<div class="vgroup"><div class="lab">Show</div><div class="seg" id="pShow">
+    <button data-show="camp" aria-pressed="true">Encampments</button><button data-show="drug" aria-pressed="true">Drug zones</button></div></div>
+  <div class="vgroup" style="grid-column:span 3"><div class="lab">Look at</div><div class="seg" id="pViews"></div></div>`;
+pm.views($("pViews"), () => map.fitBounds(SEATTLE));
+$("pViews").querySelectorAll("button").forEach(b => b.className = "");
+$("pShow").querySelectorAll("button").forEach(b => b.onclick = () => {
+  b.setAttribute("aria-pressed", !pm.show[b.dataset.show]);
+  pm.add({ [b.dataset.show]: !pm.show[b.dataset.show] });
+});
+function drawProblem() {
+  // problem-map.js styles the panel it writes into; the other tabs write their own panel.
+  $("panel").classList.toggle("pm-panel", view === "problem");
+  view === "problem" ? pm.add() : pm.remove();
+}
+function drawProblemCallout() {
+  $("callout").innerHTML = `<p><b>${PM.fmt(PM.campsIn.length)} encampments and ${PM.fmt(PM.drugsIn.length)} open-air drug zones were in Seattle's schools, playgrounds and business districts</b> from ${PM.span}, out of ${PM.fmt(PM.camps.length)} and ${PM.fmt(PM.drugs.length)} citywide. The shaded areas are the three kinds of public place the pledge protects. Counts by kind of place and by council district, and the busiest drug zones, are on the <a href="public-spaces.html">public spaces page</a>.</p>`;
+}
+$("pnotes").innerHTML = [
+  `<b>Encampments:</b> places about 100 meters across with ${PM.D.rules.camp_min} or more of the city's Unauthorized Encampment Reports on ${PM.D.rules.camp_days} or more days. A report means a neighbor saw a camp, not that the city confirmed one.`,
+  `<b>Open-air drug zones:</b> places with ${PM.D.rules.drug_min} or more drug calls from the public to police and overdose calls to Seattle Fire together, on ${PM.D.rules.drug_days} or more days.`,
+  `<b>Public places:</b> 300 feet around schools and licensed child care, 300 feet around playgrounds, and business districts from the city's zoning. Parks away from a playground aren't counted, since some can allow camping.`,
+  `How each number is built, and the raw city data behind it, are on the <a href="public-spaces.html">public spaces page</a>.`,
+].map(t => `<li>${t}</li>`).join("");
+
+// The two "available" tabs each open on a ranked shortlist, with a switch to every site and the sliders.
+const MODES = { top: [["top", "Best sites, ranked"], ["villages", "All land, with sliders"]],
+  tophotels: [["tophotels", "Best hotels, ranked"], ["hotels", "All hotels, with sliders"]] };
+function drawModes() {
+  const tab = [...document.querySelectorAll(".views button")].find(b => b.dataset.views.split(" ").includes(view));
+  const modes = MODES[tab.dataset.v];
+  $("modes").hidden = !modes;
+  if (!modes) return;
+  $("modes").innerHTML = modes.map(([v, name]) => `<button data-m="${v}" aria-pressed="${v === view}">${name}</button>`).join("");
+  $("modes").querySelectorAll("button").forEach(b => b.onclick = () => { location.hash = b.dataset.m; });
+}
+
 function draw() {
-  document.querySelectorAll(".views button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === view));
+  document.querySelectorAll(".views button").forEach(b => b.setAttribute("aria-pressed", b.dataset.views.split(" ").includes(view)));
+  drawModes();
   useTop();
-  const v = view === "villages", h = view === "hotels", t = onTop(), e = view === "existing";
-  $("banSection").hidden = v || h || t || e; $("villageSection").hidden = !v; $("hotelSection").hidden = !h; $("topSection").hidden = !t;
-  $("existingSection").hidden = !e;
-  $("examples").hidden = v || h || t || e; $("callout").hidden = t;
+  const v = view === "villages", h = view === "hotels", t = onTop(), e = view === "existing", pr = view === "problem";
+  $("banSection").hidden = true; $("villageSection").hidden = !v; $("hotelSection").hidden = !h; $("topSection").hidden = !t;
+  $("existingSection").hidden = !e; $("problemSection").hidden = !pr; $("pctl").hidden = !pr; $("plegend").hidden = !pr;
+  $("examples").hidden = true; $("callout").hidden = t;
   $("topSummary").hidden = !t;
   if (t) drawTopSummary();
   $("vctl").hidden = !v; $("hctl").hidden = !h;
   if (v) drawVillageControls();
   if (h) drawHotelControls();
   if (pin) { map.removeLayer(pin); pin = null; }
-  drawZones(); drawPlaces(); drawExisting(); drawVillages(); drawHotels(); drawTop(); drawPanel(); drawCallout(); drawStepper(); syncMarks();
+  drawZones(); drawPlaces(); drawProblem(); drawExisting(); drawVillages(); drawHotels(); drawTop(); drawPanel(); drawCallout(); drawStepper(); syncMarks();
   if (e) drawExistingTable();
   if (v) drawVillageTable();
   if (h) drawHotelTable();
@@ -1225,7 +1277,9 @@ function draw() {
 }
 // The URL hash names the tab (#allowed, #villages and so on), so the site nav and shared links can open any one of them.
 // #top/12 opens the top sites tab on site 12, and #tophotels/3 the top hotels tab on hotel 3.
-const viewFromHash = () => [...document.querySelectorAll(".views button")].find(b => "#" + b.dataset.v === location.hash.split("/")[0])?.dataset.v || "protected";
+// The old protected and allowed tabs (#protected, #allowed) now open on encampments and drug zones.
+const VIEWS = ["problem", "top", "villages", "tophotels", "hotels", "existing"];
+const viewFromHash = () => VIEWS.find(v => "#" + v === location.hash.split("/")[0]) || "problem";
 // The ranked tabs open on their first site; #top/all and #tophotels/all open the overview.
 const pickFromHash = () => {
   useTop();

@@ -9,12 +9,10 @@
     ] },
     { name: "The Pledge", pages: [{ name: "The pledge", href: "index.html" }] },
     { name: "Maps", pages: [
-      { name: "Where camping would be banned", href: "map.html" },
-      { name: "Villages and hotels today", href: "map.html#existing" },
-      { name: "Village sites", href: "map.html#villages" },
-      { name: "Hotels", href: "map.html#hotels" },
-      { name: "Viable village sites", href: "map.html#top" },
-      { name: "Viable hotels", href: "map.html#tophotels" },
+      { name: "Encampments and drug zones", href: "map.html" },
+      { name: "Available tiny home land", href: "map.html#top" },
+      { name: "Available hotels", href: "map.html#tophotels" },
+      { name: "Existing villages and hotels", href: "map.html#existing" },
     ] },
     { name: "How to Help", pages: [{ name: "How to help", href: "help.html" }] },
     // Footer sections: useful background, but not part of the main argument. Their pages still get a sub-nav.
@@ -76,7 +74,9 @@
   // Which page this is: the file name (or index.html for a bare folder URL), plus the hash for pages with tabs.
   const current = () => {
     const file = location.pathname.split("/").pop() || "index.html";
-    return file === "map.html" && ["#existing", "#villages", "#hotels", "#top", "#tophotels"].includes(location.hash.split("/")[0]) ? "map.html" + location.hash.split("/")[0] : file;
+    // Each map tab's ranked and all-sites modes share one nav link.
+    const tab = { "#top": "#top", "#villages": "#top", "#tophotels": "#tophotels", "#hotels": "#tophotels", "#existing": "#existing" }[location.hash.split("/")[0]];
+    return file === "map.html" && tab ? "map.html" + tab : file;
   };
 
   const render = () => {
