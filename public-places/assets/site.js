@@ -28,6 +28,7 @@
     ] },
     // The Details page has no tab for this view; its #existing hash opens it.
     { name: "Existing villages", footer: true, pages: [{ name: "Villages and hotels open now", href: "details.html#existing" }] },
+    { name: "Coalitions", footer: true, pages: [{ name: "Who could give the pledge weight", href: "coalitions.html" }] },
     { name: "Simulator", footer: true, pages: [{ name: "State of Emergency", href: "simulator.html" }] },
     { name: "Methodology", footer: true, pages: [{ name: "How we count", href: "methodology.html" }] },
   ];
